@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v379.json` — généré par `gw2_relecture_recettes_v5.py`.
+Source : `gw2_sources_v380.json` — généré par `gw2_relecture_recettes_v5.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -66,7 +66,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `totem` | `Small_Totem` |  | `totem` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `venom_sac` | `Small_Venom_Sac` |  | `venom_sac` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_blood` | `Vial_of_Thin_Blood` |  | `vial_of_blood` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
-| `mithril_ingot` | `Mithril_Ore` |  | `mithril_ingot` | sous une feuille | `ad_infinitum`, `aurora`, `gen1_bolt` … (+35) |
+| `mithril_ingot` | `Mithril_Ore` |  | `mithril_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+34) |
 | `orichalcum_ingot` | `Orichalcum_Ore` |  | `orichalcum_ingot` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_frenzy` … (+31) |
 | `darksteel_ingot` | `Lump_of_Primordium` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
 | `darksteel_ingot` | `Platinum_Ore` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
@@ -77,7 +77,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `steel_ingot` | `Lump_of_Coal` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `Gossamer_Scrap` |  | `bolt_of_gossamer` | sous une feuille | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `Iron_Ore` |  | `iron_ingot` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
-| `platinum_ingot` | `Platinum_Ore` |  | `platinum_ingot` | sous une feuille | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+16) |
+| `platinum_ingot` | `Platinum_Ore` |  | `platinum_ingot` | sous une feuille | `gen1_bolt`, `gen1_frostfang`, `gen1_incinerator` … (+15) |
 | `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+13) |
 | `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+11) |
 | `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
@@ -101,10 +101,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `carnelian_lump` | `Carnelian_Nugget` |  | `carnelian_lump` | sous une feuille | `gen1_incinerator`, `gen1_rodgort` |
 | `carnelian_lump` | `Pile_of_Shimmering_Dust` |  | `carnelian_lump` | sous une feuille | `gen1_incinerator`, `gen1_rodgort` |
 | `glacial_lodestone` | `Glacial_Core` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
-| `gold_ingot` | `Gold_Ore` |  | `gold_ingot` | sous une feuille | `aurora`, `vision` |
 | `lapis_lump` | `Lapis_Nugget` |  | `lapis_lump` | sous une feuille | `gen1_bolt`, `gen1_meteorlogicus` |
 | `lapis_lump` | `Pile_of_Shimmering_Dust` |  | `lapis_lump` | sous une feuille | `gen1_bolt`, `gen1_meteorlogicus` |
-| `silver_ingot` | `Silver_Ore` |  | `silver_ingot` | sous une feuille | `aurora`, `vision` |
 | `amethyst_lump` | `Amethyst_Nugget` |  | `amethyst_lump` | sous une feuille | `gen1_the_dreamer` |
 | `amethyst_lump` | `Pile_of_Shimmering_Dust` |  | `amethyst_lump` | sous une feuille | `gen1_the_dreamer` |
 | `ancient_wood_log` | `Elder_Wood_Log` |  | `ancient_wood_log` | sous une feuille | `vision` |
@@ -206,6 +204,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_the_astral_ward` | `Gift_of_Inner_Nayos` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
 | `gift_of_the_astral_ward` | `Gift_of_Persistence` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
 | `gift_of_the_astral_ward` | `Gift_of_Skywatch_Archipelago` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
+| `gold_ingot` | `Gold_Ore` |  | `gold_ingot` | sous une feuille | `vision` |
 | `howl` | `Essence_of_Spirit` |  | `howl` | sous une feuille | `gen1_howler` |
 | `howl` | `Mithril_Snake` |  | `howl` | sous une feuille | `gen1_howler` |
 | `howl` | `Spirit_of_the_Perfected_Warhorn` |  | `howl` | sous une feuille | `gen1_howler` |
@@ -232,6 +231,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `rodgorts_flame` | `Essence_of_Burning` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
 | `rodgorts_flame` | `Everburning_Flame` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
 | `rodgorts_flame` | `Spirit_of_the_Perfected_Torch` |  | `rodgorts_flame` | sous une feuille | `gen1_rodgort` |
+| `silver_ingot` | `Silver_Ore` |  | `silver_ingot` | sous une feuille | `vision` |
 | `spark_weapon` | `Essence_of_Chemistry` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
 | `spark_weapon` | `Fuel_Cannister` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
 | `spark_weapon` | `Regulator_Nozzle` |  | `spark_weapon` | sous une feuille | `gen1_incinerator` |
@@ -320,7 +320,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_sac` | `3 ingrédients` |  | `venom_sac` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_blood` | `3 ingrédients` |  | `vial_of_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_thick_blood` | `3 ingrédients` |  | `vial_of_thick_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
-| `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `ad_infinitum`, `aurora`, `gen1_bolt` … (+35) |
+| `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+34) |
 | `orichalcum_ingot` | `1 ingrédients` |  | `orichalcum_ingot` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_frenzy` … (+31) |
 | `darksteel_ingot` | `2 ingrédients` |  | `darksteel_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
 | `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
@@ -330,7 +330,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `steel_ingot` | `2 ingrédients` |  | `steel_ingot` | feuille assumée | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `1 ingrédients` |  | `bolt_of_gossamer` | feuille assumée | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `1 ingrédients` |  | `iron_ingot` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
-| `platinum_ingot` | `1 ingrédients` |  | `platinum_ingot` | feuille assumée | `aurora`, `gen1_bolt`, `gen1_frostfang` … (+16) |
+| `platinum_ingot` | `1 ingrédients` |  | `platinum_ingot` | feuille assumée | `gen1_bolt`, `gen1_frostfang`, `gen1_incinerator` … (+15) |
 | `ancient_wood_pulp` | `1 ingrédients` |  | `ancient_wood_pulp` | feuille assumée | `gen3_aurenes_argument`, `gen3_aurenes_bite`, `gen3_aurenes_breath` … (+13) |
 | `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+13) |
 | `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+11) |
@@ -350,11 +350,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `bolt_of_silk` | `1 ingrédients` |  | `bolt_of_silk` | feuille assumée | `ad_infinitum`, `stella_radians` |
 | `carnelian_lump` | `2 ingrédients` |  | `carnelian_lump` | feuille assumée | `gen1_incinerator`, `gen1_rodgort` |
 | `glacial_lodestone` | `4 ingrédients` |  | `glacial_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_frostfang` |
-| `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `aurora`, `vision` |
 | `jar_of_distilled_glory` | `1 ingrédients` |  | `jar_of_distilled_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
 | `lapis_lump` | `2 ingrédients` |  | `lapis_lump` | feuille assumée | `gen1_bolt`, `gen1_meteorlogicus` |
 | `record_of_league_participation` | `1 ingrédients` |  | `record_of_league_participation` | feuille assumée | `ardent_glorious`, `transcendence` |
-| `silver_ingot` | `1 ingrédients` |  | `silver_ingot` | feuille assumée | `aurora`, `vision` |
 | `star_of_glory` | `1 ingrédients` |  | `star_of_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
 | `amethyst_lump` | `2 ingrédients` |  | `amethyst_lump` | feuille assumée | `gen1_the_dreamer` |
 | `ancient_wood_log` | `3 ingrédients` |  | `ancient_wood_log` | feuille assumée | `vision` |
@@ -387,6 +385,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `dusk` | `4 ingrédients` |  | `dusk` | feuille assumée | `gen1_twilight` |
 | `gift_of_janthir_wanderlust` | `4 ingrédients` |  | `gift_of_janthir_wanderlust` | feuille assumée | `orrax_manifested` |
 | `gift_of_the_astral_ward` | `4 ingrédients` |  | `gift_of_the_astral_ward` | feuille assumée | `obsidian` |
+| `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `vision` |
 | `howl` | `4 ingrédients` |  | `howl` | feuille assumée | `gen1_howler` |
 | `leaf_of_kudzu` | `4 ingrédients` |  | `leaf_of_kudzu` | feuille assumée | `gen1_kudzu` |
 | `pile_of_ascalonian_herbs` | `4 ingrédients` |  | `pile_of_ascalonian_herbs` | feuille assumée | `orrax_manifested` |
@@ -396,6 +395,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `rare_essence_of_luck` | `1 ingrédients` |  | `rare_essence_of_luck` | feuille assumée | `ad_infinitum` |
 | `rodgorts_flame` | `4 ingrédients` |  | `rodgorts_flame` | feuille assumée | `gen1_rodgort` |
 | `shard_of_crystallized_mists_essence` | `4 ingrédients` |  | `shard_of_crystallized_mists_essence` | feuille assumée | `ad_infinitum` |
+| `silver_ingot` | `1 ingrédients` |  | `silver_ingot` | feuille assumée | `vision` |
 | `spark_weapon` | `4 ingrédients` |  | `spark_weapon` | feuille assumée | `gen1_incinerator` |
 | `storm` | `4 ingrédients` |  | `storm` | feuille assumée | `gen1_meteorlogicus` |
 | `the_bard` | `4 ingrédients` |  | `the_bard` | feuille assumée | `gen1_the_minstrel` |

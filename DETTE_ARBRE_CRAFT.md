@@ -1394,7 +1394,7 @@ portant `component` validees** : 5 114 totaux dans la premiere situation,
 ce qui est la preuve que la regle a joue. Aucun ecart dans les deux.
 
 Sept fichiers suivent la version du moteur : `gw2_arbitrages_v8`,
-`gw2_audit_v47`, `gw2_conformite_moteurs_v2`, `gw2_confronte_totaux_v6`,
+`gw2_audit_v47`, `gw2_conformite_moteurs_v3`, `gw2_confronte_totaux_v6`,
 `gw2_confronte_v3`, `gw2_deplie_wiki_v12`.
 
 **Un rebut supprime au passage** : `gw2_confronte_totaux_v6.py` etait entre dans
@@ -4234,7 +4234,7 @@ composant inutile », l'autre « cette etape non faite reclame ces materiaux ».
 
 ### Dans les deux moteurs, au même endroit
 
-JSX v239 et `gw2_moteur_v3.py` posent la regle **apres les choix, avant la
+JSX v239 et `gw2_moteur_v4.py` posent la regle **apres les choix, avant la
 cascade** : un lingot d'orichalque apporte a un miroir se developpe ensuite en
 minerai comme n'importe quel autre besoin. Sans statut connu, l'etape est
 reputee non faite — compter trop vaut mieux que promettre un total trop bas.

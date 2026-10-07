@@ -1,6 +1,6 @@
 # Confrontation — cles a plat contre recettes
 
-Source : `gw2_sources_v379.json`. 65 ecarts sur 17 legendaires.
+Source : `gw2_sources_v380.json`. 68 ecarts sur 17 legendaires.
 
 Colonne **actuelle** : ce que le tracker affiche. Colonne **recettes** : ce
 que la lecture de bas en haut donnerait, toutes les aretes des captures
@@ -24,13 +24,13 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `vision` | 13 | 2755 |
 | `transcendence` | 3 | 1520 |
 | `selachimorpha` | 8 | 634 |
+| `aurora` | 4 | 426 |
 | `conflux` | 1 | 250 |
 | `orrax_manifested` | 4 | 227 |
 | `gen1_the_bifrost` | 1 | 200 |
 | `gen1_the_dreamer` | 1 | 200 |
 | `gen1_the_minstrel` | 1 | 200 |
 | `triumphant_hero` | 2 | 96 |
-| `aurora` | 1 | 76 |
 | `gen1_kudzu` | 3 | 24 |
 | `perfected_envoy` | 1 | 6 |
 
@@ -54,36 +54,39 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `transcendence` | `ascended_shard_of_glory` — Ascended Shard of Glory | 900 | 400 | -500 |
 | `vision` | `trade_contract` — Trade Contract | 0 | 500 | +500 |
 | `obsidian` | `obsidian_shard` — Obsidian Shard | 672 | 372 | -300 |
+| `coalescence` | `ley_line_spark` — Ley Line Spark | 0 | 250 | +250 |
 | `coalescence` | `crystalline_ingot` — Crystalline Ingot | 0 | 250 | +250 |
+| `coalescence` | `fulgurite` — Fulgurite | 0 | 250 | +250 |
+| `coalescence` | `amalgamated_gemstone` — Amalgamated Gemstone | 250 | 500 | +250 |
+| `coalescence` | `crystalline_ore` — Crystalline Ore | 0 | 250 | +250 |
+| `coalescence` | `glob_of_ectoplasm` — Glob of Ectoplasm | 250 | 500 | +250 |
 | `coalescence` | `pile_auric_dust` — Pile of Auric Dust | 0 | 250 | +250 |
 | `coalescence` | `obsidian_shard` — Obsidian Shard | 250 | 500 | +250 |
-| `coalescence` | `glob_of_ectoplasm` — Glob of Ectoplasm | 250 | 500 | +250 |
 | `coalescence` | `bottle_airship_oil` — Bottle of Airship Oil | 0 | 250 | +250 |
-| `coalescence` | `ley_line_spark` — Ley Line Spark | 0 | 250 | +250 |
-| `coalescence` | `fulgurite` — Fulgurite | 0 | 250 | +250 |
-| `coalescence` | `crystalline_ore` — Crystalline Ore | 0 | 250 | +250 |
-| `coalescence` | `amalgamated_gemstone` — Amalgamated Gemstone | 250 | 500 | +250 |
 | `conflux` | `memory_of_battle` — Memory of Battle | 1750 | 2000 | +250 |
+| `aurora` | `orrian_pearl_lw3` — Orrian Pearl | 450 | 250 | -200 |
 | `gen1_the_bifrost` | `dust_luminous` — Pile of Luminous Dust | 250 | 450 | +200 |
 | `gen1_the_dreamer` | `dust_luminous` — Pile of Luminous Dust | 210 | 410 | +200 |
 | `gen1_the_minstrel` | `dust_luminous` — Pile of Luminous Dust | 250 | 450 | +200 |
 | `orrax_manifested` | `lime` — Lime | 400 | 600 | +200 |
+| `aurora` | `jade_shard_lw3` — Jade Shard | 350 | 250 | -100 |
+| `vision` | `ley_line_spark` — Ley Line Spark | 0 | 100 | +100 |
 | `vision` | `crystalline_ingot` — Crystalline Ingot | 0 | 100 | +100 |
+| `vision` | `fulgurite` — Fulgurite | 0 | 100 | +100 |
+| `vision` | `amalgamated_gemstone` — Amalgamated Gemstone | 100 | 200 | +100 |
+| `vision` | `crystalline_ore` — Crystalline Ore | 0 | 100 | +100 |
 | `vision` | `pile_auric_dust` — Pile of Auric Dust | 0 | 100 | +100 |
 | `vision` | `obsidian_shard` — Obsidian Shard | 244 | 344 | +100 |
 | `vision` | `bottle_airship_oil` — Bottle of Airship Oil | 0 | 100 | +100 |
-| `vision` | `ley_line_spark` — Ley Line Spark | 0 | 100 | +100 |
-| `vision` | `fulgurite` — Fulgurite | 0 | 100 | +100 |
-| `vision` | `crystalline_ore` — Crystalline Ore | 0 | 100 | +100 |
-| `vision` | `amalgamated_gemstone` — Amalgamated Gemstone | 100 | 200 | +100 |
 | `ardent_glorious` | `mystic_clover` — Mystic Clover | 180 | 90 | -90 |
 | `triumphant_hero` | `mystic_clover` — Mystic Clover | 180 | 90 | -90 |
 | `aurora` | `fire_orchid_blossom` — Fire Orchid Blossom | 326 | 250 | -76 |
-| `vision` | `orichalcum_ingot` — Orichalcum Ingot | 185 | 115 | -70 |
 | `vision` | `powdered_rose_quartz` — Powdered Rose Quartz | 3070 | 3000 | -70 |
+| `vision` | `orichalcum_ingot` — Orichalcum Ingot | 185 | 115 | -70 |
 | `vision` | `glob_of_ectoplasm` — Glob of Ectoplasm | 803 | 868 | +65 |
 | `ad_infinitum` | `obsidian_shard` — Obsidian Shard | 90 | 30 | -60 |
 | `selachimorpha` | `obsidian_shard` — Obsidian Shard | 310 | 370 | +60 |
+| `aurora` | `blood_ruby` — Blood Ruby | 300 | 250 | -50 |
 | `selachimorpha` | `spirit_shard` — Spirit Shard | 200 | 240 | +40 |
 | `ad_infinitum` | `mystic_coin` — Mystic Coin | 0 | 30 | +30 |
 | `ad_infinitum` | `dust_crystalline` — Pile of Crystalline Dust | 250 | 280 | +30 |
@@ -92,11 +95,11 @@ l'ectoplasme ou l'obsidienne s'explique d'abord par lui.
 | `orrax_manifested` | `dragonite_ore` — Dragonite Ore | 0 | 25 | +25 |
 | `transcendence` | `pvp_league_ticket` — PvP League Ticket | 70 | 90 | +20 |
 | `selachimorpha` | `dragonite_ingot` — Dragonite Ingot | 0 | 10 | +10 |
-| `selachimorpha` | `empyreal_star` — Empyreal Star | 0 | 10 | +10 |
 | `selachimorpha` | `bloodstone_brick` — Bloodstone Brick | 0 | 10 | +10 |
-| `gen1_kudzu` | `mystic_crystal` — Mystic Crystal | 7 | 15 | +8 |
-| `gen1_kudzu` | `dust_radiant` — Pile of Radiant Dust | 0 | 8 | +8 |
+| `selachimorpha` | `empyreal_star` — Empyreal Star | 0 | 10 | +10 |
 | `gen1_kudzu` | `bottle_elonian_wine` — Bottle of Elonian Wine | 7 | 15 | +8 |
+| `gen1_kudzu` | `dust_radiant` — Pile of Radiant Dust | 0 | 8 | +8 |
+| `gen1_kudzu` | `mystic_crystal` — Mystic Crystal | 7 | 15 | +8 |
 | `perfected_envoy` | `ball_dark_energy` — Ball of Dark Energy | 12 | 6 | -6 |
 | `triumphant_hero` | `legendary_war_insight` — Legendary War Insight | 12 | 6 | -6 |
 | `selachimorpha` | `augurs_stone` — Augur's Stone | 0 | 2 | +2 |

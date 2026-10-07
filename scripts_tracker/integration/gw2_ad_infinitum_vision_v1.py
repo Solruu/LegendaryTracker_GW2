@@ -22,7 +22,7 @@ intermediaires desormais visibles (briques, lingots, etoiles, cristal).
 import json, sys, copy, tempfile
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v3 import Modele
+from moteur.gw2_moteur_v4 import Modele
 
 SRC, DST = Path(sys.argv[1]), Path(sys.argv[2])
 d = json.loads(SRC.read_text(encoding="utf-8"))

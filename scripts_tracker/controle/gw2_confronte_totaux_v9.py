@@ -133,7 +133,7 @@ for leg, v in L.items():
         page_leg[norm(w)] = leg
 
 
-from moteur.gw2_moteur_v3 import Modele  # noqa: E402
+from moteur.gw2_moteur_v4 import Modele  # noqa: E402
 
 # Les options d'un choix que le calcul ne retient pas : la table les ecrit
 # toutes, le tracker n'en compte qu'une.

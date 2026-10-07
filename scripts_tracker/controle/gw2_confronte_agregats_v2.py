@@ -90,7 +90,7 @@ def main():
     global _MODELE
     import sys as _s
     _s.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from moteur.gw2_moteur_v3 import Modele
+    from moteur.gw2_moteur_v4 import Modele
     _MODELE = Modele.depuis(data, src)
     cc = data["craft_components"]
     legs = data["legendaries"]

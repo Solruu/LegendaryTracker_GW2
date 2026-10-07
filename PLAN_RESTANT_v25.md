@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v379) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v380) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -25,7 +25,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v59` | 0 erreur, 62 avertissements (v365), plus aucun « compte deux fois » |
+| audit | `controle/gw2_audit_v60` | 0 erreur, 62 avertissements (v365), plus aucun « compte deux fois » |
 
 **Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -290,7 +290,7 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       Fortune, 250 pieces), deja portee par Sunrise et Twilight. Recette
       wiki : 2 legendaires + 5 poussieres + 10 pierres. Eternity perd 21
       lignes (ectos 250, trefles 77, T6 250 x 7...). Trouve par l'audit
-      (poussiere en direct et via Gift of Magic). `controle/gw2_audit_v59` :
+      (poussiere en direct et via Gift of Magic). `controle/gw2_audit_v60` :
       la regle « fratrie » exclut un legendaire forge d'autres legendaires
       (`collections.*.items[].legendary`), sinon elle reclamait le patron.
 
@@ -384,9 +384,32 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
         (meme objet, appariement par slug) ; Castoran, recettes de
         banniere, Legendary Insight = couts d'acquisition legitimes.
 
-### C5 — Bits de collection · C
-`qty_extras` ne retranche les etapes validees que sur 5 composants. Generaliser
-a tous les composants dont une collection consomme l'objet.
+### C5 — Bits de collection · C — ✅ structure unifiee le 07/10 (sources v380, JSX v246)
+Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
+- [x] `qty_extras` (5 composants) et `karma_budget` (Aurora I) migres en
+      `cost` d'etape : 53 couts poses sur les sous-collections d'Aurora I et
+      sur Aurora II (`integration/gw2_couts_collections_v1`), puis retires.
+- [x] Les deux moteurs lisent les sous-collections (`etapesCollections` JSX,
+      `Modele._etapes`, moteur v4) ; une sous-collection est faite si son
+      statut le dit ou si sa mere est terminee.
+- [x] Arete `xunlai -> spark_of_sentience : 21` retiree : la meme chose que
+      les 21 couts d'Aurora II. Les lingots tombent desormais au fil des
+      sanctuaires infuses (avant : jamais).
+- [x] Corrige au passage : rubis +50, jade +100, perles +200 n'etaient
+      comptes que dans l'onglet d'Aurora, pas au grand total (le surcout ne
+      s'appliquait qu'aux cles a plat). Le karma d'Aurora etait, lui, compte
+      deux fois dans l'onglet (moteur + surcout rajoute).
+- [x] Controles : conformite v3 (3e situation : etapes a cout validees,
+      sous-collections comprises), audit v60 (`check_couts_etapes` : interdit
+      `qty_extras` / `karma_budget`, exige `cost_ref`).
+- [ ] Generaliser au fil des captures. Candidats lus dans les `how`, a
+      trancher un par un — la plupart des « Bring » portent un objet de
+      quete, pas une consommation :
+      - Chuka III bits 11-13 : une Slab of Poultry Meat par chat (3 a Caer
+        Aval, 1 Shadow, nombre des chats d'Elena inconnu) ;
+      - Vision `vis_brandstone` bit 6 : 10 Kralkatite Ore + 5 Powdered Rose
+        Quartz combines au Beam of Light (consommation ? la table du wiki les
+        compte-t-elle deja ?).
 
 ---
 

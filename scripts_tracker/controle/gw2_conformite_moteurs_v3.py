@@ -25,6 +25,13 @@ effet SE PROPAGE dans la cascade, et les retirer du seul composant qui les
 porte laissait 1 050 lingots de mithril d'ecart sur Aurora, par une chaine de
 quatre niveaux. Le moteur Python les calcule donc lui aussi, avec la meme
 regle, et on compare les deux totaux entiers sans rien neutraliser.
+
+v3 : `qty_extras` n'existe plus. Ces couts sont des `cost` d'etape, y compris
+dans les sous-collections d'Aurora I, lus des deux cotes par une seule
+fonction (`etapesCollections` en JSX, `Modele._etapes` en Python). Une
+troisieme situation valide toutes les etapes qui portent un cout, sous-
+collections comprises : sans elle, deux moteurs d'accord a collections
+vierges pourraient diverger des le premier sanctuaire infuse.
 """
 import json
 import re
@@ -34,7 +41,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[2]  # racine du depot
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v3 import Modele  # noqa: E402
+from moteur.gw2_moteur_v4 import Modele  # noqa: E402
 
 JSX = max(HERE.glob("gw2_legendary_tracker_v*.jsx"),
           key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)))
@@ -65,8 +72,26 @@ def situations(m):
                     and it.get("bit") is not None]
             if bits:
                 faites[cle] = {"bits": sorted(bits)}
+    payees = {}
+    for leg in m.legendaires.values():
+        for cle, col in (leg.brut.get("collections") or {}).items():
+            if not isinstance(col, dict):
+                continue
+            bits = [it.get("bit") for it in (col.get("items") or [])
+                    if isinstance(it, dict) and it.get("cost")]
+            if bits:
+                payees[cle] = {"bits": sorted(bits)}
+            subs = col.get("subcollections") or {}
+            if isinstance(subs, dict):
+                for sk, sub in subs.items():
+                    # un bit sur deux : on veut un etat MELE, pas tout ou rien
+                    sb = [it.get("bit") for it in (sub.get("items") or [])
+                          if isinstance(it, dict) and it.get("cost")][::2]
+                    if sb:
+                        payees[sk] = {"bits": sorted(sb)}
     return [("collections vierges", {}),
-            ("etapes reliees a un composant validees", faites)]
+            ("etapes reliees a un composant validees", faites),
+            ("etapes a cout validees (sous-collections comprises)", payees)]
 
 
 def main() -> int:
@@ -80,7 +105,7 @@ def main() -> int:
         total_ecarts += [(nom,) + x for x in e]
     print(f"moteur Python : {m.chemin.name} | moteur JSX : {JSX.name}")
     print(f"{len(m.cibles)} cibles, {total_compares} totaux compares")
-    print("surcouts conditionnels : calcules des deux cotes, aucun neutralise")
+    print("couts d'etape : calcules des deux cotes, sous-collections comprises")
     if not total_ecarts:
         print("AUCUN ECART — les deux moteurs disent le meme nombre partout.")
         return 0
@@ -105,11 +130,12 @@ const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
 const SOURCES_ALIAS = { prismatic: "prismatic_champions_regalia", upgrades: "upgrades_combined" };
 %s
 %s
+%s
 const cibles = CIBLES;
 const out = {};
 for (const c of cibles) out[c] = computeGrandTotal([c], COLLS).totals;
 console.log(JSON.stringify(out));
-""" % (decouper("readArmorWeightBySlot"), decouper("computeGrandTotal"))
+""" % (decouper("readArmorWeightBySlot"), decouper("etapesCollections"), decouper("computeGrandTotal"))
 
     script = HERE / ".conformite.mjs"
     script.write_text(
@@ -143,7 +169,7 @@ console.log(JSON.stringify(out));
                               ("perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious")}
     ecarts, compares = [], 0
     for cible in m.cibles:
-        py = m.totaux(cible, surcouts=True,
+        py = m.totaux(cible,
                       collections_faites=faites,
                       poids_par_emplacement=poids_par_emplacement)
         js = dict(cote_js.get(cible) or {})

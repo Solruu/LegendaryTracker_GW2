@@ -4330,18 +4330,6 @@
     }
    ],
    "kind": "acquire",
-   "qty_extras": [
-    {
-     "legendary": "aurora",
-     "amount": 50,
-     "sub": "aurora_bf",
-     "bit": 7,
-     "label": {
-      "fr": "Rubis de sang immaculé (Natto)",
-      "en": "Pristine Blood Ruby (Natto)"
-     }
-    }
-   ],
    "cadence": {
     "sources": [
      {
@@ -4398,28 +4386,6 @@
     }
    ],
    "kind": "acquire",
-   "qty_extras": [
-    {
-     "legendary": "aurora",
-     "amount": 50,
-     "sub": "aurora_ld",
-     "bit": 13,
-     "label": {
-      "fr": "Protecteur seraph",
-      "en": "Seraph Protector"
-     }
-    },
-    {
-     "legendary": "aurora",
-     "amount": 50,
-     "sub": "aurora_ld",
-     "bit": 14,
-     "label": {
-      "fr": "Bâton du savant",
-      "en": "Bloodstone Savant's Staff"
-     }
-    }
-   ],
    "cadence": {
     "sources": [
      {
@@ -4576,18 +4542,6 @@
     }
    ],
    "kind": "acquire",
-   "qty_extras": [
-    {
-     "legendary": "aurora",
-     "amount": 200,
-     "sub": "aurora_sl",
-     "bit": 1,
-     "label": {
-      "fr": "Relique d'un dieu (dos)",
-      "en": "God's Relic backpack"
-     }
-    }
-   ],
    "not_a_source": {
     "fr": "Les coffres cachés du Reliquaire, limités à 2 par personnage et par jour et conditionnés par les 5 cœurs, ne sont PAS la cadence des perles : ils servent au Chiffre ancien de la collection Siren's Landing Master. Les deux plafonds avaient été confondus. Attention, trois types de coffres coexistent sur cette carte : les coffres cachés du Reliquaire (2/perso/jour, Chiffre ancien), les coffres engloutis (perles au hasard) et les coffres de fin d'event. Seuls les deuxièmes donnent des perles régulièrement.",
     "en": "The hidden Reliquary chests, capped at 2 per character per day and gated behind the 5 hearts, are NOT the pearl cadence: they feed the Ancient Cipher of the Siren's Landing Master collection. The two caps had been conflated. Note that three chest types coexist on this map: hidden Reliquary chests (2/char/day, Ancient Cipher), Waterlogged Chests (random pearls) and event end chests. Only the second yields pearls with any regularity.",
@@ -10284,12 +10238,10 @@
    "apiId": 46743,
    "needed_for": [
     "aurora",
-    "memory_essence_encapsulator",
-    "spark_of_sentience"
+    "memory_essence_encapsulator"
    ],
    "qty": {
-    "memory_essence_encapsulator": 3,
-    "spark_of_sentience": 21
+    "memory_essence_encapsulator": 3
    },
    "farmable": true,
    "craft": {
@@ -10361,44 +10313,7 @@
       "ref": "wiki:Aurora"
      }
     ]
-   },
-   "qty_extras": [
-    {
-     "legendary": "aurora",
-     "sub": "aurora_2",
-     "bits": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20
-     ],
-     "amountPer": 1,
-     "label": {
-      "fr": "Sanctuaires de maîtrise à infuser — Aurora II",
-      "en": "Mastery insights to infuse — Aurora II"
-     },
-     "ref": "wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire",
-     "verified": true,
-     "checked": "2026-08-27"
-    }
-   ]
+   }
   },
   "memory_essence_encapsulator": {
    "name": "Memory Essence Encapsulator",
@@ -12114,128 +12029,6 @@
     "aurora": true,
     "stella_radians": false
    },
-   "qty_extras": [
-    {
-     "legendary": "aurora",
-     "sub": "aurora_sl",
-     "label": {
-      "fr": "Relique d'un dieu — Plage des sirènes",
-      "en": "God's Relic backpack — Siren's Landing"
-     },
-     "bit": 1,
-     "amount": 315000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_sl",
-     "label": {
-      "fr": "Faveurs des cinq dieux — Plage des sirènes",
-      "en": "Favors of the five gods — Siren's Landing"
-     },
-     "bits": [
-      2,
-      3,
-      4,
-      5,
-      6
-     ],
-     "amountPer": 7000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_ld",
-     "label": {
-      "fr": "Protecteur seraph — Lac Doric",
-      "en": "Seraph Protector — Lake Doric"
-     },
-     "bit": 13,
-     "amount": 210000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_ld",
-     "label": {
-      "fr": "Bâton du savant — Lac Doric",
-      "en": "Bloodstone Savant's Staff — Lake Doric"
-     },
-     "bit": 14,
-     "amount": 210000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_ld",
-     "label": {
-      "fr": "Objets de cœur — Lac Doric",
-      "en": "Heart items — Lake Doric"
-     },
-     "bits": [
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-     ],
-     "amountPer": 7000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_eb",
-     "label": {
-      "fr": "Objets de cœur — Baie des braises",
-      "en": "Heart items — Ember Bay"
-     },
-     "bits": [
-      4,
-      5,
-      6,
-      7,
-      8
-     ],
-     "amountPer": 7000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_bfr",
-     "label": {
-      "fr": "Objets de cœur — Confins de Givramer",
-      "en": "Heart items — Bitterfrost Frontier"
-     },
-     "bits": [
-      3,
-      4,
-      5,
-      6
-     ],
-     "amountPer": 7000
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_bfr",
-     "label": {
-      "fr": "Pierre de feu grawl (élixir du Bitter Cold) — Confins de Givramer",
-      "en": "Grawl Firestone (Bitter Cold elixir) — Bitterfrost Frontier"
-     },
-     "bit": 13,
-     "amount": 1050
-    },
-    {
-     "legendary": "aurora",
-     "sub": "aurora_dm",
-     "label": {
-      "fr": "Objets de cœur — Mont Draconis",
-      "en": "Heart items — Draconis Mons"
-     },
-     "bits": [
-      2,
-      3,
-      4,
-      5
-     ],
-     "amountPer": 7000,
-     "estimated": true
-    }
-   ],
    "needed_for": [
     "gift_of_the_oasis",
     "gift_of_the_highlands",
@@ -65982,7 +65775,11 @@
           "ref": "guildjen + gamergalexe",
           "checked": "2026-08-13",
           "verified": true
-         }
+         },
+         "cost": {
+          "blood_ruby": 50
+         },
+         "cost_ref": "blood_ruby : Rubis de sang immaculé (Natto)"
         },
         {
          "name": "Strange Residue",
@@ -66105,7 +65902,11 @@
          "bit": 4,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Baie des braises (gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun))"
         },
         {
          "name": "Friend of the Researchers",
@@ -66116,7 +65917,11 @@
          "bit": 5,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Baie des braises (gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun))"
         },
         {
          "name": "Friend of the Skritt",
@@ -66127,7 +65932,11 @@
          "bit": 6,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Baie des braises (gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun))"
         },
         {
          "name": "Friend of Science",
@@ -66138,7 +65947,11 @@
          "bit": 7,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Baie des braises (gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun))"
         },
         {
          "name": "Mursaat Investigator",
@@ -66149,7 +65962,11 @@
          "bit": 8,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct"
+         "how_ref": "gamergalexe:aurora-awakening-ember-bay-master + guildjen:ember-bay-master-guide + wiki:Flask_of_Tears, wiki:Defeat_the_Pyroclastic_Jade_Construct",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Baie des braises (gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun))"
         },
         {
          "name": "Shiny Rock",
@@ -66276,7 +66093,11 @@
          "bit": 3,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
+         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Confins de Givramer (gamergalexe:bitterfrost-frontier-master)"
         },
         {
          "name": "Protector of Griffons",
@@ -66287,7 +66108,11 @@
          "bit": 4,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
+         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Confins de Givramer (gamergalexe:bitterfrost-frontier-master)"
         },
         {
          "name": "Friend of Quaggans",
@@ -66298,7 +66123,11 @@
          "bit": 5,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
+         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Confins de Givramer (gamergalexe:bitterfrost-frontier-master)"
         },
         {
          "name": "Enemy of the Svanir",
@@ -66309,7 +66138,11 @@
          "bit": 6,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)"
+         "how_ref": "guildjen:bitterfrost-frontier-master-guide + gamergalexe:bitterfrost + wiki:Aurora:_Awakening (timegates)",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Confins de Givramer (gamergalexe:bitterfrost-frontier-master)"
         },
         {
          "name": "Mini Aurene",
@@ -66462,7 +66295,11 @@
           "verified": true,
           "checked": "2026-08-13",
           "ref": "wiki + guides — comportement confirme collection par collection"
-         }
+         },
+         "cost": {
+          "karma": 1050
+         },
+         "cost_ref": "karma : Pierre de feu grawl (élixir du Bitter Cold) — Confins de Givramer (gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir)"
         }
        ]
       },
@@ -66508,7 +66345,11 @@
          "bit": 2,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
+         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Lac Doric (gamergalexe:lake-doric-master)"
         },
         {
          "name": "Fort Evennia Infiltrator",
@@ -66519,7 +66360,11 @@
          "bit": 3,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
+         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Lac Doric (gamergalexe:lake-doric-master)"
         },
         {
          "name": "Friend of Noran",
@@ -66537,7 +66382,11 @@
           "verified": true,
           "checked": "2026-08-13",
           "ref": "wiki + guides — comportement confirme collection par collection"
-         }
+         },
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Lac Doric (gamergalexe:lake-doric-master)"
         },
         {
          "name": "Friend of Cin Fursarai",
@@ -66548,7 +66397,11 @@
          "bit": 5,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
+         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Lac Doric (gamergalexe:lake-doric-master)"
         },
         {
          "name": "Friend of New Loamhurst",
@@ -66559,7 +66412,11 @@
          "bit": 6,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
+         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Lac Doric (gamergalexe:lake-doric-master)"
         },
         {
          "name": "Friend of Saidra's Haven",
@@ -66570,7 +66427,11 @@
          "bit": 7,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran"
+         "how_ref": "guildjen + gamergalexe:lake-doric-master + ayinmaiden + wiki:Not_All_Who_Wander_Are_Lost, wiki:Noran",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Lac Doric (gamergalexe:lake-doric-master)"
         },
         {
          "name": "Bloodstone-Warped Hoof",
@@ -66641,7 +66502,12 @@
           "ref": "wiki:Jade_Shard#Currency_for",
           "checked": "2026-08-13",
           "verified": true
-         }
+         },
+         "cost": {
+          "jade_shard_lw3": 50,
+          "karma": 210000
+         },
+         "cost_ref": "jade_shard_lw3 : Protecteur seraph ; karma : Protecteur seraph — Lac Doric (wiki:Jade_Shard#Currency_for)"
         },
         {
          "name": "Bloodstone Savant's Staff",
@@ -66657,7 +66523,12 @@
           "ref": "wiki:Jade_Shard#Currency_for",
           "checked": "2026-08-13",
           "verified": true
-         }
+         },
+         "cost": {
+          "jade_shard_lw3": 50,
+          "karma": 210000
+         },
+         "cost_ref": "jade_shard_lw3 : Bâton du savant ; karma : Bâton du savant — Lac Doric (wiki:Jade_Shard#Currency_for)"
         },
         {
          "name": "Ebon Vanguard Badge",
@@ -66715,7 +66586,11 @@
          "bit": 2,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
+         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Mont Draconis (seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif — NON VERIFIE)"
         },
         {
          "name": "Fiery Liberator",
@@ -66726,7 +66601,11 @@
          "bit": 3,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
+         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Mont Draconis (seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif — NON VERIFIE)"
         },
         {
          "name": "Enemy of the Inquest",
@@ -66737,7 +66616,11 @@
          "bit": 4,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
+         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Mont Draconis (seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif — NON VERIFIE)"
         },
         {
          "name": "Friend of Golems",
@@ -66748,7 +66631,11 @@
          "bit": 5,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons"
+         "how_ref": "guildjen:draconis-mons-master-guide (maj 27/09/2025) + wiki:Draconis_Mons",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Objets de cœur — Mont Draconis (seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif — NON VERIFIE)"
         },
         {
          "name": "Searing Ascender",
@@ -66877,7 +66764,12 @@
           "ref": "wiki:Orrian_Pearl#Currency_for",
           "checked": "2026-08-13",
           "verified": true
-         }
+         },
+         "cost": {
+          "karma": 315000,
+          "orrian_pearl_lw3": 200
+         },
+         "cost_ref": "karma : Relique d'un dieu — Plage des sirènes (wiki:Orrian_Pearl#Currency_for) ; orrian_pearl_lw3 : Relique d'un dieu (dos)"
         },
         {
          "name": "Favor of Dwayna",
@@ -66888,7 +66780,11 @@
          "bit": 2,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
+         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Faveurs des cinq dieux — Plage des sirènes (guildjen + gamergalexe)"
         },
         {
          "name": "Favor of Balthazar",
@@ -66899,7 +66795,11 @@
          "bit": 3,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
+         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Faveurs des cinq dieux — Plage des sirènes (guildjen + gamergalexe)"
         },
         {
          "name": "Favor of Grenth",
@@ -66910,7 +66810,11 @@
          "bit": 4,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
+         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Faveurs des cinq dieux — Plage des sirènes (guildjen + gamergalexe)"
         },
         {
          "name": "Favor of Melandru",
@@ -66921,7 +66825,11 @@
          "bit": 5,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
+         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Faveurs des cinq dieux — Plage des sirènes (guildjen + gamergalexe)"
         },
         {
          "name": "Favor of Lyssa",
@@ -66932,7 +66840,11 @@
          "bit": 6,
          "how_verified": true,
          "how_checked": "2026-08-13",
-         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
+         "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing",
+         "cost": {
+          "karma": 7000
+         },
+         "cost_ref": "karma : Faveurs des cinq dieux — Plage des sirènes (guildjen + gamergalexe)"
         },
         {
          "name": "Ancient Cipher",
@@ -67041,158 +66953,6 @@
          "how_ref": "guildjen:sirens-landing-master-guide (maj 27/09/2025) + wiki:Siren's_Landing"
         }
        ]
-      }
-     },
-     "karma_budget": {
-      "total": 904050,
-      "threshold_display": 100000,
-      "lines": [
-       {
-        "label": {
-         "fr": "Relique d'un dieu — Plage des sirènes",
-         "en": "God's Relic backpack — Siren's Landing"
-        },
-        "amount": 315000,
-        "sub": "aurora_sl",
-        "bit": 1,
-        "verified": true,
-        "ref": "wiki:Orrian_Pearl#Currency_for",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Faveurs des cinq dieux — Plage des sirènes",
-         "en": "Favors of the five gods — Siren's Landing"
-        },
-        "amount": 35000,
-        "per": 7000,
-        "sub": "aurora_sl",
-        "bits": [
-         2,
-         3,
-         4,
-         5,
-         6
-        ],
-        "verified": true,
-        "ref": "guildjen + gamergalexe",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Protecteur seraph — Lac Doric",
-         "en": "Seraph Protector — Lake Doric"
-        },
-        "amount": 210000,
-        "sub": "aurora_ld",
-        "bit": 13,
-        "verified": true,
-        "ref": "wiki:Jade_Shard#Currency_for",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Bâton du savant — Lac Doric",
-         "en": "Bloodstone Savant's Staff — Lake Doric"
-        },
-        "amount": 210000,
-        "sub": "aurora_ld",
-        "bit": 14,
-        "verified": true,
-        "ref": "wiki:Jade_Shard#Currency_for",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Objets de cœur — Lac Doric",
-         "en": "Heart items — Lake Doric"
-        },
-        "amount": 42000,
-        "per": 7000,
-        "sub": "aurora_ld",
-        "bits": [
-         2,
-         3,
-         4,
-         5,
-         6,
-         7
-        ],
-        "verified": true,
-        "ref": "gamergalexe:lake-doric-master",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Objets de cœur — Baie des braises",
-         "en": "Heart items — Ember Bay"
-        },
-        "amount": 35000,
-        "per": 7000,
-        "sub": "aurora_eb",
-        "bits": [
-         4,
-         5,
-         6,
-         7,
-         8
-        ],
-        "verified": true,
-        "ref": "gamergalexe:ember-bay-master (les 5 vendeurs de cœur nommés, 7 000 chacun)",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Objets de cœur — Confins de Givramer",
-         "en": "Heart items — Bitterfrost Frontier"
-        },
-        "amount": 28000,
-        "per": 7000,
-        "sub": "aurora_bfr",
-        "bits": [
-         3,
-         4,
-         5,
-         6
-        ],
-        "verified": true,
-        "ref": "gamergalexe:bitterfrost-frontier-master",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Pierre de feu grawl (élixir du Bitter Cold) — Confins de Givramer",
-         "en": "Grawl Firestone (Bitter Cold elixir) — Bitterfrost Frontier"
-        },
-        "amount": 1050,
-        "sub": "aurora_bfr",
-        "bit": 13,
-        "verified": true,
-        "ref": "gamergalexe:bitterfrost-frontier-master — achat chez Sun Warming, prerequis de l'elixir",
-        "checked": "2026-08-13"
-       },
-       {
-        "label": {
-         "fr": "Objets de cœur — Mont Draconis",
-         "en": "Heart items — Draconis Mons"
-        },
-        "amount": 28000,
-        "per": 7000,
-        "sub": "aurora_dm",
-        "bits": [
-         2,
-         3,
-         4,
-         5
-        ],
-        "verified": false,
-        "ref": "seul « Friend of Golems » est confirme comme achat de vendeur de coeur ; les trois autres sont supposes au meme tarif",
-        "checked": "2026-08-13"
-       }
-      ],
-      "gaps": {
-       "fr": "Marais de la pierre de sang ne coûte aucun karma : tous ses objets sont des drops, de la récolte ou l'achat chez Natto (rubis + magie déchaînée). Seule incertitude restante : 3 des 4 objets du Mont Draconis, supposés à 7 000 comme ailleurs.",
-       "en": "Bloodstone Fen costs no karma: all its items are drops, gathering, or the Natto purchase (rubies + Unbound Magic). Only remaining uncertainty: 3 of the 4 Draconis Mons items, assumed at 7,000 like elsewhere."
       }
      },
      "name_ref": "gw2_bits_dump.json, champs name / name_fr du succes",
@@ -67327,7 +67087,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Hidden_Electrum"
+       "wiki": "Hidden_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 1,
@@ -67346,7 +67110,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Plundered_Electrum"
+       "wiki": "Plundered_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 2,
@@ -67365,7 +67133,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Sonic_Electrum"
+       "wiki": "Sonic_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 3,
@@ -67384,7 +67156,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Stony_Electrum"
+       "wiki": "Stony_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 4,
@@ -67403,7 +67179,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Seared_Electrum"
+       "wiki": "Seared_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 5,
@@ -67422,7 +67202,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Graven_Electrum"
+       "wiki": "Graven_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 6,
@@ -67441,7 +67225,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Volcanic_Electrum"
+       "wiki": "Volcanic_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 7,
@@ -67460,7 +67248,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Envenomed_Electrum"
+       "wiki": "Envenomed_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 8,
@@ -67479,7 +67271,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Scavenged_Electrum"
+       "wiki": "Scavenged_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 9,
@@ -67498,7 +67294,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Blighted_Electrum"
+       "wiki": "Blighted_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 10,
@@ -67517,7 +67317,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Atmospheric_Electrum"
+       "wiki": "Atmospheric_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 11,
@@ -67536,7 +67340,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Luminous_Electrum"
+       "wiki": "Luminous_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 12,
@@ -67555,7 +67363,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Poisoned_Electrum"
+       "wiki": "Poisoned_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 13,
@@ -67574,7 +67386,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Goopy_Electrum"
+       "wiki": "Goopy_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 14,
@@ -67593,7 +67409,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Covert_Electrum"
+       "wiki": "Covert_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 15,
@@ -67612,7 +67432,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Bloodstone-Infused_Electrum"
+       "wiki": "Bloodstone-Infused_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 16,
@@ -67631,7 +67455,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Pyroclastic_Electrum"
+       "wiki": "Pyroclastic_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 17,
@@ -67650,7 +67478,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Frosted_Electrum"
+       "wiki": "Frosted_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 18,
@@ -67669,7 +67501,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Misty_Electrum"
+       "wiki": "Misty_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 19,
@@ -67688,7 +67524,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Sulfuric_Electrum"
+       "wiki": "Sulfuric_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       },
       {
        "bit": 20,
@@ -67707,7 +67547,11 @@
        "how_verified": true,
        "how_checked": "2026-08-13",
        "how_ref": "wiki:Aurora_II:_Empowering — tableau complet (capture Antoine 13/08/2026)",
-       "wiki": "Scorched_Electrum"
+       "wiki": "Scorched_Electrum",
+       "cost": {
+        "xunlai_electrum_ingot": 1
+       },
+       "cost_ref": "xunlai_electrum_ingot : Sanctuaires de maîtrise à infuser — Aurora II (wiki:Aurora_II:_Empowering — 21 bits, un lingot par sanctuaire)"
       }
      ],
      "route_note": {

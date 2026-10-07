@@ -137,7 +137,7 @@ def cycle(enfant, parent):
 
 import sys as _sys  # noqa: E402
 _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v3 import Modele  # noqa: E402
+from moteur.gw2_moteur_v4 import Modele  # noqa: E402
 
 # LA CASCADE ECRITE ICI IGNORAIT `alt_groups`, ET C'EST LE PLUS GRAVE DES DIX
 # CAS : ce script ECRIT la donnee. Il decidait « deja compte par cascade » et

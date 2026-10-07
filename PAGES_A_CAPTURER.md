@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v379.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v380.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 11 trous de l'arbre — LA PRIORITÉ
+## 0 — 10 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -18,7 +18,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | page wiki | composants qui en dépendent |
 |---|---:|
 
-### 0 ter — 11 trous dont la page est DÉJÀ au dépôt
+### 0 ter — 10 trous dont la page est DÉJÀ au dépôt
 
 Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :
 page de catégorie, de monnaie, ou objet non fabricable. Aucune
@@ -33,7 +33,6 @@ capture n'y changera rien — le trou se règle dans la donnée.
 - `Gift of the Oasis`
 - `Gift of the Riverlands`
 - `Perfect Mist Core`
-- `Spark of Sentience`
 - `Sun Bead`
 
 ## 1 — 0 tables « Full material list » manquantes

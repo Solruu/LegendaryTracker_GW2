@@ -521,19 +521,17 @@ def _atteint(cid, legid, comps, profondeur=0):
     # total » parce qu'il ne regardait que les totaux. Troisieme fois que la
     # meme transversale rate un cas : d'abord `composition`, puis l'echelle par
     # piece des armures, maintenant `qty_extras`.
-    comp = comps.get(cid) or {}
-    for x in comp.get("qty_extras") or []:
-        if isinstance(x, dict) and x.get("legendary") == legid:
-            return True
+    # v60 : `qty_extras` n'existe plus — ces couts sont des `cost` d'etape,
+    # que le moteur compte a collections vierges : le total ci-dessus les voit.
     return False
 
 
 # La cascade n'est plus ecrite ici. Elle vivait dans dix fichiers, dont deux
 # avaient deja diverge sans que rien ne le signale. Un seul moteur desormais :
-# gw2_moteur_v3.Modele.
+# gw2_moteur_v4.Modele.
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v3 import Modele as _Modele  # noqa: E402
+from moteur.gw2_moteur_v4 import Modele as _Modele  # noqa: E402
 
 
 def _jsx_alias(src):
@@ -564,7 +562,9 @@ def check_qty_vs_jsx(data, errors, warnings):
 
     Le rubis de sang portait 300 dans les sources et 250 dans le JSX : le meme
     fait ecrit a deux endroits, dont un incapable de decompter une etape faite.
-    Un surcout appartient a qty_extras, jamais au nombre de base.
+    Un surcout appartient au `cost` d'une etape de collection (v60 ; avant :
+    qty_extras), jamais au nombre de base. Le `required` du JSX se compare au
+    total a collections VIERGES, couts d'etape compris.
 
     v37 : on compare le TOTAL (cle a plat + cascade) et non plus la seule cle a
     plat. La regle d'origine supposait qu'un composant portait tout son cout en
@@ -611,7 +611,7 @@ def check_qty_vs_jsx(data, errors, warnings):
                 errors.append(
                     f"craft_components/{cid} : qty[{legid}] = {val} alors que le JSX "
                     f"declare required = {req} pour {legid} — un surcout se declare "
-                    "dans qty_extras, pas dans le nombre de base"
+                    "comme `cost` d'une etape de collection, pas dans le nombre de base"
                 )
 
 
@@ -685,44 +685,46 @@ def check_currency_mapping(data, errors, warnings):
             )
 
 
-def check_karma_budgets(data, errors, warnings):
-    """Somme des lignes = total, et chaque sub/bit reference doit exister."""
-    def visit(node, path):
-        if isinstance(node, dict):
-            if "karma_budget" in node:
-                kb = node["karma_budget"]
-                lines = kb.get("lines") or []
-                total = sum(l.get("amount", 0) for l in lines)
-                if kb.get("total") != total:
-                    errors.append(
-                        f"{path}/karma_budget : total annonce {kb.get('total')} "
-                        f"contre {total} en sommant les lignes"
-                    )
-                for l in lines:
-                    per, bits = l.get("per"), l.get("bits")
-                    if per and bits and l.get("amount") != per * len(bits):
-                        errors.append(
-                            f"{path}/karma_budget : ligne '{_lbl(l)}' annonce {l.get('amount')} "
-                            f"contre {per} x {len(bits)}"
-                        )
-                    subs = node.get("subcollections") or {}
-                    sub = l.get("sub")
-                    if sub and subs and sub not in subs:
-                        errors.append(f"{path}/karma_budget : sous-collection inconnue '{sub}'")
-                    elif sub and subs:
-                        known = {i.get("bit") for i in subs[sub].get("items", [])}
-                        for b in ([l["bit"]] if "bit" in l else (bits or [])):
-                            if known and b not in known:
-                                errors.append(
-                                    f"{path}/karma_budget : ligne '{_lbl(l)}' vise le bit {b} "
-                                    f"absent de {sub}"
-                                )
-            for k, v in node.items():
-                visit(v, f"{path}/{k}")
-        elif isinstance(node, list):
-            for i, v in enumerate(node):
-                visit(v, f"{path}[{i}]")
-    visit(data, "")
+def check_couts_etapes(data, errors, warnings):
+    """v60 — un cout d'etape de collection n'a qu'une forme : `cost` sur l'etape.
+
+    Le meme fait vivait dans trois structures : `cost` sur l'etape, `qty_extras`
+    sur le composant, `karma_budget` sur Aurora I. Les deux dernieres sont
+    retirees (sources v380) ; ce controle interdit leur retour et verifie que
+    chaque `cost` vise un composant existant avec une quantite numerique, sur
+    une etape qui porte un bit — y compris dans les sous-collections.
+    """
+    cc = data.get("craft_components", {})
+    for cid, c in cc.items():
+        if "qty_extras" in c:
+            errors.append(f"craft_components/{cid} : qty_extras est retire (v60) — "
+                          "le cout se pose en `cost` sur l'etape de collection")
+    for lid, leg in (data.get("legendaries") or {}).items():
+        for ck, col in (leg.get("collections") or {}).items():
+            if not isinstance(col, dict):
+                continue
+            if "karma_budget" in col:
+                errors.append(f"legendaries/{lid}/collections/{ck} : karma_budget est retire "
+                              "(v60) — le karma se pose en `cost` sur l'etape")
+            subs = col.get("subcollections") or {}
+            groupes = [(f"{ck}", col.get("items") or [])]
+            if isinstance(subs, dict):
+                groupes += [(f"{ck}/subcollections/{sk}", sb.get("items") or [])
+                            for sk, sb in subs.items() if isinstance(sb, dict)]
+            for chemin, items in groupes:
+                for it in items:
+                    if not isinstance(it, dict) or "cost" not in it:
+                        continue
+                    lieu = f"legendaries/{lid}/collections/{chemin} bit {it.get('bit')}"
+                    if it.get("bit") is None:
+                        errors.append(f"{lieu} : un cost sans bit ne peut jamais tomber")
+                    if not it.get("cost_ref"):
+                        errors.append(f"{lieu} : cost sans cost_ref")
+                    for k, n in (it.get("cost") or {}).items():
+                        if k not in cc:
+                            errors.append(f"{lieu} : cost vise '{k}', inconnu de craft_components")
+                        if not isinstance(n, (int, float)) or isinstance(n, bool) or n <= 0:
+                            errors.append(f"{lieu} : cost['{k}'] = {n!r} n'est pas une quantite")
 
 
 CAP_PATTERNS = [
@@ -2449,7 +2451,7 @@ def main() -> int:
         warnings.append(f"provenance incomplete : {where} porte {has}, il manque {miss}")
 
     # 4. Coherence des budgets karma
-    check_karma_budgets(data, errors, warnings)
+    check_couts_etapes(data, errors, warnings)
 
     # 5. Monnaies du JSX presentes dans le mapping de synchro
     check_currency_mapping(data, errors, warnings)

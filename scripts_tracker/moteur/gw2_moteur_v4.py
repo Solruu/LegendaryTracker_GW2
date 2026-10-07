@@ -210,34 +210,41 @@ class Modele:
     def fantomes(self) -> list[str]:
         return sorted(l.id for l in self.legendaires.values() if not l.declare)
 
-    @staticmethod
-    def _surcout(comp: "Composant", cible: str, faites: dict | None) -> float:
-        """`qty_extras` : un surcout qui tombe tant qu'une etape de collection
-        n'est pas validee. Meme regle que le JSX, au caractere pres — c'est
-        cette regle-la que le test de conformite compare.
+    def _etapes(self, cible, faites):
+        """(etape, faite) pour chaque etape de collection de la cible.
 
-        Il ne s'ajoute QUE la ou le composant porte une cle a plat pour la
-        cible. Ailleurs il n'existe pas, meme si la cascade y amene le
-        composant : le JSX le calcule dans la branche de la cle a plat.
+        v4 : les SOUS-COLLECTIONS comptent. Aurora I porte six collections de
+        carte (`subcollections`, cles de synchro aurora_bf, aurora_sl...), dont
+        les etapes coutent karma, rubis, jade, perles. Ces couts vivaient dans
+        `qty_extras`, une seconde structure posee sur le composant et appliquee
+        a part : ils sont desormais un `cost` d'etape, comme le Henge et
+        Astral, et se lisent par ce seul chemin. Une sous-collection est faite
+        si son propre statut le dit ou si sa collection mere est terminee.
         """
+        if cible not in self.legendaires:
+            return
         faites = faites or {}
-
-        def faite(sub, bit):
-            sc = faites.get(sub)
-            if not sc:
-                return False
-            return bool(sc.get("done")) or bit in (sc.get("bits") or [])
-
-        add = 0
-        for x in (comp.brut.get("qty_extras") or []):
-            if x.get("legendary") != cible:
+        for cle, col in (self.legendaires[cible].brut.get("collections") or {}).items():
+            if not isinstance(col, dict):
                 continue
-            if isinstance(x.get("bits"), list):
-                add += sum(1 for b in x["bits"] if not faite(x.get("sub"), b)) \
-                    * x.get("amountPer", 0)
-            elif not faite(x.get("sub"), x.get("bit")):
-                add += x.get("amount", 0)
-        return add
+            sc = faites.get(cle) or faites.get(str(col.get("id"))) or {}
+            entier = bool(sc.get("done"))
+            bits = sc.get("bits") or []
+            for item in col.get("items") or []:
+                if isinstance(item, dict):
+                    yield item, entier or item.get("bit") in bits
+            subs = col.get("subcollections") or {}
+            if isinstance(subs, list):  # Vision I : simple liste de cartes
+                subs = {str(x.get("id")): x for x in subs if isinstance(x, dict)}
+            for sk, sub in subs.items():
+                if not isinstance(sub, dict):
+                    continue
+                ss = faites.get(sk) or faites.get(str(sub.get("id"))) or {}
+                sentier = entier or bool(ss.get("done"))
+                sbits = ss.get("bits") or []
+                for item in sub.get("items") or []:
+                    if isinstance(item, dict):
+                        yield item, sentier or item.get("bit") in sbits
 
     def _satisfaits(self, cible, faites):
         """Les composants qu'une etape DEJA VALIDEE rend inutiles.
@@ -260,22 +267,11 @@ class Modele:
         """
         if not faites or cible not in self.legendaires:
             return frozenset()
-        out = set()
-        for cle, col in (self.legendaires[cible].brut.get("collections")
-                         or {}).items():
-            if not isinstance(col, dict):
-                continue
-            sc = faites.get(cle) or faites.get(str(col.get("id"))) or {}
-            entier = bool(sc.get("done"))
-            bits = sc.get("bits") or []
-            for item in col.get("items") or []:
-                cid = isinstance(item, dict) and item.get("component")
-                if cid and (entier or item.get("bit") in bits):
-                    out.add(cid)
-        return frozenset(out)
+        return frozenset(item["component"] for item, faite in self._etapes(cible, faites)
+                         if faite and item.get("component"))
 
     def totaux(self, cible: str, selection: dict | None = None,
-               detail: bool = False, surcouts: bool = False,
+               detail: bool = False,
                collections_faites: dict | None = None,
                poids_par_emplacement: dict | None = None):
         """Ce que le tracker AFFICHE pour une cible : cles a plat plus cascade.
@@ -309,7 +305,7 @@ class Modele:
         if compo:
             t: dict[str, float] = {}
             for sous, n in compo.items():
-                for cid, v in self.totaux(sous, selection, False, surcouts,
+                for cid, v in self.totaux(sous, selection, False,
                                           collections_faites,
                                           poids_par_emplacement).items():
                     t[cid] = t.get(cid, 0) + v * n
@@ -329,8 +325,6 @@ class Modele:
                 v = q.get(cible + suf)
                 if isinstance(v, (int, float)) and not isinstance(v, bool):
                     t[cid] = t.get(cid, 0) + v * mult
-                    if surcouts and suf == "":
-                        t[cid] += self._surcout(c, cible, collections_faites)
             if armure:
                 for slot in ARMOR_SLOTS:
                     poids = pw.get(slot, "light")
@@ -346,22 +340,14 @@ class Modele:
         # le sens direct que `component` ne portait pas. Meme regle que le JSX,
         # au meme endroit : avant la cascade, et sans statut l'etape est reputee
         # non faite. Le test de conformite compare les deux.
-        if cible in self.legendaires:
-            faites = collections_faites or {}
-            for cle, col in (self.legendaires[cible].brut.get("collections") or {}).items():
-                if not isinstance(col, dict):
-                    continue
-                sc = faites.get(cle) or faites.get(str(col.get("id"))) or {}
-                entier = bool(sc.get("done"))
-                bits = sc.get("bits") or []
-                for item in col.get("items") or []:
-                    cout = isinstance(item, dict) and item.get("cost")
-                    if not cout or entier or item.get("bit") in bits:
-                        continue
-                    for cid, n in cout.items():
-                        if isinstance(n, (int, float)) and not isinstance(n, bool) \
-                                and cid not in satisfaits:
-                            t[cid] = t.get(cid, 0) + n
+        for item, faite in self._etapes(cible, collections_faites):
+            cout = item.get("cost")
+            if not cout or faite:
+                continue
+            for cid, n in cout.items():
+                if isinstance(n, (int, float)) and not isinstance(n, bool) \
+                        and cid not in satisfaits:
+                    t[cid] = t.get(cid, 0) + n
         # Les apports de la cascade sont REMPLACES a chaque tour, jamais
         # cumules : les additionner ferait grossir un total a chaque passe.
         pose: dict[str, float] = {}

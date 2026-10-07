@@ -1045,19 +1045,20 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
-      { id: "karma", name: "Karma", required: 0, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
-        // surcoûts déclarés dans SOURCES_DB.craft_components.karma.qty_extras
+      { id: "karma", name: "Karma", required: 904050, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
+        // 904 050 a collections vierges : `cost` des etapes d'Aurora I (v246) ;
+        // le moteur fait tomber chaque etape validee
         },
-      { id: "blood_ruby", name: "Blood Ruby", required: 250, icon: "BR", apiId: 79280, mapNote: "Bloodstone Fen",
+      { id: "blood_ruby", name: "Blood Ruby", required: 300, icon: "BR", apiId: 79280, mapNote: "Bloodstone Fen",
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
-        }, // surcoût déclaré dans SOURCES_DB.craft_components.blood_ruby.qty_extras
+        }, // 250 de recette + 50 de l'etape Pristine Blood Ruby (`cost`, sous-collection aurora_bf, v246)
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899, mapNote: "Bitterfrost Frontier" },
       { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469, mapNote: "Ember Bay + Draconis Mons" },
-      { id: "jade", name: "Jade Shard", required: 250, icon: "JS", apiId: 80332, mapNote: "Lake Doric", },
+      { id: "jade", name: "Jade Shard", required: 350, icon: "JS", apiId: 80332, mapNote: "Lake Doric", }, // 250 + 2 x 50 (Seraph Protector, Bloodstone Savant's Staff)
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 326, icon: "FO", apiId: 81127, mapNote: "Draconis Mons",
         aside: { fr: "250 pour la recette, et 76 apportés aux quatre druides de Draconis Mons au fil des bouquets — fleur, bouquet, bouquet chargé, bouquet d'orage. Chaque apport tombe quand son étape est faite.",
                  en: "250 for the recipe, plus 76 brought to the four druids of Draconis Mons across the bouquets — flower, bouquet, charged bouquet, storm bouquet. Each one drops when its step is done." } },
-      { id: "orrian", name: "Orrian Pearl", required: 250, icon: "OP", apiId: 81706,
+      { id: "orrian", name: "Orrian Pearl", required: 450, icon: "OP", apiId: 81706, // 250 + 200 (Supporter of the Gods)
         aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. ⚠ Ne confonds pas les deux plafonds : les coffres sont limités à 2 par personnage et par jour et servent au Chiffre ancien, pas aux perles.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. ⚠ Don't conflate the two caps: chests are limited to 2 per character per day and feed the Ancient Cipher, not the pearls." }, mapNote: "Siren's Landing",
         heartNote: { fr: "Circuit gratuit, par personnage et par jour : ~20 nœuds d'huîtres qui apparaissent sur les 23-25 emplacements fixes, 1 perle garantie chacun, plus 7 perles sur trois nommés quotidiens (Wyverne libérée 3, Illusion horrible 2, Larve gargantuesque 2). Les coffres engloutis ajoutent 1-2 perles au hasard. Faucille d'orichalque conseillée. En option payante : les 5 vendeurs de cœur, 3 perles chacun pour 13 440 karma au total.", en: "Free route, per character per day: ~20 oyster nodes spawning across the 23-25 fixed spots, 1 guaranteed pearl each, plus 7 pearls from three daily named foes (Unchained Wyvern 3, Horrid Illusion 2, Gargantuan Grub 2). Waterlogged Chests add a random 1-2. Orichalcum sickle recommended. Paid option: the 5 heart vendors, 3 pearls each for 13,440 karma total." } },
     ],
@@ -2246,6 +2247,43 @@ function ChatCode({ code, copied, onCopy }) {
 const ALT_KEY = "gw2_cad_alt_v1";
 const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
 
+// Les etapes de collection d'une cible, avec leur statut. Une seule lecture,
+// partagee par le grand total et l'onglet du legendaire.
+//
+// v246 : les SOUS-COLLECTIONS comptent. Aurora I porte six collections de
+// carte (cles de synchro aurora_bf, aurora_sl...) dont les etapes coutent
+// karma, rubis, jade, perles ; Aurora II, un lingot d'electrum par sanctuaire.
+// Ces couts vivaient dans `qty_extras`, posee sur le composant et lue par un
+// chemin a part — qui ne s'appliquait qu'aux cles a plat : le grand total
+// ignorait les rubis, le jade et les perles que l'onglet affichait. Ils sont
+// desormais des `cost` d'etape, lus ici comme ceux du Henge et d'Astral. Une
+// sous-collection est faite si son statut le dit, ou si sa mere est terminee.
+// Le moteur Python lit la meme chose (Modele._etapes).
+function etapesCollections(cible, colls) {
+  const out = [];
+  for (const [cle, col] of Object.entries(SOURCES_DB?.legendaries?.[cible]?.collections ?? {})) {
+    if (!col || typeof col !== "object") continue;
+    const sc = colls?.[cle] ?? colls?.[String(col?.id)] ?? {};
+    const entier = sc.done ?? false;
+    const bits = sc.bits ?? [];
+    for (const item of (col?.items ?? [])) {
+      if (item && typeof item === "object") out.push({ item, faite: entier || bits.includes(item.bit) });
+    }
+    let subs = col?.subcollections ?? {};
+    if (Array.isArray(subs)) subs = Object.fromEntries(subs.filter(x => x && typeof x === "object").map(x => [String(x.id), x]));
+    for (const [sk, sub] of Object.entries(subs)) {
+      if (!sub || typeof sub !== "object") continue;
+      const ss = colls?.[sk] ?? colls?.[String(sub?.id)] ?? {};
+      const sentier = entier || (ss.done ?? false);
+      const sbits = ss.bits ?? [];
+      for (const item of (sub?.items ?? [])) {
+        if (item && typeof item === "object") out.push({ item, faite: sentier || sbits.includes(item.bit) });
+      }
+    }
+  }
+  return out;
+}
+
 function computeGrandTotal(selectedIds, collectionsByLeg) {
   const cc = SOURCES_DB?.craft_components ?? {};
   // Une cible COMPOSEE ne possede aucun composant en propre : elle vaut N
@@ -2288,18 +2326,6 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     try { return JSON.parse(localStorage.getItem("gw2_aurora_collections") ?? "null") ?? {}; }
     catch (_) { return {}; }
   })();
-  const pendingExtra = (comp, legId) => {
-    let add = 0;
-    for (const x of (comp.qty_extras ?? [])) {
-      if (x.legendary !== legId) continue;
-      const sc = colls[x.sub];
-      const done = (b) => sc ? ((sc.done ?? false) || (sc.bits ?? []).includes(b)) : false;
-      add += Array.isArray(x.bits)
-        ? x.bits.filter(b => !done(b)).length * (x.amountPer ?? 0)
-        : (done(x.bit) ? 0 : (x.amount ?? 0));
-    }
-    return add;
-  };
   const legs = SOURCES_DB?.legendaries ?? {};
   // Choix un-parmi-N declares dans SOURCES_DB.alt_groups. Douze armes gen2
   // acceptent Maguuma OU Desert Mastery : les compter toutes les deux revenait
@@ -2323,14 +2349,8 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   const satisfaits = new Set();
   for (const legId of (selectedIds ?? [])) {
     const cible = SOURCES_ALIAS?.[legId] ?? legId;
-    for (const [cle, col] of Object.entries(SOURCES_DB?.legendaries?.[cible]?.collections ?? {})) {
-      const sc = colls[cle] ?? colls[String(col?.id)];
-      if (!sc) continue;
-      const entier = sc.done ?? false;
-      const bits = sc.bits ?? [];
-      for (const item of (col?.items ?? [])) {
-        if (item?.component && (entier || bits.includes(item.bit))) satisfaits.add(item.component);
-      }
+    for (const { item, faite } of etapesCollections(cible, colls)) {
+      if (item?.component && faite) satisfaits.add(item.component);
     }
   }
   const altGroups = SOURCES_DB?.alt_groups ?? {};
@@ -2363,7 +2383,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       if (qty[legId] !== undefined) {
         const val = qty[legId];
         if (typeof val === "number") {
-          totals[compId] = (totals[compId] ?? 0) + val + pendingExtra(comp, legId);
+          totals[compId] = (totals[compId] ?? 0) + val;
         } else if (typeof val === "string") {
           if (!variable.find(v => v.compId === compId)) {
             variable.push({ compId, name: comp.name, note: val });
@@ -2437,15 +2457,10 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
   // reputee non faite — compter trop vaut mieux que promettre un total trop bas.
   for (const legId of (selectedIds ?? [])) {
     const cible = SOURCES_ALIAS?.[legId] ?? legId;
-    for (const [cle, col] of Object.entries(SOURCES_DB?.legendaries?.[cible]?.collections ?? {})) {
-      const sc = colls[cle] ?? colls[String(col?.id)] ?? {};
-      const entier = sc.done ?? false;
-      const bits = sc.bits ?? [];
-      for (const item of (col?.items ?? [])) {
-        if (!item?.cost || entier || bits.includes(item.bit)) continue;
-        for (const [cid, n] of Object.entries(item.cost)) {
-          if (typeof n === "number" && !satisfaits.has(cid)) totals[cid] = (totals[cid] ?? 0) + n;
-        }
+    for (const { item, faite } of etapesCollections(cible, colls)) {
+      if (!item?.cost || faite) continue;
+      for (const [cid, n] of Object.entries(item.cost)) {
+        if (typeof n === "number" && !satisfaits.has(cid)) totals[cid] = (totals[cid] ?? 0) + n;
       }
     }
   }
@@ -5401,26 +5416,24 @@ export default function GW2LegendaryTracker() {
           if (!legTotals || !cid) return c;
           return { ...c, required: Math.round(legTotals[cid] ?? 0) };
         })));
-  // Achats de collection payés dans la monnaie de carte : le surcoût ne compte
-  // que tant que l'étape correspondante n'est pas validée (v107).
-  // Un extra peut viser une étape unique (bit + amount) ou un lot d'étapes
-  // de même prix (bits[] + amountPer) : le reste dû fond au fur et à mesure.
-  const extraRemaining = (x) => {
-    const sc = auroraCollections?.[x.sub];
-    const stepDone = (b) => sc ? ((sc.done ?? false) || (sc.bits ?? []).includes(b)) : false;
-    if (Array.isArray(x.bits)) return x.bits.filter(b => !stepDone(b)).length * (x.amountPer ?? 0);
-    return stepDone(x.bit) ? 0 : (x.amount ?? 0);
-  };
-  // Les surcoûts vivent dans SOURCES_DB.craft_components[*].qty_extras : une seule
-  // déclaration, lue à la fois par l'onglet du légendaire et par le grand total.
-  const extrasFromSources = (legId, apiId) => {
-    const comps = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
-    for (const c of Object.values(comps)) {
-      if (c?.apiId === apiId && Array.isArray(c.qty_extras)) {
-        return c.qty_extras.filter(x => x.legendary === legId);
-      }
+  // Ce que les etapes de collection consomment encore, par composant : la
+  // liste sous la monnaie (« + 315 000 — Supporter of the Gods »). v246 : lu
+  // sur les `cost` d'etape, la meme donnee que le moteur — le total `required`
+  // les contient deja, on ne les rajoute donc plus (l'ancien chemin
+  // `qty_extras` les ajoutait une seconde fois au karma d'Aurora).
+  const coutsEtapes = (apiId) => {
+    const cid = compByApi.get(apiId);
+    const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
+    if (!cid || !cible) return { pending: [], total: 0 };
+    let total = 0;
+    const pending = [];
+    for (const { item, faite } of etapesCollections(cible, toutesCollections)) {
+      const n = item?.cost?.[cid];
+      if (typeof n !== "number") continue;
+      total += 1;
+      if (!faite) pending.push({ amount: n, label: item.name });
     }
-    return [];
+    return { pending, total };
   };
   const asideFromSources = (apiId) => {
     const comps = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})?.craft_components ?? {};
@@ -5428,10 +5441,9 @@ export default function GW2LegendaryTracker() {
     return null;
   };
   const withExtras = legCurrencies.map(cur => {
-    const ex = [...(Array.isArray(cur.extras) ? cur.extras : []), ...extrasFromSources(selectedLeg, cur.apiId)];
-    if (ex.length === 0) return { ...cur, aside: cur.aside ?? asideFromSources(cur.apiId) };
-    const pending = ex.map(x => ({ ...x, amount: extraRemaining(x) })).filter(x => x.amount > 0);
-    return { ...cur, aside: cur.aside ?? asideFromSources(cur.apiId), required: cur.required + pending.reduce((a, x) => a + x.amount, 0), extrasPending: pending, extrasTotal: ex.length };
+    const { pending, total } = coutsEtapes(cur.apiId);
+    if (total === 0) return { ...cur, aside: cur.aside ?? asideFromSources(cur.apiId) };
+    return { ...cur, aside: cur.aside ?? asideFromSources(cur.apiId), extrasPending: pending, extrasTotal: total };
   });
   // Scan global a la demande : le panneau ne voit que l'onglet courant, car
   // achBitsDefs est recharge a chaque changement de legendaire. Ce balayage
