@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v374) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v375) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -344,11 +344,13 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       complete (Casing, Core, Inscription — aligne sur ses freres gen2) ;
       Spirit of the Upper Bound ; karma du Sun Bead et de la noix de coco en
       aretes (structure `karma`). Orrax : +49 800 karma, +200 difluorite.
-- [ ] **Vision Crystal sous Unbound Wings, non relie** : les aretes plates
-      d'Ad Infinitum (bloodstone / dragonite / empyreal 1500, obsidienne 90,
-      GW2Efficiency) portent deja ses 500 ; le relier double-compte (audit).
-      A faire en decomposant ces aretes plates → A1 (change la forme, pas le
-      total, si la lecture tient).
+- [x] **Vision Crystal relie sous Unbound Wings** (accord d'Antoine,
+      `integration/gw2_ad_infinitum_vision_v1`, v375). Aretes plates
+      d'Ad Infinitum reduites de la hausse mesuree par le moteur :
+      bloodstone / dragonite / empyreal 1500 → 1000, obsidienne 90 → 60,
+      reactif 460 → 310 — totaux inchanges. Seul cout nouveau : +20 eclats
+      spirituels (Augur's Stone). Les 1000 restants sortent probablement des
+      objets de collection Ad Infinitum I-IV (non captures).
 - [ ] **Orrax 3e niveau, a capturer** : Lime, Beet, Head of Lettuce,
       Lemongrass, Lotus Root, Pile of Stirfry Spice Mix (file) + Bottle of
       Ascalonian Dressing (hors file : pas d'apiId).
