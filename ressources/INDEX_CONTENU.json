@@ -5202,11 +5202,50 @@
   "aretes_table": []
  },
  {
+  "page": "bottle_of_elonian_wine",
+  "titre": "Bottle of Elonian Wine",
+  "api_id": 19663,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bottle_of_rice_wine",
   "titre": "Bottle of Rice Wine",
   "api_id": 8576,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bottle_of_simple_dressing",
+  "titre": "Bottle of Simple Dressing",
+  "api_id": 12176,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "25",
+    "ingredients": [
+     [
+      "Jar_of_Vinegar",
+      1
+     ],
+     [
+      "Jar_of_Vegetable_Oil",
+      1
+     ],
+     [
+      "Pile_of_Salt_and_Pepper",
+      1
+     ]
+    ],
+    "produit": "Bottle of Simple Dressing"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -6130,6 +6169,15 @@
     "produit": "Random Superior Rune"
    }
   ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "chili_pepper",
+  "titre": "Chili Pepper",
+  "api_id": 12331,
+  "table_materiaux": false,
+  "recettes": [],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -18919,6 +18967,15 @@
     "qty": 500
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "ginger_root",
+  "titre": "Ginger Root",
+  "api_id": 12328,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {

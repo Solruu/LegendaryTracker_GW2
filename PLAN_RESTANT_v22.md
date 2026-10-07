@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v376) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v377) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -354,8 +354,17 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
 - [x] **Orrax 3e niveau** (v376, `integration/gw2_orrax_niveau3_v1`) : voies
       de Lime, Beet, Head of Lettuce, Lemongrass, Lotus Root ; Stirfry Spice
       Mix (Chef 175) et Ascalonian Dressing (Chef 125) decomposes.
-- [ ] **Orrax 4e niveau, a capturer** : Ginger Root, Chili Pepper, Bottle of
-      Simple Dressing (+ Bottle of Elonian Wine, deja en file).
+- [x] **Orrax 4e niveau** (v377, `integration/gw2_orrax_niveau4_v1`) : Ginger
+      Root (recolte ou 9 karma), Chili Pepper (recolte), Simple Dressing
+      decompose (Chef 25). Vin elonien : source vendeur corrigee (Miyani et
+      preposes, 25 pa 4 pc ; « Vendors PoF » etait faux).
+      JSX v245 : la cascade des intermediaires iterait 6 passes fixes ; Orrax
+      en demande 7 — sel et poivre noir sortaient 300 sous le moteur Python.
+      Desormais jusqu'a stabilite (borne 20).
+- [ ] **Jar of Vinegar** a capturer (300 sur Orrax).
+- [ ] **Ecart Kudzu vin / cristal mystique (7 / 8)** d'ARBITRAGES : la
+      promotion du Foul Essence couterait 1 vin par essence, pas 1 au total ;
+      la source du « 8 » est a relire avant toute arete.
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

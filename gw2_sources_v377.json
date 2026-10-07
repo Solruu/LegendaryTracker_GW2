@@ -4256,7 +4256,19 @@
    "sources": [
     {
      "type": "vendor",
-     "tip": "Vendors PoF (Crystal Oasis, etc.)."
+     "npc": "Miyani / Préposés à la Forge mystique / Gardien de la Forge",
+     "paid_repeatable": true,
+     "cost": {
+      "fr": "25 pa 4 pc",
+      "en": "25s 4c"
+     },
+     "tip": {
+      "fr": "Vendue 25 pa 4 pc par Miyani et les préposés à la Forge mystique (Lion's Arch, capitales, McM, nombreuses cartes).",
+      "en": "Sold for 25s 4c by Miyani and the Mystic Forge Attendants (Lion's Arch, capitals, WvW, many maps)."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/bottle_of_elonian_wine.html (capture du 07/10/2026)"
     },
     {
      "type": "tp",
@@ -28075,7 +28087,8 @@
     "bowl_of_fancy_tangy_sautee_mix",
     "grilled_mushroom",
     "grilled_portobello_mushroom",
-    "cup_of_lotus_fries"
+    "cup_of_lotus_fries",
+    "bottle_of_simple_dressing"
    ],
    "farmable": true,
    "sources": [
@@ -28095,7 +28108,8 @@
     "bowl_of_fancy_tangy_sautee_mix": 1,
     "grilled_mushroom": 1,
     "grilled_portobello_mushroom": 1,
-    "cup_of_lotus_fries": 1
+    "cup_of_lotus_fries": 1,
+    "bottle_of_simple_dressing": 1
    }
   },
   "lowland_pine_log": {
@@ -28805,7 +28819,8 @@
    "kind": "material",
    "needed_for": [
     "grilled_portobello_mushroom",
-    "cup_of_lotus_fries"
+    "cup_of_lotus_fries",
+    "bottle_of_simple_dressing"
    ],
    "farmable": true,
    "sources": [
@@ -28822,7 +28837,8 @@
    ],
    "qty": {
     "grilled_portobello_mushroom": 1,
-    "cup_of_lotus_fries": 1
+    "cup_of_lotus_fries": 1,
+    "bottle_of_simple_dressing": 1
    }
   },
   "pile_of_vile_essence": {
@@ -29931,11 +29947,31 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les Cluster of Canthan Herbs (par chance).",
+      "en": "Harvested from Clusters of Canthan Herbs (by chance)."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/ginger_root.html (capture du 07/10/2026)"
+    },
+    {
+     "type": "vendor_karma",
+     "npc": "marchands de cuisine des capitales",
+     "paid_repeatable": true,
+     "cost": {
+      "fr": "9 karma",
+      "en": "9 karma"
+     },
+     "tip": {
+      "fr": "Vendue 9 karma l'unité par les marchands de cuisine des capitales.",
+      "en": "Sold for 9 karma each by cooking vendors in the capitals."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/ginger_root.html (capture du 07/10/2026)"
     }
    ],
    "verified": true,
@@ -29955,11 +29991,15 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les herbes de nombreuses cartes (par chance) ; 2 garantis sur le piment de domaine.",
+      "en": "Harvested from herbs on many maps (by chance); 2 guaranteed from homegrown chili peppers."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/chili_pepper.html (capture du 07/10/2026)"
     }
    ],
    "verified": true,
@@ -29969,8 +30009,8 @@
   "bottle_of_simple_dressing": {
    "name": "Bottle of Simple Dressing",
    "apiId": 12176,
-   "kind": "material",
-   "farmable": true,
+   "kind": "intermediate",
+   "farmable": false,
    "needed_for": [
     "bottle_of_ascalonian_dressing"
    ],
@@ -29979,16 +30019,43 @@
    },
    "sources": [
     {
+     "type": "craft",
+     "tip": {
+      "fr": "Cuisine (Chef 25). Recette lue sur sa page.",
+      "en": "Cooking (Chef 25). Recipe read from its page."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/bottle_of_simple_dressing.html (capture du 07/10/2026)"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "ressources/wiki/bottle_of_simple_dressing.html (capture du 07/10/2026)"
+  },
+  "jar_of_vinegar": {
+   "name": "Jar of Vinegar",
+   "apiId": 12157,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bottle_of_simple_dressing"
+   ],
+   "qty": {
+    "bottle_of_simple_dressing": 1
+   },
+   "sources": [
+    {
      "type": "unknown",
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+      "fr": "Ingrédient posé depuis la recette de la vinaigrette (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from the dressing's recipe (07/10/2026). Acquisition path to read on its page."
      }
     }
    ],
    "verified": true,
    "checked": "2026-10-07",
-   "ref": "boite Recipe de bottle_of_ascalonian_dressing (ressources/wiki, capture du 07/10/2026)"
+   "ref": "boite Recipe de bottle_of_simple_dressing (ressources/wiki, capture du 07/10/2026)"
   }
  },
  "enchaînements_recommandés": {
