@@ -30853,7 +30853,7 @@ const SOURCES_DB = {
       "name": "Jar of Vinegar",
       "apiId": 12157,
       "kind": "material",
-      "farmable": true,
+      "farmable": false,
       "needed_for": [
         "bottle_of_simple_dressing"
       ],
@@ -30862,11 +30862,20 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "vendor",
+          "npc": "marchands de cuisine (Chef, Apprentice...)",
+          "paid_repeatable": true,
+          "cost": {
+            "fr": "80 cuivre les 10",
+            "en": "80 copper per 10"
+          },
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de la vinaigrette (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from the dressing's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Vendu par les marchands de cuisine des capitales et de nombreuses cartes : 80 cuivre les 10. Négligeable en or.",
+            "en": "Sold by cooking vendors in capitals and many maps: 80 copper per 10. Negligible in gold."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/jar_of_vinegar.html, Acquisition (capture du 07/10/2026)"
         }
       ],
       "verified": true,

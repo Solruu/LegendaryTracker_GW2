@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v377.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v378.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -62,14 +62,13 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 1 composants dont le coût d'obtention est inconnu
+## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Jar of Vinegar` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -87,8 +86,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 1 pages à capturer
+## URLs — 0 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Jar_of_Vinegar
 ```
