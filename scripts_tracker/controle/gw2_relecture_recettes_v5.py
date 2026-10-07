@@ -32,8 +32,8 @@ Trois defauts distincts, qui n'appellent pas le meme travail :
 
 L'outil ne modifie rien. Il ecrit un rapport.
 
-Usage : python3 gw2_relecture_recettes_v4.py [--rapport RELECTURE_RECETTES_v1.md]
-        python3 gw2_relecture_recettes_v4.py --legendaire ad_infinitum
+Usage : python3 gw2_relecture_recettes_v5.py [--rapport RELECTURE_RECETTES_v1.md]
+        python3 gw2_relecture_recettes_v5.py --legendaire ad_infinitum
 """
 import argparse
 import json
@@ -135,7 +135,12 @@ class Resolveur:
         if page and isinstance(page.get("api_id"), int) and page["api_id"] in self.par_api:
             return self.par_api[page["api_id"]], "apiId"
         if s in self.par_slug:
-            return s, "slug"
+            # v5 : rendre le COMPOSANT, pas le slug. `wiki_redirects` range
+            # `dark_matter -> glob_of_dark_matter` ; la v4 renvoyait
+            # `dark_matter`, qui n'existe pas, et le Glob de Dark Matter sortait
+            # a la fois « non rattache » et « en trop » sous l'Essence
+            # d'annihilation.
+            return self.par_slug[s], "slug"
         n = clef_nom(titre)
         if n in self.par_nom:
             return self.par_nom[n], "nom"
@@ -341,7 +346,7 @@ def main():
     compte = {k: sum(1 for c in global_ if c[0] == k) for k in ORDRE}
 
     lignes = ["# Relecture des recettes, légendaire par légendaire", "",
-              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v4.py`.",
+              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v5.py`.",
               "L'outil descend depuis chaque légendaire et compare, à chaque nœud, les",
               "enfants déclarés à la recette lue sur sa capture. Appariement par apiId",
               "d'abord (591 composants sur 601 en portent un), par nom en dernier recours,",

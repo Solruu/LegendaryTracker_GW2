@@ -29176,10 +29176,25 @@
      "ref": "ressources/wiki/pile_of_foul_essence.html, Acquisition (capture du 06/10/2026)",
      "verified": true,
      "checked": "2026-10-06"
+    },
+    {
+     "type": "mystic_forge",
+     "tip": {
+      "fr": "Alternative coûteuse, jamais par défaut. Promotion en Forge : 2 Pile of Soiled Essence + 1 Bottle of Elonian Wine (25 pa) + 1 Pile of Radiant Dust + 1 Mystic Crystal pour 1 essence (ou 8 Soiled + 1 Mystic Binding Agent + 1 poussière radieuse + 1 cristal pour 4).",
+      "en": "Costly alternative, never the default. Forge promotion: 2 Piles of Soiled Essence + 1 Bottle of Elonian Wine (25s) + 1 Pile of Radiant Dust + 1 Mystic Crystal for 1 essence (or 8 Soiled + 1 Mystic Binding Agent + 1 Radiant Dust + 1 Crystal for 4)."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/pile_of_foul_essence.html, Recipes (capture du 06/10/2026)"
     }
    ],
    "qty": {
     "pile_of_filthy_essence": 2
+   },
+   "best": "drop",
+   "best_reason": {
+    "fr": "voie par défaut : butin gratuit. La promotion en Forge est une alternative coûteuse.",
+    "en": "default route: free drop. The Forge promotion is a costly alternative."
    }
   },
   "sun_bead": {

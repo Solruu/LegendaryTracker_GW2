@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v378.json` — généré par `gw2_relecture_recettes_v4.py`.
+Source : `gw2_sources_v379.json` — généré par `gw2_relecture_recettes_v5.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -12,8 +12,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
 | MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 2 |
-| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 3 |
-| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 6 |
+| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
+| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
 | PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 234 |
 | NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 114 |
@@ -27,11 +27,10 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
 
-## Ingrédients présents dans l'arbre mais non rattachés au parent — 3
+## Ingrédients présents dans l'arbre mais non rattachés au parent — 2
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
-| `mystic_essence_of_annihilation` | `Dark_Matter` | 10 | `mystic_essence_of_annihilation` | slug | `conflux`, `warbringer` |
 | `gen1_eternity` | `Sunrise` | 1 | `eternity` | légendaire | `gen1_eternity` |
 | `gen1_eternity` | `Twilight` | 1 | `eternity` | légendaire | `gen1_eternity` |
 
@@ -45,13 +44,12 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_prowess` | `Eldritch_Scroll` | 1 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
 | `gift_of_prowess` | `Obsidian_Shard` | 50 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
 
-## Enfants déclarés que la recette ne cite pas — 6
+## Enfants déclarés que la recette ne cite pas — 5
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `testimony_of_castoran_heroics` | 250 | `certificate_of_heroics` | direct | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `testimony_of_castoran_heroics` | 500 | `essence_of_animosity` | direct | `conflux`, `warbringer` |
-| `mystic_essence_of_annihilation` | `glob_of_dark_matter` | 10 | `mystic_essence_of_annihilation` | direct | `conflux`, `warbringer` |
 | `banner_pennon` | `recipe_banner_pennon` | 1 | `banner_pennon` | direct | `vision` |
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |

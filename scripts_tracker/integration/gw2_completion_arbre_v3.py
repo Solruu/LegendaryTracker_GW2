@@ -199,7 +199,7 @@ def main():
     import importlib.util as _ilu
     _sp = _ilu.spec_from_file_location(
         "relecture",
-        Path(__file__).resolve().parents[1] / "controle" / "gw2_relecture_recettes_v4.py")
+        Path(__file__).resolve().parents[1] / "controle" / "gw2_relecture_recettes_v5.py")
     _rel = _ilu.module_from_spec(_sp)
     _sp.loader.exec_module(_rel)
     resolveur = _rel.Resolveur(cc, json.loads(

@@ -1393,7 +1393,7 @@ portant `component` validees** : 5 114 totaux dans la premiere situation,
 4 548 dans la seconde — le nombre baisse parce que des composants disparaissent,
 ce qui est la preuve que la regle a joue. Aucun ecart dans les deux.
 
-Sept fichiers suivent la version du moteur : `gw2_arbitrages_v7`,
+Sept fichiers suivent la version du moteur : `gw2_arbitrages_v8`,
 `gw2_audit_v47`, `gw2_conformite_moteurs_v2`, `gw2_confronte_totaux_v6`,
 `gw2_confronte_v3`, `gw2_deplie_wiki_v12`.
 
@@ -3016,7 +3016,7 @@ Une feuille donne UNE ligne au lieu d'une par ingredient — bon pour la
 lisibilite, mais ses ingredients n'etaient pas verifies. **Cinquante recettes du
 lot en reclamaient 181 sans que le rapport en dise un mot.**
 
-`gw2_relecture_recettes_v4.py` ajoute la categorie **PALIER_SUIVANT** : un
+`gw2_relecture_recettes_v5.py` ajoute la categorie **PALIER_SUIVANT** : un
 ingredient absent, cite par la recette d'une feuille. Ce n'est pas un defaut de
 la feuille, c'est l'etage d'en dessous. **243 aujourd'hui.**
 
@@ -3426,7 +3426,7 @@ de collection ne sont lus par personne.** C'est une famille de contrôle à
 que personne ne lisait : les listes de courses **redigees en prose** sur les
 pages de collection. Les deux autres sont deja couvertes — tables « Full
 material list » par `gw2_confronte_totaux_v8.py`, boites Recipe noeud par noeud
-par `gw2_relecture_recettes_v4.py`.
+par `gw2_relecture_recettes_v5.py`.
 
 Quatre pages en portent : `warbringer`, `vision_i_awakening`, `ad_infinitum`,
 `the_ascension`. **56 quantites confrontees, 1 depassement, 51 accords.**

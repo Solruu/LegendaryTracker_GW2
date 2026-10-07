@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v378) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v379) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -16,12 +16,12 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 
 | rapport | outil | chiffre |
 |---|---|---|
-| `ARBITRAGES.md` | `controle/gw2_arbitrages_v7` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
+| `ARBITRAGES.md` | `controle/gw2_arbitrages_v8` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v9` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
-| `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v4` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
+| `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v5` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
@@ -308,7 +308,7 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
         capture (`/tmp/edges2.json`) — 16 lignes, une piece par arme.
       Resultat : 969 accords, 0 trou, 166 expliques, 0 nu. Listes non
       tronquees.
-- [x] **Relecture des recettes relancee sur v368** (`RELECTURE_RECETTES_v9`,
+- [x] **Relecture des recettes relancee sur v368** (`RELECTURE_RECETTES_v10`,
       le v8 datait de v355) : 20 MANQUANTS, 6 non relies, 6 en trop.
       6 ingredients sources poses (`integration/gw2_ingredients_manquants_v1`,
       v369) : 250 Sun Bead (Endless Summer), 2 Opal Crystal par Opal Orb
@@ -362,9 +362,15 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       en demande 7 — sel et poivre noir sortaient 300 sous le moteur Python.
       Desormais jusqu'a stabilite (borne 20).
 - [x] **Jar of Vinegar** (v378) : marchands de cuisine, 80 cuivre les 10. Orrax entierement decompose.
-- [ ] **Ecart Kudzu vin / cristal mystique (7 / 8)** d'ARBITRAGES : la
-      promotion du Foul Essence couterait 1 vin par essence, pas 1 au total ;
-      la source du « 8 » est a relire avant toute arete.
+- [x] **Ecart Kudzu vin / cristal mystique (7 / 8)** : faux ecart. Le « 8 »
+      etait la promotion du Foul Essence (1 vin + 1 cristal par essence) x 8
+      essences. Foul Essence : `best: drop`, promotion en source
+      `mystic_forge` alternative (v379) ; `controle/gw2_arbitrages_v8` ne
+      compte plus une recette sous un parent dont la voie par defaut n'est
+      pas une fabrication. ARBITRAGES : 20 → 18 desaccords.
+- [x] **Relecture v5** : `resoudre` rendait le slug d'une redirection au
+      lieu du composant (Dark Matter → Glob of Dark Matter sortait non relie
+      ET en trop). `RELECTURE_RECETTES_v10`.
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v378.json` — 20 desaccords sur 15 composants.
+Source : `gw2_sources_v379.json` — 18 desaccords sur 13 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -23,8 +23,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `dust_luminous` — Pile of Luminous Dust | 3 | 50 | deja compte par cascade x3 |
 | `dragonite_ore` — Dragonite Ore | 1 | 25 | cout vendeur x1 |
 | `vision_crystal` — Vision Crystal | 1 | 2 | cout vendeur x1 |
-| `bottle_elonian_wine` — Bottle of Elonian Wine | 1 | 1 | deja compte par cascade x1 |
-| `mystic_crystal` — Mystic Crystal | 1 | 1 | deja compte par cascade x1 |
 
 ## ECART DE COMPTE — 1 cas
 
@@ -35,7 +33,7 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 |---|---|---:|---:|---:|---|
 | `ascended_shard_of_glory` — Ascended Shard of Glory | `transcendence` | 900 | 400 | 500 | star_of_glory (recette) |
 
-## DEJA COMPTE PAR CASCADE — 12 cas
+## DEJA COMPTE PAR CASCADE — 10 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
@@ -54,8 +52,6 @@ soit les deux sont reels et le chevauchement se declare dans
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_minstrel` | 250 | 200 | 50 | opal_crystal (recette) |
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_dreamer` | 210 | 200 | 10 | opal_crystal (recette) |
 | `pvp_league_ticket` — PvP League Ticket | `transcendence` | 25 | 20 | 5 | record_of_league_participation (recette) |
-| `bottle_elonian_wine` — Bottle of Elonian Wine | `gen1_kudzu` | 7 | 8 | 1 | pile_of_foul_essence (recette) |
-| `mystic_crystal` — Mystic Crystal | `gen1_kudzu` | 7 | 8 | 1 | pile_of_foul_essence (recette) |
 
 ## COUT VENDEUR — 7 cas
 

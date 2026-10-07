@@ -102,8 +102,19 @@ for _g in _ALT_GROUPS.values():
 E = {tuple(k.split("|")): tuple(v) for k, v in json.load(open(ARETES)).items()}
 par_enfant = collections.defaultdict(dict)
 origine = {}
+# v8 : une RECETTE proposee sous un parent dont la voie par defaut (`best`)
+# n'est pas une fabrication est une alternative, pas un cout manquant. Le
+# Foul Essence tombe en butin (`best: drop`) ; sa promotion en Forge (vin,
+# cristal mystique, poussiere radieuse) sortait en « ecart de compte » sur
+# Kudzu (7 / 8). Meme regle que les trefles : voie couteuse proposee, jamais
+# comptee.
+_FABRIQUE = {"craft", "craft_400", "craft_500", "advanced_craft", "mystic_forge",
+             "craft_weaponsmith", "auto_refine"}
+def _alternative(p, org):
+    b = (cc.get(p) or {}).get("best")
+    return org == "recette" and b is not None and b not in _FABRIQUE
 for (p, e), (q, org) in E.items():
-    if p in cc and e in cc and p != e:
+    if p in cc and e in cc and p != e and not _alternative(p, org):
         par_enfant[e][p] = q
         origine[(e, p)] = org
 
