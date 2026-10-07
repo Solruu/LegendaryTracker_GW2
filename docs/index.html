@@ -29410,7 +29410,8 @@ const SOURCES_DB = {
       "needed_for": [
         "bowl_of_fancy_tangy_sautee_mix",
         "pile_of_zesty_herbs",
-        "pile_of_tangy_seasoning"
+        "pile_of_tangy_seasoning",
+        "pile_of_stirfry_spice_mix"
       ],
       "farmable": true,
       "sources": [
@@ -29428,7 +29429,8 @@ const SOURCES_DB = {
       "qty": {
         "bowl_of_fancy_tangy_sautee_mix": 1,
         "pile_of_zesty_herbs": 5,
-        "pile_of_tangy_seasoning": 2
+        "pile_of_tangy_seasoning": 2,
+        "pile_of_stirfry_spice_mix": 1
       }
     },
     "legendary_inscription": {
@@ -29513,7 +29515,8 @@ const SOURCES_DB = {
       "kind": "material",
       "needed_for": [
         "bowl_of_fancy_tangy_sautee_mix",
-        "pile_of_tangy_seasoning"
+        "pile_of_tangy_seasoning",
+        "pile_of_stirfry_spice_mix"
       ],
       "farmable": true,
       "sources": [
@@ -29530,7 +29533,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "bowl_of_fancy_tangy_sautee_mix": 1,
-        "pile_of_tangy_seasoning": 2
+        "pile_of_tangy_seasoning": 2,
+        "pile_of_stirfry_spice_mix": 1
       }
     },
     "packet_of_salt": {
@@ -29590,7 +29594,8 @@ const SOURCES_DB = {
       "apiId": 12180,
       "kind": "acquire",
       "needed_for": [
-        "pile_of_zesty_herbs"
+        "pile_of_zesty_herbs",
+        "bottle_of_ascalonian_dressing"
       ],
       "farmable": true,
       "sources": [
@@ -29606,7 +29611,8 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "pile_of_zesty_herbs": 1
+        "pile_of_zesty_herbs": 1,
+        "bottle_of_ascalonian_dressing": 1
       }
     },
     "pile_of_salt_and_pepper": {
@@ -30492,11 +30498,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les salades et plantes potagères (par chance) ; 2 garanties sur la laitue de domaine.",
+            "en": "Harvested from lettuce and vegetable plants (by chance); 2 guaranteed from homegrown lettuce."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/head_of_lettuce.html (capture du 07/10/2026)"
         }
       ],
       "verified": true,
@@ -30516,11 +30526,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les plantes à racines (1-2, par chance) ; 2 garanties sur les betteraves de domaine.",
+            "en": "Harvested from root plants (1-2, by chance); 2 guaranteed from homegrown beets."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/beet.html (capture du 07/10/2026)"
         }
       ],
       "verified": true,
@@ -30540,11 +30554,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "chest",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Conteneurs : Limes in Bulk (25 garantis), Fluctuating / Volatile Mass, Mystery Cooking Ingredient Box. Pas de récolte.",
+            "en": "Containers: Limes in Bulk (25 guaranteed), Fluctuating / Volatile Mass, Mystery Cooking Ingredient Box. Not harvested."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/lime.html (capture du 07/10/2026)"
         }
       ],
       "verified": true,
@@ -30554,8 +30572,8 @@ const SOURCES_DB = {
     },
     "pile_of_stirfry_spice_mix": {
       "name": "Pile of Stirfry Spice Mix",
-      "kind": "material",
-      "farmable": true,
+      "kind": "intermediate",
+      "farmable": false,
       "needed_for": [
         "jar_of_red_curry_paste"
       ],
@@ -30564,16 +30582,19 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "craft",
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Cuisine (Chef 175). Recette lue sur sa page.",
+            "en": "Cooking (Chef 175). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/pile_of_stirfry_spice_mix.html (capture du 07/10/2026)"
         }
       ],
       "verified": true,
       "checked": "2026-10-07",
-      "ref": "boite Recipe de jar_of_red_curry_paste (ressources/wiki, capture du 07/10/2026)",
+      "ref": "ressources/wiki/pile_of_stirfry_spice_mix.html (capture du 07/10/2026)",
       "apiId": 12496
     },
     "lemongrass": {
@@ -30588,11 +30609,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les touffes d'herbes et plantes de jungle (par chance) ; 2 garanties sur la citronnelle de domaine.",
+            "en": "Harvested from herb clusters and jungle plants (by chance); 2 guaranteed from homegrown lemongrass."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/lemongrass.html (capture du 07/10/2026)"
         }
       ],
       "verified": true,
@@ -30612,11 +30637,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les lotus (1-2, garanti).",
+            "en": "Harvested from lotus (1-2, guaranteed)."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/lotus_root.html (capture du 07/10/2026)"
         }
       ],
       "verified": true,
@@ -30677,6 +30706,105 @@ const SOURCES_DB = {
       "checked": "2026-10-07",
       "ref": "ressources/wiki/spirit_of_the_upper_bound.html (capture du 07/10/2026)",
       "apiId": 70642
+    },
+    "bottle_of_ascalonian_dressing": {
+      "name": "Bottle of Ascalonian Dressing",
+      "apiId": 12175,
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_ascalonian_salad"
+      ],
+      "qty": {
+        "bowl_of_ascalonian_salad": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 125). Recette lue sur sa page.",
+            "en": "Cooking (Chef 125). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-07",
+          "ref": "ressources/wiki/bottle_of_ascalonian_dressing.html (capture du 07/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "ressources/wiki/bottle_of_ascalonian_dressing.html (capture du 07/10/2026)"
+    },
+    "ginger_root": {
+      "name": "Ginger Root",
+      "apiId": 12328,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "pile_of_stirfry_spice_mix"
+      ],
+      "qty": {
+        "pile_of_stirfry_spice_mix": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de pile_of_stirfry_spice_mix (ressources/wiki, capture du 07/10/2026)"
+    },
+    "chili_pepper": {
+      "name": "Chili Pepper",
+      "apiId": 12331,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "pile_of_stirfry_spice_mix"
+      ],
+      "qty": {
+        "pile_of_stirfry_spice_mix": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de pile_of_stirfry_spice_mix (ressources/wiki, capture du 07/10/2026)"
+    },
+    "bottle_of_simple_dressing": {
+      "name": "Bottle of Simple Dressing",
+      "apiId": 12176,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bottle_of_ascalonian_dressing"
+      ],
+      "qty": {
+        "bottle_of_ascalonian_dressing": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-07",
+      "ref": "boite Recipe de bottle_of_ascalonian_dressing (ressources/wiki, capture du 07/10/2026)"
     }
   },
   "enchaînements_recommandés": {

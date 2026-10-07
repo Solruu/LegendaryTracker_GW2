@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v375.json` — généré par `gw2_relecture_recettes_v4.py`.
+Source : `gw2_sources_v376.json` — généré par `gw2_relecture_recettes_v4.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -11,7 +11,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
-| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 3 |
+| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 2 |
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 3 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 6 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
@@ -20,13 +20,12 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
-## Ingrédients qu'aucun composant ne représente — 3
+## Ingrédients qu'aucun composant ne représente — 2
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
-| `bowl_of_ascalonian_salad` | `Bottle_of_Ascalonian_Dressing` | 1 | `bowl_of_ascalonian_salad` | — | `orrax_manifested` |
 
 ## Ingrédients présents dans l'arbre mais non rattachés au parent — 3
 
@@ -611,6 +610,5 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 ## Ingrédients à créer, et qui les réclame
 
-- `Bottle_of_Ascalonian_Dressing` — réclamé par `bowl_of_ascalonian_salad`
 - `Testimony_of_Jade_Heroics` — réclamé par `certificate_of_heroics`, `essence_of_animosity`
 

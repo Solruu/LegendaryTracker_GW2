@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v375) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v376) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -351,9 +351,11 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       reactif 460 → 310 — totaux inchanges. Seul cout nouveau : +20 eclats
       spirituels (Augur's Stone). Les 1000 restants sortent probablement des
       objets de collection Ad Infinitum I-IV (non captures).
-- [ ] **Orrax 3e niveau, a capturer** : Lime, Beet, Head of Lettuce,
-      Lemongrass, Lotus Root, Pile of Stirfry Spice Mix (file) + Bottle of
-      Ascalonian Dressing (hors file : pas d'apiId).
+- [x] **Orrax 3e niveau** (v376, `integration/gw2_orrax_niveau3_v1`) : voies
+      de Lime, Beet, Head of Lettuce, Lemongrass, Lotus Root ; Stirfry Spice
+      Mix (Chef 175) et Ascalonian Dressing (Chef 125) decomposes.
+- [ ] **Orrax 4e niveau, a capturer** : Ginger Root, Chili Pepper, Bottle of
+      Simple Dressing (+ Bottle of Elonian Wine, deja en file).
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

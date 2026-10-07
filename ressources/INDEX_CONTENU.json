@@ -4374,6 +4374,15 @@
   "aretes_table": []
  },
  {
+  "page": "beet",
+  "titre": "Beet",
+  "api_id": 12161,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "beryl_crystal",
   "titre": "Beryl Crystal",
   "api_id": 24519,
@@ -5150,6 +5159,32 @@
     "qty": 1
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "bottle_of_ascalonian_dressing",
+  "titre": "Bottle of Ascalonian Dressing",
+  "api_id": 12175,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "125",
+    "ingredients": [
+     [
+      "Bottle_of_Simple_Dressing",
+      1
+     ],
+     [
+      "Pile_of_Ascalonian_Herbs",
+      1
+     ]
+    ],
+    "produit": "Bottle of Ascalonian Dressing"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -19529,6 +19564,15 @@
   "aretes_table": []
  },
  {
+  "page": "head_of_lettuce",
+  "titre": "Head of Lettuce",
+  "api_id": 12238,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "heavy_bone",
   "titre": "Heavy Bone",
   "api_id": 24345,
@@ -22813,6 +22857,15 @@
   "aretes_table": []
  },
  {
+  "page": "lemongrass",
+  "titre": "Lemongrass",
+  "api_id": 12546,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "lesser_vision_crystal",
   "titre": "Lesser Vision Crystal",
   "api_id": 49523,
@@ -22886,6 +22939,15 @@
   "aretes_table": []
  },
  {
+  "page": "lime",
+  "titre": "Lime",
+  "api_id": 12339,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "liturgy",
   "titre": "Liturgy",
   "api_id": 81022,
@@ -22941,6 +23003,15 @@
   "page": "long_live_the_lich_achievements",
   "titre": "Long Live the Lich (achievements)",
   "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "lotus_root",
+  "titre": "Lotus Root",
+  "api_id": 12510,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -26511,6 +26582,40 @@
      ]
     ],
     "produit": "Pile of Salt and Pepper"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "pile_of_stirfry_spice_mix",
+  "titre": "Pile of Stirfry Spice Mix",
+  "api_id": 12496,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "175",
+    "ingredients": [
+     [
+      "Onion",
+      1
+     ],
+     [
+      "Head_of_Garlic",
+      1
+     ],
+     [
+      "Ginger_Root",
+      1
+     ],
+     [
+      "Chili_Pepper",
+      1
+     ]
+    ],
+    "produit": "Pile of Stirfry Spice Mix"
    }
   ],
   "couts_vendeur": [],

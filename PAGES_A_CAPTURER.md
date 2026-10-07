@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v375.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v376.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -45,7 +45,7 @@ ignore ce que la cible contient réellement.
 | page wiki | coûts à plat concernés |
 |---|---:|
 
-## 2 — 2 composants en arbitrage sans page au dépôt
+## 2 — 1 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -54,7 +54,6 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 | `Bottle of Elonian Wine` | 2 |
-| `Lime` | 2 |
 
 ## 3 — 0 composants sans apiId ni page
 
@@ -64,19 +63,16 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 6 composants dont le coût d'obtention est inconnu
+## 3 bis — 3 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Beet` |
-| `Head of Lettuce` |
-| `Lemongrass` |
-| `Lime` |
-| `Lotus Root` |
-| `Pile of Stirfry Spice Mix` |
+| `Bottle of Simple Dressing` |
+| `Chili Pepper` |
+| `Ginger Root` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -94,14 +90,11 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 7 pages à capturer
+## URLs — 4 pages à capturer
 
 ```
 https://wiki.guildwars2.com/wiki/Bottle_of_Elonian_Wine
-https://wiki.guildwars2.com/wiki/Lime
-https://wiki.guildwars2.com/wiki/Beet
-https://wiki.guildwars2.com/wiki/Head_of_Lettuce
-https://wiki.guildwars2.com/wiki/Lemongrass
-https://wiki.guildwars2.com/wiki/Lotus_Root
-https://wiki.guildwars2.com/wiki/Pile_of_Stirfry_Spice_Mix
+https://wiki.guildwars2.com/wiki/Bottle_of_Simple_Dressing
+https://wiki.guildwars2.com/wiki/Chili_Pepper
+https://wiki.guildwars2.com/wiki/Ginger_Root
 ```
