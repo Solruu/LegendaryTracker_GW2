@@ -1,15 +1,15 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v386.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v387.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **969 accords** — le nombre affiche est celui de la table.
+- **984 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **168 excedents expliques** — le surplus vient d'une branche
+- **153 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
 - **0 excedents nus** — rien dans la donnee ne les explique : soit
@@ -136,21 +136,6 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_flames_of_war` | `hard_wood_plank` | 290 | 250 | `liturgy` |
 | `gen2_pharus` | `seasoned_wood_plank` | 290 | 250 | `spero` |
 | `gen2_verdarach` | `hard_wood_plank` | 290 | 250 | `call_of_the_void` |
-| `gen3_aurenes_argument` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_bite` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_breath` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_claw` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_fang` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_flight` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_gaze` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_insight` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_persuasion` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_scale` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_tail` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_voice` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_weight` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_wing` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
-| `gen3_aurenes_wisdom` | `mystic_clover` | 77 | 38 | `qty_overlap_verified` |
 | `gen2_the_hms_divinity` | `seasoned_wood_plank` | 280 | 250 | `man_o_war` |
 | `gen1_kraitkin` | `dust_incandescent` | 275 | 250 | `superior_sigil_of_venom` |
 | `gen1_meteorlogicus` | `dust_incandescent` | 275 | 250 | `superior_sigil_of_air` |

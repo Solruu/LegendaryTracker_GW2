@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v386.json` — généré par `gw2_relecture_recettes_v6.py`.
+Source : `gw2_sources_v387.json` — généré par `gw2_relecture_recettes_v6.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -58,7 +58,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
-| `obsidian_shard` | `Mini_Risen_Priest_of_Balthazar` |  | `obsidian_shard` | sous une feuille | `ad_infinitum`, `ardent_glorious`, `aurora` … (+65) |
+| `obsidian_shard` | `Mini_Risen_Priest_of_Balthazar` |  | `obsidian_shard` | sous une feuille | `ad_infinitum`, `ardent_glorious`, `aurora` … (+50) |
 | `bone` | `Bone_Shard` |  | `bone` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `claw` | `Small_Claw` |  | `claw` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `fang` | `Small_Fang` |  | `fang` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
@@ -288,10 +288,10 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `mystic_clover` | `4 ingrédients` |  | `mystic_clover` | feuille assumée | `ad_infinitum`, `aetheric_anchor`, `ardent_glorious` … (+72) |
-| `obsidian_shard` | `3 ingrédients` |  | `obsidian_shard` | feuille assumée | `ad_infinitum`, `ardent_glorious`, `aurora` … (+65) |
 | `large_bone` | `3 ingrédients` |  | `large_bone` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
 | `large_claw` | `3 ingrédients` |  | `large_claw` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
 | `large_scale` | `3 ingrédients` |  | `large_scale` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
+| `obsidian_shard` | `3 ingrédients` |  | `obsidian_shard` | feuille assumée | `ad_infinitum`, `ardent_glorious`, `aurora` … (+50) |
 | `vial_of_potent_blood` | `3 ingrédients` |  | `vial_of_potent_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+50) |
 | `bone` | `3 ingrédients` |  | `bone` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `claw` | `3 ingrédients` |  | `claw` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |

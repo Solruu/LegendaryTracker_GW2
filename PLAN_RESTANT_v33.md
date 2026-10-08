@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v386) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v387) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -113,11 +113,16 @@ attribution douteuse).
 Mais la table s'ARRETE au precurseur (« Dragon's Bite ») sans l'ouvrir, et
 le precurseur n'est pas decompose dans la donnee (`dragons_bite` sans enfant).
 Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
-- [ ] capturer les pieces du precurseur : `Fortified_Precursor_Greatsword_Blade`,
-      `Fortified_Precursor_Greatsword_Hilt`, `Fortified_Precursor_Axe_Head`,
-      `Small_Fortified_Precursor_Haft`, `Transcendent_Crystal`,
-      `Memory_of_Aurene`. Si elles portent les 39 / 250, ils montent au
-      precurseur pour les 16 armes (Rending compris) ; sinon, retrait.
+- [x] pieces du precurseur capturees le 08/10 : aucune ne porte de trefle ni
+      de lingot cristallin (piece Deldrimor/Spiritwood + Blessing of the Jade
+      Empress + 20 jade ; Transcendent Crystal = 10 ecto + Eldritch Scroll +
+      100 Hydrocatalytic + 10 gemmes ; Memory of Aurene : coffres). Cles
+      retirees des 15 gen3 (accord d'Antoine, v387) : 38 trefles comme
+      Rending, et la cascade du lingot cristallin tombe avec (minerai, huile,
+      poussiere aurique, etincelle, fulgurite, 250 gemmes, 250 obsidiennes,
+      250 ectos par arme). CONFRONTATION_TOTAUX : 969 → 984 accords.
+- [ ] precurseurs gen3 non decomposes (`dragons_*` sans enfant) : les pieces
+      sont capturees ; les poser ajouterait leur cout aux 16 armes → A1.
 
 ### W6 — Doubles comptes signales par l'audit · W
 - [x] Klobjarne (matrices), Transcendence (matrices), Eternity (poussiere) :
