@@ -1509,14 +1509,9 @@ const LEGENDARIES = {
     armoryApiIds: [101516, 101462, 101499, 101536, 101501, 101535, 101614, 101645, 101556, 101570, 101579, 101602, 101544, 101551, 101521, 101609, 101568, 101460],
     slots: ["head", "shoulders", "chest", "gloves", "legs", "boots"],
     weights: ["Light", "Medium", "Heavy"],
-    arcanum: {
-      head:      { achievementId: 7214, name: "Astral Thought",    boss: "Ignaxious",                   gift: "magical" },
-      shoulders: { achievementId: 7098, name: "Astral Bearing",    boss: "Galene the Seething",         gift: "magical" },
-      chest:     { achievementId: 7096, name: "Astral Heartbeat",  boss: "Nourys, Eyes of the Abyss",   gift: "magical" },
-      gloves:    { achievementId: 7219, name: "Astral Grasp",      boss: "Pherus the Subjugator",       gift: "mighty" },
-      legs:      { achievementId: 7240, name: "Astral Stride",     boss: "Knaebelag the Terror",        gift: "mighty" },
-      boots:     { achievementId: 7051, name: "Astral Footprints", boss: "Myros the Spiteful",          gift: "mighty" },
-    },
+    // v250 : la table `arcanum` (id, nom, boss, don par emplacement) est
+    // devenue de la donnee — SOURCES_DB.legendaries.obsidian.collections, cles
+    // arcanum_<emplacement>, lues par arcanumParSlot().
     // Coûts par pièce — "required" calculé dynamiquement selon l'objectif
     currenciesPerPiece: [
       { id: "amalgamated", name: "Amalgamated Rift Essence", perPiece: 12,   icon: "AR", apiId: 100081 },
@@ -2246,6 +2241,19 @@ function ChatCode({ code, copied, onCopy }) {
 
 const ALT_KEY = "gw2_cad_alt_v1";
 const ALT_GROUPS = SOURCES_DB?.alt_groups ?? {};
+
+// Les six collections Arcanum d'Obsidienne, par emplacement : { head: {...} }.
+// Elles vivaient dans une table du JSX (LEGENDARIES.obsidian.arcanum) ; depuis
+// v250 elles sont dans les sources, au format des collections migrees, et le
+// meme objet sert au resume de l'onglet Pieces, a la repartition des dons et
+// a l'onglet Collections.
+function arcanumParSlot() {
+  const out = {};
+  for (const c of Object.values(SOURCES_DB?.legendaries?.obsidian?.collections ?? {})) {
+    if (c?.slot) out[c.slot] = c;
+  }
+  return out;
+}
 
 // Les etapes de collection d'une cible, avec leur statut. Une seule lecture,
 // partagee par le grand total et l'onglet du legendaire.
@@ -5287,10 +5295,10 @@ export default function GW2LegendaryTracker() {
   // réparties sur deux types. Le total d'un set était juste, le coût d'une
   // pièce isolée ne l'était pas — demander les gants seuls annonçait 3 de
   // chaque au lieu de 1 Might et 0 Magic.
-  // La table emplacement → type vit déjà dans LEGENDARIES.obsidian.arcanum,
-  // liée aux identifiants de succès. On la lit plutôt que de la redire.
+  // La table emplacement → type vit dans les collections Arcanum des sources
+  // (v250), liée aux identifiants de succès. On la lit plutôt que de la redire.
   const obsGiftSplit = (() => {
-    const arc = LEGENDARIES.obsidian?.arcanum ?? {};
+    const arc = arcanumParSlot();
     const ids = LEGENDARIES.obsidian?.armoryApiIdsBySlot ?? null;
     const out = { mighty: 0, magical: 0 };
     for (const [slot, info] of Object.entries(arc)) {
@@ -7108,7 +7116,7 @@ export default function GW2LegendaryTracker() {
             ))}
             <div className="section-label" style={{ marginTop: "14px" }}>{t("obs_arcanum_title")}</div>
             {LEGENDARIES[selectedLeg].slots.map(s => {
-              const a = (LEGENDARIES[selectedLeg].arcanum ?? {})[s]; if (!a) return null;
+              const a = arcanumParSlot()[s]; if (!a) return null;
               const st = obsAch[`arcanum_${s}`] ?? {};
               const done = st.done === true;
               const cur = st.current ?? 0;
@@ -7188,7 +7196,12 @@ export default function GW2LegendaryTracker() {
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {collList.map(a => {
-            const st = apiAch[a.key] ?? {};
+            // v250 : les collections Arcanum d'Obsidienne ne sont pas dans la
+            // table de progression principale ; leur statut arrive par la
+            // synchro Obsidienne (obsAch) ou par la table de toutes les
+            // collections des sources (toutesCollections), cle ou id.
+            const st = apiAch[a.key] ?? obsAch?.[a.key] ?? toutesCollections?.[a.key]
+              ?? toutesCollections?.[String(a.achievementId)] ?? {};
             const manual = achManualDone[a.key] === true;
             const done = st.done === true || manual;
             const cur = st.current ?? 0;

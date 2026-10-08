@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v387) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v388) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -27,19 +27,18 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
 | audit | `controle/gw2_audit_v60` | 0 erreur, 62 avertissements (v365), plus aucun « compte deux fois » |
 
-**Migration vers `collections{}` : terminee sauf l'Obsidienne.** Les dix
+**Migration vers `collections{}` : terminee (Obsidienne comprise, 08/10).** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
 (Coalescence 3, Selachimorpha 4, Eikasia 7, Perfected Envoy 2, Endless Summer 4,
 Stella Radians 2, Orrax 8, Strife Unending 2 ; Vision 20 et Aurora 6 fusionnes) ;
-plus aucun `achievements[]` ni `raidAchievements` ne subsiste. Seule
-l'Obsidienne a des collections en jeu (6 « Arcanum ») sans `collections{}` :
-bloquee par le lot W1.
+plus aucun `achievements[]` ni `raidAchievements` ne subsiste. Les 6
+« Arcanum » de l'Obsidienne ont rejoint `collections{}` (lot W1, v388/JSX v250).
 
 ---
 
 ## Lots de captures wiki (W)
 
-### W1 — Obsidienne : les six collections Arcanum · W puis C
+### W1 — Obsidienne : les six collections Arcanum · W puis C — ✅ clos le 08/10
 Prepare le 08/10 (bits lus sur l'API par web_fetch, croises avec
 /v2/items et /v2/skins, et avec `legendary_armor_achievements.html`) :
 | succes | id | FR (API) | boss | bits 0-2 (skins, lourd) | bit 3 |
@@ -64,8 +63,13 @@ wiki dira si les trois poids sont acceptes.
       piste de recompense PvP / McM ; Lifeblood : evenement « Defeat <boss> ».
       Un skin d'un poids debloque les trois (le wiki le precise).
       Note du JSX corrigee (v249) : trois skins, pas deux.
-- [ ] puis C : 6 collections au format Ad Infinitum, et retrait du tableau
-      code en dur du JSX (l. ~1513) — refactor : accord d'Antoine avant
+- [x] puis C (accord d'Antoine le 08/10) : 6 collections au format Ad Infinitum
+      (`integration/gw2_arcanum_collections_v1`, sources v388) — bits, skins,
+      Lifeblood et son evenement, don, chaine `unlock` (recompense : droit
+      d'acheter l'Arcanum, sans prealable). Tableau `LEGENDARIES.obsidian.arcanum`
+      retire du JSX (v250) : `arcanumParSlot()` lit les collections ; statut
+      par cle `arcanum_<emplacement>` inchange. Textes `collection_unlocks` des
+      6 ids corriges : ils citaient tous Galene et deux skins.
 
 ### W2 — File du detecteur · W — ✅ clos le 08/10
 - [x] `Pile_of_Foul_Essence` : capture du 06/10, integree (v370, v379).
