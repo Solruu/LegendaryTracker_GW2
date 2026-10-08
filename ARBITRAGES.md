@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v384.json` — 17 desaccords sur 12 composants.
+Source : `gw2_sources_v385.json` — 14 desaccords sur 9 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -10,7 +10,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 
 | composant | desaccords | plus gros ecart | familles |
 |---|---:|---:|---|
-| `volatile_magic` — Volatile Magic | 1 | 4250 | cout vendeur x1 |
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
 | `ascended_shard_of_glory` — Ascended Shard of Glory | 1 | 500 | ecart de compte x1 |
@@ -20,8 +19,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `dust_crystalline` — Pile of Crystalline Dust | 1 | 245 | deja compte par cascade x1 |
 | `pvp_league_ticket` — PvP League Ticket | 2 | 60 | deja compte par cascade x2 |
 | `dust_luminous` — Pile of Luminous Dust | 3 | 50 | deja compte par cascade x3 |
-| `dragonite_ore` — Dragonite Ore | 1 | 25 | cout vendeur x1 |
-| `vision_crystal` — Vision Crystal | 1 | 2 | cout vendeur x1 |
 
 ## ECART DE COMPTE — 1 cas
 
@@ -51,17 +48,14 @@ soit les deux sont reels et le chevauchement se declare dans
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_dreamer` | 210 | 200 | 10 | opal_crystal (recette) |
 | `pvp_league_ticket` — PvP League Ticket | `transcendence` | 25 | 20 | 5 | record_of_league_participation (recette) |
 
-## COUT VENDEUR — 7 cas
+## COUT VENDEUR — 4 cas
 
 La table vendeur aplatit des options qui s'excluent. Se tranche en
 regardant si le vendeur propose un choix ou une liste.
 
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
-| `volatile_magic` — Volatile Magic | `vision` | 0 | 4250 | 4250 | olmakhan_latigo_strap (vendeur) |
 | `trade_contract` — Trade Contract | `coalescence` | 0 | 1250 | 1250 | funerary_incense (vendeur) |
 | `trade_contract` — Trade Contract | `vision` | 0 | 500 | 500 | funerary_incense (vendeur) |
 | `crystalline_ingot` — Crystalline Ingot | `coalescence` | 0 | 250 | 250 | funerary_incense (vendeur) |
 | `crystalline_ingot` — Crystalline Ingot | `vision` | 0 | 100 | 100 | funerary_incense (vendeur) |
-| `dragonite_ore` — Dragonite Ore | `orrax_manifested` | 0 | 25 | 25 | binding_of_the_dragon (vendeur) |
-| `vision_crystal` — Vision Crystal | `selachimorpha` | 0 | 2 | 2 | gift_of_adventure (vendeur) |

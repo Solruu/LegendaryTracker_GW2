@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v384.json`, 1135 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v385.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
@@ -9,7 +9,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 
 - **969 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **166 excedents expliques** — le surplus vient d'une branche
+- **168 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
 - **0 excedents nus** — rien dans la donnee ne les explique : soit
@@ -75,6 +75,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_eureka` | `tribute_to_endeavor` | 200 | 100 | `endeavor` |
 | `gen2_eureka` | `mystic_curio` | 200 | 100 | `endeavor` |
 | `gen2_exordium` | `shard_of_exitare` | 200 | 100 | `exitare` |
+| `gen2_exordium` | `tribute_to_exitare` | 200 | 100 | `exitare` |
 | `gen2_exordium` | `mystic_curio` | 200 | 100 | `exitare` |
 | `gen2_flames_of_war` | `shard_of_liturgy` | 200 | 100 | `liturgy` |
 | `gen2_flames_of_war` | `tribute_to_liturgy` | 200 | 100 | `liturgy` |
@@ -103,6 +104,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_the_shining_blade` | `tribute_to_the_queen` | 200 | 100 | `save_the_queen` |
 | `gen2_the_shining_blade` | `mystic_curio` | 200 | 100 | `save_the_queen` |
 | `gen2_verdarach` | `shard_of_call_of_the_void` | 200 | 100 | `call_of_the_void` |
+| `gen2_verdarach` | `tribute_to_call_of_the_void` | 200 | 100 | `call_of_the_void` |
 | `gen2_verdarach` | `mystic_curio` | 200 | 100 | `call_of_the_void` |
 | `gen2_xiuquatl` | `shard_of_tlehco` | 200 | 100 | `tlehco` |
 | `gen2_xiuquatl` | `tribute_to_tlehco` | 200 | 100 | `tlehco` |
@@ -128,7 +130,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen3_aurenes_scale` | `thermocatalytic_reagent` | 320 | 250 | `poem_on_shields (omis : deldrimor_steel_shield_boss)` |
 | `gen3_aurenes_wisdom` | `thermocatalytic_reagent` | 320 | 250 | `poem_on_scepters (omis : spiritwood_scepter_core)` |
 | `gen2_eureka` | `darksteel_ingot` | 310 | 250 | `endeavor` |
-| `selachimorpha` | `obsidian_shard` | 310 | 250 | `qty_overlap_verified` |
+| `selachimorpha` | `obsidian_shard` | 310 | 250 | `gift_of_adventure` |
 | `gen2_sharur` | `darksteel_ingot` | 310 | 250 | `might_of_arah` |
 | `gen2_the_hms_divinity` | `hard_wood_plank` | 310 | 250 | `man_o_war` |
 | `gen2_flames_of_war` | `hard_wood_plank` | 290 | 250 | `liturgy` |

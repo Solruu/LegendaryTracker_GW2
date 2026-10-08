@@ -5,7 +5,7 @@ Confrontation des agregats rediges en prose.
 
 Le depot confronte deja les tables « Full material list »
 (`gw2_confronte_totaux_v8.py`) et, noeud par noeud, les boites Recipe
-(`gw2_relecture_recettes_v5.py`). Il restait une troisieme forme, que personne
+(`gw2_relecture_recettes_v6.py`). Il restait une troisieme forme, que personne
 ne lisait : les listes de courses ecrites EN PROSE sur les pages de collection,
 du type « Banner of the Commander, crafted using recipe from Lady Camilla,
 which requires Inscribed Shard x 200, Orichalcum Ingot x 25… ».

@@ -3016,7 +3016,7 @@ Une feuille donne UNE ligne au lieu d'une par ingredient — bon pour la
 lisibilite, mais ses ingredients n'etaient pas verifies. **Cinquante recettes du
 lot en reclamaient 181 sans que le rapport en dise un mot.**
 
-`gw2_relecture_recettes_v5.py` ajoute la categorie **PALIER_SUIVANT** : un
+`gw2_relecture_recettes_v6.py` ajoute la categorie **PALIER_SUIVANT** : un
 ingredient absent, cite par la recette d'une feuille. Ce n'est pas un defaut de
 la feuille, c'est l'etage d'en dessous. **243 aujourd'hui.**
 
@@ -3426,7 +3426,7 @@ de collection ne sont lus par personne.** C'est une famille de contrôle à
 que personne ne lisait : les listes de courses **redigees en prose** sur les
 pages de collection. Les deux autres sont deja couvertes — tables « Full
 material list » par `gw2_confronte_totaux_v8.py`, boites Recipe noeud par noeud
-par `gw2_relecture_recettes_v5.py`.
+par `gw2_relecture_recettes_v6.py`.
 
 Quatre pages en portent : `warbringer`, `vision_i_awakening`, `ad_infinitum`,
 `the_ascension`. **56 quantites confrontees, 1 depassement, 51 accords.**

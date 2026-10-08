@@ -7,7 +7,7 @@ Usage : python3 scripts_tracker/integration/gw2_ingredients_manquants_v1.py SRC 
 Sun Bead : voie vendeur Cuadinti Astrozintli lue sur sa capture ; la monnaie
 (icone) n'est pas lisible, `verified: false`.
 
-Releve de `controle/gw2_relecture_recettes_v5` sur v368 (MANQUANT = « le cout
+Releve de `controle/gw2_relecture_recettes_v6` sur v368 (MANQUANT = « le cout
 n'existe nulle part »). Ne sont poses ici que les ingredients dont la recette
 est lue sur la capture du parent ET dont l'apiId est connu
 (gw2_materials_ref.json, ou la capture pour le Sun Bead) :

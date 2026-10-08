@@ -5831,14 +5831,16 @@ const SOURCES_DB = {
         "gift_of_skirmishing",
         "warbringer",
         "visionary_inscription",
-        "unbound_wings"
+        "unbound_wings",
+        "gift_of_adventure"
       ],
       "qty": {
         "gift_of_conquering": 2,
         "gift_of_skirmishing": 2,
         "gift_of_sharpened_tip": 6,
         "visionary_inscription": 1,
-        "unbound_wings": 1
+        "unbound_wings": 1,
+        "gift_of_adventure": 2
       },
       "farmable": true,
       "sources": [
@@ -6741,14 +6743,12 @@ const SOURCES_DB = {
         "gift_of_war_prowess",
         "klobjarne_geirr",
         "orrax_manifested",
-        "selachimorpha",
         "stella_radians",
         "strife_unending"
       ],
       "qty": {
         "perfected_envoy__per_piece": 50,
         "ad_infinitum": 60,
-        "selachimorpha": 60,
         "obsidian__per_piece": 50,
         "vision": 72,
         "fulgurite": 1,
@@ -6867,7 +6867,6 @@ const SOURCES_DB = {
         }
       },
       "qty_overlap_verified": [
-        "selachimorpha",
         "vision"
       ],
       "note": {
@@ -7297,7 +7296,7 @@ const SOURCES_DB = {
       "qty": {
         "vision": 360,
         "ad_infinitum": 310,
-        "selachimorpha": 800,
+        "selachimorpha": 500,
         "gift_of_research": 250,
         "deldrimor_steel_spear_head": 50,
         "large_spiritwood_haft": 50,
@@ -12070,7 +12069,7 @@ const SOURCES_DB = {
         "dragonite_ingot": 100,
         "mystic_essence_of_carnage": 250,
         "ad_infinitum": 1000,
-        "selachimorpha": 1000
+        "binding_of_the_dragon": 25
       },
       "kind": "base",
       "farmable": true,
@@ -12101,7 +12100,7 @@ const SOURCES_DB = {
       "needed_for": [
         "dragonite_ingot",
         "mystic_essence_of_carnage",
-        "selachimorpha"
+        "binding_of_the_dragon"
       ],
       "note": {
         "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
@@ -12114,8 +12113,7 @@ const SOURCES_DB = {
       "qty": {
         "empyreal_star": 100,
         "mystic_essence_of_animosity": 250,
-        "ad_infinitum": 1000,
-        "selachimorpha": 1000
+        "ad_infinitum": 1000
       },
       "kind": "base",
       "farmable": true,
@@ -12145,8 +12143,7 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "empyreal_star",
-        "mystic_essence_of_animosity",
-        "selachimorpha"
+        "mystic_essence_of_animosity"
       ],
       "note": {
         "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
@@ -12159,8 +12156,7 @@ const SOURCES_DB = {
       "qty": {
         "bloodstone_brick": 100,
         "mystic_essence_of_strategy": 250,
-        "ad_infinitum": 1000,
-        "selachimorpha": 1000
+        "ad_infinitum": 1000
       },
       "kind": "base",
       "farmable": true,
@@ -12190,8 +12186,7 @@ const SOURCES_DB = {
       },
       "needed_for": [
         "bloodstone_brick",
-        "mystic_essence_of_strategy",
-        "selachimorpha"
+        "mystic_essence_of_strategy"
       ],
       "note": {
         "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
@@ -12700,7 +12695,8 @@ const SOURCES_DB = {
       "apiId": 45,
       "kind": "currency",
       "qty": {
-        "vision__onetime": 3000
+        "vision__onetime": 3000,
+        "olmakhan_latigo_strap": 250
       },
       "farmable": true,
       "sources": [
@@ -12771,7 +12767,8 @@ const SOURCES_DB = {
       },
       "timegate": true,
       "needed_for": [
-        "vision"
+        "vision",
+        "olmakhan_latigo_strap"
       ]
     },
     "aether_rich_sap": {
@@ -12817,7 +12814,8 @@ const SOURCES_DB = {
         "gift_of_the_riverlands": 23331,
         "gift_of_the_desolation": 23331,
         "bottle_of_coconut_milk": 249,
-        "sun_bead": 21
+        "sun_bead": 21,
+        "binding_of_the_dragon": 22500
       },
       "farmable": true,
       "sources": [
@@ -12851,7 +12849,8 @@ const SOURCES_DB = {
         "gift_of_the_riverlands",
         "gift_of_the_desolation",
         "bottle_of_coconut_milk",
-        "sun_bead"
+        "sun_bead",
+        "binding_of_the_dragon"
       ]
     },
     "powerful_venom_sac": {
@@ -20303,11 +20302,15 @@ const SOURCES_DB = {
       ],
       "sources": [
         {
-          "type": "craft",
+          "type": "vendor",
+          "npc": "vendeurs de Castora (Canach, Alliance Field Quartermaster...)",
           "tip": {
-            "fr": null,
-            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
-          }
+            "fr": "Seule voie : vendeurs de Castora, 2 Vision Crystal + 55 trèfles mystiques + 100 Tales of Adventure + 500 Unusual Coin.",
+            "en": "Only route: Castora vendors, 2 Vision Crystals + 55 Mystic Clovers + 100 Tales of Adventure + 500 Unusual Coins."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/gift_of_adventure.html, Acquisition"
         }
       ],
       "apiId": 105979
@@ -21756,7 +21759,7 @@ const SOURCES_DB = {
       "apiId": 81871
     },
     "tribute_to_call_of_the_void": {
-      "name": "Tribute to Call of the Void",
+      "name": "Tribute to the Call of the Void",
       "kind": "advanced_craft",
       "needed_for": [
         "shard_of_call_of_the_void"
@@ -21809,7 +21812,7 @@ const SOURCES_DB = {
       "apiId": 79453
     },
     "tribute_to_exitare": {
-      "name": "Tribute to Exitare",
+      "name": "Tribute to the Exitare",
       "kind": "advanced_craft",
       "needed_for": [
         "shard_of_exitare"
@@ -24101,11 +24104,19 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "vendor",
+          "npc": "Ethall (Atholma, Sandswept Isles)",
+          "cost": {
+            "fr": "250 magie volatile",
+            "en": "250 Volatile Magic"
+          },
           "tip": {
-            "fr": "Page non capturée — seule son exigence pour le fanion est sourcée.",
-            "en": "Page not captured — only its requirement for the Banner Pennon is sourced."
-          }
+            "fr": "Seule voie : vendeurs, 250 magie volatile chez Ethall (Sandswept Isles), 300 chez Kynon, Nalar, l'intendant olmakhan et Trader Hyacinth. Le tracker compte 250.",
+            "en": "Only route: vendors, 250 Volatile Magic from Ethall (Sandswept Isles), 300 from Kynon, Nalar, the Olmakhan Quartermaster and Trader Hyacinth. The tracker counts 250."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/olmakhan_latigo_strap.html, Acquisition"
         }
       ],
       "ref": "boite Recipe de Banner Pennon",
@@ -24313,7 +24324,8 @@ const SOURCES_DB = {
         "triumphant_hero__piece_medium_legs": 2,
         "triumphant_hero__piece_medium_shoulders": 2,
         "icy_runestone": 1,
-        "mystic_runestone": 1
+        "mystic_runestone": 1,
+        "binding_of_the_dragon": 5
       },
       "needed_for": [
         "ardent_glorious__piece_heavy_boots",
@@ -24356,7 +24368,8 @@ const SOURCES_DB = {
         "triumphant_hero__piece_medium_gloves",
         "triumphant_hero__piece_medium_helm",
         "triumphant_hero__piece_medium_legs",
-        "triumphant_hero__piece_medium_shoulders"
+        "triumphant_hero__piece_medium_shoulders",
+        "binding_of_the_dragon"
       ],
       "sources": [
         {
@@ -25104,14 +25117,15 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "vendor",
+          "npc": "Gharr Leadclaw / Portable Wizard's Tower Exchange",
           "tip": {
-            "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-            "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+            "fr": "Seule voie : 25 Dragonite Ore + 22 500 karma + 5 or, après le succès Unknown Nightmares: Experiments in the Shadows.",
+            "en": "Only route: 25 Dragonite Ore + 22,500 karma + 5 gold, after the Unknown Nightmares: Experiments in the Shadows achievement."
           },
-          "verified": false,
-          "checked": "2026-09-25",
-          "ref": "recette de orrax_contained.html"
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/binding_of_the_dragon.html, Acquisition"
         }
       ],
       "qty": {
@@ -81467,9 +81481,9 @@ const LEGENDARIES = {
       { id: "incense", name: "Funerary Incense", required: 100, icon: "FI", apiId: 86093, mapNote: "Path of Fire maps" },
       { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: 35 },
       { id: "gems", name: "Amalgamated Gemstone", required: 100, icon: "AG", apiId: 68063 },
-      { id: "vm", name: "Volatile Magic", required: 3000, icon: "EL", apiId: 45,
-        aside: { fr: "Les six recettes d'armes de sang de dragon, 3 000 en tout. Achat unique pour le compte.",
-                 en: "The six Dragonsblood weapon recipes, 3,000 in total. Bought once per account." } },
+      { id: "vm", name: "Volatile Magic", required: 7250, icon: "EL", apiId: 45,
+        aside: { fr: "3 000 pour les six recettes d'armes de sang de dragon (achat unique pour le compte), et 4 250 pour les 17 sangles olmakhan des bandoulières et du fanion (250 pièce chez Ethall, Sandswept Isles ; 300 chez les autres vendeurs).",
+                 en: "3,000 for the six Dragonsblood weapon recipes (bought once per account), and 4,250 for the 17 Olmakhan latigo straps of the bandoliers and the banner pennon (250 each from Ethall, Sandswept Isles; 300 from the other vendors)." } },
       { id: "laurel", name: "Laurel", required: 30, icon: "LA", apiId: 3,
         aside: { fr: "Les mêmes six recettes d'armes : 30 lauriers en tout, une seule fois pour le compte.",
                  en: "The same six weapon recipes: 30 laurels in total, once per account." } },

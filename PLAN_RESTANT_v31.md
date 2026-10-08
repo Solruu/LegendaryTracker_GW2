@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v384) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v385) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -21,7 +21,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v9` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
-| `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v5` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
+| `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v6` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
@@ -40,36 +40,59 @@ bloquee par le lot W1.
 ## Lots de captures wiki (W)
 
 ### W1 — Obsidienne : les six collections Arcanum · W puis C
-Debloque la derniere migration `collections{}`. Pages de collection (tableau
-« Collection items ») et bits du dump API pour les identifiants 7214 (tete),
-7098 (epaules), 7096 (torse), 7219 (gants), 7240 (jambes), 7051 (bottes).
-- [ ] 6 pages de collection Arcanum (titres exacts a lire sur `obsidian_armor.html`)
-- [ ] `referentiel/gw2_dump_bits_v8` relance sur ces 6 ids (l'API GW2 n'est pas
-      joignable depuis le bac a sable chat : a lancer chez Antoine ou via Flask)
-- [ ] puis C : creation des 6 collections au format Ad Infinitum (`how`, `how_ref`)
+Prepare le 08/10 (bits lus sur l'API par web_fetch, croises avec
+/v2/items et /v2/skins, et avec `legendary_armor_achievements.html`) :
+| succes | id | FR (API) | boss | bits 0-2 (skins, lourd) | bit 3 |
+|---|---|---|---|---|---|
+| Astral Thought | 7214 | Pensee astrale | Ignaxious | 11755 Astral Ward / 11653 Rift Hunter / 11905 Oneiros-Spun Helm | 101585 Lifeblood of Ignaxious |
+| Astral Bearing | 7098 | Allure astrale | Galene the Seething | 11637 / 11812 / 11877 Shoulders | 101502 |
+| Astral Heartbeat | 7096 | Pulsation astrale | Nourys, Eyes of the Abyss | 11742 / 11586 / 11914 Coat | 101438 |
+| Astral Grasp | 7219 | Etreinte astrale | Pherus the Subjugator | 11722 / 11759 / 11885 Gloves | 101490 |
+| Astral Stride | 7240 | Foulee astrale | Knaebelag the Terror | 11694 / 11806 / 11906 Leggings | 101471 |
+| Astral Footprints | 7051 | Empreintes astrales | Myros the Spiteful | 11692 / 11789 / 11888 Boots | 101459 |
+Decouverte : chaque collection demande TROIS skins (Astral Ward, **Rift Hunter**,
+Oneiros-Spun) et le Lifeblood du boss ; la note du JSX (`obs_arcanum_note`)
+ne cite que deux skins. Reserve : l'API ne liste que les skins lourds ; le
+wiki dira si les trois poids sont acceptes.
+- [x] titres lus (succes = nom du bit ; pas sur `obsidian_armor.html`)
+- [x] bits (API) — plus besoin de `gw2_dump_bits_v8` chez Antoine
+- [ ] 6 pages de succes + 3 pages d'armure + 6 Lifeblood (lot de capture du 08/10)
+- [ ] puis C : 6 collections au format Ad Infinitum, et retrait du tableau
+      code en dur du JSX (l. ~1513) — refactor : accord d'Antoine avant
 
-### W2 — File du detecteur · W
-- [ ] `Pile_of_Foul_Essence` (cout d'obtention inconnu)
-- [ ] `Tribute_to_the_Exitare`, `Tribute_to_the_Call_of_the_Void` (noms non resolus des tables)
+### W2 — File du detecteur · W — ✅ clos le 08/10
+- [x] `Pile_of_Foul_Essence` : capture du 06/10, integree (v370, v379).
+- [x] Tributs : les pages etaient au depot ; c'etait le NOM des composants
+      (« Tribute to Exitare » au lieu de « Tribute to the Exitare »). Corrige
+      au titre reel (v385).
 
 ### W3 — Metas et cartes · W
-- [ ] `The_Frozen_Maw` et la page meta de `Bitterfrost_Frontier` : trancher ce
-      qu'est `bf_meta` (voir A1)
-- [ ] `Draconis_Mons` section « Map resources » complete : Petrified Wood y est-il ?
-- [ ] point de passage d'Ember Bay pour la ferme `eb` (le champ a ete retire, faux)
+- [x] `the_frozen_maw.html` lu : The Frozen Maw est en **Wayfarer Foothills**
+      (Svanir Shaman Chief, xx:15 toutes les 2 h, Glorious Chest). `bf_meta`
+      melange cet horaire avec Bitterfrost Frontier (carte, Winterberries,
+      Hero's Choice Chest). A trancher en A1 avec la page de la carte.
+- [ ] pages `Bitterfrost_Frontier`, `Draconis_Mons` (« Map resources » :
+      Petrified Wood ?), `Ember_Bay` (point de passage de la ferme `eb`).
 
-### W4 — Arbitrages « cout vendeur » (28 cas apres C1) · W puis C
-Les pages de vendeur (cout HTML non standard) qui tranchent chaque cas.
-Composants : `tales_of_dungeon_delving` (20), `volatile_magic` (2),
-`trade_contract` (2), `crystalline_ingot` (2), `unbound_magic`,
-`sweet_treated_pine_plank`, `dragonite_ore`… — liste exacte dans
-`ARBITRAGES.md` § COUT VENDEUR. Lire la page AVANT de conclure : « le wiki n'est
-jamais faux, notre lecture l'est ».
+### W4 — Arbitrages « cout vendeur » · W puis C
+- [x] 08/10, pages deja au depot (`integration/gw2_couts_vendeur_w4_v1`, v385) :
+      Gift of Adventure (+2 Vision Crystal, aretes plates de Selachimorpha
+      reduites d'autant : totaux T7 inchanges, +40 eclats d'esprit) ; Binding
+      of the Dragon (25 dragonite + 22 500 karma + 5 or, Orrax) ; Olmakhan
+      Latigo Strap (250 magie volatile, minimum des vendeurs : Vision
+      3 000 → 7 250, JSX v248).
+- [ ] Funerary Incense (Vision, Coalescence) : coeurs 1/jour (gemme + ecto +
+      obsidienne + 5 Trade Contracts) contre Primeval Steward sans limite
+      (Trade Contracts ou Elegy Mosaics). La donnee melange deux voies
+      (ingredients du coeur + 3 Elegy Mosaics) → A1.
 
-### W5 — Aurene's Rending · W
-- [ ] une table qui porte trefles 39 / pieces 250 / lingots 250 pour la seizieme
-      gen3 (BACKLOG Ouvert 24/09 §2). Sans elle, rien n'est pose : deduire du
-      patron generationnel est interdit.
+### W5 — Aurene's Rending · W — page au depot, constat inverse
+`aurenes_rending.html` et `aurenes_bite.html` portent la MEME table : 38 trefles
+(Draconic Tribute), aucun Crystalline Ingot. Ce ne sont donc pas 1 arme qui
+manque de 39 trefles / 250 lingots, mais 15 armes qui les portent en cle a
+plat sans que leur table le dise (`ref` : « arbre GW2Efficiency (Vision) »,
+attribution douteuse). → A1 : retirer ces cles des 15 gen3 (suppression de
+donnee, chiffres affiches en baisse).
 
 ### W6 — Doubles comptes signales par l'audit · W
 - [x] Klobjarne (matrices), Transcendence (matrices), Eternity (poussiere) :
@@ -308,7 +331,7 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
         capture (`/tmp/edges2.json`) — 16 lignes, une piece par arme.
       Resultat : 969 accords, 0 trou, 166 expliques, 0 nu. Listes non
       tronquees.
-- [x] **Relecture des recettes relancee sur v368** (`RELECTURE_RECETTES_v10`,
+- [x] **Relecture des recettes relancee sur v368** (`RELECTURE_RECETTES_v11`,
       le v8 datait de v355) : 20 MANQUANTS, 6 non relies, 6 en trop.
       6 ingredients sources poses (`integration/gw2_ingredients_manquants_v1`,
       v369) : 250 Sun Bead (Endless Summer), 2 Opal Crystal par Opal Orb
@@ -370,7 +393,7 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       pas une fabrication. ARBITRAGES : 20 → 18 desaccords.
 - [x] **Relecture v5** : `resoudre` rendait le slug d'une redirection au
       lieu du composant (Dark Matter → Glob of Dark Matter sortait non relie
-      ET en trop). `RELECTURE_RECETTES_v10`.
+      ET en trop). `RELECTURE_RECETTES_v11`.
 - [x] **Orrax, dernieres recettes « feuilles assumees »** (v381) :
       sorbet a la figue de Barbarie (5 Prickly Pear, Ice Cream Base,
       Glacial Shard, Lime) et herbes ascaloniennes (origan, basilic, persil,

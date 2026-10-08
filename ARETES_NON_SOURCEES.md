@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v384.json`. **23 aretes** sur 15 parents dont les captures lisent la composition,
+Source : `gw2_sources_v385.json`. **25 aretes** sur 16 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -8,6 +8,8 @@ Research, retire le 04/10).
 | parent | enfant (donnee) | qty | ce que les captures proposent |
 |---|---|---:|---|
 | `banner_pennon` | `recipe_banner_pennon` | 1 | bolt_of_gossamer 5, glob_of_ectoplasm 5, olmakhan_latigo_strap 5, spool_of_gossamer_thread 100 |
+| `binding_of_the_dragon` | `gold_coin` | 5 | dragonite_ore 25 |
+| `binding_of_the_dragon` | `karma` | 22500 | dragonite_ore 25 |
 | `bottle_of_coconut_milk` | `karma` | 249 | difluorite_crystal 1 |
 | `commanders_wings_of_war` | `badge_of_honor` | 250 | skirmish_claim_ticket 875 |
 | `gift_of_compassion` | `legendary_insight` | 150 | ball_dark_energy 6, gift_of_complex_emotions 1, gift_of_desert_mastery 1, legendary_insight_consumable 150 |

@@ -1,6 +1,6 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v384.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v385.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
@@ -63,7 +63,7 @@ rien dire.
 | ok | `powdered_rose_quartz` | 3 | 3 | 3070 |
 | ok | `spool_of_gossamer_thread` | 100 | 100 | 100 |
 | ok | `unidentified_dye` | 20 | 20 | 20 |
-| ok | `volatile_magic` | 3000 | 3000 | 3000 |
+| ok | `volatile_magic` | 3000 | 3000 | 7250 |
 | ok | `xunlai_electrum_ingot` | 18 | 18 | 18 |
 
 ## warbringer → `warbringer` — 20 objets
