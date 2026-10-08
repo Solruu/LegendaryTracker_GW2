@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v380) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v381) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -371,6 +371,17 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
 - [x] **Relecture v5** : `resoudre` rendait le slug d'une redirection au
       lieu du composant (Dark Matter → Glob of Dark Matter sortait non relie
       ET en trop). `RELECTURE_RECETTES_v10`.
+- [x] **Orrax, dernieres recettes « feuilles assumees »** (v381) :
+      sorbet a la figue de Barbarie (5 Prickly Pear, Ice Cream Base,
+      Glacial Shard, Lime) et herbes ascaloniennes (origan, basilic, persil,
+      thym) decomposes — l'ecart Lime d'ARBITRAGES (400 / 600) se ferme.
+      Gift of Janthir Wanderlust : Lowland Shore et Janthir Syntri relies
+      (completion de carte par defaut, vendeur tres cher en alternative).
+- [ ] **A capturer** : les 7 de la file (Basil, Oregano, Parsley, Thyme Leaf,
+      Prickly Pear, Bowl of Ice Cream Base, Glacial Shard) + hors file :
+      Gift of Mistburned Barrens, Gift of Bava Nisos (2 dons manquants de
+      Wanderlust), Bowl of Tapioca Pudding, Raspberry Passion Fruit Compote
+      (pudding d'Orrax, sans apiId au referentiel).
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

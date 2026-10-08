@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v380.json` — 18 desaccords sur 13 composants.
+Source : `gw2_sources_v381.json` — 17 desaccords sur 12 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -18,7 +18,6 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 | `glob_of_ectoplasm` — Glob of Ectoplasm | 1 | 290 | deja compte par cascade x1 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
 | `dust_crystalline` — Pile of Crystalline Dust | 1 | 245 | deja compte par cascade x1 |
-| `lime` — Lime | 1 | 200 | deja compte par cascade x1 |
 | `pvp_league_ticket` — PvP League Ticket | 2 | 60 | deja compte par cascade x2 |
 | `dust_luminous` — Pile of Luminous Dust | 3 | 50 | deja compte par cascade x3 |
 | `dragonite_ore` — Dragonite Ore | 1 | 25 | cout vendeur x1 |
@@ -33,7 +32,7 @@ est faux. Se tranche sur la page du PARENT, boite Recipe.
 |---|---|---:|---:|---:|---|
 | `ascended_shard_of_glory` — Ascended Shard of Glory | `transcendence` | 900 | 400 | 500 | star_of_glory (recette) |
 
-## DEJA COMPTE PAR CASCADE — 10 cas
+## DEJA COMPTE PAR CASCADE — 9 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
@@ -46,7 +45,6 @@ soit les deux sont reels et le chevauchement se declare dans
 | `shard_of_glory` — Shard of Glory | `transcendence` | 500 | 1000 | 500 | jar_of_distilled_glory (recette) |
 | `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 295 | 5 | 290 | shard_of_crystallized_mists_essence (recette) |
 | `dust_crystalline` — Pile of Crystalline Dust | `ad_infinitum` | 250 | 5 | 245 | shard_of_crystallized_mists_essence (recette) |
-| `lime` — Lime | `orrax_manifested` | 400 | 200 | 200 | bowl_of_prickly_pear_sorbet (recette) |
 | `pvp_league_ticket` — PvP League Ticket | `ardent_glorious` | 180 | 120 | 60 | record_of_league_participation (recette) |
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_bifrost` | 250 | 200 | 50 | opal_crystal (recette) |
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_minstrel` | 250 | 200 | 50 | opal_crystal (recette) |

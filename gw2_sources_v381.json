@@ -25235,23 +25235,40 @@
    "apiId": 102958,
    "kind": "acquire",
    "needed_for": [
-    "gift_of_uncovered_grounds"
+    "gift_of_uncovered_grounds",
+    "gift_of_janthir_wanderlust"
    ],
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "map_completion",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Voie par défaut. Récompense de la complétion de la carte Janthir Syntri, par personnage.",
+      "en": "Default route. Reward for completing the Janthir Syntri map, per character."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_uncovered_grounds.html"
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/gift_of_janthir_syntri.html, Acquisition"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Alternative, jamais par défaut : vendeurs de cœur de Janthir Syntri, 15 jetons de renommée + 100 Curious Mursaat Currency + 250 Ancient Coin + 2 000 Ursus Oblige + 51 000 karma, pour un personnage ayant déjà fini la carte.",
+      "en": "Alternative, never the default: Janthir Syntri heart vendors, 15 Renown Tokens + 100 Curious Mursaat Currency + 250 Ancient Coin + 2,000 Ursus Oblige + 51,000 karma, for a character that already completed the map."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/gift_of_janthir_syntri.html, Acquisition"
     }
    ],
    "qty": {
-    "gift_of_uncovered_grounds": 1
+    "gift_of_uncovered_grounds": 1,
+    "gift_of_janthir_wanderlust": 1
+   },
+   "best": "map_completion",
+   "best_reason": {
+    "fr": "voie par défaut : la complétion de la carte, gratuite. Le vendeur est une alternative très coûteuse.",
+    "en": "default route: map completion, free. The vendor is a very costly alternative."
    }
   },
   "gift_of_knowledge": {
@@ -25288,23 +25305,40 @@
    "apiId": 102929,
    "kind": "acquire",
    "needed_for": [
-    "gift_of_uncovered_grounds"
+    "gift_of_uncovered_grounds",
+    "gift_of_janthir_wanderlust"
    ],
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "map_completion",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Voie par défaut. Récompense de la complétion de la carte Lowland Shore, par personnage.",
+      "en": "Default route. Reward for completing the Lowland Shore map, per character."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_uncovered_grounds.html"
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/gift_of_lowland_shore.html, Acquisition"
+    },
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Alternative, jamais par défaut : vendeurs de cœur de Lowland Shore, 15 jetons de renommée + 100 Curious Lowland Honeycomb + 250 Ancient Coin + 2 000 Ursus Oblige + 51 000 karma, pour un personnage ayant déjà fini la carte.",
+      "en": "Alternative, never the default: Lowland Shore heart vendors, 15 Renown Tokens + 100 Curious Lowland Honeycomb + 250 Ancient Coin + 2,000 Ursus Oblige + 51,000 karma, for a character that already completed the map."
+     },
+     "verified": true,
+     "checked": "2026-10-07",
+     "ref": "ressources/wiki/gift_of_lowland_shore.html, Acquisition"
     }
    ],
    "qty": {
-    "gift_of_uncovered_grounds": 1
+    "gift_of_uncovered_grounds": 1,
+    "gift_of_janthir_wanderlust": 1
+   },
+   "best": "map_completion",
+   "best_reason": {
+    "fr": "voie par défaut : la complétion de la carte, gratuite. Le vendeur est une alternative très coûteuse.",
+    "en": "default route: map completion, free. The vendor is a very costly alternative."
    }
   },
   "gift_of_thorns": {
@@ -29555,10 +29589,12 @@
    "kind": "material",
    "farmable": true,
    "needed_for": [
-    "jar_of_red_curry_paste"
+    "jar_of_red_curry_paste",
+    "bowl_of_prickly_pear_sorbet"
    ],
    "qty": {
-    "jar_of_red_curry_paste": 1
+    "jar_of_red_curry_paste": 1,
+    "bowl_of_prickly_pear_sorbet": 1
    },
    "sources": [
     {
@@ -29873,6 +29909,174 @@
    "verified": true,
    "checked": "2026-10-07",
    "ref": "boite Recipe de bottle_of_simple_dressing (ressources/wiki, capture du 07/10/2026)"
+  },
+  "prickly_pear": {
+   "name": "Prickly Pear",
+   "apiId": 66522,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bowl_of_prickly_pear_sorbet"
+   ],
+   "qty": {
+    "bowl_of_prickly_pear_sorbet": 5
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de bowl_of_prickly_pear_sorbet (ressources/wiki)"
+  },
+  "bowl_of_ice_cream_base": {
+   "name": "Bowl of Ice Cream Base",
+   "apiId": 38216,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bowl_of_prickly_pear_sorbet"
+   ],
+   "qty": {
+    "bowl_of_prickly_pear_sorbet": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de bowl_of_prickly_pear_sorbet (ressources/wiki)"
+  },
+  "glacial_shard": {
+   "name": "Glacial Shard",
+   "apiId": 24318,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bowl_of_prickly_pear_sorbet"
+   ],
+   "qty": {
+    "bowl_of_prickly_pear_sorbet": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de bowl_of_prickly_pear_sorbet (ressources/wiki)"
+  },
+  "oregano_leaf": {
+   "name": "Oregano Leaf",
+   "apiId": 12244,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "pile_of_ascalonian_herbs"
+   ],
+   "qty": {
+    "pile_of_ascalonian_herbs": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de pile_of_ascalonian_herbs (ressources/wiki)"
+  },
+  "basil_leaf": {
+   "name": "Basil Leaf",
+   "apiId": 12245,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "pile_of_ascalonian_herbs"
+   ],
+   "qty": {
+    "pile_of_ascalonian_herbs": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de pile_of_ascalonian_herbs (ressources/wiki)"
+  },
+  "parsley_leaf": {
+   "name": "Parsley Leaf",
+   "apiId": 12246,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "pile_of_ascalonian_herbs"
+   ],
+   "qty": {
+    "pile_of_ascalonian_herbs": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de pile_of_ascalonian_herbs (ressources/wiki)"
+  },
+  "thyme_leaf": {
+   "name": "Thyme Leaf",
+   "apiId": 12248,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "pile_of_ascalonian_herbs"
+   ],
+   "qty": {
+    "pile_of_ascalonian_herbs": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-07",
+   "ref": "boite Recipe de pile_of_ascalonian_herbs (ressources/wiki)"
   }
  },
  "enchaînements_recommandés": {

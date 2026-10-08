@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v380.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v381.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -61,13 +61,20 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 0 composants dont le coût d'obtention est inconnu
+## 3 bis — 7 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
+| `Basil Leaf` |
+| `Bowl of Ice Cream Base` |
+| `Glacial Shard` |
+| `Oregano Leaf` |
+| `Parsley Leaf` |
+| `Prickly Pear` |
+| `Thyme Leaf` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -85,7 +92,14 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 0 pages à capturer
+## URLs — 7 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Basil_Leaf
+https://wiki.guildwars2.com/wiki/Bowl_of_Ice_Cream_Base
+https://wiki.guildwars2.com/wiki/Glacial_Shard
+https://wiki.guildwars2.com/wiki/Oregano_Leaf
+https://wiki.guildwars2.com/wiki/Parsley_Leaf
+https://wiki.guildwars2.com/wiki/Prickly_Pear
+https://wiki.guildwars2.com/wiki/Thyme_Leaf
 ```
