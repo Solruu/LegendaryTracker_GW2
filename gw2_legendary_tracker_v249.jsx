@@ -114,7 +114,7 @@ const I18N = {
     obs_sync: "⟳ Sync armory",
     obs_resolving: "Resolving piece names via GW2 API…",
     obs_arcanum_title: "Arcanum achievements — Legendary Armor: Astral X",
-    obs_arcanum_note: "Each Arcanum is bought from Lyhr for 1 Lesser Vision Crystal once its achievement is done (Astral Ward + Oneiros-Spun skins of the slot + boss kill). One-time account cost for the skins: 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), shared across weights.",
+    obs_arcanum_note: "Each Arcanum is bought from Lyhr for 1 Lesser Vision Crystal once its achievement is done: three skins of the slot (Astral Ward, Rift Hunter, Oneiros-Spun) + the boss's Lifeblood. Rift Hunter comes free from the Secrets of the Obscure story or reward track. One-time account cost for the two other skins: 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), shared across weights.",
     obs_per_piece_note: "Costs computed for {n} targeted piece(s) remaining. Fine/Masterwork/Rare shown assuming all 12 Amalgamated per piece are crafted.",
     obs_gift_magical: "Gift of Magical Prosperity",
     obs_gift_mighty: "Gift of Mighty Prosperity",
@@ -355,7 +355,7 @@ const I18N = {
     obs_sync: "⟳ Sync armurerie",
     obs_resolving: "Résolution des noms de pièces via l'API GW2…",
     obs_arcanum_title: "Achievements Arcanum — Legendary Armor: Astral X",
-    obs_arcanum_note: "Chaque Arcanum s'achète chez Lyhr contre 1 Lesser Vision Crystal une fois son achievement complété (skins Astral Ward + Oneiros-Spun du slot + kill de boss). Coût one-time compte pour les skins : 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), partagé entre les poids.",
+    obs_arcanum_note: "Chaque Arcanum s'achète chez Lyhr contre 1 Lesser Vision Crystal une fois son achievement complété : trois skins du slot (Astral Ward, Rift Hunter, Oneiros-Spun) + le Lifeblood du boss. Rift Hunter est gratuit, par l'histoire de Secrets of the Obscure ou sa piste de récompense. Coût one-time compte pour les deux autres skins : 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), partagé entre les poids.",
     obs_per_piece_note: "Coûts calculés pour {n} pièce(s) ciblée(s) restante(s). Fine/Masterwork/Rare affichées en supposant les 12 Amalgamated par pièce craftées.",
     obs_gift_magical: "Don de prospérité magique",
     obs_gift_mighty: "Don de prospérité puissante",
@@ -1053,7 +1053,7 @@ const LEGENDARIES = {
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
         }, // 250 de recette + 50 de l'etape Pristine Blood Ruby (`cost`, sous-collection aurora_bf, v246)
       { id: "winterberry", name: "Winterberry", required: 250, icon: "WB", apiId: 79899, mapNote: "Bitterfrost Frontier" },
-      { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469, mapNote: "Ember Bay + Draconis Mons" },
+      { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469, mapNote: "Ember Bay" }, // Draconis Mons n'en a pas (« Map resources », capture du 08/10)
       { id: "jade", name: "Jade Shard", required: 350, icon: "JS", apiId: 80332, mapNote: "Lake Doric", }, // 250 + 2 x 50 (Seraph Protector, Bloodstone Savant's Staff)
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 326, icon: "FO", apiId: 81127, mapNote: "Draconis Mons",
         aside: { fr: "250 pour la recette, et 76 apportés aux quatre druides de Draconis Mons au fil des bouquets — fleur, bouquet, bouquet chargé, bouquet d'orage. Chaque apport tombe quand son étape est faite.",

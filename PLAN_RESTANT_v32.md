@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v385) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v386) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -56,7 +56,14 @@ ne cite que deux skins. Reserve : l'API ne liste que les skins lourds ; le
 wiki dira si les trois poids sont acceptes.
 - [x] titres lus (succes = nom du bit ; pas sur `obsidian_armor.html`)
 - [x] bits (API) — plus besoin de `gw2_dump_bits_v8` chez Antoine
-- [ ] 6 pages de succes + 3 pages d'armure + 6 Lifeblood (lot de capture du 08/10)
+- [x] 6 pages de succes + 3 pages d'armure + 6 Lifeblood (captures du 08/10).
+      Le tableau « Collection items » a la forme `Collectible | Type | Subtype |
+      Related item` (pas de colonne Notes) : le `how` vient des pages d'armure
+      et des Lifeblood. Astral Ward et Oneiros-Spun : Astral Ward Mage ou Lyhr,
+      6 Purified Rift Essence par set ; Rift Hunter : histoire de SotO ou
+      piste de recompense PvP / McM ; Lifeblood : evenement « Defeat <boss> ».
+      Un skin d'un poids debloque les trois (le wiki le precise).
+      Note du JSX corrigee (v249) : trois skins, pas deux.
 - [ ] puis C : 6 collections au format Ad Infinitum, et retrait du tableau
       code en dur du JSX (l. ~1513) — refactor : accord d'Antoine avant
 
@@ -71,8 +78,19 @@ wiki dira si les trois poids sont acceptes.
       (Svanir Shaman Chief, xx:15 toutes les 2 h, Glorious Chest). `bf_meta`
       melange cet horaire avec Bitterfrost Frontier (carte, Winterberries,
       Hero's Choice Chest). A trancher en A1 avec la page de la carte.
-- [ ] pages `Bitterfrost_Frontier`, `Draconis_Mons` (« Map resources » :
-      Petrified Wood ?), `Ember_Bay` (point de passage de la ferme `eb`).
+- [x] `Draconis_Mons` : « Map resources » sans Petrified Wood (Fire Orchid
+      seulement). Libelles « Ember Bay + Draconis Mons » corriges (v386, JSX
+      v249) ; le plafond de 45/jour ne citait que le JSX lui-meme : garde,
+      `verified: false`.
+- [x] `Bitterfrost_Frontier` : sa meta est **Beacons of Koda**, liee au cycle
+      jour-nuit de la carte, pas The Frozen Maw. `bf_meta` porte donc un nom et
+      un horaire (xx:15 / 2 h) qui sont ceux de The Frozen Maw (Wayfarer
+      Foothills) → A1 : renommer en Beacons of Koda et retirer l'horaire, ou
+      le sourcer sur `Widget:Event timer/data.json`.
+- [x] `Ember_Bay` : la ferme `eb` pointe sur Savage Rise Waypoint
+      [&BNMJAAA=] — Savage Rise est au Mont Draconis (grotte de Kodama). Les
+      points de passage d'Ember Bay : Crumbling Trail, Promontory, Castaway
+      Circus… lequel est le plus proche des souches → A2 (releve en jeu).
 
 ### W4 — Arbitrages « cout vendeur » · W puis C
 - [x] 08/10, pages deja au depot (`integration/gw2_couts_vendeur_w4_v1`, v385) :
@@ -91,8 +109,15 @@ wiki dira si les trois poids sont acceptes.
 (Draconic Tribute), aucun Crystalline Ingot. Ce ne sont donc pas 1 arme qui
 manque de 39 trefles / 250 lingots, mais 15 armes qui les portent en cle a
 plat sans que leur table le dise (`ref` : « arbre GW2Efficiency (Vision) »,
-attribution douteuse). → A1 : retirer ces cles des 15 gen3 (suppression de
-donnee, chiffres affiches en baisse).
+attribution douteuse).
+Mais la table s'ARRETE au precurseur (« Dragon's Bite ») sans l'ouvrir, et
+le precurseur n'est pas decompose dans la donnee (`dragons_bite` sans enfant).
+Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
+- [ ] capturer les pieces du precurseur : `Fortified_Precursor_Greatsword_Blade`,
+      `Fortified_Precursor_Greatsword_Hilt`, `Fortified_Precursor_Axe_Head`,
+      `Small_Fortified_Precursor_Haft`, `Transcendent_Crystal`,
+      `Memory_of_Aurene`. Si elles portent les 39 / 250, ils montent au
+      precurseur pour les 16 armes (Rending compris) ; sinon, retrait.
 
 ### W6 — Doubles comptes signales par l'audit · W
 - [x] Klobjarne (matrices), Transcendence (matrices), Eternity (poussiere) :
