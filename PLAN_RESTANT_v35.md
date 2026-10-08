@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v388) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v389) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -143,21 +143,24 @@ Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
       Hatchling Doll Eye (25 ectos chacun, collection → C5) ; Vision Crystal
       present au tracker, absent de l'arbre (30 obsidiennes, 500 dragonite...).
 
-### W7 — Noms francais des sous-zones de farm (56) · W
-Source acceptable : wiki FR ou client du jeu. Jamais une traduction de tete.
-Noose Road, Compass Plaza, Craven Blight, Cathedral of Silence, Fields of Gold,
-Cathedral of Zephyrs, Cathedral of Eternal Radiance, Karst Plains, Drowned Brine,
-Valley of Lyss, Blighted Battleground, Plinth Timberland, Signal Peak, Waywarde
-Way, Strait of Sacrilege, Fallen Ruins, Fallen Mountains, Aberrant Forest,
-Southern Mountains, Frostborn Cascades, Fragmented Wastes, Haunted Canyons, Rata
-Arcanum, Golemancer's Tomb, Mariner Landing, Zeta Vault, Savage Rise,
-Southwestern / Northwestern / Southeastern / Northern Silverwastes, Sharp Valley,
-Chak Nest, Exhumed Delve, Southern Barbed Gate, Northern / Central Blighting
-Tower, Cereboth Canyon, Viathan's Arm, The Heartwoods, Queen's Forest, Godslost
-Swamp, Phinney Ridge, Overlook Caverns, Provernic Crypt, Cornucopian Fields, The
-Bloodfields, Scorched March, Sand Jackal Run, The Darklands, Broken Shelf, Mad
-King's Labyrinth, Glory's Steps, Echoslab Arches, Crystalwept Groves, Champion's
-Shield.
+### W7 — Noms francais des sous-zones de farm (56) · W — ✅ 51/56 le 08/10
+Source : noms de secteur du client, API `/v2/continents/…/sectors?lang=fr`
+apparies par id avec `lang=en` (`integration/gw2_zones_fr_v1`, sources v389,
+ref `farm_hubs.zones_fr_ref`). Jamais une traduction de tete.
+- [x] 51 noms poses (13 cartes).
+- [ ] 5 restent sans nom FR : Southwestern / Northwestern / Southeastern /
+      Northern Silverwastes et Sharp Valley. Ce ne sont pas des secteurs du
+      client (l'API n'en expose que 6 pour la carte 988 : Prospect Valley,
+      Treadrock Uplands, Challenger Cliffs…). A lire sur le wiki FR, ou a
+      rattacher a un secteur reel (decision A).
+- [ ] **Decouverte — noms FR des CARTES faux** dans `farm_hubs.hubs[].map.fr`
+      et la prose : l'API (`/v2/maps?lang=fr`) donne Saut de Malchor (nous :
+      Bond de Malchor, 24 occurrences), Detroit de la devastation (Detroits de
+      la Devastation), Frontiere de Bjora (Marches de Bjora, 23), Cimeseche
+      (Terres sauvages d'argent, 14), et laisse en anglais Marais de la pierre
+      de sang, Mont Draconis, Repli du dragon, Collines de Kessex, La Vallee de
+      la reine, Champs de Gendarran, La Desolation, Marais de fer. Correction
+      de la prose a faire a la main (accords « le Bond » → « le Saut ») : lot W8.
 
 ---
 
