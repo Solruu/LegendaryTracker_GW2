@@ -4365,6 +4365,15 @@
   "aretes_table": []
  },
  {
+  "page": "basil_leaf",
+  "titre": "Basil Leaf",
+  "api_id": 12245,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bava_nisos_achievements",
   "titre": "Bava Nisos (achievements)",
   "api_id": null,
@@ -5357,6 +5366,40 @@
   "aretes_table": []
  },
  {
+  "page": "bowl_of_ice_cream_base",
+  "titre": "Bowl of Ice Cream Base",
+  "api_id": 38216,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "0",
+    "ingredients": [
+     [
+      "Glass_of_Buttermilk",
+      1
+     ],
+     [
+      "Egg",
+      1
+     ],
+     [
+      "Bag_of_Sugar",
+      1
+     ],
+     [
+      "Vanilla_Bean",
+      1
+     ]
+    ],
+    "produit": "Bowl of Ice Cream Base"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bowl_of_passion_fruit_tapioca_pudding",
   "titre": "Bowl of Passion Fruit Tapioca Pudding",
   "api_id": 71826,
@@ -5445,6 +5488,36 @@
      ]
     ],
     "produit": "Bowl of Prickly Pear Sorbet"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bowl_of_tapioca_pudding",
+  "titre": "Bowl of Tapioca Pudding",
+  "api_id": 76840,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Bowl_of_Baker%27s_Wet_Ingredients",
+      1
+     ],
+     [
+      "Bag_of_Cassava_Flour",
+      1
+     ],
+     [
+      "Pile_of_Cinnamon_and_Sugar",
+      5
+     ]
+    ],
+    "produit": "Bowl of Tapioca Pudding"
    }
   ],
   "couts_vendeur": [],
@@ -13031,6 +13104,28 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_bava_nisos",
+  "titre": "Gift of Bava Nisos",
+  "api_id": 104896,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ancient_Coin",
+    "qty": 250
+   },
+   {
+    "objet": "Curious_Mursaat_Remnants",
+    "qty": 125
+   },
+   {
+    "objet": "Ursus_Oblige",
+    "qty": 2500
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_blood",
   "titre": "Gift of Blood",
   "api_id": 71655,
@@ -15799,6 +15894,32 @@
    {
     "objet": "Mystic_Clover",
     "qty": 9
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "gift_of_mistburned_barrens",
+  "titre": "Gift of Mistburned Barrens",
+  "api_id": 104313,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ancient_Coin",
+    "qty": 250
+   },
+   {
+    "objet": "Curious_Mursaat_Ruin_Shard",
+    "qty": 100
+   },
+   {
+    "objet": "Ursus_Oblige",
+    "qty": 2000
+   },
+   {
+    "objet": "Vial_of_Titan_Melted_Liquid_Obsidian",
+    "qty": 2
    }
   ],
   "aretes_table": []
@@ -19031,6 +19152,64 @@
      ]
     ],
     "produit": "Glacial Lodestone"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "glacial_shard",
+  "titre": "Glacial Shard",
+  "api_id": 24318,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Glacial_Fragment",
+      2
+     ],
+     [
+      "Bottle_of_Elonian_Wine",
+      1
+     ],
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Mystic_Crystal",
+      1
+     ]
+    ],
+    "produit": "Glacial Shard"
+   },
+   {
+    "sortie": 3,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Glacial_Fragment",
+      6
+     ],
+     [
+      "Mystic_Binding_Agent",
+      1
+     ],
+     [
+      "Pile_of_Luminous_Dust",
+      1
+     ],
+     [
+      "Mystic_Crystal",
+      1
+     ]
+    ],
+    "produit": "Glacial Shard"
    }
   ],
   "couts_vendeur": [],
@@ -25377,6 +25556,15 @@
   "aretes_table": []
  },
  {
+  "page": "oregano_leaf",
+  "titre": "Oregano Leaf",
+  "api_id": 12244,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "orichalcum_ingot",
   "titre": "Orichalcum Ingot",
   "api_id": 19685,
@@ -25724,6 +25912,15 @@
   "page": "palm_sapling",
   "titre": "Palm Sapling",
   "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "parsley_leaf",
+  "titre": "Parsley Leaf",
+  "api_id": 12246,
   "table_materiaux": false,
   "recettes": [],
   "couts_vendeur": [],
@@ -27697,6 +27894,15 @@
   "aretes_table": []
  },
  {
+  "page": "prickly_pear",
+  "titre": "Prickly Pear",
+  "api_id": 66522,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "prismatic_champions_regalia",
   "titre": "Prismatic Champion's Regalia",
   "api_id": 95380,
@@ -28061,6 +28267,40 @@
     "qty": 100
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "raspberry_passion_fruit_compote",
+  "titre": "Raspberry Passion Fruit Compote",
+  "api_id": 36782,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Chef",
+    "rating": "350",
+    "ingredients": [
+     [
+      "Bag_of_Sugar",
+      1
+     ],
+     [
+      "Vanilla_Bean",
+      1
+     ],
+     [
+      "Raspberry",
+      1
+     ],
+     [
+      "Passion_Fruit",
+      1
+     ]
+    ],
+    "produit": "Raspberry Passion Fruit Compote"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -36302,6 +36542,15 @@
     "produit": "Third Order Mist Frame"
    }
   ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "thyme_leaf",
+  "titre": "Thyme Leaf",
+  "api_id": 12248,
+  "table_materiaux": false,
+  "recettes": [],
   "couts_vendeur": [],
   "aretes_table": []
  },

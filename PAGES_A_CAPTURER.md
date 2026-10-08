@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v381.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v382.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -61,20 +61,21 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 7 composants dont le coût d'obtention est inconnu
+## 3 bis — 8 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Basil Leaf` |
-| `Bowl of Ice Cream Base` |
-| `Glacial Shard` |
-| `Oregano Leaf` |
-| `Parsley Leaf` |
-| `Prickly Pear` |
-| `Thyme Leaf` |
+| `Bag of Cassava Flour` |
+| `Bag of Sugar` |
+| `Bowl of Baker's Wet Ingredients` |
+| `Egg` |
+| `Glass of Buttermilk` |
+| `Passion Fruit` |
+| `Raspberry` |
+| `Vanilla Bean` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -92,14 +93,15 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 7 pages à capturer
+## URLs — 8 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Basil_Leaf
-https://wiki.guildwars2.com/wiki/Bowl_of_Ice_Cream_Base
-https://wiki.guildwars2.com/wiki/Glacial_Shard
-https://wiki.guildwars2.com/wiki/Oregano_Leaf
-https://wiki.guildwars2.com/wiki/Parsley_Leaf
-https://wiki.guildwars2.com/wiki/Prickly_Pear
-https://wiki.guildwars2.com/wiki/Thyme_Leaf
+https://wiki.guildwars2.com/wiki/Bag_of_Cassava_Flour
+https://wiki.guildwars2.com/wiki/Bag_of_Sugar
+https://wiki.guildwars2.com/wiki/Bowl_of_Baker%27s_Wet_Ingredients
+https://wiki.guildwars2.com/wiki/Egg
+https://wiki.guildwars2.com/wiki/Glass_of_Buttermilk
+https://wiki.guildwars2.com/wiki/Passion_Fruit
+https://wiki.guildwars2.com/wiki/Raspberry
+https://wiki.guildwars2.com/wiki/Vanilla_Bean
 ```

@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v381) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v382) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -377,11 +377,15 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       thym) decomposes — l'ecart Lime d'ARBITRAGES (400 / 600) se ferme.
       Gift of Janthir Wanderlust : Lowland Shore et Janthir Syntri relies
       (completion de carte par defaut, vendeur tres cher en alternative).
-- [ ] **A capturer** : les 7 de la file (Basil, Oregano, Parsley, Thyme Leaf,
-      Prickly Pear, Bowl of Ice Cream Base, Glacial Shard) + hors file :
-      Gift of Mistburned Barrens, Gift of Bava Nisos (2 dons manquants de
-      Wanderlust), Bowl of Tapioca Pudding, Raspberry Passion Fruit Compote
-      (pudding d'Orrax, sans apiId au referentiel).
+- [x] **Captures du 08/10** (v382, `integration/gw2_captures_0810_v1`) :
+      herbes, Prickly Pear, Glacial Shard (butin par defaut, Forge en
+      alternative), Ice Cream Base decompose, pudding d'Orrax (tapioca +
+      compote) decompose, Gift of Mistburned Barrens et Gift of Bava Nisos
+      sous Wanderlust (completion de carte par defaut). Wanderlust complet.
+- [ ] **Orrax, dernier niveau a capturer** : les 8 de la file (Egg, Bag of
+      Sugar, Vanilla Bean, Glass of Buttermilk, Bowl of Baker's Wet
+      Ingredients, Bag of Cassava Flour, Raspberry, Passion Fruit) + Pile of
+      Cinnamon and Sugar (hors file : pas encore de composant, 5 par pudding).
 - [ ] **Reste de la relecture** (W ou A1) :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;

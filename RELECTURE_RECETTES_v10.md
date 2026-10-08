@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v381.json` — généré par `gw2_relecture_recettes_v5.py`.
+Source : `gw2_sources_v382.json` — généré par `gw2_relecture_recettes_v5.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -11,23 +11,21 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
-| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 4 |
+| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 2 |
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 225 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 111 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 223 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 110 |
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
-## Ingrédients qu'aucun composant ne représente — 4
+## Ingrédients qu'aucun composant ne représente — 2
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
-| `gift_of_janthir_wanderlust` | `Gift_of_Bava_Nisos` | 1 | `gift_of_janthir_wanderlust` | — | `orrax_manifested` |
-| `gift_of_janthir_wanderlust` | `Gift_of_Mistburned_Barrens` | 1 | `gift_of_janthir_wanderlust` | — | `orrax_manifested` |
 
 ## Ingrédients présents dans l'arbre mais non rattachés au parent — 2
 
@@ -56,7 +54,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 225
+## Ingrédients absents, cités par la recette d'une feuille — 223
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -111,8 +109,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `bolt_of_cotton` | `Cotton_Scrap` |  | `bolt_of_cotton` | sous une feuille | `ad_infinitum` |
 | `bolt_of_linen` | `Linen_Scrap` |  | `bolt_of_linen` | sous une feuille | `ad_infinitum` |
 | `bolt_of_wool` | `Wool_Scrap` |  | `bolt_of_wool` | sous une feuille | `ad_infinitum` |
-| `bowl_of_passion_fruit_tapioca_pudding` | `Bowl_of_Tapioca_Pudding` |  | `bowl_of_passion_fruit_tapioca_pudding` | sous une feuille | `orrax_manifested` |
-| `bowl_of_passion_fruit_tapioca_pudding` | `Raspberry_Passion_Fruit_Compote` |  | `bowl_of_passion_fruit_tapioca_pudding` | sous une feuille | `orrax_manifested` |
 | `carcharias` | `Essence_of_Diving` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
 | `carcharias` | `Serrated_Harpoon` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
 | `carcharias` | `Shark_Figurine` |  | `carcharias` | sous une feuille | `gen1_kamohoalii_kotaki` |
@@ -286,7 +282,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 111
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 110
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -352,7 +348,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `bolt_of_cotton` | `1 ingrédients` |  | `bolt_of_cotton` | feuille assumée | `ad_infinitum` |
 | `bolt_of_linen` | `1 ingrédients` |  | `bolt_of_linen` | feuille assumée | `ad_infinitum` |
 | `bolt_of_wool` | `1 ingrédients` |  | `bolt_of_wool` | feuille assumée | `ad_infinitum` |
-| `bowl_of_passion_fruit_tapioca_pudding` | `2 ingrédients` |  | `bowl_of_passion_fruit_tapioca_pudding` | feuille assumée | `orrax_manifested` |
 | `carcharias` | `4 ingrédients` |  | `carcharias` | feuille assumée | `gen1_kamohoalii_kotaki` |
 | `chaos_gun` | `4 ingrédients` |  | `chaos_gun` | feuille assumée | `gen1_quip` |
 | `charged_fossil` | `2 ingrédients` |  | `charged_fossil` | feuille assumée | `gen1_howler` |
@@ -402,7 +397,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 182 ingrédients, et qui les réclame
+## Palier suivant — 180 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
@@ -411,7 +406,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Barbed_Thorn` — réclamé par `charged_thorn`
 - `Bone_Shard` — réclamé par `bone`
 - `Bow_Wings` — réclamé par `the_lover`
-- `Bowl_of_Tapioca_Pudding` — réclamé par `bowl_of_passion_fruit_tapioca_pudding`
 - `Carnelian_Nugget` — réclamé par `carnelian_lump`
 - `Carved_Beam` — réclamé par `the_legend`
 - `Carved_Tear_Drop` — réclamé par `the_legend`
@@ -530,7 +524,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Pile_of_Soiled_Essence` — réclamé par `pile_of_foul_essence`
 - `Platinum_Ore` — réclamé par `darksteel_ingot`, `platinum_ingot`
 - `Pruning_Shears` — réclamé par `leaf_of_kudzu`
-- `Raspberry_Passion_Fruit_Compote` — réclamé par `bowl_of_passion_fruit_tapioca_pudding`
 - `Raven_Statue_(Legendary_Component)` — réclamé par `the_raven_staff`
 - `Regulator_Nozzle` — réclamé par `spark_weapon`
 - `Rooster_Statues` — réclamé par `the_bard`
@@ -589,7 +582,5 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 ## Ingrédients à créer, et qui les réclame
 
-- `Gift_of_Bava_Nisos` — réclamé par `gift_of_janthir_wanderlust`
-- `Gift_of_Mistburned_Barrens` — réclamé par `gift_of_janthir_wanderlust`
 - `Testimony_of_Jade_Heroics` — réclamé par `certificate_of_heroics`, `essence_of_animosity`
 

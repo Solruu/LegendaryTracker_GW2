@@ -817,7 +817,7 @@ function useT() {
 const SOURCES_DB = {
   "_meta": {
     "version": "v249",
-    "last_updated": "2026-10-07",
+    "last_updated": "2026-10-08",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -25169,7 +25169,7 @@ const SOURCES_DB = {
     "bowl_of_passion_fruit_tapioca_pudding": {
       "name": "Bowl of Passion Fruit Tapioca Pudding",
       "apiId": 71826,
-      "kind": "acquire",
+      "kind": "intermediate",
       "needed_for": [
         "gift_of_the_dessert"
       ],
@@ -30739,11 +30739,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les cactus (1-2, par chance) ; 10 garanties dans les Store of Edible Cactus.",
+            "en": "Harvested from cacti (1-2, by chance); 10 guaranteed in Store of Edible Cactus."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/prickly_pear.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -30753,8 +30757,8 @@ const SOURCES_DB = {
     "bowl_of_ice_cream_base": {
       "name": "Bowl of Ice Cream Base",
       "apiId": 38216,
-      "kind": "material",
-      "farmable": true,
+      "kind": "intermediate",
+      "farmable": false,
       "needed_for": [
         "bowl_of_prickly_pear_sorbet"
       ],
@@ -30763,11 +30767,14 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "craft",
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Cuisine (Chef 0). Recette lue sur sa page.",
+            "en": "Cooking (Chef 0). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/bowl_of_ice_cream_base.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -30787,16 +30794,35 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "drop",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Matériau fin T5 : butin des créatures de glace et coffres enchantés.",
+            "en": "T5 fine material: dropped by ice creatures and enchanted chests."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/glacial_shard.html (capture du 08/10/2026)"
+        },
+        {
+          "type": "mystic_forge",
+          "tip": {
+            "fr": "Alternative coûteuse, jamais par défaut. Promotion en Forge : 2 Glacial Fragment + 1 Bottle of Elonian Wine + 1 Pile of Luminous Dust + 1 Mystic Crystal (ou 6 fragments + 1 Mystic Binding Agent).",
+            "en": "Costly alternative, never the default. Forge promotion: 2 Glacial Fragments + 1 Bottle of Elonian Wine + 1 Pile of Luminous Dust + 1 Mystic Crystal (or 6 fragments + 1 Mystic Binding Agent)."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/glacial_shard.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
       "checked": "2026-10-07",
-      "ref": "boite Recipe de bowl_of_prickly_pear_sorbet (ressources/wiki)"
+      "ref": "boite Recipe de bowl_of_prickly_pear_sorbet (ressources/wiki)",
+      "best": "drop",
+      "best_reason": {
+        "fr": "voie par défaut : butin. La promotion en Forge est une alternative coûteuse.",
+        "en": "default route: drop. The Forge promotion is a costly alternative."
+      }
     },
     "oregano_leaf": {
       "name": "Oregano Leaf",
@@ -30811,11 +30837,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les herbes (par chance) ; 2 garanties sur l'origan de domaine.",
+            "en": "Harvested from herbs (by chance); 2 guaranteed from homegrown oregano."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/oregano_leaf.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -30835,11 +30865,30 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "vendor_karma",
+          "npc": "marchands de cuisine des capitales",
+          "paid_repeatable": true,
+          "cost": {
+            "fr": "6 karma",
+            "en": "6 karma"
+          },
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Vendu 6 karma l'unité par les marchands de cuisine des capitales.",
+            "en": "Sold for 6 karma each by cooking vendors in the capitals."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/basil_leaf.html (capture du 08/10/2026)"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Par chance dans certains conteneurs de cuisine.",
+            "en": "By chance from some cooking containers."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/basil_leaf.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -30859,11 +30908,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les herbes (par chance) ; 2 garanties sur le persil de domaine.",
+            "en": "Harvested from herbs (by chance); 2 guaranteed from homegrown parsley."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/parsley_leaf.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -30883,16 +30936,354 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (07/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (07/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les herbes (par chance) ; 2 garanties sur le thym de domaine.",
+            "en": "Harvested from herbs (by chance); 2 guaranteed from homegrown thyme."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/thyme_leaf.html (capture du 08/10/2026)"
         }
       ],
       "verified": true,
       "checked": "2026-10-07",
       "ref": "boite Recipe de pile_of_ascalonian_herbs (ressources/wiki)"
+    },
+    "glass_of_buttermilk": {
+      "name": "Glass of Buttermilk",
+      "apiId": 12137,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_ice_cream_base"
+      ],
+      "qty": {
+        "bowl_of_ice_cream_base": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de bowl_of_ice_cream_base (ressources/wiki)"
+    },
+    "egg": {
+      "name": "Egg",
+      "apiId": 12143,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_ice_cream_base"
+      ],
+      "qty": {
+        "bowl_of_ice_cream_base": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de bowl_of_ice_cream_base (ressources/wiki)"
+    },
+    "bag_of_sugar": {
+      "name": "Bag of Sugar",
+      "apiId": 12155,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_ice_cream_base",
+        "raspberry_passion_fruit_compote"
+      ],
+      "qty": {
+        "bowl_of_ice_cream_base": 1,
+        "raspberry_passion_fruit_compote": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de bowl_of_ice_cream_base (ressources/wiki)"
+    },
+    "vanilla_bean": {
+      "name": "Vanilla Bean",
+      "apiId": 12234,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_ice_cream_base",
+        "raspberry_passion_fruit_compote"
+      ],
+      "qty": {
+        "bowl_of_ice_cream_base": 1,
+        "raspberry_passion_fruit_compote": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de bowl_of_ice_cream_base (ressources/wiki)"
+    },
+    "bowl_of_tapioca_pudding": {
+      "name": "Bowl of Tapioca Pudding",
+      "apiId": 76840,
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_passion_fruit_tapioca_pudding"
+      ],
+      "qty": {
+        "bowl_of_passion_fruit_tapioca_pudding": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 400). Recette lue sur sa page.",
+            "en": "Cooking (Chef 400). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/bowl_of_tapioca_pudding.html (capture du 08/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "ressources/wiki/bowl_of_tapioca_pudding.html (capture du 08/10/2026)"
+    },
+    "raspberry_passion_fruit_compote": {
+      "name": "Raspberry Passion Fruit Compote",
+      "apiId": 36782,
+      "kind": "intermediate",
+      "farmable": false,
+      "needed_for": [
+        "bowl_of_passion_fruit_tapioca_pudding"
+      ],
+      "qty": {
+        "bowl_of_passion_fruit_tapioca_pudding": 1
+      },
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "Cuisine (Chef 350). Recette lue sur sa page.",
+            "en": "Cooking (Chef 350). Recipe read from its page."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/raspberry_passion_fruit_compote.html (capture du 08/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "ressources/wiki/raspberry_passion_fruit_compote.html (capture du 08/10/2026)"
+    },
+    "bowl_of_bakers_wet_ingredients": {
+      "name": "Bowl of Baker's Wet Ingredients",
+      "apiId": 12170,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_tapioca_pudding"
+      ],
+      "qty": {
+        "bowl_of_tapioca_pudding": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de bowl_of_tapioca_pudding (ressources/wiki)"
+    },
+    "bag_of_cassava_flour": {
+      "name": "Bag of Cassava Flour",
+      "apiId": 74242,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "bowl_of_tapioca_pudding"
+      ],
+      "qty": {
+        "bowl_of_tapioca_pudding": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de bowl_of_tapioca_pudding (ressources/wiki)"
+    },
+    "raspberry": {
+      "name": "Raspberry",
+      "apiId": 12254,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "raspberry_passion_fruit_compote"
+      ],
+      "qty": {
+        "raspberry_passion_fruit_compote": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de raspberry_passion_fruit_compote (ressources/wiki)"
+    },
+    "passion_fruit": {
+      "name": "Passion Fruit",
+      "apiId": 36731,
+      "kind": "material",
+      "farmable": true,
+      "needed_for": [
+        "raspberry_passion_fruit_compote"
+      ],
+      "qty": {
+        "raspberry_passion_fruit_compote": 1
+      },
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "boite Recipe de raspberry_passion_fruit_compote (ressources/wiki)"
+    },
+    "gift_of_mistburned_barrens": {
+      "name": "Gift of Mistburned Barrens",
+      "apiId": 104313,
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "gift_of_janthir_wanderlust"
+      ],
+      "qty": {
+        "gift_of_janthir_wanderlust": 1
+      },
+      "sources": [
+        {
+          "type": "map_completion",
+          "tip": {
+            "fr": "Voie par défaut. Récompense de la complétion de la carte Mistburned Barrens, par personnage.",
+            "en": "Default route. Reward for completing the Mistburned Barrens map, per character."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/gift_of_mistburned_barrens.html (capture du 08/10/2026)"
+        },
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Alternative, jamais par défaut : 2 Vial of Titan Melted Liquid Obsidian + 100 Curious Mursaat Ruin Shard + 250 Ancient Coin + 2 000 Ursus Oblige + 51 000 karma, cœur de renommée terminé.",
+            "en": "Alternative, never the default: 2 Vials of Titan Melted Liquid Obsidian + 100 Curious Mursaat Ruin Shards + 250 Ancient Coins + 2,000 Ursus Oblige + 51,000 karma, renown heart completed."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/gift_of_mistburned_barrens.html (capture du 08/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "ressources/wiki/gift_of_mistburned_barrens.html (capture du 08/10/2026)",
+      "best": "map_completion",
+      "best_reason": {
+        "fr": "voie par défaut : la complétion de la carte, gratuite. Le vendeur est une alternative très coûteuse.",
+        "en": "default route: map completion, free. The vendor is a very costly alternative."
+      }
+    },
+    "gift_of_bava_nisos": {
+      "name": "Gift of Bava Nisos",
+      "apiId": 104896,
+      "kind": "acquire",
+      "farmable": true,
+      "needed_for": [
+        "gift_of_janthir_wanderlust"
+      ],
+      "qty": {
+        "gift_of_janthir_wanderlust": 1
+      },
+      "sources": [
+        {
+          "type": "map_completion",
+          "tip": {
+            "fr": "Voie par défaut. Récompense de la complétion de la carte Bava Nisos, par personnage.",
+            "en": "Default route. Reward for completing the Bava Nisos map, per character."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/gift_of_bava_nisos.html (capture du 08/10/2026)"
+        },
+        {
+          "type": "vendor",
+          "tip": {
+            "fr": "Alternative, jamais par défaut : 125 Curious Mursaat Remnants + 250 Ancient Coin + 2 500 Ursus Oblige + 51 000 karma, carte complétée.",
+            "en": "Alternative, never the default: 125 Curious Mursaat Remnants + 250 Ancient Coins + 2,500 Ursus Oblige + 51,000 karma, map completed."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/gift_of_bava_nisos.html (capture du 08/10/2026)"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-08",
+      "ref": "ressources/wiki/gift_of_bava_nisos.html (capture du 08/10/2026)",
+      "best": "map_completion",
+      "best_reason": {
+        "fr": "voie par défaut : la complétion de la carte, gratuite. Le vendeur est une alternative très coûteuse.",
+        "en": "default route: map completion, free. The vendor is a very costly alternative."
+      }
     }
   },
   "enchaînements_recommandés": {
