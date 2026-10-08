@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v382.json` — généré par `gw2_relecture_recettes_v5.py`.
+Source : `gw2_sources_v383.json` — généré par `gw2_relecture_recettes_v5.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -15,8 +15,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 223 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 110 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 224 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 111 |
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -54,7 +54,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 223
+## Ingrédients absents, cités par la recette d'une feuille — 224
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -197,6 +197,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_the_astral_ward` | `Gift_of_Inner_Nayos` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
 | `gift_of_the_astral_ward` | `Gift_of_Persistence` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
 | `gift_of_the_astral_ward` | `Gift_of_Skywatch_Archipelago` |  | `gift_of_the_astral_ward` | sous une feuille | `obsidian` |
+| `glacial_shard` | `Glacial_Fragment` |  | `glacial_shard` | sous une feuille | `orrax_manifested` |
 | `gold_ingot` | `Gold_Ore` |  | `gold_ingot` | sous une feuille | `vision` |
 | `howl` | `Essence_of_Spirit` |  | `howl` | sous une feuille | `gen1_howler` |
 | `howl` | `Mithril_Snake` |  | `howl` | sous une feuille | `gen1_howler` |
@@ -282,7 +283,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 110
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 111
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -371,6 +372,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `dragons_wisdom` | `4 ingrédients` |  | `dragons_wisdom` | feuille assumée | `gen3_aurenes_wisdom` |
 | `dusk` | `4 ingrédients` |  | `dusk` | feuille assumée | `gen1_twilight` |
 | `gift_of_the_astral_ward` | `4 ingrédients` |  | `gift_of_the_astral_ward` | feuille assumée | `obsidian` |
+| `glacial_shard` | `4 ingrédients` |  | `glacial_shard` | feuille assumée | `orrax_manifested` |
 | `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `vision` |
 | `howl` | `4 ingrédients` |  | `howl` | feuille assumée | `gen1_howler` |
 | `leaf_of_kudzu` | `4 ingrédients` |  | `leaf_of_kudzu` | feuille assumée | `gen1_kudzu` |
@@ -397,7 +399,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 180 ingrédients, et qui les réclame
+## Palier suivant — 181 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
@@ -490,6 +492,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Gift_of_the_Fleet` — réclamé par `gift_of_maguuma`
 - `Gift_of_the_Jungle` — réclamé par `gift_of_maguuma`
 - `Glacial_Core` — réclamé par `glacial_lodestone`
+- `Glacial_Fragment` — réclamé par `glacial_shard`
 - `Globe` — réclamé par `storm`
 - `Gold_Ore` — réclamé par `gold_ingot`
 - `Gossamer_Scrap` — réclamé par `bolt_of_gossamer`

@@ -28215,7 +28215,8 @@
    "kind": "material",
    "needed_for": [
     "plate_of_truffle_steak",
-    "ball_of_dough"
+    "ball_of_dough",
+    "bowl_of_bakers_wet_ingredients"
    ],
    "farmable": true,
    "sources": [
@@ -28232,7 +28233,8 @@
    ],
    "qty": {
     "plate_of_truffle_steak": 1,
-    "ball_of_dough": 1
+    "ball_of_dough": 1,
+    "bowl_of_bakers_wet_ingredients": 1
    }
   },
   "symbol_ingredient": {
@@ -30141,18 +30143,24 @@
    "kind": "material",
    "farmable": true,
    "needed_for": [
-    "bowl_of_ice_cream_base"
+    "bowl_of_ice_cream_base",
+    "bowl_of_bakers_wet_ingredients"
    ],
    "qty": {
-    "bowl_of_ice_cream_base": 1
+    "bowl_of_ice_cream_base": 1,
+    "bowl_of_bakers_wet_ingredients": 1
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Conteneur Buttermilk in Bulk : 25 garantis.",
+      "en": "Buttermilk in Bulk container: 25 guaranteed."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/glass_of_buttermilk.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30165,18 +30173,24 @@
    "kind": "material",
    "farmable": true,
    "needed_for": [
-    "bowl_of_ice_cream_base"
+    "bowl_of_ice_cream_base",
+    "bowl_of_bakers_wet_ingredients"
    ],
    "qty": {
-    "bowl_of_ice_cream_base": 1
+    "bowl_of_ice_cream_base": 1,
+    "bowl_of_bakers_wet_ingredients": 1
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Nids de grue (garanti) et butin de nombreuses créatures. Le vendeur de karma (Cassie) est retiré du jeu.",
+      "en": "Crane nests (guaranteed) and drops from many creatures. The karma vendor (Cassie) is no longer available."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/egg.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30187,22 +30201,33 @@
    "name": "Bag of Sugar",
    "apiId": 12155,
    "kind": "material",
-   "farmable": true,
+   "farmable": false,
    "needed_for": [
     "bowl_of_ice_cream_base",
-    "raspberry_passion_fruit_compote"
+    "raspberry_passion_fruit_compote",
+    "pile_of_cinnamon_and_sugar"
    ],
    "qty": {
     "bowl_of_ice_cream_base": 1,
-    "raspberry_passion_fruit_compote": 1
+    "raspberry_passion_fruit_compote": 1,
+    "pile_of_cinnamon_and_sugar": 1
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "npc": "marchands de cuisine (Chef, Apprentice...)",
+     "paid_repeatable": true,
+     "cost": {
+      "fr": "80 cuivre les 10",
+      "en": "80 copper per 10"
+     },
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Vendu par les marchands de cuisine des capitales et de nombreuses cartes : 80 cuivre les 10. Négligeable en or.",
+      "en": "Sold by cooking vendors in capitals and many maps: 80 copper per 10. Negligible in gold."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/bag_of_sugar.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30216,19 +30241,25 @@
    "farmable": true,
    "needed_for": [
     "bowl_of_ice_cream_base",
-    "raspberry_passion_fruit_compote"
+    "raspberry_passion_fruit_compote",
+    "bowl_of_bakers_wet_ingredients"
    ],
    "qty": {
     "bowl_of_ice_cream_base": 1,
-    "raspberry_passion_fruit_compote": 1
+    "raspberry_passion_fruit_compote": 1,
+    "bowl_of_bakers_wet_ingredients": 1
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les herbes (3-5, par chance), surtout en jungle de Maguuma ; 2 garanties au domaine.",
+      "en": "Harvested from herbs (3-5, by chance), mostly in the Maguuma Jungle; 2 guaranteed at the homestead."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/vanilla_bean.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30292,8 +30323,8 @@
   "bowl_of_bakers_wet_ingredients": {
    "name": "Bowl of Baker's Wet Ingredients",
    "apiId": 12170,
-   "kind": "material",
-   "farmable": true,
+   "kind": "intermediate",
+   "farmable": false,
    "needed_for": [
     "bowl_of_tapioca_pudding"
    ],
@@ -30302,11 +30333,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Cuisine (Chef 75). Recette lue sur sa page.",
+      "en": "Cooking (Chef 75). Recipe read from its page."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/bowl_of_bakers_wet_ingredients.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30316,8 +30350,8 @@
   "bag_of_cassava_flour": {
    "name": "Bag of Cassava Flour",
    "apiId": 74242,
-   "kind": "material",
-   "farmable": true,
+   "kind": "intermediate",
+   "farmable": false,
    "needed_for": [
     "bowl_of_tapioca_pudding"
    ],
@@ -30326,11 +30360,14 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Cuisine (Chef 400). Recette lue sur sa page.",
+      "en": "Cooking (Chef 400). Recipe read from its page."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/bag_of_cassava_flour.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30350,11 +30387,15 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les framboisiers (1-2, garanti) ; 2 garanties au domaine.",
+      "en": "Harvested from raspberry bushes (1-2, guaranteed); 2 guaranteed at the homestead."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/raspberry.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30374,11 +30415,15 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "gathering",
+     "free_repeatable": true,
      "tip": {
-      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-     }
+      "fr": "Récolte sur les passiflores (1-2, garanti) ; 2 garanties au domaine.",
+      "en": "Harvested from passiflora (1-2, guaranteed); 2 guaranteed at the homestead."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/passion_fruit.html (capture du 08/10/2026)"
     }
    ],
    "verified": true,
@@ -30468,6 +30513,129 @@
     "fr": "voie par défaut : la complétion de la carte, gratuite. Le vendeur est une alternative très coûteuse.",
     "en": "default route: map completion, free. The vendor is a very costly alternative."
    }
+  },
+  "pile_of_cinnamon_and_sugar": {
+   "name": "Pile of Cinnamon and Sugar",
+   "apiId": 12177,
+   "kind": "intermediate",
+   "farmable": false,
+   "needed_for": [
+    "bowl_of_tapioca_pudding"
+   ],
+   "qty": {
+    "bowl_of_tapioca_pudding": 5
+   },
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Cuisine (Chef 0). Recette lue sur sa page.",
+      "en": "Cooking (Chef 0). Recipe read from its page."
+     },
+     "verified": true,
+     "checked": "2026-10-08",
+     "ref": "ressources/wiki/pile_of_cinnamon_and_sugar.html (capture du 08/10/2026)"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-08",
+   "ref": "ressources/wiki/pile_of_cinnamon_and_sugar.html (capture du 08/10/2026)"
+  },
+  "cassava_root": {
+   "name": "Cassava Root",
+   "apiId": 73113,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bag_of_cassava_flour"
+   ],
+   "qty": {
+    "bag_of_cassava_flour": 10
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-08",
+   "ref": "boite Recipe de bag_of_cassava_flour (ressources/wiki)"
+  },
+  "milling_stone": {
+   "name": "Milling Stone",
+   "apiId": 77256,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bag_of_cassava_flour"
+   ],
+   "qty": {
+    "bag_of_cassava_flour": 5
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-08",
+   "ref": "boite Recipe de bag_of_cassava_flour (ressources/wiki)"
+  },
+  "milling_basin": {
+   "name": "Milling Basin",
+   "apiId": 76839,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "bag_of_cassava_flour"
+   ],
+   "qty": {
+    "bag_of_cassava_flour": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-08",
+   "ref": "boite Recipe de bag_of_cassava_flour (ressources/wiki)"
+  },
+  "cinnamon_stick": {
+   "name": "Cinnamon Stick",
+   "apiId": 12258,
+   "kind": "material",
+   "farmable": true,
+   "needed_for": [
+    "pile_of_cinnamon_and_sugar"
+   ],
+   "qty": {
+    "pile_of_cinnamon_and_sugar": 1
+   },
+   "sources": [
+    {
+     "type": "unknown",
+     "tip": {
+      "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
+      "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-08",
+   "ref": "boite Recipe de pile_of_cinnamon_and_sugar (ressources/wiki)"
   }
  },
  "enchaînements_recommandés": {
