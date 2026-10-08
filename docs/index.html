@@ -31370,11 +31370,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les plantes de jungle et de désert (par chance) ; 2 garanties sur le manioc de domaine.",
+            "en": "Harvested from jungle and desert plants (by chance); 2 guaranteed from homegrown cassava."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/cassava_root.html, Acquisition (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -31394,11 +31398,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "chest",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Coffres et caches de nombreuses cartes (2-4 par coffre, jusqu'à 25 dans certaines caches) : Désert de cristal, Thunderhead Peaks…",
+            "en": "Chests and caches on many maps (2-4 per chest, up to 25 in some caches): Crystal Desert, Thunderhead Peaks…"
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/milling_stone.html, Acquisition (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -31409,7 +31417,7 @@ const SOURCES_DB = {
       "name": "Milling Basin",
       "apiId": 76839,
       "kind": "material",
-      "farmable": true,
+      "farmable": false,
       "needed_for": [
         "bag_of_cassava_flour"
       ],
@@ -31418,11 +31426,20 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "vendor",
+          "npc": "marchands de cuisine (Chef, Apprentice...)",
+          "paid_repeatable": true,
+          "cost": {
+            "fr": "56 cuivre pièce (5 pa 60 pc les 10)",
+            "en": "56 copper each (5s 60c per 10)"
+          },
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Vendu par les marchands de cuisine des zones d'artisanat : 56 cuivre pièce, ou 5 pa 60 pc les 10. Négligeable en or.",
+            "en": "Sold by master chefs in crafting areas: 56 copper each, or 5s 60c per 10. Negligible in gold."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/milling_basin.html, Acquisition (capture du 08/10/2026)"
         }
       ],
       "verified": true,
@@ -31442,11 +31459,15 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "unknown",
+          "type": "gathering",
+          "free_repeatable": true,
           "tip": {
-            "fr": "Ingrédient posé depuis la recette de son plat (08/10/2026). Voie d'obtention à lire sur sa page.",
-            "en": "Ingredient added from its dish's recipe (08/10/2026). Acquisition path to read on its page."
-          }
+            "fr": "Récolte sur les jeunes arbres (Aspen, Ekku, Gummo, Kertch, Mimosa…) ; 10 garantis dans le Chef Starter Kit.",
+            "en": "Harvested from saplings (Aspen, Ekku, Gummo, Kertch, Mimosa…); 10 guaranteed in the Chef Starter Kit."
+          },
+          "verified": true,
+          "checked": "2026-10-08",
+          "ref": "ressources/wiki/cinnamon_stick.html, Acquisition (capture du 08/10/2026)"
         }
       ],
       "verified": true,
