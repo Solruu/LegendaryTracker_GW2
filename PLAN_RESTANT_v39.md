@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v392) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v393) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -181,7 +181,16 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       colonnes « Nearest Waypoint » des captures du wiki ; controle : un meme
       nom anglais = un meme code de chat. `waypoint.name` et `map` passent en
       { fr, en } (forme des cartes existante, rendu par NX inchange). Noms
-      francais non retouches : ils n'ont pas ete confrontes a l'API (POI).
+      francais confrontes a l'API le 09/10 (`gw2_points_passage_fr_v1`,
+      sources v393) : id tire du code de chat, nom lu sur
+      `/v2/continents/…/pois?lang=fr`. 21 des 34 points etaient faux
+      (Papier blanc -> Feuilleblanche, Lac Sanguinaire -> Lac Pourprenage,
+      Les Enfers -> Outre-monde, Col de Venta -> Passage de Venta…). Corriges
+      dans le nom, apres « Point de passage : », et partout ou un texte cite
+      « point de passage du X [code] » (4 textes de Vision I). Les noms de
+      regions homonymes (« Forêt en flammes de Balthazar ») ne sont pas
+      touches. Note : /v2/maps donne une region fausse pour Mont Maelstrom /
+      Marais de Lumillule (5 au lieu de 8) et Baie des braises (10 au lieu de 20).
       Mad King's Realm = « Royaume du Roi Dement » valide par Antoine.
 
 ---
