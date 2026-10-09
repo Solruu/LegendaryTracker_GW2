@@ -61,7 +61,7 @@ const I18N = {
     cad_nocap: "no cap",
     cad_tag_perchar: "per character",
     cad_tag_rng: "· random drop",
-    cad_tag_paid: "· paid alternative, left out of the estimate",
+    cad_tag_paid: "· alternative route, left out of the estimate",
     cad_per_day: "day",
     cad_per_week: "week",
     cad_per_season: "season",
@@ -231,7 +231,7 @@ const I18N = {
     aurora2_prereq: "Prerequisite: Aurora: Awakening completed · Sync via API to see checked boxes",
     // Vision collections
     vision_col_title: "Vision Collections — crafting prerequisites",
-    vision_reqnote: "The Requiem Experiments provide Elegy Mosaics — the alternative Funerary Incense route; the default one uses Trade Contracts.",
+    vision_reqnote: "The Requiem Experiments provide the necessary Elegy Mosaics.",
     vision_reward_1: "Reward: Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Reward: Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     x6_required: "×6 required",
@@ -309,7 +309,7 @@ const I18N = {
     cad_nocap: "sans plafond",
     cad_tag_perchar: "par personnage",
     cad_tag_rng: "· drop aléatoire",
-    cad_tag_paid: "· alternative payante, hors du délai estimé",
+    cad_tag_paid: "· voie alternative, hors du délai estimé",
     cad_per_day: "jour",
     cad_per_week: "sem",
     cad_per_season: "saison",
@@ -467,7 +467,7 @@ const I18N = {
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
     aurora2_prereq: "Prérequis : Aurora: Awakening complété · Synchronise via API pour voir les cases cochées",
     vision_col_title: "Collections Vision — prérequis au craft",
-    vision_reqnote: "Les succès « Requiem: Experiment 1 » à « Requiem: Experiment 6 » fournissent des Elegy Mosaic — voie alternative de l'Encens funéraire ; la voie par défaut passe par les Contrats commerciaux.",
+    vision_reqnote: "Les succès « Requiem: Experiment 1 » à « Requiem: Experiment 6 » fournissent les Elegy Mosaic nécessaires.",
     vision_reward_1: "Récompense : Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     x6_required: "×6 requis",
@@ -983,9 +983,9 @@ const LEGENDARIES = {
       { id: "difluorite", name: "Difluorite Crystal", required: 100, icon: "DC", apiId: 86977, mapNote: "Sandswept Isles" },
       { id: "mistonium", name: "Lump of Mistonium", required: 100, icon: "LM", apiId: 88955, mapNote: "Jahai Bluffs" },
       { id: "incense", name: "Funerary Incense", required: 100, icon: "FI", apiId: 86093, mapNote: "Path of Fire maps" },
-      { id: "trade_contract", name: "Trade Contract", required: 500, icon: "TC", apiId: 34, mapNote: "Path of Fire maps",
-        aside: { fr: "5 par Encens funéraire, voie des cœurs : la moins chère (décision du 09/10). Les Mosaïques d'élégie (3 par encens chez l'Intendant primitif) restent une alternative.",
-                 en: "5 per Funerary Incense via the heart vendors: the cheapest route (decision of 09/10). Elegy Mosaics (3 per incense from the Primeval Steward) remain an alternative." } },
+      { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: 35,
+        aside: { fr: "3 par Encens funéraire chez l'Intendant primitif : voie par défaut, sans plafond (décision du 09/10). Les cœurs (5 Contrats commerciaux, 1 par jour) restent une alternative.",
+                 en: "3 per Funerary Incense from the Primeval Steward: default route, uncapped (decision of 09/10). Heart vendors (5 Trade Contracts, 1 per day) remain an alternative." } },
       { id: "gems", name: "Amalgamated Gemstone", required: 100, icon: "AG", apiId: 68063 },
       { id: "vm", name: "Volatile Magic", required: 7250, icon: "EL", apiId: 45,
         aside: { fr: "3 000 pour les six recettes d'armes de sang de dragon (achat unique pour le compte), et 4 250 pour les 17 sangles olmakhan des bandoulières et du fanion (250 pièce chez Ethall, Îles de Ventesable ; 300 chez les autres vendeurs).",
@@ -1026,7 +1026,7 @@ const LEGENDARIES = {
     collections: {},
     // ── Requiem collections (source d'Elegy Mosaic) ───────────
     requiem: {
-      note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Ils ne servent qu'à la voie alternative de l'Encens funéraire (3 mosaïques chez l'Intendant primitif) ; la voie par défaut passe par les cœurs et les Contrats commerciaux. Chaque collection se complète au Promontoire de Jahai via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. They only feed the alternative Funerary Incense route (3 mosaics from the Primeval Steward); the default route goes through the heart vendors and Trade Contracts. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
+      note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète au Promontoire de Jahai via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. Total: 300 for Vision. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
       experiments: [
         { id: 4344, name: "Requiem: Experiment 1", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 1 (drop Branded, craft)", en: "Collect the Requiem armor pieces tier 1 (Branded drops, craft)" } },
         { id: 4432, name: "Requiem: Experiment 2", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 2", en: "Collect the Requiem armor pieces tier 2" } },
@@ -2996,9 +2996,9 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
       // du calcul (ils fausseraient une projection de délai).
       let perWeek = 0, hasUncapped = false, hasRng = false, hasSeason = false, hasPerChar = false, hasPaid = false;
       for (const f of cad.sources) {
-        // Une source payante n'est pas la voie par defaut (decision du 09/10 :
-        // le moins cher, sans compter le temps). Elle reste listee, mais ne
-        // promet aucune date.
+        // `paid_repeatable` marque une voie alternative, payante ou plafonnee
+        // la ou une voie par defaut existe (decisions du 09/10 : trefles,
+        // encens). Elle reste listee, mais ne promet aucune date.
         if (f.paid_repeatable) { hasPaid = true; continue; }
         if (f.cap == null) { hasUncapped = true; continue; }
         // Une source RNG a bien un plafond, mais il borne les TENTATIVES et non

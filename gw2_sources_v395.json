@@ -677,7 +677,7 @@
      "mistonium": 88955,
      "rose_quartz": 86269,
      "vm": 45,
-     "trade_contract": 34
+     "elegy": 35
     },
     "warbringer": {
      "tickets": 26,
@@ -3540,7 +3540,8 @@
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -3571,24 +3572,22 @@
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)",
-      "paid_repeatable": true
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
      }
     ],
-    "paid_repeatable_ref": "décision d'Antoine du 09/10 : voie des cœurs par défaut ; lingot et Intendant primitif = alternatives payantes"
+    "paid_repeatable_ref": "décision d'Antoine du 09/10 : Intendant primitif / Mosaïques d'élégie par défaut ; cœurs et lingot = alternatives"
    },
    "qty_note": {
     "fr": "Le total à plat de 300 pour Coalescence est supprimé : la fiche donne 250, dans le Gift of Desert Mastery, et la chaîne les porte désormais. Vérifié sur deux pages concordantes — la fiche de l'Encens funéraire et la liste complète de Coalescence.",
     "en": "The flat 300 for Coalescence is removed: the wiki gives 250, inside the Gift of Desert Mastery, and the chain now carries them. Verified on two concordant pages — the Funerary Incense page and Coalescence's full material list."
    },
-   "best": "renown_heart",
    "verified": true,
    "checked": "2026-10-09",
    "best_reason": {
-    "fr": "voie la moins chère, temps non compté : 5 Contrats commerciaux par encens, contre 3 Mosaïques d'élégie ou 100 Contrats chez l'Intendant primitif, ou un Lingot cristallin. Gemme, ecto et obsidienne sont communs à toutes les voies.",
-    "en": "cheapest route, time not counted: 5 Trade Contracts per incense, against 3 Elegy Mosaics or 100 Trade Contracts from the Primeval Steward, or a Crystalline Ingot. Gemstone, ecto and obsidian are shared by every route."
+    "fr": "voie par défaut : l'Intendant primitif contre 3 Mosaïques d'élégie, sans plafond. À prix comparable, l'absence de timegate l'emporte, et les mosaïques tombent des primes. Les cœurs (5 Contrats commerciaux, 1 par jour) et le Lingot cristallin restent des alternatives.",
+    "en": "default route: the Primeval Steward for 3 Elegy Mosaics, uncapped. At a comparable price, no timegate wins, and mosaics drop from bounties. Heart vendors (5 Trade Contracts, 1 per day) and the Crystalline Ingot remain alternatives."
    },
-   "ref": "ressources/wiki/funerary_incense.html (tableau Acquisition : cœurs = 1 gemme + 1 ecto + 1 obsidienne + 5 Trade Contracts) — voie retenue par décision d'Antoine du 09/10 (le moins cher, sans temps ni plafond)"
+   "ref": "ressources/wiki/funerary_incense.html (tableau Acquisition) — voie retenue par Antoine le 09/10 : à prix équivalent, pas de timegate, puis facilité d'obtention"
   },
   "kralkatite_ore": {
    "name": "Kralkatite Ore",
@@ -5770,12 +5769,8 @@
   "trade_contract": {
    "name": "Trade Contract",
    "apiId": 87064,
-   "needed_for": [
-    "funerary_incense"
-   ],
-   "qty": {
-    "funerary_incense": 5
-   },
+   "needed_for": [],
+   "qty": {},
    "farmable": true,
    "sources": [
     {
@@ -11842,7 +11837,8 @@
     "spirit_of_the_raptor": 75,
     "spirit_of_the_springer": 75,
     "spirit_of_the_skimmer": 75,
-    "spirit_of_the_jackal": 75
+    "spirit_of_the_jackal": 75,
+    "funerary_incense": 3
    },
    "farmable": true,
    "sources": [
@@ -11866,7 +11862,8 @@
     "spirit_of_the_jackal",
     "spirit_of_the_raptor",
     "spirit_of_the_skimmer",
-    "spirit_of_the_springer"
+    "spirit_of_the_springer",
+    "funerary_incense"
    ]
   },
   "volatile_magic": {

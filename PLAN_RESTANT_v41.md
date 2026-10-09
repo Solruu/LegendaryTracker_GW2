@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v394) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v395) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -103,11 +103,12 @@ wiki dira si les trois poids sont acceptes.
       of the Dragon (25 dragonite + 22 500 karma + 5 or, Orrax) ; Olmakhan
       Latigo Strap (250 magie volatile, minimum des vendeurs : Vision
       3 000 → 7 250, JSX v248).
-- [x] Funerary Incense — tranche le 09/10 (voie la moins chere, temps et
-      plafond non comptes) : coeurs, 5 Trade Contracts (au lieu de 3 Elegy
-      Mosaics). Vision : 300 EM -> 500 TC (JSX v253, synchro monnaie 34) ;
-      Coalescence garde 300 EM (esprits). Lingot et Intendant = alternatives
-      payantes, hors projection. Ancien constat :
+- [x] Funerary Incense — tranche le 09/10 par Antoine (regle precisee a 15 h :
+      a prix equivalent, pas de timegate, puis facilite d'obtention) : voie
+      Primeval Steward / 3 Elegy Mosaics, sans plafond (mosaiques des primes).
+      Le choix des coeurs du matin (v394) est annule (`gw2_encens_steward_v1`,
+      v395, JSX v254). Coeurs et lingot = alternatives, hors projection.
+      Ancien constat :
       coeurs 1/jour (gemme + ecto +
       obsidienne + 5 Trade Contracts) contre Primeval Steward sans limite
       (Trade Contracts ou Elegy Mosaics). La donnee melange deux voies
