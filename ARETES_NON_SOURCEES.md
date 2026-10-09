@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v389.json`. **25 aretes** sur 16 parents dont les captures lisent la composition,
+Source : `gw2_sources_v390.json`. **25 aretes** sur 16 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).

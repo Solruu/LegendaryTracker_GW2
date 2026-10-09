@@ -984,7 +984,7 @@ const LEGENDARIES = {
       { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: 35 },
       { id: "gems", name: "Amalgamated Gemstone", required: 100, icon: "AG", apiId: 68063 },
       { id: "vm", name: "Volatile Magic", required: 7250, icon: "EL", apiId: 45,
-        aside: { fr: "3 000 pour les six recettes d'armes de sang de dragon (achat unique pour le compte), et 4 250 pour les 17 sangles olmakhan des bandoulières et du fanion (250 pièce chez Ethall, Sandswept Isles ; 300 chez les autres vendeurs).",
+        aside: { fr: "3 000 pour les six recettes d'armes de sang de dragon (achat unique pour le compte), et 4 250 pour les 17 sangles olmakhan des bandoulières et du fanion (250 pièce chez Ethall, Îles de Ventesable ; 300 chez les autres vendeurs).",
                  en: "3,000 for the six Dragonsblood weapon recipes (bought once per account), and 4,250 for the 17 Olmakhan latigo straps of the bandoliers and the banner pennon (250 each from Ethall, Sandswept Isles; 300 from the other vendors)." } },
       { id: "laurel", name: "Laurel", required: 30, icon: "LA", apiId: 3,
         aside: { fr: "Les mêmes six recettes d'armes : 30 lauriers en tout, une seule fois pour le compte.",
@@ -1022,7 +1022,7 @@ const LEGENDARIES = {
     collections: {},
     // ── Requiem collections (source d'Elegy Mosaic) ───────────
     requiem: {
-      note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète en Jahai Bluffs via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. Total: 300 for Vision. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
+      note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète au Promontoire de Jahai via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. Total: 300 for Vision. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
       experiments: [
         { id: 4344, name: "Requiem: Experiment 1", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 1 (drop Branded, craft)", en: "Collect the Requiem armor pieces tier 1 (Branded drops, craft)" } },
         { id: 4432, name: "Requiem: Experiment 2", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 2", en: "Collect the Requiem armor pieces tier 2" } },
@@ -1056,7 +1056,7 @@ const LEGENDARIES = {
       { id: "petrified", name: "Petrified Wood", required: 250, icon: "PW", apiId: 79469, mapNote: "Ember Bay" }, // Draconis Mons n'en a pas (« Map resources », capture du 08/10)
       { id: "jade", name: "Jade Shard", required: 350, icon: "JS", apiId: 80332, mapNote: "Lake Doric", }, // 250 + 2 x 50 (Seraph Protector, Bloodstone Savant's Staff)
       { id: "fire_orchid", name: "Fire Orchid Blossom", required: 326, icon: "FO", apiId: 81127, mapNote: "Draconis Mons",
-        aside: { fr: "250 pour la recette, et 76 apportés aux quatre druides de Draconis Mons au fil des bouquets — fleur, bouquet, bouquet chargé, bouquet d'orage. Chaque apport tombe quand son étape est faite.",
+        aside: { fr: "250 pour la recette, et 76 apportés aux quatre druides du Mont Draconis au fil des bouquets — fleur, bouquet, bouquet chargé, bouquet d'orage. Chaque apport tombe quand son étape est faite.",
                  en: "250 for the recipe, plus 76 brought to the four druids of Draconis Mons across the bouquets — flower, bouquet, charged bouquet, storm bouquet. Each one drops when its step is done." } },
       { id: "orrian", name: "Orrian Pearl", required: 450, icon: "OP", apiId: 81706, // 250 + 200 (Supporter of the Gods)
         aside: { fr: "Hors budget : les jetons d'harmonisation coûtent 10 perles pièce, et le 2e coffre du Reliquaire d'Abaddon en demande un. ⚠ Ne confonds pas les deux plafonds : les coffres sont limités à 2 par personnage et par jour et servent au Chiffre ancien, pas aux perles.", en: "Off-budget: attunement tokens cost 10 pearls each, and the 2nd Abaddon's Reliquary chest needs one. ⚠ Don't conflate the two caps: chests are limited to 2 per character per day and feed the Ancient Cipher, not the pearls." }, mapNote: "Siren's Landing",
@@ -1281,7 +1281,7 @@ const LEGENDARIES = {
         ] },
       { title: { fr: "📋 Relique légendaire", en: "📋 Legendary Relic" },
         unit: { fr: "relique", en: "relic" }, unitTotal: 1,
-        note: { fr: "Une seule est utile. ⚠ Volume : 18 750 Piles Lucent (moins avec les procs ×5 du Mystic Facet) — étaler les ordres d'achat au comptoir. Lyhr (Wizard's Tower) peut forger les gifts contre 10 ectos de surcoût.", en: "Only one is useful. ⚠ Volume: 18,750 Lucent Piles (fewer with Mystic Facet ×5 procs) — spread your TP buy orders. Lyhr (Wizard's Tower) can forge the gifts for 10 extra ectos." },
+        note: { fr: "Une seule est utile. ⚠ Volume : 18 750 Piles Lucent (moins avec les procs ×5 du Mystic Facet) — étaler les ordres d'achat au comptoir. Lyhr (La Tour du sorcier) peut forger les gifts contre 10 ectos de surcoût.", en: "Only one is useful. ⚠ Volume: 18,750 Lucent Piles (fewer with Mystic Facet ×5 procs) — spread your TP buy orders. Lyhr (Wizard's Tower) can forge the gifts for 10 extra ectos." },
         lines: [
           { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 18750, curKey: "lucent_pile",
             detail: { fr: "25 Mystic Facets × 750 piles · chaque forge peut rarement en produire 5 d'un coup", en: "25 Mystic Facets × 750 piles · each forge can rarely yield 5 at once" } },
@@ -1552,7 +1552,7 @@ const LEGENDARIES = {
           { bit: 4,  name: "Return to Tangled Paths" },
           { bit: 5,  name: "Return to Seeds of Truth" },
         ],
-        tip: { fr: "6 épisodes LW S2. Dry Top + Silverwastes. Aucun or requis — progression pure par achievements.", en: "6 LW S2 episodes. Dry Top + Silverwastes. No gold required — pure achievement progression." } },
+        tip: { fr: "6 épisodes LW S2. Dry Top + Cimesèche. Aucun or requis — progression pure par achievements.", en: "6 LW S2 episodes. Dry Top + Silverwastes. No gold required — pure achievement progression." } },
       { id: "tier2", name: "Tier 2 — Living World S3", icon: "◆", color: "#34d399",
         episodes: [
           { bit: 6,  name: "Return to Out of the Shadows" },
@@ -1562,7 +1562,7 @@ const LEGENDARIES = {
           { bit: 10, name: "Return to Flashpoint" },
           { bit: 11, name: "Return to One Path Ends" },
         ],
-        tip: { fr: "6 épisodes LW S3 — synergique avec Aurora. One Path Ends = accès Siren's Landing.", en: "6 LW S3 episodes — synergizes with Aurora. One Path Ends = access to Siren's Landing." } },
+        tip: { fr: "6 épisodes LW S3 — synergique avec Aurora. One Path Ends = accès Plage des sirènes.", en: "6 LW S3 episodes — synergizes with Aurora. One Path Ends = access to Siren's Landing." } },
       { id: "tier3", name: "Tier 3 — Living World S4", icon: "◆", color: "#fbbf24",
         episodes: [
           { bit: 12, name: "Return to Daybreak" },
@@ -1613,7 +1613,7 @@ const LEGENDARIES = {
     color: "#c084fc",
     colorDim: "rgba(192,132,252,0.15)",
     icon: "SR",
-    description: { fr: "Accessoire légendaire — Eternity's Garden (mai 2026). Budget ~7M de karma.", en: "Legendary accessory — Eternity's Garden (May 2026). ~7M karma budget." },
+    description: { fr: "Accessoire légendaire — Jardin de l'éternité (mai 2026). Budget ~7M de karma.", en: "Legendary accessory — Eternity's Garden (May 2026). ~7M karma budget." },
     resetType: "daily",
     currencies: [
       { id: "karma",   name: "Karma",         required: 7000000, icon: "KA", apiId: 2 },

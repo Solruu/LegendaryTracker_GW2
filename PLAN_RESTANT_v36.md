@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v389) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v390) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -153,14 +153,30 @@ ref `farm_hubs.zones_fr_ref`). Jamais une traduction de tete.
       client (l'API n'en expose que 6 pour la carte 988 : Prospect Valley,
       Treadrock Uplands, Challenger Cliffs…). A lire sur le wiki FR, ou a
       rattacher a un secteur reel (decision A).
-- [ ] **Decouverte — noms FR des CARTES faux** dans `farm_hubs.hubs[].map.fr`
-      et la prose : l'API (`/v2/maps?lang=fr`) donne Saut de Malchor (nous :
-      Bond de Malchor, 24 occurrences), Detroit de la devastation (Detroits de
-      la Devastation), Frontiere de Bjora (Marches de Bjora, 23), Cimeseche
-      (Terres sauvages d'argent, 14), et laisse en anglais Marais de la pierre
-      de sang, Mont Draconis, Repli du dragon, Collines de Kessex, La Vallee de
-      la reine, Champs de Gendarran, La Desolation, Marais de fer. Correction
-      de la prose a faire a la main (accords « le Bond » → « le Saut ») : lot W8.
+- [x] Decouverte des noms FR de cartes faux : traitee en W8 (ci-dessous).
+
+### W8 — Noms francais des CARTES alignes sur le client · C — ✅ 09/10
+Regle (Antoine, 09/10) : pour un id confirme, si l'API rend une autre valeur
+que la notre, l'API a raison. `integration/gw2_noms_cartes_fr_v1` (sources
+v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
+`/v2/maps?lang=fr|en` par id.
+- [x] 21 noms inventes corriges partout (Bond de Malchor -> Saut de Malchor,
+      Marches de Bjora -> Frontiere de Bjora, Terres sauvages / Desolation
+      d'argent -> Cimeseche, Falaises de Jahai -> Promontoire de Jahai,
+      Iles Balayees -> Iles de Ventesable, Falaises de Bourreloup -> Falaises
+      de Hantedraguerre…), article accorde (« aux Marches » -> « a la Frontiere »).
+- [x] Noms anglais laisses dans les champs `fr` remplaces, sauf dans les noms
+      d'objets et de succes restes en anglais (Shard of Lowland Shore,
+      Siren's Landing Master, Starlit Weald Cache, texte entre « »).
+- [x] Changelogs `_meta` laisses tels quels (historique).
+- [ ] Mistlock Observatory : id de carte introuvable sur l'API (872 =
+      Fractals of the Mists) ; « Observatoire de la Serrure des Brumes » (3)
+      et « Mistlock Observatory » (6) restent. A lire sur le wiki FR.
+- [ ] Champs `en` qui portent des noms de cartes FRANCAIS (rotation des
+      Lodestones, sanctuaires Aurora/Vision : « in Promontoire de Jahai ») :
+      corriges vers le bon nom FR, mais restent en francais dans le texte
+      anglais. A passer en anglais (lot a part, 33 chaines).
+- [ ] Castora, Mad King's Realm : pas d'id trouve, laisses en l'etat.
 
 ---
 
