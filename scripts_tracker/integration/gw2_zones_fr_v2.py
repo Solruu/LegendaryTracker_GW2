@@ -7,8 +7,9 @@ Usage : python3 scripts_tracker/integration/gw2_zones_fr_v1.py SRC DST
 Source : noms de secteur du client, lus sur l'API
 /v2/continents/{c}/floors/{f}/regions/{r}/maps/{m}/sectors?lang=en et lang=fr
 (08/10/2026), apparies par id de secteur — jamais une traduction de tete.
-Les cinq zones des Terres d'argent (quatre points cardinaux, Sharp Valley)
-ne sont pas des secteurs du client : elles restent sans nom FR.
+v2 (09/10) : les cinq zones des Silverwastes SONT des secteurs du client ; la
+v1 les cherchait sous l'id 988, qui est Dry Top. Lues sous 1015.
+Idempotent : une zone deja nommee n'est pas retouchee.
 """
 import json, sys
 from pathlib import Path
@@ -35,6 +36,12 @@ SECTEURS = {
         "Fallen Ruins": (1788, "Ruines des déchus"), "Fallen Mountains": (1789, "Monts des déchus"),
         "Aberrant Forest": (1774, "Forêt aberrante"), "Southern Mountains": (1773, "Monts méridionaux"),
         "Frostborn Cascades": (1794, "Cascades de Givresource")}),
+    "The Silverwastes": (API.format(1, 1, 11, 1015), {
+        "Southwestern Silverwastes": (1198, "Sud-ouest des Contrées sauvages d'argent"),
+        "Northwestern Silverwastes": (1197, "Nord-ouest des Contrées sauvages d'argent"),
+        "Southeastern Silverwastes": (1203, "Sud-est des Contrées sauvages d'argent"),
+        "Northern Silverwastes": (1199, "Nord des Contrées sauvages d'argent"),
+        "Sharp Valley": (1200, "Canyon acéré")}),
     "Bloodstone Fen": (API.format(1, "1|2", 10, 1165), {
         "Fragmented Wastes": (1373, "Étendues fragmentées"), "Haunted Canyons": (1366, "Canyons hantés")}),
     "Draconis Mons": (API.format(1, "1|2|3", 20, 1195), {
@@ -80,7 +87,7 @@ for h in fh["hubs"]:
             restes.append(f'{h["map"]["en"]} / {en}')
 fh["zones_fr_ref"] = ("noms de secteur du client, API " + API.format("c", "f", "r", "m")
                       + "?lang=fr apparies par id avec lang=en (lu le 08/10/2026)")
-assert poses == 51, poses
+assert not restes, restes
 d["_meta"]["last_updated"] = "2026-10-08"
 DST.write_text(json.dumps(d, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 print(f"{poses} noms FR poses ; sans secteur client : {', '.join(restes)}")

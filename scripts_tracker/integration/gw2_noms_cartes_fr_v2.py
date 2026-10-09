@@ -2,6 +2,15 @@
 # -*- coding: utf-8 -*-
 """W8 : noms francais des CARTES alignes sur le client (accord d'Antoine, 09/10/2026).
 
+v2 (09/10) : 988 est Dry Top (Cimesèche), pas The Silverwastes (1015, « Les
+Contrées sauvages d'argent ») — la v1 avait pris l'id sans verifier son nom
+anglais. Ajouts : Mistlock Observatory (secteur 1079 de la carte 872,
+« Observatoire de Gardebrume »), Southsun Cove (873), Mad King's Realm
+(royaume d'Halloween, sans id de carte : « Royaume du Roi Dément », le Roi Fou
+s'appelant « Roi Dément » cote client, cf. carte 866), Détroit glacé et
+Ascension ardente (noms inventes). Les champs `en` recoivent le nom ANGLAIS
+quand ils portaient un nom francais.
+
 Usage : python3 scripts_tracker/integration/gw2_noms_cartes_fr_v1.py SRC DST JSX_SRC JSX_DST
 
 Regle (Antoine) : pour un id confirme, si l'API rend une autre valeur que la
@@ -25,7 +34,9 @@ from pathlib import Path
 # id : (nom fr API, article) ; article parmi le, la, les, l', "" (nom propre nu)
 API = {
     65: ("Saut de Malchor", "le"), 1343: ("Frontière de Bjora", "la"), 51: ("Détroit de la dévastation", "le"),
-    988: ("Cimesèche", ""), 1301: ("Promontoire de Jahai", "le"), 1310: ("Pics de Chef-Tonnerre", "les"),
+    988: ("Cimesèche", ""), 1015: ("Contrées sauvages d'argent", "les"),
+    873: ("Crique de Sud-Soleil", "la"), "S1079": ("Observatoire de Gardebrume", "l'"),
+    "MKR": ("Royaume du Roi Dément", "le"), 1301: ("Promontoire de Jahai", "le"), 1310: ("Pics de Chef-Tonnerre", "les"),
     1271: ("Îles de Ventesable", "les"), 25: ("Marais de fer", "le"), 1045: ("Profondeurs verdoyantes", "les"),
     1052: ("Orée d'émeraude", "l'"), 22: ("Montée de Flambecœur", "la"), 73: ("Côte de la marée sanglante", "la"),
     17: ("Hinterlands harathis", "les"), 53: ("Marais de Lumillule", "le"), 29: ("Chutes de la canopée", "les"),
@@ -47,7 +58,9 @@ API = {
 # noms faux (fr invente) : (id, article du nom faux)
 FAUX = {
     "Bond de Malchor": (65, "le"), "Marches de Bjora": (1343, "les"), "Détroits de la Dévastation": (51, "les"),
-    "Détroit de la Dévastation": (51, "le"), "Terres sauvages d'argent": (988, "les"), "Désolation d'argent": (988, "la"),
+    "Détroit de la Dévastation": (51, "le"), "Terres sauvages d'argent": (1015, "les"), "Désolation d'argent": (1015, "la"),
+    "Détroit glacé": (30, "le"), "Ascension ardente": (22, "la"), "Anse de Sud-Soleil": (873, "l'"),
+    "Observatoire de la Serrure des Brumes": ("S1079", "l'"), "Sanctuaire de la Serrure des Brumes": (1206, "le"),
     "Falaises de Jahai": (1301, "les"), "Pics de Tonnerre": (1310, "les"), "Îles Balayées": (1271, "les"),
     "Marches de Fer": (25, "les"), "Profondeurs embrouillées": (1045, "les"), "Bord de Verdoyance": (1052, "le"),
     "Rive d'Ardentcœur": (22, "la"), "Côte de Sanguinis": (73, "la"), "Hautes-terres harathies": (17, "les"),
@@ -62,7 +75,8 @@ EN = {
     "Echovald Wilds": 1452, "Mistlock Sanctuary": 1206, "Thunderhead Peaks": 1310, "Siren's Landing": 1203,
     "Bloodstone Fen": 1165, "Sandswept Isles": 1271, "Skywatch Archipelago": 1510, "Lake Doric": 1185,
     "Inner Nayos": 1526, "Domain of Istan": 1263, "Lion's Arch": 50, "Ember Bay": 1175, "Dragon's End": 1422,
-    "Verdant Brink": 1052, "The Silverwastes": 988, "Silverwastes": 988, "Heart of the Mists": 350,
+    "Verdant Brink": 1052, "The Silverwastes": 1015, "Silverwastes": 1015, "Dry Top": 988,
+    "Mistlock Observatory": "S1079", "Southsun Cove": 873, "Mad King's Realm": "MKR", "Heart of the Mists": 350,
     "Malchor's Leap": 65, "Queensdale": 15, "Jahai Bluffs": 1301, "Crystal Oasis": 1210,
     "Desert Highlands": 1211, "Bitterfrost Frontier": 1178, "Arborstone": 1428, "Auric Basin": 1043,
     "Tangled Depths": 1045, "Timberline Falls": 29, "Sparkfly Fen": 53, "Cursed Shore": 62,
@@ -96,7 +110,7 @@ def avec_article(prep, art, nom, maj):
     if p is None and lead == "":
         # nom nu (parentheses, apres « carte », valeur de champ) : l'article
         # fait partie du nom du client pour ces quatre cartes
-        return {"Désolation": "La ", "Tour du sorcier": "La ", "Vallée de la reine": "La ",
+        return {"Désolation": "La ", "Contrées sauvages d'argent": "Les ", "Tour du sorcier": "La ", "Vallée de la reine": "La ",
                 "Arche du Lion": "L'"}.get(nom, "") + nom
     if p == "à":
         a = {"le": "au ", "les": "aux ", "la": "à la ", "l'": "à l'"}[art]
@@ -141,7 +155,7 @@ def art_src_libre(s, i):
 EN_DE = {}
 for _n, _i in EN.items():
     if not _n.startswith("The ") or _i not in EN_DE: EN_DE.setdefault(_i, _n)
-EN_DE.update({1509: "the Wizard's Tower", 988: "the Silverwastes", 1226: "the Desolation", 866: "Mad King's Labyrinth"})
+EN_DE.update({1509: "the Wizard's Tower", 1015: "the Silverwastes", 1226: "the Desolation", 866: "Mad King's Labyrinth"})
 
 def corrige_en(s):
     """Champ anglais portant un nom francais invente : le nom anglais du client."""
@@ -149,10 +163,26 @@ def corrige_en(s):
         s = re.sub(r"(?<![\w])" + re.escape(src) + r"(?![\w])", EN_DE[FAUX[src][0]], s)
     return s
 
+def corrige_en(s):
+    """Champ anglais portant un nom de carte FRANCAIS : le nom anglais du client."""
+    noms = {**{k: v[0] for k, v in FAUX.items()}}
+    for mid, (nom, art) in API.items():
+        if mid in EN_DE and nom != EN_DE[mid]:
+            noms[nom] = mid
+    for src in sorted(noms, key=len, reverse=True):
+        en = EN_DE[noms[src]]
+        s = re.sub(r"(?<![\w])(?:(?:La|Les|L')\s?)?" + re.escape(src) + r"(?![\w])",
+                   lambda m: en[0].upper() + en[1:] if m.start() == 0 else en, s)
+    return re.sub(r"\b(S\d) rien\b", r"\1 nothing", s)
+
 def corrige(s, champ_fr, champ_en=False):
+    if champ_en:
+        return corrige_en(s)
     s2 = remplace(s, FAUX, True)
     if champ_fr:
         s2 = remplace(s2, EN, False)
+    # « le méta Les Contrées… » : un nom a article integre apres « méta » prend « des »
+    s2 = s2.replace("méta Les Contrées", "méta des Contrées")
     return s2
 
 if __name__ == "__main__":

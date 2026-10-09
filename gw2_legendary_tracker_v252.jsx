@@ -1552,7 +1552,7 @@ const LEGENDARIES = {
           { bit: 4,  name: "Return to Tangled Paths" },
           { bit: 5,  name: "Return to Seeds of Truth" },
         ],
-        tip: { fr: "6 épisodes LW S2. Dry Top + Cimesèche. Aucun or requis — progression pure par achievements.", en: "6 LW S2 episodes. Dry Top + Silverwastes. No gold required — pure achievement progression." } },
+        tip: { fr: "6 épisodes LW S2. Cimesèche + Les Contrées sauvages d'argent. Aucun or requis — progression pure par achievements.", en: "6 LW S2 episodes. Dry Top + Silverwastes. No gold required — pure achievement progression." } },
       { id: "tier2", name: "Tier 2 — Living World S3", icon: "◆", color: "#34d399",
         episodes: [
           { bit: 6,  name: "Return to Out of the Shadows" },

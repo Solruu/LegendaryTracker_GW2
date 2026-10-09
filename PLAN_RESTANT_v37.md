@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v390) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v391) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -143,16 +143,14 @@ Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
       Hatchling Doll Eye (25 ectos chacun, collection → C5) ; Vision Crystal
       present au tracker, absent de l'arbre (30 obsidiennes, 500 dragonite...).
 
-### W7 — Noms francais des sous-zones de farm (56) · W — ✅ 51/56 le 08/10
+### W7 — Noms francais des sous-zones de farm (56) · W — ✅ 56/56 le 09/10
 Source : noms de secteur du client, API `/v2/continents/…/sectors?lang=fr`
 apparies par id avec `lang=en` (`integration/gw2_zones_fr_v1`, sources v389,
 ref `farm_hubs.zones_fr_ref`). Jamais une traduction de tete.
 - [x] 51 noms poses (13 cartes).
-- [ ] 5 restent sans nom FR : Southwestern / Northwestern / Southeastern /
-      Northern Silverwastes et Sharp Valley. Ce ne sont pas des secteurs du
-      client (l'API n'en expose que 6 pour la carte 988 : Prospect Valley,
-      Treadrock Uplands, Challenger Cliffs…). A lire sur le wiki FR, ou a
-      rattacher a un secteur reel (decision A).
+- [x] 5 zones des Silverwastes (09/10, `gw2_zones_fr_v2`) : ce sont bien des
+      secteurs du client, sous la carte 1015. La v1 les cherchait sous 988,
+      qui est Dry Top (Cimeseche) : id pris sans verifier son nom anglais.
 - [x] Decouverte des noms FR de cartes faux : traitee en W8 (ci-dessous).
 
 ### W8 — Noms francais des CARTES alignes sur le client · C — ✅ 09/10
@@ -169,14 +167,18 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       d'objets et de succes restes en anglais (Shard of Lowland Shore,
       Siren's Landing Master, Starlit Weald Cache, texte entre « »).
 - [x] Changelogs `_meta` laisses tels quels (historique).
-- [ ] Mistlock Observatory : id de carte introuvable sur l'API (872 =
-      Fractals of the Mists) ; « Observatoire de la Serrure des Brumes » (3)
-      et « Mistlock Observatory » (6) restent. A lire sur le wiki FR.
-- [ ] Champs `en` qui portent des noms de cartes FRANCAIS (rotation des
-      Lodestones, sanctuaires Aurora/Vision : « in Promontoire de Jahai ») :
-      corriges vers le bon nom FR, mais restent en francais dans le texte
-      anglais. A passer en anglais (lot a part, 33 chaines).
-- [ ] Castora, Mad King's Realm : pas d'id trouve, laisses en l'etat.
+- [x] v2 (09/10, `gw2_noms_cartes_fr_v2`, sources v391, JSX v252) :
+      988 = Dry Top (Cimeseche), The Silverwastes = 1015 « Les Contrees
+      sauvages d'argent » (la v1 ecrivait Cimeseche : faux). Mistlock
+      Observatory = secteur 1079 de la carte 872 « Observatoire de
+      Gardebrume ». Southsun Cove (873), Detroit glace et Ascension ardente
+      (inventes) corriges. Mad King's Realm = « Royaume du Roi Dement »
+      (royaume d'Halloween, pas d'id ; « Roi Dement » = nom client du Roi Fou,
+      carte 866). Castora : continent, nom propre identique.
+- [x] Les 33 champs `en` qui portaient des noms FR recoivent le nom anglais.
+- [ ] Points de passage en francais dans des champs `en` (« Nearest
+      waypoint: Route grise », « Creux ancien »…) : autre domaine (POI), a
+      lire par id de point d'interet.
 
 ---
 
