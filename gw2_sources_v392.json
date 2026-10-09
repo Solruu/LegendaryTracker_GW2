@@ -1,7 +1,7 @@
 {
  "_meta": {
   "version": "v249",
-  "last_updated": "2026-10-08",
+  "last_updated": "2026-10-09",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -68398,15 +68398,21 @@
        "bit": 0,
        "name": "Hidden Electrum",
        "insight": "Hidden Ourobon",
-       "map": "Hinterlands harathis",
+       "map": {
+        "fr": "Hinterlands harathis",
+        "en": "Harathi Hinterlands"
+       },
        "waypoint": {
-        "name": "Camp de la barricade",
+        "name": {
+         "fr": "Camp de la barricade",
+         "en": "Barricade Camp"
+        },
         "chat_code": "[&BK0AAAA=]"
        },
        "wp_order": 4,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Hidden Ourobon », aux Hinterlands harathis. Point de passage le plus proche : Camp de la barricade.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Hidden Ourobon' mastery insight, in Harathi Hinterlands. Nearest waypoint: Camp de la barricade."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Hidden Ourobon' mastery insight, in Harathi Hinterlands. Nearest waypoint: Barricade Camp."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68421,9 +68427,15 @@
        "bit": 1,
        "name": "Plundered Electrum",
        "insight": "Bloody Bill's Base",
-       "map": "Côte de la marée sanglante",
+       "map": {
+        "fr": "Côte de la marée sanglante",
+        "en": "Bloodtide Coast"
+       },
        "waypoint": {
-        "name": "Remanda",
+        "name": {
+         "fr": "Remanda",
+         "en": "Remanda"
+        },
         "chat_code": "[&BKcBAAA=]"
        },
        "wp_order": 6,
@@ -68444,15 +68456,21 @@
        "bit": 2,
        "name": "Sonic Electrum",
        "insight": "Copperhammer Mines",
-       "map": "Chutes de la canopée",
+       "map": {
+        "fr": "Chutes de la canopée",
+        "en": "Timberline Falls"
+       },
        "waypoint": {
-        "name": "Papier blanc",
+        "name": {
+         "fr": "Papier blanc",
+         "en": "White Paper"
+        },
         "chat_code": "[&BE8CAAA=]"
        },
        "wp_order": 8,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Copperhammer Mines », aux Chutes de la canopée. Point de passage le plus proche : Papier blanc.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Copperhammer Mines' mastery insight, in Timberline Falls. Nearest waypoint: Papier blanc."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Copperhammer Mines' mastery insight, in Timberline Falls. Nearest waypoint: White Paper."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68467,15 +68485,21 @@
        "bit": 3,
        "name": "Stony Electrum",
        "insight": "Dostoev Sky Peak",
-       "map": "Falaises de Hantedraguerre",
+       "map": {
+        "fr": "Falaises de Hantedraguerre",
+        "en": "Dredgehaunt Cliffs"
+       },
        "waypoint": {
-        "name": "Route grise",
+        "name": {
+         "fr": "Route grise",
+         "en": "Grey Road"
+        },
         "chat_code": "[&BFoCAAA=]"
        },
        "wp_order": 7,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Dostoev Sky Peak », aux Falaises de Hantedraguerre. Point de passage le plus proche : Route grise.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Dostoev Sky Peak' mastery insight, in Dredgehaunt Cliffs. Nearest waypoint: Route grise."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Dostoev Sky Peak' mastery insight, in Dredgehaunt Cliffs. Nearest waypoint: Grey Road."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68490,15 +68514,21 @@
        "bit": 4,
        "name": "Seared Electrum",
        "insight": "Cozen Desolation",
-       "map": "Montée de Flambecœur",
+       "map": {
+        "fr": "Montée de Flambecœur",
+        "en": "Fireheart Rise"
+       },
        "waypoint": {
-        "name": "Fonte de fer",
+        "name": {
+         "fr": "Fonte de fer",
+         "en": "Pig Iron"
+        },
         "chat_code": "[&BBcCAAA=]"
        },
        "wp_order": 2,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Cozen Desolation », à la Montée de Flambecœur. Point de passage le plus proche : Fonte de fer.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Cozen Desolation' mastery insight, in Fireheart Rise. Nearest waypoint: Fonte de fer."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Cozen Desolation' mastery insight, in Fireheart Rise. Nearest waypoint: Pig Iron."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68513,15 +68543,21 @@
        "bit": 5,
        "name": "Graven Electrum",
        "insight": "Sunken Halls of Clarent",
-       "map": "Marais de fer",
+       "map": {
+        "fr": "Marais de fer",
+        "en": "Iron Marches"
+       },
        "waypoint": {
-        "name": "Lac Sanguinaire",
+        "name": {
+         "fr": "Lac Sanguinaire",
+         "en": "Bloodfin Lake"
+        },
         "chat_code": "[&BOMBAAA=]"
        },
        "wp_order": 1,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Sunken Halls of Clarent », au Marais de fer. Point de passage le plus proche : Lac Sanguinaire.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Sunken Halls of Clarent' mastery insight, in Iron Marches. Nearest waypoint: Lac Sanguinaire."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Sunken Halls of Clarent' mastery insight, in Iron Marches. Nearest waypoint: Bloodfin Lake."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68536,15 +68572,21 @@
        "bit": 6,
        "name": "Volcanic Electrum",
        "insight": "Volcanic Rim",
-       "map": "Mont Maelström",
+       "map": {
+        "fr": "Mont Maelström",
+        "en": "Mount Maelstrom"
+       },
        "waypoint": {
-        "name": "Magmatique",
+        "name": {
+         "fr": "Magmatique",
+         "en": "Magmatic"
+        },
         "chat_code": "[&BNYCAAA=]"
        },
        "wp_order": 9,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Volcanic Rim », au Mont Maelström. Point de passage le plus proche : Magmatique.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Volcanic Rim' mastery insight, in Mount Maelstrom. Nearest waypoint: Magmatique."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Volcanic Rim' mastery insight, in Mount Maelstrom. Nearest waypoint: Magmatic."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68559,9 +68601,15 @@
        "bit": 7,
        "name": "Envenomed Electrum",
        "insight": "Shattercliff Hills",
-       "map": "Marais de Lumillule",
+       "map": {
+        "fr": "Marais de Lumillule",
+        "en": "Sparkfly Fen"
+       },
        "waypoint": {
-        "name": "Caer Brier",
+        "name": {
+         "fr": "Caer Brier",
+         "en": "Caer Brier"
+        },
         "chat_code": "[&BLMDAAA=]"
        },
        "wp_order": 10,
@@ -68582,15 +68630,21 @@
        "bit": 8,
        "name": "Scavenged Electrum",
        "insight": "Scavenger's Chasm",
-       "map": "Saut de Malchor",
+       "map": {
+        "fr": "Saut de Malchor",
+        "en": "Malchor's Leap"
+       },
        "waypoint": {
-        "name": "Pagga",
+        "name": {
+         "fr": "Pagga",
+         "en": "Pagga's"
+        },
         "chat_code": "[&BKYCAAA=]"
        },
        "wp_order": 12,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Scavenger's Chasm », en Saut de Malchor. Point de passage le plus proche : Pagga.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Scavenger's Chasm' mastery insight, in Malchor's Leap. Nearest waypoint: Pagga."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Scavenger's Chasm' mastery insight, in Malchor's Leap. Nearest waypoint: Pagga's."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68605,15 +68659,21 @@
        "bit": 9,
        "name": "Blighted Electrum",
        "insight": "the Corpse Grove",
-       "map": "Orée d'émeraude",
+       "map": {
+        "fr": "Orée d'émeraude",
+        "en": "Verdant Brink"
+       },
        "waypoint": {
-        "name": "Bravoure de Mellaggan",
+        "name": {
+         "fr": "Bravoure de Mellaggan",
+         "en": "Mellaggan's Valor"
+        },
         "chat_code": "[&BNUHAAA=]"
        },
        "wp_order": 20,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « the Corpse Grove », à l'Orée d'émeraude. Point de passage le plus proche : Bravoure de Mellaggan.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'the Corpse Grove' mastery insight, in Verdant Brink. Nearest waypoint: Bravoure de Mellaggan."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'the Corpse Grove' mastery insight, in Verdant Brink. Nearest waypoint: Mellaggan's Valor."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68628,15 +68688,21 @@
        "bit": 10,
        "name": "Atmospheric Electrum",
        "insight": "Holdfast Hollow",
-       "map": "Orée d'émeraude",
+       "map": {
+        "fr": "Orée d'émeraude",
+        "en": "Verdant Brink"
+       },
        "waypoint": {
-        "name": "Ruines voilées (jour)",
+        "name": {
+         "fr": "Ruines voilées (jour)",
+         "en": "Shrouded Ruins (day)"
+        },
         "chat_code": "[&BAEIAAA=]"
        },
        "wp_order": 19,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Holdfast Hollow », à l'Orée d'émeraude. Point de passage le plus proche : Ruines voilées (jour). ⚠ Point de passage différent selon l'heure : Ruines voilées de jour, Campement du Pacte [&BAgIAAA=] de nuit.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Holdfast Hollow' mastery insight, in Verdant Brink. Nearest waypoint: Ruines voilées (jour). ⚠ Different waypoint depending on time of day: Shrouded Ruins by day, Pact Encampment [&BAgIAAA=] by night."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Holdfast Hollow' mastery insight, in Verdant Brink. Nearest waypoint: Shrouded Ruins (jour). ⚠ Different waypoint depending on time of day: Shrouded Ruins by day, Pact Encampment [&BAgIAAA=] by night."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68651,15 +68717,21 @@
        "bit": 11,
        "name": "Luminous Electrum",
        "insight": "Luminate's Throne",
-       "map": "Bassin aurique",
+       "map": {
+        "fr": "Bassin aurique",
+        "en": "Auric Basin"
+       },
        "waypoint": {
-        "name": "Guet occidental",
+        "name": {
+         "fr": "Guet occidental",
+         "en": "Westwatch"
+        },
         "chat_code": "[&BAYIAAA=]"
        },
        "wp_order": 17,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Luminate's Throne », au Bassin aurique. Point de passage le plus proche : Guet occidental.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Luminate's Throne' mastery insight, in Auric Basin. Nearest waypoint: Guet occidental."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Luminate's Throne' mastery insight, in Auric Basin. Nearest waypoint: Westwatch."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68674,15 +68746,21 @@
        "bit": 12,
        "name": "Poisoned Electrum",
        "insight": "Burnisher Quarry",
-       "map": "Bassin aurique",
+       "map": {
+        "fr": "Bassin aurique",
+        "en": "Auric Basin"
+       },
        "waypoint": {
-        "name": "Guet septentrional",
+        "name": {
+         "fr": "Guet septentrional",
+         "en": "Northwatch"
+        },
         "chat_code": "[&BN0HAAA=]"
        },
        "wp_order": 18,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Burnisher Quarry », au Bassin aurique. Point de passage le plus proche : Guet septentrional.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Burnisher Quarry' mastery insight, in Auric Basin. Nearest waypoint: Guet septentrional."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Burnisher Quarry' mastery insight, in Auric Basin. Nearest waypoint: Northwatch."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68697,15 +68775,21 @@
        "bit": 13,
        "name": "Goopy Electrum",
        "insight": "Nuhoch Lane",
-       "map": "Profondeurs verdoyantes",
+       "map": {
+        "fr": "Profondeurs verdoyantes",
+        "en": "Tangled Depths"
+       },
        "waypoint": {
-        "name": "Confluence de la ligne de faille",
+        "name": {
+         "fr": "Confluence de la ligne de faille",
+         "en": "Ley-Line Confluence"
+        },
         "chat_code": "[&BPUHAAA=]"
        },
        "wp_order": 16,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Nuhoch Lane », aux Profondeurs verdoyantes. Point de passage le plus proche : Confluence de la ligne de faille.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Nuhoch Lane' mastery insight, in Tangled Depths. Nearest waypoint: Confluence de la ligne de faille."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Nuhoch Lane' mastery insight, in Tangled Depths. Nearest waypoint: Ley-Line Confluence."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68720,15 +68804,21 @@
        "bit": 14,
        "name": "Covert Electrum",
        "insight": "Order of Whispers Outpost",
-       "map": "Profondeurs verdoyantes",
+       "map": {
+        "fr": "Profondeurs verdoyantes",
+        "en": "Tangled Depths"
+       },
        "waypoint": {
-        "name": "Camp de l'Ordre des Murmures",
+        "name": {
+         "fr": "Camp de l'Ordre des Murmures",
+         "en": "Order of Whispers Camp"
+        },
         "chat_code": "[&BA4IAAA=]"
        },
        "wp_order": 15,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Order of Whispers Outpost », aux Profondeurs verdoyantes. Point de passage le plus proche : Camp de l'Ordre des Murmures. ⚠ Correction : cet objet était annoncé au Marais de la pierre de sang. Il est aux Profondeurs verdoyantes.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Order of Whispers Outpost' mastery insight, in Tangled Depths. Nearest waypoint: Camp de l'Ordre des Murmures. ⚠ Correction: this item was listed as Bloodstone Fen. It is in Tangled Depths."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Order of Whispers Outpost' mastery insight, in Tangled Depths. Nearest waypoint: Order of Whispers Camp. ⚠ Correction: this item was listed as Bloodstone Fen. It is in Tangled Depths."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68743,15 +68833,21 @@
        "bit": 15,
        "name": "Bloodstone-Infused Electrum",
        "insight": "Temple of Renewal",
-       "map": "Marais de la pierre de sang",
+       "map": {
+        "fr": "Marais de la pierre de sang",
+        "en": "Bloodstone Fen"
+       },
        "waypoint": {
-        "name": "Profondeurs du Gouffre",
+        "name": {
+         "fr": "Profondeurs du Gouffre",
+         "en": "Depths of the Maw"
+        },
         "chat_code": "[&BD8JAAA=]"
        },
        "wp_order": 21,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Temple of Renewal », en Marais de la pierre de sang. Point de passage le plus proche : Profondeurs du Gouffre.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Temple of Renewal' mastery insight, in Bloodstone Fen. Nearest waypoint: Profondeurs du Gouffre."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Temple of Renewal' mastery insight, in Bloodstone Fen. Nearest waypoint: Depths of the Maw."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68766,15 +68862,21 @@
        "bit": 16,
        "name": "Pyroclastic Electrum",
        "insight": "Caliph's Steps",
-       "map": "Baie des braises",
+       "map": {
+        "fr": "Baie des braises",
+        "en": "Ember Bay"
+       },
        "waypoint": {
-        "name": "Cirque des naufragés",
+        "name": {
+         "fr": "Cirque des naufragés",
+         "en": "Castaway Circus"
+        },
         "chat_code": "[&BHgJAAA=]"
        },
        "wp_order": 13,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Caliph's Steps », en Baie des braises. Point de passage le plus proche : Cirque des naufragés. 💡 La plateforme d'accès ne monte qu'après l'événement « Vaincre le Construct de jade pyroclastique » — le même qui donne le Cœur pyroclastique de la collection Baie des braises. Enchaîne les deux.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Caliph's Steps' mastery insight, in Ember Bay. Nearest waypoint: Cirque des naufragés. 💡 The access platform only rises after the 'Defeat the Pyroclastic Jade Construct' event — the same one granting the Pyroclastic Core of the Ember Bay collection. Chain both."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Caliph's Steps' mastery insight, in Ember Bay. Nearest waypoint: Castaway Circus. 💡 The access platform only rises after the 'Defeat the Pyroclastic Jade Construct' event — the same one granting the Pyroclastic Core of the Ember Bay collection. Chain both."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68789,15 +68891,21 @@
        "bit": 17,
        "name": "Frosted Electrum",
        "insight": "the Bitter Cold",
-       "map": "Confins de Givramer",
+       "map": {
+        "fr": "Confins de Givramer",
+        "en": "Bitterfrost Frontier"
+       },
        "waypoint": {
-        "name": "Éclipse du chagrin",
+        "name": {
+         "fr": "Éclipse du chagrin",
+         "en": "Sorrow's Eclipse"
+        },
         "chat_code": "[&BH0JAAA=]"
        },
        "wp_order": 3,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « the Bitter Cold », en Confins de Givramer. Point de passage le plus proche : Éclipse du chagrin. ⚠ Accès conditionné par l'Élixir de dégel, préparé au Chaudron des cloques. 💡 Même zone que le Suif cristallisé : une seule préparation d'élixir sert aux deux collections.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'the Bitter Cold' mastery insight, in Bitterfrost Frontier. Nearest waypoint: Éclipse du chagrin. ⚠ Access requires the Thaw Elixir, brewed at the Blister Cauldron. 💡 Same area as the Crystallized Suet: one elixir brew serves both collections."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'the Bitter Cold' mastery insight, in Bitterfrost Frontier. Nearest waypoint: Sorrow's Eclipse. ⚠ Access requires the Thaw Elixir, brewed at the Blister Cauldron. 💡 Same area as the Crystallized Suet: one elixir brew serves both collections."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68812,15 +68920,21 @@
        "bit": 18,
        "name": "Misty Electrum",
        "insight": "Melandru's Flourish",
-       "map": "Lac Doric",
+       "map": {
+        "fr": "Lac Doric",
+        "en": "Lake Doric"
+       },
        "waypoint": {
-        "name": "Bazar du lac",
+        "name": {
+         "fr": "Bazar du lac",
+         "en": "Lakeside Bazaar"
+        },
         "chat_code": "[&BLQJAAA=]"
        },
        "wp_order": 5,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Melandru's Flourish », en Lac Doric. Point de passage le plus proche : Bazar du lac.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Melandru's Flourish' mastery insight, in Lake Doric. Nearest waypoint: Bazar du lac."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Melandru's Flourish' mastery insight, in Lake Doric. Nearest waypoint: Lakeside Bazaar."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68835,15 +68949,21 @@
        "bit": 19,
        "name": "Sulfuric Electrum",
        "insight": "Western Boiling Sea",
-       "map": "Mont Draconis",
+       "map": {
+        "fr": "Mont Draconis",
+        "en": "Draconis Mons"
+       },
        "waypoint": {
-        "name": "Creux ancien",
+        "name": {
+         "fr": "Creux ancien",
+         "en": "Ancient Hollow"
+        },
         "chat_code": "[&BNUJAAA=]"
        },
        "wp_order": 14,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Western Boiling Sea », en Mont Draconis. Point de passage le plus proche : Creux ancien. 💡 Même zone qu'Ignis, le Destructeur légendaire de la collection Mont Draconis.",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Western Boiling Sea' mastery insight, in Draconis Mons. Nearest waypoint: Creux ancien. 💡 Same area as Ignis, the Legendary Destroyer of the Draconis Mons collection."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Western Boiling Sea' mastery insight, in Draconis Mons. Nearest waypoint: Ancient Hollow. 💡 Same area as Ignis, the Legendary Destroyer of the Draconis Mons collection."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68858,15 +68978,21 @@
        "bit": 20,
        "name": "Scorched Electrum",
        "insight": "Lava Leap",
-       "map": "Plage des sirènes",
+       "map": {
+        "fr": "Plage des sirènes",
+        "en": "Siren's Landing"
+       },
        "waypoint": {
-        "name": "Récupération du camp",
+        "name": {
+         "fr": "Récupération du camp",
+         "en": "Camp Reclamation"
+        },
         "chat_code": "[&BO8JAAA=]"
        },
        "wp_order": 11,
        "how": {
         "fr": "Infuser un lingot d'electrum Xunlai au sanctuaire de maîtrise « Lava Leap », en Plage des sirènes. Point de passage le plus proche : Récupération du camp. Depuis le point de passage, rejoindre le sanctuaire près du Cœur de Balthazar [&BO4JAAA=].",
-        "en": "Infuse a Xunlai Electrum Ingot at the 'Lava Leap' mastery insight, in Siren's Landing. Nearest waypoint: Récupération du camp. From the waypoint, head to the insight near Balthazar's Heart [&BO4JAAA=]."
+        "en": "Infuse a Xunlai Electrum Ingot at the 'Lava Leap' mastery insight, in Siren's Landing. Nearest waypoint: Camp Reclamation. From the waypoint, head to the insight near Balthazar's Heart [&BO4JAAA=]."
        },
        "how_verified": true,
        "how_checked": "2026-08-13",
@@ -68903,7 +69029,8 @@
       }
      },
      "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
-     "unlock_verified": true
+     "unlock_verified": true,
+     "waypoints_en_ref": "wiki, colonne « Nearest Waypoint » — ressources/wiki/aurora_ii_empowering.html (lu le 09/10/2026)"
     },
     "henge_3402": {
      "id": 3402,
@@ -70282,14 +70409,20 @@
       {
        "bit": 0,
        "name": "Istan Insight: Colossus of Palawadan",
-       "map": "Domaine d'Istan",
+       "map": {
+        "fr": "Domaine d'Istan",
+        "en": "Domain of Istan"
+       },
        "waypoint": {
-        "name": "Aube du champion",
+        "name": {
+         "fr": "Aube du champion",
+         "en": "Champion's Dawn"
+        },
         "chat_code": "[&BBoLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Domaine d'Istan. Point de passage : Aube du champion. Rejoindre les falaises de Churrhir, monter au sommet en Sauteur puis planer jusqu'au sanctuaire.",
-        "en": "/kneel at the insight, in Domain of Istan. Waypoint: Aube du champion. "
+        "en": "/kneel at the insight, in Domain of Istan. Waypoint: Champion's Dawn. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70299,14 +70432,20 @@
       {
        "bit": 1,
        "name": "Istan Insight: Pillar of the Faithless",
-       "map": "Domaine d'Istan",
+       "map": {
+        "fr": "Domaine d'Istan",
+        "en": "Domain of Istan"
+       },
        "waypoint": {
-        "name": "Aube du champion",
+        "name": {
+         "fr": "Aube du champion",
+         "en": "Champion's Dawn"
+        },
         "chat_code": "[&BBoLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Domaine d'Istan. Point de passage : Aube du champion. Suivre la rivière vers le sud, puis escalader en monture le pilier rocheux au centre du village.",
-        "en": "/kneel at the insight, in Domain of Istan. Waypoint: Aube du champion. "
+        "en": "/kneel at the insight, in Domain of Istan. Waypoint: Champion's Dawn. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70316,14 +70455,20 @@
       {
        "bit": 2,
        "name": "Istan Insight: The Wobbling Skies",
-       "map": "Domaine d'Istan",
+       "map": {
+        "fr": "Domaine d'Istan",
+        "en": "Domain of Istan"
+       },
        "waypoint": {
-        "name": "Astrarium",
+        "name": {
+         "fr": "Astrarium",
+         "en": "Astralarium"
+        },
         "chat_code": "[&BPoKAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Domaine d'Istan. Point de passage : Astrarium. Voler vers la Flottille corsaire : le sanctuaire est à l'intérieur de l'aéronef des Alehounds.",
-        "en": "/kneel at the insight, in Domain of Istan. Waypoint: Astrarium. "
+        "en": "/kneel at the insight, in Domain of Istan. Waypoint: Astralarium. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70333,9 +70478,15 @@
       {
        "bit": 3,
        "name": "Sandswept Isles Insight: Atholma",
-       "map": "Îles de Ventesable",
+       "map": {
+        "fr": "Îles de Ventesable",
+        "en": "Sandswept Isles"
+       },
        "waypoint": {
-        "name": "Atholma",
+        "name": {
+         "fr": "Atholma",
+         "en": "Atholma"
+        },
         "chat_code": "[&BEMLAAA=]"
        },
        "how": {
@@ -70350,14 +70501,20 @@
       {
        "bit": 4,
        "name": "Sandswept Isles Insight: Invariant Enclave",
-       "map": "Îles de Ventesable",
+       "map": {
+        "fr": "Îles de Ventesable",
+        "en": "Sandswept Isles"
+       },
        "waypoint": {
-        "name": "Campement d'Anniogel",
+        "name": {
+         "fr": "Campement d'Anniogel",
+         "en": "Anniogel Encampment"
+        },
         "chat_code": "[&BCULAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, aux Îles de Ventesable. Point de passage : Campement d'Anniogel. Au sud du Labo magnétique [&BC0LAAA=]. Atteindre la plateforme flottante en sautant au Chacal depuis le sommet de la pyramide, sur la plateforme à l'ouest.",
-        "en": "/kneel at the insight, in Sandswept Isles. Waypoint: Campement d'Anniogel. "
+        "en": "/kneel at the insight, in Sandswept Isles. Waypoint: Anniogel Encampment. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70367,9 +70524,15 @@
       {
        "bit": 5,
        "name": "Sandswept Isles Insight: The Hunting Grounds",
-       "map": "Îles de Ventesable",
+       "map": {
+        "fr": "Îles de Ventesable",
+        "en": "Sandswept Isles"
+       },
        "waypoint": {
-        "name": "Atholma",
+        "name": {
+         "fr": "Atholma",
+         "en": "Atholma"
+        },
         "chat_code": "[&BEMLAAA=]"
        },
        "how": {
@@ -70384,14 +70547,20 @@
       {
        "bit": 6,
        "name": "Domain of Kourna Insight: Allied Encampment",
-       "map": "Domaine de Kourna",
+       "map": {
+        "fr": "Domaine de Kourna",
+        "en": "Domain of Kourna"
+       },
        "waypoint": {
-        "name": "Campement allié",
+        "name": {
+         "fr": "Campement allié",
+         "en": "Allied Encampment"
+        },
         "chat_code": "[&BFcLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Domaine de Kourna. Point de passage : Campement allié. Partir au sud-ouest et monter l'échafaudage extérieur en Sauteur. Le sanctuaire est en haut de la tour, sous l'auvent.",
-        "en": "/kneel at the insight, in Domain of Kourna. Waypoint: Campement allié. "
+        "en": "/kneel at the insight, in Domain of Kourna. Waypoint: Allied Encampment. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70401,14 +70570,20 @@
       {
        "bit": 7,
        "name": "Domain of Kourna Insight: Bokoss Prison Ruins",
-       "map": "Domaine de Kourna",
+       "map": {
+        "fr": "Domaine de Kourna",
+        "en": "Domain of Kourna"
+       },
        "waypoint": {
-        "name": "Campement allié",
+        "name": {
+         "fr": "Campement allié",
+         "en": "Allied Encampment"
+        },
         "chat_code": "[&BFcLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Domaine de Kourna. Point de passage : Campement allié. Prendre le portail vers les Ruines de la prison de Bokoss [&BFYLAAA=] et défoncer le mur avec la maîtrise Brise-barrière du Scarabée. ⚠ Exige la maîtrise Brise-barrière du Scarabée : sans elle, le sanctuaire est inaccessible.",
-        "en": "/kneel at the insight, in Domain of Kourna. Waypoint: Campement allié.  ⚠ Requires the Roller Beetle's Barrier Smash mastery: without it the insight is unreachable."
+        "en": "/kneel at the insight, in Domain of Kourna. Waypoint: Allied Encampment.  ⚠ Requires the Roller Beetle's Barrier Smash mastery: without it the insight is unreachable."
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70418,14 +70593,20 @@
       {
        "bit": 8,
        "name": "Domain of Kourna Insight: Dabiji Hollows",
-       "map": "Domaine de Kourna",
+       "map": {
+        "fr": "Domaine de Kourna",
+        "en": "Domain of Kourna"
+       },
        "waypoint": {
-        "name": "Campement allié",
+        "name": {
+         "fr": "Campement allié",
+         "en": "Allied Encampment"
+        },
         "chat_code": "[&BFcLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Domaine de Kourna. Point de passage : Campement allié. Aller à l'est par le pont, puis passer sous le second pont pour entrer dans la grotte. L'escalade au Sauteur est délicate : le Griffon passe mieux.",
-        "en": "/kneel at the insight, in Domain of Kourna. Waypoint: Campement allié. "
+        "en": "/kneel at the insight, in Domain of Kourna. Waypoint: Allied Encampment. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70435,14 +70616,20 @@
       {
        "bit": 9,
        "name": "Jahai Insight: Crescent's Prosperity",
-       "map": "Promontoire de Jahai",
+       "map": {
+        "fr": "Promontoire de Jahai",
+        "en": "Jahai Bluffs"
+       },
        "waypoint": {
-        "name": "Chancellerie récupérée",
+        "name": {
+         "fr": "Chancellerie récupérée",
+         "en": "Reclaimed Chantry"
+        },
         "chat_code": "[&BJkLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, au Promontoire de Jahai. Point de passage : Chancellerie récupérée. Monter la bordure nord du bâtiment en Sauteur.",
-        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Chancellerie récupérée. "
+        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Reclaimed Chantry. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70452,14 +70639,20 @@
       {
        "bit": 10,
        "name": "Jahai Insight: Fang of the Dragon",
-       "map": "Promontoire de Jahai",
+       "map": {
+        "fr": "Promontoire de Jahai",
+        "en": "Jahai Bluffs"
+       },
        "waypoint": {
-        "name": "Vendetta de l'âme",
+        "name": {
+         "fr": "Vendetta de l'âme",
+         "en": "Soul's Vendetta"
+        },
         "chat_code": "[&BIMLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, au Promontoire de Jahai. Point de passage : Vendetta de l'âme. Le sanctuaire est au sommet d'une stalagmite marquée. Sauter dans l'encoche sud en Sauteur, puis rebondir plus haut.",
-        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Vendetta de l'âme. "
+        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Soul's Vendetta. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70469,14 +70662,20 @@
       {
        "bit": 11,
        "name": "Jahai Insight: Harpy Rock",
-       "map": "Promontoire de Jahai",
+       "map": {
+        "fr": "Promontoire de Jahai",
+        "en": "Jahai Bluffs"
+       },
        "waypoint": {
-        "name": "Chancellerie récupérée",
+        "name": {
+         "fr": "Chancellerie récupérée",
+         "en": "Reclaimed Chantry"
+        },
         "chat_code": "[&BJkLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, au Promontoire de Jahai. Point de passage : Chancellerie récupérée. Monter en Sauteur sur le bâtiment situé à l'ouest du sanctuaire.",
-        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Chancellerie récupérée. "
+        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Reclaimed Chantry. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70486,14 +70685,20 @@
       {
        "bit": 12,
        "name": "Jahai Insight: Scar Overlook",
-       "map": "Promontoire de Jahai",
+       "map": {
+        "fr": "Promontoire de Jahai",
+        "en": "Jahai Bluffs"
+       },
        "waypoint": {
-        "name": "Col de Venta",
+        "name": {
+         "fr": "Col de Venta",
+         "en": "Venta Pass"
+        },
         "chat_code": "[&BJMLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, au Promontoire de Jahai. Point de passage : Col de Venta. Passer le portail de sable au Chacal depuis la Caverne de cristal [&BJQLAAA=], continuer en Griffon ou Raptor, finir l'ascension au Sauteur.",
-        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Col de Venta. "
+        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Venta Pass. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70503,14 +70708,20 @@
       {
        "bit": 13,
        "name": "Jahai Insight: Talon of the Dragon",
-       "map": "Promontoire de Jahai",
+       "map": {
+        "fr": "Promontoire de Jahai",
+        "en": "Jahai Bluffs"
+       },
        "waypoint": {
-        "name": "Village de Yatendi",
+        "name": {
+         "fr": "Village de Yatendi",
+         "en": "Yatendi Village"
+        },
         "chat_code": "[&BH4LAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, au Promontoire de Jahai. Point de passage : Village de Yatendi. Approcher l'arche par l'est en Griffon, ou monter en Sauteur sur l'arche opposée.",
-        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Village de Yatendi. "
+        "en": "/kneel at the insight, in Jahai Bluffs. Waypoint: Yatendi Village. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70520,14 +70731,20 @@
       {
        "bit": 14,
        "name": "Thunderhead Peaks Insight: Niles — Honored Ritual",
-       "map": "Pics de Chef-Tonnerre",
+       "map": {
+        "fr": "Pics de Chef-Tonnerre",
+        "en": "Thunderhead Peaks"
+       },
        "waypoint": {
-        "name": "Cœur de la révolution",
+        "name": {
+         "fr": "Cœur de la révolution",
+         "en": "Revolution's Heart"
+        },
         "chat_code": "[&BKYLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, aux Pics de Chef-Tonnerre. Point de passage : Cœur de la révolution. ⚠ Ce n'est pas un sanctuaire à escalader : parler à Niles du rituel, puis jouer les notes 325 – 324. ⚠ Cas unique : aucune escalade, mais une énigme musicale. La page de discussion du wiki signale que s'agenouiller à côté du point de maîtrise ne valide plus — il faut bien passer par le rituel.",
-        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Cœur de la révolution.  ⚠ Unique case: no climbing, a musical puzzle instead. The wiki talk page reports that kneeling next to the mastery point no longer credits — the ritual is required."
+        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Revolution's Heart.  ⚠ Unique case: no climbing, a musical puzzle instead. The wiki talk page reports that kneeling next to the mastery point no longer credits — the ritual is required."
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70537,14 +70754,20 @@
       {
        "bit": 15,
        "name": "Thunderhead Peaks Insight: Brechnar's Gauntlet",
-       "map": "Pics de Chef-Tonnerre",
+       "map": {
+        "fr": "Pics de Chef-Tonnerre",
+        "en": "Thunderhead Peaks"
+       },
        "waypoint": {
-        "name": "Fin de l'histoire",
+        "name": {
+         "fr": "Fin de l'histoire",
+         "en": "History's End"
+        },
         "chat_code": "[&BLsLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, aux Pics de Chef-Tonnerre. Point de passage : Fin de l'histoire. Traverser les Catacombes naines : depuis la salle principale, monter l'escalier et suivre le tunnel jusqu'au Gantelet de Brechnar [&BKALAAA=].",
-        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Fin de l'histoire. "
+        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: History's End. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70554,14 +70777,20 @@
       {
        "bit": 16,
        "name": "Thunderhead Peaks Insight: Ironhammer Crossing",
-       "map": "Pics de Chef-Tonnerre",
+       "map": {
+        "fr": "Pics de Chef-Tonnerre",
+        "en": "Thunderhead Peaks"
+       },
        "waypoint": {
-        "name": "Pont d'observation",
+        "name": {
+         "fr": "Pont d'observation",
+         "en": "Observation Deck"
+        },
         "chat_code": "[&BLkLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, aux Pics de Chef-Tonnerre. Point de passage : Pont d'observation. Depuis le Chemin des Exaltés [&BLYLAAA=], aller à l'ouest jusqu'aux trois hauts piliers de pierre, puis enchaîner Raptor et Sauteur.",
-        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Pont d'observation. "
+        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Observation Deck. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70571,14 +70800,20 @@
       {
        "bit": 17,
        "name": "Thunderhead Peaks Insight: Sorrow's Cave",
-       "map": "Pics de Chef-Tonnerre",
+       "map": {
+        "fr": "Pics de Chef-Tonnerre",
+        "en": "Thunderhead Peaks"
+       },
        "waypoint": {
-        "name": "Mouillage",
+        "name": {
+         "fr": "Mouillage",
+         "en": "Moorage"
+        },
         "chat_code": "[&BLoLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, aux Pics de Chef-Tonnerre. Point de passage : Mouillage. Aller à l'ouest vers la Pique de Hundar, puis au nord pour trouver l'entrée de la grotte. Suivre la magie volatile en montant au Sauteur.",
-        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Mouillage. "
+        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Moorage. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70588,14 +70823,20 @@
       {
        "bit": 18,
        "name": "Thunderhead Peaks Insight: Shattered Bay",
-       "map": "Pics de Chef-Tonnerre",
+       "map": {
+        "fr": "Pics de Chef-Tonnerre",
+        "en": "Thunderhead Peaks"
+       },
        "waypoint": {
-        "name": "Cœur de la révolution",
+        "name": {
+         "fr": "Cœur de la révolution",
+         "en": "Revolution's Heart"
+        },
         "chat_code": "[&BKYLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, aux Pics de Chef-Tonnerre. Point de passage : Cœur de la révolution. Se placer sur le bord ouest de la banquise, sous l'ouverture, et sauter dedans au Sauteur.",
-        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Cœur de la révolution. "
+        "en": "/kneel at the insight, in Thunderhead Peaks. Waypoint: Revolution's Heart. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70605,14 +70846,20 @@
       {
        "bit": 19,
        "name": "Dragonfall Insight: Dragon's Snare",
-       "map": "Chute draconique",
+       "map": {
+        "fr": "Chute draconique",
+        "en": "Dragonfall"
+       },
        "waypoint": {
-        "name": "Commandement du Pacte",
+        "name": {
+         "fr": "Commandement du Pacte",
+         "en": "Pact Command"
+        },
         "chat_code": "[&BN4LAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Commandement du Pacte. Suivre l'eau du canyon le long du corps de Kralkatorrik et entrer dans une crevasse. ⚠ Le plus contraignant des 24 : la crevasse est murée tant que l'assaut final du méta de carte n'est pas terminé. À sauter en priorité si tu n'en fais que 20.",
-        "en": "/kneel at the insight, in Dragonfall. Waypoint: Commandement du Pacte.  ⚠ The most constrained of the 24: the crevice is walled off until the map meta's final assault is complete. Skip this one first if you only do 20."
+        "en": "/kneel at the insight, in Dragonfall. Waypoint: Pact Command.  ⚠ The most constrained of the 24: the crevice is walled off until the map meta's final assault is complete. Skip this one first if you only do 20."
        },
        "skip_candidate": true,
        "how_verified": true,
@@ -70622,14 +70869,20 @@
       {
        "bit": 20,
        "name": "Dragonfall Insight: Gnarlgrove Overlook",
-       "map": "Chute draconique",
+       "map": {
+        "fr": "Chute draconique",
+        "en": "Dragonfall"
+       },
        "waypoint": {
-        "name": "Commandement du Pacte",
+        "name": {
+         "fr": "Commandement du Pacte",
+         "en": "Pact Command"
+        },
         "chat_code": "[&BN4LAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Commandement du Pacte. Monter au sommet des montagnes, au nord-ouest de la région de Melandru.",
-        "en": "/kneel at the insight, in Dragonfall. Waypoint: Commandement du Pacte. "
+        "en": "/kneel at the insight, in Dragonfall. Waypoint: Pact Command. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70639,14 +70892,20 @@
       {
        "bit": 21,
        "name": "Dragonfall Insight: Grenth's Teeth Coastline",
-       "map": "Chute draconique",
+       "map": {
+        "fr": "Chute draconique",
+        "en": "Dragonfall"
+       },
        "waypoint": {
-        "name": "Les Enfers",
+        "name": {
+         "fr": "Les Enfers",
+         "en": "The Underworld"
+        },
         "chat_code": "[&BNELAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Les Enfers. Angle sud-ouest de la région des Enfers de Grenth.",
-        "en": "/kneel at the insight, in Dragonfall. Waypoint: Les Enfers. "
+        "en": "/kneel at the insight, in Dragonfall. Waypoint: The Underworld. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70656,14 +70915,20 @@
       {
        "bit": 22,
        "name": "Dragonfall Insight: Scorched Cliffs Treetop",
-       "map": "Chute draconique",
+       "map": {
+        "fr": "Chute draconique",
+        "en": "Dragonfall"
+       },
        "waypoint": {
-        "name": "Forêt en flammes",
+        "name": {
+         "fr": "Forêt en flammes",
+         "en": "Burning Forest"
+        },
         "chat_code": "[&BOYLAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Forêt en flammes. Escalader les falaises à l'ouest du camp de la Floraison de cristal, dans la Forêt en flammes de Balthazar.",
-        "en": "/kneel at the insight, in Dragonfall. Waypoint: Forêt en flammes. "
+        "en": "/kneel at the insight, in Dragonfall. Waypoint: Burning Forest. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70673,14 +70938,20 @@
       {
        "bit": 23,
        "name": "Dragonfall Insight: Skyscale Eyrie",
-       "map": "Chute draconique",
+       "map": {
+        "fr": "Chute draconique",
+        "en": "Dragonfall"
+       },
        "waypoint": {
-        "name": "Les Enfers",
+        "name": {
+         "fr": "Les Enfers",
+         "en": "The Underworld"
+        },
         "chat_code": "[&BNELAAA=]"
        },
        "how": {
         "fr": "/kneel au sanctuaire, en Chute draconique. Point de passage : Les Enfers. Sur un plateau de la côte sud de la région des Enfers de Grenth.",
-        "en": "/kneel at the insight, in Dragonfall. Waypoint: Les Enfers. "
+        "en": "/kneel at the insight, in Dragonfall. Waypoint: The Underworld. "
        },
        "skip_candidate": false,
        "how_verified": true,
@@ -70711,7 +70982,8 @@
        "name": "Glimpse",
        "wiki": "Glimpse"
       }
-     }
+     },
+     "waypoints_en_ref": "wiki, colonne « Nearest Waypoint » — ressources/wiki/vision_ii_farsight.html (lu le 09/10/2026)"
     },
     "vis_istan": {
      "id": 4765,

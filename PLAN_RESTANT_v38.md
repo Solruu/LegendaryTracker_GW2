@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v391) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v392) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -176,9 +176,13 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       (royaume d'Halloween, pas d'id ; « Roi Dement » = nom client du Roi Fou,
       carte 866). Castora : continent, nom propre identique.
 - [x] Les 33 champs `en` qui portaient des noms FR recoivent le nom anglais.
-- [ ] Points de passage en francais dans des champs `en` (« Nearest
-      waypoint: Route grise », « Creux ancien »…) : autre domaine (POI), a
-      lire par id de point d'interet.
+- [x] Points de passage d'Aurora II / Vision II (45 lieux, 09/10,
+      `gw2_points_passage_en_v1`, sources v392) : noms anglais lus dans les
+      colonnes « Nearest Waypoint » des captures du wiki ; controle : un meme
+      nom anglais = un meme code de chat. `waypoint.name` et `map` passent en
+      { fr, en } (forme des cartes existante, rendu par NX inchange). Noms
+      francais non retouches : ils n'ont pas ete confrontes a l'API (POI).
+      Mad King's Realm = « Royaume du Roi Dement » valide par Antoine.
 
 ---
 
