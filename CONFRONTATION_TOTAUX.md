@@ -1,15 +1,15 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v393.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v394.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **984 accords** — le nombre affiche est celui de la table.
+- **963 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **153 excedents expliques** — le surplus vient d'une branche
+- **174 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
 - **0 excedents nus** — rien dans la donnee ne les explique : soit
@@ -62,11 +62,30 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen1_the_minstrel` | `dust_incandescent` | 750 | 250 | `opal_orb` |
 | `gen2_xiuquatl` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `warbringer` | `skirmish_claim_ticket` | 2800 | 2450 | `mystic_essence_of_annihilation`, `warcry` |
+| `gen3_aurenes_bite` | `thermocatalytic_reagent` | 490 | 250 | `dragons_bite`, `poem_on_greatswords (omis : deldrimor_steel_greatsword_blade)` |
+| `gen3_aurenes_rending` | `thermocatalytic_reagent` | 480 | 250 | `dragons_rending`, `poem_on_axes (omis : deldrimor_steel_axe_blade)` |
 | `gen2_the_binding_of_ipos` | `dust_crystalline` | 465 | 250 | `ars_goetia`, `gift_of_dust` |
 | `gen2_xiuquatl` | `dust_crystalline` | 465 | 250 | `gift_of_dust`, `tlehco` |
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
+| `gen3_aurenes_tail` | `thermocatalytic_reagent` | 400 | 250 | `dragons_tail`, `poem_on_maces (omis : deldrimor_steel_mace_head)` |
 | `gen2_exordium` | `darksteel_ingot` | 370 | 250 | `exitare` |
 | `gen2_the_shining_blade` | `darksteel_ingot` | 370 | 250 | `save_the_queen` |
+| `gen3_aurenes_argument` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_argument` |
+| `gen3_aurenes_bite` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_bite` |
+| `gen3_aurenes_breath` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_breath` |
+| `gen3_aurenes_claw` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_claw_weapon` |
+| `gen3_aurenes_fang` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_fang` |
+| `gen3_aurenes_flight` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_flight` |
+| `gen3_aurenes_gaze` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_gaze` |
+| `gen3_aurenes_insight` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_insight` |
+| `gen3_aurenes_persuasion` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_persuasion` |
+| `gen3_aurenes_rending` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_rending` |
+| `gen3_aurenes_scale` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_scale` |
+| `gen3_aurenes_tail` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_tail` |
+| `gen3_aurenes_voice` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_voice` |
+| `gen3_aurenes_weight` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_weight` |
+| `gen3_aurenes_wing` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_wing` |
+| `gen3_aurenes_wisdom` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_wisdom` |
 | `gen2_claw_of_the_khan_ur` | `shard_of_resolution` | 200 | 100 | `claw_of_resolution` |
 | `gen2_claw_of_the_khan_ur` | `tribute_to_resolution` | 200 | 100 | `claw_of_resolution` |
 | `gen2_claw_of_the_khan_ur` | `mystic_curio` | 200 | 100 | `claw_of_resolution` |
@@ -114,12 +133,9 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen3_aurenes_flight` | `thermocatalytic_reagent` | 340 | 250 | `poem_on_longbows (omis : spiritwood_longbow_stave)` |
 | `gen3_aurenes_wing` | `thermocatalytic_reagent` | 340 | 250 | `poem_on_short_bows (omis : spiritwood_short_bow_stave)` |
 | `gen3_aurenes_argument` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_pistols (omis : deldrimor_steel_pistol_barrel)` |
-| `gen3_aurenes_bite` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_greatswords (omis : deldrimor_steel_greatsword_blade)` |
 | `gen3_aurenes_claw` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_daggers (omis : deldrimor_steel_dagger_blade)` |
 | `gen3_aurenes_fang` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_swords (omis : deldrimor_steel_sword_blade)` |
 | `gen3_aurenes_persuasion` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_rifles (omis : deldrimor_steel_rifle_barrel)` |
-| `gen3_aurenes_rending` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_axes (omis : deldrimor_steel_axe_blade)` |
-| `gen3_aurenes_tail` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_maces (omis : deldrimor_steel_mace_head)` |
 | `gen3_aurenes_voice` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_warhorns (omis : deldrimor_steel_horn)` |
 | `gen3_aurenes_weight` | `thermocatalytic_reagent` | 330 | 250 | `poem_on_hammers (omis : deldrimor_steel_hammer_head)` |
 | `gen2_pharus` | `hard_wood_plank` | 330 | 250 | `spero` |
@@ -133,12 +149,14 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `selachimorpha` | `obsidian_shard` | 310 | 250 | `gift_of_adventure` |
 | `gen2_sharur` | `darksteel_ingot` | 310 | 250 | `might_of_arah` |
 | `gen2_the_hms_divinity` | `hard_wood_plank` | 310 | 250 | `man_o_war` |
+| `gen3_aurenes_bite` | `chunk_of_pure_jade` | 240 | 200 | `dragons_bite` |
 | `gen2_flames_of_war` | `hard_wood_plank` | 290 | 250 | `liturgy` |
 | `gen2_pharus` | `seasoned_wood_plank` | 290 | 250 | `spero` |
 | `gen2_verdarach` | `hard_wood_plank` | 290 | 250 | `call_of_the_void` |
 | `gen2_the_hms_divinity` | `seasoned_wood_plank` | 280 | 250 | `man_o_war` |
 | `gen1_kraitkin` | `dust_incandescent` | 275 | 250 | `superior_sigil_of_venom` |
 | `gen1_meteorlogicus` | `dust_incandescent` | 275 | 250 | `superior_sigil_of_air` |
+| `gen3_aurenes_rending` | `chunk_of_pure_jade` | 220 | 200 | `dragons_rending` |
 | `gen2_flames_of_war` | `seasoned_wood_plank` | 270 | 250 | `liturgy` |
 | `gen1_kraitkin` | `dust_radiant` | 270 | 250 | `superior_sigil_of_venom` |
 | `gen1_meteorlogicus` | `dust_radiant` | 270 | 250 | `superior_sigil_of_air` |
@@ -177,9 +195,12 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_sharur` | `orichalcum_ingot` | 253 | 250 | `might_of_arah` |
 | `gen2_shooshadoo` | `orichalcum_ingot` | 253 | 250 | `friendship` |
 | `gen2_the_shining_blade` | `orichalcum_ingot` | 253 | 250 | `save_the_queen` |
+| `gen3_aurenes_bite` | `blessing_of_the_jade_empress` | 7 | 5 | `dragons_bite` |
+| `gen3_aurenes_rending` | `blessing_of_the_jade_empress` | 7 | 5 | `dragons_rending` |
 | `gen2_flames_of_war` | `ancient_wood_plank` | 252 | 250 | `liturgy` |
 | `gen2_pharus` | `ancient_wood_plank` | 252 | 250 | `spero` |
 | `gen2_the_hms_divinity` | `ancient_wood_plank` | 252 | 250 | `man_o_war` |
 | `gen2_verdarach` | `ancient_wood_plank` | 252 | 250 | `call_of_the_void` |
+| `gen3_aurenes_tail` | `blessing_of_the_jade_empress` | 6 | 5 | `dragons_tail` |
 | `conflux` | `gift_of_battle` | 5 | 4 | `gift_of_the_mists` |
 | `gen1_kudzu` | `dust_crystalline` | 251 | 250 | `superior_sigil_of_celerity` |

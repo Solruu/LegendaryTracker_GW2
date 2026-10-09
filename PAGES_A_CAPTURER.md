@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v393.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v394.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -53,13 +53,39 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 0 composants sans apiId ni page
+## 3 — 26 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
+| `Fortified Precursor Dagger Blade` |
+| `Fortified Precursor Dagger Hilt` |
+| `Fortified Precursor Focus Casing` |
+| `Fortified Precursor Focus Core` |
+| `Fortified Precursor Hammer Head` |
+| `Fortified Precursor Horn` |
+| `Fortified Precursor Longbow Stave` |
+| `Fortified Precursor Mace Head` |
+| `Fortified Precursor Pistol Barrel` |
+| `Fortified Precursor Pistol Frame` |
+| `Fortified Precursor Rifle Barrel` |
+| `Fortified Precursor Rifle Stock` |
+| `Fortified Precursor Scepter Core` |
+| `Fortified Precursor Scepter Rod` |
+| `Fortified Precursor Shield Backing` |
+| `Fortified Precursor Shield Boss` |
+| `Fortified Precursor Short Bow Stave` |
+| `Fortified Precursor Staff Head` |
+| `Fortified Precursor Staff Shaft` |
+| `Fortified Precursor String` |
+| `Fortified Precursor Sword Blade` |
+| `Fortified Precursor Sword Hilt` |
+| `Fortified Precursor Torch Handle` |
+| `Fortified Precursor Torch Head` |
+| `Fortified Precursor Warhorn Mouthpiece` |
+| `Large Fortified Precursor Haft` |
 
 ## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
@@ -85,7 +111,33 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 0 pages à capturer
+## URLs — 26 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Dagger_Blade
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Dagger_Hilt
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Focus_Casing
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Focus_Core
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Hammer_Head
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Horn
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Longbow_Stave
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Mace_Head
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Pistol_Barrel
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Pistol_Frame
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Rifle_Barrel
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Rifle_Stock
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Scepter_Core
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Scepter_Rod
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Shield_Backing
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Shield_Boss
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Short_Bow_Stave
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Staff_Head
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Staff_Shaft
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_String
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Sword_Blade
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Sword_Hilt
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Torch_Handle
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Torch_Head
+https://wiki.guildwars2.com/wiki/Fortified_Precursor_Warhorn_Mouthpiece
+https://wiki.guildwars2.com/wiki/Large_Fortified_Precursor_Haft
 ```

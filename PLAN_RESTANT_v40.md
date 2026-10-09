@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v393) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v394) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -18,14 +18,14 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 |---|---|---|
 | `ARBITRAGES.md` | `controle/gw2_arbitrages_v8` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
-| `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v9` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
+| `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v6` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
-| audit | `controle/gw2_audit_v60` | 0 erreur, 62 avertissements (v365), plus aucun « compte deux fois » |
+| audit | `controle/gw2_audit_v61` | 0 erreur, 62 avertissements (v365), plus aucun « compte deux fois » |
 
 **Migration vers `collections{}` : terminee (Obsidienne comprise, 08/10).** Les dix
 legendaires que le backlog donnait « restants » (§ Migration) sont tous migres
@@ -103,7 +103,12 @@ wiki dira si les trois poids sont acceptes.
       of the Dragon (25 dragonite + 22 500 karma + 5 or, Orrax) ; Olmakhan
       Latigo Strap (250 magie volatile, minimum des vendeurs : Vision
       3 000 → 7 250, JSX v248).
-- [ ] Funerary Incense (Vision, Coalescence) : coeurs 1/jour (gemme + ecto +
+- [x] Funerary Incense — tranche le 09/10 (voie la moins chere, temps et
+      plafond non comptes) : coeurs, 5 Trade Contracts (au lieu de 3 Elegy
+      Mosaics). Vision : 300 EM -> 500 TC (JSX v253, synchro monnaie 34) ;
+      Coalescence garde 300 EM (esprits). Lingot et Intendant = alternatives
+      payantes, hors projection. Ancien constat :
+      coeurs 1/jour (gemme + ecto +
       obsidienne + 5 Trade Contracts) contre Primeval Steward sans limite
       (Trade Contracts ou Elegy Mosaics). La donnee melange deux voies
       (ingredients du coeur + 3 Elegy Mosaics) → A1.
@@ -125,8 +130,12 @@ Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
       Rending, et la cascade du lingot cristallin tombe avec (minerai, huile,
       poussiere aurique, etincelle, fulgurite, 250 gemmes, 250 obsidiennes,
       250 ectos par arme). CONFRONTATION_TOTAUX : 969 → 984 accords.
-- [ ] precurseurs gen3 non decomposes (`dragons_*` sans enfant) : les pieces
-      sont capturees ; les poser ajouterait leur cout aux 16 armes → A1.
+- [x] precurseurs gen3 decomposes le 09/10 (`gw2_decisions_a1_0910_v1`, v394) :
+      2 pieces fortifiees + Transcendent Crystal (10 ectos, Eldritch Scroll,
+      100 reactifs hydrocatalytiques, 10 gemmes) + 100 Memory of Aurene, par
+      arme (tableau « Used in » de memory_of_aurene.html). 4 pieces a recette ;
+      **26 pages de pieces fortifiees a capturer** (PAGES_A_CAPTURER). Outil :
+      `gw2_confronte_totaux_v10` reconnait le precurseur que la table tait.
 
 ### W6 — Doubles comptes signales par l'audit · W
 - [x] Klobjarne (matrices), Transcendence (matrices), Eternity (poussiere) :
@@ -212,9 +221,9 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       timegate). `best` vendor → reward_track, conseils Lyhr / Forge /
       `cap_note` / `note` / `free_sources_note` reecrits, aucune quantite
       (`integration/gw2_trefles_voie_defaut_v1`, v368).
-      Reste ouvert : l'onglet Timegates projette les semaines sur les vendeurs
-      plafonnes payants (45/sem) ; les pistes, sans plafond chiffrable, en
-      sont exclues. Changer la projection change un chiffre affiche → A1.
+      Projection Timegates tranchee le 09/10 : les sources payantes portent
+      `paid_repeatable` (audit v61) et sortent du debit ; elles restent
+      listees avec la mention « alternative payante » (JSX v253).
 - [x] **Gifts Blood/Bones/.../Venom : voie par defaut = recette en or**
       (decision du 04/10). Recettes 10 or chacune, une fois par compte,
       artisan 400 ; Lyhr = +10 ectos par Gift, 80 par poids. Les 80 ectos
@@ -228,17 +237,22 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       l'alliage en feuille (inventaire ou achat), d'ou son ecart.
 - [x] `gift_of_adventure_voe` et `testimony_of_jade_heroics` supprimes
       (accord du 04/10, `integration/gw2_suppressions_v1`).
-- [ ] `bf_meta` : meta de Bitterfrost Frontier, ou Frozen Maw (Wayfarer
-      Foothills) ? Conditionne son acces et sa `ref`.
+- [x] `bf_meta` = Beacons of Koda (09/10) : sans horaire fixe (cycle
+      jour-nuit), Hero's Choice Chest de Frozen Maw retire, Icebound Chests.
 - [ ] § 12 quater : « selections de la liste » — nom de l'ecran.
-- [ ] 16 excedents gen3 (300 contre 250 reactifs) : ouvrir un champ pour les
-      declarer, ou les laisser en excedent signale ?
+- [x] 16 excedents gen3 : deja expliques par l'outil depuis C4 (« branche
+      omise sourcee ») — point clos sans decision.
 
 ### A2 — Releves en jeu
-- [ ] codes de point de passage : Seitung Province (`sp`), Dragon's End (`de2`),
+- [x] 09/10 : `sp` -> Daigo Ward [&BGUNAAA=], `ew` -> Junkyard [&BIsMAAA=]
+      (sources : pages des metas + API) ; `am` et `zak` confirmes par l'API.
+      Faux mais sans source qui tranche (questions a Antoine) : `de2` et `gy`
+      ([&BNMMAAA=] = id 3283, absent de leurs cartes), `in` (code d'Amnytas),
+      `nk` ([&BNQMAAA=] = Qinkai, Echovald), `eb` (Savage Rise, Mont Draconis).
+- [ ] (historique) codes de point de passage : Seitung Province (`sp`), Dragon's End (`de2`),
       Gyala Delve (`gy`) — tous trois `[&BNMMAAA=]` ; Amnytas (`am`) et Inner
       Nayos (`in`) — tous deux `[&BDQOAAA=]` ; Echovald (`ew`) ; Zakiros (`zak`)
-- [ ] Inner Nayos = Secrets of the Obscure (« il me semble », 02/10)
+- [x] Inner Nayos = Secrets of the Obscure (confirme par Antoine le 09/10)
 - [ ] les 23 feuilles de recette se cochent-elles ? (pont `/v2/account/recipes`,
       scope `unlocks`, jamais appele depuis le bac a sable)
 
@@ -381,12 +395,12 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
       Fortune, 250 pieces), deja portee par Sunrise et Twilight. Recette
       wiki : 2 legendaires + 5 poussieres + 10 pierres. Eternity perd 21
       lignes (ectos 250, trefles 77, T6 250 x 7...). Trouve par l'audit
-      (poussiere en direct et via Gift of Magic). `controle/gw2_audit_v60` :
+      (poussiere en direct et via Gift of Magic). `controle/gw2_audit_v61` :
       la regle « fratrie » exclut un legendaire forge d'autres legendaires
       (`collections.*.items[].legendary`), sinon elle reclamait le patron.
 
 ### C4 — Excedents nus et relecture des recettes · C
-- [x] **Excedents nus : 76 → 0** (04/10, `controle/gw2_confronte_totaux_v9`,
+- [x] **Excedents nus : 76 → 0** (04/10, `controle/gw2_confronte_totaux_v10`,
       aucune donnee touchee). Trois defauts de l'outil, pas de la donnee :
       - branche fermee = sans enfant chiffre, tetes comprises : le precurseur
         gen2 (« Endeavor — Requires 500 Weaponsmith ») passait pour ouvert ;
@@ -522,8 +536,8 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
 - [ ] Generaliser au fil des captures. Candidats lus dans les `how`, a
       trancher un par un — la plupart des « Bring » portent un objet de
       quete, pas une consommation :
-      - Chuka III bits 11-13 : une Slab of Poultry Meat par chat (3 a Caer
-        Aval, 1 Shadow, nombre des chats d'Elena inconnu) ;
+      - Chuka III : bits 12 (3) et 13 (1) poses le 09/10
+        (`gw2_couts_chuka_v1`) ; bit 11, nombre des chats d'Elena inconnu ;
       - Vision `vis_brandstone` bit 6 : 10 Kralkatite Ore + 5 Powdered Rose
         Quartz combines au Beam of Light (consommation ? la table du wiki les
         compte-t-elle deja ?).
@@ -554,15 +568,17 @@ plafond d'Insight → semaines restantes ; Stella Radians : karma + Research Not
 en stock reel.
 
 ### S6 — Regionalisation
-Etat chiffre du 01/09 a refaire ; puis traduction des conseils (les noms sont
-faits). `note_alt` d'Ad Infinitum n'est toujours pas rendu.
+Etat du 09/10 : 2 451 etapes de collection sans `how.fr` (le `how_jsx` FR
+existe pour une partie), 170 conseils de source sans `tip.fr`, 1 nom.
+`note_alt` d'Ad Infinitum est rendu (JSX, en retrait). Gros lot de
+traduction a part.
 
 ### S7 — Hygiene
 - [ ] trier `BACKLOG.md` : sections closes et ouvertes melees, titres perimes
       (« 10 restants » de la migration, par exemple)
 - [x] `shared_components` retire des 44 fiches (accord du 04/10).
-- [ ] `RELECTURE_RECETTES` : le script numerotait sa sortie `_v1` au lieu de
-      reprendre la suite — corrige a la main le 04/10, script a corriger
+- [x] `RELECTURE_RECETTES` : numerotation deja corrigee dans le script v6
+      (constat du 09/10). BACKLOG trie (BACKLOG / BACKLOG_CLOS) le 08/10.
 
 ---
 

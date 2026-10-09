@@ -926,6 +926,10 @@ CADENCE_SOURCE_FIELDS = {
     "rng", "per_character",
     # Lus par l'arbitrage Magnetite de l'onglet des cadences.
     "isBudget", "magnetite",
+    # v61 : meme sens que sur `sources[]` — une source payante. Lu par la
+    # projection de l'onglet des cadences, qui ne compte que la voie par defaut
+    # (decision d'Antoine du 09/10 : le moins cher, sans compter le temps).
+    "paid_repeatable",
 }
 
 

@@ -669,7 +669,6 @@
     "vision": {
      "branded_mass": 89537,
      "difluorite": 86977,
-     "elegy": 35,
      "gems": 68063,
      "incense": 86093,
      "inscribed_shard": 87645,
@@ -677,7 +676,8 @@
      "laurel": 3,
      "mistonium": 88955,
      "rose_quartz": 86269,
-     "vm": 45
+     "vm": 45,
+     "trade_contract": 34
     },
     "warbringer": {
      "tickets": 26,
@@ -1394,8 +1394,8 @@
    "durationMin": 30,
    "efficience": "B",
    "population": "moyen",
-   "waypoint": "Shing Jea Monastery Waypoint",
-   "wpCode": "[&BNMMAAA=]",
+   "waypoint": "Daigo Ward Waypoint",
+   "wpCode": "[&BGUNAAA=]",
    "tip": {
     "fr": "Démarre à XX:30 heures impaires UTC. S'enchaîne naturellement avec Echovald (~10 min après).",
     "en": "Starts at XX:30 odd hours UTC. Naturally chains into Echovald (~10 min later)."
@@ -1424,7 +1424,7 @@
     "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
     "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
    },
-   "ref": "Widget:Event timer/data.json — eod-sp, segment « Aetherblade Assault » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "ref": "Widget:Event timer/data.json — eod-sp, segment « Aetherblade Assault » : decalage et intervalle confirmes par gw2_confronte_horaires ; point de passage : ressources/wiki/aetherblade_assault.html (canon de rattrapage au nord-ouest du point) ; id 3429 lu sur /v2/continents/1/floors/1/regions/37/maps/1442/pois",
    "checked": "2026-10-03",
    "verified": true
   },
@@ -1489,8 +1489,8 @@
    "durationMin": 20,
    "efficience": "B",
    "population": "moyen",
-   "waypoint": "Arborstone Waypoint",
-   "wpCode": "[&BLsNAAA=]",
+   "waypoint": "Junkyard Waypoint",
+   "wpCode": "[&BIsMAAA=]",
    "tip": {
     "fr": "2 phases : Gang War puis Junkyard. S'enchaîne depuis Seitung. Population correcte.",
     "en": "2 phases: Gang War then Junkyard. Chains from Seitung. Decent population."
@@ -1516,7 +1516,7 @@
    "rewards_refs": {
     "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Event timers » — carte « The Echovald Wilds »"
    },
-   "ref": "Widget:Event timer/data.json — eod-ew, segment « Aspenwood » : decalage et intervalle confirmes par gw2_confronte_horaires",
+   "ref": "Widget:Event timer/data.json — eod-ew, segment « Aspenwood » : decalage et intervalle confirmes par gw2_confronte_horaires ; point de passage : ressources/wiki/the_gang_war_of_echovald.html (« Jade Tech Waypoint … at the junkyard ») ; id 3211 lu sur /v2/continents/1/floors/1/regions/37/maps/1452/pois",
    "checked": "2026-10-03",
    "verified": true
   },
@@ -1746,9 +1746,9 @@
    "acces": {
     "type": "expansion",
     "access": "SecretsOfTheObscure",
-    "ref": "Antoine, 02/10/2026, « il me semble » — a confirmer",
-    "verified": false,
-    "checked": "2026-10-02"
+    "ref": "Antoine, 09/10/2026 : Inner Nayos fait partie de Secrets of the Obscure",
+    "verified": true,
+    "checked": "2026-10-09"
    },
    "rewards_refs": {
     "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »"
@@ -1783,9 +1783,9 @@
    "acces": {
     "type": "expansion",
     "access": "SecretsOfTheObscure",
-    "ref": "Antoine, 02/10/2026, « il me semble » — a confirmer",
-    "verified": false,
-    "checked": "2026-10-02"
+    "ref": "Antoine, 09/10/2026 : Inner Nayos fait partie de Secrets of the Obscure",
+    "verified": true,
+    "checked": "2026-10-09"
    },
    "icon": "SL",
    "resetNote": "Conditionnel — pas de timer fixe",
@@ -2340,27 +2340,27 @@
    }
   },
   "bf_meta": {
-   "name": "Frozen Maw Meta",
+   "name": "Beacons of Koda",
    "map": {
     "fr": "Confins de Givramer",
     "en": "Bitterfrost Frontier"
    },
    "expansion": "LW3",
    "icon": "BM",
-   "farmType": "per_account",
-   "offsetUTC": 15,
-   "intervalMin": 120,
-   "durationMin": 20,
    "waypoint": "Sorrow's Eclipse Waypoint",
    "wpCode": "[&BH0JAAA=]",
-   "resetNote": {
-    "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
-    "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
-   },
    "tip": {
-    "fr": "Meta toutes les 2h — Hero's Choice Chest (1/compte/jour, hard-reset à 01h) + Winterberries bonus post-meta. Bonne densité de loot.",
-    "en": "Meta every 2h — Hero's Choice Chest (1/account/day, hard-reset at 01h) + bonus Winterberries post-meta. Good loot density."
-   }
+    "fr": "Meta de la carte : défendre les braseros kodan, puis vaincre le Champion de Jormag. Des Icebound Chests apparaissent après chaque meta réussie, dont certains une fois par jour et par personnage.",
+    "en": "Map meta: defend the kodan braziers, then defeat Jormag's Champion. Icebound Chests spawn after every successful meta, some once per day per character."
+   },
+   "isTimeless": true,
+   "timer_notes": {
+    "fr": "Pas d'horaire fixe : la meta suit le cycle jour-nuit de la carte. « Storm arrives » tombe entre 13 h et 15 h, heure tyrienne.",
+    "en": "No fixed schedule: the meta follows the map's day-night cycle. \"Storm arrives\" lands between 1 PM and 3 PM Tyrian time."
+   },
+   "ref": "ressources/wiki/bitterfrost_frontier.html (sections Events, Map resources ; cycle jour-nuit)",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "mistburned": {
    "name": {
@@ -3555,7 +3555,8 @@
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -3570,14 +3571,24 @@
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)"
+      "ref": "wiki:Funerary_Incense (capture Antoine 22/08/2026)",
+      "paid_repeatable": true
      }
-    ]
+    ],
+    "paid_repeatable_ref": "décision d'Antoine du 09/10 : voie des cœurs par défaut ; lingot et Intendant primitif = alternatives payantes"
    },
    "qty_note": {
     "fr": "Le total à plat de 300 pour Coalescence est supprimé : la fiche donne 250, dans le Gift of Desert Mastery, et la chaîne les porte désormais. Vérifié sur deux pages concordantes — la fiche de l'Encens funéraire et la liste complète de Coalescence.",
     "en": "The flat 300 for Coalescence is removed: the wiki gives 250, inside the Gift of Desert Mastery, and the chain now carries them. Verified on two concordant pages — the Funerary Incense page and Coalescence's full material list."
-   }
+   },
+   "best": "renown_heart",
+   "verified": true,
+   "checked": "2026-10-09",
+   "best_reason": {
+    "fr": "voie la moins chère, temps non compté : 5 Contrats commerciaux par encens, contre 3 Mosaïques d'élégie ou 100 Contrats chez l'Intendant primitif, ou un Lingot cristallin. Gemme, ecto et obsidienne sont communs à toutes les voies.",
+    "en": "cheapest route, time not counted: 5 Trade Contracts per incense, against 3 Elegy Mosaics or 100 Trade Contracts from the Primeval Steward, or a Crystalline Ingot. Gemstone, ecto and obsidian are shared by every route."
+   },
+   "ref": "ressources/wiki/funerary_incense.html (tableau Acquisition : cœurs = 1 gemme + 1 ecto + 1 obsidienne + 5 Trade Contracts) — voie retenue par décision d'Antoine du 09/10 (le moins cher, sans temps ni plafond)"
   },
   "kralkatite_ore": {
    "name": "Kralkatite Ore",
@@ -5759,8 +5770,12 @@
   "trade_contract": {
    "name": "Trade Contract",
    "apiId": 87064,
-   "needed_for": [],
-   "qty": {},
+   "needed_for": [
+    "funerary_incense"
+   ],
+   "qty": {
+    "funerary_incense": 5
+   },
    "farmable": true,
    "sources": [
     {
@@ -6402,11 +6417,13 @@
     "aetheric_anchor",
     "gift_of_research",
     "selachimorpha",
-    "stella_radians"
+    "stella_radians",
+    "transcendent_crystal"
    ],
    "qty": {
     "selachimorpha": 1000,
-    "gift_of_research": 500
+    "gift_of_research": 500,
+    "transcendent_crystal": 100
    },
    "farmable": true,
    "sources": [
@@ -6794,7 +6811,8 @@
     "the_ascension",
     "transcendence",
     "unbound_wings",
-    "vial_of_titan_melted_obsidian"
+    "vial_of_titan_melted_obsidian",
+    "transcendent_crystal"
    ],
    "farmable": true,
    "sources": [
@@ -6857,7 +6875,8 @@
     "legendary_inscription": 10,
     "vial_of_titan_melted_obsidian": 3,
     "unbound_wings": 25,
-    "olmakhan_charm": 1
+    "olmakhan_charm": 1,
+    "transcendent_crystal": 10
    },
    "kind": "acquire",
    "best": "salvage",
@@ -7076,7 +7095,8 @@
       "verified": true,
       "checked": "2026-08-11",
       "ref": "wiki:Mystic_Clover",
-      "magnetite": 30
+      "magnetite": 30,
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -7091,7 +7111,8 @@
       },
       "verified": true,
       "checked": "2026-09-08",
-      "ref": "wiki:Mystic_Clover"
+      "ref": "wiki:Mystic_Clover",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -7106,7 +7127,8 @@
       },
       "verified": true,
       "checked": "2026-09-08",
-      "ref": "wiki:Mystic_Clover — liens du HTML, confirmes par la table de Conflux"
+      "ref": "wiki:Mystic_Clover — liens du HTML, confirmes par la table de Conflux",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -7121,7 +7143,8 @@
       },
       "verified": true,
       "checked": "2026-08-11",
-      "ref": "wiki:Mystic_Clover"
+      "ref": "wiki:Mystic_Clover",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -7136,7 +7159,8 @@
       },
       "verified": true,
       "checked": "2026-08-11",
-      "ref": "wiki:Mystic_Clover"
+      "ref": "wiki:Mystic_Clover",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -7166,7 +7190,8 @@
       },
       "verified": true,
       "checked": "2026-09-08",
-      "ref": "wiki:Mystic_Clover"
+      "ref": "wiki:Mystic_Clover",
+      "paid_repeatable": true
      },
      {
       "label": {
@@ -7181,9 +7206,11 @@
       },
       "verified": true,
       "checked": "2026-09-08",
-      "ref": "wiki:Mystic_Clover"
+      "ref": "wiki:Mystic_Clover",
+      "paid_repeatable": true
      }
-    ]
+    ],
+    "paid_repeatable_ref": "décision d'Antoine du 09/10 : la voie par défaut est la moins chère sans compter le temps (pistes gratuites, Coffre du Sorcier) ; les sources payantes sortent du débit hebdomadaire"
    },
    "cap_note": {
     "fr": "Il n'existe pas de plafond global de 25 trèfles par semaine : les vendeurs plafonnés totalisent 45/semaine (15 Manfred + 10 BUY-4373 + 10 Miyani + 5 Dugan + 5 PvP), et Lyhr et la Tisseuse de garde Lucirae vendent sans limite, au prix de Miyani, sans consommer son quota. Mais tous se paient en écus mystiques, éclats spirituels, obsidienne et ectoplasmes : ce sont des alternatives. La voie par défaut reste la timegate — pistes de récompense PvP / McM et 20 par saison au Coffre du Sorcier.",
@@ -7276,7 +7303,8 @@
     "armor_perfected_envoy",
     "gift_of_competitive_prowess",
     "gift_of_expertise",
-    "gift_of_war_prowess"
+    "gift_of_war_prowess",
+    "transcendent_crystal"
    ],
    "farmable": false,
    "sources": [
@@ -7294,7 +7322,8 @@
     "perfected_envoy__per_piece": 1,
     "gift_of_expertise": 1,
     "gift_of_competitive_prowess": 1,
-    "gift_of_war_prowess": 1
+    "gift_of_war_prowess": 1,
+    "transcendent_crystal": 1
    },
    "kind": "acquire"
   },
@@ -10722,7 +10751,8 @@
     "discounted_shard_of_mistburned_barrens",
     "funerary_incense",
     "klobjarne_geirr",
-    "shard_of_bava_nisos"
+    "shard_of_bava_nisos",
+    "transcendent_crystal"
    ],
    "farmable": true,
    "sources": [
@@ -10786,7 +10816,8 @@
     "discounted_shard_of_lowland_shore": 1,
     "discounted_shard_of_mistburned_barrens": 1,
     "shard_of_bava_nisos": 1,
-    "funerary_incense": 1
+    "funerary_incense": 1,
+    "transcendent_crystal": 10
    },
    "verified": true,
    "checked": "2026-08-22",
@@ -11808,7 +11839,6 @@
    "apiId": 35,
    "kind": "currency",
    "qty": {
-    "funerary_incense": 3,
     "spirit_of_the_raptor": 75,
     "spirit_of_the_springer": 75,
     "spirit_of_the_skimmer": 75,
@@ -11833,7 +11863,6 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "needed_for": [
-    "funerary_incense",
     "spirit_of_the_jackal",
     "spirit_of_the_raptor",
     "spirit_of_the_skimmer",
@@ -16870,10 +16899,18 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "gift_of_the_dragon_empire": 5
+    "gift_of_the_dragon_empire": 5,
+    "fortified_precursor_greatsword_blade": 1,
+    "fortified_precursor_greatsword_hilt": 1,
+    "fortified_precursor_axe_head": 1,
+    "small_fortified_precursor_haft": 1
    },
    "needed_for": [
-    "gift_of_the_dragon_empire"
+    "gift_of_the_dragon_empire",
+    "fortified_precursor_greatsword_blade",
+    "fortified_precursor_greatsword_hilt",
+    "fortified_precursor_axe_head",
+    "small_fortified_precursor_haft"
    ],
    "sources": [
     {
@@ -16990,10 +17027,16 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "gift_of_the_dragon_empire": 200
+    "gift_of_the_dragon_empire": 200,
+    "fortified_precursor_greatsword_blade": 20,
+    "fortified_precursor_greatsword_hilt": 20,
+    "fortified_precursor_axe_head": 20
    },
    "needed_for": [
-    "gift_of_the_dragon_empire"
+    "gift_of_the_dragon_empire",
+    "fortified_precursor_greatsword_blade",
+    "fortified_precursor_greatsword_hilt",
+    "fortified_precursor_axe_head"
    ],
    "sources": [
     {
@@ -22641,10 +22684,12 @@
    "kind": "advanced_craft",
    "farmable": false,
    "needed_for": [
-    "poem_on_axes"
+    "poem_on_axes",
+    "fortified_precursor_axe_head"
    ],
    "qty": {
-    "poem_on_axes": 1
+    "poem_on_axes": 1,
+    "fortified_precursor_axe_head": 1
    },
    "sources": [
     {
@@ -22772,11 +22817,13 @@
    "farmable": false,
    "needed_for": [
     "poem_on_greatswords",
-    "exitare"
+    "exitare",
+    "fortified_precursor_greatsword_blade"
    ],
    "qty": {
     "poem_on_greatswords": 1,
-    "exitare": 1
+    "exitare": 1,
+    "fortified_precursor_greatsword_blade": 1
    },
    "sources": [
     {
@@ -24627,386 +24674,434 @@
   "dragons_argument": {
    "name": "Dragon's Argument",
    "apiId": 96915,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_argument"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Huntsman 500, recette apprise par la Sheaf of Recipes: Dragon's Argument. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Huntsman 500, recipe learned from Sheaf of Recipes: Dragon's Argument. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_argument.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_argument.html"
     }
    ],
    "qty": {
     "gen3_aurenes_argument": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_bite": {
    "name": "Dragon's Bite",
    "apiId": 96357,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_bite"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Bite. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Bite. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_bite.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_bite.html"
     }
    ],
    "qty": {
     "gen3_aurenes_bite": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_breath": {
    "name": "Dragon's Breath",
    "apiId": 96925,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_breath"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Huntsman 500, recette apprise par la Sheaf of Recipes: Dragon's Breath. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Huntsman 500, recipe learned from Sheaf of Recipes: Dragon's Breath. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_breath.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_breath.html"
     }
    ],
    "qty": {
     "gen3_aurenes_breath": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_claw_weapon": {
    "name": "Dragon's Claw (weapon)",
    "apiId": 95967,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_claw"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Claw. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Claw. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_claw.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_claw.html"
     }
    ],
    "qty": {
     "gen3_aurenes_claw": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_fang": {
    "name": "Dragon's Fang",
    "apiId": 95994,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_fang"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Fang. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Fang. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_fang.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_fang.html"
     }
    ],
    "qty": {
     "gen3_aurenes_fang": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_flight": {
    "name": "Dragon's Flight",
    "apiId": 95834,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_flight"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Huntsman 500, recette apprise par la Sheaf of Recipes: Dragon's Flight. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Huntsman 500, recipe learned from Sheaf of Recipes: Dragon's Flight. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_flight.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_flight.html"
     }
    ],
    "qty": {
     "gen3_aurenes_flight": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_gaze": {
    "name": "Dragon's Gaze",
    "apiId": 96303,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_gaze"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Artificer 500, recette apprise par la Sheaf of Recipes: Dragon's Gaze. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Artificer 500, recipe learned from Sheaf of Recipes: Dragon's Gaze. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_gaze.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_gaze.html"
     }
    ],
    "qty": {
     "gen3_aurenes_gaze": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_insight": {
    "name": "Dragon's Insight",
    "apiId": 95814,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_insight"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Artificer 500, recette apprise par la Sheaf of Recipes: Dragon's Insight. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Artificer 500, recipe learned from Sheaf of Recipes: Dragon's Insight. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_insight.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_insight.html"
     }
    ],
    "qty": {
     "gen3_aurenes_insight": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_persuasion": {
    "name": "Dragon's Persuasion",
    "apiId": 97267,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_persuasion"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Huntsman 500, recette apprise par la Sheaf of Recipes: Dragon's Persuasion. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Huntsman 500, recipe learned from Sheaf of Recipes: Dragon's Persuasion. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_persuasion.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_persuasion.html"
     }
    ],
    "qty": {
     "gen3_aurenes_persuasion": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_rending": {
    "name": "Dragon's Rending",
    "apiId": 97449,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_rending"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Rending. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Rending. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_rending.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_rending.html"
     }
    ],
    "qty": {
     "gen3_aurenes_rending": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_scale": {
    "name": "Dragon's Scale",
    "apiId": 97691,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_scale"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Scale. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Scale. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_scale.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_scale.html"
     }
    ],
    "qty": {
     "gen3_aurenes_scale": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_tail": {
    "name": "Dragon's Tail",
    "apiId": 96827,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_tail"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Tail. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Tail. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_tail.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_tail.html"
     }
    ],
    "qty": {
     "gen3_aurenes_tail": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_voice": {
    "name": "Dragon's Voice",
    "apiId": 97513,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_voice"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Huntsman 500, recette apprise par la Sheaf of Recipes: Dragon's Voice. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Huntsman 500, recipe learned from Sheaf of Recipes: Dragon's Voice. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_voice.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_voice.html"
     }
    ],
    "qty": {
     "gen3_aurenes_voice": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_weight": {
    "name": "Dragon's Weight",
    "apiId": 95920,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_weight"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Weaponsmith 500, recette apprise par la Sheaf of Recipes: Dragon's Weight. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Weaponsmith 500, recipe learned from Sheaf of Recipes: Dragon's Weight. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_weight.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_weight.html"
     }
    ],
    "qty": {
     "gen3_aurenes_weight": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_wing": {
    "name": "Dragon's Wing",
    "apiId": 96330,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_wing"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Huntsman 500, recette apprise par la Sheaf of Recipes: Dragon's Wing. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Huntsman 500, recipe learned from Sheaf of Recipes: Dragon's Wing. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_wing.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_wing.html"
     }
    ],
    "qty": {
     "gen3_aurenes_wing": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dragons_wisdom": {
    "name": "Dragon's Wisdom",
    "apiId": 96193,
-   "kind": "acquire",
+   "kind": "advanced_craft",
    "needed_for": [
     "gen3_aurenes_wisdom"
    ],
-   "farmable": true,
+   "farmable": false,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Artificer 500, recette apprise par la Sheaf of Recipes: Dragon's Wisdom. Aussi en coffre (Prismatic Precursor Selection Box, coffres de la Bataille de la Mer de Jade).",
+      "en": "Artificer 500, recipe learned from Sheaf of Recipes: Dragon's Wisdom. Also from chests (Prismatic Precursor Selection Box, Battle for the Jade Sea coffers)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de aurenes_wisdom.html"
+     "verified": true,
+     "checked": "2026-10-09",
+     "ref": "ressources/wiki/memory_of_aurene.html (Used in) + ressources/wiki/dragons_wisdom.html"
     }
    ],
    "qty": {
     "gen3_aurenes_wisdom": 1
-   }
+   },
+   "ref": "ressources/wiki/memory_of_aurene.html, tableau « Used in »",
+   "verified": true,
+   "checked": "2026-10-09"
   },
   "dusk": {
    "name": "Dusk",
@@ -27560,7 +27655,8 @@
    "apiId": 45855,
    "kind": "acquire",
    "needed_for": [
-    "exitare"
+    "exitare",
+    "fortified_precursor_greatsword_hilt"
    ],
    "farmable": true,
    "sources": [
@@ -27576,7 +27672,8 @@
     }
    ],
    "qty": {
-    "exitare": 1
+    "exitare": 1,
+    "fortified_precursor_greatsword_hilt": 1
    }
   },
   "deldrimor_steel_shield_backing": {
@@ -28056,7 +28153,8 @@
    "apiId": 45850,
    "kind": "acquire",
    "needed_for": [
-    "endeavor"
+    "endeavor",
+    "small_fortified_precursor_haft"
    ],
    "farmable": true,
    "sources": [
@@ -28072,7 +28170,8 @@
     }
    ],
    "qty": {
-    "endeavor": 1
+    "endeavor": 1,
+    "small_fortified_precursor_haft": 1
    }
   },
   "snow_truffle": {
@@ -30619,6 +30718,837 @@
    "verified": true,
    "checked": "2026-10-08",
    "ref": "boite Recipe de pile_of_cinnamon_and_sugar (ressources/wiki)"
+  },
+  "memory_of_aurene": {
+   "name": "Memory of Aurene",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "dragons_argument": 100,
+    "dragons_bite": 100,
+    "dragons_breath": 100,
+    "dragons_claw_weapon": 100,
+    "dragons_fang": 100,
+    "dragons_flight": 100,
+    "dragons_gaze": 100,
+    "dragons_insight": 100,
+    "dragons_persuasion": 100,
+    "dragons_rending": 100,
+    "dragons_scale": 100,
+    "dragons_tail": 100,
+    "dragons_voice": 100,
+    "dragons_weight": 100,
+    "dragons_wing": 100,
+    "dragons_wisdom": 100
+   },
+   "needed_for": [
+    "dragons_argument",
+    "dragons_bite",
+    "dragons_breath",
+    "dragons_claw_weapon",
+    "dragons_fang",
+    "dragons_flight",
+    "dragons_gaze",
+    "dragons_insight",
+    "dragons_persuasion",
+    "dragons_rending",
+    "dragons_scale",
+    "dragons_tail",
+    "dragons_voice",
+    "dragons_weight",
+    "dragons_wing",
+    "dragons_wisdom"
+   ],
+   "sources": [
+    {
+     "type": "meta_drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Coffres de fin de méta (Soo-Won, Kralkatorrik, Dragonstorm : 1 fois par jour et par compte), étapes d'histoire rejouées (LW3, LW4), coffre de récompense d'End of Dragons (25).",
+      "en": "Meta finale chests (Soo-Won, Kralkatorrik, Dragonstorm: once per day per account), replayed story steps (LW3, LW4), End of Dragons Reward Coffer (25)."
+     }
+    }
+   ],
+   "ref": "ressources/wiki/memory_of_aurene.html (Acquisition)",
+   "verified": true,
+   "checked": "2026-10-09",
+   "apiId": 96088
+  },
+  "chunk_of_petrified_echovald_resin": {
+   "name": "Chunk of Petrified Echovald Resin",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "small_fortified_precursor_haft": 20
+   },
+   "needed_for": [
+    "small_fortified_precursor_haft"
+   ],
+   "sources": [
+    {
+     "type": "acquire",
+     "tip": {
+      "fr": "Matériau d'End of Dragons.",
+      "en": "End of Dragons material."
+     }
+    }
+   ],
+   "ref": "gw2_materials_ref.json (id 96471)",
+   "verified": true,
+   "checked": "2026-10-09",
+   "apiId": 96471
+  },
+  "transcendent_crystal": {
+   "name": "Transcendent Crystal",
+   "apiId": 95913,
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_argument": 1,
+    "dragons_bite": 1,
+    "dragons_breath": 1,
+    "dragons_claw_weapon": 1,
+    "dragons_fang": 1,
+    "dragons_flight": 1,
+    "dragons_gaze": 1,
+    "dragons_insight": 1,
+    "dragons_persuasion": 1,
+    "dragons_rending": 1,
+    "dragons_scale": 1,
+    "dragons_tail": 1,
+    "dragons_voice": 1,
+    "dragons_weight": 1,
+    "dragons_wing": 1,
+    "dragons_wisdom": 1
+   },
+   "needed_for": [
+    "dragons_argument",
+    "dragons_bite",
+    "dragons_breath",
+    "dragons_claw_weapon",
+    "dragons_fang",
+    "dragons_flight",
+    "dragons_gaze",
+    "dragons_insight",
+    "dragons_persuasion",
+    "dragons_rending",
+    "dragons_scale",
+    "dragons_tail",
+    "dragons_voice",
+    "dragons_weight",
+    "dragons_wing",
+    "dragons_wisdom"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Artisanat 500 (Artificier, Forgeron d'armes ou Chasseur).",
+      "en": "Crafted at 500 (Artificer, Weaponsmith or Huntsman)."
+     }
+    }
+   ],
+   "ref": "ressources/wiki/transcendent_crystal.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_pistol_barrel": {
+   "name": "Fortified Precursor Pistol Barrel",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_argument": 1
+   },
+   "needed_for": [
+    "dragons_argument"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_pistol_frame": {
+   "name": "Fortified Precursor Pistol Frame",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_argument": 1
+   },
+   "needed_for": [
+    "dragons_argument"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_greatsword_blade": {
+   "name": "Fortified Precursor Greatsword Blade",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_bite": 1
+   },
+   "needed_for": [
+    "dragons_bite"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500).",
+      "en": "Fortified part (crafted at 500)."
+     }
+    }
+   ],
+   "ref": "ressources/wiki/fortified_precursor_greatsword_blade.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-09",
+   "apiId": 97235
+  },
+  "fortified_precursor_greatsword_hilt": {
+   "name": "Fortified Precursor Greatsword Hilt",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_bite": 1
+   },
+   "needed_for": [
+    "dragons_bite"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500).",
+      "en": "Fortified part (crafted at 500)."
+     }
+    }
+   ],
+   "ref": "ressources/wiki/fortified_precursor_greatsword_hilt.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-09",
+   "apiId": 97366
+  },
+  "fortified_precursor_torch_head": {
+   "name": "Fortified Precursor Torch Head",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_breath": 1
+   },
+   "needed_for": [
+    "dragons_breath"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_torch_handle": {
+   "name": "Fortified Precursor Torch Handle",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_breath": 1
+   },
+   "needed_for": [
+    "dragons_breath"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_dagger_blade": {
+   "name": "Fortified Precursor Dagger Blade",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_claw_weapon": 1
+   },
+   "needed_for": [
+    "dragons_claw_weapon"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_dagger_hilt": {
+   "name": "Fortified Precursor Dagger Hilt",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_claw_weapon": 1
+   },
+   "needed_for": [
+    "dragons_claw_weapon"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_sword_blade": {
+   "name": "Fortified Precursor Sword Blade",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_fang": 1
+   },
+   "needed_for": [
+    "dragons_fang"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_sword_hilt": {
+   "name": "Fortified Precursor Sword Hilt",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_fang": 1
+   },
+   "needed_for": [
+    "dragons_fang"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_longbow_stave": {
+   "name": "Fortified Precursor Longbow Stave",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_flight": 1
+   },
+   "needed_for": [
+    "dragons_flight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_string": {
+   "name": "Fortified Precursor String",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_flight": 1,
+    "dragons_wing": 1
+   },
+   "needed_for": [
+    "dragons_flight",
+    "dragons_wing"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_focus_core": {
+   "name": "Fortified Precursor Focus Core",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_gaze": 1
+   },
+   "needed_for": [
+    "dragons_gaze"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_focus_casing": {
+   "name": "Fortified Precursor Focus Casing",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_gaze": 1
+   },
+   "needed_for": [
+    "dragons_gaze"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_staff_head": {
+   "name": "Fortified Precursor Staff Head",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_insight": 1
+   },
+   "needed_for": [
+    "dragons_insight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_staff_shaft": {
+   "name": "Fortified Precursor Staff Shaft",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_insight": 1
+   },
+   "needed_for": [
+    "dragons_insight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_rifle_barrel": {
+   "name": "Fortified Precursor Rifle Barrel",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_persuasion": 1
+   },
+   "needed_for": [
+    "dragons_persuasion"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_rifle_stock": {
+   "name": "Fortified Precursor Rifle Stock",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_persuasion": 1
+   },
+   "needed_for": [
+    "dragons_persuasion"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_axe_head": {
+   "name": "Fortified Precursor Axe Head",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_rending": 1
+   },
+   "needed_for": [
+    "dragons_rending"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500).",
+      "en": "Fortified part (crafted at 500)."
+     }
+    }
+   ],
+   "ref": "ressources/wiki/fortified_precursor_axe_head.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-09",
+   "apiId": 96398
+  },
+  "small_fortified_precursor_haft": {
+   "name": "Small Fortified Precursor Haft",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_rending": 1,
+    "dragons_tail": 1
+   },
+   "needed_for": [
+    "dragons_rending",
+    "dragons_tail"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500).",
+      "en": "Fortified part (crafted at 500)."
+     }
+    }
+   ],
+   "ref": "ressources/wiki/small_fortified_precursor_haft.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-09",
+   "apiId": 95656
+  },
+  "fortified_precursor_shield_boss": {
+   "name": "Fortified Precursor Shield Boss",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_scale": 1
+   },
+   "needed_for": [
+    "dragons_scale"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_shield_backing": {
+   "name": "Fortified Precursor Shield Backing",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_scale": 1
+   },
+   "needed_for": [
+    "dragons_scale"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_mace_head": {
+   "name": "Fortified Precursor Mace Head",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_tail": 1
+   },
+   "needed_for": [
+    "dragons_tail"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_horn": {
+   "name": "Fortified Precursor Horn",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_voice": 1
+   },
+   "needed_for": [
+    "dragons_voice"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_warhorn_mouthpiece": {
+   "name": "Fortified Precursor Warhorn Mouthpiece",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_voice": 1
+   },
+   "needed_for": [
+    "dragons_voice"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_hammer_head": {
+   "name": "Fortified Precursor Hammer Head",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_weight": 1
+   },
+   "needed_for": [
+    "dragons_weight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "large_fortified_precursor_haft": {
+   "name": "Large Fortified Precursor Haft",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_weight": 1
+   },
+   "needed_for": [
+    "dragons_weight"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_short_bow_stave": {
+   "name": "Fortified Precursor Short Bow Stave",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_wing": 1
+   },
+   "needed_for": [
+    "dragons_wing"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_scepter_core": {
+   "name": "Fortified Precursor Scepter Core",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_wisdom": 1
+   },
+   "needed_for": [
+    "dragons_wisdom"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
+  },
+  "fortified_precursor_scepter_rod": {
+   "name": "Fortified Precursor Scepter Rod",
+   "kind": "advanced_craft",
+   "farmable": false,
+   "qty": {
+    "dragons_wisdom": 1
+   },
+   "needed_for": [
+    "dragons_wisdom"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Pièce fortifiée (artisanat 500). Recette non capturée : page à verser.",
+      "en": "Fortified part (crafted at 500). Recipe not captured: page to add."
+     }
+    }
+   ],
+   "ref": "nom lu dans ressources/wiki/memory_of_aurene.html (Used in) ; recette non capturee, aucune deduction par patron — page listee dans PAGES_A_CAPTURER",
+   "verified": false,
+   "checked": "2026-10-09"
   }
  },
  "enchaînements_recommandés": {
@@ -65754,7 +66684,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
        "how_fr_missing": true,
-       "wiki": "Pact_Cat_Sitter"
+       "wiki": "Pact_Cat_Sitter",
+       "cost": {
+        "slab_of_poultry_meat": 3
+       },
+       "cost_ref": "slab_of_poultry_meat : « Give a Slab of Poultry Meat to … » — ressources/wiki/chuka_and_champawat_iii_tigris.html"
       },
       {
        "bit": 13,
@@ -65767,7 +66701,11 @@
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/chuka_*.html",
        "how_fr_missing": true,
-       "wiki": "Royal_Cat_Sitter"
+       "wiki": "Royal_Cat_Sitter",
+       "cost": {
+        "slab_of_poultry_meat": 1
+       },
+       "cost_ref": "slab_of_poultry_meat : « Give a Slab of Poultry Meat to … » — ressources/wiki/chuka_and_champawat_iii_tigris.html"
       },
       {
        "bit": 14,

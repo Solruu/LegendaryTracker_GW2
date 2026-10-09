@@ -3,7 +3,7 @@
 Les scripts du tracker, rangés par domaine. Ils se lancent **depuis la racine
 du dépôt** :
 
-    python scripts_tracker/controle/gw2_audit_v60.py
+    python scripts_tracker/controle/gw2_audit_v61.py
 
 | dossier | rôle |
 |---|---|

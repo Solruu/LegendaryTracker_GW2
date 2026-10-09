@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v393.json` — généré par `gw2_relecture_recettes_v6.py`.
+Source : `gw2_sources_v394.json` — généré par `gw2_relecture_recettes_v6.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -15,8 +15,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 224 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 111 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 160 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 95 |
 
 Écartés sans être comptés : 25 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -54,7 +54,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 224
+## Ingrédients absents, cités par la recette d'une feuille — 160
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -70,15 +70,15 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `orichalcum_ingot` | `Orichalcum_Ore` |  | `orichalcum_ingot` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_frenzy` … (+31) |
 | `darksteel_ingot` | `Lump_of_Primordium` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
 | `darksteel_ingot` | `Platinum_Ore` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
-| `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
-| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+22) |
-| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+22) |
+| `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+29) |
+| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
+| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
 | `steel_ingot` | `Iron_Ore` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `steel_ingot` | `Lump_of_Coal` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `Gossamer_Scrap` |  | `bolt_of_gossamer` | sous une feuille | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `Iron_Ore` |  | `iron_ingot` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
 | `platinum_ingot` | `Platinum_Ore` |  | `platinum_ingot` | sous une feuille | `gen1_bolt`, `gen1_frostfang`, `gen1_incinerator` … (+15) |
-| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+13) |
+| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+15) |
 | `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+11) |
 | `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
 | `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
@@ -125,70 +125,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `dawn` | `Essence_of_Illumination` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Mirror_(item)` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Spirit_of_the_Perfected_Daysword` |  | `dawn` | sous une feuille | `gen1_sunrise` |
-| `dragons_argument` | `Fortified_Precursor_Pistol_Barrel` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
-| `dragons_argument` | `Fortified_Precursor_Pistol_Frame` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
-| `dragons_argument` | `Memory_of_Aurene` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
-| `dragons_argument` | `Transcendent_Crystal` |  | `dragons_argument` | sous une feuille | `gen3_aurenes_argument` |
-| `dragons_bite` | `Fortified_Precursor_Greatsword_Blade` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
-| `dragons_bite` | `Fortified_Precursor_Greatsword_Hilt` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
-| `dragons_bite` | `Memory_of_Aurene` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
-| `dragons_bite` | `Transcendent_Crystal` |  | `dragons_bite` | sous une feuille | `gen3_aurenes_bite` |
-| `dragons_breath` | `Fortified_Precursor_Torch_Handle` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
-| `dragons_breath` | `Fortified_Precursor_Torch_Head` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
-| `dragons_breath` | `Memory_of_Aurene` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
-| `dragons_breath` | `Transcendent_Crystal` |  | `dragons_breath` | sous une feuille | `gen3_aurenes_breath` |
-| `dragons_claw_weapon` | `Fortified_Precursor_Dagger_Blade` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
-| `dragons_claw_weapon` | `Fortified_Precursor_Dagger_Hilt` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
-| `dragons_claw_weapon` | `Memory_of_Aurene` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
-| `dragons_claw_weapon` | `Transcendent_Crystal` |  | `dragons_claw_weapon` | sous une feuille | `gen3_aurenes_claw` |
-| `dragons_fang` | `Fortified_Precursor_Sword_Blade` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
-| `dragons_fang` | `Fortified_Precursor_Sword_Hilt` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
-| `dragons_fang` | `Memory_of_Aurene` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
-| `dragons_fang` | `Transcendent_Crystal` |  | `dragons_fang` | sous une feuille | `gen3_aurenes_fang` |
-| `dragons_flight` | `Fortified_Precursor_Longbow_Stave` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
-| `dragons_flight` | `Fortified_Precursor_String` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
-| `dragons_flight` | `Memory_of_Aurene` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
-| `dragons_flight` | `Transcendent_Crystal` |  | `dragons_flight` | sous une feuille | `gen3_aurenes_flight` |
-| `dragons_gaze` | `Fortified_Precursor_Focus_Casing` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
-| `dragons_gaze` | `Fortified_Precursor_Focus_Core` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
-| `dragons_gaze` | `Memory_of_Aurene` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
-| `dragons_gaze` | `Transcendent_Crystal` |  | `dragons_gaze` | sous une feuille | `gen3_aurenes_gaze` |
-| `dragons_insight` | `Fortified_Precursor_Staff_Head` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
-| `dragons_insight` | `Fortified_Precursor_Staff_Shaft` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
-| `dragons_insight` | `Memory_of_Aurene` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
-| `dragons_insight` | `Transcendent_Crystal` |  | `dragons_insight` | sous une feuille | `gen3_aurenes_insight` |
-| `dragons_persuasion` | `Fortified_Precursor_Rifle_Barrel` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
-| `dragons_persuasion` | `Fortified_Precursor_Rifle_Stock` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
-| `dragons_persuasion` | `Memory_of_Aurene` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
-| `dragons_persuasion` | `Transcendent_Crystal` |  | `dragons_persuasion` | sous une feuille | `gen3_aurenes_persuasion` |
-| `dragons_rending` | `Fortified_Precursor_Axe_Head` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
-| `dragons_rending` | `Memory_of_Aurene` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
-| `dragons_rending` | `Small_Fortified_Precursor_Haft` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
-| `dragons_rending` | `Transcendent_Crystal` |  | `dragons_rending` | sous une feuille | `gen3_aurenes_rending` |
-| `dragons_scale` | `Fortified_Precursor_Shield_Backing` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
-| `dragons_scale` | `Fortified_Precursor_Shield_Boss` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
-| `dragons_scale` | `Memory_of_Aurene` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
-| `dragons_scale` | `Transcendent_Crystal` |  | `dragons_scale` | sous une feuille | `gen3_aurenes_scale` |
-| `dragons_tail` | `Fortified_Precursor_Mace_Head` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
-| `dragons_tail` | `Memory_of_Aurene` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
-| `dragons_tail` | `Small_Fortified_Precursor_Haft` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
-| `dragons_tail` | `Transcendent_Crystal` |  | `dragons_tail` | sous une feuille | `gen3_aurenes_tail` |
-| `dragons_voice` | `Fortified_Precursor_Horn` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
-| `dragons_voice` | `Fortified_Precursor_Warhorn_Mouthpiece` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
-| `dragons_voice` | `Memory_of_Aurene` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
-| `dragons_voice` | `Transcendent_Crystal` |  | `dragons_voice` | sous une feuille | `gen3_aurenes_voice` |
-| `dragons_weight` | `Fortified_Precursor_Hammer_Head` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
-| `dragons_weight` | `Large_Fortified_Precursor_Haft` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
-| `dragons_weight` | `Memory_of_Aurene` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
-| `dragons_weight` | `Transcendent_Crystal` |  | `dragons_weight` | sous une feuille | `gen3_aurenes_weight` |
-| `dragons_wing` | `Fortified_Precursor_Short_Bow_Stave` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
-| `dragons_wing` | `Fortified_Precursor_String` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
-| `dragons_wing` | `Memory_of_Aurene` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
-| `dragons_wing` | `Transcendent_Crystal` |  | `dragons_wing` | sous une feuille | `gen3_aurenes_wing` |
-| `dragons_wisdom` | `Fortified_Precursor_Scepter_Core` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
-| `dragons_wisdom` | `Fortified_Precursor_Scepter_Rod` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
-| `dragons_wisdom` | `Memory_of_Aurene` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
-| `dragons_wisdom` | `Transcendent_Crystal` |  | `dragons_wisdom` | sous une feuille | `gen3_aurenes_wisdom` |
 | `dusk` | `Dimensional_Destabilizer` |  | `dusk` | sous une feuille | `gen1_twilight` |
 | `dusk` | `Essence_of_Gloom` |  | `dusk` | sous une feuille | `gen1_twilight` |
 | `dusk` | `Mirror_(item)` |  | `dusk` | sous une feuille | `gen1_twilight` |
@@ -283,7 +219,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 111
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 95
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -313,16 +249,16 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+34) |
 | `orichalcum_ingot` | `1 ingrédients` |  | `orichalcum_ingot` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_frenzy` … (+31) |
 | `darksteel_ingot` | `2 ingrédients` |  | `darksteel_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
-| `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
-| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+22) |
-| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+22) |
+| `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+29) |
+| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
+| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
 | `ancient_wood_plank` | `1 ingrédients` |  | `ancient_wood_plank` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kudzu` … (+20) |
 | `steel_ingot` | `2 ingrédients` |  | `steel_ingot` | feuille assumée | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `1 ingrédients` |  | `bolt_of_gossamer` | feuille assumée | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `1 ingrédients` |  | `iron_ingot` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
 | `platinum_ingot` | `1 ingrédients` |  | `platinum_ingot` | feuille assumée | `gen1_bolt`, `gen1_frostfang`, `gen1_incinerator` … (+15) |
+| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+15) |
 | `ancient_wood_pulp` | `1 ingrédients` |  | `ancient_wood_pulp` | feuille assumée | `gen3_aurenes_argument`, `gen3_aurenes_bite`, `gen3_aurenes_breath` … (+13) |
-| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+13) |
 | `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+11) |
 | `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
 | `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
@@ -354,22 +290,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `charged_fossil` | `2 ingrédients` |  | `charged_fossil` | feuille assumée | `gen1_howler` |
 | `charged_thorn` | `2 ingrédients` |  | `charged_thorn` | feuille assumée | `gen1_twilight` |
 | `dawn` | `4 ingrédients` |  | `dawn` | feuille assumée | `gen1_sunrise` |
-| `dragons_argument` | `4 ingrédients` |  | `dragons_argument` | feuille assumée | `gen3_aurenes_argument` |
-| `dragons_bite` | `4 ingrédients` |  | `dragons_bite` | feuille assumée | `gen3_aurenes_bite` |
-| `dragons_breath` | `4 ingrédients` |  | `dragons_breath` | feuille assumée | `gen3_aurenes_breath` |
-| `dragons_claw_weapon` | `4 ingrédients` |  | `dragons_claw_weapon` | feuille assumée | `gen3_aurenes_claw` |
-| `dragons_fang` | `4 ingrédients` |  | `dragons_fang` | feuille assumée | `gen3_aurenes_fang` |
-| `dragons_flight` | `4 ingrédients` |  | `dragons_flight` | feuille assumée | `gen3_aurenes_flight` |
-| `dragons_gaze` | `4 ingrédients` |  | `dragons_gaze` | feuille assumée | `gen3_aurenes_gaze` |
-| `dragons_insight` | `4 ingrédients` |  | `dragons_insight` | feuille assumée | `gen3_aurenes_insight` |
-| `dragons_persuasion` | `4 ingrédients` |  | `dragons_persuasion` | feuille assumée | `gen3_aurenes_persuasion` |
-| `dragons_rending` | `4 ingrédients` |  | `dragons_rending` | feuille assumée | `gen3_aurenes_rending` |
-| `dragons_scale` | `4 ingrédients` |  | `dragons_scale` | feuille assumée | `gen3_aurenes_scale` |
-| `dragons_tail` | `4 ingrédients` |  | `dragons_tail` | feuille assumée | `gen3_aurenes_tail` |
-| `dragons_voice` | `4 ingrédients` |  | `dragons_voice` | feuille assumée | `gen3_aurenes_voice` |
-| `dragons_weight` | `4 ingrédients` |  | `dragons_weight` | feuille assumée | `gen3_aurenes_weight` |
-| `dragons_wing` | `4 ingrédients` |  | `dragons_wing` | feuille assumée | `gen3_aurenes_wing` |
-| `dragons_wisdom` | `4 ingrédients` |  | `dragons_wisdom` | feuille assumée | `gen3_aurenes_wisdom` |
 | `dusk` | `4 ingrédients` |  | `dusk` | feuille assumée | `gen1_twilight` |
 | `gift_of_the_astral_ward` | `4 ingrédients` |  | `gift_of_the_astral_ward` | feuille assumée | `obsidian` |
 | `glacial_shard` | `4 ingrédients` |  | `glacial_shard` | feuille assumée | `orrax_manifested` |
@@ -399,7 +319,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 181 ingrédients, et qui les réclame
+## Palier suivant — 149 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
@@ -453,34 +373,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Everburning_Flame` — réclamé par `rodgorts_flame`
 - `Finely_Tuned_Firing_Pin` — réclamé par `prototype`
 - `Fish_Figurine` — réclamé par `rage_weapon`
-- `Fortified_Precursor_Axe_Head` — réclamé par `dragons_rending`
-- `Fortified_Precursor_Dagger_Blade` — réclamé par `dragons_claw_weapon`
-- `Fortified_Precursor_Dagger_Hilt` — réclamé par `dragons_claw_weapon`
-- `Fortified_Precursor_Focus_Casing` — réclamé par `dragons_gaze`
-- `Fortified_Precursor_Focus_Core` — réclamé par `dragons_gaze`
-- `Fortified_Precursor_Greatsword_Blade` — réclamé par `dragons_bite`
-- `Fortified_Precursor_Greatsword_Hilt` — réclamé par `dragons_bite`
-- `Fortified_Precursor_Hammer_Head` — réclamé par `dragons_weight`
-- `Fortified_Precursor_Horn` — réclamé par `dragons_voice`
-- `Fortified_Precursor_Longbow_Stave` — réclamé par `dragons_flight`
-- `Fortified_Precursor_Mace_Head` — réclamé par `dragons_tail`
-- `Fortified_Precursor_Pistol_Barrel` — réclamé par `dragons_argument`
-- `Fortified_Precursor_Pistol_Frame` — réclamé par `dragons_argument`
-- `Fortified_Precursor_Rifle_Barrel` — réclamé par `dragons_persuasion`
-- `Fortified_Precursor_Rifle_Stock` — réclamé par `dragons_persuasion`
-- `Fortified_Precursor_Scepter_Core` — réclamé par `dragons_wisdom`
-- `Fortified_Precursor_Scepter_Rod` — réclamé par `dragons_wisdom`
-- `Fortified_Precursor_Shield_Backing` — réclamé par `dragons_scale`
-- `Fortified_Precursor_Shield_Boss` — réclamé par `dragons_scale`
-- `Fortified_Precursor_Short_Bow_Stave` — réclamé par `dragons_wing`
-- `Fortified_Precursor_Staff_Head` — réclamé par `dragons_insight`
-- `Fortified_Precursor_Staff_Shaft` — réclamé par `dragons_insight`
-- `Fortified_Precursor_String` — réclamé par `dragons_flight`, `dragons_wing`
-- `Fortified_Precursor_Sword_Blade` — réclamé par `dragons_fang`
-- `Fortified_Precursor_Sword_Hilt` — réclamé par `dragons_fang`
-- `Fortified_Precursor_Torch_Handle` — réclamé par `dragons_breath`
-- `Fortified_Precursor_Torch_Head` — réclamé par `dragons_breath`
-- `Fortified_Precursor_Warhorn_Mouthpiece` — réclamé par `dragons_voice`
 - `Freezing_Core` — réclamé par `tooth_of_frostfang`
 - `Fuel_Cannister` — réclamé par `spark_weapon`
 - `Gift_of_Amnytas` — réclamé par `gift_of_the_astral_ward`
@@ -501,7 +393,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Horse_Figure` — réclamé par `the_lover`
 - `Iron_Ore` — réclamé par `iron_ingot`, `steel_ingot`
 - `Lapis_Nugget` — réclamé par `lapis_lump`
-- `Large_Fortified_Precursor_Haft` — réclamé par `dragons_weight`
 - `Lattice_(component)` — réclamé par `leaf_of_kudzu`
 - `Leaf_Fossil` — réclamé par `charged_fossil`
 - `Linen_Scrap` — réclamé par `bolt_of_linen`
@@ -509,7 +400,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Lump_of_Coal` — réclamé par `steel_ingot`
 - `Lump_of_Primordium` — réclamé par `darksteel_ingot`
 - `Masterwork_Essence_of_Luck` — réclamé par `rare_essence_of_luck`
-- `Memory_of_Aurene` — réclamé par `dragons_argument`, `dragons_bite`, `dragons_breath`, `dragons_claw_weapon`, `dragons_fang`, `dragons_flight`, `dragons_gaze`, `dragons_insight`, `dragons_persuasion`, `dragons_rending`, `dragons_scale`, `dragons_tail`, `dragons_voice`, `dragons_weight`, `dragons_wing`, `dragons_wisdom`
 - `Mini_Risen_Priest_of_Balthazar` — réclamé par `obsidian_shard`
 - `Mirror_(item)` — réclamé par `dawn`, `dusk`
 - `Mithril_Ore` — réclamé par `mithril_ingot`
@@ -541,7 +431,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Silver_Ore` — réclamé par `silver_ingot`
 - `Small_Claw` — réclamé par `claw`
 - `Small_Fang` — réclamé par `fang`
-- `Small_Fortified_Precursor_Haft` — réclamé par `dragons_rending`, `dragons_tail`
 - `Small_Scale` — réclamé par `scale`
 - `Small_Totem` — réclamé par `totem`
 - `Small_Venom_Sac` — réclamé par `venom_sac`
@@ -576,7 +465,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Thick_Leather_Section` — réclamé par `cured_thick_leather_square`, `hardened_leather_section`
 - `Thin_Leather_Section` — réclamé par `cured_thin_leather_square`
 - `Tome_of_Heroes` — réclamé par `the_chosen`
-- `Transcendent_Crystal` — réclamé par `dragons_argument`, `dragons_bite`, `dragons_breath`, `dragons_claw_weapon`, `dragons_fang`, `dragons_flight`, `dragons_gaze`, `dragons_insight`, `dragons_persuasion`, `dragons_rending`, `dragons_scale`, `dragons_tail`, `dragons_voice`, `dragons_weight`, `dragons_wing`, `dragons_wisdom`
 - `Vial_of_Thin_Blood` — réclamé par `vial_of_blood`
 - `Visage_of_Champawat` — réclamé par `tigris`
 - `Visage_of_Chuka` — réclamé par `tigris`

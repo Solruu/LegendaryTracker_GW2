@@ -235,6 +235,23 @@ for page in sorted(P.WIKI.glob("*.html")):
     fermes = {to_id(n) for t, e, _q in brut for n in (t, e) if n not in ouverts}
     cites = {to_id(n) for t, e, _q in brut for n in (t, e)} - {None}
     fermes.discard(None)
+    # v10 : LE PRECURSEUR QUE LA TABLE TAIT. Les tables gen3 s'arretent avant
+    # le precurseur : elles ne le citent meme pas. Depuis sa decomposition
+    # (pieces fortifiees, Transcendent Crystal, 100 Memory of Aurene, v394),
+    # tout ce qui pend dessous sortait en « excedent nu » — 100 reactifs
+    # hydrocatalytiques par arme, alors que la recette du precurseur le dit.
+    # Le precurseur est declare par le legendaire (`precursor`, sourcé par
+    # `precursor_ref`) : une table qui ne le cite pas le ferme par omission.
+    # Le nom du legendaire peut etre plus court que celui de la page de
+    # l'objet (« Dragon's Claw » / « Dragon's Claw (weapon) ») : on prend alors
+    # l'unique enfant direct du legendaire dont le nom commence pareil.
+    _pn = (L.get(leg) or {}).get("precursor") or ""
+    prec = to_id(_pn) if _pn else None
+    if _pn and not prec:
+        _c = [c for c in cc if leg in (cc[c].get("qty") or {}) and norm(nom(c)).startswith(norm(_pn))]
+        prec = _c[0] if len(_c) == 1 else None
+    if prec and prec not in cites and T.get(prec, 0):
+        fermes.add(prec)
     for item, tot_table in ecrit.items():
         cid = to_id(item)
         if not cid:
