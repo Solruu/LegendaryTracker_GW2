@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v398) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v399) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -574,10 +574,16 @@ plafond d'Insight → semaines restantes ; Stella Radians : karma + Research Not
 en stock reel.
 
 ### S6 — Regionalisation
-Etat du 09/10 : 2 451 etapes de collection sans `how.fr` (le `how_jsx` FR
-existe pour une partie), 170 conseils de source sans `tip.fr`, 1 nom.
-`note_alt` d'Ad Infinitum est rendu (JSX, en retrait). Gros lot de
-traduction a part.
+✅ 12/10 (accord d'Antoine) : 2 622 champs `fr` vides poses (1 869 textes
+uniques : etapes de collection, conseils, 1 nom), `gw2_traduction_how_v1`,
+v399. Traduction par 8 agents sur regles ecrites
+(`ressources/traductions/REGLES.md`, textes et resultat au depot) : noms
+d'objets / succes / PNJ restes en anglais (NXS les traduit), cartes par le
+glossaire API + 13 cartes de Tyrie centrale (/v2/maps?lang=fr, 12/10), lieux
+hors glossaire en anglais. Controles : codes de chat et noms de composants
+retrouves dans chaque traduction. Reste : 0 champ `fr` vide.
+Reserves : « dracaille » (skyscale) pose de tete par un agent ; tournures
+« a la Foret de Caledon » au lieu de « dans la ».
 
 ### S7 — Hygiene
 - [ ] trier `BACKLOG.md` : sections closes et ouvertes melees, titres perimes
