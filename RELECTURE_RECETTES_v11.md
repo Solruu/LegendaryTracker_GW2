@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v397.json` — généré par `gw2_relecture_recettes_v6.py`.
+Source : `gw2_sources_v398.json` — généré par `gw2_relecture_recettes_v6.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -67,22 +67,22 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_sac` | `Small_Venom_Sac` |  | `venom_sac` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_blood` | `Vial_of_Thin_Blood` |  | `vial_of_blood` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `mithril_ingot` | `Mithril_Ore` |  | `mithril_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+34) |
+| `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+32) |
 | `orichalcum_ingot` | `Orichalcum_Ore` |  | `orichalcum_ingot` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_frenzy` … (+31) |
 | `darksteel_ingot` | `Lump_of_Primordium` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
 | `darksteel_ingot` | `Platinum_Ore` |  | `darksteel_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
-| `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+29) |
-| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
-| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
+| `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
+| `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
 | `steel_ingot` | `Iron_Ore` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `steel_ingot` | `Lump_of_Coal` |  | `steel_ingot` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `Gossamer_Scrap` |  | `bolt_of_gossamer` | sous une feuille | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `Iron_Ore` |  | `iron_ingot` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
+| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+18) |
 | `platinum_ingot` | `Platinum_Ore` |  | `platinum_ingot` | sous une feuille | `gen1_bolt`, `gen1_frostfang`, `gen1_incinerator` … (+15) |
-| `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+15) |
-| `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+11) |
-| `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
-| `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
-| `cured_thin_leather_square` | `Thin_Leather_Section` |  | `cured_thin_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
+| `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+13) |
+| `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
+| `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
+| `cured_thin_leather_square` | `Thin_Leather_Section` |  | `cured_thin_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
 | `hardened_leather_section` | `Thick_Leather_Section` |  | `hardened_leather_section` | sous une feuille | `endless_summer`, `gen1_howler`, `gen1_kraitkin` … (+6) |
 | `onyx_lodestone` | `Onyx_Core` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
 | `charged_lodestone` | `Charged_Core` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
@@ -247,22 +247,22 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `vial_of_blood` | `3 ingrédients` |  | `vial_of_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_thick_blood` | `3 ingrédients` |  | `vial_of_thick_blood` | feuille assumée | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `mithril_ingot` | `1 ingrédients` |  | `mithril_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+34) |
+| `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+32) |
 | `orichalcum_ingot` | `1 ingrédients` |  | `orichalcum_ingot` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_frenzy` … (+31) |
 | `darksteel_ingot` | `2 ingrédients` |  | `darksteel_ingot` | feuille assumée | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+29) |
-| `elder_wood_plank` | `1 ingrédients` |  | `elder_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+29) |
-| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
-| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+24) |
+| `hard_wood_plank` | `1 ingrédients` |  | `hard_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
+| `seasoned_wood_plank` | `1 ingrédients` |  | `seasoned_wood_plank` | feuille assumée | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+27) |
 | `ancient_wood_plank` | `1 ingrédients` |  | `ancient_wood_plank` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kudzu` … (+20) |
 | `steel_ingot` | `2 ingrédients` |  | `steel_ingot` | feuille assumée | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `bolt_of_gossamer` | `1 ingrédients` |  | `bolt_of_gossamer` | feuille assumée | `gen1_bolt`, `gen1_quip`, `gen1_the_flameseeker_prophecies` … (+19) |
 | `iron_ingot` | `1 ingrédients` |  | `iron_ingot` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+19) |
+| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+18) |
 | `platinum_ingot` | `1 ingrédients` |  | `platinum_ingot` | feuille assumée | `gen1_bolt`, `gen1_frostfang`, `gen1_incinerator` … (+15) |
-| `soft_wood_plank` | `1 ingrédients` |  | `soft_wood_plank` | feuille assumée | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+15) |
 | `ancient_wood_pulp` | `1 ingrédients` |  | `ancient_wood_pulp` | feuille assumée | `gen3_aurenes_argument`, `gen3_aurenes_bite`, `gen3_aurenes_breath` … (+13) |
-| `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+11) |
-| `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
-| `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
-| `cured_thin_leather_square` | `1 ingrédients` |  | `cured_thin_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+10) |
+| `cured_thick_leather_square` | `1 ingrédients` |  | `cured_thick_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+13) |
+| `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
+| `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
+| `cured_thin_leather_square` | `1 ingrédients` |  | `cured_thin_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
 | `hardened_leather_section` | `3 ingrédients` |  | `hardened_leather_section` | feuille assumée | `endless_summer`, `gen1_howler`, `gen1_kraitkin` … (+6) |
 | `onyx_lodestone` | `4 ingrédients` |  | `onyx_lodestone` | feuille assumée | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
 | `charged_lodestone` | `4 ingrédients` |  | `charged_lodestone` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
