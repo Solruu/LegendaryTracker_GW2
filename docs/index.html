@@ -819,7 +819,7 @@ function useT() {
 const SOURCES_DB = {
   "_meta": {
     "version": "v249",
-    "last_updated": "2026-10-09",
+    "last_updated": "2026-10-12",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -2258,8 +2258,8 @@ const SOURCES_DB = {
       "durationMin": 40,
       "efficience": "C",
       "population": "morte",
-      "waypoint": "Lutgardis Conservatory Waypoint",
-      "wpCode": "[&BNQMAAA=]",
+      "waypoint": "Ministry Ward Waypoint",
+      "wpCode": "[&BBkNAAA=]",
       "tip": {
         "fr": "Population quasi nulle hors rotation Wizard's Vault. Ne pas planifier autour — opportuniste uniquement si la map est active.",
         "en": "Near-empty population outside Wizard's Vault rotation. Don't plan around it — opportunistic only if the map is active."
@@ -2288,7 +2288,7 @@ const SOURCES_DB = {
         "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
         "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
       },
-      "ref": "Widget:Event timer/data.json — eod-nkc, segment « Kaineng Blackout » : decalage et intervalle confirmes par gw2_confronte_horaires",
+      "ref": "Widget:Event timer/data.json — eod-nkc, segment « Kaineng Blackout » : decalage et intervalle confirmes par gw2_confronte_horaires ; point de passage : releve d'Antoine du 12/10/2026, code confronte a l'id du point sur /v2/continents/…/pois",
       "checked": "2026-10-03",
       "verified": true
     },
@@ -2353,8 +2353,8 @@ const SOURCES_DB = {
       "durationMin": 60,
       "efficience": "C",
       "population": "variable",
-      "waypoint": "The Jade Flats Waypoint",
-      "wpCode": "[&BNMMAAA=]",
+      "waypoint": "Jade Quarry Waypoint",
+      "wpCode": "[&BKIMAAA=]",
       "tip": {
         "fr": "Phase de préparation (14 min) puis bataille (~30 min). La prépa ne garantit pas la bataille. Long, coordination requise, risque d'échec. Mauvaise efficience en gemmes pour l'effort. Rentable si vous aimez le contenu.",
         "en": "Prep phase (14 min) then battle (~30 min). Prep doesn't guarantee the battle. Long, coordination required, risk of failure. Poor gemstone efficiency for the effort. Worth it if you enjoy the content."
@@ -2387,7 +2387,7 @@ const SOURCES_DB = {
         "fr": "Hero's Choice Chest : hard-reset quotidien 01h UTC+1",
         "en": "Hero's Choice Chest: hard-reset daily 01h UTC+1"
       },
-      "ref": "Widget:Event timer/data.json — eod-de, segment « The Battle for the Jade Sea » : decalage et intervalle confirmes par gw2_confronte_horaires",
+      "ref": "Widget:Event timer/data.json — eod-de, segment « The Battle for the Jade Sea » : decalage et intervalle confirmes par gw2_confronte_horaires ; point de passage : releve d'Antoine du 12/10/2026, code confronte a l'id du point sur /v2/continents/…/pois",
       "checked": "2026-10-03",
       "verified": true
     },
@@ -2406,8 +2406,8 @@ const SOURCES_DB = {
       "durationMin": 45,
       "efficience": "C",
       "population": "morte",
-      "waypoint": "Gyala Delve Waypoint",
-      "wpCode": "[&BNMMAAA=]",
+      "waypoint": "Park Mining Ops Waypoint",
+      "wpCode": "[&BKoNAAA=]",
       "tip": {
         "fr": "Population morte hors rotation Wizard's Vault. Minimum de joueurs requis pour déclencher la meta. Opportuniste uniquement.",
         "en": "Dead population outside Wizard's Vault rotation. Minimum players required to trigger the meta. Opportunistic only."
@@ -2432,7 +2432,8 @@ const SOURCES_DB = {
       },
       "rewards_refs": {
         "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Gyala Delve »"
-      }
+      },
+      "ref": "point de passage : releve d'Antoine du 12/10/2026, code confronte a l'id du point sur /v2/continents/…/pois"
     },
     "sw": {
       "name": {
@@ -2542,11 +2543,11 @@ const SOURCES_DB = {
       "durationMin": 30,
       "efficience": "B",
       "population": "très peuplé",
-      "waypoint": "Bastion of the Natural Waypoint",
-      "wpCode": "[&BDQOAAA=]",
+      "waypoint": "Astral Ward Camp Waypoint",
+      "wpCode": "[&BGYOAAA=]",
       "tip": {
-        "fr": "Pas de timer fixe — déclenchement par Map Readiness. Très peuplé quand actif. Permet l'accès à Citadel of Zakiros ensuite.",
-        "en": "No fixed timer - triggered by Map Readiness. Very populated when active. Grants access to Citadel of Zakiros afterwards."
+        "fr": "Pas de timer fixe — déclenchement par Map Readiness. Très peuplé quand actif. Permet l'accès à Citadel of Zakiros ensuite. Road to Heitor part d'Astral Ward Camp ; Les crocs qui grincent, de Forward Bivouac [&BHYOAAA=].",
+        "en": "No fixed timer - triggered by Map Readiness. Very populated when active. Grants access to Citadel of Zakiros afterwards. Road to Heitor starts at Astral Ward Camp; Fangs That Gnash at Forward Bivouac [&BHYOAAA=]."
       },
       "next": [
         "zak"
@@ -2570,7 +2571,8 @@ const SOURCES_DB = {
       },
       "rewards_refs": {
         "amalgamated_gemstone": "wiki:Amalgamated_Gemstone/Events_and_Timers, section « Events (sans timer) » — carte « Inner Nayos »"
-      }
+      },
+      "ref": "point de passage : releve d'Antoine du 12/10/2026, code confronte a l'id du point sur /v2/continents/…/pois"
     },
     "zak": {
       "name": "Into the Spider's Lair",
@@ -3019,8 +3021,8 @@ const SOURCES_DB = {
       "expansion": "LW3",
       "icon": "EB",
       "farmType": "per_char_hearts",
-      "waypoint": "Savage Rise Waypoint",
-      "wpCode": "[&BNMJAAA=]",
+      "waypoint": "Promontory Waypoint",
+      "wpCode": "[&BF8JAAA=]",
       "resetNote": {
         "fr": "soft-reset daily 01h UTC+1",
         "en": "daily soft-reset 01h UTC+1"
@@ -3047,7 +3049,8 @@ const SOURCES_DB = {
         "ref": "wiki:Ember_Bay — « zone available via Living World Season 3 episode Rising Flames », lu le 03/10/2026",
         "verified": true,
         "checked": "2026-10-03"
-      }
+      },
+      "ref": "point de passage : releve d'Antoine du 12/10/2026, code confronte a l'id du point sur /v2/continents/…/pois"
     },
     "dm": {
       "name": "Nodes LW3 + vendor",
