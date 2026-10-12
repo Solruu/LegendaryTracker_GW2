@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v396) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v397) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -247,7 +247,7 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
 ### A2 — Releves en jeu
 - [x] 09/10 : `sp` -> Daigo Ward [&BGUNAAA=], `ew` -> Junkyard [&BIsMAAA=]
       (sources : pages des metas + API) ; `am` et `zak` confirmes par l'API.
-      Releves d'Antoine le 12/10 (`gw2_points_passage_metas_v1`, v396), codes
+      Releves d'Antoine le 12/10 (`gw2_points_passage_metas_v2`, v397), codes
       confrontes a l'API : de2 Jade Quarry, gy Park Mining Ops, in Astral Ward
       Camp (+ Forward Bivouac pour Fangs), nk Ministry Ward, eb Promontory.
       Etaient faux : `de2` et `gy`

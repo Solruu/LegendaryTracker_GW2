@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""A2 : points de passage des metas, releves par Antoine le 12/10/2026.
+"""A2 (v2) : points de passage des metas, releves par Antoine le 12/10/2026.
 
 Usage : python3 scripts_tracker/integration/gw2_points_passage_metas_v1.py SRC DST
 
@@ -31,7 +31,11 @@ POINTS = {
 for k, (nom, code) in POINTS.items():
     m = me[k]
     m["waypoint"], m["wpCode"] = nom, code
-    m["ref"] = ((m.get("ref") + " ; ") if m.get("ref") else "") + "point de passage : " + REF
+    # v2 : une entree sans `ref` n'en recoit pas — l'audit exigerait alors
+    # checked/verified pour TOUTE l'entree, dont l'horaire (gy) n'est pas
+    # confirme. La source du point reste ici, dans l'en-tete du script.
+    if m.get("ref"):
+        m["ref"] += " ; point de passage : " + REF
 tip = me["in"]["tip"]
 tip["fr"] += " Road to Heitor part d'Astral Ward Camp ; Les crocs qui grincent, de Forward Bivouac [&BHYOAAA=]."
 tip["en"] += " Road to Heitor starts at Astral Ward Camp; Fangs That Gnash at Forward Bivouac [&BHYOAAA=]."
