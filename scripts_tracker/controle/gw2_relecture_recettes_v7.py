@@ -32,8 +32,8 @@ Trois defauts distincts, qui n'appellent pas le meme travail :
 
 L'outil ne modifie rien. Il ecrit un rapport.
 
-Usage : python3 gw2_relecture_recettes_v6.py [--rapport RELECTURE_RECETTES_v1.md]
-        python3 gw2_relecture_recettes_v6.py --legendaire ad_infinitum
+Usage : python3 gw2_relecture_recettes_v7.py [--rapport RELECTURE_RECETTES_v1.md]
+        python3 gw2_relecture_recettes_v7.py --legendaire ad_infinitum
 """
 import argparse
 import json
@@ -309,6 +309,12 @@ def main():
                     defauts.append(("AILLEURS", node, titre, qte, page,
                                     "rattaché à " + ", ".join(sorted(ailleurs)[:2])))
                     total["ailleurs"] += 1
+                elif comment.startswith("légendaire"):
+                    # v7 : un legendaire qui en consomme d'autres (Eternity :
+                    # Sunrise + Twilight) les laisse suivre a part — decision du
+                    # 04/10, confirmee par Antoine le 14/10. Ce n'est pas un
+                    # cout perdu, c'est une cible voisine.
+                    total["choix"] += 1
                 else:
                     defauts.append(("NON_RELIE", node, titre, qte, page, comment))
                     total["non_relie"] += 1
@@ -346,7 +352,7 @@ def main():
     compte = {k: sum(1 for c in global_ if c[0] == k) for k in ORDRE}
 
     lignes = ["# Relecture des recettes, légendaire par légendaire", "",
-              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v6.py`.",
+              f"Source : `{src.name}` — généré par `gw2_relecture_recettes_v7.py`.",
               "L'outil descend depuis chaque légendaire et compare, à chaque nœud, les",
               "enfants déclarés à la recette lue sur sa capture. Appariement par apiId",
               "d'abord (591 composants sur 601 en portent un), par nom en dernier recours,",

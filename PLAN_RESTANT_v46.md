@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v400) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v401) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -21,7 +21,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
 | `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
-| `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v6` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
+| `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
 | `PAGES_A_CAPTURER.md` | `captures/gw2_pages_a_capturer_v14` | 1 URL |
@@ -506,8 +506,9 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
         Bound (Unbound Wings) — ni page ni apiId ;
       - non relies Spiritwood Focus Core + Visionary Inscription sous Ars
         Goetia (precurseur d'Ipos, recette lue) : a relier avec le Casing ;
-        Vision Crystal sous Unbound Wings ; Sunrise/Twilight sous Eternity
-        (legendaires composes, modele a decider) ;
+        Vision Crystal sous Unbound Wings ; Sunrise/Twilight sous Eternity :
+        suivis a part (decision du 04/10, confirmee le 14/10), relecture v7
+        ne les compte plus ;
       - plats d'Orrax (4 plats, 12 ingredients dont 6 intermediaires
         cuisines sans page) : decomposer ou laisser en feuilles → A1 ;
       - faux positifs de l'outil : `Dark_Matter` / `glob_of_dark_matter`
@@ -582,7 +583,7 @@ d'objets / succes / PNJ restes en anglais (NXS les traduit), cartes par le
 glossaire API + 13 cartes de Tyrie centrale (/v2/maps?lang=fr, 12/10), lieux
 hors glossaire en anglais. Controles : codes de chat et noms de composants
 retrouves dans chaque traduction. Reste : 0 champ `fr` vide.
-Reserves : « dracaille » (skyscale) pose de tete par un agent ; tournures
+« Dracaille » (skyscale) confirme officiel par Antoine le 14/10. Reserve : tournures
 « a la Foret de Caledon » au lieu de « dans la ».
 
 ### S7 — Hygiene
@@ -591,6 +592,17 @@ Reserves : « dracaille » (skyscale) pose de tete par un agent ; tournures
 - [x] `shared_components` retire des 44 fiches (accord du 04/10).
 - [x] `RELECTURE_RECETTES` : numerotation deja corrigee dans le script v6
       (constat du 09/10). BACKLOG trie (BACKLOG / BACKLOG_CLOS) le 08/10.
+
+---
+
+### C7 — Feuilles a plusieurs matieres premieres · C — ✅ 14/10
+Regle d'Antoine : une feuille a recette lue reste feuille, sauf si elle se
+fabrique a partir de plus d'une matiere premiere. 8 decomposees
+(`gw2_feuilles_multi_v1`, v401) : acier, darksteel, 4 lumps de gemmes,
+charged fossil / thorn ; 12 matieres premieres creees (ids du referentiel).
+Gardees : promotions de Forge (trophees, cuir durci, rondin ancien),
+lodestones (deux recettes, noyaux non modelises), opal crystal (voie coffre
+tranchee), precurseurs gen1 et recettes de Forge aleatoires.
 
 ---
 
