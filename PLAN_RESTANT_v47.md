@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v401) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v402) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -586,6 +586,11 @@ Table `upgrades` parallele et inerte a resorber dans `legendary_rune` /
 ### S4 — § ② Routes vers les 1 978 etapes d'armes · option B retenue (14/10)
 L'onglet Armes cible, mais cliquer une arme ne mene a rien. Option B :
 selecteur d'arme au-dessus de l'onglet Collections, rendu generique reutilise.
+✅ 14/10 (JSX v255, sources v402) : onglet Collections ouvert sur la cible
+Armes (contrat d'onglets, drapeau `isWeaponTracker`), selecteur des armes de
+la generation affichee (◎ = ciblee), arme par defaut = premiere ciblee non
+possedee. Textes « aucune collection » des 28 armes gen2 PoF / gen3 corriges :
+precurseur fabrique a 500, pas forge.
 
 ### S5 — Prerequis Coalescence et Stella Radians
 Reportes « apres Wayfarer's Henge », qui est fait : debloques. Coalescence :

@@ -4381,8 +4381,15 @@ export default function GW2LegendaryTracker() {
   // Collections a etapes : une seule liste, quelle que soit l'origine. Les
   // sources font foi, et elles sont desormais la seule source : les blocs
   // raidAchievements du JSX ont ete supprimes le 27/08/2026.
+  // S4 (14/10) : sur l'onglet Armes, les collections sont celles de l'arme
+  // choisie dans le selecteur au-dessus de la liste — meme rendu generique que
+  // pour toute autre cible, plus de chemin a part.
+  const [wpnCollLeg, setWpnCollLeg] = useState(() => {
+    try { return localStorage.getItem("gw2_weapons_coll_leg") || null; } catch (_) { return null; }
+  });
+  const collCible = selectedLeg === "weapons" ? wpnCollLeg : (SOURCES_ALIAS[selectedLeg] ?? selectedLeg);
   const collSrc = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
-    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections;
+    ?.legendaries?.[collCible]?.collections;
   // Aurora, Vision et Prismatic ont AUSSI des collections{} dans les sources,
   // mais d'une autre forme, rendue par leurs blocs dedies. Le discriminant est
   // la presence de `key` : seule la forme migree la porte. Sans ce test, leur
@@ -4391,9 +4398,9 @@ export default function GW2LegendaryTracker() {
   // Vide ETABLI : l'arme n'a pas de collection, son precurseur se forge. Sans ce
   // message l'onglet serait vide et indiscernable d'une donnee manquante.
   const collSrcNone = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
-    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_none;
+    ?.legendaries?.[collCible]?.collections_none;
   const collSrcOrder = (typeof SOURCES_DB !== "undefined" ? SOURCES_DB : {})
-    ?.legendaries?.[SOURCES_ALIAS[selectedLeg] ?? selectedLeg]?.collections_order;
+    ?.legendaries?.[collCible]?.collections_order;
   const collList = collMigre.length
     ? collMigre.map(c => ({
         key: c.key,
@@ -5357,10 +5364,31 @@ export default function GW2LegendaryTracker() {
     }
     return m;
   }, []);
+  // Armes de la generation affichee, pour le selecteur de l'onglet Collections.
+  const wpnCollChoices = React.useMemo(() => {
+    const out = [];
+    for (const [lid, l] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
+      if (!l || lid.endsWith("_weapon_generic")) continue;
+      const g = l.gen ?? null;
+      if (g !== wpnGen) continue;
+      if (!l.collections && !l.collections_none) continue;
+      out.push([lid, l.name]);
+    }
+    return out.sort((a, b) => String(L(a[1])).localeCompare(String(L(b[1]))));
+  }, [wpnGen, lang]);
   const wpnLegIds = React.useMemo(
     () => [...new Set(wpnTargetGen.filter(id => !wpnOwnedSet.has(id))
       .map(id => LEG_BY_API.get(id)).filter(Boolean))],
     [wpnTargetGen.join(","), wpnOwnedSet.size, LEG_BY_API]);
+  // Choix par defaut : la premiere arme ciblee et non possedee, sinon la
+  // premiere de la generation. Un choix hors generation retombe ici aussi.
+  useEffect(() => {
+    if (!isWeapons) return;
+    const ids = wpnCollChoices.map(([lid]) => lid);
+    if (wpnCollLeg && ids.includes(wpnCollLeg)) return;
+    const choix = wpnLegIds.find(lid => ids.includes(lid)) ?? ids[0] ?? null;
+    setWpnCollLeg(choix);
+  }, [isWeapons, wpnCollChoices, wpnLegIds.join(",")]);
   // Totaux de la cible affichee, pour savoir quelles feuilles de recette la
   // concernent. Meme moteur que le grand total : rien de recalcule a la main.
   // apiId -> identifiant de composant, pour relier une ligne du bloc
@@ -7159,6 +7187,19 @@ export default function GW2LegendaryTracker() {
       {/* Ordre entre paliers : une contrainte de jeu, pas un detail editorial.
           Elle se lit avant la liste, sinon on decouvre trop tard qu'un palier
           en consomme un autre. */}
+      {activeTab === "collections" && isWeapons && (
+        <div style={{ margin: "10px 14px 4px", display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+          <span style={{ fontSize: "11px", color: "rgba(226,201,126,0.6)" }}>{NX({ fr: "Arme", en: "Weapon" })}</span>
+          <select value={wpnCollLeg ?? ""}
+            onChange={e => { const v = e.target.value || null; setWpnCollLeg(v); try { if (v) localStorage.setItem("gw2_weapons_coll_leg", v); } catch (_) {} }}
+            style={{ flex: 1, minWidth: 180, padding: "5px 8px", background: "rgba(0,0,0,0.3)", color: "#e2c97e", border: "1px solid rgba(226,201,126,0.25)", borderRadius: 6, fontSize: "12px" }}>
+            {wpnCollChoices.map(([lid, nom]) => (
+              <option key={lid} value={lid}>{NX(L(nom))}{wpnLegIds.includes(lid) ? " ◎" : ""}</option>
+            ))}
+          </select>
+          <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "◎ = ciblée dans l'onglet Armes", en: "◎ = targeted in the Weapons tab" })}</span>
+        </div>
+      )}
       {activeTab === "collections" && collList.length > 0 && collSrcOrder && (
         <div style={{ margin: "10px 14px 4px", padding: "9px 12px", background: "rgba(96,165,250,0.05)", border: "1px solid rgba(96,165,250,0.18)", borderRadius: 8, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5, color: "rgba(96,165,250,0.75)" }}>
           {NX(collSrcOrder)}
@@ -7200,7 +7241,9 @@ export default function GW2LegendaryTracker() {
               </div>
             );
           })()}
-          <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />
+          {/* Sur l'onglet Armes, ces blocs decrivent la gen3 quelle que soit
+              l'arme choisie : ils restent dans l'onglet Armes. */}
+          {!isWeapons && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />}
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {collList.map(a => {
