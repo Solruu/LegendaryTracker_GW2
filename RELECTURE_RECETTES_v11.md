@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v403.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v404.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -16,7 +16,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
 | PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 143 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 89 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 86 |
 
 Écartés sans être comptés : 27 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -195,7 +195,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 89
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 86
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -250,9 +250,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `opal_crystal` | `2 ingrédients` |  | `opal_crystal` | feuille assumée | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
 | `bolt_of_silk` | `1 ingrédients` |  | `bolt_of_silk` | feuille assumée | `ad_infinitum`, `stella_radians` |
 | `glacial_lodestone` | `4 ingrédients` |  | `glacial_lodestone` | feuille assumée | `gen1_frenzy`, `gen1_frostfang` |
-| `jar_of_distilled_glory` | `1 ingrédients` |  | `jar_of_distilled_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
-| `record_of_league_participation` | `1 ingrédients` |  | `record_of_league_participation` | feuille assumée | `ardent_glorious`, `transcendence` |
-| `star_of_glory` | `1 ingrédients` |  | `star_of_glory` | feuille assumée | `ardent_glorious`, `transcendence` |
 | `ancient_wood_log` | `3 ingrédients` |  | `ancient_wood_log` | feuille assumée | `vision` |
 | `bolt_of_cotton` | `1 ingrédients` |  | `bolt_of_cotton` | feuille assumée | `ad_infinitum` |
 | `bolt_of_linen` | `1 ingrédients` |  | `bolt_of_linen` | feuille assumée | `ad_infinitum` |

@@ -21,7 +21,7 @@ Tribute to the Exitare, Tribute to the Call of the Void. Id et apiId inchanges.
 import json, sys, tempfile
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v4 import Modele
+from moteur.gw2_moteur_v5 import Modele
 
 SRC, DST = Path(sys.argv[1]), Path(sys.argv[2])
 d = json.loads(SRC.read_text(encoding="utf-8"))

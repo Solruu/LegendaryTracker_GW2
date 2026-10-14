@@ -41,7 +41,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[2]  # racine du depot
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v4 import Modele  # noqa: E402
+from moteur.gw2_moteur_v5 import Modele  # noqa: E402
 
 JSX = max(HERE.glob("gw2_legendary_tracker_v*.jsx"),
           key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)))
@@ -98,8 +98,17 @@ def main() -> int:
     m = Modele.dernier(HERE)
     sources = json.loads(m.chemin.read_text(encoding="utf-8"))
     total_compares, total_ecarts = 0, []
-    for nom, faites in situations(m):
-        n, e = une_passe(m, sources, faites)
+    # v4 : les pieces d'armure restantes passent par le moteur (JSX v258,
+    # moteur v5). On rejoue chaque situation avec un set entame — 2 pieces
+    # restantes sur 6, et 0 pour une armure finie — pour que les deux moteurs
+    # soient compares hors du cas plein, ou le prorata est neutre.
+    entame = {"perfected_envoy": 2, "obsidian": 2, "triumphant_hero": 5,
+              "ardent_glorious": 0}
+    jeux = [(nom, faites, None) for nom, faites in situations(m)]
+    jeux += [(nom + " / sets entames", faites, entame)
+             for nom, faites in situations(m)]
+    for nom, faites, pieces in jeux:
+        n, e = une_passe(m, sources, faites, pieces)
         print(f"  {nom} : {n} totaux compares, {len(e)} ecart(s)")
         total_compares += n
         total_ecarts += [(nom,) + x for x in e]
@@ -116,7 +125,7 @@ def main() -> int:
     return 1
 
 
-def une_passe(m, sources, faites) -> tuple:
+def une_passe(m, sources, faites, pieces=None) -> tuple:
 
     harnais = """
 const SOURCES_DB = SOURCES;
@@ -133,7 +142,7 @@ const SOURCES_ALIAS = { prismatic: "prismatic_champions_regalia", upgrades: "upg
 %s
 const cibles = CIBLES;
 const out = {};
-for (const c of cibles) out[c] = computeGrandTotal([c], COLLS).totals;
+for (const c of cibles) out[c] = computeGrandTotal([c], COLLS, PIECES ?? undefined).totals;
 console.log(JSON.stringify(out));
 """ % (decouper("readArmorWeightBySlot"), decouper("etapesCollections"), decouper("computeGrandTotal"))
 
@@ -141,7 +150,8 @@ console.log(JSON.stringify(out));
     script.write_text(
         f"const SOURCES = {json.dumps(sources)};\n"
         f"const CIBLES = {json.dumps(m.cibles)};\n"
-        f"const COLLS = {json.dumps(faites)};\n" + harnais, encoding="utf-8")
+        f"const COLLS = {json.dumps(faites)};\n"
+        f"const PIECES = {json.dumps(pieces)};\n" + harnais, encoding="utf-8")
     try:
         r = subprocess.run(["node", str(script)], capture_output=True, text=True)
     finally:
@@ -171,12 +181,15 @@ console.log(JSON.stringify(out));
     for cible in m.cibles:
         py = m.totaux(cible,
                       collections_faites=faites,
-                      poids_par_emplacement=poids_par_emplacement)
+                      poids_par_emplacement=poids_par_emplacement,
+                      pieces_restantes=pieces)
         js = dict(cote_js.get(cible) or {})
         for cid in set(py) | set(js):
             a, b = py.get(cid, 0), js.get(cid, 0)
             compares += 1
-            if abs(a - b) > 1e-9:
+            # Le JSX arrondit ses totaux au centieme en sortie : un prorata
+            # n/6 tombe alors a 0,005 pres, pas a 1e-9.
+            if abs(a - b) > 0.005 + 1e-9:
                 ecarts.append((cible, cid, a, b))
 
     return compares, ecarts

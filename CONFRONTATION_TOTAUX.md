@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v403.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v404.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
@@ -54,7 +54,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_flames_of_war` | `elder_wood_plank` | 4350 | 1250 | `liturgy`, `mystic_curio` |
 | `gen2_verdarach` | `elder_wood_plank` | 4350 | 1250 | `call_of_the_void`, `mystic_curio` |
 | `gen2_shooshadoo` | `elder_wood_plank` | 4000 | 1000 | `friendship`, `mystic_curio` |
-| `transcendence` | `shard_of_glory` | 2250 | 250 | `gift_of_the_mists` |
+| `transcendence` | `shard_of_glory` | 2000 | 250 | `gift_of_competitive_dedication`, `gift_of_the_mists` |
 | `conflux` | `memory_of_battle` | 1750 | 250 | `gift_of_the_mists`, `gift_of_war_dedication`, `war_commendation` |
 | `gen2_nevermore` | `dust_incandescent` | 750 | 250 | `gift_of_dust` |
 | `gen1_the_bifrost` | `dust_incandescent` | 750 | 250 | `opal_orb` |

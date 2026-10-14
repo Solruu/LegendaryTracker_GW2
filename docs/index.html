@@ -180,7 +180,8 @@ const I18N = {
     obs_resolving: "Resolving piece names via GW2 API…",
     obs_arcanum_title: "Arcanum achievements — Legendary Armor: Astral X",
     obs_arcanum_note: "Each Arcanum is bought from Lyhr for 1 Lesser Vision Crystal once its achievement is done: three skins of the slot (Astral Ward, Rift Hunter, Oneiros-Spun) + the boss's Lifeblood. Rift Hunter comes free from the Secrets of the Obscure story or reward track. One-time account cost for the two other skins: 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), shared across weights.",
-    obs_per_piece_note: "Costs computed for {n} targeted piece(s) remaining. Fine/Masterwork/Rare shown assuming all 12 Amalgamated per piece are crafted.",
+    obs_per_piece_note: "Costs computed by the engine for {n} remaining piece(s).",
+    obs_rift_note: "Fine/Masterwork/Rare shown assuming all 12 Amalgamated per piece are crafted.",
     obs_gift_magical: "Gift of Magical Prosperity",
     obs_gift_mighty: "Gift of Mighty Prosperity",
     obs_boss: "Boss: {b}",
@@ -425,7 +426,8 @@ const I18N = {
     obs_resolving: "Résolution des noms de pièces via l'API GW2…",
     obs_arcanum_title: "Achievements Arcanum — Legendary Armor: Astral X",
     obs_arcanum_note: "Chaque Arcanum s'achète chez Lyhr contre 1 Lesser Vision Crystal une fois son achievement complété : trois skins du slot (Astral Ward, Rift Hunter, Oneiros-Spun) + le Lifeblood du boss. Rift Hunter est gratuit, par l'histoire de Secrets of the Obscure ou sa piste de récompense. Coût one-time compte pour les deux autres skins : 12 Purified Rift Essence (= 12 Amalgamated + 12 Clovers), partagé entre les poids.",
-    obs_per_piece_note: "Coûts calculés pour {n} pièce(s) ciblée(s) restante(s). Fine/Masterwork/Rare affichées en supposant les 12 Amalgamated par pièce craftées.",
+    obs_per_piece_note: "Coûts calculés par le moteur pour {n} pièce(s) restante(s).",
+    obs_rift_note: "Fine/Masterwork/Rare affichées en supposant les 12 Amalgamated par pièce craftées.",
     obs_gift_magical: "Don de prospérité magique",
     obs_gift_mighty: "Don de prospérité puissante",
     obs_boss: "Boss : {b}",
@@ -4113,7 +4115,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "perfected_envoy__per_piece": 1,
         "cube_stabilized_dark_energy": 1,
         "gift_of_compassion": 6
       },
@@ -6270,10 +6271,11 @@ const SOURCES_DB = {
       "needed_for": [
         "armor_pvp",
         "mist_band_infused",
-        "transcendence"
+        "transcendence",
+        "star_of_glory"
       ],
       "qty": {
-        "transcendence": 900,
+        "transcendence": 500,
         "the_ascension": 250,
         "mist_band_infused": 150,
         "ardent_glorious__piece_light_helm": 100,
@@ -6293,7 +6295,8 @@ const SOURCES_DB = {
         "ardent_glorious__piece_heavy_shoulders": 100,
         "ardent_glorious__piece_heavy_chest": 250,
         "ardent_glorious__piece_heavy_gloves": 100,
-        "ardent_glorious__piece_heavy_boots": 100
+        "ardent_glorious__piece_heavy_boots": 100,
+        "star_of_glory": 400
       },
       "farmable": true,
       "sources": [
@@ -6356,14 +6359,16 @@ const SOURCES_DB = {
         "gift_of_skirmishing",
         "mist_band_infused",
         "the_ascension",
-        "transcendence"
+        "transcendence",
+        "jar_of_distilled_glory"
       ],
       "qty": {
-        "transcendence": 1750,
+        "transcendence": 500,
         "mist_band_infused": 170,
         "gift_of_skirmishing": 250,
         "ardent_glorious__per_piece": 250,
-        "gift_of_glory": 250
+        "gift_of_glory": 250,
+        "jar_of_distilled_glory": 1000
       },
       "farmable": true,
       "sources": [
@@ -6773,7 +6778,6 @@ const SOURCES_DB = {
       "qty": {
         "perfected_envoy__per_piece": 50,
         "ad_infinitum": 60,
-        "obsidian__per_piece": 50,
         "vision": 72,
         "fulgurite": 1,
         "gift_of_mastery": 250,
@@ -7484,18 +7488,19 @@ const SOURCES_DB = {
         "wings_of_glory_champion",
         "wings_of_glory_elite",
         "wings_of_glory_recruit",
-        "wings_of_glory_veteran"
+        "wings_of_glory_veteran",
+        "record_of_league_participation"
       ],
       "qty": {
-        "ardent_glorious__per_piece": 150,
-        "transcendence": 45,
+        "transcendence": 25,
         "the_ascension": 100,
         "certificate_of_support": 5,
         "wings_of_glory_recruit": 10,
         "wings_of_glory_veteran": 20,
         "wings_of_glory_champion": 30,
         "wings_of_glory_elite": 40,
-        "record_of_league_victories": 30
+        "record_of_league_victories": 30,
+        "record_of_league_participation": 20
       },
       "farmable": true,
       "timegate": true,
@@ -7569,7 +7574,6 @@ const SOURCES_DB = {
         "gift_of_war_prowess"
       ],
       "qty": {
-        "triumphant_hero__per_piece": 1,
         "gift_of_war_prowess": 1
       },
       "farmable": false,
@@ -7583,7 +7587,10 @@ const SOURCES_DB = {
           }
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "ref": "ressources/wiki/wvw_skirmish_claim_ticket.html (Legendary Commander War Razor)",
+      "verified": true,
+      "checked": "2026-10-14"
     },
     "glob_of_ectoplasm": {
       "name": "Glob of Ectoplasm",
@@ -7659,7 +7666,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "obsidian__per_piece": 600,
         "ad_infinitum": 510,
         "memory_essence_encapsulator": 50,
         "kralkatite_ingot": 1,
@@ -7868,8 +7874,6 @@ const SOURCES_DB = {
       ],
       "qty": {
         "endless_summer": 10,
-        "triumphant_hero__per_piece": 15,
-        "ardent_glorious__per_piece": 15,
         "gift_of_the_homesteader": 38,
         "gift_of_fortune": 77,
         "gift_of_insight": 100,
@@ -12357,7 +12361,8 @@ const SOURCES_DB = {
         "triumphant_hero__piece_heavy_chest": 350,
         "triumphant_hero__piece_heavy_gloves": 175,
         "triumphant_hero__piece_heavy_legs": 260,
-        "essence_of_annihilation": 350
+        "essence_of_annihilation": 350,
+        "legendary_war_insight": 1095
       },
       "farmable": true,
       "sources": [
@@ -12420,7 +12425,8 @@ const SOURCES_DB = {
         "mist_pearl",
         "recruits_wings_of_war",
         "soldiers_wings_of_war",
-        "triumphant_hero"
+        "triumphant_hero",
+        "legendary_war_insight"
       ],
       "timegate": true,
       "timegate_note": {
@@ -25160,7 +25166,10 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_competitive_dedication": 1
-      }
+      },
+      "ref": "ressources/wiki/record_of_league_participation.html (boîte Recipe)",
+      "verified": true,
+      "checked": "2026-10-14"
     },
     "star_of_glory": {
       "name": "Star of Glory",
@@ -25184,7 +25193,10 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_competitive_dedication": 1
-      }
+      },
+      "ref": "ressources/wiki/star_of_glory.html (boîte Recipe)",
+      "verified": true,
+      "checked": "2026-10-14"
     },
     "jar_of_distilled_glory": {
       "name": "Jar of Distilled Glory",
@@ -25208,7 +25220,10 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_competitive_dedication": 1
-      }
+      },
+      "ref": "ressources/wiki/jar_of_distilled_glory.html (boîte Recipe)",
+      "verified": true,
+      "checked": "2026-10-14"
     },
     "askur_camping_cookout_backpiece": {
       "name": "Askur Camping Cookout Backpiece",
@@ -81105,9 +81120,47 @@ const SOURCES_DB = {
 // ═══════════════════════════════════════════════════════════════
 
 // ── RequirementsBlocks : prérequis chiffrés (total + restant + stock live) ──
-function RequirementsBlocks({ requirements, apiAch, currencies }) {
+// Composant moteur d'une ligne de prerequis : par la ligne de monnaie de meme
+// `id` que son `curKey` (champ `comp`, sinon son apiId).
+let _compParApi = null;
+function compDeLigne(leg, curKey) {
+  if (!curKey || !leg) return null;
+  const row = [...(leg.currencies ?? []), ...(leg.currenciesPerPiece ?? []), ...(leg.currencyCatalog ?? [])]
+    .find(c => c.id === curKey);
+  if (!row) return null;
+  if (row.comp) return row.comp;
+  if (!_compParApi) {
+    _compParApi = new Map();
+    for (const [cid, c] of Object.entries(SOURCES_DB?.craft_components ?? {})) {
+      if (typeof c?.apiId === "number" && !_compParApi.has(c.apiId)) _compParApi.set(c.apiId, cid);
+    }
+  }
+  return _compParApi.get(row.apiId) ?? null;
+}
+
+// S2 (v258) : un bloc qui porte `cible` lit ses quantites dans le MOTEUR, plus
+// dans des `perUnit` ecrits a la main. Ils avaient derive : 1 250 Badges of
+// Honor sur Warbringer quand la ligne de monnaie, corrigee le 11/09, en
+// affichait 3 250. Deux modes, selon ce que compte le bloc :
+// - `unitsFrom` (runes, sigils) : `cible` est UNE unite ; quantite par unite
+//   = total moteur de la cible, multiplie par les unites comptees ;
+// - sinon `cible` est le legendaire entier : total = moteur a vierge (set
+//   complet, aucune collection), reste = moteur avec les collections faites
+//   et les pieces d'armure restantes — le meme nombre que la ligne de monnaie.
+// Sans `cible` (chaine du Henge d'Aurora, pages d'Ad Infinitum : une
+// sous-chaine, pas une recette), les `perUnit` restent la donnee.
+function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections, piecesRestantes }) {
   if (!requirements) return null;
   return [].concat(requirements).map((RQ, rqi) => {
+    const moteur = (() => {
+      if (!RQ.cible) return null;
+      try {
+        const vierge = computeGrandTotal([RQ.cible], {})?.totals ?? {};
+        const actuel = RQ.unitsFrom ? vierge
+          : (computeGrandTotal([RQ.cible], collections, piecesRestantes)?.totals ?? {});
+        return { vierge, actuel };
+      } catch (_) { return null; }
+    })();
     const total = RQ.unitTotal ?? 0;
     const cnt = RQ.unitsFrom ? (apiAch[RQ.unitsFrom.key]?.current ?? null) : null;
     // Une collection en cours peut déjà avoir consommé des unités : si l'étape
@@ -81136,13 +81189,27 @@ function RequirementsBlocks({ requirements, apiAch, currencies }) {
         </div>
         {(RQ.lines ?? []).map((ln, li) => {
           const oneShotDone = ln.oneShot ? !!apiAch[ln.oneShot]?.done : false;
-          let totalV = ln.fixed != null ? ln.fixed : (ln.perUnit ?? 0) * total;
-          let leftV = ln.fixed != null ? (oneShotDone ? 0 : ln.fixed) : (ln.perUnit ?? 0) * left;
+          const valeurs = (x) => {
+            if (x.fixed != null) return { t: x.fixed, l: (x.oneShot && apiAch[x.oneShot]?.done) ? 0 : x.fixed };
+            const cid = moteur ? (x.comp ?? compDeLigne(leg, x.curKey)) : null;
+            if (cid) {
+              if (RQ.unitsFrom) {
+                const u = moteur.vierge[cid] ?? 0;
+                return { t: Math.round(u * total), l: Math.round(u * left) };
+              }
+              return { t: Math.round(moteur.vierge[cid] ?? 0), l: Math.round(moteur.actuel[cid] ?? 0) };
+            }
+            return { t: (x.perUnit ?? 0) * total, l: (x.perUnit ?? 0) * left };
+          };
+          const v0 = valeurs(ln);
+          let totalV = v0.t;
+          let leftV = ln.fixed != null ? (oneShotDone ? 0 : ln.fixed) : v0.l;
           let stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : null;
           if (ln.derivedFrom) {
             const srcLn = (RQ.lines ?? []).find(x => x.curKey === ln.derivedFrom);
-            const srcTotal = srcLn ? (srcLn.fixed != null ? srcLn.fixed : (srcLn.perUnit ?? 0) * total) : 0;
-            const srcLeft = srcLn ? (srcLn.fixed != null ? srcLn.fixed : (srcLn.perUnit ?? 0) * left) : 0;
+            const sv = srcLn ? valeurs(srcLn) : { t: 0, l: 0 };
+            const srcTotal = srcLn ? (srcLn.fixed != null ? srcLn.fixed : sv.t) : 0;
+            const srcLeft = srcLn ? (srcLn.fixed != null ? srcLn.fixed : sv.l) : 0;
             const held = srcLn?.curKey ? (currencies?.[srcLn.curKey] ?? 0) : 0;
             totalV = Math.ceil(srcTotal / (ln.rate || 1));
             leftV = Math.ceil(Math.max(0, srcLeft - held) / (ln.rate || 1));
@@ -81490,15 +81557,15 @@ const LEGENDARIES = {
     currencyNote: { fr: "⚠ Testimonies : les Jade (ère EoD) ne sont PLUS obtenables depuis VoE — les rank-ups McM donnent des Castoran, mais les vendeurs (Dugan, War Razor) exigent encore des Jade (incohérence signalée aux forums depuis fév. 2026, non corrigée en avril). Les deux compteurs sont suivis : si ArenaNet aligne la recette sur Castoran, le second prend le relais. Badge of Honor corrigé 1250→3250 (11/09/2026) : Gift of Battle (4x) porte 500 Badge of Honor chacun, non compté avant que sa page ne soit capturée.", en: "⚠ Testimonies: Jade (EoD era) can NO LONGER be obtained since VoE — WvW rank-ups grant Castoran, but vendors (Dugan, War Razor) still demand Jade (inconsistency reported on the forums since Feb 2026, unfixed as of April). Both counters are tracked: if ArenaNet aligns the recipe to Castoran, the second one takes over. Badge of Honor corrected 1250→3250 (09/11/2026): Gift of Battle (4x) carries 500 Badge of Honor each, uncounted before its page was captured." },
     metas: [],
     requirements: {
-      unit: { fr: "dos", en: "back" }, unitTotal: 1,
+      unit: { fr: "dos", en: "back" }, unitTotal: 1, cible: "warbringer",
       note: { fr: "⚠ Prérequis bloquants : rang McM 350 et tag de commandant (300 po) pour acheter le 4e Wings of War.", en: "⚠ Hard prerequisites: WvW rank 350 and a commander tag (300 g) to buy the 4th Wings of War." },
       lines: [
-        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 2450, curKey: "tickets",
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, curKey: "tickets",
           detail: { fr: "4 Wings of War (2 450) + composants · plafond 365/semaine + ~90 via les hebdos McM", en: "4 Wings of War (2,450) + components · 365/week cap + ~90 from WvW weeklies" } },
         { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
           detail: { fr: "455 tickets/semaine hebdos comprises · tickets partagés avec Conflux, Strife et Triumphant Hero — les enchaîner du moins cher au plus cher", en: "455 tickets/week including weeklies · tickets shared with Conflux, Strife and Triumphant Hero — chain them cheapest first" } },
-        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, perUnit: 750, curKey: "memory" },
-        { icon: "🛡", label: { fr: "Badges of Honor", en: "Badges of Honor" }, perUnit: 1250, curKey: "badges" },
+        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, curKey: "memory" },
+        { icon: "🛡", label: { fr: "Badges of Honor", en: "Badges of Honor" }, curKey: "badges" },
       ],
     },
     wvwActivities: [
@@ -81600,45 +81667,45 @@ const LEGENDARIES = {
     ],
     requirements: [
       { title: { fr: "📋 Runes légendaires", en: "📋 Legendary Runes" },
-        unit: { fr: "rune", en: "rune" }, unitTotal: 7, unitsFrom: { key: "rune_collector" },
+        unit: { fr: "rune", en: "rune" }, unitTotal: 7, unitsFrom: { key: "rune_collector" }, cible: "legendary_rune",
         note: { fr: "Cible : 7 (6 armure + 1 respirateur) — 6 suffisent pour un set terrestre. Les quantités ci-dessus sont recalculées d'après les runes déjà liées au compte.", en: "Target: 7 (6 armor + 1 aquabreather) — 6 cover a land set. Amounts above are recalculated from the runes already bound to your account." },
         lines: [
-          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 500, curKey: "lucent_pile",
+          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, curKey: "lucent_pile",
             detail: { fr: "50 Mystic Aspects × 10 piles · 1 pile = 10 Lucent Motes (recyclage d'objets rares/exotiques)", en: "50 Mystic Aspects × 10 piles · 1 pile = 10 Lucent Motes (salvaging rare/exotic gear)" } },
-          { icon: "✨", label: { fr: "Charm of Brilliance", en: "Charm of Brilliance" }, perUnit: 50, curKey: "charm_bril" },
-          { icon: "✨", label: { fr: "Charm of Potence", en: "Charm of Potence" }, perUnit: 50, curKey: "charm_pot" },
-          { icon: "✨", label: { fr: "Charm of Skill", en: "Charm of Skill" }, perUnit: 50, curKey: "charm_skill" },
-          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner",
+          { icon: "✨", label: { fr: "Charm of Brilliance", en: "Charm of Brilliance" }, curKey: "charm_bril", comp: "charm_of_brilliance" },
+          { icon: "✨", label: { fr: "Charm of Potence", en: "Charm of Potence" }, curKey: "charm_pot", comp: "charm_of_potence" },
+          { icon: "✨", label: { fr: "Charm of Skill", en: "Charm of Skill" }, curKey: "charm_skill", comp: "charm_of_skill" },
+          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner",
             detail: { fr: "Gift of Craftsmanship · achat plafonné quotidiennement chez les Provisioners (échange d'objets crafts)", en: "Gift of Craftsmanship · daily-capped purchase from Provisioners (trade in crafted items)" } },
-          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 20, curKey: "clovers" },
-          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, perUnit: 100, curKey: "ectos" },
-          { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, perUnit: 50, curKey: "shards" },
+          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
+          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, curKey: "ectos" },
+          { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, curKey: "shards" },
         ] },
       { title: { fr: "📋 Sigils légendaires", en: "📋 Legendary Sigils" },
-        unit: { fr: "sigil", en: "sigil" }, unitTotal: 8, unitsFrom: { key: "sigil_collector" },
+        unit: { fr: "sigil", en: "sigil" }, unitTotal: 8, unitsFrom: { key: "sigil_collector" }, cible: "legendary_sigil",
         note: { fr: "Cible : 8 (2 sets d'armes terrestres + aquatique) — 2 à 4 couvrent l'essentiel au quotidien.", en: "Target: 8 (2 land weapon sets + aquatic) — 2 to 4 cover most day-to-day needs." },
         lines: [
-          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 750, curKey: "lucent_pile",
+          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, curKey: "lucent_pile",
             detail: { fr: "75 Mystic Motes × 10 piles", en: "75 Mystic Motes × 10 piles" } },
-          { icon: "✨", label: { fr: "Symbol of Control", en: "Symbol of Control" }, perUnit: 75, curKey: "sym_ctrl" },
-          { icon: "✨", label: { fr: "Symbol of Enhancement", en: "Symbol of Enhancement" }, perUnit: 75, curKey: "sym_enh" },
-          { icon: "✨", label: { fr: "Symbol of Pain", en: "Symbol of Pain" }, perUnit: 75, curKey: "sym_pain" },
-          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner" },
-          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 30, curKey: "clovers" },
-          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, perUnit: 150, curKey: "ectos" },
-          { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, perUnit: 75, curKey: "shards" },
+          { icon: "✨", label: { fr: "Symbol of Control", en: "Symbol of Control" }, curKey: "sym_ctrl", comp: "symbol_of_control" },
+          { icon: "✨", label: { fr: "Symbol of Enhancement", en: "Symbol of Enhancement" }, curKey: "sym_enh", comp: "symbol_of_enhancement" },
+          { icon: "✨", label: { fr: "Symbol of Pain", en: "Symbol of Pain" }, curKey: "sym_pain", comp: "symbol_of_pain" },
+          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner" },
+          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
+          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, curKey: "ectos" },
+          { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, curKey: "shards" },
         ] },
       { title: { fr: "📋 Relique légendaire", en: "📋 Legendary Relic" },
-        unit: { fr: "relique", en: "relic" }, unitTotal: 1,
+        unit: { fr: "relique", en: "relic" }, unitTotal: 1, cible: "legendary_relic",
         note: { fr: "Une seule est utile. ⚠ Volume : 18 750 Piles Lucent (moins avec les procs ×5 du Mystic Facet) — étaler les ordres d'achat au comptoir. Lyhr (La Tour du sorcier) peut forger les gifts contre 10 ectos de surcoût.", en: "Only one is useful. ⚠ Volume: 18,750 Lucent Piles (fewer with Mystic Facet ×5 procs) — spread your TP buy orders. Lyhr (Wizard's Tower) can forge the gifts for 10 extra ectos." },
         lines: [
-          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, perUnit: 18750, curKey: "lucent_pile",
+          { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, curKey: "lucent_pile",
             detail: { fr: "25 Mystic Facets × 750 piles · chaque forge peut rarement en produire 5 d'un coup", en: "25 Mystic Facets × 750 piles · each forge can rarely yield 5 at once" } },
           { icon: "🗿", label: { fr: "Reliques exotiques", en: "Exotic relics" }, perUnit: 25,
             detail: { fr: "N'importe lesquelles — les moins chères au comptoir", en: "Any of them — cheapest on the TP" } },
-          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner" },
-          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 25, curKey: "clovers" },
-          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, perUnit: 150, curKey: "ectos" },
+          { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner" },
+          { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
+          { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, curKey: "ectos" },
         ] },
     ],
     collectionNoteKeys: ["up_note1", "up_note2"],
@@ -81732,31 +81799,31 @@ const LEGENDARIES = {
     weights: ["Light", "Medium", "Heavy"],
     // Coûts par pièce — "required" calculé dynamiquement selon l'objectif (1er set ; +25 LI/pièce via Insignia pour les suivants)
     currenciesPerPiece: [
-      { id: "li",          name: "Legendary Insight", perPiece: 25, icon: "LI", apiId: 70 },
-      { id: "shards",      name: "Obsidian Shard",    perPiece: 50, icon: "OS", apiId: 19925 },
-      { id: "clovers",     name: "Mystic Clover",     perPiece: 15, icon: "MC", apiId: 19675 },
-      { id: "provisioner", name: "Provisioner Token", perPiece: 50, icon: "PT", apiId: 29 },
+      { id: "li",          name: "Legendary Insight", icon: "LI", apiId: 70, comp: "legendary_insight" },
+      { id: "shards",      name: "Obsidian Shard",    icon: "OS", apiId: 19925, comp: "obsidian_shard" },
+      { id: "clovers",     name: "Mystic Clover",     icon: "MC", apiId: 19675, comp: "mystic_clover" },
+      { id: "provisioner", name: "Provisioner Token", icon: "PT", apiId: 29, comp: "provisioner_token" },
       // Monnaies de carte ajoutees le 18/09/2026 : elles etaient dans l'arbre et
       // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
       // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
       // refuse toute divergence.
-      { id: "airship", name: "Airship Part", perPiece: 250, icon: "AP", apiId: 19, mapNote: "Verdant Brink" },
-      { id: "aurillium", name: "Lump of Aurillium", perPiece: 250, icon: "LA", apiId: 22, mapNote: "Auric Basin" },
+      { id: "airship", name: "Airship Part", icon: "AP", apiId: 19, comp: "airship_part", mapNote: "Verdant Brink" },
+      { id: "aurillium", name: "Lump of Aurillium", icon: "LA", apiId: 22, comp: "lump_of_aurillium", mapNote: "Auric Basin" },
     ],
     currencies: [],
     requirements: {
-      unit: { fr: "pièce", en: "piece" }, unitTotal: 6,
+      unit: { fr: "pièce", en: "piece" }, unitTotal: 6, cible: "perfected_envoy",
       perStep: [{ key: "envoy_1", units: 0 }],
       note: { fr: "⏳ Le vrai timegate est le Spirit Weave d'Envoy I : 5 Spirit Threads à 1/semaine sur Gorseval — à lancer dès la première semaine, avant tout le reste.", en: "⏳ The real timegate is Envoy I's Spirit Weave: 5 Spirit Threads at 1/week from Gorseval — start it on week 1, before anything else." },
       lines: [
         { icon: "🧵", label: { fr: "Semaines de Spirit Threads", en: "Spirit Thread weeks" }, fixed: 5, oneShot: "envoy_1",
           detail: { fr: "1 thread/semaine sur Gorseval (W1) · énergiser les 5 au Chak Gerent (méta TD) — taguer les 4 lanes en énergise jusqu'à 4 d'un coup", en: "1 thread/week from Gorseval (W1) · energize all 5 at the Chak Gerent (TD meta) — tagging the 4 lanes energizes up to 4 at once" } },
-        { icon: "💡", label: { fr: "Legendary Insights", en: "Legendary Insights" }, perUnit: 25, curKey: "li",
+        { icon: "💡", label: { fr: "Legendary Insights", en: "Legendary Insights" }, curKey: "li",
           detail: { fr: "25/pièce · +25 par Envoy Insignia (Glenna) pour les sets suivants", en: "25/piece · +25 per Envoy Insignia (Glenna) for later sets" } },
-        { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, perUnit: 50, curKey: "provisioner",
+        { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner",
           detail: { fr: "Gift of Craftsmanship · achat plafonné quotidiennement", en: "Gift of Craftsmanship · daily-capped purchase" } },
-        { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, perUnit: 50, curKey: "shards" },
-        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 15, curKey: "clovers" },
+        { icon: "🪨", label: { fr: "Obsidian Shards", en: "Obsidian Shards" }, curKey: "shards" },
+        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
       ],
     },
     metas: [],
@@ -81779,21 +81846,21 @@ const LEGENDARIES = {
     weights: ["Light", "Medium", "Heavy"],
     // Coûts par pièce — moyenne tickets (précurseurs 175–350 + 1095 Prowess = 7880/set)
     currenciesPerPiece: [
-      { id: "tickets", name: "Skirmish Claim Tickets", perPiece: 1313, icon: "SK", apiId: 26 },
-      { id: "memory",  name: "Memory of Battle",       perPiece: 500,  icon: "MB", apiId: 71581 },
-      { id: "clovers", name: "Mystic Clover",          perPiece: 15,   icon: "MC", apiId: 19675 },
+      { id: "tickets", name: "Skirmish Claim Tickets", icon: "SK", apiId: 26, comp: "skirmish_claim_ticket" },
+      { id: "memory",  name: "Memory of Battle",       icon: "MB", apiId: 71581, comp: "memory_of_battle" },
+      { id: "clovers", name: "Mystic Clover",          icon: "MC", apiId: 19675, comp: "mystic_clover" },
     ],
     currencies: [],
     requirements: {
-      unit: { fr: "pièce", en: "piece" }, unitTotal: 6,
+      unit: { fr: "pièce", en: "piece" }, unitTotal: 6, cible: "triumphant_hero",
       note: { fr: "⚠ Ne jamais stat-swap un précurseur. Variante Mistforged : 9 190 tickets + rang McM requis.", en: "⚠ Never stat-swap a precursor. Mistforged variant: 9,190 tickets + WvW rank required." },
       lines: [
-        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 1313, curKey: "tickets",
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, curKey: "tickets",
           detail: { fr: "Précurseur (175 à 350 selon la pièce) + 1 095 pour le Gift of War Prowess", en: "Precursor (175 to 350 depending on the piece) + 1,095 for the Gift of War Prowess" } },
         { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
           detail: { fr: "455/semaine hebdos comprises · l'objectif le plus long du tracker", en: "455/week including weeklies · the longest goal in the tracker" } },
-        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, perUnit: 500, curKey: "memory" },
-        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 15, curKey: "clovers" },
+        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, curKey: "memory" },
+        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
       ],
     },
     wvwActivities: [
@@ -81835,9 +81902,9 @@ const LEGENDARIES = {
     weights: ["Light", "Medium", "Heavy"],
     // Coûts par pièce — set : 3200 Shards (2400 Stars of Glory + 800 précurseurs) + 300 League Tickets
     currenciesPerPiece: [
-      { id: "shards",  name: "Ascended Shards of Glory", perPiece: 534, icon: "SG", apiId: 33 },
-      { id: "tickets", name: "PvP League Ticket",        perPiece: 50,  icon: "LT", apiId: 30 },
-      { id: "clovers", name: "Mystic Clover",            perPiece: 15,  icon: "MC", apiId: 19675 },
+      { id: "shards",  name: "Ascended Shards of Glory", icon: "SG", apiId: 33, comp: "ascended_shard_of_glory" },
+      { id: "tickets", name: "PvP League Ticket",        icon: "LT", apiId: 30, comp: "pvp_league_ticket" },
+      { id: "clovers", name: "Mystic Clover",            icon: "MC", apiId: 19675, comp: "mystic_clover" },
     ],
     currencies: [],
     metas: [],
@@ -81863,14 +81930,14 @@ const LEGENDARIES = {
     // arcanum_<emplacement>, lues par arcanumParSlot().
     // Coûts par pièce — "required" calculé dynamiquement selon l'objectif
     currenciesPerPiece: [
-      { id: "amalgamated", name: "Amalgamated Rift Essence", perPiece: 12,   icon: "AR", apiId: 100081 },
-      { id: "fine",        name: "Fine Rift Essence",        perPiece: 3000, icon: "F1", apiId: 78 },
-      { id: "masterwork",  name: "Masterwork Rift Essence",  perPiece: 1200, icon: "M2", apiId: 80 },
-      { id: "rare",        name: "Rare Rift Essence",        perPiece: 600,  icon: "R3", apiId: 79 },
-      { id: "provisioner", name: "Provisioner Token",        perPiece: 50,   icon: "PT", apiId: 29 },
-      { id: "clovers",     name: "Mystic Clover",            perPiece: 9,    icon: "MC", apiId: 19675 },
-      { id: "shards",      name: "Obsidian Shard",           perPiece: 50,   icon: "OS", apiId: 19925 },
-      { id: "ectos",       name: "Glob of Ectoplasm",        perPiece: 600,  icon: "EC", apiId: 19721 },
+      { id: "amalgamated", name: "Amalgamated Rift Essence", icon: "AR", apiId: 100081, comp: "amalgamated_rift_essence" },
+      { id: "fine",        name: "Fine Rift Essence",        icon: "F1", apiId: 78, comp: "fine_rift_essence" },
+      { id: "masterwork",  name: "Masterwork Rift Essence",  icon: "M2", apiId: 80, comp: "masterwork_rift_essence" },
+      { id: "rare",        name: "Rare Rift Essence",        icon: "R3", apiId: 79, comp: "rare_rift_essence" },
+      { id: "provisioner", name: "Provisioner Token",        icon: "PT", apiId: 29, comp: "provisioner_token" },
+      { id: "clovers",     name: "Mystic Clover",            icon: "MC", apiId: 19675, comp: "mystic_clover" },
+      { id: "shards",      name: "Obsidian Shard",           icon: "OS", apiId: 19925, comp: "obsidian_shard" },
+      { id: "ectos",       name: "Glob of Ectoplasm",        icon: "EC", apiId: 19721, comp: "glob_of_ectoplasm" },
     ],
     currencies: [],
     metas: ["sw", "am", "zak", "mb", "conv"],
@@ -82057,14 +82124,14 @@ const LEGENDARIES = {
       { id: "memory",  name: "Memory of Battle",       required: 500,  icon: "MB", apiId: 71581 },
     ],
     requirements: {
-      unit: { fr: "accessoire", en: "accessory" }, unitTotal: 1,
+      unit: { fr: "accessoire", en: "accessory" }, unitTotal: 1, cible: "strife_unending",
       note: { fr: "Emblèmes (4 Conqueror / 40 Avenger) acquis passivement en jouant — pas de farm dédié.", en: "Emblems (4 Conqueror / 40 Avenger) accrue passively as you play — no dedicated farm." },
       lines: [
-        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, perUnit: 3000, curKey: "tickets" },
+        { icon: "🎟", label: { fr: "Skirmish Claim Tickets", en: "Skirmish Claim Tickets" }, curKey: "tickets" },
         { icon: "⏳", label: { fr: "Semaines restantes", en: "Weeks left" }, derivedFrom: "tickets", rate: 455,
           detail: { fr: "455/semaine hebdos comprises · l'objectif McM le moins cher : le faire avant Triumphant Hero", en: "455/week including weeklies · the cheapest WvW goal: do it before Triumphant Hero" } },
-        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, perUnit: 45, curKey: "clovers" },
-        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, perUnit: 250, curKey: "memory" },
+        { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
+        { icon: "⚔", label: { fr: "Memories of Battle", en: "Memories of Battle" }, curKey: "memory" },
       ],
     },
     metas: [],
@@ -82260,6 +82327,26 @@ function readArmorWeightBySlot(armorId) {
   const bySlot = all[armorId] ?? {};
   const out = {};
   for (const slot of ARMOR_SLOTS) out[slot] = bySlot[slot] ?? "light";
+  return out;
+}
+
+// Pieces d'un set d'armure qu'il reste a fabriquer, par armure : meme regle
+// que le compteur de l'onglet (obsRemainingCount) — pieces ciblees non
+// possedees s'il y a une cible, sinon 6 moins les pieces possedees. Lu par
+// le grand total et les cadences, qui n'ont pas l'etat de l'onglet : la cible
+// est relue dans le meme localStorage que celui qu'il ecrit.
+function piecesRestantesArmures(armory) {
+  const out = {};
+  const possede = (id) => !!armory?.has?.(id);
+  for (const aid of ARMOR_IDS) {
+    const ids = LEGENDARIES?.[aid]?.armoryApiIds ?? [];
+    let cible = [];
+    try { cible = JSON.parse(localStorage.getItem(`gw2_${aid}_target_v1`) ?? "[]") ?? []; }
+    catch (_) { cible = []; }
+    out[aid] = cible.length
+      ? Math.max(0, cible.filter(id => !possede(id)).length)
+      : Math.max(0, ARMOR_PIECE_COUNT - ids.filter(possede).length);
+  }
   return out;
 }
 
@@ -82654,7 +82741,13 @@ function debitHebdo(cad) {
   return perWeek;
 }
 
-function computeGrandTotal(selectedIds, collectionsByLeg) {
+// `piecesRestantes` : {armure: n}, pieces d'un set restant a fabriquer (defaut
+// 6). v258 : l'onglet d'une armure multipliait un cout par piece ecrit a la
+// main ; c'est desormais le moteur qui compte, avec la meme regle que le
+// moteur Python (`pieces_restantes`) : `__per_piece` x n, couts par
+// emplacement et `__full_set` au prorata n/6, `__onetime` du tant qu'il reste
+// une piece.
+function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes) {
   const cc = SOURCES_DB?.craft_components ?? {};
   // Une cible COMPOSEE ne possede aucun composant en propre : elle vaut N
   // exemplaires d'autres cibles. « upgrades » etait dans ce cas et pesait ZERO
@@ -82678,10 +82771,10 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       }
       for (const cid of Object.keys(part?.variable ?? {})) variable[cid] = true;
     };
-    if (plats.length) fusion(computeGrandTotal(plats, collectionsByLeg), 1);
+    if (plats.length) fusion(computeGrandTotal(plats, collectionsByLeg, piecesRestantes), 1);
     for (const compo of composes) {
       for (const [sous, n] of Object.entries(compo)) {
-        fusion(computeGrandTotal([sous], collectionsByLeg), n);
+        fusion(computeGrandTotal([sous], collectionsByLeg, piecesRestantes), n);
       }
     }
     return { totals, variable };
@@ -82749,6 +82842,9 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
     if (satisfaits.has(compId)) continue;
     const qty = comp.qty ?? {};
     for (const legId of selectedIds) {
+      const estArmure = ARMOR_IDS.includes(legId);
+      const nP = estArmure ? (piecesRestantes?.[legId] ?? ARMOR_PIECE_COUNT) : ARMOR_PIECE_COUNT;
+      const prorata = (v) => (nP === ARMOR_PIECE_COUNT ? v : v * nP / ARMOR_PIECE_COUNT);
       // Armes normales
       if (qty[legId] !== undefined) {
         const val = qty[legId];
@@ -82771,7 +82867,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       if (qty[pieceKey] !== undefined && ARMOR_IDS.includes(legId)) {
         const val = qty[pieceKey];
         if (typeof val === "number") {
-          totals[compId] = (totals[compId] ?? 0) + val * ARMOR_PIECE_COUNT;
+          totals[compId] = (totals[compId] ?? 0) + val * nP;
         }
       }
       if (ARMOR_IDS.includes(legId)) {
@@ -82781,14 +82877,14 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
           const sKey = `${legId}__piece_${poids}_${slot}`;
           const val = qty[sKey];
           if (typeof val === "number") {
-            totals[compId] = (totals[compId] ?? 0) + val;
+            totals[compId] = (totals[compId] ?? 0) + prorata(val);
           }
         }
       }
       // __onetime : cout paye une seule fois pour le compte, quel que soit le
       // nombre de pieces ou d'unites fabriquees (deblocage d'apparences).
       const onceKey = legId + "__onetime";
-      if (qty[onceKey] !== undefined && typeof qty[onceKey] === "number") {
+      if (qty[onceKey] !== undefined && typeof qty[onceKey] === "number" && nP > 0) {
         totals[compId] = (totals[compId] ?? 0) + qty[onceKey];
       }
       // __per_unit : runes, cachets et reliques se fabriquent a l'unite. Sans
@@ -82803,7 +82899,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg) {
       if (qty[setKey] !== undefined && ARMOR_IDS.includes(legId)) {
         const val = qty[setKey];
         if (typeof val === "number") {
-          totals[compId] = (totals[compId] ?? 0) + val;
+          totals[compId] = (totals[compId] ?? 0) + prorata(val);
         }
       }
     }
@@ -82965,7 +83061,7 @@ const SANS_GRAND_TOTAL = new Set(["t6"]);
 // ce qui les différencie, c'est le stock et le prix. La matrice montre donc
 // l'état, et le dépliement d'une ligne montre l'action : quel gift est
 // forgeable ce soir.
-function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
+function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets, collections, armory }) {
   const [open, setOpen] = useState(null);
   const [picker, setPicker] = useState(false);
   const [notes, setNotes] = useState(false);
@@ -82980,7 +83076,8 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   const legs = DB.legendaries ?? {};
   const matrix = DB.trophy_matrix;
   const ids = Object.keys(selectedIds).filter(k => selectedIds[k]);
-  const totals = ids.length ? (computeGrandTotal(ids).totals ?? {}) : {};
+  const totals = ids.length
+    ? (computeGrandTotal(ids, collections, piecesRestantesArmures(armory)).totals ?? {}) : {};
 
   if (!matrix?.lines?.length) return null;
   // Paliers exposes par la base ; le palier courant retombe sur le premier tant
@@ -83254,7 +83351,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets }) {
   );
 }
 
-function CadencesTab({ stocks = {}, acctGates = null }) {
+function CadencesTab({ stocks = {}, acctGates = null, collections, armory }) {
   const t = useT();
   // La v88 écrivait selected[undefined] (identifiant mal lu) : cette clé fantôme
   // survit dans localStorage, compte pour 1 et ne produit aucun calcul.
@@ -83295,7 +83392,8 @@ function CadencesTab({ stocks = {}, acctGates = null }) {
   const C = "#e2c97e", D = "rgba(226,201,126,";
 
   const selectedIds = Object.keys(selected).filter(k => selected[k] && QTY_LEG_IDS.has(k));
-  const totals = selectedIds.length ? (computeGrandTotal(selectedIds).totals ?? {}) : {};
+  const totals = selectedIds.length
+    ? (computeGrandTotal(selectedIds, collections, piecesRestantesArmures(armory)).totals ?? {}) : {};
 
   // Une case cochée est valable pour sa période : la clé porte l'identifiant
   // de période, donc une case d'hier n'est plus lue aujourd'hui.
@@ -83753,7 +83851,7 @@ function AltGroupsPicker({ selectedIds = [], totals = {} }) {
   );
 }
 
-function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, stocks = {}, onSetStockManual }) {
+function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, stocks = {}, onSetStockManual, collections, armory }) {
   const t = useT();
   const [selected, setSelected] = useState({});        // legId → bool
   const [collapsed, setCollapsed] = useState({});      // groupId → bool
@@ -83799,7 +83897,12 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
 
   // ── Calcul grand total ───────────────────────────────────────
   const selectedIds = Object.keys(selected).filter(k => selected[k]);
-  const { totals, variable } = computeGrandTotal(selectedIds);
+  // S2 (v258) : le grand total est la SOMME des totaux unitaires, avec les
+  // memes filtres que chaque onglet — legendaires possedes retires de la
+  // selection (plus haut), etapes de collection deja faites deduites (toutes
+  // les collections, plus le seul instantane d'Aurora), pieces d'armure deja
+  // fabriquees retirees. Un seul calcul, aucun comptage a cote.
+  const { totals, variable } = computeGrandTotal(selectedIds, collections, piecesRestantesArmures(armory));
 
   // ── Trier par missing desc, filtrer selon farm ───────────────
   const rows = Object.entries(totals)
@@ -85805,9 +85908,12 @@ function GW2LegendaryTracker() {
   const legTotals = React.useMemo(() => {
     const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
     if (!cible || !(SOURCES_DB?.legendaries ?? {})[cible]) return null;
-    try { return computeGrandTotal([cible], toutesCollections)?.totals ?? null; }
+    // Set d'armure : le moteur compte les pieces RESTANTES (v258), meme
+    // regle que le compteur affiche au-dessus de la grille.
+    const pieces = ARMOR_IDS.includes(cible) ? { [cible]: obsRemainingCount } : undefined;
+    try { return computeGrandTotal([cible], toutesCollections, pieces)?.totals ?? null; }
     catch (_) { return null; }
-  }, [selectedLeg, toutesCollections]);
+  }, [selectedLeg, toutesCollections, obsRemainingCount]);
 
   const wpnCurrencies = React.useMemo(() => {
     if (!isWeapons || wpnLegIds.length === 0) return [];
@@ -85819,9 +85925,18 @@ function GW2LegendaryTracker() {
       .filter(c => c.required > 0);
   }, [isWeapons, wpnLegIds.join(","), toutesCollections, leg]);
 
-  // ── Calcul progression currencies (Obsidian/Armes : requis = coût unitaire × restantes) ──
+  // ── Calcul progression currencies : tout vient du moteur ──
+  // v258 : les sets d'armure multipliaient un cout par piece ecrit a la main
+  // (`perPiece`) par les pieces restantes. Le tableau etait juste la ou le
+  // moteur ne l'etait pas : 1 313 tickets par piece comprenaient les 1 095 du
+  // Legendary War Insight, 534 Ascended Shards of Glory la Star of Glory —
+  // deux aretes que le moteur n'avait pas (sources v404). Elles sont posees ;
+  // la ligne lit le total du moteur sur les pieces restantes, par `comp`.
   const legCurrencies = isGrandTotal ? [] : (isArmorSet
-    ? (leg?.currenciesPerPiece ?? []).map(c => ({ ...c, required: c.perPiece * obsRemainingCount }))
+    ? (leg?.currenciesPerPiece ?? []).map(c => {
+        const cid = c.comp ?? compByApi.get(c.apiId);
+        return { ...c, required: legTotals && cid ? Math.round(legTotals[cid] ?? 0) : 0 };
+      })
     : (isWeapons
       ? wpnCurrencies
       : (leg?.currencies ?? []).map(c => {
@@ -86282,11 +86397,13 @@ function GW2LegendaryTracker() {
           onToggleManual={toggleGtManualOwned}
           stocks={gtStocks}
           onSetStockManual={setGtStockManual}
+          collections={toutesCollections}
+          armory={armoryRaw}
         />
       )}
 
       {/* ── CADENCES (mode plein écran) ── */}
-      {isCadences && <TabErrorBoundary><CadencesTab stocks={gtStocks} acctGates={acctGates} /></TabErrorBoundary>}
+      {isCadences && <TabErrorBoundary><CadencesTab stocks={gtStocks} acctGates={acctGates} collections={toutesCollections} armory={armoryRaw} /></TabErrorBoundary>}
 
       {/* ── TABS + CONTENU (masqués en mode Grand Total) ── */}
       {/* ── SOUS-SÉLECTEUR TRINKETS (14 colifichets) ── */}
@@ -87630,7 +87747,7 @@ function GW2LegendaryTracker() {
           })()}
           {/* Sur l'onglet Armes, ces blocs decrivent la gen3 quelle que soit
               l'arme choisie : ils restent dans l'onglet Armes. */}
-          {!isWeapons && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />}
+          {!isWeapons && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} leg={leg} collections={toutesCollections} piecesRestantes={isArmorSet ? { [SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg]: obsRemainingCount } : undefined} />}
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
           {collList.map(a => {
@@ -88060,13 +88177,13 @@ function GW2LegendaryTracker() {
 
       {activeTab === "components" && selectedLeg === "t6" && (
         <TabErrorBoundary>
-          <TrophyMatrix stocks={gtStocks} selectedIds={t6Targets} onTargets={setT6Targets} />
+          <TrophyMatrix stocks={gtStocks} selectedIds={t6Targets} onTargets={setT6Targets} collections={toutesCollections} armory={armoryRaw} />
         </TabErrorBoundary>
       )}
 
       {activeTab === "components" && selectedLeg !== "t6" && (
         <div>
-          {collList.length === 0 && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} />}
+          {collList.length === 0 && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} leg={leg} collections={toutesCollections} piecesRestantes={isArmorSet ? { [SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg]: obsRemainingCount } : undefined} />}
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
           {(leg?.currencyNoteKeys ?? []).map(k => (
             <div key={k} style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(226,201,126,0.03)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
@@ -88086,6 +88203,7 @@ function GW2LegendaryTracker() {
                     {isArmorSet && (
             <div style={{ margin: "6px 14px", padding: "8px 12px", background: "rgba(129,140,248,0.05)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.55)" }}>
               {t("obs_per_piece_note", { n: obsRemainingCount })}
+              {isObsidian && <> {t("obs_rift_note")}</>}
               {(obsGiftSplit.mighty > 0 || obsGiftSplit.magical > 0) && (
                 <div style={{ marginTop: 4, fontSize: "11px", color: "rgba(226,201,126,0.6)" }}>
                   {NX({ fr: `→ ${obsGiftSplit.mighty} Gift of Condensed Might (gants, jambières, bottes) + ${obsGiftSplit.magical} Gift of Condensed Magic (coiffe, épaulières, plastron)`,
@@ -88237,19 +88355,15 @@ function GW2LegendaryTracker() {
         // Vision quand la chaine en demande 421, et appliquait un gabarit
         // generique de 250/250/250/77 a des legendaires qui n'ont pas ces
         // exigences. Une seule source desormais.
-        const totalsLeg = legObtenu ? {} : (computeGrandTotal([selectedLeg]).totals ?? {});
-        // Sets d'armure : le total est deja pose par piece dans qty, il reste a
-        // le multiplier par les pieces restantes.
-        const perPiece = COMMON_MATS.some(m =>
-          m.compId && (
-            ["__per_piece"].some(suf => (cc[m.compId]?.qty ?? {})[selectedLeg + suf] !== undefined) ||
-            Object.keys(cc[m.compId]?.qty ?? {}).some(k => k.startsWith(selectedLeg + "__piece_"))
-          ));
-        const mult = perPiece ? Math.max(1, obsRemainingCount || 1) : 1;
+        // v258 : meme total que la colonne des monnaies (legTotals) —
+        // collections faites deduites, pieces d'armure restantes comptees par
+        // le moteur. L'ancien calcul multipliait un total de SET COMPLET par
+        // les pieces restantes : 6 x 6 pieces sur un set vierge.
+        const totalsLeg = legObtenu ? {} : (legTotals ?? {});
+        const perPiece = isArmorSet;
         const mats = COMMON_MATS
           .map(m => ({ ...m, req: totalsLeg[m.compId] }))
-          .filter(m => typeof m.req === "number" && m.req > 0)
-          .map(m => ({ ...m, req: m.req * mult }));
+          .filter(m => typeof m.req === "number" && m.req > 0);
         // Arbre des gifts : composants de tête + matériaux rattachés (index inverse needed_for)
         const tops = (S.components ?? []);
         const subsOf = (g) => Object.entries(cc).filter(([, v]) => (v.needed_for ?? []).includes(g));
@@ -88269,7 +88383,7 @@ function GW2LegendaryTracker() {
                 <div className="section-label">{NX({ fr: "Matériaux communs", en: "Common materials" })}</div>
                 {perPiece && (
                   <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)" }}>
-                    {NX({ fr: `Coût par pièce × ${mult} pièce(s) restante(s).`, en: `Per-piece cost × ${mult} remaining piece(s).` })}
+                    {NX({ fr: `Total pour ${obsRemainingCount} pièce(s) restante(s).`, en: `Total for ${obsRemainingCount} remaining piece(s).` })}
                   </div>
                 )}
                 {mats.map(m => {

@@ -585,10 +585,36 @@ Corollaire (Antoine, 14/10) : un seul calcul.
   deduites.
 - Memes filtres partout : legendaires acquis (armurerie + coche manuelle)
   exclus, collections terminees deduites.
+Rectificatif (14/10) : les lignes de monnaie lisaient deja le moteur depuis
+v218. Les comptages a part etaient ailleurs : sets d'armure (`perPiece` x
+pieces restantes), blocs « Prerequis » (`perUnit`, 40 lignes), grand total /
+cadences / matrice T6 sans les collections, onglet Composants qui multipliait
+un total de set complet par les pieces restantes.
+✅ 14/10 (JSX v258, moteur v5, conformite v4, sources v404) :
+- moteur : parametre « pieces restantes » par armure, symetrique JS/Python
+  (`__per_piece` x n, couts par emplacement et `__full_set` au prorata n/6,
+  `__onetime` du tant qu'il reste une piece) ; conformite rejouee sur sets
+  entames, 35 066 totaux, 0 ecart ;
+- onglet armure : `perPiece` supprimes, chaque ligne lit le moteur par `comp` ;
+- blocs Prerequis portant `cible` (Warbringer, Strife, Envoy, Triumphant,
+  runes, sigils, relique) : 33 `perUnit` supprimes, le moteur fait foi ;
+  restent ceux d'une sous-chaine (Henge d'Aurora, pages d'Ad Infinitum,
+  reliques exotiques) ;
+- grand total, cadences, matrice T6 : toutes les collections + pieces
+  d'armure deja fabriquees ; = somme des totaux unitaires ;
+- sources v404, lu sur les captures : 7 cles a plat qui recopiaient un
+  ingredient de don retirees (trefles Ardent/Triumphant, War Insight, Ball of
+  Dark Energy Envoy, obsidienne et ectos Obsidian, tickets PvP Ardent),
+  4 aretes posees (Record of League Participation 20 tickets, Star of Glory
+  400 Ascended Shards, Jar 1 000 Shards, Legendary War Insight 1 095
+  tickets d'escarmouche), Transcendence ramenee a 2 000 Shards of Glory
+  (250 en double). CONFRONTATION : 60 -> 52 ecarts.
+Reste : les 52 ecarts de CONFRONTATION.md hors armures.
 
 ### S3 — § ⑥ Runes, cachets, reliques
 Table `upgrades` parallele et inerte a resorber dans `legendary_rune` /
-`legendary_sigil` / `legendary_relic`.
+`legendary_sigil` / `legendary_relic`. 14/10 : ses blocs Prerequis lisent
+desormais le moteur (`cible`) ; reste la liste `currencies` de l'onglet.
 
 ### S4 — § ② Routes vers les 1 978 etapes d'armes · option B retenue (14/10)
 L'onglet Armes cible, mais cliquer une arme ne mene a rien. Option B :

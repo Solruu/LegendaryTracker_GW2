@@ -3289,7 +3289,6 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 1,
     "cube_stabilized_dark_energy": 1,
     "gift_of_compassion": 6
    },
@@ -5446,10 +5445,11 @@
    "needed_for": [
     "armor_pvp",
     "mist_band_infused",
-    "transcendence"
+    "transcendence",
+    "star_of_glory"
    ],
    "qty": {
-    "transcendence": 900,
+    "transcendence": 500,
     "the_ascension": 250,
     "mist_band_infused": 150,
     "ardent_glorious__piece_light_helm": 100,
@@ -5469,7 +5469,8 @@
     "ardent_glorious__piece_heavy_shoulders": 100,
     "ardent_glorious__piece_heavy_chest": 250,
     "ardent_glorious__piece_heavy_gloves": 100,
-    "ardent_glorious__piece_heavy_boots": 100
+    "ardent_glorious__piece_heavy_boots": 100,
+    "star_of_glory": 400
    },
    "farmable": true,
    "sources": [
@@ -5532,14 +5533,16 @@
     "gift_of_skirmishing",
     "mist_band_infused",
     "the_ascension",
-    "transcendence"
+    "transcendence",
+    "jar_of_distilled_glory"
    ],
    "qty": {
-    "transcendence": 1750,
+    "transcendence": 500,
     "mist_band_infused": 170,
     "gift_of_skirmishing": 250,
     "ardent_glorious__per_piece": 250,
-    "gift_of_glory": 250
+    "gift_of_glory": 250,
+    "jar_of_distilled_glory": 1000
    },
    "farmable": true,
    "sources": [
@@ -5949,7 +5952,6 @@
    "qty": {
     "perfected_envoy__per_piece": 50,
     "ad_infinitum": 60,
-    "obsidian__per_piece": 50,
     "vision": 72,
     "fulgurite": 1,
     "gift_of_mastery": 250,
@@ -6660,18 +6662,19 @@
     "wings_of_glory_champion",
     "wings_of_glory_elite",
     "wings_of_glory_recruit",
-    "wings_of_glory_veteran"
+    "wings_of_glory_veteran",
+    "record_of_league_participation"
    ],
    "qty": {
-    "ardent_glorious__per_piece": 150,
-    "transcendence": 45,
+    "transcendence": 25,
     "the_ascension": 100,
     "certificate_of_support": 5,
     "wings_of_glory_recruit": 10,
     "wings_of_glory_veteran": 20,
     "wings_of_glory_champion": 30,
     "wings_of_glory_elite": 40,
-    "record_of_league_victories": 30
+    "record_of_league_victories": 30,
+    "record_of_league_participation": 20
    },
    "farmable": true,
    "timegate": true,
@@ -6745,7 +6748,6 @@
     "gift_of_war_prowess"
    ],
    "qty": {
-    "triumphant_hero__per_piece": 1,
     "gift_of_war_prowess": 1
    },
    "farmable": false,
@@ -6759,7 +6761,10 @@
      }
     }
    ],
-   "kind": "acquire"
+   "kind": "acquire",
+   "ref": "ressources/wiki/wvw_skirmish_claim_ticket.html (Legendary Commander War Razor)",
+   "verified": true,
+   "checked": "2026-10-14"
   },
   "glob_of_ectoplasm": {
    "name": "Glob of Ectoplasm",
@@ -6835,7 +6840,6 @@
     }
    ],
    "qty": {
-    "obsidian__per_piece": 600,
     "ad_infinitum": 510,
     "memory_essence_encapsulator": 50,
     "kralkatite_ingot": 1,
@@ -7044,8 +7048,6 @@
    ],
    "qty": {
     "endless_summer": 10,
-    "triumphant_hero__per_piece": 15,
-    "ardent_glorious__per_piece": 15,
     "gift_of_the_homesteader": 38,
     "gift_of_fortune": 77,
     "gift_of_insight": 100,
@@ -11533,7 +11535,8 @@
     "triumphant_hero__piece_heavy_chest": 350,
     "triumphant_hero__piece_heavy_gloves": 175,
     "triumphant_hero__piece_heavy_legs": 260,
-    "essence_of_annihilation": 350
+    "essence_of_annihilation": 350,
+    "legendary_war_insight": 1095
    },
    "farmable": true,
    "sources": [
@@ -11596,7 +11599,8 @@
     "mist_pearl",
     "recruits_wings_of_war",
     "soldiers_wings_of_war",
-    "triumphant_hero"
+    "triumphant_hero",
+    "legendary_war_insight"
    ],
    "timegate": true,
    "timegate_note": {
@@ -24336,7 +24340,10 @@
    ],
    "qty": {
     "gift_of_competitive_dedication": 1
-   }
+   },
+   "ref": "ressources/wiki/record_of_league_participation.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-14"
   },
   "star_of_glory": {
    "name": "Star of Glory",
@@ -24360,7 +24367,10 @@
    ],
    "qty": {
     "gift_of_competitive_dedication": 1
-   }
+   },
+   "ref": "ressources/wiki/star_of_glory.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-14"
   },
   "jar_of_distilled_glory": {
    "name": "Jar of Distilled Glory",
@@ -24384,7 +24394,10 @@
    ],
    "qty": {
     "gift_of_competitive_dedication": 1
-   }
+   },
+   "ref": "ressources/wiki/jar_of_distilled_glory.html (boîte Recipe)",
+   "verified": true,
+   "checked": "2026-10-14"
   },
   "askur_camping_cookout_backpiece": {
    "name": "Askur Camping Cookout Backpiece",

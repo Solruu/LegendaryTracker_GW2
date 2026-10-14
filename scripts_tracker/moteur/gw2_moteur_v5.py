@@ -273,8 +273,18 @@ class Modele:
     def totaux(self, cible: str, selection: dict | None = None,
                detail: bool = False,
                collections_faites: dict | None = None,
-               poids_par_emplacement: dict | None = None):
+               poids_par_emplacement: dict | None = None,
+               pieces_restantes: dict | None = None):
         """Ce que le tracker AFFICHE pour une cible : cles a plat plus cascade.
+
+        `pieces_restantes` : {armure: n}, le nombre de pieces d'un set qu'il
+        reste a fabriquer (0 a 6, defaut 6). v5 : l'onglet d'une armure
+        multipliait un cout par piece ECRIT A LA MAIN par ce nombre, a cote du
+        moteur. Desormais `__per_piece` vaut v x n, les couts par emplacement et
+        `__full_set` sont ramenes au prorata n/6 (sans correspondance id
+        d'armurerie -> emplacement, on ne sait pas QUELLE piece est possedee),
+        et `__onetime` n'est du que s'il reste au moins une piece. Meme regle
+        cote JSX, comparee par le test de conformite.
 
         `selection` : {id_de_groupe: {cible: option}} — ou {id: option} pour
         l'ancien format. Absent, chaque groupe prend son defaut.
@@ -307,30 +317,34 @@ class Modele:
             for sous, n in compo.items():
                 for cid, v in self.totaux(sous, selection, False,
                                           collections_faites,
-                                          poids_par_emplacement).items():
+                                          poids_par_emplacement,
+                                          pieces_restantes).items():
                     t[cid] = t.get(cid, 0) + v * n
             return (t, {}) if detail else t
 
         armure = cible in ARMURES
         pw = (poids_par_emplacement or {}).get(cible) or {}
+        n = (pieces_restantes or {}).get(cible, PIECES) if armure else PIECES
+        mults = {"": 1, "__per_piece": n, "__onetime": 1 if n > 0 else 0,
+                 "__per_unit": 1, "__full_set": 1 if n == PIECES else n / PIECES}
         satisfaits = self._satisfaits(cible, collections_faites)
         t: dict[str, float] = {}
         for cid, c in self.composants.items():
             if cid in satisfaits:
                 continue
             q = c.qty
-            for suf, mult in SUFFIXES:
+            for suf, _ in SUFFIXES:
                 if suf in ("__per_piece", "__full_set") and not armure:
                     continue
                 v = q.get(cible + suf)
                 if isinstance(v, (int, float)) and not isinstance(v, bool):
-                    t[cid] = t.get(cid, 0) + v * mult
+                    t[cid] = t.get(cid, 0) + v * mults[suf]
             if armure:
                 for slot in ARMOR_SLOTS:
                     poids = pw.get(slot, "light")
                     v = q.get(f"{cible}__piece_{poids}_{slot}")
                     if isinstance(v, (int, float)) and not isinstance(v, bool):
-                        t[cid] = t.get(cid, 0) + v
+                        t[cid] = t.get(cid, 0) + (v if n == PIECES else v * n / PIECES)
         for ch in self.choix.values():
             if cible in ch.cibles:
                 o = ch.retenue(cible, selection)
