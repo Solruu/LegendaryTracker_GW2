@@ -62,6 +62,7 @@ const I18N = {
     cad_tag_perchar: "per character",
     cad_tag_rng: "· random drop",
     cad_tag_paid: "· alternative route, left out of the estimate",
+    cur_weeks_left: "≈ {n} week(s) at the cap ({per}/week)",
     cad_per_day: "day",
     cad_per_week: "week",
     cad_per_season: "season",
@@ -310,6 +311,7 @@ const I18N = {
     cad_tag_perchar: "par personnage",
     cad_tag_rng: "· drop aléatoire",
     cad_tag_paid: "· voie alternative, hors du délai estimé",
+    cur_weeks_left: "≈ {n} semaine(s) au plafond ({per}/semaine)",
     cad_per_day: "jour",
     cad_per_week: "sem",
     cad_per_season: "saison",
@@ -1628,6 +1630,11 @@ const LEGENDARIES = {
       // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
       // refuse toute divergence.
       { id: "shadowstone", name: "Shadowstone Fragment", required: 500, icon: "SF", apiId: 109459, mapNote: "Eternity's Garden" },
+      // S5 (14/10) : les Research Notes etaient dans l'arbre (52 500) mais pas
+      // dans l'onglet — leur stock reel n'etait donc lu nulle part ici.
+      { id: "notes", name: "Research Note", required: 52500, icon: "RN", apiId: 61,
+        aside: { fr: "50 000 pour les 200 Seer Runestones (250 chacune) et 2 500 pour les réactifs hydrocatalytiques du Gift of Research — tableau du wiki.",
+                 en: "50,000 for the 200 Seer Runestones (250 each) and 2,500 for the Gift of Research's hydrocatalytic reagents — wiki table." } },
     ],
     metas: ["shackles"],
     bounties: [],
@@ -2294,6 +2301,20 @@ function etapesCollections(cible, colls) {
     }
   }
   return out;
+}
+
+// Debit hebdomadaire plafonne d'une cadence, sur la voie par defaut : les
+// sources sans plafond, aleatoires, saisonnieres ou alternatives payantes ne
+// promettent aucune date. Une seule regle, lue par l'onglet Timegates et par
+// les lignes de monnaie d'un legendaire (S5, 14/10).
+function debitHebdo(cad) {
+  let perWeek = 0;
+  for (const f of (cad?.sources ?? [])) {
+    if (f.paid_repeatable || f.cap == null || f.rng) continue;
+    if (f.period === "week") perWeek += f.cap;
+    else if (f.period === "day") perWeek += f.cap * 7;
+  }
+  return perWeek;
 }
 
 function computeGrandTotal(selectedIds, collectionsByLeg) {
@@ -7762,6 +7783,21 @@ export default function GW2LegendaryTracker() {
                           {NX(cur.aside)}
                         </div>
                       )}
+                      {(() => {
+                        // S5 : semaines restantes au plafond, depuis la cadence
+                        // sourcee du composant et le stock reel. Rien si aucun
+                        // plafond hebdomadaire ne s'applique a la voie par defaut.
+                        const cid = compByApi.get(cur.apiId);
+                        const per = debitHebdo(SOURCES_DB?.craft_components?.[cid]?.cadence);
+                        const manque = Math.max(0, cur.required - cur.owned);
+                        if (!per || !manque) return null;
+                        const sem = Math.ceil(manque / per);
+                        return (
+                          <div style={{ marginTop: 3, fontSize: 9, color: "rgba(96,165,250,0.75)", fontFamily: "'Crimson Text', serif" }}>
+                            ⏳ {t("cur_weeks_left", { n: sem, per: per.toLocaleString() })}
+                          </div>
+                        );
+                      })()}
                       {cur.kind === "karma" && (cur.extrasPending ?? []).length > 0 && (
                         <div style={{ marginTop: 3, fontSize: 9, color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
                           {t("karma_note")}

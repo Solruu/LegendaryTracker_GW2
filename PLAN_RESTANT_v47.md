@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v402) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v403) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -596,6 +596,13 @@ precurseur fabrique a 500, pas forge.
 Reportes « apres Wayfarer's Henge », qui est fait : debloques. Coalescence :
 plafond d'Insight → semaines restantes ; Stella Radians : karma + Research Notes
 en stock reel.
+✅ 14/10 (JSX v256, sources v403) : chaque ligne de monnaie affiche « ≈ N
+semaines au plafond » quand sa cadence a un plafond hebdomadaire sur la voie
+par defaut (meme regle que Timegates, `debitHebdo`) : Insight de Coalescence
+≈ 2 semaines. Stella Radians : Research Notes ajoutees a l'onglet et a la
+synchro (monnaie 61) — 52 500 et non 2 500 : 50 000 pour les 200 Seer
+Runestones + 2 500 pour le Gift of Research (tableau du wiki), l'audit l'a
+releve des l'ajout. Karma 7 M deja lu.
 
 ### S6 — Regionalisation
 ✅ 12/10 (accord d'Antoine) : 2 622 champs `fr` vides poses (1 869 textes
