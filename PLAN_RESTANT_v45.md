@@ -1,6 +1,6 @@
 # Plan du restant — LegendaryTracker_GW2
 
-Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v399) / `gw2_legendary_tracker_v244.jsx`,
+Etabli le 04/10/2026 sur `gw2_sources_v355.json` (mis a jour sur v400) / `gw2_legendary_tracker_v244.jsx`,
 apres regeneration de tous les rapports de rapprochement. **Point d'entree unique** :
 le detail historique reste dans `BACKLOG.md` et `DETTE_ARBRE_CRAFT.md`, mais ce qui
 est a faire est ici, range par lot de travail. Un lot est fini quand sa case est
@@ -136,8 +136,8 @@ Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
       100 reactifs hydrocatalytiques, 10 gemmes) + 100 Memory of Aurene, par
       arme (tableau « Used in » de memory_of_aurene.html). 4 pieces a recette ;
       26 pages capturees par Antoine le 12/10 : les 30 pieces ont leur recette
-      (`gw2_pieces_fortifiees_v1`, v398). Restent 2 pages : Spiritwood Pistol
-      Frame et Spiritwood Staff Shaft (pieces d'arme, crees en feuilles). Outil :
+      (`gw2_pieces_fortifiees_v1`, v398). Spiritwood Pistol Frame et Staff Shaft
+      captures le 14/10 et poses (`gw2_spiritwood_v1`, v400) : PAGES_A_CAPTURER vide. Outil :
       `gw2_confronte_totaux_v10` reconnait le precurseur que la table tait.
 
 ### W6 — Doubles comptes signales par l'audit · W

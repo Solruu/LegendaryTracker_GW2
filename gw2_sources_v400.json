@@ -1,7 +1,7 @@
 {
  "_meta": {
   "version": "v249",
-  "last_updated": "2026-10-12",
+  "last_updated": "2026-10-14",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -3067,7 +3067,9 @@
     "spiritwood_scepter_rod",
     "spiritwood_torch_handle",
     "legendary_inscription",
-    "spiritwood_focus_casing"
+    "spiritwood_focus_casing",
+    "spiritwood_pistol_frame",
+    "spiritwood_staff_shaft"
    ],
    "farmable": true,
    "sources": [
@@ -3154,7 +3156,9 @@
     "spiritwood_scepter_rod": 5,
     "spiritwood_torch_handle": 5,
     "legendary_inscription": 5,
-    "spiritwood_focus_casing": 5
+    "spiritwood_focus_casing": 5,
+    "spiritwood_pistol_frame": 5,
+    "spiritwood_staff_shaft": 5
    },
    "kind": "acquire",
    "best": "drop",
@@ -6488,7 +6492,9 @@
     "spiritwood_rifle_stock",
     "spiritwood_scepter_rod",
     "spiritwood_torch_handle",
-    "spiritwood_focus_casing"
+    "spiritwood_focus_casing",
+    "spiritwood_pistol_frame",
+    "spiritwood_staff_shaft"
    ],
    "qty": {
     "vision": 360,
@@ -6530,7 +6536,9 @@
     "spiritwood_rifle_stock": 50,
     "spiritwood_scepter_rod": 50,
     "spiritwood_torch_handle": 50,
-    "spiritwood_focus_casing": 50
+    "spiritwood_focus_casing": 50,
+    "spiritwood_pistol_frame": 50,
+    "spiritwood_staff_shaft": 50
    },
    "farmable": true,
    "sources": [
@@ -19406,7 +19414,9 @@
     "spiritwood_rifle_stock": 3,
     "spiritwood_scepter_rod": 3,
     "spiritwood_torch_handle": 2,
-    "spiritwood_focus_casing": 3
+    "spiritwood_focus_casing": 3,
+    "spiritwood_pistol_frame": 2,
+    "spiritwood_staff_shaft": 4
    },
    "needed_for": [
     "deldrimor_steel_horn",
@@ -19421,7 +19431,9 @@
     "spiritwood_rifle_stock",
     "spiritwood_scepter_rod",
     "spiritwood_torch_handle",
-    "spiritwood_focus_casing"
+    "spiritwood_focus_casing",
+    "spiritwood_pistol_frame",
+    "spiritwood_staff_shaft"
    ],
    "sources": [
     {
@@ -31739,14 +31751,15 @@
     {
      "type": "craft",
      "tip": {
-      "fr": "Pièce d'arme artisanale — recette non capturée : page à verser.",
-      "en": "Crafted weapon part — recipe not captured: page to add."
+      "fr": "Pièce d'arme artisanale (artisanat 500).",
+      "en": "Crafted weapon part."
      }
     }
    ],
-   "ref": "nom lu dans ressources/wiki/fortified_precursor_pistol_frame.html (boîte Recipe) ; recette non capturee",
-   "verified": false,
-   "checked": "2026-10-12"
+   "ref": "ressources/wiki/spiritwood_pistol_frame.html (boîte Recipe, capture du 14/10/2026)",
+   "verified": true,
+   "checked": "2026-10-14",
+   "apiId": 45835
   },
   "spiritwood_staff_shaft": {
    "name": "Spiritwood Staff Shaft",
@@ -31762,14 +31775,15 @@
     {
      "type": "craft",
      "tip": {
-      "fr": "Pièce d'arme artisanale — recette non capturée : page à verser.",
-      "en": "Crafted weapon part — recipe not captured: page to add."
+      "fr": "Pièce d'arme artisanale (artisanat 500).",
+      "en": "Crafted weapon part."
      }
     }
    ],
-   "ref": "nom lu dans ressources/wiki/fortified_precursor_staff_shaft.html (boîte Recipe) ; recette non capturee",
-   "verified": false,
-   "checked": "2026-10-12"
+   "ref": "ressources/wiki/spiritwood_staff_shaft.html (boîte Recipe, capture du 14/10/2026)",
+   "verified": true,
+   "checked": "2026-10-14",
+   "apiId": 45888
   }
  },
  "enchaînements_recommandés": {

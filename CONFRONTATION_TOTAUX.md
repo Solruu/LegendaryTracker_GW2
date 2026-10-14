@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v399.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v400.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
@@ -65,7 +65,9 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen3_aurenes_bite` | `thermocatalytic_reagent` | 490 | 250 | `dragons_bite`, `poem_on_greatswords (omis : deldrimor_steel_greatsword_blade)` |
 | `gen3_aurenes_fang` | `thermocatalytic_reagent` | 490 | 250 | `dragons_fang`, `poem_on_swords (omis : deldrimor_steel_sword_blade)` |
 | `gen3_aurenes_persuasion` | `thermocatalytic_reagent` | 490 | 250 | `dragons_persuasion`, `poem_on_rifles (omis : deldrimor_steel_rifle_barrel)` |
+| `gen3_aurenes_argument` | `thermocatalytic_reagent` | 480 | 250 | `dragons_argument`, `poem_on_pistols (omis : deldrimor_steel_pistol_barrel)` |
 | `gen3_aurenes_claw` | `thermocatalytic_reagent` | 480 | 250 | `dragons_claw_weapon`, `poem_on_daggers (omis : deldrimor_steel_dagger_blade)` |
+| `gen3_aurenes_insight` | `thermocatalytic_reagent` | 480 | 250 | `dragons_insight`, `poem_on_staves (omis : spiritwood_staff_head)` |
 | `gen3_aurenes_rending` | `thermocatalytic_reagent` | 480 | 250 | `dragons_rending`, `poem_on_axes (omis : deldrimor_steel_axe_blade)` |
 | `gen3_aurenes_tail` | `thermocatalytic_reagent` | 480 | 250 | `dragons_tail`, `poem_on_maces (omis : deldrimor_steel_mace_head)` |
 | `gen3_aurenes_weight` | `thermocatalytic_reagent` | 480 | 250 | `dragons_weight`, `poem_on_hammers (omis : deldrimor_steel_hammer_head)` |
@@ -79,8 +81,6 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen3_aurenes_flight` | `thermocatalytic_reagent` | 450 | 250 | `dragons_flight`, `poem_on_longbows (omis : spiritwood_longbow_stave)` |
 | `gen3_aurenes_wing` | `thermocatalytic_reagent` | 450 | 250 | `dragons_wing`, `poem_on_short_bows (omis : spiritwood_short_bow_stave)` |
 | `gen2_nevermore` | `dust_crystalline` | 450 | 250 | `gift_of_dust` |
-| `gen3_aurenes_argument` | `thermocatalytic_reagent` | 410 | 250 | `dragons_argument`, `poem_on_pistols (omis : deldrimor_steel_pistol_barrel)` |
-| `gen3_aurenes_insight` | `thermocatalytic_reagent` | 390 | 250 | `dragons_insight`, `poem_on_staves (omis : spiritwood_staff_head)` |
 | `gen2_exordium` | `darksteel_ingot` | 370 | 250 | `exitare` |
 | `gen2_the_shining_blade` | `darksteel_ingot` | 370 | 250 | `save_the_queen` |
 | `gen3_aurenes_argument` | `hydrocatalytic_reagent` | 600 | 500 | `dragons_argument` |
