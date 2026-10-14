@@ -553,21 +553,39 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
 
 ## Lots structurels (C+A — proposition avant execution)
 
-### S1 — § 12 sexies : synchro et saisie manuelle partagent un magasin
-Deux espaces (`synced` / `manuel`), un affichage qui dit lequel parle. Base :
-`__notSent`, `__syncedAt`. Change ce que voit le joueur : a valider.
+### S1 — Synchro complete qui fait foi · objectif revu par Antoine le 14/10
+La saisie manuelle ne sert que si la synchro est refusee ou indisponible. Une
+synchro reussie est COMPLETE et ECRASE tout : un objet absent de la reponse
+vaut zero. Condition : lire toutes les reserves (portefeuille, stockage de
+materiaux, banque, inventaire partage, sacs des personnages) ; une reserve dont
+la portee de cle manque n'est pas mise a zero, et l'ecran le dit. Rien ne
+manque a l'API officielle : l'eclat inscrit fige (12 sexies) venait du
+serveur Flask qui ne l'envoyait pas, pas de l'API. Pas d'autre source de
+synchro necessaire.
 
-### S2 — § ⑤ Primaute des recettes
-Les 722 `qty` a plat sont un resultat recopie ; les recettes devraient etre la
-seule source et les totaux s'en deduire. Le plus gros refactor ouvert : C1 a C4
-le preparent (chaque ecart resolu est un cas de moins a migrer).
+### S2 — § ⑤ Primaute des recettes · A FINIR (Antoine, 14/10)
+Les 722 `qty` a plat (346 restants) sont un resultat recopie ; les recettes
+doivent etre la seule source et les totaux s'en deduire. 60 ecarts sur 17
+legendaires a trancher (CONFRONTATION.md).
+Corollaire (Antoine, 14/10) : un seul calcul.
+- Total unitaire = recettes, rien d'autre. Aujourd'hui l'onglet d'un
+  legendaire affiche le `required` ecrit en dur dans le JSX (l'audit ne le
+  confronte au moteur qu'a collections vierges) : a supprimer, le moteur fait
+  foi.
+- Grand total = agregation des totaux unitaires (ou des recettes en direct),
+  jamais un comptage a part. Aujourd'hui il appelle le moteur SANS l'etat des
+  collections (repli sur celui d'Aurora seule) : etapes faites ailleurs non
+  deduites.
+- Memes filtres partout : legendaires acquis (armurerie + coche manuelle)
+  exclus, collections terminees deduites.
 
 ### S3 — § ⑥ Runes, cachets, reliques
 Table `upgrades` parallele et inerte a resorber dans `legendary_rune` /
 `legendary_sigil` / `legendary_relic`.
 
-### S4 — § ② Routes vers les 1 978 etapes d'armes
-L'onglet Armes cible, mais cliquer une arme ne mene a rien.
+### S4 — § ② Routes vers les 1 978 etapes d'armes · option B retenue (14/10)
+L'onglet Armes cible, mais cliquer une arme ne mene a rien. Option B :
+selecteur d'arme au-dessus de l'onglet Collections, rendu generique reutilise.
 
 ### S5 — Prerequis Coalescence et Stella Radians
 Reportes « apres Wayfarer's Henge », qui est fait : debloques. Coalescence :
@@ -612,5 +630,5 @@ tranchee), precurseurs gen1 et recettes de Forge aleatoires.
    W3** cote captures et **A1, A2** cote Antoine.
 2. **W4** puis C sur les 31 couts vendeur.
 3. **C3, C4** par groupes de legendaires.
-4. **S1** (petit, visible), puis **S5**, puis **S3**.
+4. Ordre du 14/10 : **S4** (B), **S5**, **S1**, **S2** (+ corollaire) ; S3 RAS.
 5. **S2** une fois C1–C4 epuises ; **S4, S6** ensuite.
