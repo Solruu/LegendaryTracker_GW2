@@ -74,9 +74,46 @@ _ALT = collections.defaultdict(set)
 for _g in groupes.values():
     for _o in (_g.get("options") or []):
         _ALT[_o].update(_g.get("targets") or [])
+# v6 : UNE TABLE VENDEUR N'EST PAS UNE RECETTE. Elle aplatit des prix qui
+# s'excluent : l'Encens funeraire se paie en Mosaiques d'elegie (voie retenue
+# le 09/10), OU en Contrats commerciaux, OU en Lingot cristallin. Poser les
+# trois aretes annoncait 1 250 contrats et toute la chaine du lingot sur
+# Coalescence et Vision. Une arete d'origine « vendeur » est donc ecartee
+# quand son parent a DEJA un cout pose dans les sources et qu'elle n'en
+# reprend pas un : la voie est tranchee, le reste est une alternative. Meme
+# regle que gw2_arbitrages (famille COUT VENDEUR).
+_ENFANTS = collections.defaultdict(set)
+for _cid, _c in cc.items():
+    for _k in (_c.get("qty") or {}):
+        if _k in cc:
+            _ENFANTS[_k].add(_cid)
+# v6 : UNE FEUILLE TRANCHEE RESTE UNE FEUILLE (regle C7 d'Antoine, 14/10).
+# Opal Crystal, Glacial Shard, Pile of Foul Essence ont une promotion en
+# Forge dans leur capture, mais la voie retenue est le butin (`best` hors
+# fabrication, ou des sources de butin seules). Poser leur recette faisait
+# apparaitre 200 poussieres lumineuses sur trois armes gen1 et Orrax.
+_FAB = {"craft", "craft_400", "craft_500", "craft_weaponsmith", "mystic_forge",
+        "advanced_craft", "vendor_mf", "lyhr_assisted"}
+_BUTIN = {"drop", "chest", "gathering", "gather", "meta_drop", "event_drop",
+          "salvage", "node", "wvw_drop"}
+def _feuille_tranchee(p):
+    if _ENFANTS.get(p):
+        return False
+    c = cc.get(p) or {}
+    if c.get("best") and c["best"] not in _FAB:
+        return True
+    types = {x.get("type") for x in (c.get("sources") or []) if isinstance(x, dict)}
+    return bool(types & _BUTIN) and not (types & _FAB)
 proposees = collections.defaultdict(dict)
+ecartees_vendeur = ecartees_feuille = 0
 for (p, e), (q, _org) in E.items():
     if p in cc and e in cc and p != e and p not in _ALT.get(e, ()):
+        if _org == "vendeur" and _ENFANTS.get(p) and e not in _ENFANTS[p]:
+            ecartees_vendeur += 1
+            continue
+        if _feuille_tranchee(p):
+            ecartees_feuille += 1
+            continue
         proposees[e][p] = q
 
 
@@ -116,7 +153,18 @@ def totaux(leg, recettes=False):
     # essences d'Ad Infinitum) : la v4 la retirait et annoncait un trou.
     def _ignore(cid):
         return leg not in ((cc.get(cid) or {}).get("qty_overlap_verified") or ())
-    return {cid: (base[cid] if base.get(cid, 0) > 0 and _ignore(cid) else v)
+    # v6 : LE COUT D'UNE ETAPE DE COLLECTION N'EST PAS UNE CLE A PLAT. Il
+    # s'ajoute a la chaine (C5 : `cost` d'etape, seul chemin) ; le retirer avec
+    # la cle a plat annoncait 200 perles d'Orr en trop sur Aurora — les 200
+    # des sanctuaires d'Aurora II.
+    direct = collections.Counter()
+    for item, faite in _RECETTES._etapes(leg, None):
+        if faite:
+            continue
+        for k, n in (item.get("cost") or {}).items():
+            if isinstance(n, (int, float)) and not isinstance(n, bool):
+                direct[k] += n
+    return {cid: (base[cid] + direct.get(cid, 0) if base.get(cid, 0) > 0 and _ignore(cid) else v)
             for cid, v in t.items()}
 
 
@@ -161,4 +209,6 @@ Path(HERE / "CONFRONTATION.md").write_text("\n".join(out) + "\n", encoding="utf-
 print(f"{len(lignes)} ecarts sur {len([l for l, v in par_leg.items() if v[0]])} legendaires")
 print(f"  hausses : {sum(1 for x in lignes if x[4] > x[3])} | "
       f"baisses : {sum(1 for x in lignes if x[4] < x[3])}")
+print(f"  aretes vendeur ecartees (voie deja tranchee) : {ecartees_vendeur}")
+print(f"  recettes de feuilles tranchees ecartees (regle C7) : {ecartees_feuille}")
 print("CONFRONTATION.md ecrit")

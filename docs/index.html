@@ -6348,6 +6348,14 @@ const SOURCES_DB = {
       "qty_note": {
         "fr": "Transcendence : 900 à l'arbre gw2efficiency — Star of Glory 400, Mist Diamond 250, Mist-Enhanced Orichalcum 250. La Star of Glory reste à plat tant qu'Ardent Glorious est bloqué.",
         "en": null
+      },
+      "qty_overlap_verified": [
+        "ardent_glorious",
+        "transcendence"
+      ],
+      "qty_overlap_note": {
+        "fr": "Ardent Glorious : 100 à 250 par emplacement à l'étape élevée et 400 dans la Star of Glory. Transcendence : Mist Diamond 250 + Mist-Enhanced Orichalcum 250, en plus de la Star of Glory.",
+        "en": "Ardent Glorious: 100 to 250 per slot at the ascended step and 400 in the Star of Glory. Transcendence: Mist Diamond 250 + Mist-Enhanced Orichalcum 250, on top of the Star of Glory."
       }
     },
     "shard_of_glory": {
@@ -6408,11 +6416,16 @@ const SOURCES_DB = {
       "checked": "2026-09-18",
       "ref": "boite Recipe de Gift of Glory (250 Shard of Glory), symetrique de Gift of War -> 250 Memory of Battle",
       "qty_overlap_verified": [
-        "transcendence"
+        "transcendence",
+        "ardent_glorious"
       ],
       "qty_note": {
         "fr": "Transcendence : 2 250 à l'arbre gw2efficiency — 250 Gift of Glory et 250 Gift of Skirmishing par la chaîne, 1 750 à plat (Jar of Distilled Glory 1 000, essences 250, Mist Diamond 250, Mist-Enhanced Orichalcum 250).",
         "en": null
+      },
+      "qty_overlap_note": {
+        "fr": "Ardent Glorious : 250 par pièce à l'étape élevée (vendeur) et 1 000 dans le Jar of Distilled Glory — deux nœuds distincts. Transcendence : Mist Diamond + Mist-Enhanced Orichalcum (500) en plus du Jar, du Gift of Glory et du Gift of Skirmishing.",
+        "en": "Ardent Glorious: 250 per piece at the ascended step (vendor) and 1,000 in the Jar of Distilled Glory — two distinct nodes. Transcendence: Mist Diamond + Mist-Enhanced Orichalcum (500) on top of the Jar, Gift of Glory and Gift of Skirmishing."
       }
     },
     "legendary_insight": {
@@ -7193,7 +7206,8 @@ const SOURCES_DB = {
         "gift_of_magical_prosperity",
         "gift_of_mighty_prosperity",
         "gift_of_relics",
-        "gift_of_the_elders"
+        "gift_of_the_elders",
+        "selachimorpha"
       ],
       "qty": {
         "gift_of_aurenes_argument": 1,
@@ -7217,7 +7231,8 @@ const SOURCES_DB = {
         "gift_of_magical_prosperity": 1,
         "gift_of_mighty_prosperity": 1,
         "gift_of_the_elders": 1,
-        "gift_of_relics": 1
+        "gift_of_relics": 1,
+        "selachimorpha": 2
       },
       "farmable": true,
       "sources": [
@@ -7249,7 +7264,6 @@ const SOURCES_DB = {
         "transcendent_crystal"
       ],
       "qty": {
-        "selachimorpha": 1000,
         "gift_of_research": 500,
         "transcendent_crystal": 100
       },
@@ -7328,7 +7342,6 @@ const SOURCES_DB = {
       "qty": {
         "vision": 360,
         "ad_infinitum": 310,
-        "selachimorpha": 500,
         "gift_of_research": 250,
         "deldrimor_steel_spear_head": 50,
         "large_spiritwood_haft": 50,
@@ -10926,8 +10939,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "legendary_relic": 12500,
-        "mystic_facet": 250,
+        "mystic_facet": 750,
         "mystic_aspect": 10,
         "mystic_mote": 10,
         "superior_sigil_of_accuracy": 10,
@@ -10953,9 +10965,6 @@ const SOURCES_DB = {
         "fr": "achat direct (pas d'alternative gratuite)",
         "en": "direct purchase (no free alternative)"
       },
-      "qty_overlap_verified": [
-        "legendary_relic"
-      ],
       "ref": "boite Recipe de Mystic Facet : 1 Relic + 250 Pile of Lucent Crystal",
       "checked": "2026-09-18",
       "verified": "boite Recipe relue a la main le 18/09/2026 ; le JSX confirme 23250 pour les ameliorations legendaires"
@@ -10985,7 +10994,10 @@ const SOURCES_DB = {
           "checked": "2026-08-22",
           "ref": "recette declaree sur le composant"
         }
-      ]
+      ],
+      "ref": "ressources/wiki/mystic_facet.html (boîte Recipe : 1 Relic + 3 x 250 Pile of Lucent Crystal)",
+      "verified": true,
+      "checked": "2026-10-14"
     },
     "gift_of_relics": {
       "name": "Gift of Relics",
@@ -12482,6 +12494,13 @@ const SOURCES_DB = {
             "ref": "wiki:WvW_Skirmish_Claim_Ticket"
           }
         ]
+      },
+      "qty_overlap_verified": [
+        "triumphant_hero"
+      ],
+      "qty_overlap_note": {
+        "fr": "Triumphant Hero : 175 à 350 par emplacement à l'étape élevée et 1 095 par Legendary War Insight — deux nœuds distincts.",
+        "en": "Triumphant Hero: 175 to 350 per slot at the ascended step and 1,095 per Legendary War Insight — two distinct nodes."
       }
     },
     "testimony_of_castoran_heroics": {
@@ -12784,7 +12803,14 @@ const SOURCES_DB = {
       "needed_for": [
         "vision",
         "olmakhan_latigo_strap"
-      ]
+      ],
+      "qty_overlap_verified": [
+        "vision"
+      ],
+      "qty_overlap_note": {
+        "fr": "Vision : 3 000 pour les six armes Dragonsblood exigées par la collection (vision.html), en plus des Olmakhan Latigo Straps de la chaîne — deux nœuds distincts.",
+        "en": "Vision: 3,000 for the six Dragonsblood weapons required by the collection (vision.html), on top of the chain's Olmakhan Latigo Straps — two distinct nodes."
+      }
     },
     "aether_rich_sap": {
       "name": "Aether-Rich Sap",

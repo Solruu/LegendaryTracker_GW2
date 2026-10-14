@@ -609,7 +609,28 @@ un total de set complet par les pieces restantes.
   400 Ascended Shards, Jar 1 000 Shards, Legendary War Insight 1 095
   tickets d'escarmouche), Transcendence ramenee a 2 000 Shards of Glory
   (250 en double). CONFRONTATION : 60 -> 52 ecarts.
-Reste : les 52 ecarts de CONFRONTATION.md hors armures.
+✅ 14/10, seconde passe (sources v405, confronte v6) : 52 -> 9 ecarts.
+- outil : une table vendeur n'est pas une recette (Encens funeraire : voie
+  Mosaiques tranchee, Contrats et Lingot = alternatives) ; une feuille
+  tranchee reste une feuille (regle C7 : Opal Crystal, Glacial Shard, Foul
+  Essence) ; le cout d'une etape de collection n'est pas une cle a plat ;
+- donnee : relique (arete Facet 250 -> 750, cle a plat 12 500 retiree, total
+  inchange 18 750) ; Selachimorpha par 2 Gifts of Research (+500 Exotic
+  Essence of Luck, oubliee) ; chevauchements declares (structure existante
+  `qty_overlap_verified`) : Shards of Glory Ardent/Transcendence, tickets
+  Triumphant, Volatile Magic de Vision (armes Dragonsblood).
+Reste — Ad Infinitum seul (9 ecarts), A DECIDER (Antoine) : ses 4 650 Fractal
+Relics sont justes (2 650 de vendeurs dans les 4 collections + 4 Gifts of
+Ascension x 500, pages capturees) mais agreges sur `gift_of_ascension_fractal`.
+Proposition : arete Gift of Ascension 500, 4 Gifts au legendaire, et les
+2 650 en `cost` sur les 5 etapes vendeur (deduits quand l'etape est faite).
+Les cles a plat dragonite / empyreal / bloodstone (1 000) et obsidienne (60)
+viennent de l'arbre gw2efficiency des precurseurs Finite Result / Upper
+Bound, absents du tracker : a verifier sur cet export avant de les declarer.
+Signale, non tranche : Selachimorpha compte 1 000 Hydrocatalytic ET 5 000
+Research Notes — les notes ACHETENT ces reactifs (gift_of_research.html :
+« Hydrocatalytic Reagents cost a total of 2,500 ») ; meme question pour les
+2 500 notes de Stella.
 
 ### S3 — § ⑥ Runes, cachets, reliques
 Table `upgrades` parallele et inerte a resorber dans `legendary_rune` /
