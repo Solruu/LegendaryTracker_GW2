@@ -1176,6 +1176,18 @@ def progression():
         errors.append(f"characters: {err}")
         characters_raw = []
 
+    # v47 (S1, 14/10/2026) : une synchro fait foi, elle doit donc voir TOUTES
+    # les reserves. Les stocks par legendaire lisaient `mat_dict`, c'est-a-dire
+    # le seul stockage de materiaux : un objet range en banque, dans
+    # l'inventaire partage ou dans un sac comptait pour zero. On garde le
+    # stockage brut pour l'agregat renvoye sous `stocks`, et `mat_dict` devient
+    # le compte complet des OBJETS (stockage + banque + partage + sacs) — les
+    # monnaies de portefeuille restent a part, leurs ids ne se melangent pas.
+    mat_dict_stockage = mat_dict
+    _tous = _aggregate_stocks({}, mat_dict_stockage, bank_raw, shared_raw, characters_raw)
+    mat_dict = {int(k): v for k, v in _tous.items()}
+    reserves_completes = not any(e.split(":")[0] in ("materials", "bank", "shared", "characters") for e in errors)
+
     # ── Portes d'eligibilite : maitrises, palier de fractale, extensions
     # Ces trois appels repondent a une seule question : le joueur peut-il
     # LANCER cette collection maintenant ? Sans eux, l'onglet des timegates
@@ -1276,11 +1288,13 @@ def progression():
             if slot and slot.get("id") == item_id
         )
     obsidian_bank = bank_count(19925)  # conservé pour les currencies Obsidian Armor
+    # v47 : `mat_dict` compte deja la banque (et le reste) — l'ajouter une
+    # seconde fois doublerait le stock.
     common = {
-        "clovers":   mat_dict.get(19675, 0) + bank_count(19675),
-        "coins":     mat_dict.get(19976, 0) + bank_count(19976),
-        "ectos":     mat_dict.get(19721, 0) + bank_count(19721),
-        "obsidian":  mat_dict.get(19925, 0) + obsidian_bank,
+        "clovers":   mat_dict.get(19675, 0),
+        "coins":     mat_dict.get(19976, 0),
+        "ectos":     mat_dict.get(19721, 0),
+        "obsidian":  mat_dict.get(19925, 0),
     }
 
     # Achievements collections
@@ -1420,7 +1434,7 @@ def progression():
         "notes":   wallet_dict.get(61, 0),   # Research Note (wallet)
         "unusual": wallet_dict.get(62, 0),   # Unusual Coin (monnaie maps VoE)
         "clovers": mat_dict.get(19675, 0),
-        "shards":  mat_dict.get(19925, 0) + obsidian_bank,
+        "shards":  mat_dict.get(19925, 0),   # v47 : banque deja comprise
     })
 
     # Currencies Obsidian Armor (SotO — essences Rift converties wallet juin 2025)
@@ -1431,7 +1445,7 @@ def progression():
         "amalgamated": mat_dict.get(100081, 0),
         "provisioner": wallet_dict.get(29, 0),
         "clovers":     mat_dict.get(19675, 0),
-        "shards":      mat_dict.get(19925, 0) + obsidian_bank,
+        "shards":      mat_dict.get(19925, 0),   # v47 : banque deja comprise
         "ectos":       mat_dict.get(19721, 0),
     })
 
@@ -1555,7 +1569,8 @@ def progression():
         # Il existe parce que l'onglet Grand total maintenait son propre stock via
         # une seconde route : deux systemes pour un meme joueur et une meme cle.
         # Une seule requete, une seule verite.
-        "stocks": _aggregate_stocks(wallet_dict, mat_dict, bank_raw, shared_raw, characters_raw),
+        "stocks": _aggregate_stocks(wallet_dict, mat_dict_stockage, bank_raw, shared_raw, characters_raw),
+        "_reserves_completes": reserves_completes,
         # Instantane complet des succes du compte, id -> etat. Il manquait :
         # le client ne pouvait donc rafraichir l'etat des sous-succes d'un meta
         # qu'en repassant par l'API directe, ce qui exige une cle saisie dans

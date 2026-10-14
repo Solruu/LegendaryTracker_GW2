@@ -562,6 +562,13 @@ la portee de cle manque n'est pas mise a zero, et l'ecran le dit. Rien ne
 manque a l'API officielle : l'eclat inscrit fige (12 sexies) venait du
 serveur Flask qui ne l'envoyait pas, pas de l'API. Pas d'autre source de
 synchro necessaire.
+✅ 14/10 (JSX v257, Flask v47) : a la synchro, chaque monnaie declaree prend
+la valeur de l'agregat de toutes les reserves, absente = 0, la saisie
+manuelle est ecrasee ; si une reserve n'a pas pu etre lue, l'ancienne valeur
+est gardee et signalee. Ligne « valeurs de la synchro du … » / « saisies a la
+main ». Flask v47 : les stocks par legendaire lisaient le seul stockage de
+materiaux (banque, partage, sacs ignores) — corrige, double comptage de la
+banque (trefles, ecus, ectos, obsidienne) retire. A relancer chez Antoine.
 
 ### S2 — § ⑤ Primaute des recettes · A FINIR (Antoine, 14/10)
 Les 722 `qty` a plat (346 restants) sont un resultat recopie ; les recettes

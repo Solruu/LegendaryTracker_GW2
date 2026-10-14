@@ -268,7 +268,9 @@ const I18N = {
     wp_order_title: "Position in the cheapest waypoint route",
     calc_link: "↗ Cost calculator (gw2efficiency, uses your own stock)",
     cur_extras_done: "✓ collection purchases already made — base requirement only",
-    cur_not_sent: "⚠ 0 is not a stock: the sync source never sent this currency. Check that the local Flask server is up to date.",
+    cur_not_sent: "⚠ Value kept from before: a reserve (bank, bags…) could not be read at the last sync — check your API key's scopes.",
+    cur_src_sync: "Values from the sync of {d} — a successful sync overwrites everything.",
+    cur_src_manual: "Values entered by hand since the last sync — the next successful sync will overwrite them.",
     bags_missing: "⚠ Character bags could not be read — your API key is missing the 'characters' or 'inventories' scope. Anything not yet deposited is undercounted.",
     karma_note: "Shown because the total exceeds 100,000. ⚠ marks an unverified estimate.",
     aurora_src_api: "threshold read live from the API",
@@ -506,7 +508,9 @@ const I18N = {
     wp_order_title: "Position dans le trajet le moins coûteux en points de passage",
     calc_link: "↗ Calculateur de coût (gw2efficiency, sur ton stock réel)",
     cur_extras_done: "✓ achats de collection déjà faits — seul le socle reste",
-    cur_not_sent: "⚠ ce 0 n'est pas un stock : la source de synchro n'a jamais envoyé cette monnaie. Vérifie que le serveur Flask local est à jour.",
+    cur_not_sent: "⚠ Valeur conservée : une réserve (banque, sacs…) n'a pas pu être lue à la dernière synchro — vérifie les portées de ta clé API.",
+    cur_src_sync: "Valeurs de la synchro du {d} — une synchro réussie écrase tout.",
+    cur_src_manual: "Valeurs saisies à la main depuis la dernière synchro — la prochaine synchro réussie les écrasera.",
     bags_missing: "⚠ Les sacs des personnages n'ont pas pu être lus — il manque la portée 'characters' ou 'inventories' à ta clé API. Tout ce qui n'est pas déposé est sous-compté.",
     karma_note: "Affiché car le total dépasse 100 000. ⚠ signale une estimation non vérifiée.",
     aurora_src_api: "seuil lu en direct dans l'API",
@@ -85237,18 +85241,45 @@ function GW2LegendaryTracker() {
         if (!dKey) throw new Error(`${flaskErr} — saisis ta clé API GW2 (champ 🔑) pour la synchro directe sans Flask`);
         data = await buildDirectProgressionData(dKey);
       }
-      for (const [legId, vals] of Object.entries(data.currencies ?? {})) {
-        const cur = await storeGet(getCurrencyKey(legId)) ?? {};
-        // Une monnaie declaree mais absente de la charge synchronisee affichait 0,
-        // indiscernable d'un stock reellement vide. On note l'ecart pour le dire.
+      // S1 (14/10) : une synchro reussie FAIT FOI. Chaque monnaie declaree par
+      // un legendaire prend la valeur lue — dans l'agregat de TOUTES les
+      // reserves (portefeuille, stockage, banque, inventaire partage, sacs) —
+      // et une monnaie absente vaut zero : la saisie manuelle precedente est
+      // ecrasee. Exception honnete : si une reserve n'a pas pu etre lue (portee
+      // de cle manquante, erreur), un zero serait peut-etre faux ; on garde
+      // alors l'ancienne valeur et on le signale (__notSent).
+      const erreurs = Array.isArray(data.errors) ? data.errors : [];
+      const reservesCompletes = data._direct
+        ? data._bags_ok !== false
+        : (data._reserves_completes ?? !erreurs.some(e => /^(materials|bank|shared|characters)\b/.test(String(e))));
+      const stockDe = (apiId) => {
+        if (!data.stocks) return undefined;
+        const v = data.stocks[String(apiId)];
+        return typeof v === "number" ? v : (reservesCompletes ? 0 : undefined);
+      };
+      const legsSync = new Set([...Object.keys(data.currencies ?? {}), ...Object.keys(LEGENDARIES)]);
+      for (const legId of legsSync) {
         const L = LEGENDARIES[legId];
-        const declared = [
+        const vals = (data.currencies ?? {})[legId] ?? {};
+        const descs = [
           ...(L?.currencies ?? []),
           ...(L?.currenciesPerPiece ?? []),
           ...(L?.currencyCatalog ?? []),
-        ].map(c => c.id);
-        const notSent = declared.filter(cid => !(cid in vals));
-        await storeSet(getCurrencyKey(legId), { ...cur, ...vals, __notSent: notSent, __syncedAt: Date.now() });
+        ];
+        if (descs.length === 0 && Object.keys(vals).length === 0) continue;
+        const cur = await storeGet(getCurrencyKey(legId)) ?? {};
+        const next = {};
+        const notSent = [];
+        for (const c of descs) {
+          const lu = c.apiId ? stockDe(c.apiId) : undefined;
+          const v = typeof lu === "number" ? lu : vals[c.id];
+          if (typeof v === "number") next[c.id] = v;
+          else { notSent.push(c.id); if (typeof cur[c.id] === "number") next[c.id] = cur[c.id]; }
+        }
+        // Valeurs sans descripteur (compteurs propres a un legendaire) : la
+        // synchro les donne, elles passent telles quelles.
+        for (const [k, v] of Object.entries(vals)) if (!(k in next)) next[k] = v;
+        await storeSet(getCurrencyKey(legId), { ...next, __notSent: notSent, __syncedAt: Date.now(), __source: "sync" });
       }
       // L'inventaire agrege renvoye par la meme requete alimente directement le
       // grand total. Il n'existe plus de synchro separee : le bouton API remplit
@@ -85587,7 +85618,9 @@ function GW2LegendaryTracker() {
     const key = isCommon ? getCommonKey() : getCurrencyKey(selectedLeg);
     const setter = isCommon ? setCommonMats : setCurrencies;
     setter(prev => {
-      const next = { ...prev, [id]: Math.max(0, (prev[id] ?? 0) + delta) };
+      // Saisie manuelle : utile seulement sans synchro ; la prochaine synchro
+      // reussie l'ecrasera. On le marque pour l'afficher.
+      const next = { ...prev, [id]: Math.max(0, (prev[id] ?? 0) + delta), __source: isCommon ? prev.__source : "manuel" };
       storeSet(key, next);
       return next;
     });
@@ -88066,6 +88099,12 @@ function GW2LegendaryTracker() {
           {gtStocks?._bags_ok === false && (
             <div style={{ margin: "6px 14px", padding: "7px 11px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.25)", borderRadius: 7, fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.8)" }}>
               {t("bags_missing")}
+            </div>
+          )}
+          {mainProgress.length > 0 && (currencies.__syncedAt || currencies.__source === "manuel") && (
+            <div style={{ margin: "4px 14px 2px", fontSize: 9.5, fontFamily: "'Crimson Text', serif", color: currencies.__source === "manuel" ? "rgba(251,146,60,0.75)" : "rgba(74,222,128,0.6)" }}>
+              {currencies.__source === "manuel" ? t("cur_src_manual")
+                : t("cur_src_sync", { d: new Date(currencies.__syncedAt).toLocaleString() })}
             </div>
           )}
           {mainProgress.filter(cur => !(cur.kind === "karma" && cur.required < (cur.showAbove ?? 0))).map(cur => (
