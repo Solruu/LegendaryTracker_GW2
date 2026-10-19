@@ -4778,6 +4778,15 @@
   "aretes_table": []
  },
  {
+  "page": "bloodstone_fen_master",
+  "titre": "Bloodstone Fen Master",
+  "api_id": null,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "bloodstone_shard",
   "titre": "Bloodstone Shard",
   "api_id": 20797,
@@ -5416,6 +5425,40 @@
   "api_id": 12271,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "bound_wings",
+  "titre": "Bound Wings",
+  "api_id": 75847,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith Armorsmith Huntsman Artificer Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Glob_of_Ectoplasm",
+      10
+     ],
+     [
+      "Glob_of_Coagulated_Mists_Essence",
+      5
+     ],
+     [
+      "Vision_Crystal",
+      1
+     ],
+     [
+      "Spirit_of_the_Finite_Result",
+      1
+     ]
+    ],
+    "produit": "Bound Wings"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -9753,6 +9796,15 @@
   "aretes_table": []
  },
  {
+  "page": "druid_runestone",
+  "titre": "Druid Runestone",
+  "api_id": 81140,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "dusk",
   "titre": "Dusk",
   "api_id": 29185,
@@ -11573,6 +11625,70 @@
   "aretes_table": []
  },
  {
+  "page": "finite_result",
+  "titre": "Finite Result",
+  "api_id": 73624,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith Armorsmith Huntsman Artificer Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Solution:_Finite_Result",
+      1
+     ],
+     [
+      "Pristine_Mist_Essence",
+      1
+     ],
+     [
+      "Finite_Wings",
+      1
+     ],
+     [
+      "First_Order_Mist_Frame",
+      1
+     ]
+    ],
+    "produit": "Finite Result"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "finite_wings",
+  "titre": "Finite Wings",
+  "api_id": 76292,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith Armorsmith Huntsman Artificer Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Vision_Crystal",
+      1
+     ],
+     [
+      "Vial_of_Condensed_Mists_Essence",
+      5
+     ],
+     [
+      "Pile_of_Crystalline_Dust",
+      10
+     ]
+    ],
+    "produit": "Finite Wings"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "fir_sapling",
   "titre": "Fir Sapling",
   "api_id": null,
@@ -11597,6 +11713,36 @@
     "qty": 5
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "first_order_mist_frame",
+  "titre": "First Order Mist Frame",
+  "api_id": 74890,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith Armorsmith Huntsman Artificer Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bolt_of_Silk",
+      50
+     ],
+     [
+      "Cured_Thick_Leather_Square",
+      100
+     ],
+     [
+      "Mithril_Plated_Dowel",
+      75
+     ]
+    ],
+    "produit": "First Order Mist Frame"
+   }
+  ],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -21402,6 +21548,15 @@
   "aretes_table": []
  },
  {
+  "page": "hydrocatalytic_reagent",
+  "titre": "Hydrocatalytic Reagent",
+  "api_id": 95813,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "hymn_of_glory",
   "titre": "Hymn of Glory",
   "api_id": 77548,
@@ -24014,6 +24169,20 @@
   "aretes_table": []
  },
  {
+  "page": "legendary_war_insight",
+  "titre": "Legendary War Insight",
+  "api_id": 83584,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "WvW_Skirmish_Claim_Ticket",
+    "qty": 1095
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "legendary_weapon_bolt",
   "titre": "Legendary Weapon: Bolt",
   "api_id": null,
@@ -25290,6 +25459,32 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "mithril_plated_dowel",
+  "titre": "Mithril Plated Dowel",
+  "api_id": 12989,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Artificer Huntsman Weaponsmith",
+    "rating": "350",
+    "ingredients": [
+     [
+      "Mithril_Ingot",
+      3
+     ],
+     [
+      "Elder_Wood_Plank",
+      2
+     ]
+    ],
+    "produit": "Mithril Plated Dowel"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },
@@ -29184,6 +29379,24 @@
   "aretes_table": []
  },
  {
+  "page": "pristine_blood_ruby",
+  "titre": "Pristine Blood Ruby",
+  "api_id": 81762,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Blood_Ruby",
+    "qty": 50
+   },
+   {
+    "objet": "Unbound_Magic",
+    "qty": 5000
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "pristine_mist_essence",
   "titre": "Pristine Mist Essence",
   "api_id": 75781,
@@ -30968,6 +31181,36 @@
   "aretes_table": []
  },
  {
+  "page": "second_order_mist_frame",
+  "titre": "Second Order Mist Frame",
+  "api_id": 76502,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith Armorsmith Huntsman Artificer Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Bolt_of_Gossamer",
+      25
+     ],
+     [
+      "Cured_Rugged_Leather_Square",
+      75
+     ],
+     [
+      "Orichalcum_Plated_Dowel",
+      50
+     ]
+    ],
+    "produit": "Second Order Mist Frame"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "secrets_of_the_weald",
   "titre": "Secrets of the Weald",
   "api_id": null,
@@ -31081,6 +31324,20 @@
     "qty": null
    }
   ]
+ },
+ {
+  "page": "sentient_seed",
+  "titre": "Sentient Seed",
+  "api_id": 81781,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Unbound_Magic",
+    "qty": 1000
+   }
+  ],
+  "aretes_table": []
  },
  {
   "page": "shackles_of_the_ancients",
@@ -32830,6 +33087,20 @@
   "aretes_table": []
  },
  {
+  "page": "solution_finite_result",
+  "titre": "Solution: Finite Result",
+  "api_id": 70435,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ball_of_Dark_Energy",
+    "qty": 5
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "solution_unbound",
   "titre": "Solution: Unbound",
   "api_id": 75469,
@@ -32839,6 +33110,20 @@
    {
     "objet": "Ball_of_Dark_Energy",
     "qty": 13
+   }
+  ],
+  "aretes_table": []
+ },
+ {
+  "page": "solution_upper_bound",
+  "titre": "Solution: Upper Bound",
+  "api_id": 73201,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [
+   {
+    "objet": "Ball_of_Dark_Energy",
+    "qty": 9
    }
   ],
   "aretes_table": []
@@ -33009,6 +33294,15 @@
     "qty": 5
    }
   ],
+  "aretes_table": []
+ },
+ {
+  "page": "spirit_of_the_finite_result",
+  "titre": "Spirit of the Finite Result",
+  "api_id": 75066,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
   "aretes_table": []
  },
  {
@@ -39863,6 +40157,40 @@
   "aretes_table": []
  },
  {
+  "page": "upper_bound",
+  "titre": "Upper Bound",
+  "api_id": 73251,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Weaponsmith Armorsmith Huntsman Artificer Leatherworker Tailor",
+    "rating": "500",
+    "ingredients": [
+     [
+      "Solution:_Upper_Bound",
+      1
+     ],
+     [
+      "Pristine_Mist_Essence",
+      2
+     ],
+     [
+      "Bound_Wings",
+      1
+     ],
+     [
+      "Second_Order_Mist_Frame",
+      1
+     ]
+    ],
+    "produit": "Upper Bound"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "valkyrie_bearkin_war_helm_heavy",
   "titre": "Valkyrie Bearkin War Helm (heavy)",
   "api_id": 103257,
@@ -40298,6 +40626,45 @@
    }
   ],
   "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "vial_of_condensed_mists_essence",
+  "titre": "Vial of Condensed Mists Essence",
+  "api_id": 38014,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 3,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Glob_of_Coagulated_Mists_Essence",
+      1
+     ],
+     [
+      "Master%27s_Salvage_Kit",
+      1
+     ],
+     [
+      "Mystic_Coin",
+      1
+     ],
+     [
+      "Pile_of_Crystalline_Dust",
+      1
+     ]
+    ],
+    "produit": "Vial of Condensed Mists Essence"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Fractal_Relic",
+    "qty": 30
+   }
+  ],
   "aretes_table": []
  },
  {

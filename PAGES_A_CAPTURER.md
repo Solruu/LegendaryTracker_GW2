@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v411.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v412.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 13 trous de l'arbre — LA PRIORITÉ
+## 0 — 14 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,11 +17,8 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
-| `Druid Runestone` | 2 |
-| `Hydrocatalytic Reagent` | 1 |
-| `Legendary War Insight` | 1 |
 
-### 0 ter — 10 trous dont la page est DÉJÀ au dépôt
+### 0 ter — 14 trous dont la page est DÉJÀ au dépôt
 
 Leur page existe mais ne porte ni boîte Recipe ni coût vendeur :
 page de catégorie, de monnaie, ou objet non fabricable. Aucune
@@ -30,12 +27,16 @@ capture n'y changera rien — le trou se règle dans la donnée.
 - `Astral Weapons`
 - `Augur's Stone`
 - `Bloodstone Shard`
+- `Druid Runestone`
 - `Fractalline Spark`
 - `Gift of the Desolation`
 - `Gift of the Highlands`
 - `Gift of the Oasis`
 - `Gift of the Riverlands`
+- `Hydrocatalytic Reagent`
 - `Perfect Mist Core`
+- `Spirit of the Finite Result`
+- `Spirit of the Upper Bound`
 - `Sun Bead`
 
 ## 1 — 0 tables « Full material list » manquantes
@@ -64,14 +65,13 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | page wiki |
 |---|
 
-## 3 bis — 1 composants dont le coût d'obtention est inconnu
+## 3 bis — 0 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Vial of Condensed Mists Essence` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -89,11 +89,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 4 pages à capturer
+## URLs — 0 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Druid_Runestone
-https://wiki.guildwars2.com/wiki/Hydrocatalytic_Reagent
-https://wiki.guildwars2.com/wiki/Legendary_War_Insight
-https://wiki.guildwars2.com/wiki/Vial_of_Condensed_Mists_Essence
 ```

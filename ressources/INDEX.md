@@ -1192,6 +1192,128 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `orrian_pearl.html` | Orrian Pearl | article complet | 2026-10-02 |
 | `petrified_wood.html` | Petrified Wood | article complet | 2026-10-02 |
 | `reclaimed_metal_plate.html` | Reclaimed Metal Plate | article complet | 2026-10-02 |
+| `asparagus_spear.html` | Asparagus Spear | article complet | 2026-10-06 |
+| `astral_bearing.html` | Astral Bearing | article complet | 2026-10-08 |
+| `astral_footprints.html` | Astral Footprints | article complet | 2026-10-08 |
+| `astral_grasp.html` | Astral Grasp | article complet | 2026-10-08 |
+| `astral_heartbeat.html` | Astral Heartbeat | article complet | 2026-10-08 |
+| `astral_stride.html` | Astral Stride | article complet | 2026-10-08 |
+| `astral_thought.html` | Astral Thought | article complet | 2026-10-08 |
+| `astral_ward_armor.html` | Astral Ward armor | article complet moins « Available prefixes » | 2026-10-08 |
+| `avocado.html` | Avocado | article complet | 2026-10-06 |
+| `bag_of_cassava_flour.html` | Bag of Cassava Flour | article complet | 2026-10-08 |
+| `bag_of_sugar.html` | Bag of Sugar | article complet | 2026-10-08 |
+| `basil_leaf.html` | Basil Leaf | article complet | 2026-10-08 |
+| `beet.html` | Beet | article complet | 2026-10-07 |
+| `bitterfrost_frontier.html` | Bitterfrost Frontier | article complet | 2026-10-08 |
+| `bloodstone_fen_master.html` | Bloodstone Fen Master | article complet | 2026-10-19 |
+| `bottle_of_ascalonian_dressing.html` | Bottle of Ascalonian Dressing | article complet | 2026-10-07 |
+| `bottle_of_coconut_milk.html` | Bottle of Coconut Milk | article complet | 2026-10-07 |
+| `bottle_of_elonian_wine.html` | Bottle of Elonian Wine | article complet | 2026-10-07 |
+| `bottle_of_rice_wine.html` | Bottle of Rice Wine | article complet | 2026-10-07 |
+| `bottle_of_simple_dressing.html` | Bottle of Simple Dressing | article complet | 2026-10-07 |
+| `bottle_of_soy_sauce.html` | Bottle of Soy Sauce | article complet | 2026-10-06 |
+| `bound_wings.html` | Bound Wings | article complet | 2026-10-19 |
+| `bowl_of_ascalonian_salad.html` | Bowl of Ascalonian Salad | article complet | 2026-10-07 |
+| `bowl_of_bakers_wet_ingredients.html` | Bowl of Baker's Wet Ingredients | article complet | 2026-10-08 |
+| `bowl_of_ice_cream_base.html` | Bowl of Ice Cream Base | article complet | 2026-10-08 |
+| `bowl_of_tapioca_pudding.html` | Bowl of Tapioca Pudding | article complet | 2026-10-08 |
+| `cassava_root.html` | Cassava Root | article complet | 2026-10-08 |
+| `chili_pepper.html` | Chili Pepper | article complet | 2026-10-07 |
+| `cinnamon_stick.html` | Cinnamon Stick | article complet | 2026-10-08 |
+| `cup_of_lotus_fries.html` | Cup of Lotus Fries | article complet | 2026-10-07 |
+| `draconis_mons.html` | Draconis Mons | article complet | 2026-10-08 |
+| `druid_runestone.html` | Druid Runestone | article complet | 2026-10-19 |
+| `egg.html` | Egg | article complet | 2026-10-08 |
+| `ember_bay.html` | Ember Bay | article complet | 2026-10-08 |
+| `finite_result.html` | Finite Result | article complet moins « Available prefixes » | 2026-10-19 |
+| `finite_wings.html` | Finite Wings | article complet | 2026-10-19 |
+| `first_order_mist_frame.html` | First Order Mist Frame | article complet | 2026-10-19 |
+| `fortified_precursor_axe_head.html` | Fortified Precursor Axe Head | article complet | 2026-10-08 |
+| `fortified_precursor_dagger_blade.html` | Fortified Precursor Dagger Blade | article complet | 2026-10-12 |
+| `fortified_precursor_dagger_hilt.html` | Fortified Precursor Dagger Hilt | article complet | 2026-10-12 |
+| `fortified_precursor_focus_casing.html` | Fortified Precursor Focus Casing | article complet | 2026-10-12 |
+| `fortified_precursor_focus_core.html` | Fortified Precursor Focus Core | article complet | 2026-10-12 |
+| `fortified_precursor_greatsword_blade.html` | Fortified Precursor Greatsword Blade | article complet | 2026-10-08 |
+| `fortified_precursor_greatsword_hilt.html` | Fortified Precursor Greatsword Hilt | article complet | 2026-10-08 |
+| `fortified_precursor_hammer_head.html` | Fortified Precursor Hammer Head | article complet | 2026-10-12 |
+| `fortified_precursor_horn.html` | Fortified Precursor Horn | article complet | 2026-10-12 |
+| `fortified_precursor_longbow_stave.html` | Fortified Precursor Longbow Stave | article complet | 2026-10-12 |
+| `fortified_precursor_mace_head.html` | Fortified Precursor Mace Head | article complet | 2026-10-12 |
+| `fortified_precursor_pistol_barrel.html` | Fortified Precursor Pistol Barrel | article complet | 2026-10-12 |
+| `fortified_precursor_pistol_frame.html` | Fortified Precursor Pistol Frame | article complet | 2026-10-12 |
+| `fortified_precursor_rifle_barrel.html` | Fortified Precursor Rifle Barrel | article complet | 2026-10-12 |
+| `fortified_precursor_rifle_stock.html` | Fortified Precursor Rifle Stock | article complet | 2026-10-12 |
+| `fortified_precursor_scepter_core.html` | Fortified Precursor Scepter Core | article complet | 2026-10-12 |
+| `fortified_precursor_scepter_rod.html` | Fortified Precursor Scepter Rod | article complet | 2026-10-12 |
+| `fortified_precursor_shield_backing.html` | Fortified Precursor Shield Backing | article complet | 2026-10-12 |
+| `fortified_precursor_shield_boss.html` | Fortified Precursor Shield Boss | article complet | 2026-10-12 |
+| `fortified_precursor_short_bow_stave.html` | Fortified Precursor Short Bow Stave | article complet | 2026-10-12 |
+| `fortified_precursor_staff_head.html` | Fortified Precursor Staff Head | article complet | 2026-10-12 |
+| `fortified_precursor_staff_shaft.html` | Fortified Precursor Staff Shaft | article complet | 2026-10-12 |
+| `fortified_precursor_string.html` | Fortified Precursor String | article complet | 2026-10-12 |
+| `fortified_precursor_sword_blade.html` | Fortified Precursor Sword Blade | article complet | 2026-10-12 |
+| `fortified_precursor_sword_hilt.html` | Fortified Precursor Sword Hilt | article complet | 2026-10-12 |
+| `fortified_precursor_torch_handle.html` | Fortified Precursor Torch Handle | article complet | 2026-10-12 |
+| `fortified_precursor_torch_head.html` | Fortified Precursor Torch Head | article complet | 2026-10-12 |
+| `fortified_precursor_warhorn_mouthpiece.html` | Fortified Precursor Warhorn Mouthpiece | article complet | 2026-10-12 |
+| `foxfire_cluster.html` | Foxfire Cluster | article complet | 2026-10-06 |
+| `fury_scorched_stone.html` | Fury-Scorched Stone | article complet | 2026-10-06 |
+| `gift_of_bava_nisos.html` | Gift of Bava Nisos | article complet | 2026-10-08 |
+| `gift_of_mistburned_barrens.html` | Gift of Mistburned Barrens | article complet | 2026-10-08 |
+| `ginger_root.html` | Ginger Root | article complet | 2026-10-07 |
+| `glacial_shard.html` | Glacial Shard | article complet | 2026-10-08 |
+| `glass_of_buttermilk.html` | Glass of Buttermilk | article complet | 2026-10-08 |
+| `head_of_lettuce.html` | Head of Lettuce | article complet | 2026-10-07 |
+| `hydrocatalytic_reagent.html` | Hydrocatalytic Reagent | article complet | 2026-10-19 |
+| `jar_of_red_curry_paste.html` | Jar of Red Curry Paste | article complet | 2026-10-07 |
+| `jar_of_vinegar.html` | Jar of Vinegar | article complet | 2026-10-07 |
+| `large_fortified_precursor_haft.html` | Large Fortified Precursor Haft | article complet | 2026-10-12 |
+| `legendary_war_insight.html` | Legendary War Insight | article complet | 2026-10-19 |
+| `lemongrass.html` | Lemongrass | article complet | 2026-10-07 |
+| `ley_infused_sand.html` | Ley-Infused Sand | article complet | 2026-10-06 |
+| `lifeblood_of_galene_the_seething.html` | Lifeblood of Galene the Seething | article complet | 2026-10-08 |
+| `lifeblood_of_ignaxious.html` | Lifeblood of Ignaxious | article complet | 2026-10-08 |
+| `lifeblood_of_knaebelag_the_terror.html` | Lifeblood of Knaebelag the Terror | article complet | 2026-10-08 |
+| `lifeblood_of_myros_the_spiteful.html` | Lifeblood of Myros the Spiteful | article complet | 2026-10-08 |
+| `lifeblood_of_nourys_eyes_of_the_abyss.html` | Lifeblood of Nourys, Eyes of the Abyss | article complet | 2026-10-08 |
+| `lifeblood_of_pherus_the_subjugator.html` | Lifeblood of Pherus the Subjugator | article complet | 2026-10-08 |
+| `lime.html` | Lime | article complet | 2026-10-07 |
+| `lotus_root.html` | Lotus Root | article complet | 2026-10-07 |
+| `memory_of_aurene.html` | Memory of Aurene | article complet | 2026-10-08 |
+| `milling_basin.html` | Milling Basin | article complet | 2026-10-08 |
+| `milling_stone.html` | Milling Stone | article complet | 2026-10-08 |
+| `nopal.html` | Nopal | article complet | 2026-10-06 |
+| `oneiros_spun_armor.html` | Oneiros-Spun armor | article complet | 2026-10-08 |
+| `opal_crystal.html` | Opal Crystal | article complet | 2026-10-06 |
+| `oregano_leaf.html` | Oregano Leaf | article complet | 2026-10-08 |
+| `parsley_leaf.html` | Parsley Leaf | article complet | 2026-10-08 |
+| `passion_fruit.html` | Passion Fruit | article complet | 2026-10-08 |
+| `pile_of_cinnamon_and_sugar.html` | Pile of Cinnamon and Sugar | article complet | 2026-10-08 |
+| `pile_of_foul_essence.html` | Pile of Foul Essence | article complet | 2026-10-06 |
+| `pile_of_stirfry_spice_mix.html` | Pile of Stirfry Spice Mix | article complet | 2026-10-07 |
+| `pile_of_tangy_seasoning.html` | Pile of Tangy Seasoning | article complet | 2026-10-07 |
+| `prickly_pear.html` | Prickly Pear | article complet | 2026-10-08 |
+| `pristine_blood_ruby.html` | Pristine Blood Ruby | article complet | 2026-10-19 |
+| `raspberry.html` | Raspberry | article complet | 2026-10-08 |
+| `raspberry_passion_fruit_compote.html` | Raspberry Passion Fruit Compote | article complet | 2026-10-08 |
+| `rift_hunter_armor.html` | Rift Hunter armor | article complet | 2026-10-08 |
+| `second_order_mist_frame.html` | Second Order Mist Frame | article complet | 2026-10-19 |
+| `sentient_seed.html` | Sentient Seed | article complet | 2026-10-19 |
+| `shard_of_crystallized_mists_essence.html` | Shard of Crystallized Mists Essence | article complet | 2026-10-06 |
+| `small_fortified_precursor_haft.html` | Small Fortified Precursor Haft | article complet | 2026-10-08 |
+| `solution_finite_result.html` | Solution: Finite Result | article complet | 2026-10-19 |
+| `solution_upper_bound.html` | Solution: Upper Bound | article complet | 2026-10-19 |
+| `spirit_of_the_finite_result.html` | Spirit of the Finite Result | article complet | 2026-10-19 |
+| `spirit_of_the_upper_bound.html` | Spirit of the Upper Bound | article complet | 2026-10-07 |
+| `spiritwood_focus_casing.html` | Spiritwood Focus Casing | article complet | 2026-10-07 |
+| `spiritwood_pistol_frame.html` | Spiritwood Pistol Frame | article complet | 2026-10-14 |
+| `spiritwood_staff_shaft.html` | Spiritwood Staff Shaft | article complet | 2026-10-14 |
+| `thyme_leaf.html` | Thyme Leaf | article complet | 2026-10-08 |
+| `transcendent_crystal.html` | Transcendent Crystal | article complet | 2026-10-08 |
+| `upper_bound.html` | Upper Bound | article complet moins « Available prefixes » | 2026-10-19 |
+| `vanilla_bean.html` | Vanilla Bean | article complet | 2026-10-08 |
+| `vial_of_condensed_mists_essence.html` | Vial of Condensed Mists Essence | article complet | 2026-10-19 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

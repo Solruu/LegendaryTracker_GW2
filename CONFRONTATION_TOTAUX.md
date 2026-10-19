@@ -1,15 +1,15 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v411.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v412.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **942 accords** — le nombre affiche est celui de la table.
+- **941 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **195 excedents expliques** — le surplus vient d'une branche
+- **196 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
 - **0 excedents nus** — rien dans la donnee ne les explique : soit
@@ -175,6 +175,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `warbringer` | `vicious_claw` | 270 | 250 | `gift_of_fortune`, `mystic_essence_of_annihilation` |
 | `warbringer` | `ancient_bone` | 270 | 250 | `gift_of_fortune`, `mystic_essence_of_animosity` |
 | `gen1_frenzy` | `glob_of_ectoplasm` | 265 | 250 | `superior_sigil_of_rage` |
+| `ad_infinitum` | `dust_crystalline` | 260 | 250 | `gift_of_fortune` |
 | `gen1_bolt` | `glob_of_ectoplasm` | 260 | 250 | `superior_sigil_of_air` |
 | `gen1_frostfang` | `glob_of_ectoplasm` | 260 | 250 | `superior_sigil_of_ice` |
 | `gen1_howler` | `glob_of_ectoplasm` | 260 | 250 | `superior_sigil_of_accuracy` |

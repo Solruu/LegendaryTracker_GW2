@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v9.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v10.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -726,6 +726,27 @@ retrouves dans chaque traduction. Reste : 0 champ `fr` vide.
   (conformite_synchro : plus d'asymetrie).
 - Cle API : en-tete X-API-Key (JSX v260), parametre d'URL refuse (Flask
   v48, 400). A relancer chez Antoine.
+
+### W9 — Lot de captures du 19/10 (17 pages) puis integration · W+C — ✅
+Captures par le navigateur integre (session Code, zip en page, puis
+`device_stage_files`) : les 4 de la file + Finite Result, Upper Bound,
+Finite / Bound Wings, Spirit of the Finite Result, Solution: Finite Result /
+Upper Bound, First / Second Order Mist Frame, Mithril Plated Dowel, Sentient
+Seed, Bloodstone Fen Master, Pristine Blood Ruby. File vide apres passage.
+`INDEX.md` : +122 lignes (16 neuves + 106 d'anciennes captures jamais
+inscrites). Integration `gw2_lot_1019_v1` (sources v412, JSX v262) :
+- precurseurs d'Ad Infinitum en chaine (Finite Result -> Spirit -> Bound
+  Wings -> Upper Bound -> Spirit -> Unbound Wings) ; cles a plat dragonite /
+  empyreal / bloodstone 1 000, obsidienne 60, Pristine Mist Essence 3, ecto
+  10 retirees, thermocatalytique 310 -> 10 (totaux egaux) ; entrent ce qui
+  manquait : 2 Vision Crystals (+40 spirit shards), 5 Vials, 10 poussieres,
+  5 Globs, les deux Mist Frames (soie, cuirs, chevilles) ;
+- Vial : butin de fractale par defaut ; Hydrocatalytic : prix lu (50 notes
+  les 10) ; Aurora : magie non liee 16 000 -> 22 000 (Pristine Blood Ruby
+  5 000, Sentient Seed 1 000, en `cost` d'etape) ;
+- Legendary War Insight : apiId 83309 (une epee rare a l'API) -> 83584.
+Reste : Balls of Dark Energy (9 aux collections, 14 rendus par les
+recyclages de Finite Result / Upper Bound) non comptees — voie a trancher.
 
 ### C9 — Le bloc du Henge compte au lieu de recopier (19/10) · C+A — ✅
 Demande d'Antoine : « compter, pas lire ». Moteur v6 / JSX v261 : parametre

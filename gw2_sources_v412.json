@@ -3064,7 +3064,8 @@
     "legendary_inscription",
     "spiritwood_focus_casing",
     "spiritwood_pistol_frame",
-    "spiritwood_staff_shaft"
+    "spiritwood_staff_shaft",
+    "finite_wings"
    ],
    "farmable": true,
    "sources": [
@@ -3151,7 +3152,8 @@
     "legendary_inscription": 5,
     "spiritwood_focus_casing": 5,
     "spiritwood_pistol_frame": 5,
-    "spiritwood_staff_shaft": 5
+    "spiritwood_staff_shaft": 5,
+    "finite_wings": 10
    },
    "kind": "acquire",
    "best": "drop",
@@ -5017,7 +5019,9 @@
     "warbringer",
     "visionary_inscription",
     "unbound_wings",
-    "gift_of_adventure"
+    "gift_of_adventure",
+    "bound_wings",
+    "finite_wings"
    ],
    "qty": {
     "gift_of_conquering": 2,
@@ -5025,7 +5029,9 @@
     "gift_of_sharpened_tip": 6,
     "visionary_inscription": 1,
     "unbound_wings": 1,
-    "gift_of_adventure": 2
+    "gift_of_adventure": 2,
+    "bound_wings": 1,
+    "finite_wings": 1
    },
    "farmable": true,
    "sources": [
@@ -5950,7 +5956,6 @@
    ],
    "qty": {
     "perfected_envoy__per_piece": 50,
-    "ad_infinitum": 60,
     "vision": 72,
     "fulgurite": 1,
     "gift_of_mastery": 250,
@@ -6068,16 +6073,11 @@
     }
    },
    "qty_overlap_verified": [
-    "vision",
-    "ad_infinitum"
+    "vision"
    ],
    "note": {
     "fr": "Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par la fulgurite.",
     "en": null
-   },
-   "qty_overlap_note": {
-    "fr": "Ad Infinitum : 30 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 30 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
-    "en": "Ad Infinitum: 30 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 30 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
    }
   },
   "gift_of_exploration": {
@@ -6438,8 +6438,8 @@
      "type": "vendor",
      "npc": "Master craftspeople",
      "tip": {
-      "fr": "Acheté chez les maîtres artisans, 5 Research Notes l'unité (2 500 pour les 500 d'un Don de recherche). Lié au compte : pas de comptoir.",
-      "en": "Bought from master craftspeople, 5 Research Notes each (2,500 for the 500 of a Gift of Research). Account bound: no trading post."
+      "fr": "Acheté chez les maîtres artisans (sauf cuisinier et bijoutier) et le Research Merchant : 50 Research Notes les 10, soit 5 l'unité. Lié au compte : pas de comptoir.",
+      "en": "Bought from master craftspeople (except chef and jeweler) and the Research Merchant: 50 Research Notes per 10, i.e. 5 each. Account bound: no trading post."
      },
      "cost": {
       "fr": "5 Research Notes",
@@ -6448,7 +6448,7 @@
      "paid_repeatable": true,
      "verified": true,
      "checked": "2026-10-19",
-     "ref": "wiki:Hydrocatalytic_Reagent (description, lu le 19/10) + ressources/wiki/gift_of_research.html, Notes"
+     "ref": "ressources/wiki/hydrocatalytic_reagent.html, Acquisition"
     }
    ],
    "kind": "acquire",
@@ -6511,7 +6511,7 @@
    ],
    "qty": {
     "vision": 360,
-    "ad_infinitum": 310,
+    "ad_infinitum": 10,
     "gift_of_research": 250,
     "deldrimor_steel_spear_head": 50,
     "large_spiritwood_haft": 50,
@@ -6751,7 +6751,7 @@
   },
   "legendary_war_insight": {
    "name": "Legendary War Insight",
-   "apiId": 83309,
+   "apiId": 83584,
    "needed_for": [
     "armor_wvw",
     "gift_of_war_prowess"
@@ -6773,7 +6773,13 @@
    "kind": "acquire",
    "ref": "ressources/wiki/wvw_skirmish_claim_ticket.html (Legendary Commander War Razor)",
    "verified": true,
-   "checked": "2026-10-14"
+   "checked": "2026-10-14",
+   "apiId_fix": {
+    "was": 83309,
+    "checked": "2026-10-19",
+    "verified": true,
+    "ref": "ressources/wiki/legendary_war_insight.html (API 83584) + /v2/items?ids=83309,83584 lu le 19/10"
+   }
   },
   "glob_of_ectoplasm": {
    "name": "Glob of Ectoplasm",
@@ -6829,7 +6835,8 @@
     "transcendence",
     "unbound_wings",
     "vial_of_titan_melted_obsidian",
-    "transcendent_crystal"
+    "transcendent_crystal",
+    "bound_wings"
    ],
    "farmable": true,
    "sources": [
@@ -6848,7 +6855,6 @@
     }
    ],
    "qty": {
-    "ad_infinitum": 10,
     "memory_essence_encapsulator": 50,
     "kralkatite_ingot": 1,
     "endless_summer": 515,
@@ -6891,23 +6897,21 @@
     "vial_of_titan_melted_obsidian": 3,
     "unbound_wings": 25,
     "olmakhan_charm": 1,
-    "transcendent_crystal": 10
+    "transcendent_crystal": 10,
+    "bound_wings": 10
    },
    "kind": "acquire",
    "best": "salvage",
    "verified": true,
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-   "qty_overlap_verified": [
-    "ad_infinitum"
-   ],
    "note": {
     "fr": "Vision en demande 550 : 250 au titre de l'exigence commune à tous les légendaires, plus 300 pour les 6 Encapsulateurs d'essence mnésique (50 chacun). Les deux s'additionnent — vérifié le 22/08/2026, contrairement au cas de la Masse marquée où le total à plat faisait doublon. Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par le lingot cristallin.",
     "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
    },
    "qty_note": {
-    "fr": "Orrax : la clé à plat ne porte plus que l'ecto des trèfles (97 + 123, arbre gw2efficiency lu en hiérarchie). Elle valait 2 020 et recomptait les 1 350 des essences de faille amalgamées, déjà portées par la chaîne ; les fioles (450) ont leur arête. Ad Infinitum : les 25 des Unbound Wings sortent de la clé (789 -> 764), total inchangé. Ad Infinitum (19/10) : les 2 × 250 des condensateurs fractals sont un coût d'étape (collections II et III) ; reste 10, ceux de Bound Wings (Upper Bound, absent du tracker).",
-    "en": "Orrax: the flat key now carries only the clover ecto (97 + 123, gw2efficiency tree read by hierarchy). It was 2,020 and recounted the 1,350 from Amalgamated Rift Essences already carried by the chain; the vials (450) have their own edge. Ad Infinitum: the 25 from Unbound Wings leave the key (789 -> 764), total unchanged. Ad Infinitum (19/10): the 2 × 250 for the fractal capacitors are a step cost (collections II and III); 10 remain, those of Bound Wings (Upper Bound, not in the tracker)."
+    "fr": "Orrax : la clé à plat ne porte plus que l'ecto des trèfles (97 + 123, arbre gw2efficiency lu en hiérarchie). Elle valait 2 020 et recomptait les 1 350 des essences de faille amalgamées, déjà portées par la chaîne ; les fioles (450) ont leur arête. Ad Infinitum : les 25 des Unbound Wings sortent de la clé (789 -> 764), total inchangé. Ad Infinitum (19/10) : les 2 × 250 des condensateurs fractals sont un coût d'étape (collections II et III) ; reste 10, ceux de Bound Wings (Upper Bound, absent du tracker). 19/10 : les 10 de Bound Wings passent par la chaîne (Upper Bound posé), la clé d'Ad Infinitum sort.",
+    "en": "Orrax: the flat key now carries only the clover ecto (97 + 123, gw2efficiency tree read by hierarchy). It was 2,020 and recounted the 1,350 from Amalgamated Rift Essences already carried by the chain; the vials (450) have their own edge. Ad Infinitum: the 25 from Unbound Wings leave the key (789 -> 764), total unchanged. Ad Infinitum (19/10): the 2 × 250 for the fractal capacitors are a step cost (collections II and III); 10 remain, those of Bound Wings (Upper Bound, not in the tracker). 19/10: the 10 from Bound Wings now come through the chain (Upper Bound chained), Ad Infinitum's flat key is gone."
    },
    "wiki_redirects": [
     "Ectoplasm"
@@ -10837,7 +10841,8 @@
    "kind": "craftable",
    "needed_for": [
     "aurora",
-    "fractal_capacitor"
+    "fractal_capacitor",
+    "bound_wings"
    ],
    "farmable": true,
    "sources": [
@@ -10849,7 +10854,9 @@
      }
     }
    ],
-   "qty": {},
+   "qty": {
+    "bound_wings": 5
+   },
    "apiId": 38023
   },
   "spinal_blade_perfected": {
@@ -11224,7 +11231,6 @@
    "qty": {
     "dragonite_ingot": 100,
     "mystic_essence_of_carnage": 250,
-    "ad_infinitum": 1000,
     "binding_of_the_dragon": 25
    },
    "kind": "base",
@@ -11261,13 +11267,6 @@
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
     "en": null
-   },
-   "qty_overlap_verified": [
-    "ad_infinitum"
-   ],
-   "qty_overlap_note": {
-    "fr": "Ad Infinitum : 500 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 500 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
-    "en": "Ad Infinitum: 500 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 500 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
    }
   },
   "empyreal_fragment": {
@@ -11275,8 +11274,7 @@
    "apiId": 46735,
    "qty": {
     "empyreal_star": 100,
-    "mystic_essence_of_animosity": 250,
-    "ad_infinitum": 1000
+    "mystic_essence_of_animosity": 250
    },
    "kind": "base",
    "farmable": true,
@@ -11311,13 +11309,6 @@
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
     "en": null
-   },
-   "qty_overlap_verified": [
-    "ad_infinitum"
-   ],
-   "qty_overlap_note": {
-    "fr": "Ad Infinitum : 500 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 500 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
-    "en": "Ad Infinitum: 500 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 500 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
    }
   },
   "bloodstone_dust": {
@@ -11325,8 +11316,7 @@
    "apiId": 46731,
    "qty": {
     "bloodstone_brick": 100,
-    "mystic_essence_of_strategy": 250,
-    "ad_infinitum": 1000
+    "mystic_essence_of_strategy": 250
    },
    "kind": "base",
    "farmable": true,
@@ -11361,13 +11351,6 @@
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
     "en": null
-   },
-   "qty_overlap_verified": [
-    "ad_infinitum"
-   ],
-   "qty_overlap_note": {
-    "fr": "Ad Infinitum : 500 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 500 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
-    "en": "Ad Infinitum: 500 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 500 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
    }
   },
   "spirit_shard": {
@@ -17002,7 +16985,8 @@
     "banner_pennon": 5,
     "sheet_of_premium_paper": 1,
     "simple_olmakhan_bandolier": 10,
-    "superior_sigil_of_battle": 10
+    "superior_sigil_of_battle": 10,
+    "second_order_mist_frame": 25
    },
    "needed_for": [
     "banner_pennon",
@@ -17011,7 +16995,8 @@
     "gift_of_music",
     "sheet_of_premium_paper",
     "simple_olmakhan_bandolier",
-    "superior_sigil_of_battle"
+    "superior_sigil_of_battle",
+    "second_order_mist_frame"
    ],
    "sources": [
     {
@@ -17243,7 +17228,8 @@
     "shard_of_the_dark_arts": 10,
     "mystic_curio": 10,
     "shard_o_war": 30,
-    "glob_of_elder_spirit_residue": 50
+    "glob_of_elder_spirit_residue": 50,
+    "mithril_plated_dowel": 2
    },
    "needed_for": [
     "gift_of_wood",
@@ -17261,7 +17247,8 @@
     "shard_of_the_crown",
     "shard_of_the_dark_arts",
     "shard_of_tlehco",
-    "glob_of_elder_spirit_residue"
+    "glob_of_elder_spirit_residue",
+    "mithril_plated_dowel"
    ],
    "sources": [
     {
@@ -18804,7 +18791,8 @@
     "shard_of_the_dark_arts": 20,
     "mystic_curio": 15,
     "empowered_mithril_ingot": 150,
-    "shard_o_war": 40
+    "shard_o_war": 40,
+    "mithril_plated_dowel": 3
    },
    "needed_for": [
     "empowered_mithril_ingot",
@@ -18823,7 +18811,8 @@
     "shard_of_spero",
     "shard_of_the_crown",
     "shard_of_the_dark_arts",
-    "shard_of_tlehco"
+    "shard_of_tlehco",
+    "mithril_plated_dowel"
    ],
    "sources": [
     {
@@ -20121,10 +20110,13 @@
    "farmable": true,
    "qty": {
     "unbound": 5,
-    "ad_infinitum": 3
+    "upper_bound": 2,
+    "finite_result": 1
    },
    "needed_for": [
-    "unbound"
+    "unbound",
+    "upper_bound",
+    "finite_result"
    ],
    "sources": [
     {
@@ -20138,14 +20130,7 @@
    "apiId": 75781,
    "ref": "boite Recipe de Unbound : 1 Solution: Unbound + 5 Pristine Mist Essence + 1 Unbound Wings + 1 Third Order Mist Frame",
    "checked": "2026-09-18",
-   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1",
-   "qty_overlap_verified": [
-    "ad_infinitum"
-   ],
-   "qty_overlap_note": {
-    "fr": "Ad Infinitum : 5 sous Unbound (arête) + 2 sous Upper Bound + 1 sous Finite Result (clé à plat, précurseurs absents du tracker) — arbre gw2efficiency, 8 au total.",
-    "en": "Ad Infinitum: 5 under Unbound (edge) + 2 under Upper Bound + 1 under Finite Result (flat key, precursors not in the tracker) — gw2efficiency tree, 8 in total."
-   }
+   "verified": "boite Recipe de Unbound relue a la main le 18/09/2026 : 5 et non 1"
   },
   "refined_envoy_armor": {
    "name": "Refined Envoy armor",
@@ -21920,11 +21905,13 @@
    "kind": "refined",
    "qty": {
     "blended_leather_sheet": 10,
-    "elonian_leather_square": 20
+    "elonian_leather_square": 20,
+    "second_order_mist_frame": 75
    },
    "needed_for": [
     "blended_leather_sheet",
-    "elonian_leather_square"
+    "elonian_leather_square",
+    "second_order_mist_frame"
    ],
    "farmable": true,
    "sources": [
@@ -22099,12 +22086,14 @@
    "qty": {
     "bolt_of_empowered_silk": 150,
     "shadowstone_containment_frame": 2500,
-    "spool_of_silk_weaving_thread": 100
+    "spool_of_silk_weaving_thread": 100,
+    "first_order_mist_frame": 50
    },
    "needed_for": [
     "bolt_of_empowered_silk",
     "shadowstone_containment_frame",
-    "spool_of_silk_weaving_thread"
+    "spool_of_silk_weaving_thread",
+    "first_order_mist_frame"
    ],
    "farmable": true,
    "sources": [
@@ -22132,12 +22121,14 @@
    "qty": {
     "empowered_cured_thick_leather_square": 65,
     "shadowstone_containment_frame": 2500,
-    "spool_of_thick_elonian_cord": 50
+    "spool_of_thick_elonian_cord": 50,
+    "first_order_mist_frame": 100
    },
    "needed_for": [
     "empowered_cured_thick_leather_square",
     "shadowstone_containment_frame",
-    "spool_of_thick_elonian_cord"
+    "spool_of_thick_elonian_cord",
+    "first_order_mist_frame"
    ],
    "farmable": true,
    "sources": [
@@ -26043,7 +26034,8 @@
    "kind": "acquire",
    "needed_for": [
     "diviners_orichalcum_imbued_inscription",
-    "legendary_inscription"
+    "legendary_inscription",
+    "second_order_mist_frame"
    ],
    "farmable": true,
    "sources": [
@@ -26060,7 +26052,8 @@
    ],
    "qty": {
     "diviners_orichalcum_imbued_inscription": 5,
-    "legendary_inscription": 1
+    "legendary_inscription": 1,
+    "second_order_mist_frame": 50
    }
   },
   "plate_of_orrian_steak_frittes": {
@@ -29977,8 +29970,8 @@
     {
      "type": "salvage",
      "tip": {
-      "fr": "Récupéré en recyclant Upper Bound (seule voie lue sur la page).",
-      "en": "Salvaged from Upper Bound (only route on the page)."
+      "fr": "Récupéré en recyclant Upper Bound (seule voie lue sur la page) ; Upper Bound est posé en chaîne depuis le 19/10.",
+      "en": "Salvaged from Upper Bound (only route on the page); Upper Bound is chained since 19/10."
      },
      "verified": true,
      "checked": "2026-10-07",
@@ -32139,23 +32132,312 @@
    "apiId": 38014,
    "kind": "material",
    "farmable": true,
-   "qty": {},
-   "needed_for": [],
+   "qty": {
+    "finite_wings": 5
+   },
+   "needed_for": [
+    "finite_wings"
+   ],
    "sources": [
     {
-     "type": "unknown",
-     "tip": {
-      "fr": "Page non capturée : voie d'obtention à lire sur Vial_of_Condensed_Mists_Essence.",
-      "en": "Page not captured: acquisition path to read on Vial_of_Condensed_Mists_Essence."
-     },
-     "verified": false,
+     "type": "drop",
+     "free_repeatable": true,
+     "cadence": "à volonté",
+     "verified": true,
      "checked": "2026-10-19",
-     "ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html (ingrédient de l'étape Beta Fractal Capacitor)"
+     "tip": {
+      "fr": "Butin de tout ennemi en fractale (échelle 1+), récompense des modes défi Nightmare et Shattered Observatory, et garanti dans le Fractal Fighter's Cache.",
+      "en": "Dropped by any enemy in Fractals (scale 1+), Nightmare and Shattered Observatory CM reward, and guaranteed in the Fractal Fighter's Cache."
+     },
+     "ref": "ressources/wiki/vial_of_condensed_mists_essence.html, Acquisition"
+    },
+    {
+     "type": "vendor",
+     "npc": "INFUZ-5959",
+     "paid_repeatable": true,
+     "verified": true,
+     "checked": "2026-10-19",
+     "tip": {
+      "fr": "Alternative payante : INFUZ-5959 (Observatoire de Gardebrume), 30 reliques fractales + 32 pa, maîtrise Follows Advice.",
+      "en": "Paid alternative: INFUZ-5959 (Mistlock Observatory), 30 Fractal Relics + 32s, Follows Advice mastery."
+     },
+     "ref": "ressources/wiki/vial_of_condensed_mists_essence.html, Sold by"
     }
    ],
-   "ref": "gw2_materials_ref.json (id 38014)",
-   "verified": false,
-   "checked": "2026-10-19"
+   "ref": "ressources/wiki/vial_of_condensed_mists_essence.html",
+   "verified": true,
+   "checked": "2026-10-19",
+   "best": "drop"
+  },
+  "finite_result": {
+   "name": "Finite Result",
+   "apiId": 73624,
+   "kind": "intermediate",
+   "farmable": true,
+   "qty": {
+    "spirit_of_the_finite_result": 1
+   },
+   "needed_for": [
+    "spirit_of_the_finite_result"
+   ],
+   "sources": [
+    {
+     "type": "craft_500",
+     "tip": {
+      "fr": "Artisanat 500 (dos élevé) : Solution: Finite Result + Pristine Mist Essence + Finite Wings + First Order Mist Frame. Se recycle ensuite (kit élevé) en Spirit of the Finite Result + 5 Balls of Dark Energy.",
+      "en": "Crafting 500 (ascended back): Solution: Finite Result + Pristine Mist Essence + Finite Wings + First Order Mist Frame. Then salvaged (ascended kit) into Spirit of the Finite Result + 5 Balls of Dark Energy."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/finite_result.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/finite_result.html"
+  },
+  "upper_bound": {
+   "name": "Upper Bound",
+   "apiId": 73251,
+   "kind": "intermediate",
+   "farmable": true,
+   "qty": {
+    "spirit_of_the_upper_bound": 1
+   },
+   "needed_for": [
+    "spirit_of_the_upper_bound"
+   ],
+   "sources": [
+    {
+     "type": "craft_500",
+     "tip": {
+      "fr": "Artisanat 500 (dos élevé) : Solution: Upper Bound + 2 Pristine Mist Essence + Bound Wings + Second Order Mist Frame. Se recycle ensuite en Spirit of the Upper Bound + 9 Balls of Dark Energy.",
+      "en": "Crafting 500 (ascended back): Solution: Upper Bound + 2 Pristine Mist Essence + Bound Wings + Second Order Mist Frame. Then salvaged into Spirit of the Upper Bound + 9 Balls of Dark Energy."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/upper_bound.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/upper_bound.html"
+  },
+  "finite_wings": {
+   "name": "Finite Wings",
+   "apiId": 76292,
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "finite_result": 1
+   },
+   "needed_for": [
+    "finite_result"
+   ],
+   "sources": [
+    {
+     "type": "craft_500",
+     "tip": {
+      "fr": "Artisanat 500 : Vision Crystal + 5 Vials of Condensed Mists Essence + 10 Piles of Crystalline Dust.",
+      "en": "Crafting 500: Vision Crystal + 5 Vials of Condensed Mists Essence + 10 Piles of Crystalline Dust."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/finite_wings.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/finite_wings.html"
+  },
+  "bound_wings": {
+   "name": "Bound Wings",
+   "apiId": 75847,
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "upper_bound": 1
+   },
+   "needed_for": [
+    "upper_bound"
+   ],
+   "sources": [
+    {
+     "type": "craft_500",
+     "tip": {
+      "fr": "Artisanat 500 : 10 ectos + 5 Globs of Coagulated Mists Essence + Vision Crystal + Spirit of the Finite Result.",
+      "en": "Crafting 500: 10 ectos + 5 Globs of Coagulated Mists Essence + Vision Crystal + Spirit of the Finite Result."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/bound_wings.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/bound_wings.html"
+  },
+  "first_order_mist_frame": {
+   "name": "First Order Mist Frame",
+   "apiId": 74890,
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "finite_result": 1
+   },
+   "needed_for": [
+    "finite_result"
+   ],
+   "sources": [
+    {
+     "type": "craft_500",
+     "tip": {
+      "fr": "Artisanat 500 : 50 Bolts of Silk + 100 Cured Thick Leather Squares + 75 Mithril Plated Dowels.",
+      "en": "Crafting 500: 50 Bolts of Silk + 100 Cured Thick Leather Squares + 75 Mithril Plated Dowels."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/first_order_mist_frame.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/first_order_mist_frame.html"
+  },
+  "second_order_mist_frame": {
+   "name": "Second Order Mist Frame",
+   "apiId": 76502,
+   "kind": "advanced_craft",
+   "farmable": true,
+   "qty": {
+    "upper_bound": 1
+   },
+   "needed_for": [
+    "upper_bound"
+   ],
+   "sources": [
+    {
+     "type": "craft_500",
+     "tip": {
+      "fr": "Artisanat 500 : 25 Bolts of Gossamer + 75 Cured Rugged Leather Squares + 50 Orichalcum Plated Dowels.",
+      "en": "Crafting 500: 25 Bolts of Gossamer + 75 Cured Rugged Leather Squares + 50 Orichalcum Plated Dowels."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/second_order_mist_frame.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/second_order_mist_frame.html"
+  },
+  "mithril_plated_dowel": {
+   "name": "Mithril Plated Dowel",
+   "apiId": 12989,
+   "kind": "refined",
+   "farmable": true,
+   "qty": {
+    "first_order_mist_frame": 75
+   },
+   "needed_for": [
+    "first_order_mist_frame"
+   ],
+   "sources": [
+    {
+     "type": "craft",
+     "tip": {
+      "fr": "Raffinage (artisan 350) : 3 Mithril Ingots + 2 Elder Wood Planks.",
+      "en": "Refinement (crafter 350): 3 Mithril Ingots + 2 Elder Wood Planks."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/mithril_plated_dowel.html, Recipe"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/mithril_plated_dowel.html"
+  },
+  "spirit_of_the_finite_result": {
+   "name": "Spirit of the Finite Result",
+   "apiId": 75066,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "bound_wings": 1
+   },
+   "needed_for": [
+    "bound_wings"
+   ],
+   "sources": [
+    {
+     "type": "salvage",
+     "tip": {
+      "fr": "Récupéré en recyclant Finite Result (seule voie lue sur la page).",
+      "en": "Salvaged from Finite Result (only route on the page)."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/spirit_of_the_finite_result.html"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/spirit_of_the_finite_result.html"
+  },
+  "solution_finite_result": {
+   "name": "Solution: Finite Result",
+   "apiId": 70435,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "finite_result": 1
+   },
+   "needed_for": [
+    "finite_result"
+   ],
+   "sources": [
+    {
+     "type": "achievement_collection",
+     "tip": {
+      "fr": "Dans la Proof de la collection Ad Infinitum I (garanti). Alternative : Aetherblade Quartermaster (fractale Captain Mai Trin) pour 5 Balls of Dark Energy.",
+      "en": "Inside the Proof from the Ad Infinitum I collection (guaranteed). Alternative: Aetherblade Quartermaster (Captain Mai Trin fractal) for 5 Balls of Dark Energy."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/solution_finite_result.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/solution_finite_result.html"
+  },
+  "solution_upper_bound": {
+   "name": "Solution: Upper Bound",
+   "apiId": 73201,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "upper_bound": 1
+   },
+   "needed_for": [
+    "upper_bound"
+   ],
+   "sources": [
+    {
+     "type": "achievement_collection",
+     "tip": {
+      "fr": "Dans la Proof de la collection Ad Infinitum II (garanti). Alternative : Aetherblade Quartermaster (fractale Captain Mai Trin) pour 9 Balls of Dark Energy.",
+      "en": "Inside the Proof from the Ad Infinitum II collection (guaranteed). Alternative: Aetherblade Quartermaster (Captain Mai Trin fractal) for 9 Balls of Dark Energy."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/solution_upper_bound.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-19",
+   "ref": "ressources/wiki/solution_upper_bound.html"
   }
  },
  "enchaînements_recommandés": {
@@ -66484,9 +66766,10 @@
           "verified": true
          },
          "cost": {
-          "blood_ruby": 50
+          "blood_ruby": 50,
+          "unbound_magic": 5000
          },
-         "cost_ref": "blood_ruby : Rubis de sang immaculé (Natto)"
+         "cost_ref": "ressources/wiki/pristine_blood_ruby.html, Acquisition (Natto, 1 par compte)"
         },
         {
          "name": "Strange Residue",
@@ -67675,7 +67958,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/aurora_awakening.html",
-       "wiki": "Sentient_Seed"
+       "wiki": "Sentient_Seed",
+       "cost": {
+        "unbound_magic": 1000
+       },
+       "cost_ref": "ressources/wiki/sentient_seed.html, Acquisition (Gleam of Sentience, 1 par compte)"
       },
       {
        "bit": 1,

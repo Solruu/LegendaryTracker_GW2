@@ -1134,7 +1134,7 @@ const LEGENDARIES = {
         // 904 050) + 16 Druid Runestones du Henge a 4 200 (v409) ; le moteur
         // fait tomber chaque etape validee
         },
-      { id: "unbound", name: "Unbound Magic", required: 16000, icon: "UM", apiId: 32, comp: "unbound_magic" }, // 16 pierres du Henge x 1 000 (v409)
+      { id: "unbound", name: "Unbound Magic", required: 22000, icon: "UM", apiId: 32, comp: "unbound_magic" }, // 16 pierres du Henge x 1 000 (v409) + Pristine Blood Ruby 5 000 + Sentient Seed 1 000 (v412)
       { id: "blood_ruby", name: "Blood Ruby", required: 300, icon: "BR", apiId: 79280, mapNote: "Bloodstone Fen",
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
         }, // 250 de recette + 50 de l'etape Pristine Blood Ruby (`cost`, sous-collection aurora_bf, v246)
