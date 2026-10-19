@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v3.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v4.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -619,14 +619,35 @@ un total de set complet par les pieces restantes.
   Essence of Luck, oubliee) ; chevauchements declares (structure existante
   `qty_overlap_verified`) : Shards of Glory Ardent/Transcendence, tickets
   Triumphant, Volatile Magic de Vision (armes Dragonsblood).
-Reste — Ad Infinitum seul (9 ecarts), A DECIDER (Antoine) : ses 4 650 Fractal
-Relics sont justes (2 650 de vendeurs dans les 4 collections + 4 Gifts of
-Ascension x 500, pages capturees) mais agreges sur `gift_of_ascension_fractal`.
-Proposition : arete Gift of Ascension 500, 4 Gifts au legendaire, et les
-2 650 en `cost` sur les 5 etapes vendeur (deduits quand l'etape est faite).
-Les cles a plat dragonite / empyreal / bloodstone (1 000) et obsidienne (60)
-viennent de l'arbre gw2efficiency des precurseurs Finite Result / Upper
-Bound, absents du tracker : a verifier sur cet export avant de les declarer.
+✅ 19/10, Ad Infinitum (sources v406, edges_wiki v16, JSX v259) : 9 -> **0 ecart**.
+Accord d'Antoine sur la proposition, `gw2_ad_infinitum_reliques_v1` :
+- Gift of Ascension a son prix : arete 500 reliques (+ 25 pa 20 pc, non
+  posees) au lieu des 4 650 recopiees ; 4 Gifts = 1 recette + 2 a l'etape
+  Beta Fractal Capacitor (II, bit 8) + 1 a l'etape Fractal Capacitor (III,
+  bit 8), en `cost` d'etape, deduits quand l'etape est faite ;
+- vendeurs des 4 collections en `cost` d'etape : reliques 100 + 1 350 / 200 /
+  400 / 600, immaculees 20 / 30 / 40 / 50 (cle a plat 140 retiree) ; la ligne
+  Prerequis « Prototype » lit ce cout (`etape`, plus de `fixed` 1 350) ;
+- etapes de Forge : ingredients communs aux voies (Vial of Condensed Mists
+  Essence, cree en stub, page en file ; Glob of Coagulated ; Shard ; 2 x 250
+  ectos, sortis de la cle a plat 510 -> 10). 40 Mystic Crystal OU 240
+  Philosopher's Stone : alternative non chiffree ;
+- cles a plat dragonite / empyreal / bloodstone 1 000 et obsidienne 60
+  verifiees sur l'export gw2efficiency : les Vision Crystals de Finite Wings
+  (Finite Result) et de Bound Wings (Upper Bound), precurseurs absents du
+  tracker. Declarees en chevauchement (`qty_overlap_verified`), audit 63 -> 59 ;
+- outil : une boite « Type Promotion » est une promotion meme a sortie 1
+  (Glob / Shard of Mists Essence, Piles of Essence, Glacial Shard) ; les
+  aretes ecto / ecu / poussiere -> Glob of Coagulated (promotion) retirees.
+- totaux a vierge inchanges (4 650 reliques, 140 immaculees, 805 ectos), sauf
+  ce qui manquait : Gifts 1 -> 4, Shard 5 -> 6, Glob 0 -> 1, Vial 0 -> 1.
+Reste au fil des captures : Finite Result, Upper Bound, Finite Wings, Bound
+Wings, Spirit of the Finite Result, Solution: Finite Result / Upper Bound,
+First / Second Order Mist Frame — les capturer permettra de remplacer les
+cles a plat precurseurs par des aretes (10 ectos, 3 Pristine Mist Essence,
+310 thermocatalytiques, 1 000 x 3, 60 obsidienne). Signale, non tranche :
+`unbound_precursor` (apiId 74155 = celui d'Ad Infinitum) double `unbound`
+(72309, chaine posee) — 1 Unbound compte deux fois, suppression a valider.
 Signale, non tranche : Selachimorpha compte 1 000 Hydrocatalytic ET 5 000
 Research Notes — les notes ACHETENT ces reactifs (gift_of_research.html :
 « Hydrocatalytic Reagents cost a total of 2,500 ») ; meme question pour les

@@ -827,7 +827,7 @@ function useT() {
 const SOURCES_DB = {
   "_meta": {
     "version": "v249",
-    "last_updated": "2026-10-14",
+    "last_updated": "2026-10-19",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -3873,7 +3873,6 @@ const SOURCES_DB = {
         "gift_of_energy",
         "gift_of_history",
         "gift_of_magic",
-        "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
         "large_spiritwood_haft",
         "spiritwood_focus_core",
@@ -3952,7 +3951,6 @@ const SOURCES_DB = {
         "gift_of_history": 250,
         "deldrimor_steel_spear_head": 5,
         "large_spiritwood_haft": 5,
-        "glob_of_coagulated_mists_essence": 1,
         "gen1_eternity": 5,
         "vial_of_magic": 1,
         "deldrimor_steel_axe_blade": 5,
@@ -6908,11 +6906,16 @@ const SOURCES_DB = {
         }
       },
       "qty_overlap_verified": [
-        "vision"
+        "vision",
+        "ad_infinitum"
       ],
       "note": {
         "fr": "Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par la fulgurite.",
         "en": null
+      },
+      "qty_overlap_note": {
+        "fr": "Ad Infinitum : 30 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 30 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
+        "en": "Ad Infinitum: 30 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 30 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
       }
     },
     "gift_of_exploration": {
@@ -7622,7 +7625,6 @@ const SOURCES_DB = {
         "gift_of_runes",
         "gift_of_sigils",
         "gift_of_souls",
-        "glob_of_coagulated_mists_essence",
         "glob_of_elder_spirit_residue",
         "klobjarne_geirr",
         "kralkatite_ingot",
@@ -7679,7 +7681,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "ad_infinitum": 510,
+        "ad_infinitum": 10,
         "memory_essence_encapsulator": 50,
         "kralkatite_ingot": 1,
         "endless_summer": 515,
@@ -7692,7 +7694,6 @@ const SOURCES_DB = {
         "gift_of_runes": 100,
         "gift_of_sigils": 150,
         "gift_of_souls": 20,
-        "glob_of_coagulated_mists_essence": 1,
         "gift_of_fortune": 250,
         "neutralized_titan_alloy": 3,
         "seer_runestone": 10,
@@ -7738,8 +7739,8 @@ const SOURCES_DB = {
         "en": "Vision needs 550: 250 as the requirement common to every legendary, plus 300 for the 6 Memory Essence Encapsulators (50 each). The two add up - verified 2026-08-22, unlike the Branded Mass case where the flat total was a duplicate."
       },
       "qty_note": {
-        "fr": "Orrax : la clé à plat ne porte plus que l'ecto des trèfles (97 + 123, arbre gw2efficiency lu en hiérarchie). Elle valait 2 020 et recomptait les 1 350 des essences de faille amalgamées, déjà portées par la chaîne ; les fioles (450) ont leur arête. Ad Infinitum : les 25 des Unbound Wings sortent de la clé (789 -> 764), total inchangé.",
-        "en": "Orrax: the flat key now carries only the clover ecto (97 + 123, gw2efficiency tree read by hierarchy). It was 2,020 and recounted the 1,350 from Amalgamated Rift Essences already carried by the chain; the vials (450) have their own edge. Ad Infinitum: the 25 from Unbound Wings leave the key (789 -> 764), total unchanged."
+        "fr": "Orrax : la clé à plat ne porte plus que l'ecto des trèfles (97 + 123, arbre gw2efficiency lu en hiérarchie). Elle valait 2 020 et recomptait les 1 350 des essences de faille amalgamées, déjà portées par la chaîne ; les fioles (450) ont leur arête. Ad Infinitum : les 25 des Unbound Wings sortent de la clé (789 -> 764), total inchangé. Ad Infinitum (19/10) : les 2 × 250 des condensateurs fractals sont un coût d'étape (collections II et III) ; reste 10, ceux de Bound Wings (Upper Bound, absent du tracker).",
+        "en": "Orrax: the flat key now carries only the clover ecto (97 + 123, gw2efficiency tree read by hierarchy). It was 2,020 and recounted the 1,350 from Amalgamated Rift Essences already carried by the chain; the vials (450) have their own edge. Ad Infinitum: the 25 from Unbound Wings leave the key (789 -> 764), total unchanged. Ad Infinitum (19/10): the 2 × 250 for the fractal capacitors are a step cost (collections II and III); 10 remain, those of Bound Wings (Upper Bound, not in the tracker)."
       },
       "wiki_redirects": [
         "Ectoplasm"
@@ -8806,7 +8807,6 @@ const SOURCES_DB = {
         "gen3_aurenes_flight",
         "gen3_aurenes_tail",
         "gen3_aurenes_wing",
-        "glob_of_coagulated_mists_essence",
         "klobjarne_geirr",
         "mystic_tribute",
         "orrax_manifested",
@@ -8889,7 +8889,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "glob_of_coagulated_mists_essence": 1,
         "mystic_tribute": 250
       },
       "kind": "acquire",
@@ -9805,7 +9804,6 @@ const SOURCES_DB = {
       "name": "Fractal Relic",
       "apiId": 7,
       "needed_for": [
-        "ad_infinitum",
         "gift_of_ascension_fractal"
       ],
       "farmable": true,
@@ -9830,7 +9828,7 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "gift_of_ascension_fractal": 4650
+        "gift_of_ascension_fractal": 500
       },
       "kind": "acquire",
       "best": "daily_reward",
@@ -9842,12 +9840,13 @@ const SOURCES_DB = {
             "Collection II : 30 immaculées + 200",
             "Collection III : 40 immaculées + 400",
             "Collection IV : 50 immaculées + 600",
-            "4 Dons d'ascension à 500 reliques + 25 immaculées + 20 po chacun, soit 2 000 reliques, 100 immaculées et 80 po",
+            "4 Dons d'ascension à 500 reliques + 25 pa 20 pc chacun, soit 2 000 reliques",
             "Les quatre usages sont établis par la section « Used in » de la page du Don : montée du Condensateur prototype en Élevé, puis en Bêta infusé, puis en Condensateur fractal (infusé), et enfin la recette du légendaire lui-même",
-            "Les 4 Dons sont chiffres au prix vendeur, 500 reliques piece. Le Reliquaire fractal peut en offrir un a 25 reliques, mais une fois par jour et de facon aleatoire : gain reel non budgetable."
+            "Les 4 Dons sont chiffres au prix vendeur, 500 reliques piece. Le Reliquaire fractal peut en offrir un a 25 reliques, mais une fois par jour et de facon aleatoire : gain reel non budgetable.",
+            "Depuis le 19/10 : 500 sur l'arête du Don, le reste en coût des étapes (vendeurs des 4 collections, 3 Dons des étapes de Forge des collections II et III)."
           ],
           "verified": true,
-          "checked": "2026-08-13",
+          "checked": "2026-10-19",
           "ref": "wiki:Gift_of_Ascension (Sold by + Used in, capture Antoine 13/08/2026) + wiki:Ad_Infinitum#Full_material_list + couts vendeur cures dans les bitTips"
         }
       },
@@ -9875,7 +9874,6 @@ const SOURCES_DB = {
       "name": "Pristine Fractal Relic",
       "apiId": 24,
       "needed_for": [
-        "ad_infinitum",
         "mist_band_infused",
         "transcendence"
       ],
@@ -9901,7 +9899,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "ad_infinitum": 140,
         "transcendence": 100,
         "mist_band_infused": 100
       },
@@ -9947,32 +9944,18 @@ const SOURCES_DB = {
       },
       "breakdown": {
         "ad_infinitum": {
-          "total": 240,
+          "total": 140,
           "lines": [
-            "Collection I : 20 immaculées (Défenseur d'Ascalon) + 100 (Charr-Nip) + 1 350 (Condensateur fractal prototype)",
-            "Collection II : 30 immaculées + 200",
-            "Collection III : 40 immaculées + 400",
-            "Collection IV : 50 immaculées + 600",
-            "4 Dons d'ascension à 500 reliques + 25 immaculées + 20 po chacun, soit 2 000 reliques, 100 immaculées et 80 po",
-            "Les quatre usages sont établis par la section « Used in » de la page du Don : montée du Condensateur prototype en Élevé, puis en Bêta infusé, puis en Condensateur fractal (infusé), et enfin la recette du légendaire lui-même"
+            "20 / 30 / 40 / 50 aux quatre collections (BUY-2046 PFR), coût des étapes depuis le 19/10. Le Don d'ascension se paie en pièces, pas en reliques immaculées (gift_of_ascension.html)."
           ],
           "verified": true,
-          "checked": "2026-08-13",
+          "checked": "2026-10-19",
           "ref": "wiki:Gift_of_Ascension (Sold by + Used in, capture Antoine 13/08/2026) + wiki:Ad_Infinitum#Full_material_list + couts vendeur cures dans les bitTips"
         }
       },
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-      "qty_conflict": {
-        "ad_infinitum": {
-          "jsx": 240,
-          "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
-        }
-      }
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
     },
     "fractal_research_page": {
       "name": "Fractal Research Page",
@@ -10071,15 +10054,22 @@ const SOURCES_DB = {
           "npc": "BUY-4373",
           "map": "Mistlock Observatory / Sanctuary",
           "tip": {
-            "fr": "500 Fractal Relics + 25 pa chez BUY-4373.",
-            "en": "500 Fractal Relics + 25 silver from BUY-4373."
-          }
+            "fr": "500 Fractal Relics + 25 pa 20 pc chez BUY-4373.",
+            "en": "500 Fractal Relics + 25s 20c from BUY-4373."
+          },
+          "ref": "ressources/wiki/gift_of_ascension.html, Sold by",
+          "verified": true,
+          "checked": "2026-10-19"
         }
       ],
       "qty": {
         "ad_infinitum": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "note": {
+        "fr": "4 Dons pour Ad Infinitum : 1 dans la recette, 2 à l'étape Beta Fractal Capacitor (collection II), 1 à l'étape Fractal Capacitor (collection III).",
+        "en": "4 Gifts for Ad Infinitum: 1 in the recipe, 2 at the Beta Fractal Capacitor step (collection II), 1 at the Fractal Capacitor step (collection III)."
+      }
     },
     "gift_of_infinity": {
       "name": "Gift of Infinity",
@@ -12130,6 +12120,13 @@ const SOURCES_DB = {
       "note": {
         "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
         "en": null
+      },
+      "qty_overlap_verified": [
+        "ad_infinitum"
+      ],
+      "qty_overlap_note": {
+        "fr": "Ad Infinitum : 500 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 500 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
+        "en": "Ad Infinitum: 500 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 500 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
       }
     },
     "empyreal_fragment": {
@@ -12173,6 +12170,13 @@ const SOURCES_DB = {
       "note": {
         "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
         "en": null
+      },
+      "qty_overlap_verified": [
+        "ad_infinitum"
+      ],
+      "qty_overlap_note": {
+        "fr": "Ad Infinitum : 500 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 500 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
+        "en": "Ad Infinitum: 500 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 500 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
       }
     },
     "bloodstone_dust": {
@@ -12216,6 +12220,13 @@ const SOURCES_DB = {
       "note": {
         "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
         "en": null
+      },
+      "qty_overlap_verified": [
+        "ad_infinitum"
+      ],
+      "qty_overlap_note": {
+        "fr": "Ad Infinitum : 500 sous chacun des deux Vision Crystals des précurseurs Finite Result (Finite Wings) et Upper Bound (Bound Wings), absents du tracker (clé à plat), + 500 par la chaîne Unbound Wings — export gw2efficiency lu en hiérarchie, vérifié le 19/10.",
+        "en": "Ad Infinitum: 500 under each of the two Vision Crystals of the Finite Result (Finite Wings) and Upper Bound (Bound Wings) precursors, not in the tracker (flat key), + 500 through the Unbound Wings chain — gw2efficiency export read by hierarchy, checked 19/10."
       }
     },
     "spirit_shard": {
@@ -32964,6 +32975,29 @@ const SOURCES_DB = {
       "ref": "gw2_materials_ref.json (id 74202)",
       "verified": true,
       "checked": "2026-10-14"
+    },
+    "vial_of_condensed_mists_essence": {
+      "name": "Vial of Condensed Mists Essence",
+      "apiId": 38014,
+      "kind": "material",
+      "farmable": true,
+      "qty": {},
+      "needed_for": [],
+      "sources": [
+        {
+          "type": "unknown",
+          "tip": {
+            "fr": "Page non capturée : voie d'obtention à lire sur Vial_of_Condensed_Mists_Essence.",
+            "en": "Page not captured: acquisition path to read on Vial_of_Condensed_Mists_Essence."
+          },
+          "verified": false,
+          "checked": "2026-10-19",
+          "ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html (ingrédient de l'étape Beta Fractal Capacitor)"
+        }
+      ],
+      "ref": "gw2_materials_ref.json (id 38014)",
+      "verified": false,
+      "checked": "2026-10-19"
     }
   },
   "enchaînements_recommandés": {
@@ -33634,7 +33668,11 @@ const SOURCES_DB = {
                 "fr": "Défenseur d'Ascalon : chez BUY-2046 PFR, à l'Observatoire de Gardebrume, 20 Reliques fractales immaculées.",
                 "en": "Defender of Ascalon: from BUY-2046 PFR, in the Mistlock Observatory, 20 Pristine Fractal Relics."
               },
-              "wiki": "Defender_of_Ascalon"
+              "wiki": "Defender_of_Ascalon",
+              "cost": {
+                "pristine_fractal_relic": 20
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_i_finite_result.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 1,
@@ -33645,7 +33683,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/ad_infinitum_i_finite_result.html",
-              "wiki": "Charr-Nip"
+              "wiki": "Charr-Nip",
+              "cost": {
+                "fractal_relic": 100
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_i_finite_result.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 2,
@@ -33746,7 +33788,11 @@ const SOURCES_DB = {
                 "fr": "Condensateur fractal prototype : chez BUY-4373, 1 350 Reliques fractales. ⚠ NE LE RECYCLE PAS : il doit être conservé et amélioré pour Ad Infinitum II. La chaîne complète consomme 4 Dons d’ascension (500 reliques + 25 immaculées + 20 po chacun) : montée en Élevé, en Bêta infusé, en Condensateur fractal infusé, puis la recette finale. 💡 Le Reliquaire fractal propose le Don à 25 reliques au lieu de 500, environ un jour sur sept — consulte-le quotidiennement, quatre passages te feraient économiser 1 900 reliques. Il s’obtient par le succès « Recyclage élevé » : 6 objets puissants issus du recyclage d’élevé, exactement les recyclages qui te fournissent les Boules d’énergie sombre.",
                 "en": "Prototype Fractal Capacitor: from BUY-4373, 1,350 Fractal Relics. ⚠ DO NOT SALVAGE IT: it must be kept and upgraded for Ad Infinitum II. The full chain consumes 4 Gifts of Ascension (500 relics + 25 pristine + 20 g each): upgrade to Ascended, to Beta Infused, to Fractal Capacitor (Infused), then the final recipe. 💡 The Fractal Reliquary offers the Gift for 25 relics instead of 500, roughly one day in seven — check it daily; four hits would save 1,900 relics. It comes from the 'Ascended Recycling' achievement: 6 powerful items from salvaging ascended gear, the very salvages that give you Balls of Dark Energy."
               },
-              "wiki": "Prototype_Fractal_Capacitor_(skin)"
+              "wiki": "Prototype_Fractal_Capacitor_(skin)",
+              "cost": {
+                "fractal_relic": 1350
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_i_finite_result.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 9,
@@ -33824,7 +33870,11 @@ const SOURCES_DB = {
                 "fr": "Foreuse spirale des taupards : chez BUY-2046 PFR, à l'Observatoire, 30 Reliques fractales immaculées.",
                 "en": "Dredge Spiral Drill: from BUY-2046 PFR, in the Mistlock Observatory, 30 Pristine Fractal Relics."
               },
-              "wiki": "Dredge_Spiral_Drill"
+              "wiki": "Dredge_Spiral_Drill",
+              "cost": {
+                "pristine_fractal_relic": 30
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 1,
@@ -33839,7 +33889,11 @@ const SOURCES_DB = {
                 "fr": "Boule de feu en fusion : chez BUY-4373, à l'Observatoire, 200 Reliques fractales + 80 pa.",
                 "en": "Glob of Molten Fire: from BUY-4373, in the Mistlock Observatory, 200 Fractal Relics + 80 s."
               },
-              "wiki": "Glob_of_Molten_Fire"
+              "wiki": "Glob_of_Molten_Fire",
+              "cost": {
+                "fractal_relic": 200
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 2,
@@ -33945,7 +33999,18 @@ const SOURCES_DB = {
                 "fr": "Condensateur fractal bêta (infusé) : c'est ici que sert le Condensateur prototype gardé en collection I. Forge mystique deux fois — d'abord en Élevé (Fiole d'essence des Brumes + Don d'Ascension + 40 Cristaux mystiques ou 240 Pierres philosophales), puis en Bêta infusé (Boule d'essence coagulée + Don d'Ascension + 250 ectoplasmes). Débloqué d'office si tu possèdes déjà un palier supérieur.",
                 "en": "Beta Fractal Capacitor (Infused): this is where the Prototype Capacitor kept from collection I is used. Mystic Forge twice - first to Ascended (Vial of Condensed Mists Essence + Gift of Ascension + 40 Mystic Crystals or 240 Philosopher's Stones), then to Beta Infused (Glob of Coagulated Mists Essence + Gift of Ascension + 250 ectoplasm). Auto-unlocked if you already own a higher tier."
               },
-              "wiki": "Beta_Fractal_Capacitor"
+              "wiki": "Beta_Fractal_Capacitor",
+              "cost": {
+                "gift_of_ascension_fractal": 2,
+                "vial_of_condensed_mists_essence": 1,
+                "glob_of_coagulated_mists_essence": 1,
+                "glob_of_ectoplasm": 250
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html, tableau « Collection items » (lu le 19/10)",
+              "cost_note": {
+                "fr": "Deux passages en Forge : Prototype (Élevé) puis Bêta (Infusé), un Don d'ascension chacun. Le premier demande en plus 40 Cristaux mystiques OU 240 Pierres philosophales : voies concurrentes, non chiffrées.",
+                "en": "Two Mystic Forge passes: Prototype (Ascended) then Beta (Infused), one Gift of Ascension each. The first also takes 40 Mystic Crystals OR 240 Philosopher's Stones: competing paths, not costed."
+              }
             },
             {
               "bit": 9,
@@ -34023,7 +34088,11 @@ const SOURCES_DB = {
                 "fr": "Cube de recherche de l'Enqueste sur l'énergie draconique : chez BUY-2046 PFR, à l'Observatoire de Gardebrume, 40 Reliques fractales immaculées.",
                 "en": "Inquest Dragon Energy Research Cube: from BUY-2046 PFR, in the Mistlock Observatory, 40 Pristine Fractal Relics."
               },
-              "wiki": "Inquest_Dragon_Energy_Research_Cube"
+              "wiki": "Inquest_Dragon_Energy_Research_Cube",
+              "cost": {
+                "pristine_fractal_relic": 40
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_iii_unbound.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 1,
@@ -34038,7 +34107,11 @@ const SOURCES_DB = {
                 "fr": "Essence de Sujet n°2 : chez BUY-4373, à l'Observatoire, 400 Reliques fractales + 80 pa.",
                 "en": "Essence of Subject 2: from BUY-4373, in the Mistlock Observatory, 400 Fractal Relics + 80 s."
               },
-              "wiki": "Essence_of_Subject_2"
+              "wiki": "Essence_of_Subject_2",
+              "cost": {
+                "fractal_relic": 400
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_iii_unbound.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 2,
@@ -34144,7 +34217,13 @@ const SOURCES_DB = {
                 "fr": "Condensateur de fractale (infusé) : Forge mystique — le Condensateur fractal bêta (infusé) du palier 2 + 1 Éclat d'essence des Brumes cristallisée + 1 Don d'ascension (500 Reliques fractales chez BUY-4373) + 250 ectoplasmes. ⚠ Ne le recycle PAS maintenant : c'est lui qui fournira plus tard la Boule d'énergie sombre manquante du Diplôme étherlame (collection IV).",
                 "en": "Fractal Capacitor (Infused): Mystic Forge — the tier 2 Beta Fractal Capacitor (Infused) + 1 Shard of Crystallized Mists Essence + 1 Gift of Ascension (500 Fractal Relics from BUY-4373) + 250 Globs of Ectoplasm. ⚠ Do NOT salvage it now: it will later provide the missing Ball of Dark Energy for the Aetherblade Diploma (collection IV)."
               },
-              "wiki": "Fractal_Capacitor"
+              "wiki": "Fractal_Capacitor",
+              "cost": {
+                "gift_of_ascension_fractal": 1,
+                "shard_of_crystallized_mists_essence": 1,
+                "glob_of_ectoplasm": 250
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_iii_unbound.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 9,
@@ -34226,7 +34305,11 @@ const SOURCES_DB = {
                 "fr": "Cache-œil de pirate étherlame : chez BUY-2046 PFR, à l'Observatoire, 50 Reliques fractales immaculées.",
                 "en": "Aetherblade Pirate Eye Patch: from BUY-2046 PFR, in the Mistlock Observatory, 50 Pristine Fractal Relics."
               },
-              "wiki": "Aetherblade_Pirate_Eye_Patch"
+              "wiki": "Aetherblade_Pirate_Eye_Patch",
+              "cost": {
+                "pristine_fractal_relic": 50
+              },
+              "cost_ref": "ressources/wiki/legendary_backpack_ad_infinitum.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 1,
@@ -34241,7 +34324,11 @@ const SOURCES_DB = {
                 "fr": "Volant d'aéronef étherlame : chez BUY-4373, 600 Reliques fractales + 80 pa.",
                 "en": "Aetherblade Airship Steering Wheel: from BUY-4373, 600 Fractal Relics + 80 s."
               },
-              "wiki": "Aetherblade_Airship_Steering_Wheel"
+              "wiki": "Aetherblade_Airship_Steering_Wheel",
+              "cost": {
+                "fractal_relic": 600
+              },
+              "cost_ref": "ressources/wiki/legendary_backpack_ad_infinitum.html, tableau « Collection items » (lu le 19/10)"
             },
             {
               "bit": 2,
@@ -81217,6 +81304,18 @@ function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections
           const oneShotDone = ln.oneShot ? !!apiAch[ln.oneShot]?.done : false;
           const valeurs = (x) => {
             if (x.fixed != null) return { t: x.fixed, l: (x.oneShot && apiAch[x.oneShot]?.done) ? 0 : x.fixed };
+            // v259 : `etape` lit le `cost` d'UNE etape de collection dans les
+            // sources (Prototype Fractal Capacitor : 1 350 reliques), au lieu
+            // d'un `fixed` recopie ; faite si la collection ou ce bit l'est.
+            if (x.etape) {
+              const lid = SOURCES_ALIAS?.[leg?.id] ?? leg?.id;
+              const it = (SOURCES_DB?.legendaries?.[lid]?.collections?.[x.etape.key]?.items ?? []).find(i => i?.bit === x.etape.bit);
+              const ecid = compDeLigne(leg, x.curKey);
+              const n = (ecid && it?.cost?.[ecid]) ?? 0;
+              const A = apiAch[x.etape.key];
+              const faite = !!A?.done || (Array.isArray(A?.bits) && A.bits.includes(x.etape.bit));
+              return { t: n, l: faite ? 0 : n };
+            }
             const cid = moteur ? (x.comp ?? compDeLigne(leg, x.curKey)) : null;
             if (cid) {
               if (RQ.unitsFrom) {
@@ -82127,7 +82226,7 @@ const LEGENDARIES = {
           detail: { fr: "28 pages ÷ 3/jour ≈ 10 j par collection. En T4 avec les CM + la cache hebdo : 4-5 j par collection, soit ~16-20 jours au total", en: "28 pages ÷ 3/day ≈ 10 d per collection. At T4 with CMs + the weekly cache: 4-5 d per collection, i.e. ~16-20 days total" } },
         { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, fixed: 2, curKey: "energy",
           detail: { fr: "Seulement 2 à sourcer soi-même : les recyclages de Finite Result (5) et Upper Bound (9) couvrent le reste", en: "Only 2 to source yourself: salvaging Finite Result (5) and Upper Bound (9) covers the rest" } },
-        { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, fixed: 1350, curKey: "relics", oneShot: "adinf_1",
+        { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, curKey: "relics", etape: { key: "adinf_1", bit: 8 },
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],
     },

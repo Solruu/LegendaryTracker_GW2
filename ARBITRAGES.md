@@ -1,6 +1,6 @@
 # Arbitrages de l'arbre de craft
 
-Source : `gw2_sources_v405.json` — 10 desaccords sur 6 composants.
+Source : `gw2_sources_v406.json` — 8 desaccords sur 4 composants.
 
 Chaque ligne est une arete que le wiki propose et que la donnee contredit.
 Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
@@ -12,12 +12,10 @@ Elle reste **a plat** tant qu'elle n'est pas tranchee : rien n'a ete devine.
 |---|---:|---:|---|
 | `memory_of_battle` — Memory of Battle | 1 | 1500 | deja compte par cascade x1 |
 | `trade_contract` — Trade Contract | 2 | 1250 | cout vendeur x2 |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | 1 | 290 | deja compte par cascade x1 |
 | `crystalline_ingot` — Crystalline Ingot | 2 | 250 | cout vendeur x2 |
-| `dust_crystalline` — Pile of Crystalline Dust | 1 | 245 | deja compte par cascade x1 |
 | `dust_luminous` — Pile of Luminous Dust | 3 | 50 | deja compte par cascade x3 |
 
-## DEJA COMPTE PAR CASCADE — 6 cas
+## DEJA COMPTE PAR CASCADE — 4 cas
 
 Le composant arrive deja au legendaire par un chemin modelise, et la table
 en propose un second. Soit ce second chemin ne vaut pas pour ce legendaire,
@@ -27,8 +25,6 @@ soit les deux sont reels et le chevauchement se declare dans
 | composant | legendaire | donnee | wiki | ecart | parents proposes |
 |---|---|---:|---:|---:|---|
 | `memory_of_battle` — Memory of Battle | `conflux` | 1750 | 250 | 1500 | mist_band_infused (vendeur) |
-| `glob_of_ectoplasm` — Glob of Ectoplasm | `ad_infinitum` | 295 | 5 | 290 | shard_of_crystallized_mists_essence (recette) |
-| `dust_crystalline` — Pile of Crystalline Dust | `ad_infinitum` | 250 | 5 | 245 | shard_of_crystallized_mists_essence (recette) |
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_bifrost` | 250 | 200 | 50 | opal_crystal (recette) |
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_minstrel` | 250 | 200 | 50 | opal_crystal (recette) |
 | `dust_luminous` — Pile of Luminous Dust | `gen1_the_dreamer` | 210 | 200 | 10 | opal_crystal (recette) |

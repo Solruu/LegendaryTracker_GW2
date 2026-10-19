@@ -1,6 +1,6 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v405.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v406.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
@@ -29,7 +29,7 @@ rien dire.
 | ok | `mystic_clover` | 77 | 77 | 77 |
 | ok | `pristine_mist_essence` | 5 | 5 | 8 |
 | ok | `rare_essence_of_luck` | 50 | 50 | 80 |
-| ok | `shard_of_crystallized_mists_essence` | 5 | 5 | 5 |
+| ok | `shard_of_crystallized_mists_essence` | 5 | 5 | 6 |
 | ok | `spiritwood_plank` | 5 | 5 | 5 |
 | ok | `thermocatalytic_reagent` | 50 | 50 | 690 |
 

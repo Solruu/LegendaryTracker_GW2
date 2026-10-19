@@ -839,6 +839,18 @@ function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections
           const oneShotDone = ln.oneShot ? !!apiAch[ln.oneShot]?.done : false;
           const valeurs = (x) => {
             if (x.fixed != null) return { t: x.fixed, l: (x.oneShot && apiAch[x.oneShot]?.done) ? 0 : x.fixed };
+            // v259 : `etape` lit le `cost` d'UNE etape de collection dans les
+            // sources (Prototype Fractal Capacitor : 1 350 reliques), au lieu
+            // d'un `fixed` recopie ; faite si la collection ou ce bit l'est.
+            if (x.etape) {
+              const lid = SOURCES_ALIAS?.[leg?.id] ?? leg?.id;
+              const it = (SOURCES_DB?.legendaries?.[lid]?.collections?.[x.etape.key]?.items ?? []).find(i => i?.bit === x.etape.bit);
+              const ecid = compDeLigne(leg, x.curKey);
+              const n = (ecid && it?.cost?.[ecid]) ?? 0;
+              const A = apiAch[x.etape.key];
+              const faite = !!A?.done || (Array.isArray(A?.bits) && A.bits.includes(x.etape.bit));
+              return { t: n, l: faite ? 0 : n };
+            }
             const cid = moteur ? (x.comp ?? compDeLigne(leg, x.curKey)) : null;
             if (cid) {
               if (RQ.unitsFrom) {
@@ -1749,7 +1761,7 @@ const LEGENDARIES = {
           detail: { fr: "28 pages ÷ 3/jour ≈ 10 j par collection. En T4 avec les CM + la cache hebdo : 4-5 j par collection, soit ~16-20 jours au total", en: "28 pages ÷ 3/day ≈ 10 d per collection. At T4 with CMs + the weekly cache: 4-5 d per collection, i.e. ~16-20 days total" } },
         { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, fixed: 2, curKey: "energy",
           detail: { fr: "Seulement 2 à sourcer soi-même : les recyclages de Finite Result (5) et Upper Bound (9) couvrent le reste", en: "Only 2 to source yourself: salvaging Finite Result (5) and Upper Bound (9) covers the rest" } },
-        { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, fixed: 1350, curKey: "relics", oneShot: "adinf_1",
+        { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, curKey: "relics", etape: { key: "adinf_1", bit: 8 },
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],
     },

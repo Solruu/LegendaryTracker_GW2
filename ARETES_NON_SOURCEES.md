@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v405.json`. **25 aretes** sur 16 parents dont les captures lisent la composition,
+Source : `gw2_sources_v406.json`. **24 aretes** sur 15 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -21,7 +21,6 @@ Research, retire le 04/10).
 | `nyr_hrammr` | `valkyrie_bearkin_war_helm` | 1 | gift_of_metal 1, gift_of_sharpened_tip 1 |
 | `orrax_contained` | `askur_camping_cookout_backpiece` | 1 | binding_of_the_dragon 1, draconic_tribute 1 |
 | `orrax_contained` | `salmon_of_knowledge_backpiece` | 1 | binding_of_the_dragon 1, draconic_tribute 1 |
-| `pile_of_putrid_essence` | `bottle_elonian_wine` | 1 | dust_crystalline 1, mystic_crystal 1, pile_of_vile_essence 2 |
 | `simple_olmakhan_bandolier` | `bolt_of_gossamer` | 10 | olmakhan_charm 1, superior_rune_of_holding 1 |
 | `superior_sigil_of_benevolence` | `glob_of_ectoplasm` | 10 | crystal_lodestone 1 |
 | `superior_sigil_of_benevolence` | `pile_of_lucent_crystal` | 10 | crystal_lodestone 1 |

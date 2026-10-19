@@ -1,6 +1,19 @@
 # -*- coding: utf-8 -*-
 """Extrait les aretes de l'arbre de craft depuis les captures wiki.
 
+v16 : UNE BOITE « TYPE PROMOTION » EST UNE PROMOTION, MEME A SORTIE 1.
+
+La v14 rattrapait les lodestones par leur nom (`*_lodestone` + noyaux). Le
+signal du wiki est plus net : la boite Recipe porte « Type Promotion ». Sur
+le corpus, 14 pages ont une promotion a sortie 1, toutes des conversions de
+palier : 8 lodestones, Glacial Shard, les 4 Piles of ... Essence, et Glob /
+Shard of Crystallized Mists Essence. Ces deux dernieres faisaient apparaitre
+25 globs, 30 ecus, 30 ectos et 30 poussieres sur Ad Infinitum (5 shards des
+Unbound Wings promus en Forge) alors que le shard tombe en fractale et se
+vend chez INFUZ-5959. Regle C7 : une promotion de Forge reste une feuille.
+La lecture se fait par recette, pas par page : une page qui porte aussi une
+recette ordinaire la garde.
+
 v14 : DEUX CONVERSIONS DE PALIER QUE LE SIGNAL « SORTIE > 1 » NE VOYAIT PAS.
 
 - Noyau -> lodestone. 2 noyaux + vin elonien ou agent liant + poussiere
@@ -254,6 +267,20 @@ def _raffinage(page):
     return re.search(r"Type\s+Refinement", re.sub(r"\s+", " ", t)) is not None
 
 
+def _promotion(page, ingredients):
+    """Vrai si une boite « Type Promotion » de la page porte ces ingredients."""
+    f = Path("ressources/wiki") / f"{page}.html"
+    if not f.exists():
+        return False
+    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", f.read_text(encoding="utf-8", errors="ignore")))
+    t = t.replace("&#39;", "'").replace("%27", "'")
+    noms = [re.sub(r"\s+", " ", k.replace("_", " ").replace("%27", "'")) for k in ingredients]
+    for m in re.finditer(r"Type\s+Promotion\s+Output qty\.\s+\d+\s+Ingredients(.{0,600}?)(?:Show base ingredients|Source |$)", t):
+        if all(n.lower() in m.group(1).lower() for n in noms):
+            return True
+    return False
+
+
 for r in WIKI_RECIPES:
     if not r['recettes']: continue
     p = r['page'] if r['page'] in cc else to_id(r['titre'] or r['page'], r['page'])
@@ -264,6 +291,7 @@ for r in WIKI_RECIPES:
     for rc in r['recettes']:
         _ing = [k for k, _ in rc['ingredients']]
         if (rc['sortie'] > 1
+                or _promotion(r['page'], _ing)
                 or (p.endswith('lodestone') and any(k.endswith('_Core') for k in _ing))
                 or (len(_ing) == 1 and _raffinage(r['page']))):
             # Promotion : voie d'acquisition alternative, pas une exigence.
