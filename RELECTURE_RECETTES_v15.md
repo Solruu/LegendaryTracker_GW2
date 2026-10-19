@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v408.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v409.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -15,7 +15,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 143 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 142 |
 | NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 86 |
 
 Écartés sans être comptés : 27 options d'`alt_groups` — un choix, pas un oubli.
@@ -47,7 +47,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 143
+## Ingrédients absents, cités par la recette d'une feuille — 142
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -119,7 +119,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `leaf_of_kudzu` | `Lattice_(component)` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
 | `leaf_of_kudzu` | `Pruning_Shears` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
 | `leaf_of_kudzu` | `Spirit_of_the_Perfected_Longbow` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
-| `pile_of_foul_essence` | `Pile_of_Soiled_Essence` |  | `pile_of_foul_essence` | sous une feuille | `gen1_kudzu` |
 | `prototype` | `Advanced_Ammunition_Cylinder` |  | `prototype` | sous une feuille | `gen2_hope` |
 | `prototype` | `Essence_of_Anomaly` |  | `prototype` | sous une feuille | `gen2_hope` |
 | `prototype` | `Finely_Tuned_Firing_Pin` |  | `prototype` | sous une feuille | `gen2_hope` |
@@ -263,7 +262,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gold_ingot` | `1 ingrédients` |  | `gold_ingot` | feuille assumée | `vision` |
 | `howl` | `4 ingrédients` |  | `howl` | feuille assumée | `gen1_howler` |
 | `leaf_of_kudzu` | `4 ingrédients` |  | `leaf_of_kudzu` | feuille assumée | `gen1_kudzu` |
-| `pile_of_foul_essence` | `4 ingrédients` |  | `pile_of_foul_essence` | feuille assumée | `gen1_kudzu` |
+| `pile_of_putrid_essence` | `4 ingrédients` |  | `pile_of_putrid_essence` | feuille assumée | `gen1_kudzu` |
 | `prototype` | `4 ingrédients` |  | `prototype` | feuille assumée | `gen2_hope` |
 | `rage_weapon` | `4 ingrédients` |  | `rage_weapon` | feuille assumée | `gen1_frenzy` |
 | `rare_essence_of_luck` | `1 ingrédients` |  | `rare_essence_of_luck` | feuille assumée | `ad_infinitum` |
@@ -286,7 +285,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `4 ingrédients` |  | `venom_weapon` | feuille assumée | `gen1_kraitkin` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 138 ingrédients, et qui les réclame
+## Palier suivant — 137 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
@@ -371,7 +370,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Ornate_Pistol_Frame` — réclamé par `chaos_gun`
 - `Party_Ball` — réclamé par `the_energizer`
 - `Party_Stick` — réclamé par `the_energizer`
-- `Pile_of_Soiled_Essence` — réclamé par `pile_of_foul_essence`
 - `Pruning_Shears` — réclamé par `leaf_of_kudzu`
 - `Raven_Statue_(Legendary_Component)` — réclamé par `the_raven_staff`
 - `Regulator_Nozzle` — réclamé par `spark_weapon`

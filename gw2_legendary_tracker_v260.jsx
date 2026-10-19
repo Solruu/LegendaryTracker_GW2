@@ -1121,10 +1121,12 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
-      { id: "karma", name: "Karma", required: 904050, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
-        // 904 050 a collections vierges : `cost` des etapes d'Aurora I (v246) ;
-        // le moteur fait tomber chaque etape validee
+      { id: "karma", name: "Karma", required: 971250, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
+        // 971 250 a collections vierges : `cost` des etapes d'Aurora I (v246,
+        // 904 050) + 16 Druid Runestones du Henge a 4 200 (v409) ; le moteur
+        // fait tomber chaque etape validee
         },
+      { id: "unbound", name: "Unbound Magic", required: 16000, icon: "UM", apiId: 32, comp: "unbound_magic" }, // 16 pierres du Henge x 1 000 (v409)
       { id: "blood_ruby", name: "Blood Ruby", required: 300, icon: "BR", apiId: 79280, mapNote: "Bloodstone Fen",
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
         }, // 250 de recette + 50 de l'etape Pristine Blood Ruby (`cost`, sous-collection aurora_bf, v246)
@@ -1323,6 +1325,7 @@ const LEGENDARIES = {
       { id: "lucent_pile", name: "Pile of Lucent Crystal",   required: 23250, icon: "LP", apiId: 89271 },
       { id: "clovers",     name: "Mystic Clover",            required: 205,   icon: "MC", apiId: 19675 },
       { id: "ectos",       name: "Glob of Ectoplasm",        required: 1050,  icon: "EC", apiId: 19721 },
+      { id: "notes",       name: "Research Note",            required: 2500,  icon: "RN", apiId: 61 }, // relique : Gift of Research, 500 Hydrocatalytic a 5 notes (v408)
       { id: "shards",      name: "Obsidian Shard",           required: 450,   icon: "OS", apiId: 19925 },
     ],
     requirements: [
@@ -1361,6 +1364,8 @@ const LEGENDARIES = {
         lines: [
           { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, curKey: "lucent_pile",
             detail: { fr: "25 Mystic Facets × 750 piles · chaque forge peut rarement en produire 5 d'un coup", en: "25 Mystic Facets × 750 piles · each forge can rarely yield 5 at once" } },
+          { icon: "📓", label: { fr: "Research Notes", en: "Research Notes" }, curKey: "notes",
+            detail: { fr: "Gift of Research : 500 Hydrocatalytic Reagents à 5 notes chez les maîtres artisans", en: "Gift of Research: 500 Hydrocatalytic Reagents at 5 notes each from master craftspeople" } },
           { icon: "🗿", label: { fr: "Reliques exotiques", en: "Exotic relics" }, perUnit: 25,
             detail: { fr: "N'importe lesquelles — les moins chères au comptoir", en: "Any of them — cheapest on the TP" } },
           { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner" },
@@ -1598,6 +1603,7 @@ const LEGENDARIES = {
       { id: "clovers",     name: "Mystic Clover",            icon: "MC", apiId: 19675, comp: "mystic_clover" },
       { id: "shards",      name: "Obsidian Shard",           icon: "OS", apiId: 19925, comp: "obsidian_shard" },
       { id: "ectos",       name: "Glob of Ectoplasm",        icon: "EC", apiId: 19721, comp: "glob_of_ectoplasm" },
+      { id: "notes",       name: "Research Note",            icon: "RN", apiId: 61, comp: "research_note" }, // Gift of Research : 500 Hydrocatalytic a 5 notes (v408)
     ],
     currencies: [],
     metas: ["sw", "am", "zak", "mb", "conv"],
@@ -4436,8 +4442,9 @@ export default function GW2LegendaryTracker() {
     (async () => {
       try {
         const oKey = (gtApiKey ?? "").trim();
-        const url = `http://127.0.0.1:5000/api/achievements/status?ids=${missing.slice(0, 200).join(",")}` + (oKey ? `&key=${encodeURIComponent(oKey)}` : "");
-        const r = await fetch(url);
+        // v260 : la cle voyage en en-tete X-API-Key (BACKLOG 12 quinquies), plus dans l'URL
+        const url = `http://127.0.0.1:5000/api/achievements/status?ids=${missing.slice(0, 200).join(",")}`;
+        const r = await fetch(url, oKey ? { headers: { "X-API-Key": oKey } } : undefined);
         if (!r.ok) return;
         const data = await r.json();
         setAchSubStatus(prev => {
@@ -4978,7 +4985,7 @@ export default function GW2LegendaryTracker() {
       masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, _access: accessDirect, errors: [] };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, _reserves_completes: bags.ok !== false, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, _access: accessDirect, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -5018,9 +5025,10 @@ export default function GW2LegendaryTracker() {
       // de cle manquante, erreur), un zero serait peut-etre faux ; on garde
       // alors l'ancienne valeur et on le signale (__notSent).
       const erreurs = Array.isArray(data.errors) ? data.errors : [];
-      const reservesCompletes = data._direct
-        ? data._bags_ok !== false
-        : (data._reserves_completes ?? !erreurs.some(e => /^(materials|bank|shared|characters)\b/.test(String(e))));
+      // v260 : les deux chemins posent `_reserves_completes` (conformite_synchro)
+      const reservesCompletes = data._reserves_completes
+        ?? (data._direct ? data._bags_ok !== false
+                         : !erreurs.some(e => /^(materials|bank|shared|characters)\b/.test(String(e))));
       const stockDe = (apiId) => {
         if (!data.stocks) return undefined;
         const v = data.stocks[String(apiId)];
@@ -5145,10 +5153,8 @@ export default function GW2LegendaryTracker() {
       // Fetch Aurora collections en parallèle
       try {
         const aKey = (gtApiKey ?? "").trim();
-        const aUrl = aKey
-          ? `http://127.0.0.1:5000/api/achievements/aurora?key=${encodeURIComponent(aKey)}&lang=${langRef.current}`
-          : `http://127.0.0.1:5000/api/achievements/aurora?lang=${langRef.current}`;
-        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(60000) });
+        const aUrl = `http://127.0.0.1:5000/api/achievements/aurora?lang=${langRef.current}`;
+        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(60000), ...(aKey ? { headers: { "X-API-Key": aKey } } : {}) });
         if (aResp.ok) {
           const aData = await aResp.json();
           localStorage.setItem("gw2_aurora_collections", JSON.stringify(aData));
@@ -5163,10 +5169,8 @@ export default function GW2LegendaryTracker() {
       // Fetch Vision collections en parallèle
       try {
         const vKey = (gtApiKey ?? "").trim();
-        const vUrl = vKey
-          ? `http://127.0.0.1:5000/api/achievements/vision?key=${encodeURIComponent(vKey)}&lang=${langRef.current}`
-          : `http://127.0.0.1:5000/api/achievements/vision?lang=${langRef.current}`;
-        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(60000) });
+        const vUrl = `http://127.0.0.1:5000/api/achievements/vision?lang=${langRef.current}`;
+        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(60000), ...(vKey ? { headers: { "X-API-Key": vKey } } : {}) });
         if (vResp.ok) {
           const vData = await vResp.json();
           localStorage.setItem("gw2_vision_collections", JSON.stringify(vData));
@@ -5185,10 +5189,8 @@ export default function GW2LegendaryTracker() {
       // Fetch Obsidian achievements en parallèle
       try {
         const oKey = (gtApiKey ?? "").trim();
-        const oUrl = oKey
-          ? `http://127.0.0.1:5000/api/achievements/obsidian?key=${encodeURIComponent(oKey)}&lang=${langRef.current}`
-          : `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
-        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(60000) });
+        const oUrl = `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
+        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(60000), ...(oKey ? { headers: { "X-API-Key": oKey } } : {}) });
         if (oResp.ok) {
           const oData = await oResp.json();
           localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(oData));

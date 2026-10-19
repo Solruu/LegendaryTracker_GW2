@@ -1,10 +1,10 @@
-> **Plan du restant** : `PLAN_RESTANT_v52.md` (04/10/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v53.md` (04/10/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 
 ## Sommaire — sections ouvertes
 
-Trié le 08/10/2026 : 27 sections ouvertes ici, 19 closes déplacées
+Trié le 08/10/2026 (27 ouvertes, 19 closes déplacées), puis le 19/10/2026 : 3 closes de plus déplacées (régionalisation, clé dans l'URL, magasin partagé) ; 24 ouvertes
 **sans modification** dans `BACKLOG_CLOS.md`. Une section est close si son titre
 porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a ni sous-section
 « Reste » ni case `- [ ]` ouverte. Dans le doute, elle reste ici.
@@ -26,13 +26,10 @@ porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a 
 - Armes — ✅ liste réconciliée le 27/08/2026, deux patterns identifiés
 - Étapes documentées — Wayfarer's Henge fait le 27/08/2026
 - Étapes des armes — lots identifiés, palier IV fait
-- Régionalisation complète du tracker — ouvert le 01/09/2026
 - Deux arbitrages d'interface — ouverts le 02/09/2026
 - Ouvert au 24/09/2026
 - 12. Activités par légendaire — les horaires de métas vivent DEUX fois (27/09/2026)
 - 12 octies. Quelles métas valent le détour — la trace existe (01/10/2026)
-- 12 quinquies. La clé API voyage dans l'URL (28/09/2026)
-- 12 sexies. Manuel et synchronisé partagent un magasin (28/09/2026)
 - 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
 - Ouvert au 18/09/2026
 - 12 nonies. Restes de la fusion du catalogue (03/10/2026)
@@ -681,35 +678,6 @@ posés sur The Moot II.
 1 021 libellés distincts pour 1 113 étapes. Chaque arme a ses objets et ses
 lieux : il faut les pages, arme par arme, comme tu joues.
 
-## Régionalisation complète du tracker — ouvert le 01/09/2026
-
-Objectif : le tracker entier en français, pas quelques champs. État des lieux
-chiffré sur `gw2_sources_v192.json` :
-
-| catégorie | textes distincts | emplacements | état |
-|---|---|---|---|
-| `how` en anglais, `fr: null` | 666 | 744 | proposition FR fournie |
-| `tip` / `note` en français seul | 69 | 96 | proposition EN fournie |
-| `name` de secteur / collection | 57 | 57 | **à résoudre par API** |
-
-Livrable : `gw2_traductions_v1.xlsx`, trois onglets plus une légende. Colonne
-jaune « Traduction validée » à remplir par Antoine ; vide = la proposition convient.
-
-**Convention retenue** (arbitrage du 01/09) : les noms propres GW2 restent en
-anglais dans les propositions françaises. Leur forme officielle viendra de
-`/v2/*?lang=fr` lors d'une passe ultérieure — les traduire à la main produirait
-des noms introuvables en jeu. Seule la prose est traduite.
-
-**Reste à faire après retour du tableur** : injecter les colonnes validées dans
-les sources, puis écrire la passe API qui résout les 57 noms propres et, plus
-largement, substitue les noms propres anglais des `how`.
-
-**Non traité ici** : les 3 258 `name` d'objets et d'étapes, qui sont des chaînes
-simples par convention et relèvent de la même passe API, pas d'une traduction.
-
-
----
-
 ## Deux arbitrages d'interface — ouverts le 02/09/2026
 
 ### ① Vision s'affiche deux fois — ✅ **RÉGLÉ le 02/09/2026**
@@ -1135,35 +1103,6 @@ Donc hybride, et c'est la seule forme honnête : les extensions viennent de
 viennent d'une case à cocher locale, par défaut **tout décoché** — supposer
 qu'Antoine possède un épisode lui ferait planifier une méta inaccessible, ce qui
 coûte plus cher que l'inverse.
-
-## 12 quinquies. La clé API voyage dans l'URL (28/09/2026)
-
-Le client appelle Flask avec `?key=...`. Werkzeug journalise la ligne de requête
-entière : la clé finit en clair dans les logs, d'où un partage d'écran ou un
-copier-coller de terminal peut l'emporter.
-
-`gw2_flask_server_v46.py` masque `key`, `access_token` et `token` dans tout ce
-que le serveur journalise. **C'est un pansement** : la clé continue de voyager
-dans l'URL, donc dans l'historique du navigateur, dans un éventuel proxy, et
-dans tout journal que ce filtre ne couvre pas.
-
-À faire : passer la clé en en-tête (`X-API-Key` ou `Authorization`), côté client
-comme côté Flask, et refuser le paramètre d'URL une fois la bascule faite.
-Les deux chemins doivent bouger ensemble, sinon la synchro casse.
-
-## 12 sexies. Manuel et synchronisé partagent un magasin (28/09/2026)
-
-`gw2_<leg>_currencies` reçoit à la fois ce que la synchro rend et ce que les
-boutons -10/+50 écrivent. La persistance fait `{ ...cur, ...vals }` : une
-monnaie que la charge ne porte plus **garde sa dernière valeur indéfiniment**,
-et rien ne distingue un vieux nombre d'un nombre frais. C'est ce qui a figé
-l'éclat inscrit à 10 pendant que le Flask ne l'envoyait pas.
-
-On ne peut pas simplement effacer les monnaies non envoyées : ce serait
-détruire un comptage tenu à la main, qui est l'usage prévu pour ce que l'API ne
-rend pas. Il faut deux espaces distincts — `synced` et `manuel` — et un
-affichage qui dise lequel parle. `__notSent` et `__syncedAt` existent déjà et
-serviront de base.
 
 ## 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
 

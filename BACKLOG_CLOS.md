@@ -553,3 +553,67 @@ Orrax en porte 20, qui n'étaient jamais pris en compte non plus.
 `collection_key_ids` devient mort. À supprimer une fois la v229 vérifiée en
 jeu — pas avant, pour garder le chemin de repli si la dérivation se comporte
 autrement que prévu.
+
+## Régionalisation complète du tracker — ouvert le 01/09/2026
+
+> ✅ Clos le 19/10/2026 : S6 du plan (12/10, sources v399) — 0 champ `fr` vide, noms par l'API.
+
+
+Objectif : le tracker entier en français, pas quelques champs. État des lieux
+chiffré sur `gw2_sources_v192.json` :
+
+| catégorie | textes distincts | emplacements | état |
+|---|---|---|---|
+| `how` en anglais, `fr: null` | 666 | 744 | proposition FR fournie |
+| `tip` / `note` en français seul | 69 | 96 | proposition EN fournie |
+| `name` de secteur / collection | 57 | 57 | **à résoudre par API** |
+
+Livrable : `gw2_traductions_v1.xlsx`, trois onglets plus une légende. Colonne
+jaune « Traduction validée » à remplir par Antoine ; vide = la proposition convient.
+
+**Convention retenue** (arbitrage du 01/09) : les noms propres GW2 restent en
+anglais dans les propositions françaises. Leur forme officielle viendra de
+`/v2/*?lang=fr` lors d'une passe ultérieure — les traduire à la main produirait
+des noms introuvables en jeu. Seule la prose est traduite.
+
+**Reste à faire après retour du tableur** : injecter les colonnes validées dans
+les sources, puis écrire la passe API qui résout les 57 noms propres et, plus
+largement, substitue les noms propres anglais des `how`.
+
+**Non traité ici** : les 3 258 `name` d'objets et d'étapes, qui sont des chaînes
+simples par convention et relèvent de la même passe API, pas d'une traduction.
+
+## 12 quinquies. La clé API voyage dans l'URL (28/09/2026)
+
+> ✅ Clos le 19/10/2026 : JSX v260 envoie la clé en en-tête `X-API-Key` ; Flask v48 refuse le paramètre `key` (400).
+
+
+Le client appelle Flask avec `?key=...`. Werkzeug journalise la ligne de requête
+entière : la clé finit en clair dans les logs, d'où un partage d'écran ou un
+copier-coller de terminal peut l'emporter.
+
+`gw2_flask_server_v46.py` masque `key`, `access_token` et `token` dans tout ce
+que le serveur journalise. **C'est un pansement** : la clé continue de voyager
+dans l'URL, donc dans l'historique du navigateur, dans un éventuel proxy, et
+dans tout journal que ce filtre ne couvre pas.
+
+À faire : passer la clé en en-tête (`X-API-Key` ou `Authorization`), côté client
+comme côté Flask, et refuser le paramètre d'URL une fois la bascule faite.
+Les deux chemins doivent bouger ensemble, sinon la synchro casse.
+
+## 12 sexies. Manuel et synchronisé partagent un magasin (28/09/2026)
+
+> ✅ Clos le 19/10/2026 : S1 du plan (14/10, JSX v257, Flask v47) — la synchro fait foi, absente = 0, saisie manuelle écrasée et signalée.
+
+
+`gw2_<leg>_currencies` reçoit à la fois ce que la synchro rend et ce que les
+boutons -10/+50 écrivent. La persistance fait `{ ...cur, ...vals }` : une
+monnaie que la charge ne porte plus **garde sa dernière valeur indéfiniment**,
+et rien ne distingue un vieux nombre d'un nombre frais. C'est ce qui a figé
+l'éclat inscrit à 10 pendant que le Flask ne l'envoyait pas.
+
+On ne peut pas simplement effacer les monnaies non envoyées : ce serait
+détruire un comptage tenu à la main, qui est l'usage prévu pour ce que l'API ne
+rend pas. Il faut deux espaces distincts — `synced` et `manuel` — et un
+affichage qui dise lequel parle. `__notSent` et `__syncedAt` existent déjà et
+serviront de base.

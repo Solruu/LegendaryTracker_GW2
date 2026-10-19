@@ -3723,8 +3723,7 @@ const SOURCES_DB = {
         "chrysocola_crystal",
         "beryl_crystal",
         "emerald_crystal",
-        "ruby_crystal",
-        "pile_of_filthy_essence"
+        "ruby_crystal"
       ],
       "farmable": true,
       "sources": [
@@ -3766,8 +3765,7 @@ const SOURCES_DB = {
         "chrysocola_crystal": 1,
         "beryl_crystal": 1,
         "emerald_crystal": 1,
-        "ruby_crystal": 1,
-        "pile_of_filthy_essence": 1
+        "ruby_crystal": 1
       },
       "kind": "acquire",
       "best": "drop",
@@ -3784,7 +3782,6 @@ const SOURCES_DB = {
         "gift_of_dust",
         "gift_of_energy",
         "opal_orb",
-        "pile_of_vile_essence",
         "ruby_orb",
         "sapphire_orb"
       ],
@@ -3843,7 +3840,6 @@ const SOURCES_DB = {
         "ruby_orb": 5,
         "sapphire_orb": 5,
         "azurite_orb": 5,
-        "pile_of_vile_essence": 1,
         "opal_orb": 5
       },
       "kind": "acquire",
@@ -3887,7 +3883,6 @@ const SOURCES_DB = {
         "deldrimor_steel_sword_hilt",
         "deldrimor_steel_warhorn_mouthpiece",
         "elonian_string",
-        "pile_of_putrid_essence",
         "small_spiritwood_haft",
         "spiritwood_rifle_stock",
         "spiritwood_scepter_rod",
@@ -3975,7 +3970,6 @@ const SOURCES_DB = {
         "deldrimor_steel_sword_hilt": 5,
         "deldrimor_steel_warhorn_mouthpiece": 5,
         "elonian_string": 5,
-        "pile_of_putrid_essence": 1,
         "small_spiritwood_haft": 5,
         "spiritwood_rifle_stock": 5,
         "spiritwood_scepter_rod": 5,
@@ -5086,10 +5080,7 @@ const SOURCES_DB = {
       "apiId": 19663,
       "needed_for": [
         "gift_of_crystalline_magic",
-        "gift_of_ephemeral_magic",
-        "pile_of_putrid_essence",
-        "pile_of_vile_essence",
-        "pile_of_filthy_essence"
+        "gift_of_ephemeral_magic"
       ],
       "farmable": false,
       "sources": [
@@ -5119,10 +5110,7 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_ephemeral_magic": 1,
-        "gift_of_crystalline_magic": 1,
-        "pile_of_putrid_essence": 1,
-        "pile_of_vile_essence": 1,
-        "pile_of_filthy_essence": 1
+        "gift_of_crystalline_magic": 1
       },
       "kind": "acquire",
       "best": "vendor",
@@ -12842,7 +12830,8 @@ const SOURCES_DB = {
         "gift_of_the_desolation": 23331,
         "bottle_of_coconut_milk": 249,
         "sun_bead": 21,
-        "binding_of_the_dragon": 22500
+        "binding_of_the_dragon": 22500,
+        "druid_runestone": 4200
       },
       "farmable": true,
       "sources": [
@@ -12877,7 +12866,8 @@ const SOURCES_DB = {
         "gift_of_the_desolation",
         "bottle_of_coconut_milk",
         "sun_bead",
-        "binding_of_the_dragon"
+        "binding_of_the_dragon",
+        "druid_runestone"
       ]
     },
     "powerful_venom_sac": {
@@ -13453,11 +13443,15 @@ const SOURCES_DB = {
       },
       "verified": true,
       "checked": "2026-08-20",
-      "ref": "api:/v2/items?ids=81140 + wiki:Druid_Runestone",
+      "ref": "api:/v2/items?ids=81140 + wiki:Druid_Runestone ; prix : ressources/wiki/the_druid_stone.html, étape « Druid Runestone »",
       "apiId": 81140,
       "apiId_note": {
         "fr": "81140 = la pierre runique. Le fragment quotidien est 81111 (Druid Runestone Fragment) : c'est lui qui bouge dans l'inventaire en cours de journee, mais le suivre en plus creerait deux entrees pour un seul verrou. Id garde ici pour un usage ulterieur.",
         "en": "81140 = the runestone. The daily fragment is 81111 (Druid Runestone Fragment): it is the one that moves in the inventory during the day, but tracking it as well would create two entries for a single gate. Id kept here for later use."
+      },
+      "recipe": {
+        "fr": "5 fragments : 4 × 1 050 karma (PNJ des 4 cœurs) + 1 × 1 000 magie non liée (Supplymaster Hanjo).",
+        "en": "5 fragments: 4 × 1,050 karma (the 4 heart NPCs) + 1 × 1,000 Unbound Magic (Supplymaster Hanjo)."
       }
     },
     "ancient_cipher": {
@@ -22173,7 +22167,9 @@ const SOURCES_DB = {
     "unbound_magic": {
       "name": "Unbound Magic",
       "kind": "currency",
-      "qty": {},
+      "qty": {
+        "druid_runestone": 1000
+      },
       "farmable": true,
       "sources": [
         {
@@ -22188,7 +22184,11 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-09-09",
-      "ref": "unbound_magic.html (lot 8)"
+      "ref": "unbound_magic.html (lot 8)",
+      "needed_for": [
+        "druid_runestone"
+      ],
+      "apiId": 32
     },
     "tribute_to_the_queen": {
       "name": "Tribute to the Queen",
@@ -29025,18 +29025,25 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "drop",
+          "free_repeatable": true,
+          "cadence": "à volonté",
           "tip": {
-            "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-            "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+            "fr": "Butin des Risen d'Orr (Rivage maudit, Saut de Malchor, Détroit de la Dévastation), champions et élites compris.",
+            "en": "Dropped by Risen in Orr (Cursed Shore, Malchor's Leap, Straits of Devastation), champions and elites included."
           },
-          "verified": false,
-          "checked": "2026-09-25",
-          "ref": "recette de superior_sigil_of_celerity.html ; identite depuis gw2_materials_ref.json (apiId 24335)"
+          "verified": true,
+          "checked": "2026-10-19",
+          "ref": "ressources/wiki/pile_of_putrid_essence.html, Acquisition (Dropped by / Contained in)"
         }
       ],
       "qty": {
         "superior_sigil_of_celerity": 1
+      },
+      "best": "drop",
+      "note": {
+        "fr": "Recette de Forge = promotion de palier : voie alternative, non comptée (règle C7).",
+        "en": "Mystic Forge recipe = tier promotion: alternative path, not counted (rule C7)."
       }
     },
     "pile_of_zesty_herbs": {
@@ -29572,11 +29579,7 @@ const SOURCES_DB = {
       "name": "Mystic Crystal",
       "apiId": 20799,
       "kind": "acquire",
-      "needed_for": [
-        "pile_of_putrid_essence",
-        "pile_of_vile_essence",
-        "pile_of_filthy_essence"
-      ],
+      "needed_for": [],
       "farmable": true,
       "sources": [
         {
@@ -29590,11 +29593,7 @@ const SOURCES_DB = {
           "ref": "recette de pile_of_putrid_essence.html"
         }
       ],
-      "qty": {
-        "pile_of_putrid_essence": 1,
-        "pile_of_vile_essence": 1,
-        "pile_of_filthy_essence": 1
-      }
+      "qty": {}
     },
     "onion": {
       "name": "Onion",
@@ -29734,24 +29733,27 @@ const SOURCES_DB = {
       "name": "Pile of Vile Essence",
       "apiId": 24334,
       "kind": "material",
-      "needed_for": [
-        "pile_of_putrid_essence"
-      ],
+      "needed_for": [],
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "drop",
+          "free_repeatable": true,
+          "cadence": "à volonté",
           "tip": {
-            "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-            "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+            "fr": "Butin des Risen d'Orr (Saut de Malchor, Rivage maudit, Détroit de la Dévastation).",
+            "en": "Dropped by Risen in Orr (Malchor's Leap, Cursed Shore, Straits of Devastation)."
           },
-          "verified": false,
-          "checked": "2026-09-25",
-          "ref": "recette de pile_of_putrid_essence.html ; identite depuis gw2_materials_ref.json (apiId 24334)"
+          "verified": true,
+          "checked": "2026-10-19",
+          "ref": "ressources/wiki/pile_of_vile_essence.html, Acquisition (Dropped by / Contained in)"
         }
       ],
-      "qty": {
-        "pile_of_putrid_essence": 2
+      "qty": {},
+      "best": "drop",
+      "note": {
+        "fr": "Recette de Forge = promotion de palier : voie alternative, non comptée (règle C7).",
+        "en": "Mystic Forge recipe = tier promotion: alternative path, not counted (rule C7)."
       }
     },
     "portobello_mushroom": {
@@ -29954,24 +29956,27 @@ const SOURCES_DB = {
       "name": "Pile of Filthy Essence",
       "apiId": 24333,
       "kind": "material",
-      "needed_for": [
-        "pile_of_vile_essence"
-      ],
+      "needed_for": [],
       "farmable": true,
       "sources": [
         {
-          "type": "unknown",
+          "type": "drop",
+          "free_repeatable": true,
+          "cadence": "à volonté",
           "tip": {
-            "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-            "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+            "fr": "Butin des Risen Thralls et de nombreux sacs de butin (Large Loot Bag, Moldy Bags…).",
+            "en": "Dropped by Risen Thralls and found in many loot bags (Large Loot Bag, Moldy Bags…)."
           },
-          "verified": false,
-          "checked": "2026-09-25",
-          "ref": "recette de pile_of_vile_essence.html ; identite depuis gw2_materials_ref.json (apiId 24333)"
+          "verified": true,
+          "checked": "2026-10-19",
+          "ref": "ressources/wiki/pile_of_filthy_essence.html, Acquisition (Dropped by / Contained in)"
         }
       ],
-      "qty": {
-        "pile_of_vile_essence": 2
+      "qty": {},
+      "best": "drop",
+      "note": {
+        "fr": "Recette de Forge = promotion de palier : voie alternative, non comptée (règle C7).",
+        "en": "Mystic Forge recipe = tier promotion: alternative path, not counted (rule C7)."
       }
     },
     "laurel": {
@@ -30050,9 +30055,7 @@ const SOURCES_DB = {
       "name": "Pile of Foul Essence",
       "apiId": 24332,
       "kind": "material",
-      "needed_for": [
-        "pile_of_filthy_essence"
-      ],
+      "needed_for": [],
       "farmable": true,
       "sources": [
         {
@@ -30077,9 +30080,7 @@ const SOURCES_DB = {
           "ref": "ressources/wiki/pile_of_foul_essence.html, Recipes (capture du 06/10/2026)"
         }
       ],
-      "qty": {
-        "pile_of_filthy_essence": 2
-      },
+      "qty": {},
       "best": "drop",
       "best_reason": {
         "fr": "voie par défaut : butin gratuit. La promotion en Forge est une alternative coûteuse.",
@@ -69419,7 +69420,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Wardbough%27s_Runestone"
+              "wiki": "Wardbough%27s_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/awakening_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 3,
@@ -69453,7 +69458,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Arboreal_Runestone"
+              "wiki": "Arboreal_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/awakening_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 6,
@@ -69487,7 +69496,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Oakheart%27s_Runestone"
+              "wiki": "Oakheart%27s_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/awakening_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 9,
@@ -69635,7 +69648,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Saurian_Runestone"
+              "wiki": "Saurian_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 3,
@@ -69673,7 +69690,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Imperial_Runestone"
+              "wiki": "Imperial_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 6,
@@ -69711,7 +69732,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Webby_Runestone"
+              "wiki": "Webby_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 9,
@@ -69745,7 +69770,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Wurm_Runestone"
+              "wiki": "Wurm_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 12,
@@ -69779,7 +69808,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Arcanum_Runestone"
+              "wiki": "Arcanum_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 15,
@@ -69955,7 +69988,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Aestus_Runestone"
+              "wiki": "Aestus_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 4,
@@ -69977,7 +70014,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Ignis_Runestone"
+              "wiki": "Ignis_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 6,
@@ -69999,7 +70040,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Desecrator_Runestone"
+              "wiki": "Desecrator_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 8,
@@ -70037,7 +70082,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Volcanic_Runestone"
+              "wiki": "Volcanic_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 11,
@@ -70059,7 +70108,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Glacial_Runestone"
+              "wiki": "Glacial_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 13,
@@ -70081,7 +70134,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Charged_Runestone"
+              "wiki": "Charged_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 15,
@@ -70103,7 +70160,11 @@ const SOURCES_DB = {
               },
               "how_verified": true,
               "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-              "wiki": "Earthen_Runestone"
+              "wiki": "Earthen_Runestone",
+              "cost": {
+                "druid_runestone": 1
+              },
+              "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
             },
             {
               "bit": 17,
@@ -81569,10 +81630,12 @@ const LEGENDARIES = {
     description: { fr: "Accessoire légendaire — Monde vivant Saison 3", en: "Legendary Accessory — Living World Season 3" },
     resetType: "daily",
     currencies: [
-      { id: "karma", name: "Karma", required: 904050, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
-        // 904 050 a collections vierges : `cost` des etapes d'Aurora I (v246) ;
-        // le moteur fait tomber chaque etape validee
+      { id: "karma", name: "Karma", required: 971250, icon: "KA", apiId: 2, kind: "karma", showAbove: 100000,
+        // 971 250 a collections vierges : `cost` des etapes d'Aurora I (v246,
+        // 904 050) + 16 Druid Runestones du Henge a 4 200 (v409) ; le moteur
+        // fait tomber chaque etape validee
         },
+      { id: "unbound", name: "Unbound Magic", required: 16000, icon: "UM", apiId: 32, comp: "unbound_magic" }, // 16 pierres du Henge x 1 000 (v409)
       { id: "blood_ruby", name: "Blood Ruby", required: 300, icon: "BR", apiId: 79280, mapNote: "Bloodstone Fen",
         aside: { fr: "Le plafond porte sur les nœuds : 35/jour/compte, rendement relevé à ~29 % — soit une dizaine de rubis par jour, pas plus. La piste de récompense du Marais rend un coffre de 50 d'un coup.", en: "The cap is on nodes: 35/day/account at a measured ~29% yield — about ten rubies a day, no more. The Bloodstone Fen reward track grants a 50-ruby strongbox in one go." },
         }, // 250 de recette + 50 de l'etape Pristine Blood Ruby (`cost`, sous-collection aurora_bf, v246)
@@ -81771,6 +81834,7 @@ const LEGENDARIES = {
       { id: "lucent_pile", name: "Pile of Lucent Crystal",   required: 23250, icon: "LP", apiId: 89271 },
       { id: "clovers",     name: "Mystic Clover",            required: 205,   icon: "MC", apiId: 19675 },
       { id: "ectos",       name: "Glob of Ectoplasm",        required: 1050,  icon: "EC", apiId: 19721 },
+      { id: "notes",       name: "Research Note",            required: 2500,  icon: "RN", apiId: 61 }, // relique : Gift of Research, 500 Hydrocatalytic a 5 notes (v408)
       { id: "shards",      name: "Obsidian Shard",           required: 450,   icon: "OS", apiId: 19925 },
     ],
     requirements: [
@@ -81809,6 +81873,8 @@ const LEGENDARIES = {
         lines: [
           { icon: "💎", label: { fr: "Piles of Lucent Crystal", en: "Piles of Lucent Crystal" }, curKey: "lucent_pile",
             detail: { fr: "25 Mystic Facets × 750 piles · chaque forge peut rarement en produire 5 d'un coup", en: "25 Mystic Facets × 750 piles · each forge can rarely yield 5 at once" } },
+          { icon: "📓", label: { fr: "Research Notes", en: "Research Notes" }, curKey: "notes",
+            detail: { fr: "Gift of Research : 500 Hydrocatalytic Reagents à 5 notes chez les maîtres artisans", en: "Gift of Research: 500 Hydrocatalytic Reagents at 5 notes each from master craftspeople" } },
           { icon: "🗿", label: { fr: "Reliques exotiques", en: "Exotic relics" }, perUnit: 25,
             detail: { fr: "N'importe lesquelles — les moins chères au comptoir", en: "Any of them — cheapest on the TP" } },
           { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner" },
@@ -82046,6 +82112,7 @@ const LEGENDARIES = {
       { id: "clovers",     name: "Mystic Clover",            icon: "MC", apiId: 19675, comp: "mystic_clover" },
       { id: "shards",      name: "Obsidian Shard",           icon: "OS", apiId: 19925, comp: "obsidian_shard" },
       { id: "ectos",       name: "Glob of Ectoplasm",        icon: "EC", apiId: 19721, comp: "glob_of_ectoplasm" },
+      { id: "notes",       name: "Research Note",            icon: "RN", apiId: 61, comp: "research_note" }, // Gift of Research : 500 Hydrocatalytic a 5 notes (v408)
     ],
     currencies: [],
     metas: ["sw", "am", "zak", "mb", "conv"],
@@ -84878,8 +84945,9 @@ function GW2LegendaryTracker() {
     (async () => {
       try {
         const oKey = (gtApiKey ?? "").trim();
-        const url = `http://127.0.0.1:5000/api/achievements/status?ids=${missing.slice(0, 200).join(",")}` + (oKey ? `&key=${encodeURIComponent(oKey)}` : "");
-        const r = await fetch(url);
+        // v260 : la cle voyage en en-tete X-API-Key (BACKLOG 12 quinquies), plus dans l'URL
+        const url = `http://127.0.0.1:5000/api/achievements/status?ids=${missing.slice(0, 200).join(",")}`;
+        const r = await fetch(url, oKey ? { headers: { "X-API-Key": oKey } } : undefined);
         if (!r.ok) return;
         const data = await r.json();
         setAchSubStatus(prev => {
@@ -85420,7 +85488,7 @@ function GW2LegendaryTracker() {
       masteries_all: msAll,
       masteries_scope_ok: Array.isArray(msList),
     };
-    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, _access: accessDirect, errors: [] };
+    return { currencies, common, achievements, prismatic, _sub_status: sub, _collections: colls, _direct: true, _bags_ok: bags.ok, _reserves_completes: bags.ok !== false, stocks: stocksAll, _gates, _recipes: recipesDirect, _commander: commanderDirect, _access: accessDirect, errors: [] };
   }, []);
 
   // ── Fetch : Flask local, puis repli GW2 API directe si une clé est saisie ──
@@ -85460,9 +85528,10 @@ function GW2LegendaryTracker() {
       // de cle manquante, erreur), un zero serait peut-etre faux ; on garde
       // alors l'ancienne valeur et on le signale (__notSent).
       const erreurs = Array.isArray(data.errors) ? data.errors : [];
-      const reservesCompletes = data._direct
-        ? data._bags_ok !== false
-        : (data._reserves_completes ?? !erreurs.some(e => /^(materials|bank|shared|characters)\b/.test(String(e))));
+      // v260 : les deux chemins posent `_reserves_completes` (conformite_synchro)
+      const reservesCompletes = data._reserves_completes
+        ?? (data._direct ? data._bags_ok !== false
+                         : !erreurs.some(e => /^(materials|bank|shared|characters)\b/.test(String(e))));
       const stockDe = (apiId) => {
         if (!data.stocks) return undefined;
         const v = data.stocks[String(apiId)];
@@ -85587,10 +85656,8 @@ function GW2LegendaryTracker() {
       // Fetch Aurora collections en parallèle
       try {
         const aKey = (gtApiKey ?? "").trim();
-        const aUrl = aKey
-          ? `http://127.0.0.1:5000/api/achievements/aurora?key=${encodeURIComponent(aKey)}&lang=${langRef.current}`
-          : `http://127.0.0.1:5000/api/achievements/aurora?lang=${langRef.current}`;
-        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(60000) });
+        const aUrl = `http://127.0.0.1:5000/api/achievements/aurora?lang=${langRef.current}`;
+        const aResp = await fetch(aUrl, { signal: AbortSignal.timeout(60000), ...(aKey ? { headers: { "X-API-Key": aKey } } : {}) });
         if (aResp.ok) {
           const aData = await aResp.json();
           localStorage.setItem("gw2_aurora_collections", JSON.stringify(aData));
@@ -85605,10 +85672,8 @@ function GW2LegendaryTracker() {
       // Fetch Vision collections en parallèle
       try {
         const vKey = (gtApiKey ?? "").trim();
-        const vUrl = vKey
-          ? `http://127.0.0.1:5000/api/achievements/vision?key=${encodeURIComponent(vKey)}&lang=${langRef.current}`
-          : `http://127.0.0.1:5000/api/achievements/vision?lang=${langRef.current}`;
-        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(60000) });
+        const vUrl = `http://127.0.0.1:5000/api/achievements/vision?lang=${langRef.current}`;
+        const vResp = await fetch(vUrl, { signal: AbortSignal.timeout(60000), ...(vKey ? { headers: { "X-API-Key": vKey } } : {}) });
         if (vResp.ok) {
           const vData = await vResp.json();
           localStorage.setItem("gw2_vision_collections", JSON.stringify(vData));
@@ -85627,10 +85692,8 @@ function GW2LegendaryTracker() {
       // Fetch Obsidian achievements en parallèle
       try {
         const oKey = (gtApiKey ?? "").trim();
-        const oUrl = oKey
-          ? `http://127.0.0.1:5000/api/achievements/obsidian?key=${encodeURIComponent(oKey)}&lang=${langRef.current}`
-          : `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
-        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(60000) });
+        const oUrl = `http://127.0.0.1:5000/api/achievements/obsidian?lang=${langRef.current}`;
+        const oResp = await fetch(oUrl, { signal: AbortSignal.timeout(60000), ...(oKey ? { headers: { "X-API-Key": oKey } } : {}) });
         if (oResp.ok) {
           const oData = await oResp.json();
           localStorage.setItem("gw2_obsidian_achievements", JSON.stringify(oData));

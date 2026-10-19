@@ -1,15 +1,15 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v408.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v409.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
 sous le tesson d'Ipos et n'ouvre pas le Mystic Curio, qui en coute 1 500 de
 plus. **Son total est donc un plancher, pas une egalite.**
 
-- **941 accords** — le nombre affiche est celui de la table.
+- **942 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
-- **196 excedents expliques** — le surplus vient d'une branche
+- **195 excedents expliques** — le surplus vient d'une branche
   que la table cite sans l'ouvrir, ou d'un chevauchement declare en
   `qty_overlap_verified`.
 - **0 excedents nus** — rien dans la donnee ne les explique : soit
@@ -225,4 +225,3 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_the_hms_divinity` | `ancient_wood_plank` | 252 | 250 | `man_o_war` |
 | `gen2_verdarach` | `ancient_wood_plank` | 252 | 250 | `call_of_the_void` |
 | `conflux` | `gift_of_battle` | 5 | 4 | `gift_of_the_mists` |
-| `gen1_kudzu` | `dust_crystalline` | 251 | 250 | `superior_sigil_of_celerity` |

@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v6.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v7.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -661,6 +661,10 @@ relique +2 500. Source SotO inventee retiree.
 Table `upgrades` parallele et inerte a resorber dans `legendary_rune` /
 `legendary_sigil` / `legendary_relic`. 14/10 : ses blocs Prerequis lisent
 desormais le moteur (`cible`) ; reste la liste `currencies` de l'onglet.
+✅ 19/10 (JSX v260) : rien de parallele ne reste. Les `required` de la liste
+`currencies` ne sont qu'une ancre que l'audit confronte au moteur
+(`upgrades_combined`), comme pour tous les legendaires ; les lignes lisent le
+moteur. Ajout transversal des Research Notes (relique : Gift of Research).
 
 ### S4 — § ② Routes vers les 1 978 etapes d'armes · option B retenue (14/10)
 L'onglet Armes cible, mais cliquer une arme ne mene a rien. Option B :
@@ -696,13 +700,32 @@ retrouves dans chaque traduction. Reste : 0 champ `fr` vide.
 « a la Foret de Caledon » au lieu de « dans la ».
 
 ### S7 — Hygiene
-- [ ] trier `BACKLOG.md` : sections closes et ouvertes melees, titres perimes
+- [x] trier `BACKLOG.md` (19/10) : 3 sections closes de plus deplacees dans
+      `BACKLOG_CLOS.md` (regionalisation = S6, magasin partage = S1, cle dans
+      l'URL = JSX v260 + Flask v48) ; 24 ouvertes.
       (« 10 restants » de la migration, par exemple)
 - [x] `shared_components` retire des 44 fiches (accord du 04/10).
 - [x] `RELECTURE_RECETTES` : numerotation deja corrigee dans le script v6
       (constat du 09/10). BACKLOG trie (BACKLOG / BACKLOG_CLOS) le 08/10.
 
 ---
+
+### C8 — Passe du 19/10 (sources v409, JSX v260, Flask v48) · C — ✅
+- Piles of Essence : les 12 aretes de promotion (putrid <- vile <- filthy <-
+  foul, cristaux, vins, poussieres) retirees, regle C7 ; la Putrid tombe sur
+  les Risen d'Orr. Kudzu : -8 Foul, -7 cristaux, -7 vins (1 Putrid reste).
+- Henge d'Aurora : les 16 Druid Runestones entrent dans le moteur (`cost`
+  sur les 15 etapes « X Runestone » + la pierre deja posee ; prix 4 x 1 050
+  karma + 1 000 magie non liee, the_druid_stone.html). Aurora : karma
+  904 050 -> 971 250, magie non liee 0 -> 16 000 (ligne ajoutee, id 32).
+  Le bloc Prerequis du Henge garde ses `perUnit` (sous-chaine : le karma du
+  legendaire entier n'est pas celui du Henge).
+- Research Notes affichees la ou le moteur les compte : Obsidian (par
+  piece), relique / Upgrades.
+- Synchro : `_reserves_completes` pose aussi par la synchro directe
+  (conformite_synchro : plus d'asymetrie).
+- Cle API : en-tete X-API-Key (JSX v260), parametre d'URL refuse (Flask
+  v48, 400). A relancer chez Antoine.
 
 ### C7 — Feuilles a plusieurs matieres premieres · C — ✅ 14/10
 Regle d'Antoine : une feuille a recette lue reste feuille, sauf si elle se

@@ -2897,8 +2897,7 @@
     "chrysocola_crystal",
     "beryl_crystal",
     "emerald_crystal",
-    "ruby_crystal",
-    "pile_of_filthy_essence"
+    "ruby_crystal"
    ],
    "farmable": true,
    "sources": [
@@ -2940,8 +2939,7 @@
     "chrysocola_crystal": 1,
     "beryl_crystal": 1,
     "emerald_crystal": 1,
-    "ruby_crystal": 1,
-    "pile_of_filthy_essence": 1
+    "ruby_crystal": 1
    },
    "kind": "acquire",
    "best": "drop",
@@ -2958,7 +2956,6 @@
     "gift_of_dust",
     "gift_of_energy",
     "opal_orb",
-    "pile_of_vile_essence",
     "ruby_orb",
     "sapphire_orb"
    ],
@@ -3017,7 +3014,6 @@
     "ruby_orb": 5,
     "sapphire_orb": 5,
     "azurite_orb": 5,
-    "pile_of_vile_essence": 1,
     "opal_orb": 5
    },
    "kind": "acquire",
@@ -3061,7 +3057,6 @@
     "deldrimor_steel_sword_hilt",
     "deldrimor_steel_warhorn_mouthpiece",
     "elonian_string",
-    "pile_of_putrid_essence",
     "small_spiritwood_haft",
     "spiritwood_rifle_stock",
     "spiritwood_scepter_rod",
@@ -3149,7 +3144,6 @@
     "deldrimor_steel_sword_hilt": 5,
     "deldrimor_steel_warhorn_mouthpiece": 5,
     "elonian_string": 5,
-    "pile_of_putrid_essence": 1,
     "small_spiritwood_haft": 5,
     "spiritwood_rifle_stock": 5,
     "spiritwood_scepter_rod": 5,
@@ -4260,10 +4254,7 @@
    "apiId": 19663,
    "needed_for": [
     "gift_of_crystalline_magic",
-    "gift_of_ephemeral_magic",
-    "pile_of_putrid_essence",
-    "pile_of_vile_essence",
-    "pile_of_filthy_essence"
+    "gift_of_ephemeral_magic"
    ],
    "farmable": false,
    "sources": [
@@ -4293,10 +4284,7 @@
    ],
    "qty": {
     "gift_of_ephemeral_magic": 1,
-    "gift_of_crystalline_magic": 1,
-    "pile_of_putrid_essence": 1,
-    "pile_of_vile_essence": 1,
-    "pile_of_filthy_essence": 1
+    "gift_of_crystalline_magic": 1
    },
    "kind": "acquire",
    "best": "vendor",
@@ -12016,7 +12004,8 @@
     "gift_of_the_desolation": 23331,
     "bottle_of_coconut_milk": 249,
     "sun_bead": 21,
-    "binding_of_the_dragon": 22500
+    "binding_of_the_dragon": 22500,
+    "druid_runestone": 4200
    },
    "farmable": true,
    "sources": [
@@ -12051,7 +12040,8 @@
     "gift_of_the_desolation",
     "bottle_of_coconut_milk",
     "sun_bead",
-    "binding_of_the_dragon"
+    "binding_of_the_dragon",
+    "druid_runestone"
    ]
   },
   "powerful_venom_sac": {
@@ -12627,11 +12617,15 @@
    },
    "verified": true,
    "checked": "2026-08-20",
-   "ref": "api:/v2/items?ids=81140 + wiki:Druid_Runestone",
+   "ref": "api:/v2/items?ids=81140 + wiki:Druid_Runestone ; prix : ressources/wiki/the_druid_stone.html, étape « Druid Runestone »",
    "apiId": 81140,
    "apiId_note": {
     "fr": "81140 = la pierre runique. Le fragment quotidien est 81111 (Druid Runestone Fragment) : c'est lui qui bouge dans l'inventaire en cours de journee, mais le suivre en plus creerait deux entrees pour un seul verrou. Id garde ici pour un usage ulterieur.",
     "en": "81140 = the runestone. The daily fragment is 81111 (Druid Runestone Fragment): it is the one that moves in the inventory during the day, but tracking it as well would create two entries for a single gate. Id kept here for later use."
+   },
+   "recipe": {
+    "fr": "5 fragments : 4 × 1 050 karma (PNJ des 4 cœurs) + 1 × 1 000 magie non liée (Supplymaster Hanjo).",
+    "en": "5 fragments: 4 × 1,050 karma (the 4 heart NPCs) + 1 × 1,000 Unbound Magic (Supplymaster Hanjo)."
    }
   },
   "ancient_cipher": {
@@ -21347,7 +21341,9 @@
   "unbound_magic": {
    "name": "Unbound Magic",
    "kind": "currency",
-   "qty": {},
+   "qty": {
+    "druid_runestone": 1000
+   },
    "farmable": true,
    "sources": [
     {
@@ -21362,7 +21358,11 @@
    ],
    "verified": true,
    "checked": "2026-09-09",
-   "ref": "unbound_magic.html (lot 8)"
+   "ref": "unbound_magic.html (lot 8)",
+   "needed_for": [
+    "druid_runestone"
+   ],
+   "apiId": 32
   },
   "tribute_to_the_queen": {
    "name": "Tribute to the Queen",
@@ -28199,18 +28199,25 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "drop",
+     "free_repeatable": true,
+     "cadence": "à volonté",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Butin des Risen d'Orr (Rivage maudit, Saut de Malchor, Détroit de la Dévastation), champions et élites compris.",
+      "en": "Dropped by Risen in Orr (Cursed Shore, Malchor's Leap, Straits of Devastation), champions and elites included."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de superior_sigil_of_celerity.html ; identite depuis gw2_materials_ref.json (apiId 24335)"
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/pile_of_putrid_essence.html, Acquisition (Dropped by / Contained in)"
     }
    ],
    "qty": {
     "superior_sigil_of_celerity": 1
+   },
+   "best": "drop",
+   "note": {
+    "fr": "Recette de Forge = promotion de palier : voie alternative, non comptée (règle C7).",
+    "en": "Mystic Forge recipe = tier promotion: alternative path, not counted (rule C7)."
    }
   },
   "pile_of_zesty_herbs": {
@@ -28746,11 +28753,7 @@
    "name": "Mystic Crystal",
    "apiId": 20799,
    "kind": "acquire",
-   "needed_for": [
-    "pile_of_putrid_essence",
-    "pile_of_vile_essence",
-    "pile_of_filthy_essence"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
@@ -28764,11 +28767,7 @@
      "ref": "recette de pile_of_putrid_essence.html"
     }
    ],
-   "qty": {
-    "pile_of_putrid_essence": 1,
-    "pile_of_vile_essence": 1,
-    "pile_of_filthy_essence": 1
-   }
+   "qty": {}
   },
   "onion": {
    "name": "Onion",
@@ -28908,24 +28907,27 @@
    "name": "Pile of Vile Essence",
    "apiId": 24334,
    "kind": "material",
-   "needed_for": [
-    "pile_of_putrid_essence"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "drop",
+     "free_repeatable": true,
+     "cadence": "à volonté",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Butin des Risen d'Orr (Saut de Malchor, Rivage maudit, Détroit de la Dévastation).",
+      "en": "Dropped by Risen in Orr (Malchor's Leap, Cursed Shore, Straits of Devastation)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de pile_of_putrid_essence.html ; identite depuis gw2_materials_ref.json (apiId 24334)"
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/pile_of_vile_essence.html, Acquisition (Dropped by / Contained in)"
     }
    ],
-   "qty": {
-    "pile_of_putrid_essence": 2
+   "qty": {},
+   "best": "drop",
+   "note": {
+    "fr": "Recette de Forge = promotion de palier : voie alternative, non comptée (règle C7).",
+    "en": "Mystic Forge recipe = tier promotion: alternative path, not counted (rule C7)."
    }
   },
   "portobello_mushroom": {
@@ -29128,24 +29130,27 @@
    "name": "Pile of Filthy Essence",
    "apiId": 24333,
    "kind": "material",
-   "needed_for": [
-    "pile_of_vile_essence"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "drop",
+     "free_repeatable": true,
+     "cadence": "à volonté",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Butin des Risen Thralls et de nombreux sacs de butin (Large Loot Bag, Moldy Bags…).",
+      "en": "Dropped by Risen Thralls and found in many loot bags (Large Loot Bag, Moldy Bags…)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de pile_of_vile_essence.html ; identite depuis gw2_materials_ref.json (apiId 24333)"
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/pile_of_filthy_essence.html, Acquisition (Dropped by / Contained in)"
     }
    ],
-   "qty": {
-    "pile_of_vile_essence": 2
+   "qty": {},
+   "best": "drop",
+   "note": {
+    "fr": "Recette de Forge = promotion de palier : voie alternative, non comptée (règle C7).",
+    "en": "Mystic Forge recipe = tier promotion: alternative path, not counted (rule C7)."
    }
   },
   "laurel": {
@@ -29224,9 +29229,7 @@
    "name": "Pile of Foul Essence",
    "apiId": 24332,
    "kind": "material",
-   "needed_for": [
-    "pile_of_filthy_essence"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
@@ -29251,9 +29254,7 @@
      "ref": "ressources/wiki/pile_of_foul_essence.html, Recipes (capture du 06/10/2026)"
     }
    ],
-   "qty": {
-    "pile_of_filthy_essence": 2
-   },
+   "qty": {},
    "best": "drop",
    "best_reason": {
     "fr": "voie par défaut : butin gratuit. La promotion en Forge est une alternative coûteuse.",
@@ -68593,7 +68594,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Wardbough%27s_Runestone"
+       "wiki": "Wardbough%27s_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/awakening_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 3,
@@ -68627,7 +68632,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Arboreal_Runestone"
+       "wiki": "Arboreal_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/awakening_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 6,
@@ -68661,7 +68670,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Oakheart%27s_Runestone"
+       "wiki": "Oakheart%27s_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/awakening_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 9,
@@ -68809,7 +68822,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Saurian_Runestone"
+       "wiki": "Saurian_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 3,
@@ -68847,7 +68864,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Imperial_Runestone"
+       "wiki": "Imperial_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 6,
@@ -68885,7 +68906,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Webby_Runestone"
+       "wiki": "Webby_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 9,
@@ -68919,7 +68944,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Wurm_Runestone"
+       "wiki": "Wurm_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 12,
@@ -68953,7 +68982,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Arcanum_Runestone"
+       "wiki": "Arcanum_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/sprouting_the_druid_stone.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 15,
@@ -69129,7 +69162,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Aestus_Runestone"
+       "wiki": "Aestus_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 4,
@@ -69151,7 +69188,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Ignis_Runestone"
+       "wiki": "Ignis_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 6,
@@ -69173,7 +69214,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Desecrator_Runestone"
+       "wiki": "Desecrator_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 8,
@@ -69211,7 +69256,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Volcanic_Runestone"
+       "wiki": "Volcanic_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 11,
@@ -69233,7 +69282,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Glacial_Runestone"
+       "wiki": "Glacial_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 13,
@@ -69255,7 +69308,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Charged_Runestone"
+       "wiki": "Charged_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 15,
@@ -69277,7 +69334,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/*.html, parse par gw2_parse_collection_v1.py",
-       "wiki": "Earthen_Runestone"
+       "wiki": "Earthen_Runestone",
+       "cost": {
+        "druid_runestone": 1
+       },
+       "cost_ref": "ressources/wiki/a_henge_away_from_home.html, tableau des étapes (lu le 19/10)"
       },
       {
        "bit": 17,

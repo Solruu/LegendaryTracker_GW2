@@ -17,7 +17,7 @@ import os
 import re
 import sys
 import requests
-from flask import Flask, jsonify, request
+from flask import abort, Flask, jsonify, request
 from flask_cors import CORS
 
 # ─── Configuration ───────────────────────────────────────────────────────────
@@ -367,6 +367,16 @@ def add_cors_headers(response):
     return response
 
 
+def _cle_entete():
+    """v48 (BACKLOG 12 quinquies) : la cle ne voyage plus dans l'URL. Le
+    parametre `key` est refuse : il finissait dans l'historique du navigateur
+    et dans tout journal que le filtre de masquage ne couvre pas. Seul
+    l'en-tete X-API-Key compte (JSX v260), sinon la cle du .env."""
+    if request.args.get("key"):
+        abort(400, description="Cle API dans l'URL refusee : utiliser l'en-tete X-API-Key.")
+    return request.headers.get("X-API-Key")
+
+
 @app.route("/<path:_any>", methods=["OPTIONS"])
 @app.route("/", methods=["OPTIONS"])
 def cors_preflight(_any=None):
@@ -518,7 +528,7 @@ def resolve_name():
 def debug_item(item_id):
     """Debug — cherche un item ID dans toutes les sources possibles."""
     import time
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle manquante"}), 400
 
@@ -554,7 +564,7 @@ def debug_item(item_id):
 @app.route("/debug/prismatic")
 def debug_prismatic():
     """Debug — affiche la progression détaillée de Seasons of the Dragons."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle manquante"}), 400
 
@@ -582,7 +592,7 @@ def debug_prismatic():
 @app.route("/debug/achievements")
 def debug_achievements():
     """Debug — cherche des achievements par mot-clé dans leur nom."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     query = request.args.get("q", "").lower()
     if not api_key:
         return jsonify({"error": "Cle manquante"}), 400
@@ -629,7 +639,7 @@ def debug_dump():
     """
     import concurrent.futures, time
 
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
 
@@ -903,7 +913,7 @@ def debug_achievements_byname():
 @app.route("/debug/lw3")
 def debug_lw3():
     """Debug — cherche les currencies LW3 par nom dans les materials."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle manquante"}), 400
 
@@ -939,7 +949,7 @@ def debug_lw3():
 @app.route("/debug/wallet")
 def debug_wallet():
     """Debug — affiche le wallet avec les noms des currencies."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle manquante"}), 400
     
@@ -963,7 +973,7 @@ def debug_wallet():
 @app.route("/debug/materials")
 def debug_materials():
     """Debug — affiche les materials bruts pour trouver les bons IDs."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle manquante"}), 400
     data, err = gw2_get("account/materials", api_key)
@@ -1093,13 +1103,9 @@ def all_mastery_names():
 def progression():
     """
     Retourne la progression complete du compte pour tous les legendaires.
-    Param : key=VOTRE_CLE_API (dans l'URL ou header X-API-Key)
+    Cle : en-tete X-API-Key, sinon GW2_API_KEY du .env (v48 : plus dans l'URL)
     """
-    api_key = (
-        request.args.get("key")
-        or request.headers.get("X-API-Key")
-        or os.environ.get("GW2_API_KEY")
-    )
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
 
     if not api_key:
         return jsonify({
@@ -1632,7 +1638,7 @@ def materials_bulk():
     """
     import time, concurrent.futures
 
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
 
@@ -1724,7 +1730,7 @@ def aurora_achievements():
     Retourne la progression des collections Aurora (pré-collections + sous-collections Master + Aurora I/II).
     Retourne un dict { key: { done, current, max, bits } } pour chaque collection dans AURORA_ACHIEVEMENT_IDS.
     """
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
 
@@ -1752,7 +1758,7 @@ def vision_achievements():
     Retourne la progression des collections Vision (Visions of [map] + Convergence of Sorrow + Requiem Experiments).
     Retourne un dict { key: { done, current, max, bits } } pour chaque entrée dans VISION_ACHIEVEMENT_IDS.
     """
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
 
@@ -1779,7 +1785,7 @@ def obsidian_achievements():
     Progression des achievements Obsidian Armor (6 Arcanum "Astral X" + collections).
     Retourne { key: { done, current, max, bits } } pour chaque entrée dans OBSIDIAN_ACHIEVEMENT_IDS.
     """
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
 
@@ -1808,7 +1814,7 @@ def achievements_status():
     Sert aux méta-achievements (masteries de cartes) dont les étapes sont
     d'autres achievements et non des bits.
     """
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
     ids_param = request.args.get("ids", "")
@@ -1839,7 +1845,7 @@ def achievements_status():
 @app.route("/api/legendaryarmory")
 def legendary_armory():
     """Proxy vers /v2/account/legendaryarmory — clé reste côté machine."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"error": "Cle API manquante"}), 400
 
@@ -1853,7 +1859,7 @@ def legendary_armory():
 @app.route("/api/validate")
 def validate_key():
     """Valide une cle API sans charger toutes les donnees."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key")
+    api_key = _cle_entete()
     if not api_key:
         return jsonify({"valid": False, "error": "Cle manquante"}), 400
 
@@ -2000,7 +2006,7 @@ def _unhandled(exc):
 @app.route("/api/diag")
 def diag():
     """Verifie la cle et ses portees, pour distinguer un probleme de cle d'un bug."""
-    api_key = request.args.get("key") or request.headers.get("X-API-Key") or os.environ.get("GW2_API_KEY")
+    api_key = _cle_entete() or os.environ.get("GW2_API_KEY")
     if not api_key:
         return jsonify({"ok": False, "error": "Aucune cle : ni parametre, ni en-tete, ni GW2_API_KEY"}), 400
     info, err = gw2_get("tokeninfo", api_key)
