@@ -9266,32 +9266,6 @@
    },
    "kind": "advanced_craft"
   },
-  "unbound_precursor": {
-   "name": "Unbound (précurseur Ad Infinitum)",
-   "apiId": 74155,
-   "needed_for": [
-    "ad_infinitum"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "achievement_collection",
-     "tip": {
-      "fr": "Crafté après avoir complété les 3 premières collections Ad Infinitum I-III. Chaque collection requiert ~40 Fractal Research Pages + items fractal spécifiques (environ 10-14 jours/collection).",
-      "en": "Crafted after completing the first 3 Ad Infinitum I-III collections. Each collection requires ~40 Fractal Research Pages + specific fractal items (about 10-14 days/collection)."
-     }
-    }
-   ],
-   "qty": {
-    "ad_infinitum": 1
-   },
-   "timegate": true,
-   "timegate_note": {
-    "fr": "Min ~40 jours sans CM (3 collections × ~13-14 jours). Avec CM sur Sunqua/Nightmare/Shattered Obs : ~15-21 jours.",
-    "en": "Min ~40 days without CM (3 collections x ~13-14 days). With CM on Sunqua/Nightmare/Shattered Obs: ~15-21 days."
-   },
-   "kind": "precursor"
-  },
   "purified_rift_essence": {
    "name": "Purified Rift Essence",
    "apiId": 100569,
@@ -20450,7 +20424,7 @@
   },
   "unbound": {
    "name": "Unbound",
-   "kind": "acquire",
+   "kind": "precursor",
    "farmable": true,
    "qty": {
     "ad_infinitum": 1
@@ -20460,14 +20434,22 @@
    ],
    "sources": [
     {
-     "type": "acquire",
+     "type": "mystic_forge",
      "tip": {
-      "fr": "Extrait de la section « Full material list » des pages d'armes du wiki.",
-      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
-     }
+      "fr": "Forge mystique : Solution: Unbound + 5 Pristine Mist Essence + Unbound Wings + Third Order Mist Frame. La Solution vient des 3 collections Ad Infinitum I-III (1 Fractal Journal = 28 Fractal Research Pages chacune).",
+      "en": "Mystic Forge: Solution: Unbound + 5 Pristine Mist Essence + Unbound Wings + Third Order Mist Frame. The Solution comes from the 3 Ad Infinitum I-III collections (1 Fractal Journal = 28 Fractal Research Pages each)."
+     },
+     "verified": true,
+     "checked": "2026-10-19",
+     "ref": "ressources/wiki/unbound.html (Recipe) ; ressources/wiki/ad_infinitum.html (Collections)"
     }
    ],
-   "apiId": 72309
+   "apiId": 72309,
+   "timegate": true,
+   "timegate_note": {
+    "fr": "Min ~40 jours sans CM (3 collections × ~13-14 jours). Avec CM sur Sunqua/Nightmare/Shattered Obs : ~15-21 jours.",
+    "en": "Min ~40 days without CM (3 collections x ~13-14 days). With CM on Sunqua/Nightmare/Shattered Obs: ~15-21 days."
+   }
   },
   "unbound_wings": {
    "name": "Unbound Wings",
@@ -32771,7 +32753,7 @@
    "wiki": "Ad_Infinitum",
    "recipe": "MF : Unbound + Gift of Fortune + Gift of Infinity + Gift of Ascension",
    "components": [
-    "unbound_precursor",
+    "unbound",
     "gift_of_fortune",
     "gift_of_infinity",
     "gift_of_ascension_fractal"
