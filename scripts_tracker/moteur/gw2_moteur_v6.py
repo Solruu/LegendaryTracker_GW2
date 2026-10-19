@@ -210,7 +210,7 @@ class Modele:
     def fantomes(self) -> list[str]:
         return sorted(l.id for l in self.legendaires.values() if not l.declare)
 
-    def _etapes(self, cible, faites):
+    def _etapes(self, cible, faites, perimetre=None):
         """(etape, faite) pour chaque etape de collection de la cible.
 
         v4 : les SOUS-COLLECTIONS comptent. Aurora I porte six collections de
@@ -226,6 +226,8 @@ class Modele:
         faites = faites or {}
         for cle, col in (self.legendaires[cible].brut.get("collections") or {}).items():
             if not isinstance(col, dict):
+                continue
+            if perimetre is not None and cle not in perimetre:
                 continue
             sc = faites.get(cle) or faites.get(str(col.get("id"))) or {}
             entier = bool(sc.get("done"))
@@ -274,7 +276,8 @@ class Modele:
                detail: bool = False,
                collections_faites: dict | None = None,
                poids_par_emplacement: dict | None = None,
-               pieces_restantes: dict | None = None):
+               pieces_restantes: dict | None = None,
+               perimetre=None):
         """Ce que le tracker AFFICHE pour une cible : cles a plat plus cascade.
 
         `pieces_restantes` : {armure: n}, le nombre de pieces d'un set qu'il
@@ -299,6 +302,13 @@ class Modele:
         Wargreaves lourd/bottes et Legplates lourd/jambieres n'ont pas le
         meme compte de marque), jamais interpole entre cellules voisines.
 
+        `perimetre` (v6) : une liste de cles de collections de la cible. Seuls
+        les `cost` des etapes de ces collections sont poses, puis developpes
+        par la cascade ; ni cle a plat ni choix. C'est ce que compte une
+        sous-chaine (Henge d'Aurora : 16 pierres, 67 200 karma, 16 000 magie
+        non liee) sans recopier ses prix a la main. Meme parametre cote JSX
+        (`computeGrandTotal`, 4e argument), compare par le test de conformite.
+
         `detail=True` rend aussi la part APPORTEE PAR LA CHAINE, seule facon de
         savoir ou une cle a plat peut ceder la place sans perdre son cout. Les
         appelants la recalculaient chacun de leur cote, et pas pareil : l'un
@@ -311,7 +321,7 @@ class Modele:
         # parallele que rien ne tenait a jour. La composition est declaree dans
         # les donnees, les deux moteurs la lisent.
         compo = (self.legendaires[cible].brut.get("composition")
-                 if cible in self.legendaires else None)
+                 if cible in self.legendaires and perimetre is None else None)
         if compo:
             t: dict[str, float] = {}
             for sous, n in compo.items():
@@ -329,7 +339,7 @@ class Modele:
                  "__per_unit": 1, "__full_set": 1 if n == PIECES else n / PIECES}
         satisfaits = self._satisfaits(cible, collections_faites)
         t: dict[str, float] = {}
-        for cid, c in self.composants.items():
+        for cid, c in (self.composants.items() if perimetre is None else ()):
             if cid in satisfaits:
                 continue
             q = c.qty
@@ -345,7 +355,7 @@ class Modele:
                     v = q.get(f"{cible}__piece_{poids}_{slot}")
                     if isinstance(v, (int, float)) and not isinstance(v, bool):
                         t[cid] = t.get(cid, 0) + (v if n == PIECES else v * n / PIECES)
-        for ch in self.choix.values():
+        for ch in (self.choix.values() if perimetre is None else ()):
             if cible in ch.cibles:
                 o = ch.retenue(cible, selection)
                 if o not in satisfaits:
@@ -354,7 +364,7 @@ class Modele:
         # le sens direct que `component` ne portait pas. Meme regle que le JSX,
         # au meme endroit : avant la cascade, et sans statut l'etape est reputee
         # non faite. Le test de conformite compare les deux.
-        for item, faite in self._etapes(cible, collections_faites):
+        for item, faite in self._etapes(cible, collections_faites, perimetre):
             cout = item.get("cost")
             if not cout or faite:
                 continue

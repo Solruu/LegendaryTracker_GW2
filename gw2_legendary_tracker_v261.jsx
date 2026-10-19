@@ -803,9 +803,9 @@ function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections
     const moteur = (() => {
       if (!RQ.cible) return null;
       try {
-        const vierge = computeGrandTotal([RQ.cible], {})?.totals ?? {};
+        const vierge = computeGrandTotal([RQ.cible], {}, undefined, RQ.perimetre)?.totals ?? {};
         const actuel = RQ.unitsFrom ? vierge
-          : (computeGrandTotal([RQ.cible], collections, piecesRestantes)?.totals ?? {});
+          : (computeGrandTotal([RQ.cible], collections, piecesRestantes, RQ.perimetre)?.totals ?? {});
         return { vierge, actuel };
       } catch (_) { return null; }
     })();
@@ -820,8 +820,16 @@ function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections
       if (st.unitBits && Array.isArray(A.bits)) return s + st.unitBits.filter(b => A.bits.includes(b)).length;
       return s;
     }, 0);
-    const known = RQ.unitsFrom ? (cnt != null) : (RQ.perStep ?? []).some(st => apiAch[st.key]);
-    const left = Math.max(0, total - doneU);
+    let known = RQ.unitsFrom ? (cnt != null) : (RQ.perStep ?? []).some(st => apiAch[st.key]);
+    let left = Math.max(0, total - doneU);
+    let total2 = total;
+    // v261 : `unite` = composant compte par le moteur (sous-chaine a perimetre) :
+    // l'en-tete se deduit du moteur, plus des bits recopies (`perStep`).
+    if (RQ.unite && moteur) {
+      total2 = Math.round(moteur.vierge[RQ.unite] ?? 0);
+      left = Math.round(moteur.actuel[RQ.unite] ?? 0);
+      known = true;
+    }
     const nf = (v) => v.toLocaleString("fr-FR");
     return (
       <div key={rqi} style={{ margin: "8px 14px", padding: "10px 12px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 8 }}>
@@ -830,8 +838,8 @@ function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections
           <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
             {(() => {
               const u = NX(RQ.unit) ?? "";
-              return known ? NX({ fr: `reste ${left} / ${total} ${u}s`, en: `${left} / ${total} ${u}s left` })
-                           : NX({ fr: `${total} ${u}s au total`, en: `${total} ${u}s total` });
+              return known ? NX({ fr: `reste ${left} / ${total2} ${u}s`, en: `${left} / ${total2} ${u}s left` })
+                           : NX({ fr: `${total2} ${u}s au total`, en: `${total2} ${u}s total` });
             })()}
           </span>
         </div>
@@ -866,7 +874,7 @@ function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections
           let leftV = ln.fixed != null ? (oneShotDone ? 0 : ln.fixed) : v0.l;
           let stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : null;
           if (ln.derivedFrom) {
-            const srcLn = (RQ.lines ?? []).find(x => x.curKey === ln.derivedFrom);
+            const srcLn = (RQ.lines ?? []).find(x => x.curKey === ln.derivedFrom || x.comp === ln.derivedFrom);
             const sv = srcLn ? valeurs(srcLn) : { t: 0, l: 0 };
             const srcTotal = srcLn ? (srcLn.fixed != null ? srcLn.fixed : sv.t) : 0;
             const srcLeft = srcLn ? (srcLn.fixed != null ? srcLn.fixed : sv.l) : 0;
@@ -1142,22 +1150,21 @@ const LEGENDARIES = {
     ],
     raidTabLabel: { fr: "⛏ Chaîne du Henge", en: "⛏ Henge chain" },
     requirements: {
-      unit: { fr: "pierre de druide", en: "druid stone" }, unitTotal: 16,
-      perStep: [
-        { key: "henge_3402", units: 1, unitBits: [1] },
-        { key: "henge_3445", units: 3, unitBits: [2, 5, 8] },
-        { key: "henge_3447", units: 5, unitBits: [2, 5, 8, 11, 14] },
-        { key: "henge_3436", units: 7, unitBits: [3, 5, 7, 10, 12, 14, 16] },
-      ],
-      note: { fr: "⏳ Plafond strict : 5 fragments/jour/compte = 1 pierre/jour, donc 16 jours minimum. Acheter les 5 fragments CHAQUE jour même sans jouer la suite. Répartition : 1 → 3 → 5 → 7 selon l'étape. Les fragments ne sont plus vendus une fois la chaîne terminée.", en: "⏳ Hard cap: 5 fragments/day/account = 1 stone/day, so 16 days minimum. Buy the 5 fragments EVERY day even if you do nothing else. Split: 1 → 3 → 5 → 7 per step. Fragments are no longer sold once the chain is complete." },
+      unit: { fr: "pierre de druide", en: "druid stone" },
+      // v261 : le bloc COMPTE la sous-chaine au lieu de recopier ses prix —
+      // moteur restreint aux 4 collections du Henge (`perimetre`) : `cost`
+      // des 16 etapes qui consomment une pierre, puis prix de la pierre par la
+      // cascade (4 200 karma + 1 000 magie non liee, sources v409).
+      cible: "aurora", perimetre: ["henge_3402", "henge_3445", "henge_3447", "henge_3436"], unite: "druid_runestone",
+      note: { fr: "⏳ 5 vendeurs de fragments au Mont Draconis, 1 fragment chacun par jour et par compte : 1 pierre par jour au mieux (16 jours). Acheter les 5 fragments CHAQUE jour même sans jouer la suite. Voies plus lentes : tout karma (4 fragments/jour, 20 jours) ou tout magie non liée (1/jour, 80 jours). Les fragments ne sont plus vendus une fois la chaîne terminée.", en: "⏳ 5 fragment vendors in Draconis Mons, 1 fragment each per day per account: 1 stone a day at best (16 days). Buy the 5 fragments EVERY day even if you do nothing else. Slower paths: karma only (4 fragments/day, 20 days) or Unbound Magic only (1/day, 80 days). Fragments are no longer sold once the chain is complete." },
       lines: [
-        { icon: "🪙", label: { fr: "Karma", en: "Karma" }, perUnit: 4200, curKey: "karma",
-          detail: { fr: "4 fragments × 1 050 karma chez les vendeurs des 4 cœurs — cœurs à refaire chaque jour", en: "4 fragments × 1,050 karma from the 4 heart vendors — hearts must be redone daily" } },
-        { icon: "🔮", label: { fr: "Magie non liée", en: "Unbound Magic" }, perUnit: 1000, curKey: "unbound",
-          detail: { fr: "1 fragment au vendeur de Magie non liée — sans coût en or (ne pas confondre avec ses Magic-Warped Bundles)", en: "1 fragment from the Unbound Magic vendor — no gold cost (don't confuse it with his Magic-Warped Bundles)" } },
-        { icon: "🧩", label: { fr: "Fragments", en: "Fragments" }, perUnit: 5,
-          detail: { fr: "5 par pierre, à combiner par double-clic", en: "5 per stone, combined by double-click" } },
-        { icon: "⏳", label: { fr: "Jours (plafond quotidien)", en: "Days (daily cap)" }, perUnit: 1 },
+        { icon: "🪨", label: { fr: "Pierres de druide", en: "Druid Runestones" }, comp: "druid_runestone",
+          detail: { fr: "5 fragments par pierre, à combiner par double-clic", en: "5 fragments per stone, combined by double-click" } },
+        { icon: "🪙", label: { fr: "Karma", en: "Karma" }, curKey: "karma", comp: "karma",
+          detail: { fr: "4 fragments × 1 050 karma par pierre, chez les PNJ des 4 cœurs — cœurs à refaire chaque jour", en: "4 fragments × 1,050 karma per stone, from the 4 heart NPCs — hearts must be redone daily" } },
+        { icon: "🔮", label: { fr: "Magie non liée", en: "Unbound Magic" }, curKey: "unbound", comp: "unbound_magic",
+          detail: { fr: "1 fragment × 1 000 par pierre chez Supplymaster Hanjo — sans coût en or (ne pas confondre avec ses Magic-Warped Bundles)", en: "1 fragment × 1,000 per stone from Supplymaster Hanjo — no gold cost (don't confuse it with his Magic-Warped Bundles)" } },
+        { icon: "⏳", label: { fr: "Jours (plafond quotidien)", en: "Days (daily cap)" }, derivedFrom: "druid_runestone", rate: 1 },
       ],
     },
     metas: ["bf", "eb", "dm", "ld", "sl", "bf_meta"],
@@ -2382,7 +2389,7 @@ function etapesCollections(cible, colls) {
     const entier = sc.done ?? false;
     const bits = sc.bits ?? [];
     for (const item of (col?.items ?? [])) {
-      if (item && typeof item === "object") out.push({ item, faite: entier || bits.includes(item.bit) });
+      if (item && typeof item === "object") out.push({ item, cle, faite: entier || bits.includes(item.bit) });
     }
     let subs = col?.subcollections ?? {};
     if (Array.isArray(subs)) subs = Object.fromEntries(subs.filter(x => x && typeof x === "object").map(x => [String(x.id), x]));
@@ -2392,7 +2399,7 @@ function etapesCollections(cible, colls) {
       const sentier = entier || (ss.done ?? false);
       const sbits = ss.bits ?? [];
       for (const item of (sub?.items ?? [])) {
-        if (item && typeof item === "object") out.push({ item, faite: sentier || sbits.includes(item.bit) });
+        if (item && typeof item === "object") out.push({ item, cle, faite: sentier || sbits.includes(item.bit) });
       }
     }
   }
@@ -2419,8 +2426,14 @@ function debitHebdo(cad) {
 // moteur Python (`pieces_restantes`) : `__per_piece` x n, couts par
 // emplacement et `__full_set` au prorata n/6, `__onetime` du tant qu'il reste
 // une piece.
-function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes) {
+// `perimetre` (v261) : liste de cles de collections. Seuls les `cost` de leurs
+// etapes sont poses, puis developpes par la cascade ; ni cle a plat ni choix.
+// C'est ce que compte une sous-chaine (Henge d'Aurora) sans recopier ses prix.
+// Meme parametre cote Python (`totaux(..., perimetre=)`), compare par le test
+// de conformite.
+function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perimetre) {
   const cc = SOURCES_DB?.craft_components ?? {};
+  const dansPerimetre = (cle) => !perimetre || perimetre.includes(cle);
   // Une cible COMPOSEE ne possede aucun composant en propre : elle vaut N
   // exemplaires d'autres cibles. « upgrades » etait dans ce cas et pesait ZERO
   // dans le grand total -- aucune cle qty ne le visait, et les cinq monnaies
@@ -2431,7 +2444,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes) {
   const plats = [];
   for (const id of (selectedIds ?? [])) {
     const cible = SOURCES_ALIAS?.[id] ?? id;
-    const compo = SOURCES_DB?.legendaries?.[cible]?.composition;
+    const compo = perimetre ? null : SOURCES_DB?.legendaries?.[cible]?.composition;
     if (compo) composes.push(compo); else plats.push(id);
   }
   if (composes.length) {
@@ -2510,7 +2523,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes) {
   const expanded = {}; // report des intermediaires, local a cet appel   // compId → qty
   const variable = []; // composants non chiffrables
 
-  for (const [compId, comp] of Object.entries(cc)) {
+  for (const [compId, comp] of (perimetre ? [] : Object.entries(cc))) {
     if (satisfaits.has(compId)) continue;
     const qty = comp.qty ?? {};
     for (const legId of selectedIds) {
@@ -2577,7 +2590,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes) {
     }
   }
   // Cibles LEGENDAIRES d'un choix : la presence vaut 1 par legendaire coche.
-  for (const [gid, g] of Object.entries(altGroups)) {
+  for (const [gid, g] of (perimetre ? [] : Object.entries(altGroups))) {
     for (const t of (g.targets ?? [])) {
       if (!selectedIds.includes(t)) continue;
       const opt = altPick(gid, t);
@@ -2595,8 +2608,8 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes) {
   // reputee non faite — compter trop vaut mieux que promettre un total trop bas.
   for (const legId of (selectedIds ?? [])) {
     const cible = SOURCES_ALIAS?.[legId] ?? legId;
-    for (const { item, faite } of etapesCollections(cible, colls)) {
-      if (!item?.cost || faite) continue;
+    for (const { item, cle, faite } of etapesCollections(cible, colls)) {
+      if (!item?.cost || faite || !dansPerimetre(cle)) continue;
       for (const [cid, n] of Object.entries(item.cost)) {
         if (typeof n === "number" && !satisfaits.has(cid)) totals[cid] = (totals[cid] ?? 0) + n;
       }

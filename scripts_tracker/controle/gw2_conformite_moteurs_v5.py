@@ -41,7 +41,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[2]  # racine du depot
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from moteur.gw2_moteur_v5 import Modele  # noqa: E402
+from moteur.courant import Modele  # noqa: E402
 
 JSX = max(HERE.glob("gw2_legendary_tracker_v*.jsx"),
           key=lambda p: int(re.search(r"_v(\d+)\.jsx$", p.name).group(1)))
@@ -112,6 +112,14 @@ def main() -> int:
         print(f"  {nom} : {n} totaux compares, {len(e)} ecart(s)")
         total_compares += n
         total_ecarts += [(nom,) + x for x in e]
+    # v5 : chaque collection seule (`perimetre`), sur les trois situations.
+    perims = [(l.id, [cle]) for l in m.legendaires.values()
+              for cle in (l.brut.get("collections") or {})]
+    for nom, faites in situations(m):
+        n, e = une_passe(m, sources, faites, None, perims)
+        print(f"  {nom} / par collection ({len(perims)}) : {n} totaux compares, {len(e)} ecart(s)")
+        total_compares += n
+        total_ecarts += [(nom + " / perimetre",) + x for x in e]
     print(f"moteur Python : {m.chemin.name} | moteur JSX : {JSX.name}")
     print(f"{len(m.cibles)} cibles, {total_compares} totaux compares")
     print("couts d'etape : calcules des deux cotes, sous-collections comprises")
@@ -125,7 +133,9 @@ def main() -> int:
     return 1
 
 
-def une_passe(m, sources, faites, pieces=None) -> tuple:
+def une_passe(m, sources, faites, pieces=None, perimetres=None) -> tuple:
+    """`perimetres` (v5) : [(cible, [cle])] — chaque collection seule, moteur
+    restreint a ses `cost` (`perimetre`, moteur v6 / JSX v261)."""
 
     harnais = """
 const SOURCES_DB = SOURCES;
@@ -142,7 +152,8 @@ const SOURCES_ALIAS = { prismatic: "prismatic_champions_regalia", upgrades: "upg
 %s
 const cibles = CIBLES;
 const out = {};
-for (const c of cibles) out[c] = computeGrandTotal([c], COLLS, PIECES ?? undefined).totals;
+if (PERIM) { for (const [c, p] of PERIM) out[c + "|" + p.join(",")] = computeGrandTotal([c], COLLS, PIECES ?? undefined, p).totals; }
+else for (const c of cibles) out[c] = computeGrandTotal([c], COLLS, PIECES ?? undefined).totals;
 console.log(JSON.stringify(out));
 """ % (decouper("readArmorWeightBySlot"), decouper("etapesCollections"), decouper("computeGrandTotal"))
 
@@ -151,7 +162,8 @@ console.log(JSON.stringify(out));
         f"const SOURCES = {json.dumps(sources)};\n"
         f"const CIBLES = {json.dumps(m.cibles)};\n"
         f"const COLLS = {json.dumps(faites)};\n"
-        f"const PIECES = {json.dumps(pieces)};\n" + harnais, encoding="utf-8")
+        f"const PIECES = {json.dumps(pieces)};\n"
+        f"const PERIM = {json.dumps(perimetres)};\n" + harnais, encoding="utf-8")
     try:
         r = subprocess.run(["node", str(script)], capture_output=True, text=True)
     finally:
@@ -178,12 +190,12 @@ console.log(JSON.stringify(out));
     poids_par_emplacement = {a: dict(poids_defaut) for a in
                               ("perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious")}
     ecarts, compares = [], 0
-    for cible in m.cibles:
+    for cible, perim in (perimetres or [(c, None) for c in m.cibles]):
         py = m.totaux(cible,
                       collections_faites=faites,
                       poids_par_emplacement=poids_par_emplacement,
-                      pieces_restantes=pieces)
-        js = dict(cote_js.get(cible) or {})
+                      pieces_restantes=pieces, perimetre=perim)
+        js = dict(cote_js.get(cible + "|" + ",".join(perim) if perim else cible) or {})
         for cid in set(py) | set(js):
             a, b = py.get(cid, 0), js.get(cid, 0)
             compares += 1

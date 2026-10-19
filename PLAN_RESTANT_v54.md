@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v7.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v9.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -726,6 +726,20 @@ retrouves dans chaque traduction. Reste : 0 champ `fr` vide.
   (conformite_synchro : plus d'asymetrie).
 - Cle API : en-tete X-API-Key (JSX v260), parametre d'URL refuse (Flask
   v48, 400). A relancer chez Antoine.
+
+### C9 — Le bloc du Henge compte au lieu de recopier (19/10) · C+A — ✅
+Demande d'Antoine : « compter, pas lire ». Moteur v6 / JSX v261 : parametre
+`perimetre` (liste de collections) — seuls les `cost` de leurs etapes, puis
+la cascade, ni cle a plat ni choix ; compare par la conformite v5 (chaque
+collection seule, trois situations). Le bloc du Henge porte `cible`,
+`perimetre` (4 collections) et `unite` (druid_runestone) : en-tete, pierres,
+karma, magie non liee et jours viennent du moteur ; plus de `perUnit`, de
+`perStep` ni de `unitTotal`. Sources v411 : `component` retire de l'etape
+« Druid Runestone » (henge_3402 bit 1) — valider cette etape effacait les
+15 autres pierres et leur karma de tous les totaux. Outils : `moteur/courant.py`
+choisit le moteur par glob ; les importeurs ne se renumerotent plus a chaque
+version du moteur (arbitrages v9, audit v62, agregats v3, totaux v11,
+confronte v7, deplie_wiki v13, conformite v5).
 
 ### C7 — Feuilles a plusieurs matieres premieres · C — ✅ 14/10
 Regle d'Antoine : une feuille a recette lue reste feuille, sauf si elle se
