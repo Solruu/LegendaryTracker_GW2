@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v407.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v408.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 11 trous de l'arbre — LA PRIORITÉ
+## 0 — 12 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -17,6 +17,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 
 | page wiki | composants qui en dépendent |
 |---|---:|
+| `Hydrocatalytic Reagent` | 1 |
 | `Legendary War Insight` | 1 |
 
 ### 0 ter — 10 trous dont la page est DÉJÀ au dépôt
@@ -87,9 +88,10 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 2 pages à capturer
+## URLs — 3 pages à capturer
 
 ```
+https://wiki.guildwars2.com/wiki/Hydrocatalytic_Reagent
 https://wiki.guildwars2.com/wiki/Legendary_War_Insight
 https://wiki.guildwars2.com/wiki/Vial_of_Condensed_Mists_Essence
 ```

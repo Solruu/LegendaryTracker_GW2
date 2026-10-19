@@ -7273,28 +7273,33 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "map_currency_soto",
+          "type": "vendor",
+          "npc": "Master craftspeople",
           "tip": {
-            "fr": "Obtenue via Rift Hunting, Convergences et events SotO. S'accumule passivement en farmant les Rift Essences.",
-            "en": "Obtained via Rift Hunting, Convergences, and SotO events. Accumulates passively while farming Rift Essences."
-          }
-        },
-        {
-          "type": "tp",
-          "tip": "Buy on TP."
+            "fr": "Acheté chez les maîtres artisans, 5 Research Notes l'unité (2 500 pour les 500 d'un Don de recherche). Lié au compte : pas de comptoir.",
+            "en": "Bought from master craftspeople, 5 Research Notes each (2,500 for the 500 of a Gift of Research). Account bound: no trading post."
+          },
+          "cost": {
+            "fr": "5 Research Notes",
+            "en": "5 Research Notes"
+          },
+          "paid_repeatable": true,
+          "verified": true,
+          "checked": "2026-10-19",
+          "ref": "wiki:Hydrocatalytic_Reagent (description, lu le 19/10) + ressources/wiki/gift_of_research.html, Notes"
         }
       ],
       "kind": "acquire",
-      "best": "map_currency_soto",
+      "best": "vendor",
       "apiId_fix": {
         "was": 97793,
         "checked": "2026-08-13",
         "ref": "gw2_materials_ref.json (/v2/materials + /v2/items)",
         "verified": true
       },
-      "ref": "boite Recipe de Gift of Research : le reactif hydrocatalytique y figure DEUX fois a 250, et la note de prix (2 500) confirme les 500",
-      "checked": "2026-09-24",
-      "verified": "page relue ligne a ligne le 24/09/2026 ; la lecture a 250 du 18/09 etait fausse"
+      "ref": "wiki:Hydrocatalytic_Reagent (description, lu le 19/10) + ressources/wiki/gift_of_research.html, Notes ; boîte Recipe du Don : 2 × 250",
+      "checked": "2026-10-19",
+      "verified": true
     },
     "thermocatalytic_reagent": {
       "name": "Thermocatalytic Reagent",
@@ -12638,11 +12643,8 @@ const SOURCES_DB = {
       "apiId": 61,
       "kind": "currency",
       "qty": {
-        "selachimorpha": 5000,
-        "aetheric_anchor": 2500,
-        "klobjarne_geirr": 2500,
-        "stella_radians": 2500,
-        "seer_runestone": 250
+        "seer_runestone": 250,
+        "hydrocatalytic_reagent": 5
       },
       "farmable": true,
       "sources": [
@@ -12663,14 +12665,13 @@ const SOURCES_DB = {
       "checked": "2026-08-13",
       "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis",
       "needed_for": [
-        "aetheric_anchor",
-        "klobjarne_geirr",
         "seer_runestone",
-        "stella_radians"
+        "hydrocatalytic_reagent"
       ],
-      "qty_overlap_verified": [
-        "stella_radians"
-      ]
+      "qty_note": {
+        "fr": "19/10 : 5 notes par Hydrocatalytic Reagent (gift_of_research.html : 2 500 notes pour 500 réactifs). Les clés à plat de Selachimorpha, Aetheric Anchor, Klobjarne Geirr et Stella Radians recopiaient ce prix : retirées, totaux inchangés.",
+        "en": "19/10: 5 notes per Hydrocatalytic Reagent (gift_of_research.html: 2,500 notes for 500 reagents). The flat keys of Selachimorpha, Aetheric Anchor, Klobjarne Geirr and Stella Radians copied that price: removed, totals unchanged."
+      }
     },
     "elegy_mosaic": {
       "name": "Elegy Mosaic",

@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v5.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v6.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -649,10 +649,13 @@ cles a plat precurseurs par des aretes (10 ectos, 3 Pristine Mist Essence,
 ✅ 19/10 (sources v407, accord d'Antoine) : `unbound_precursor` (apiId 74155 =
 celui d'Ad Infinitum, sans enfant) supprime, il doublait `unbound` (72309,
 chaine posee) ; timegate et voie d'obtention reportes sur `unbound`.
-Signale, non tranche : Selachimorpha compte 1 000 Hydrocatalytic ET 5 000
-Research Notes — les notes ACHETENT ces reactifs (gift_of_research.html :
-« Hydrocatalytic Reagents cost a total of 2,500 ») ; meme question pour les
-2 500 notes de Stella.
+✅ 19/10 (sources v408), Research Notes : le Hydrocatalytic Reagent ne tombe
+pas, il s'achete chez les maitres artisans (description wiki, lien d'Antoine),
+5 notes l'unite (gift_of_research.html : 2 500 pour 500). Arete research_note
+-> hydrocatalytic 5 ; cles a plat de notes retirees (Selachimorpha 5 000,
+Aetheric Anchor, Klobjarne, Stella 2 500 chacune), totaux inchanges. Notes
+qui manquaient : 14 armes gen3 +3 000, Eikasia +5 000, Obsidian +15 000,
+relique +2 500. Source SotO inventee retiree.
 
 ### S3 — § ⑥ Runes, cachets, reliques
 Table `upgrades` parallele et inerte a resorber dans `legendary_rune` /
