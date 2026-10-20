@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v10.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v11.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -745,8 +745,18 @@ inscrites). Integration `gw2_lot_1019_v1` (sources v412, JSX v262) :
   les 10) ; Aurora : magie non liee 16 000 -> 22 000 (Pristine Blood Ruby
   5 000, Sentient Seed 1 000, en `cost` d'etape) ;
 - Legendary War Insight : apiId 83309 (une epee rare a l'API) -> 83584.
-Reste : Balls of Dark Energy (9 aux collections, 14 rendus par les
-recyclages de Finite Result / Upper Bound) non comptees — voie a trancher.
+✅ 20/10 (sources v413, JSX v263, decision d'Antoine : compter, afficher,
+dire les contournements) : Balls of Dark Energy en `cost` des 4 etapes
+Aetherblade (9) ; total Ad Infinitum 17 = arbre gw2efficiency ; conseil : 14
+rendues par les recyclages de Finite Result et Upper Bound, 3 a sourcer.
+Fractal Journal pose (4 etapes « Field Research Paper », 28 pages chacun ;
+cle a plat 112 retiree). Gift of Wood et Gift of Metal (« Lessons in
+Arbology / Metallurgy », collection IV) : consommes, jamais comptes —
++1 chacun (+250 de chaque palier de bois et de metal). Bloc Prerequis
+d'Ad Infinitum : `perimetre` des 4 collections, plus de `perUnit` ni de
+`fixed`. 4 captures (fractal_journal, ball_of_dark_energy, lessons_in_*).
+Reste hors decision : les Agony Infusions +4 / +6 / +8 / +10 a charger
+(etapes 9 et 8) ne sont pas decomposees.
 
 ### C9 — Le bloc du Henge compte au lieu de recopier (19/10) · C+A — ✅
 Demande d'Antoine : « compter, pas lire ». Moteur v6 / JSX v261 : parametre

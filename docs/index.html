@@ -827,7 +827,7 @@ function useT() {
 const SOURCES_DB = {
   "_meta": {
     "version": "v249",
-    "last_updated": "2026-10-19",
+    "last_updated": "2026-10-20",
     "notes": {
       "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
       "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -4101,11 +4101,14 @@ const SOURCES_DB = {
         {
           "type": "salvage",
           "tip": {
-            "fr": "Recycler une pièce élevée avec un Ascended Salvage Tool. Option rapide : acheter une pièce élevée chez Smoxxi (vendeur Raid) pour 250 Magnetite Shards + 15 po puis la recycler.",
-            "en": "Salvage an ascended piece with an Ascended Salvage Tool. Quick option: buy an ascended piece from Smoxxi (Raid vendor) for 250 Magnetite Shards + 15g then salvage."
+            "fr": "Recycler une pièce élevée (arme ou armure : garanti) avec un kit de recyclage élevé. Ad Infinitum : la chaîne fabrique Finite Result puis Upper Bound, dont le recyclage (obligatoire pour leurs Spirits) rend 5 puis 9 Balls — 14 en tout, à déduire de ce que réclament les collections et les cubes. Option rapide : une pièce élevée chez Smoxxi (vendeur de raid) pour 250 Magnetite Shards + 15 po, puis la recycler.",
+            "en": "Salvage an ascended piece (weapon or armor: guaranteed) with an ascended salvage kit. Ad Infinitum: the chain crafts Finite Result then Upper Bound, whose salvage (required for their Spirits) returns 5 then 9 Balls — 14 in all, to set against what the collections and cubes require. Quick option: an ascended piece from Smoxxi (raid vendor) for 250 Magnetite Shards + 15g, then salvage it."
           },
           "free_repeatable": true,
-          "cadence": "à volonté"
+          "cadence": "à volonté",
+          "verified": true,
+          "checked": "2026-10-20",
+          "ref": "ressources/wiki/ball_of_dark_energy.html, Acquisition"
         }
       ],
       "qty": {
@@ -4127,7 +4130,8 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "wiki:Ball_of_Dark_Energy — sections « Currency for » et « Recipes » (capture Antoine 22/08/2026)",
-      "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece"
+      "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece",
+      "best": "salvage"
     },
     "stabilizing_matrix": {
       "name": "Stabilizing Matrix",
@@ -9958,22 +9962,25 @@ const SOURCES_DB = {
       "name": "Fractal Research Page",
       "apiId": 73834,
       "needed_for": [
-        "ad_infinitum_collection"
+        "fractal_journal"
       ],
       "farmable": true,
       "sources": [
         {
           "type": "fractals_recommended",
-          "tip": {
-            "fr": "3 par jour via les fractales recommandées quotidiennes. +1 bonus par fractale CM terminée (Sunqua Peak, Nightmare, Shattered Observatory).",
-            "en": "3 per day via recommended fractal dailies. +1 bonus per completed fractal CM (Sunqua Peak, Nightmare, Shattered Observatory)."
-          },
           "free_repeatable": true,
-          "cadence": "quotidienne"
+          "cadence": "quotidienne",
+          "verified": true,
+          "checked": "2026-10-20",
+          "ref": "ressources/wiki/fractal_journal.html, Acquisition",
+          "tip": {
+            "fr": "1 par fractale recommandée quotidienne (3 par jour dès le palier 3), 1 par fractale en mode défi parmi six (Kinfall, Nightmare, Shattered Observatory, Sunqua Peak, Silent Surf, Lonely Tower : jusqu'à 6 par jour au palier 4), et 2 par Fractal Fighter's Cache hebdomadaire (jusqu'à 8 par semaine au palier 4).",
+            "en": "1 per daily recommended fractal (3 a day from tier 3), 1 per challenge-mode fractal out of six (Kinfall, Nightmare, Shattered Observatory, Sunqua Peak, Silent Surf, Lonely Tower: up to 6 a day at tier 4), and 2 per weekly Fractal Fighter's Cache (up to 8 a week at tier 4)."
+          }
         }
       ],
       "qty": {
-        "ad_infinitum": 112
+        "fractal_journal": 28
       },
       "timegate": true,
       "timegate_note": {
@@ -33264,6 +33271,29 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-10-19",
       "ref": "ressources/wiki/solution_upper_bound.html"
+    },
+    "fractal_journal": {
+      "name": "Fractal Journal",
+      "apiId": 75439,
+      "kind": "intermediate",
+      "farmable": true,
+      "qty": {},
+      "needed_for": [],
+      "sources": [
+        {
+          "type": "craft",
+          "tip": {
+            "fr": "28 Fractal Research Pages, combinées par double-clic sur la pile.",
+            "en": "28 Fractal Research Pages, combined by double-clicking the stack."
+          },
+          "verified": true,
+          "checked": "2026-10-20",
+          "ref": "ressources/wiki/fractal_journal.html, Acquisition"
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-20",
+      "ref": "ressources/wiki/fractal_journal.html"
     }
   },
   "enchaînements_recommandés": {
@@ -34013,7 +34043,11 @@ const SOURCES_DB = {
                 "fr": "Rapport de recherche ascalonien : chez le Chercheur du Champ de bataille urbain, DANS le fractale, contre un Journal fractal (28 Pages de recherche).",
                 "en": "Ascalonian Fractal Field Research Paper: from the Urban Battlegrounds Field Researcher, INSIDE the fractal, for a Fractal Journal (28 Research Pages)."
               },
-              "wiki": "Ascalonian_Fractal_Field_Research_Paper"
+              "wiki": "Ascalonian_Fractal_Field_Research_Paper",
+              "cost": {
+                "fractal_journal": 1
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_i_finite_result.html, tableau « Collection items »"
             },
             {
               "bit": 6,
@@ -34088,7 +34122,11 @@ const SOURCES_DB = {
                 "fr": "Formulaire de recrutement aetherblade : chez le Quartier-maître aetherblade, dans le fractale Capitaine Mai Trin, contre 1 Boule d'énergie sombre (recyclage d'élevé). ⚠ Aucune progression requise dans le fractale : le vendeur est dans une cabane accessible par le chemin derrière le départ.",
                 "en": "Aetherblade Recruitment Form: from the Aetherblade Quartermaster, in the Captain Mai Trin fractal, for 1 Ball of Dark Energy (salvaged from ascended gear). ⚠ No progress needed in the fractal: the vendor sits in a cabin reached by the path behind the start."
               },
-              "wiki": "Aetherblade_Recruitment_Form"
+              "wiki": "Aetherblade_Recruitment_Form",
+              "cost": {
+                "ball_dark_energy": 1
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_i_finite_result.html, tableau « Collection items »"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
@@ -34219,7 +34257,11 @@ const SOURCES_DB = {
                 "fr": "Rapport de recherche Alliance en fusion : contre 1 Journal fractal (28 Pages), auprès du Chercheur de la Fournaise en fusion, sur un chemin OPTIONNEL après le fractale Boss en fusion. Ne quitte pas l'instance trop vite.",
                 "en": "Molten Alliance Field Research Paper: for 1 Fractal Journal (28 Pages), from the Molten Furnace Field Researcher, on an OPTIONAL path after the Molten Boss fractal. Don't leave the instance too quickly."
               },
-              "wiki": "Molten_Alliance_Fractal_Field_Research_Paper"
+              "wiki": "Molten_Alliance_Fractal_Field_Research_Paper",
+              "cost": {
+                "fractal_journal": 1
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html, tableau « Collection items »"
             },
             {
               "bit": 6,
@@ -34306,7 +34348,11 @@ const SOURCES_DB = {
                 "fr": "Manuel aetherblade : chez le Quartier-maître aetherblade (fractale Mai Trin), 2 Boules d'énergie sombre. Recycler Limite finie en rend 5 : 2 pour ce manuel, 2 pour fabriquer Limite supérieure. Aucun achat nécessaire.",
                 "en": "Aetherblade Handbook: from the Aetherblade Quartermaster (Mai Trin fractal), 2 Balls of Dark Energy. Salvaging Finite Result yields 5: 2 for this handbook, 2 to craft Upper Bound. No purchase needed."
               },
-              "wiki": "Aetherblade_Handbook"
+              "wiki": "Aetherblade_Handbook",
+              "cost": {
+                "ball_dark_energy": 2
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_ii_upper_bound.html, tableau « Collection items »"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
@@ -34437,7 +34483,11 @@ const SOURCES_DB = {
                 "fr": "Article de recherche sur la fractale de Thaumanova : chez le chercheur DANS le Réacteur de Thaumanova, contre 1 Journal fractal (28 Pages de recherche). C'est le timegate de la collection — 3e des 4 journaux.",
                 "en": "Thaumanova Fractal Field Research Paper: from the researcher INSIDE the Thaumanova Reactor, for 1 Fractal Journal (28 Research Pages). This is the collection's timegate — 3rd of the 4 journals."
               },
-              "wiki": "Thaumanova_Fractal_Field_Research_Paper"
+              "wiki": "Thaumanova_Fractal_Field_Research_Paper",
+              "cost": {
+                "fractal_journal": 1
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_iii_unbound.html, tableau « Collection items »"
             },
             {
               "bit": 6,
@@ -34519,7 +34569,11 @@ const SOURCES_DB = {
                 "fr": "Manuel de la poignée de main étherlame secrète : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre (prises sur les 9 rendues par le recyclage de Limite supérieure). Au lieu d'avancer dans la fractale, redescends la rampe et traverse le campement étherlame.",
                 "en": "Aetherblade Secret Handshake Tutorial Book: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy (taken from the 9 returned by salvaging Upper Bound). Instead of pushing forward, run back down the ramp and through the Aetherblade encampment."
               },
-              "wiki": "Aetherblade_Secret_Handshake_Tutorial_Book"
+              "wiki": "Aetherblade_Secret_Handshake_Tutorial_Book",
+              "cost": {
+                "ball_dark_energy": 3
+              },
+              "cost_ref": "ressources/wiki/ad_infinitum_iii_unbound.html, tableau « Collection items »"
             }
           ],
           "total_ref": "compte des bits exposes par /v2/achievements",
@@ -34654,7 +34708,11 @@ const SOURCES_DB = {
                 "fr": "Article de recherche sur la fractale étherlame : chez le vendeur du fractale Capitaine Mai Trin, contre 1 Journal fractal (28 Pages de recherche) — le 4e et dernier journal.",
                 "en": "Aetherblade Fractal Field Research Paper: from the vendor in the Captain Mai Trin fractal, for 1 Fractal Journal (28 Research Pages) — the 4th and last journal."
               },
-              "wiki": "Aetherblade_Fractal_Field_Research_Paper"
+              "wiki": "Aetherblade_Fractal_Field_Research_Paper",
+              "cost": {
+                "fractal_journal": 1
+              },
+              "cost_ref": "ressources/wiki/legendary_backpack_ad_infinitum.html, tableau « Collection items »"
             },
             {
               "bit": 6,
@@ -34714,7 +34772,11 @@ const SOURCES_DB = {
                 "fr": "Diplôme étherlame : chez le Quartier-maître étherlame, fractale Capitaine Mai Trin, contre 3 Boules d'énergie sombre. ⚠ Le compte ne tombe pas juste : il en manque 1 après les 9 de Limite supérieure — recycle le Condensateur fractal (infusé) du palier 3 (rend exactement 1 Boule) ou n'importe quel élevé non-anneau.",
                 "en": "Aetherblade Diploma: from the Aetherblade Quartermaster, Captain Mai Trin fractal, for 3 Balls of Dark Energy. ⚠ The maths doesn't quite work out: you're 1 short after the 9 from Upper Bound — salvage the tier 3 Fractal Capacitor (Infused) (yields exactly 1 Ball) or any non-ring ascended item."
               },
-              "wiki": "Aetherblade_Diploma"
+              "wiki": "Aetherblade_Diploma",
+              "cost": {
+                "ball_dark_energy": 3
+              },
+              "cost_ref": "ressources/wiki/legendary_backpack_ad_infinitum.html, tableau « Collection items »"
             },
             {
               "bit": 10,
@@ -34729,7 +34791,11 @@ const SOURCES_DB = {
                 "fr": "Leçon d'arboriculture : crafter un Don de bois (250 planches de bois vieilli + 250 dur + 250 de sapin + 250 ancien ; recette chez Miyani, chasseur 400), l'avoir dans l'inventaire, finir le Champ de bataille urbain (Capitaine Ashym, n'importe quel palier) puis remettre le Don au Bûcheron ascalonien vétéran, dans le bâtiment qui s'ouvre en fin de fractale. ⚠ Le Don est consommé et non récupérable.",
                 "en": "Lessons in Arbology: craft a Gift of Wood (250 Seasoned + 250 Hard + 250 Elder + 250 Ancient Wood Planks; recipe from Miyani, Huntsman 400), keep it in your inventory, clear the Urban Battleground fractal (Captain Ashym, any tier) then hand the Gift to the Veteran Ascalonian Woodcutter in the building that opens at the end. ⚠ The Gift is consumed and cannot be recovered."
               },
-              "wiki": "Lessons_in_Arbology"
+              "wiki": "Lessons_in_Arbology",
+              "cost": {
+                "gift_of_wood": 1
+              },
+              "cost_ref": "ressources/wiki/lessons_in_arbology.html, Acquisition"
             },
             {
               "bit": 11,
@@ -34744,7 +34810,11 @@ const SOURCES_DB = {
                 "fr": "Leçon de métallurgie : crafter un Don de métal (250 lingots d'orichalque + 250 de mithril + 250 d'acier sombre + 250 de platine ; recette chez Miyani, forgeron d'armes 400), finir la fractale Fournaise en fusion, puis utiliser le Don sur l'Établi de l'armurier taupard — porte latérale de la salle du boss.",
                 "en": "Lessons in Metallurgy: craft a Gift of Metal (250 Orichalcum + 250 Mithril + 250 Darksteel + 250 Platinum Ingots; recipe from Miyani, Weaponsmith 400), clear the Molten Furnace fractal, then use the Gift on the Dredge Weaponsmith's Workbench — side door of the boss room."
               },
-              "wiki": "Lessons_in_Metallurgy"
+              "wiki": "Lessons_in_Metallurgy",
+              "cost": {
+                "gift_of_metal": 1
+              },
+              "cost_ref": "ressources/wiki/lessons_in_metallurgy.html, Acquisition (« consumed »)"
             },
             {
               "bit": 12,
@@ -82562,13 +82632,17 @@ const LEGENDARIES = {
       unit: { fr: "collection", en: "collection" },
       unitTotal: 4,
       perStep: [{ key: "adinf_1", units: 1 }, { key: "adinf_2", units: 1 }, { key: "adinf_3", units: 1 }, { key: "adinf_4", units: 1 }],
+      // v263 : les lignes COMPTENT (moteur restreint aux 4 collections,
+      // `perimetre`) : journaux, Balls of Dark Energy, prototype — plus de
+      // `perUnit` ni de `fixed` recopies.
+      cible: "ad_infinitum", perimetre: ["adinf_1", "adinf_2", "adinf_3", "adinf_4"],
       lines: [
-        { icon: "📄", label: { fr: "Fractal Research Pages", en: "Fractal Research Pages" }, perUnit: 28, curKey: "pages",
+        { icon: "📄", label: { fr: "Fractal Research Pages", en: "Fractal Research Pages" }, curKey: "pages", comp: "fractal_research_page",
           detail: { fr: "1 Fractal Journal (28 pages, double-clic sur la pile) par collection · 3/jour aux dailies recommandées (T3+), +1 par CM parmi 6 (Kinfall, Nightmare, Shattered, Sunqua, Silent Surf, Lonely Tower) → jusqu'à 9/jour en T4, +8/semaine via la Weekly Fractal Fighter's Cache", en: "1 Fractal Journal (28 pages, double-click the stack) per collection · 3/day from recommended dailies (T3+), +1 per CM out of 6 (Kinfall, Nightmare, Shattered, Sunqua, Silent Surf, Lonely Tower) → up to 9/day at T4, +8/week from the Weekly Fractal Fighter's Cache" } },
-        { icon: "⏳", label: { fr: "Jours (dailies seules)", en: "Days (dailies only)" }, perUnit: 10,
-          detail: { fr: "28 pages ÷ 3/jour ≈ 10 j par collection. En T4 avec les CM + la cache hebdo : 4-5 j par collection, soit ~16-20 jours au total", en: "28 pages ÷ 3/day ≈ 10 d per collection. At T4 with CMs + the weekly cache: 4-5 d per collection, i.e. ~16-20 days total" } },
-        { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, fixed: 2, curKey: "energy",
-          detail: { fr: "Seulement 2 à sourcer soi-même : les recyclages de Finite Result (5) et Upper Bound (9) couvrent le reste", en: "Only 2 to source yourself: salvaging Finite Result (5) and Upper Bound (9) covers the rest" } },
+        { icon: "⏳", label: { fr: "Jours (dailies seules)", en: "Days (dailies only)" }, derivedFrom: "fractal_research_page", rate: 3,
+          detail: { fr: "Pages restantes ÷ 3 par jour. En T4 avec les CM + la cache hebdo : 4-5 j par collection", en: "Pages left ÷ 3 per day. At T4 with CMs + the weekly cache: 4-5 d per collection" } },
+        { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, curKey: "energy", comp: "ball_dark_energy",
+          detail: { fr: "Collections : 1 / 2 / 3 / 3 chez l'Aetherblade Quartermaster. La chaîne en demande 8 de plus (cubes des Pristine Mist Essence) : 17 au total, dont 14 rendues par les recyclages obligatoires de Finite Result (5) et Upper Bound (9) — 3 à sourcer soi-même (recyclage d'une pièce élevée)", en: "Collections: 1 / 2 / 3 / 3 at the Aetherblade Quartermaster. The chain needs 8 more (Pristine Mist Essence cubes): 17 in all, 14 of them returned by the mandatory salvage of Finite Result (5) and Upper Bound (9) — 3 to source yourself (salvage an ascended piece)" } },
         { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, curKey: "relics", etape: { key: "adinf_1", bit: 8 },
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],

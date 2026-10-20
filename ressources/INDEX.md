@@ -1314,6 +1314,11 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `upper_bound.html` | Upper Bound | article complet moins « Available prefixes » | 2026-10-19 |
 | `vanilla_bean.html` | Vanilla Bean | article complet | 2026-10-08 |
 | `vial_of_condensed_mists_essence.html` | Vial of Condensed Mists Essence | article complet | 2026-10-19 |
+| `ball_of_dark_energy.html` | Ball of Dark Energy | article complet | 2026-10-20 |
+| `fractal_journal.html` | Fractal Journal | article complet | 2026-10-20 |
+| `lessons_in_arbology.html` | Lessons in Arbology | article complet | 2026-10-20 |
+| `lessons_in_metallurgy.html` | Lessons in Metallurgy | article complet | 2026-10-20 |
+| `mithril_plated_dowel.html` | Mithril Plated Dowel | article complet | 2026-10-19 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

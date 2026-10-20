@@ -1767,13 +1767,17 @@ const LEGENDARIES = {
       unit: { fr: "collection", en: "collection" },
       unitTotal: 4,
       perStep: [{ key: "adinf_1", units: 1 }, { key: "adinf_2", units: 1 }, { key: "adinf_3", units: 1 }, { key: "adinf_4", units: 1 }],
+      // v263 : les lignes COMPTENT (moteur restreint aux 4 collections,
+      // `perimetre`) : journaux, Balls of Dark Energy, prototype — plus de
+      // `perUnit` ni de `fixed` recopies.
+      cible: "ad_infinitum", perimetre: ["adinf_1", "adinf_2", "adinf_3", "adinf_4"],
       lines: [
-        { icon: "📄", label: { fr: "Fractal Research Pages", en: "Fractal Research Pages" }, perUnit: 28, curKey: "pages",
+        { icon: "📄", label: { fr: "Fractal Research Pages", en: "Fractal Research Pages" }, curKey: "pages", comp: "fractal_research_page",
           detail: { fr: "1 Fractal Journal (28 pages, double-clic sur la pile) par collection · 3/jour aux dailies recommandées (T3+), +1 par CM parmi 6 (Kinfall, Nightmare, Shattered, Sunqua, Silent Surf, Lonely Tower) → jusqu'à 9/jour en T4, +8/semaine via la Weekly Fractal Fighter's Cache", en: "1 Fractal Journal (28 pages, double-click the stack) per collection · 3/day from recommended dailies (T3+), +1 per CM out of 6 (Kinfall, Nightmare, Shattered, Sunqua, Silent Surf, Lonely Tower) → up to 9/day at T4, +8/week from the Weekly Fractal Fighter's Cache" } },
-        { icon: "⏳", label: { fr: "Jours (dailies seules)", en: "Days (dailies only)" }, perUnit: 10,
-          detail: { fr: "28 pages ÷ 3/jour ≈ 10 j par collection. En T4 avec les CM + la cache hebdo : 4-5 j par collection, soit ~16-20 jours au total", en: "28 pages ÷ 3/day ≈ 10 d per collection. At T4 with CMs + the weekly cache: 4-5 d per collection, i.e. ~16-20 days total" } },
-        { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, fixed: 2, curKey: "energy",
-          detail: { fr: "Seulement 2 à sourcer soi-même : les recyclages de Finite Result (5) et Upper Bound (9) couvrent le reste", en: "Only 2 to source yourself: salvaging Finite Result (5) and Upper Bound (9) covers the rest" } },
+        { icon: "⏳", label: { fr: "Jours (dailies seules)", en: "Days (dailies only)" }, derivedFrom: "fractal_research_page", rate: 3,
+          detail: { fr: "Pages restantes ÷ 3 par jour. En T4 avec les CM + la cache hebdo : 4-5 j par collection", en: "Pages left ÷ 3 per day. At T4 with CMs + the weekly cache: 4-5 d per collection" } },
+        { icon: "⚫", label: { fr: "Balls of Dark Energy", en: "Balls of Dark Energy" }, curKey: "energy", comp: "ball_dark_energy",
+          detail: { fr: "Collections : 1 / 2 / 3 / 3 chez l'Aetherblade Quartermaster. La chaîne en demande 8 de plus (cubes des Pristine Mist Essence) : 17 au total, dont 14 rendues par les recyclages obligatoires de Finite Result (5) et Upper Bound (9) — 3 à sourcer soi-même (recyclage d'une pièce élevée)", en: "Collections: 1 / 2 / 3 / 3 at the Aetherblade Quartermaster. The chain needs 8 more (Pristine Mist Essence cubes): 17 in all, 14 of them returned by the mandatory salvage of Finite Result (5) and Upper Bound (9) — 3 to source yourself (salvage an ascended piece)" } },
         { icon: "🔮", label: { fr: "Fractal Relics (Prototype)", en: "Fractal Relics (Prototype)" }, curKey: "relics", etape: { key: "adinf_1", bit: 8 },
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],
