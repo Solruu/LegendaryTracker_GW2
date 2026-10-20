@@ -246,7 +246,10 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       (accord du 04/10, `integration/gw2_suppressions_v1`).
 - [x] `bf_meta` = Beacons of Koda (09/10) : sans horaire fixe (cycle
       jour-nuit), Hero's Choice Chest de Frozen Maw retire, Icebound Chests.
-- [ ] § 12 quater : « selections de la liste » — nom de l'ecran.
+- [x] § 12 quater : « selections de la liste » — ✅ 20/10 : c'etait la liste
+      des metas de l'onglet Activites (choisies sur la seule gemme amalgamee,
+      constat du 03/10). Resolu par C10 : metas deduites des ressources
+      encore a farmer (`rewards`), partout.
 - [x] 16 excedents gen3 : deja expliques par l'outil depuis C4 (« branche
       omise sourcee ») — point clos sans decision.
 
@@ -263,7 +266,7 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       Gyala Delve (`gy`) — tous trois `[&BNMMAAA=]` ; Amnytas (`am`) et Inner
       Nayos (`in`) — tous deux `[&BDQOAAA=]` ; Echovald (`ew`) ; Zakiros (`zak`)
 - [x] Inner Nayos = Secrets of the Obscure (confirme par Antoine le 09/10)
-- [ ] les 23 feuilles de recette se cochent-elles ? (pont `/v2/account/recipes`,
+- [x] ✅ 20/10, releve d'Antoine : les feuilles se cochent (Aurora, Vision — memes recettes —, Selachimorpha) ; celle qui manque a Warbringer est une recette qu'il n'a pas. Les 23 feuilles se cochent-elles ? (pont `/v2/account/recipes`,
       scope `unlocks`, jamais appele depuis le bac a sable)
 
 ---

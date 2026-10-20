@@ -1,4 +1,4 @@
-> **Plan du restant** : `PLAN_RESTANT_v61.md` (20/10/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v62.md` (20/10/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 
@@ -30,7 +30,7 @@ porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a 
 - Ouvert au 24/09/2026
 - 12. Activités par légendaire — les horaires de métas vivent DEUX fois (27/09/2026)
 - 12 octies. Quelles métas valent le détour — la trace existe (01/10/2026)
-- 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
+- 12 quater. Sélections de la liste — ✅ CLOS le 20/10/2026 (metas déduites, C10)
 - Ouvert au 18/09/2026
 - 12 nonies. Restes de la fusion du catalogue (03/10/2026)
 
@@ -1104,7 +1104,11 @@ viennent d'une case à cocher locale, par défaut **tout décoché** — suppose
 qu'Antoine possède un épisode lui ferait planifier une méta inaccessible, ce qui
 coûte plus cher que l'inverse.
 
-## 12 quater. Sélections de la liste — OUVERT, en attente de précisions (27/09/2026)
+## 12 quater. Sélections de la liste — ✅ CLOS le 20/10/2026
+
+C'était la liste des métas de l'onglet Activités, retenues sur la seule gemme
+amalgamée (constat du 03/10, § 12). Close par C10 : les métas sont déduites des
+ressources encore à farmer pour chaque légendaire.
 
 Deuxième point d'Antoine, non instruit : une question sur les sélections d'une
 liste, « faite il y a looongtemps ». Reste à savoir de quelle liste il s'agit et
