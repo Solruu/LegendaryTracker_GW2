@@ -1,6 +1,6 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v419.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v420.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
@@ -48,7 +48,7 @@ rien dire.
 | verdict | composant | prose | somme | arbre |
 |---|---|---|---:|---:|
 | ok | `ancient_wood_log` | 10 | 10 | 10 |
-| ok | `bolt_of_gossamer` | 5 | 5 | 25 |
+| ok | `bolt_of_gossamer` | 5 | 5 | 65 |
 | ok | `branded_mass` | 360 | 360 | 460 |
 | ok | `exquisite_serpentite_jewel` | 18 | 18 | 18 |
 | ok | `eye_of_kormir` | 300 | 300 | 0 |
@@ -59,7 +59,7 @@ rien dire.
 | ok | `lesser_vision_crystal` | 6 | 6 | 6 |
 | ok | `olmakhan_latigo_strap` | 5 | 5 | 17 |
 | ok | `orichalcum_filigree` | 60 | 60 | 60 |
-| ok | `orichalcum_ingot` | 25 | 25 | 185 |
+| ok | `orichalcum_ingot` | 25 | 25 | 225 |
 | ok | `powdered_rose_quartz` | 3 | 3 | 3085 |
 | ok | `spool_of_gossamer_thread` | 100 | 100 | 100 |
 | ok | `unidentified_dye` | 20 | 20 | 20 |

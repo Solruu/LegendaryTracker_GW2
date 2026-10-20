@@ -568,6 +568,15 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
         6 (10 + 5, Beam of Light) remis a Yasna, absents de la table du wiki ;
         Vision 3 100 → 3 120 minerais, 3 070 → 3 085 quartz. Branded Residue
         (bit 1) = butin de quete, pas un cout. 5 pages, un seul lot.
+      - ✅ 20/10 Vision `vis_elegy` (`gw2_couts_elegy_v1`, v420) : les sept
+        Awakened Memorials (bits 10-16) achetes a Amira, 20 materiaux chacun —
+        40 lingots d'orichalque, 40 carres de cuir durci, 40 rouleaux de
+        gossamer, 20 planches anciennes. Capture de la collection deja au depot.
+      - [ ] armes gen1 / gen2 : « Old World Magics » (100 obsidiennes) et
+        « Herbal Magics » (25 Passion Flowers) dans 18 collections de
+        precurseur ; 2 couts poses sur 1 978 etapes d'armes → A1 : les
+        precurseurs se comptent-ils par collection (couts d'etape) ou achetes ?
+        Lecture a verifier aussi : « Requires » = consomme ?
 
 ---
 
