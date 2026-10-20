@@ -285,7 +285,10 @@ cas n'etait un double compte :
       3 520 → 2 320, arbre gw2efficiency lu en hierarchie
 - [x] lodestones (15) et raffinage a un ingredient : regle d'extraction
       (`parseurs/gw2_edges_wiki_v14`), aucun chiffre ne bouge
-- [ ] **reste 4** : Memory of Battle / Mist Band de Conflux (choix vendeur a
+- [x] ✅ 20/10 : Mist Band = choix a trois voies (C10, v414) ; Gift of
+      Competitive Dedication decompose (v404 : Record 20 tickets, Star 400
+      Ascended Shards, Jar 1 000 Shards). CONFRONTATION 0, ARBITRAGES 0.
+      Ancien reste 4 : Memory of Battle / Mist Band de Conflux (choix vendeur a
       trois voies, a classer avec W4) ; tickets PvP et Shard of Glory via Gift
       of Competitive Dedication — poser l'arete toucherait Ardent Glorious
       (+6 000 tessons), bloque tant que ses pieces ne sont pas capturees
@@ -300,7 +303,7 @@ cas n'etait un double compte :
       remplacent les deux cles.
 - [x] `curious_mursaat_currency` : 125 = 25 Ursus (arete) + 100 Shards of
       Janthir Syntri (cle) ; chevauchement declare, deux noeuds a la table.
-- [ ] `ascended_shard_of_glory` / Transcendence via Star of Glory : passe par
+- [x] ✅ 20/10 (aretes v404, chevauchement declare) `ascended_shard_of_glory` / Transcendence via Star of Glory : passe par
       Gift of Competitive Dedication, donc par Ardent Glorious — meme blocage
       que les deux restes de C1.
 
