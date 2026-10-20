@@ -149,7 +149,11 @@ Les 39 / 250 peuvent donc etre son cout : rien ne tranche. Ne PAS retirer.
 - [x] Klobjarne, obsidienne (revele une fois Aurora levee) : cle 50 = Gift of
       Expertise deja chaine, trefles absents ; 50 → 123, total 280 → 353 =
       arbre. `integration/gw2_confrontation_c3_v4`.
-- [ ] Aurora, reste a l'arbre : pieces (249) et eclats d'esprit des trefles
+- [x] Aurora, reste a l'arbre — ✅ clos le 20/10 : pieces/trefles clos par
+      Antoine ; Gossamer Stuffing et Doll Eye comptes par l'etape Mini Aurene
+      (v416) ; Vision Crystal n'est plus rattache a Aurora (recette lue :
+      Spark + Mystic Tribute + Gift of Sentience + Gift of Draconic Mastery).
+      Ancien constat : pieces (249) et eclats d'esprit des trefles
       non comptes (convention des autres legendaires a verifier : seuls
       ecto/obsidienne ont une cle « trefles ») ; Gossamer Stuffing et Dragon
       Hatchling Doll Eye (25 ectos chacun, collection → C5) ; Vision Crystal
@@ -347,7 +351,8 @@ hierarchie :
   - Klobjarne : Neutralized Titan Alloy — ferme (A1), la recette est le
     minimum.
   - Endless Summer : orbe du Gift of Infused Gems (une recette par orbe,
-    l'arbre prend Emerald, le tracker Ruby) — reste. ~~Gift of the Beach~~ ✅
+    l'arbre prend Emerald, le tracker Ruby) — ✅ deja un choix (`alt_groups`
+    `gemmes_infusees`, six orbes, Ruby par defaut) : pas un ecart. ~~Gift of the Beach~~ ✅
     20/10 (v417) : apiId 107031 → 107201, recette Forge lue (250 Coarse Sand,
     100 Ley-Infused Sand, 250 Coral Orb, 1 Relic of the Sunless). ~~Sun Bead~~
     present (v369).
@@ -648,7 +653,7 @@ Accord d'Antoine sur la proposition, `gw2_ad_infinitum_reliques_v1` :
   aretes ecto / ecu / poussiere -> Glob of Coagulated (promotion) retirees.
 - totaux a vierge inchanges (4 650 reliques, 140 immaculees, 805 ectos), sauf
   ce qui manquait : Gifts 1 -> 4, Shard 5 -> 6, Glob 0 -> 1, Vial 0 -> 1.
-Reste au fil des captures : Finite Result, Upper Bound, Finite Wings, Bound
+✅ 20/10 (v412) : chaines posees, captures au depot. Ancien reste : Finite Result, Upper Bound, Finite Wings, Bound
 Wings, Spirit of the Finite Result, Solution: Finite Result / Upper Bound,
 First / Second Order Mist Frame — les capturer permettra de remplacer les
 cles a plat precurseurs par des aretes (10 ectos, 3 Pristine Mist Essence,
