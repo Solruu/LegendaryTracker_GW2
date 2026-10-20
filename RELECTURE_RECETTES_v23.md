@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v418.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v419.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -15,8 +15,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 143 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 88 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 144 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 90 |
 
 Écartés sans être comptés : 27 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -47,7 +47,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 143
+## Ingrédients absents, cités par la recette d'une feuille — 144
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -97,6 +97,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `chaos_gun` | `Essence_of_Mischief` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
 | `chaos_gun` | `Ornate_Pistol_Frame` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
 | `chaos_gun` | `Spirit_of_the_Perfected_Pistol` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
+| `coral_orb` | `Coral_Tentacle` |  | `coral_orb` | sous une feuille | `endless_summer` |
 | `dawn` | `Dimensional_Destabilizer` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Essence_of_Illumination` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Mirror_(item)` |  | `dawn` | sous une feuille | `gen1_sunrise` |
@@ -195,7 +196,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 88
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 90
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -256,6 +257,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `bolt_of_wool` | `1 ingrédients` |  | `bolt_of_wool` | feuille assumée | `ad_infinitum` |
 | `carcharias` | `4 ingrédients` |  | `carcharias` | feuille assumée | `gen1_kamohoalii_kotaki` |
 | `chaos_gun` | `4 ingrédients` |  | `chaos_gun` | feuille assumée | `gen1_quip` |
+| `coral_orb` | `2 ingrédients` |  | `coral_orb` | feuille assumée | `endless_summer` |
 | `dawn` | `4 ingrédients` |  | `dawn` | feuille assumée | `gen1_sunrise` |
 | `dusk` | `4 ingrédients` |  | `dusk` | feuille assumée | `gen1_twilight` |
 | `gift_of_the_astral_ward` | `4 ingrédients` |  | `gift_of_the_astral_ward` | feuille assumée | `obsidian` |
@@ -268,6 +270,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `prototype` | `4 ingrédients` |  | `prototype` | feuille assumée | `gen2_hope` |
 | `rage_weapon` | `4 ingrédients` |  | `rage_weapon` | feuille assumée | `gen1_frenzy` |
 | `rare_essence_of_luck` | `1 ingrédients` |  | `rare_essence_of_luck` | feuille assumée | `ad_infinitum` |
+| `relic_of_the_sunless` | `4 ingrédients` |  | `relic_of_the_sunless` | feuille assumée | `endless_summer` |
 | `rodgorts_flame` | `4 ingrédients` |  | `rodgorts_flame` | feuille assumée | `gen1_rodgort` |
 | `shard_of_crystallized_mists_essence` | `4 ingrédients` |  | `shard_of_crystallized_mists_essence` | feuille assumée | `ad_infinitum` |
 | `silver_ingot` | `1 ingrédients` |  | `silver_ingot` | feuille assumée | `vision` |
@@ -288,7 +291,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `vial_of_condensed_mists_essence` | `4 ingrédients` |  | `vial_of_condensed_mists_essence` | feuille assumée | `ad_infinitum` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 138 ingrédients, et qui les réclame
+## Palier suivant — 139 ingrédients, et qui les réclame
 
 - `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
@@ -303,6 +306,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Confetti_Bullets` — réclamé par `chaos_gun`
 - `Congealed_Water` — réclamé par `venom_weapon`
 - `Copper_Ore` — réclamé par `iron_ore`
+- `Coral_Tentacle` — réclamé par `coral_orb`
 - `Corrupted_Core` — réclamé par `corrupted_lodestone`
 - `Cotton_Scrap` — réclamé par `bolt_of_cotton`
 - `Crystal_Core` — réclamé par `crystal_lodestone`

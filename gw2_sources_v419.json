@@ -72465,7 +72465,11 @@
         "fr": "Yasna est au niveau le plus bas de la bibliothèque centrale de l'Astralarium. ⚠ Une seule tâche par jour : passer la voir chaque jour.",
         "en": "Yasna is on the lowest level of the Astralarium's central library. ⚠ One task per day only: check in daily."
        },
-       "wiki": "Kralkatite_Research"
+       "wiki": "Kralkatite_Research",
+       "cost": {
+        "kralkatite_ore": 10
+       },
+       "cost_ref": "ressources/wiki/kralkatite_research.html, Acquisition"
       },
       {
        "bit": 1,
@@ -72513,7 +72517,11 @@
         "fr": "Le Powdered Rose Quartz est un drop rare des nœuds présents sur les sites de brandstone. Achetable au comptoir.",
         "en": "Powdered Rose Quartz is a rare drop from the nodes at brandstone sites. Also buyable on the TP."
        },
-       "wiki": "Powdered_Gemstone_Research"
+       "wiki": "Powdered_Gemstone_Research",
+       "cost": {
+        "powdered_rose_quartz": 10
+       },
+       "cost_ref": "ressources/wiki/powdered_gemstone_research.html, Acquisition"
       },
       {
        "bit": 4,
@@ -72561,7 +72569,12 @@
         "fr": "Le Beam of Light est au sommet de l'Astralarium — y combiner les matériaux.",
         "en": "The Beam of Light is atop the Astralarium — combine the materials there."
        },
-       "wiki": "Blazing_Kralkatite"
+       "wiki": "Blazing_Kralkatite",
+       "cost": {
+        "kralkatite_ore": 10,
+        "powdered_rose_quartz": 5
+       },
+       "cost_ref": "ressources/wiki/blazing_kralkatite.html, Acquisition"
       }
      ],
      "total_ref": "compte des bits exposes par /v2/achievements",

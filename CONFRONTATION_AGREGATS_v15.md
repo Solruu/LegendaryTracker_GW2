@@ -1,6 +1,6 @@
 # Confrontation des agrégats rédigés en prose
 
-Source : `gw2_sources_v418.json` — généré par `gw2_confronte_agregats_v1.py`.
+Source : `gw2_sources_v419.json` — généré par `gw2_confronte_agregats_v1.py`.
 
 Les listes de courses écrites en prose sur les pages de collection ne sont
 lues ni par la confrontation des totaux (qui ne voit que les tables « Full
@@ -54,13 +54,13 @@ rien dire.
 | ok | `eye_of_kormir` | 300 | 300 | 0 |
 | ok | `glob_of_ectoplasm` | 300 + 330 + 15 + 30 | 675 | 803 |
 | ok | `inscribed_shard` | 200 | 200 | 300 |
-| ok | `kralkatite_ore` | 3 | 3 | 3100 |
+| ok | `kralkatite_ore` | 3 | 3 | 3120 |
 | ok | `laurel` | 30 | 30 | 30 |
 | ok | `lesser_vision_crystal` | 6 | 6 | 6 |
 | ok | `olmakhan_latigo_strap` | 5 | 5 | 17 |
 | ok | `orichalcum_filigree` | 60 | 60 | 60 |
 | ok | `orichalcum_ingot` | 25 | 25 | 185 |
-| ok | `powdered_rose_quartz` | 3 | 3 | 3070 |
+| ok | `powdered_rose_quartz` | 3 | 3 | 3085 |
 | ok | `spool_of_gossamer_thread` | 100 | 100 | 100 |
 | ok | `unidentified_dye` | 20 | 20 | 20 |
 | ok | `volatile_magic` | 3000 | 3000 | 7250 |

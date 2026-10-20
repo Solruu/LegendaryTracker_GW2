@@ -1348,6 +1348,11 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `gift_of_the_beach.html` | Gift of the Beach | article complet | 2026-10-20 |
 | `pile_of_coarse_sand.html` | Pile of Coarse Sand | article complet | 2026-10-20 |
 | `relic_of_the_sunless.html` | Relic of the Sunless | article complet | 2026-10-20 |
+| `blazing_kralkatite.html` | Blazing Kralkatite | article complet | 2026-10-20 |
+| `branded_residue.html` | Branded Residue | article complet | 2026-10-20 |
+| `branded_residue_research.html` | Branded Residue Research | article complet | 2026-10-20 |
+| `kralkatite_research.html` | Kralkatite Research | article complet | 2026-10-20 |
+| `powdered_gemstone_research.html` | Powdered Gemstone Research | article complet | 2026-10-20 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

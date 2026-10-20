@@ -295,7 +295,7 @@ cas n'etait un double compte :
       trois voies, a classer avec W4) ; tickets PvP et Shard of Glory via Gift
       of Competitive Dedication — poser l'arete toucherait Ardent Glorious
       (+6 000 tessons), bloque tant que ses pieces ne sont pas capturees
-- [ ] decouverts en route, pour C4 : `opal_crystal` n'est pas un composant ;
+- [x] ✅ 20/10 : CONFRONTATION_TOTAUX a 0 excedent nu (941 accords) ; opal_crystal est un composant (24521), Orrax entierement decompose. Ancien constat : `opal_crystal` n'est pas un composant ;
       poivre d'Orrax 1 000 contre 1 500 a la table (piles de l'Entree et du
       Side Course non reliees) ; +100 Ipos du precurseur, absent de la table
 
@@ -349,7 +349,7 @@ hierarchie :
       moteur (la v1 avait sa propre cascade, un composant a deux chemins ne
       transmettait que le premier : 2 faux « DEPASSE ») et reprend la suite
       de numerotation au lieu du premier trou.
-- [ ] **reste** :
+- [x] **reste** — ✅ 20/10 : BoDE en `cost` d'etape (v413), Klobjarne ferme, Endless Summer fait :
   - Ad Infinitum : 9 Ball of Dark Energy des objets de collection Aetherblade
     (17 a l'arbre, 8 en chaine) → C5. Dragonite / fragment / poussiere /
     reliques fractales egalent l'arbre ; l'ecart du rapport est d'outil
@@ -519,7 +519,7 @@ cube <- Gift of Research (C3). 30 lignes au premier passage :
 - [x] **Orrax, 4 dernieres pages** (v384, `integration/gw2_orrax_fin_v1`) :
       manioc et cannelle recoltes, pierres a moudre en coffres, bassin a
       56 cuivre. **Orrax entierement decompose.**
-- [ ] **Reste de la relecture** (W ou A1) :
+- [x] **Reste de la relecture** — ✅ 20/10 : Casing, Core et Spirit of the Upper Bound captures et relies (Ars Goetia, Unbound Wings), Orrax decompose ; restent les faux positifs d'outil, legitimes. Ancien detail :
       - a capturer : Spiritwood Focus Casing (Ars Goetia), Spirit of the Upper
         Bound (Unbound Wings) — ni page ni apiId ;
       - non relies Spiritwood Focus Core + Visionary Inscription sous Ars
@@ -563,9 +563,11 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
       quete, pas une consommation :
       - Chuka III : bits 12 (3) et 13 (1) poses le 09/10
         (`gw2_couts_chuka_v1`) ; bit 11, nombre des chats d'Elena inconnu ;
-      - Vision `vis_brandstone` bit 6 : 10 Kralkatite Ore + 5 Powdered Rose
-        Quartz combines au Beam of Light (consommation ? la table du wiki les
-        compte-t-elle deja ?).
+      - ✅ 20/10 Vision `vis_brandstone` (`gw2_couts_brandstone_v1`, v419,
+        JSX v266) : bits 0 (10 Kralkatite Ore), 3 (10 Powdered Rose Quartz),
+        6 (10 + 5, Beam of Light) remis a Yasna, absents de la table du wiki ;
+        Vision 3 100 → 3 120 minerais, 3 070 → 3 085 quartz. Branded Residue
+        (bit 1) = butin de quete, pas un cout. 5 pages, un seul lot.
 
 ---
 
