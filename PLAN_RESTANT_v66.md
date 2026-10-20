@@ -588,7 +588,19 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
         = alternative (meme regle qu'arbitrages) ; les 9 ecarts d'Ad Infinitum
         apparus en v418 (recettes des infusions impaires) tombent a 0.
       - [ ] armes gen1 / gen2 — DECIDE le 20/10 : par les collections, toujours.
-        A faire (lot W10) : « Old World Magics » (100 obsidiennes) et
+        Lot W10 recu le 20/10 (un zip) : scholar_mossi.html,
+        grandmaster_craftsman_hobbs.html, ressources/api/
+        api_collections_armes_20261020.json (bits des 102 collections,
+        recettes API des objets d'etape, 220 recettes). Etapes hors
+        « Legendary Weapon : X » (deja couvert par l'arbre) : 1 654 —
+        179 fabriquees (recette API), 131 Mossi (table de sa page), 78
+        echanges aux maitres artisans (ex. 250 Basic Mithril Axe ; 5 lames de
+        chaque palier, bronze a Deldrimor — pages a capturer, ~150), 63 Hobbs
+        (livres et recettes : pieces + eclats d'esprit), 1 203 collecte ou
+        action (souvent gratuite). Les intermediaires (lames, manches,
+        armes basiques) se decomposent par regle C7 : plusieurs centaines de
+        composants a creer → accord d'Antoine sur le volume avant execution.
+        Ancien detail : « Old World Magics » (100 obsidiennes) et
         « Herbal Magics » (25 Passion Flowers) dans 18 collections de
         precurseur ; 2 couts poses sur 1 978 etapes d'armes → A1 : les
         precurseurs se comptent-ils par collection (couts d'etape) ou achetes ?

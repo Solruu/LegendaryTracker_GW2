@@ -1353,6 +1353,8 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `branded_residue_research.html` | Branded Residue Research | article complet | 2026-10-20 |
 | `kralkatite_research.html` | Kralkatite Research | article complet | 2026-10-20 |
 | `powdered_gemstone_research.html` | Powdered Gemstone Research | article complet | 2026-10-20 |
+| `grandmaster_craftsman_hobbs.html` | Grandmaster Craftsman Hobbs | article complet | 2026-10-20 |
+| `scholar_mossi.html` | Scholar Mossi | article complet | 2026-10-20 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
