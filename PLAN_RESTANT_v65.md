@@ -572,7 +572,23 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
         Awakened Memorials (bits 10-16) achetes a Amira, 20 materiaux chacun —
         40 lingots d'orichalque, 40 carres de cuir durci, 40 rouleaux de
         gossamer, 20 planches anciennes. Capture de la collection deja au depot.
-      - [ ] armes gen1 / gen2 : « Old World Magics » (100 obsidiennes) et
+      - ✅ 20/10 COMPTOIR (`gw2_comptoir_v1`, v421, JSX v267 ; decision
+        d'Antoine : tout par les voies de jeu, collections comprises, l'or est
+        un raccourci non souhaite) : /v2/commerce/prices lu sur les 888 apiId
+        (ressources/api/comptoir_20261020.json) ; « tp » -> « trading_post » ;
+        source comptoir posee en dernier, `paid_repeatable`, sur 270
+        composants vendables ; 8 « Buy on TP » faux retires (objets lies au
+        compte : Vision Crystal, Trade Contract, Exotic Essence of Luck, Chak
+        Egg, Auric Ingot, Reclaimed Metal Plate, Memories of Aurene,
+        Crystalline Ingot) ; `best` comptoir remplace (Memory of Battle McM,
+        Shard of Glory JcJ, Lucent Crystal raffinage, Auric Ingot artisanat).
+        Grand total : etiquette « comptoir » / « lie » et filtre. 6 apiId
+        absents de l'API (`_meta.comptoir.inconnus_api`) : a verifier.
+      - ✅ 20/10 confronte v8 : recette sous une voie retenue hors fabrication
+        = alternative (meme regle qu'arbitrages) ; les 9 ecarts d'Ad Infinitum
+        apparus en v418 (recettes des infusions impaires) tombent a 0.
+      - [ ] armes gen1 / gen2 — DECIDE le 20/10 : par les collections, toujours.
+        A faire (lot W10) : « Old World Magics » (100 obsidiennes) et
         « Herbal Magics » (25 Passion Flowers) dans 18 collections de
         precurseur ; 2 couts poses sur 1 978 etapes d'armes → A1 : les
         precurseurs se comptent-ils par collection (couts d'etape) ou achetes ?

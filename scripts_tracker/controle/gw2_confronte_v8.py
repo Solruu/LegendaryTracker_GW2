@@ -104,8 +104,16 @@ def _feuille_tranchee(p):
         return True
     types = {x.get("type") for x in (c.get("sources") or []) if isinstance(x, dict)}
     return bool(types & _BUTIN) and not (types & _FAB)
+# v8 : UNE RECETTE SOUS UNE VOIE RETENUE HORS FABRICATION EST UNE ALTERNATIVE
+# (meme regle que gw2_arbitrages `_alternative`). +3/+5/+7/+9 Agony Infusion :
+# voie retenue INFUZ-5959 (4 x l'impaire precedente, v418) ; leur recette
+# d'Artificier (2 x la paire + 1 thermocatalytique) etait reposee par-dessus,
+# 9 ecarts fantomes sur Ad Infinitum depuis v418.
+def _recette_alternative(p, org):
+    b = (cc.get(p) or {}).get("best")
+    return org != "vendeur" and b is not None and b not in _FAB and bool(_ENFANTS.get(p))
 proposees = collections.defaultdict(dict)
-ecartees_vendeur = ecartees_feuille = 0
+ecartees_vendeur = ecartees_feuille = ecartees_voie = 0
 for (p, e), (q, _org) in E.items():
     if p in cc and e in cc and p != e and p not in _ALT.get(e, ()):
         if _org == "vendeur" and _ENFANTS.get(p) and e not in _ENFANTS[p]:
@@ -113,6 +121,9 @@ for (p, e), (q, _org) in E.items():
             continue
         if _feuille_tranchee(p):
             ecartees_feuille += 1
+            continue
+        if _recette_alternative(p, _org) and e not in _ENFANTS[p]:
+            ecartees_voie += 1
             continue
         proposees[e][p] = q
 
@@ -211,4 +222,5 @@ print(f"  hausses : {sum(1 for x in lignes if x[4] > x[3])} | "
       f"baisses : {sum(1 for x in lignes if x[4] < x[3])}")
 print(f"  aretes vendeur ecartees (voie deja tranchee) : {ecartees_vendeur}")
 print(f"  recettes de feuilles tranchees ecartees (regle C7) : {ecartees_feuille}")
+print(f"  recettes sous une voie retenue hors fabrication ecartees : {ecartees_voie}")
 print("CONFRONTATION.md ecrit")

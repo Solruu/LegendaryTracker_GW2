@@ -134,6 +134,9 @@ const I18N = {
     gt_summary: "{comp} resources · {n} legendary item{s}",
     gt_no_resources: "No resources for this filter.",
     gt_filter_all: "All",
+    gt_tp_all: "TP: all", gt_tp_tp: "Sold on TP", gt_tp_lie: "Account bound",
+    gt_tp_tag: "TP", gt_lie_tag: "bound",
+    gt_tp_hint: "Trading post: a gold shortcut exists, never counted. Account bound: no shortcut, the item has to be farmed.",
     gt_uncountable: "⚠ {n} uncountable component{s} {arrow}",
     // Daily / metas
     word_in: "in",
@@ -379,6 +382,9 @@ const I18N = {
     gt_summary: "{comp} ressources · {n} légendaire{s}",
     gt_no_resources: "Aucune ressource pour ce filtre.",
     gt_filter_all: "Tout",
+    gt_tp_all: "Comptoir : tout", gt_tp_tp: "Au comptoir", gt_tp_lie: "Lié au compte",
+    gt_tp_tag: "comptoir", gt_lie_tag: "lié",
+    gt_tp_hint: "Comptoir : un raccourci en or existe, jamais compté. Lié au compte : aucun raccourci, il faut le farmer.",
     gt_uncountable: "⚠ {n} composant{s} non chiffrable{s} {arrow}",
     word_in: "dans",
     farm_perchar: "×perso",
@@ -2059,8 +2065,19 @@ function farmColor(src) {
   if (t.includes("pvp") || t.includes("league")) return FARM_COLOR["PvP"];
   if (t.includes("wvw") || t.includes("skirmish") || t.includes("badge")) return FARM_COLOR["WvW"];
   if (t.includes("fractal")) return FARM_COLOR["Fractals"];
-  if (t.includes("vendor") || t.includes("mystic_forge") || t.includes("map_currency") || t.includes("meta") || t.includes("salvage") || t.includes("craft") || t.includes("tp")) return FARM_COLOR["PvE"];
+  if (t.includes("vendor") || t.includes("mystic_forge") || t.includes("map_currency") || t.includes("meta") || t.includes("salvage") || t.includes("craft") || t.includes("tp") || t.includes("trading_post")) return FARM_COLOR["PvE"];
   return FARM_COLOR["Mixte"];
+}
+
+// Comptoir (sources v421) : une source `trading_post` = achetable au comptoir,
+// raccourci en or jamais compte ; un apiId d'objet sans cette source = lie au
+// compte (`_meta.comptoir.regle`). Sans apiId d'objet : non determine.
+function statutComptoir(comp) {
+  if ((comp?.sources ?? []).some(s => s?.type === "trading_post")) return "tp";
+  const a = comp?.apiId;
+  const inconnus = SOURCES_DB?._meta?.comptoir?.inconnus_api ?? [];
+  if (typeof a === "number" && a > 100 && !inconnus.includes(a)) return "lie";
+  return null;
 }
 
 // ── Moteur grand total ────────────────────────────────────────
@@ -3580,6 +3597,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   const [selected, setSelected] = useState({});        // legId → bool
   const [collapsed, setCollapsed] = useState({});      // groupId → bool
   const [filterFarm, setFilterFarm] = useState("all");
+  const [filterTp, setFilterTp] = useState("all");      // all | tp | lie
   // Choix un-parmi-N : deplace dans AltGroupsPicker (etat et rendu partages
   // avec l'onglet Materiaux d'un legendaire).
   const [showVariables, setShowVariables] = useState(false);
@@ -3647,9 +3665,10 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
         st.includes("fractal") ? "Fractals" :
         st ? "PvE" : "Mixte";
       return { compId, name: comp.name ?? compId, qty, owned, missing, pct, apiId, hasStock,
-               farm: farmColor(src), farmLabel, tip: L(src.tip) ?? "" };
+               farm: farmColor(src), farmLabel, tip: L(src.tip) ?? "", comptoir: statutComptoir(comp) };
     })
     .filter(r => filterFarm === "all" || r.farmLabel === filterFarm)
+    .filter(r => filterTp === "all" || r.comptoir === filterTp)
     .sort((a, b) => {
       // Niveau 1 : à farmer avant déjà acquis (stock connu et suffisant).
       // Niveau 2 : alphabétique sur le nom (toujours une chaîne simple,
@@ -3804,6 +3823,18 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                   {ft === "all" ? t("gt_filter_all") : ft}
                 </button>
               ))}
+              {["all", "tp", "lie"].map(ft => (
+                <button key={"tp-" + ft} onClick={() => setFilterTp(ft)} title={t("gt_tp_hint")} style={{
+                  padding: "2px 8px", borderRadius: 3, fontSize: 9, cursor: "pointer",
+                  fontFamily: "'Cinzel', serif", letterSpacing: "0.05em",
+                  border: `1px solid ${filterTp === ft ? C : D+"0.15)"}`,
+                  background: filterTp === ft ? C + "22" : "rgba(255,255,255,0.02)",
+                  color: filterTp === ft ? C : D+"0.45)",
+                  transition: "all 0.15s"
+                }}>
+                  {ft === "all" ? t("gt_tp_all") : ft === "tp" ? t("gt_tp_tp") : t("gt_tp_lie")}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -3822,7 +3853,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-              {rows.map(({ compId, name, qty, owned, missing, pct, apiId, hasStock, farm, farmLabel, tip }) => (
+              {rows.map(({ compId, name, qty, owned, missing, pct, apiId, hasStock, farm, farmLabel, tip, comptoir }) => (
                 <div key={compId} style={{
                   display: "flex", alignItems: "center", gap: 8,
                   padding: "7px 10px", borderRadius: 5,
@@ -3845,6 +3876,13 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                       <div style={{ fontFamily: "'Cinzel', serif", letterSpacing: "0.04em",
                         overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
                         {name}
+                        {comptoir && (
+                          <span title={t("gt_tp_hint")} style={{ marginLeft: 6, fontSize: 8, padding: "0 4px", borderRadius: 2,
+                            color: comptoir === "tp" ? "#c9a227" : D + "0.5)",
+                            border: `1px solid ${comptoir === "tp" ? "#c9a22755" : D + "0.2)"}` }}>
+                            {comptoir === "tp" ? t("gt_tp_tag") : t("gt_lie_tag")}
+                          </span>
+                        )}
                       </div>
                       {/* Qty / owned display */}
                       <div style={{ flexShrink: 0, textAlign: "right", fontFamily: "'Cinzel', serif" }}>
