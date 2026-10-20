@@ -16,7 +16,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 
 | rapport | outil | chiffre |
 |---|---|---|
-| `ARBITRAGES.md` | `controle/gw2_arbitrages_v8` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → **13 desaccords** apres C1-C3 (v358) : 4 « deja compte par cascade », 28 « cout vendeur », 1 « ecart de compte » |
+| `ARBITRAGES.md` | `controle/gw2_arbitrages_v8` (apres `parseurs/gw2_edges_wiki_v14`) | ~~81 / 37~~ → ~~13~~ → **0 desaccord** (`gw2_arbitrages_v10`, 20/10, v418 : memes exclusions que confronte — arete vendeur d'une cible de choix ou d'un parent deja decompose, recette sous feuille tranchee) |
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
@@ -347,8 +347,12 @@ hierarchie :
   - Klobjarne : Neutralized Titan Alloy — ferme (A1), la recette est le
     minimum.
   - Endless Summer : orbe du Gift of Infused Gems (une recette par orbe,
-    l'arbre prend Emerald, le tracker Ruby) et Gift of the Beach (Coral Orb,
-    page non capturee) → W. Sun Bead absent du tracker.
+    l'arbre prend Emerald, le tracker Ruby) — reste. ~~Gift of the Beach~~ ✅
+    20/10 (v417) : apiId 107031 → 107201, recette Forge lue (250 Coarse Sand,
+    100 Ley-Infused Sand, 250 Coral Orb, 1 Relic of the Sunless). ~~Sun Bead~~
+    present (v369).
+  - ✅ 20/10 (v418) : +3/+5/+7/+9 Agony Infusion `best` vendeur (INFUZ 4×),
+    aligne arbitrages et confronte.
   - ~~Ecto d'Obsidienne par piece~~ ✅ 20/10 : obsidian_armor.html donne la
     liste de materiaux PAR PIECE, identique pour les six, seul le don condense
     (Might : gants/jambes/bottes ; Magic : tete/epaules/torse) change — deja

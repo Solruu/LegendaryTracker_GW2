@@ -7904,6 +7904,32 @@
   "aretes_table": []
  },
  {
+  "page": "coral_orb",
+  "titre": "Coral Orb",
+  "api_id": 24510,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Jeweler",
+    "rating": "350",
+    "ingredients": [
+     [
+      "Pile_of_Incandescent_Dust",
+      5
+     ],
+     [
+      "Coral_Tentacle",
+      2
+     ]
+    ],
+    "produit": "Transmogrify Coral Orb"
+   }
+  ],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "corrupted_lodestone",
   "titre": "Corrupted Lodestone",
   "api_id": 24340,
@@ -18777,6 +18803,61 @@
   "aretes_table": []
  },
  {
+  "page": "gift_of_the_beach",
+  "titre": "Gift of the Beach",
+  "api_id": 107201,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": null,
+    "rating": null,
+    "ingredients": [
+     [
+      "Pile_of_Coarse_Sand",
+      250
+     ],
+     [
+      "Ley-Infused_Sand",
+      100
+     ],
+     [
+      "Coral_Orb",
+      250
+     ],
+     [
+      "Relic_of_the_Sunless",
+      1
+     ]
+    ],
+    "produit": "Gift of the Beach"
+   }
+  ],
+  "couts_vendeur": [
+   {
+    "objet": "Coral_Orb",
+    "qty": 250
+   },
+   {
+    "objet": "Glob_of_Ectoplasm",
+    "qty": 10
+   },
+   {
+    "objet": "Ley-Infused_Sand",
+    "qty": 100
+   },
+   {
+    "objet": "Pile_of_Coarse_Sand",
+    "qty": 250
+   },
+   {
+    "objet": "Relic_of_the_Sunless",
+    "qty": 1
+   }
+  ],
+  "aretes_table": []
+ },
+ {
   "page": "gift_of_the_bifrost",
   "titre": "Gift of The Bifrost",
   "api_id": 19654,
@@ -28432,6 +28513,15 @@
   "aretes_table": []
  },
  {
+  "page": "pile_of_coarse_sand",
+  "titre": "Pile of Coarse Sand",
+  "api_id": 71641,
+  "table_materiaux": false,
+  "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
   "page": "pile_of_crystalline_dust",
   "titre": "Pile of Crystalline Dust",
   "api_id": 24277,
@@ -31133,6 +31223,40 @@
   "api_id": null,
   "table_materiaux": false,
   "recettes": [],
+  "couts_vendeur": [],
+  "aretes_table": []
+ },
+ {
+  "page": "relic_of_the_sunless",
+  "titre": "Relic of the Sunless",
+  "api_id": 100400,
+  "table_materiaux": false,
+  "recettes": [
+   {
+    "sortie": 1,
+    "discipline": "Leatherworker Armorsmith Tailor",
+    "rating": "400",
+    "ingredients": [
+     [
+      "Pile_of_Lucent_Crystal",
+      48
+     ],
+     [
+      "Sun_Bead",
+      30
+     ],
+     [
+      "Charm_of_Skill",
+      3
+     ],
+     [
+      "Glob_of_Ectoplasm",
+      15
+     ]
+    ],
+    "produit": "Relic of the Sunless"
+   }
+  ],
   "couts_vendeur": [],
   "aretes_table": []
  },

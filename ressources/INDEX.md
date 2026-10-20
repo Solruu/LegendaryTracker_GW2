@@ -1344,6 +1344,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `recipe_dragon_hatchling_doll_frame.html` | Recipe: Dragon Hatchling Doll Frame | article complet | 2026-10-20 |
 | `recipe_dragon_hatchling_doll_hide.html` | Recipe: Dragon Hatchling Doll Hide | article complet | 2026-10-20 |
 | `recipe_gossamer_stuffing.html` | Recipe: Gossamer Stuffing | article complet | 2026-10-20 |
+| `coral_orb.html` | Coral Orb | article complet | 2026-10-20 |
+| `gift_of_the_beach.html` | Gift of the Beach | article complet | 2026-10-20 |
+| `pile_of_coarse_sand.html` | Pile of Coarse Sand | article complet | 2026-10-20 |
+| `relic_of_the_sunless.html` | Relic of the Sunless | article complet | 2026-10-20 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

@@ -1,12 +1,16 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v416.json`. **24 aretes** sur 15 parents dont les captures lisent la composition,
+Source : `gw2_sources_v418.json`. **28 aretes** sur 19 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
 
 | parent | enfant (donnee) | qty | ce que les captures proposent |
 |---|---|---:|---|
+| `agony_infusion_3` | `agony_infusion_1` | 4 | agony_infusion_2 2, thermocatalytic_reagent 1 |
+| `agony_infusion_5` | `agony_infusion_3` | 4 | agony_infusion_4 2, thermocatalytic_reagent 1 |
+| `agony_infusion_7` | `agony_infusion_5` | 4 | agony_infusion_6 2, thermocatalytic_reagent 1 |
+| `agony_infusion_9` | `agony_infusion_7` | 4 | agony_infusion_8 2, thermocatalytic_reagent 1 |
 | `banner_pennon` | `recipe_banner_pennon` | 1 | bolt_of_gossamer 5, glob_of_ectoplasm 5, olmakhan_latigo_strap 5, spool_of_gossamer_thread 100 |
 | `binding_of_the_dragon` | `gold_coin` | 5 | dragonite_ore 25 |
 | `binding_of_the_dragon` | `karma` | 22500 | dragonite_ore 25 |

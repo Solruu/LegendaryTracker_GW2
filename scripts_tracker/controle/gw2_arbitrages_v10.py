@@ -113,8 +113,38 @@ _FABRIQUE = {"craft", "craft_400", "craft_500", "advanced_craft", "mystic_forge"
 def _alternative(p, org):
     b = (cc.get(p) or {}).get("best")
     return org == "recette" and b is not None and b not in _FABRIQUE
+# v10 : MEMES EXCLUSIONS QUE LA CONFRONTATION (gw2_confronte_v6+), qui
+# rendaient deux rapports discordants sur les memes aretes :
+# - une table vendeur sous un parent dont la voie est deja posee (enfants
+#   presents) n'est qu'une alternative (Encens funeraire : Mosaiques
+#   tranchees, Contrats et Lingot alternatifs) ;
+# - un parent CIBLE d'un `alt_groups` est couvert par ses options : sa table
+#   vendeur liste les prix des voies au choix (Mist Band : fractales / JcJ /
+#   McM, 20/10), pas des couts qui s'additionnent ;
+# - une feuille tranchee (voie retenue = butin, sans enfant) reste feuille
+#   (regle C7 : Opal Crystal).
+_ENFANTS = collections.defaultdict(set)
+for _cid, _c in cc.items():
+    for _k in (_c.get("qty") or {}):
+        if _k in cc:
+            _ENFANTS[_k].add(_cid)
+_CIBLES_CHOIX = {t for _g in _ALT_GROUPS.values() for t in (_g.get("targets") or [])}
+_BUTIN = {"drop", "chest", "gathering", "gather", "meta_drop", "event_drop",
+          "salvage", "node", "wvw_drop"}
+def _feuille_tranchee(p):
+    if _ENFANTS.get(p):
+        return False
+    c = cc.get(p) or {}
+    if c.get("best") and c["best"] not in _FABRIQUE:
+        return True
+    types = {x.get("type") for x in (c.get("sources") or []) if isinstance(x, dict)}
+    return bool(types & _BUTIN) and not (types & (_FABRIQUE | {"craft_500"}))
+def _exclue(p, e, org):
+    if org == "vendeur" and (p in _CIBLES_CHOIX or (_ENFANTS.get(p) and e not in _ENFANTS[p])):
+        return True
+    return org == "recette" and _feuille_tranchee(p)
 for (p, e), (q, org) in E.items():
-    if p in cc and e in cc and p != e and not _alternative(p, org):
+    if p in cc and e in cc and p != e and not _alternative(p, org) and not _exclue(p, e, org):
         par_enfant[e][p] = q
         origine[(e, p)] = org
 

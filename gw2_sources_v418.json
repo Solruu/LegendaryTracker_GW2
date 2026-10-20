@@ -9399,24 +9399,49 @@
   },
   "gift_of_the_beach": {
    "name": "Gift of the Beach",
-   "apiId": 107031,
+   "apiId": 107201,
    "needed_for": [
     "gift_of_rays"
    ],
    "farmable": true,
    "sources": [
     {
-     "type": "vendor",
+     "type": "mystic_forge",
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/gift_of_the_beach.html, Recipe",
      "tip": {
-      "fr": "Acheté aux vendeurs VoE (complétion de map Rive aux épaves / hearts). Contient des items spécifiques VoE.",
-      "en": "Purchased from VoE vendors (Shipwreck Strand map completion / renown hearts). Contains VoE-specific items."
+      "fr": "Forge mystique : 250 Piles of Coarse Sand + 100 Ley-Infused Sand + 250 Coral Orbs + 1 Relic of the Sunless.",
+      "en": "Mystic Forge: 250 Piles of Coarse Sand + 100 Ley-Infused Sand + 250 Coral Orbs + 1 Relic of the Sunless."
+     }
+    },
+    {
+     "type": "vendor",
+     "npc": "Shaman Palak",
+     "paid_repeatable": true,
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/gift_of_the_beach.html, Sold by",
+     "tip": {
+      "fr": "Alternative : Shaman Palak (Hullgarden, Rive aux épaves) pour les mêmes ingrédients + 10 ectos, succès Radiance of the Sun God requis.",
+      "en": "Alternative: Shaman Palak (Hullgarden, Shipwreck Strand) for the same ingredients + 10 ectos, requires the Radiance of the Sun God achievement."
      }
     }
    ],
    "qty": {
     "gift_of_rays": 1
    },
-   "kind": "advanced_craft"
+   "kind": "advanced_craft",
+   "apiId_fix": {
+    "was": 107031,
+    "checked": "2026-10-20",
+    "verified": true,
+    "ref": "ressources/wiki/gift_of_the_beach.html (API 107201) + /v2/items?ids=107031,107201 lu le 20/10"
+   },
+   "best": "mystic_forge",
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/gift_of_the_beach.html"
   },
   "gift_of_infused_gems": {
    "name": "Gift of Infused Gems",
@@ -29444,7 +29469,8 @@
    "apiId": 83284,
    "kind": "material",
    "needed_for": [
-    "olmakhan_charm"
+    "olmakhan_charm",
+    "gift_of_the_beach"
    ],
    "farmable": true,
    "sources": [
@@ -29461,7 +29487,8 @@
     }
    ],
    "qty": {
-    "olmakhan_charm": 50
+    "olmakhan_charm": 50,
+    "gift_of_the_beach": 100
    },
    "verified": true,
    "checked": "2026-10-04",
@@ -32788,7 +32815,8 @@
    ],
    "verified": true,
    "checked": "2026-10-20",
-   "ref": "ressources/wiki/3_agony_infusion.html"
+   "ref": "ressources/wiki/3_agony_infusion.html",
+   "best": "vendor"
   },
   "agony_infusion_4": {
    "name": "+4 Agony Infusion",
@@ -32843,7 +32871,8 @@
    ],
    "verified": true,
    "checked": "2026-10-20",
-   "ref": "ressources/wiki/5_agony_infusion.html"
+   "ref": "ressources/wiki/5_agony_infusion.html",
+   "best": "vendor"
   },
   "agony_infusion_6": {
    "name": "+6 Agony Infusion",
@@ -32898,7 +32927,8 @@
    ],
    "verified": true,
    "checked": "2026-10-20",
-   "ref": "ressources/wiki/7_agony_infusion.html"
+   "ref": "ressources/wiki/7_agony_infusion.html",
+   "best": "vendor"
   },
   "agony_infusion_8": {
    "name": "+8 Agony Infusion",
@@ -32951,7 +32981,8 @@
    ],
    "verified": true,
    "checked": "2026-10-20",
-   "ref": "ressources/wiki/9_agony_infusion.html"
+   "ref": "ressources/wiki/9_agony_infusion.html",
+   "best": "vendor"
   },
   "agony_infusion_10": {
    "name": "+10 Agony Infusion",
@@ -33266,6 +33297,89 @@
    "ref": "ressources/wiki/recipe_gossamer_stuffing.html",
    "verified": true,
    "checked": "2026-10-20"
+  },
+  "pile_of_coarse_sand": {
+   "name": "Pile of Coarse Sand",
+   "apiId": 71641,
+   "kind": "material",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_beach": 250
+   },
+   "needed_for": [
+    "gift_of_the_beach"
+   ],
+   "sources": [
+    {
+     "type": "drop",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Butin des Dust Mites du Désert de cristal, et contenu des Piles of Silky Sand.",
+      "en": "Dropped by Dust Mites in the Crystal Desert, and found in Piles of Silky Sand."
+     },
+     "ref": "ressources/wiki/pile_of_coarse_sand.html, Acquisition",
+     "verified": true,
+     "checked": "2026-10-20"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/pile_of_coarse_sand.html"
+  },
+  "coral_orb": {
+   "name": "Coral Orb",
+   "apiId": 24510,
+   "kind": "material",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_beach": 250
+   },
+   "needed_for": [
+    "gift_of_the_beach"
+   ],
+   "sources": [
+    {
+     "type": "gathering",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Nœuds de corail et nombreux coffres (chance) ; comptoir.",
+      "en": "Coral nodes and many chests (chance); trading post."
+     },
+     "ref": "ressources/wiki/coral_orb.html, Acquisition",
+     "verified": true,
+     "checked": "2026-10-20"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/coral_orb.html"
+  },
+  "relic_of_the_sunless": {
+   "name": "Relic of the Sunless",
+   "apiId": 100400,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_beach": 1
+   },
+   "needed_for": [
+    "gift_of_the_beach"
+   ],
+   "sources": [
+    {
+     "type": "chest",
+     "tip": {
+      "fr": "Au choix dans un Core Relic Chest. Alternative : artisanat 400 (48 Piles of Lucent Crystal + 30 Sun Beads + 3 Charms of Skill + 15 ectos).",
+      "en": "A choice in a Core Relic Chest. Alternative: crafting 400 (48 Piles of Lucent Crystal + 30 Sun Beads + 3 Charms of Skill + 15 ectos)."
+     },
+     "ref": "ressources/wiki/relic_of_the_sunless.html, Acquisition",
+     "verified": true,
+     "checked": "2026-10-20"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/relic_of_the_sunless.html"
   }
  },
  "enchaînements_recommandés": {
