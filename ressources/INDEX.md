@@ -1321,6 +1321,29 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `mithril_plated_dowel.html` | Mithril Plated Dowel | article complet | 2026-10-19 |
 | `integrated_fractal_matrix.html` | Integrated Fractal Matrix | article complet | 2026-10-20 |
 | `pristine_fractal_relic.html` | Pristine Fractal Relic | article complet | 2026-10-20 |
+| `10_agony_infusion.html` | 10 Agony Infusion | article complet | 2026-10-20 |
+| `1_agony_infusion.html` | 1 Agony Infusion | article complet | 2026-10-20 |
+| `2_agony_infusion.html` | 2 Agony Infusion | article complet | 2026-10-20 |
+| `3_agony_infusion.html` | 3 Agony Infusion | article complet | 2026-10-20 |
+| `4_agony_infusion.html` | 4 Agony Infusion | article complet | 2026-10-20 |
+| `5_agony_infusion.html` | 5 Agony Infusion | article complet | 2026-10-20 |
+| `6_agony_infusion.html` | 6 Agony Infusion | article complet | 2026-10-20 |
+| `7_agony_infusion.html` | 7 Agony Infusion | article complet | 2026-10-20 |
+| `8_agony_infusion.html` | 8 Agony Infusion | article complet | 2026-10-20 |
+| `9_agony_infusion.html` | 9 Agony Infusion | article complet | 2026-10-20 |
+| `dragon_hatchling_doll.html` | Dragon Hatchling Doll | article complet | 2026-10-20 |
+| `dragon_hatchling_doll_adornments.html` | Dragon Hatchling Doll Adornments | article complet | 2026-10-20 |
+| `dragon_hatchling_doll_eye.html` | Dragon Hatchling Doll Eye | article complet | 2026-10-20 |
+| `dragon_hatchling_doll_frame.html` | Dragon Hatchling Doll Frame | article complet | 2026-10-20 |
+| `dragon_hatchling_doll_hide.html` | Dragon Hatchling Doll Hide | article complet | 2026-10-20 |
+| `gift_of_aurene.html` | Gift of Aurene | article complet | 2026-10-20 |
+| `gossamer_stuffing.html` | Gossamer Stuffing | article complet | 2026-10-20 |
+| `mini_aurene.html` | Mini Aurene | article complet | 2026-10-20 |
+| `recipe_dragon_hatchling_doll_adornments.html` | Recipe: Dragon Hatchling Doll Adornments | article complet | 2026-10-20 |
+| `recipe_dragon_hatchling_doll_eyes.html` | Recipe: Dragon Hatchling Doll Eyes | article complet | 2026-10-20 |
+| `recipe_dragon_hatchling_doll_frame.html` | Recipe: Dragon Hatchling Doll Frame | article complet | 2026-10-20 |
+| `recipe_dragon_hatchling_doll_hide.html` | Recipe: Dragon Hatchling Doll Hide | article complet | 2026-10-20 |
+| `recipe_gossamer_stuffing.html` | Recipe: Gossamer Stuffing | article complet | 2026-10-20 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

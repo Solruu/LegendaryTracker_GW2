@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v12.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v13.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -349,7 +349,10 @@ hierarchie :
   - Endless Summer : orbe du Gift of Infused Gems (une recette par orbe,
     l'arbre prend Emerald, le tracker Ruby) et Gift of the Beach (Coral Orb,
     page non capturee) → W. Sun Bead absent du tracker.
-  - Ecto d'Obsidienne par piece : une seule piece lue, pas d'extrapolation → W.
+  - ~~Ecto d'Obsidienne par piece~~ ✅ 20/10 : obsidian_armor.html donne la
+    liste de materiaux PAR PIECE, identique pour les six, seul le don condense
+    (Might : gants/jambes/bottes ; Magic : tete/epaules/torse) change — deja
+    modele (`__full_set` 3/3). Rien a extrapoler.
   - Controle transversal : fait, lot C6.
 
 ### C6 — Aretes non sourcees · C — ✅ outil, deux passes le 04/10 (sources v361, v363)
@@ -757,6 +760,21 @@ d'Ad Infinitum : `perimetre` des 4 collections, plus de `perUnit` ni de
 `fixed`. 4 captures (fractal_journal, ball_of_dark_energy, lessons_in_*).
 Reste hors decision : les Agony Infusions +4 / +6 / +8 / +10 a charger
 (etapes 9 et 8) ne sont pas decomposees.
+
+### C11 — Couts de collection encore oublies (20/10) · W+C — ✅
+Sources v416, JSX v265, 23 captures :
+- Ad Infinitum : Agony Infusions +4 / +6 / +8 / +10 chargees aux geysers
+  (`cost` des quatre etapes « Infusion Sample ») ; chaine +1 a +10 posee :
+  impaires chez INFUZ-5959 (4 x la precedente impaire, sans artisanat), paires
+  par recette (2 x l'impaire + 1 thermocatalytique) — 680 x +1, 4 reactifs ;
+  la cle a plat de 10 reactifs (arbre gw2efficiency) retiree. 3 avertissements
+  d'audit « colonne 3 » attendus : le « 4 » est un prix vendeur repete a
+  chaque palier, verifie sur les captures.
+- Aurora : Mini Aurene (aurora_bfr bit 7, collection « Gift of Aurene ») —
+  cinq pieces de poupee (recettes lues, une fabrication par jour chacune) et
+  leurs cinq recettes (Slooshoo, 1 000 magie non liee + 5 po, structure
+  `account_unlock`) en `cost` d'etape. Aurora : magie non liee 22 000 ->
+  27 000, ectos 22 -> 73, thermocatalytiques 360 -> 510. Quartz Crystal cree.
 
 ### C10 — Choix par mode de jeu, metas deduites (20/10) · C — ✅
 Decisions d'Antoine (20/10). Sources v414, JSX v264 :
