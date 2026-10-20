@@ -20,7 +20,7 @@ propose, Antoine valide (refactor structurel, chiffres affiches sans source).
 | `CONFRONTATION.md` | `controle/gw2_confronte_v5` ~~370~~ → ~~248~~ → ~~158~~ → ~~116~~ → ~~96~~ → ~~99~~ → ~~98~~ → **92 ecarts** (v365) — colonne « wiki » indicative, pas verite |
 | `CONFRONTATION_TOTAUX.md` | `controle/gw2_confronte_totaux_v10` 943 accords, 0 trou, 94 excedents expliques, **76 excedents nus** apres C1 (+5 : orbes d'opale de Bifrost/Minstrel, precurseur d'Ipos — branches que la table n'ouvre pas, voir C1) |
 | `CONFRONTATION_TABLES.md` | `controle/gw2_confronte_tables_v4` | 2 noms non resolus (Tribute to the Exitare, Tribute to the Call of the Void) |
-| `CONFRONTATION_AGREGATS_v11.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
+| `CONFRONTATION_AGREGATS_v12.md` | `controle/gw2_confronte_agregats_v2` | 53 accords, 0 depassement |
 | `RELECTURE_RECETTES_v8.md` | `controle/gw2_relecture_recettes_v7` | 0 manquant, **4 non relies, 36 en trop**, 1 732 occurrences non decomposees |
 | `COHERENCE_CONSEILS_METAS_v5.md` | `controle/gw2_coherence_conseils_metas_v2` | 6 constats (5 codes de point de passage, 1 ressource) |
 | `ARETES_NON_SOURCEES.md` | `controle/gw2_aretes_non_sourcees_v3` (apres `parseurs/gw2_edges_wiki_v14`) | **22 aretes**, toutes expliquees ; 0 voie concurrente (C6) |
@@ -757,6 +757,27 @@ d'Ad Infinitum : `perimetre` des 4 collections, plus de `perUnit` ni de
 `fixed`. 4 captures (fractal_journal, ball_of_dark_energy, lessons_in_*).
 Reste hors decision : les Agony Infusions +4 / +6 / +8 / +10 a charger
 (etapes 9 et 8) ne sont pas decomposees.
+
+### C10 — Choix par mode de jeu, metas deduites (20/10) · C — ✅
+Decisions d'Antoine (20/10). Sources v414, JSX v264 :
+- Mist Band (Infused) : les trois achats etaient ADDITIONNES sur Conflux.
+  Trois composants d'achat (fractales / JcJ / McM) en `alt_groups`
+  « mist_band_route », defaut fractales (joueur PvE) ; Integrated Fractal
+  Matrix pose (10 Stabilizing Matrix + 15 reliques). Conflux : tickets
+  2 200 -> 1 850, Shards of Glory 420 -> 250, Ascended 150 -> 0 ; +2 IFM.
+- Picker des choix : le cout de chaque option s'affiche sous son bouton, et
+  un choix recalcule aussitot les totaux (evenement « gw2-alt-change »).
+- Metas deduites : la liste d'un legendaire = metas dont une ressource
+  (`rewards`) reste a farmer pour lui (moteur, collections faites
+  deduites) ; listes manuelles reduites aux metas sans ressource (38 cles
+  retirees). Ressources ajoutees a 10 metas (bf, bf_meta, sl, shackles, di,
+  mistburned, hammerhart, weald, adinf_dailies, adinf_cms), sourcees par les
+  conseils des composants. Onglet Activites : regle calculee `has_metas`.
+  Coalescence, Klobjarne, etc. ont desormais leurs metas.
+- Bug latent corrige : une meta sans horaire (Inner Nayos : ni offsetUTC ni
+  intervalMin) faisait boucler `getNextMetaOccurrence` a l'infini — la page
+  aurait gele des que la deduction l'aurait rattachee.
+- Pristine Fractal Relic : sources lues (coffres quotidiens 3 x 4 + 3 x 1).
 
 ### C9 — Le bloc du Henge compte au lieu de recopier (19/10) · C+A — ✅
 Demande d'Antoine : « compter, pas lire ». Moteur v6 / JSX v261 : parametre

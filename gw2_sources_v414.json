@@ -1943,7 +1943,9 @@
    "ref": "Widget:Event timer/data.json — lws4-di, segment « Palawadan » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
    "verified": true,
-   "rewards": [],
+   "rewards": [
+    "kralkatite_ore"
+   ],
    "categorie": "Living World Season 4",
    "acces": {
     "type": "living_world",
@@ -1963,6 +1965,9 @@
    "tip": {
     "fr": "Très populaire, taxi LFG facile. Coffre : hard-reset à 01h.",
     "en": "Very popular, easy LFG taxi. Chest: hard-reset at 01h."
+   },
+   "rewards_refs": {
+    "kralkatite_ore": "craft_components/kralkatite_ore.sources (« Nodes, events et metas — Domaine d'Istan »)"
    }
   },
   "hammerhart": {
@@ -1981,7 +1986,8 @@
    "checked": "2026-10-01",
    "verified": true,
    "rewards": [
-    "aether_rich_sap"
+    "aether_rich_sap",
+    "chromatic_sap"
    ],
    "categorie": "Visions of Eternity",
    "acces": {
@@ -2000,7 +2006,8 @@
     "en": "Shipwreck Strand world boss (Twisting Hollows). Quick access: 'Found' teleporter at Pub Canach. Bring CC to burst the initial dome; twin bosses share one health bar. Aether-Rich Sap source."
    },
    "rewards_refs": {
-    "aether_rich_sap": "ressources/wiki/aether_rich_sap.html — obtenue en completant les evenements de Shipwreck Strand"
+    "aether_rich_sap": "ressources/wiki/aether_rich_sap.html — obtenue en completant les evenements de Shipwreck Strand",
+    "chromatic_sap": "craft_components/chromatic_sap.sources (méta « Hammerhart Rumble! »)"
    }
   },
   "weald": {
@@ -2020,7 +2027,8 @@
    "checked": "2026-10-01",
    "verified": true,
    "rewards": [
-    "antiquated_ducat"
+    "antiquated_ducat",
+    "raw_enchanting_stone"
    ],
    "categorie": "Visions of Eternity",
    "acces": {
@@ -2039,7 +2047,8 @@
     "en": "Starlit Weald meta (Cloister of Stars): 3 simultaneous excavators then Gwyllian. Ley Line mastery required (glider/mount). Antiquated Ducat source."
    },
    "rewards_refs": {
-    "antiquated_ducat": "ressources/wiki/antiquated_ducat.html — obtenue en completant les evenements de Starlit Weald"
+    "antiquated_ducat": "ressources/wiki/antiquated_ducat.html — obtenue en completant les evenements de Starlit Weald",
+    "raw_enchanting_stone": "craft_components/raw_enchanting_stone.sources (méta « Secrets of the Weald »)"
    }
   },
   "shackles": {
@@ -2058,7 +2067,9 @@
    "ref": "Widget:Event timer/data.json — voe-eg, segment « Shackles of the Ancients » : decalage calcule depuis la frise",
    "checked": "2026-10-01",
    "verified": true,
-   "rewards": [],
+   "rewards": [
+    "shadowstone_fragment"
+   ],
    "categorie": "Visions of Eternity",
    "acces": {
     "type": "expansion",
@@ -2074,6 +2085,9 @@
    "tip": {
     "fr": "Méta du Jardin de l'éternité (heures impaires UTC) : rassemblement à Pilgrim's Rest dès xx:00, lancement xx:10. 3 phases ~15 min : capturer les 3 chambres de la Forge, réparer les conduits, puis Kela et l'All Seer (~xx:35). Boucle de farm principale de la carte (horaire confirmé wiki).",
     "en": "Eternity's Garden meta (odd UTC hours): gather at Pilgrim's Rest from xx:00, starts xx:10. 3 ~15-min phases: capture the 3 Forge chambers, repair the conduits, then Kela and the All Seer (~xx:35). The map's main farm loop (schedule confirmed via wiki)."
+   },
+   "rewards_refs": {
+    "shadowstone_fragment": "craft_components/shadowstone_fragment.sources (« Shackles of the Ancients en rend 5 au coffre quotidien »)"
    }
   },
   "lw4_istan": {
@@ -2191,6 +2205,12 @@
     "ref": "wiki:Bitterfrost_Frontier — « zone available via Living World Season 3 episode A Crack in the Ice », lu le 03/10/2026",
     "verified": true,
     "checked": "2026-10-03"
+   },
+   "rewards": [
+    "fresh_winterberry"
+   ],
+   "rewards_refs": {
+    "fresh_winterberry": "craft_components/fresh_winterberry.sources (« Nœuds, events et métas — Confins de Givramer »)"
    }
   },
   "eb": {
@@ -2338,6 +2358,12 @@
     "ref": "wiki:Siren's_Landing — « zone available via Living World Season 3 episode One Path Ends », lu le 03/10/2026",
     "verified": true,
     "checked": "2026-10-03"
+   },
+   "rewards": [
+    "ancient_cipher"
+   ],
+   "rewards_refs": {
+    "ancient_cipher": "craft_components/ancient_cipher.sources (« Coffre caché du Reliquaire »)"
    }
   },
   "bf_meta": {
@@ -2361,7 +2387,13 @@
    },
    "ref": "ressources/wiki/bitterfrost_frontier.html (sections Events, Map resources ; cycle jour-nuit)",
    "verified": true,
-   "checked": "2026-10-09"
+   "checked": "2026-10-09",
+   "rewards": [
+    "fresh_winterberry"
+   ],
+   "rewards_refs": {
+    "fresh_winterberry": "craft_components/fresh_winterberry.sources (« Nœuds, events et métas — Confins de Givramer »)"
+   }
   },
   "mistburned": {
    "name": {
@@ -2383,6 +2415,18 @@
     "ref": "wiki:Alliance_Staging_Ground — zone Mistburned Barrens, contenu Janthir Wilds ; guildwars2.com « Repentance Is Now Live » (11/03/2025), lu le 03/10/2026",
     "verified": true,
     "checked": "2026-10-03"
+   },
+   "rewards": [
+    "mursaat_obsidian_chunk",
+    "titan_heatstone",
+    "shard_of_mistburned_barrens",
+    "curious_mursaat_ruin_shard"
+   ],
+   "rewards_refs": {
+    "mursaat_obsidian_chunk": "craft_components/mursaat_obsidian_chunk.sources (Grand Chest de la méta)",
+    "titan_heatstone": "craft_components/titan_heatstone.sources (Grand Chest de la méta)",
+    "shard_of_mistburned_barrens": "craft_components/shard_of_mistburned_barrens.sources (« events, chests, meta »)",
+    "curious_mursaat_ruin_shard": "craft_components/curious_mursaat_ruin_shard.sources (événements des Landes)"
    }
   },
   "adinf_dailies": {
@@ -2398,7 +2442,13 @@
     "fr": "Le timegate central : chaque Fractal Journal = 28 Research Pages, 4 journaux requis. ~3 pages/jour via les dailies recommandées → ~10 jours par collection.",
     "en": "The core timegate: each Fractal Journal = 28 Research Pages, 4 journals required. ~3 pages/day via recommended dailies → ~10 days per collection."
    },
-   "isTimeless": true
+   "isTimeless": true,
+   "rewards": [
+    "fractal_research_page"
+   ],
+   "rewards_refs": {
+    "fractal_research_page": "ressources/wiki/fractal_journal.html (1 page par fractale recommandée quotidienne)"
+   }
   },
   "adinf_cms": {
    "name": {
@@ -2413,7 +2463,13 @@
     "fr": "Chaque Challenge Mote quotidien rapporte +1 Research Page → jusqu'à 6 pages/jour au total, soit ~5 jours par collection au lieu de 10.",
     "en": "Each daily Challenge Mote grants +1 Research Page → up to 6 pages/day total, i.e. ~5 days per collection instead of 10."
    },
-   "isTimeless": true
+   "isTimeless": true,
+   "rewards": [
+    "fractal_research_page"
+   ],
+   "rewards_refs": {
+    "fractal_research_page": "ressources/wiki/fractal_journal.html (1 page par fractale en mode défi)"
+   }
   },
   "adinf_kelvei": {
    "name": {
@@ -3316,11 +3372,13 @@
     "cube_stabilized_dark_energy",
     "klobjarne_geirr",
     "strife_unending",
-    "transcendence"
+    "transcendence",
+    "integrated_fractal_matrix"
    ],
    "qty": {
     "cube_stabilized_dark_energy": 75,
-    "transcendence": 20
+    "transcendence": 20,
+    "integrated_fractal_matrix": 10
    },
    "farmable": true,
    "sources": [
@@ -4931,7 +4989,8 @@
     "mist_pearl",
     "strife_unending",
     "transcendence",
-    "warbringer"
+    "warbringer",
+    "mist_band_route_wvw"
    ],
    "qty": {
     "triumphant_hero__per_piece": 250,
@@ -4940,7 +4999,8 @@
     "mist_enhanced_mithril": 250,
     "gift_of_war": 250,
     "gift_of_war_dedication": 250,
-    "gift_of_conquering": 250
+    "gift_of_conquering": 250,
+    "mist_band_route_wvw": 250
    },
    "farmable": true,
    "sources": [
@@ -5359,22 +5419,14 @@
    "farmable": true,
    "sources": [
     {
-     "type": "pvp_vendor",
-     "npc": "Ascended Armor League Vendor",
-     "map": "Heart of the Mists",
+     "type": "vendor",
      "tip": {
-      "fr": "Achat pour 150 Ascended Shards of Glory + 170 Shards of Glory. Source PvP — meilleure option si vous préférez le PvP au McM.",
-      "en": "Purchase for 150 Ascended Shards of Glory + 170 Shards of Glory. PvP source — best option if you prefer PvP over WvW."
-     }
-    },
-    {
-     "type": "fractals_vendor",
-     "npc": "BUY-2046 PFR",
-     "map": "Mistlock Observatory / Mistlock Sanctuary",
-     "tip": {
-      "fr": "Disponible chez le vendor fractal si tu fais des fractales.",
-      "en": "Available from the fractal vendor if you run fractals."
-     }
+      "fr": "Un seul achat, trois vendeurs au choix : fractales, JcJ ou McM (choix « mode de jeu » de l'onglet Matériaux / Grand Total).",
+      "en": "One purchase, three vendors to pick from: fractals, PvP or WvW (\"game mode\" choice in the Materials / Grand Total tab)."
+     },
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/mist_band_infused.html, Acquisition"
     }
    ],
    "kind": "acquire",
@@ -5440,14 +5492,13 @@
    "apiId": 33,
    "needed_for": [
     "armor_pvp",
-    "mist_band_infused",
     "transcendence",
-    "star_of_glory"
+    "star_of_glory",
+    "mist_band_route_pvp"
    ],
    "qty": {
     "transcendence": 500,
     "the_ascension": 250,
-    "mist_band_infused": 150,
     "ardent_glorious__piece_light_helm": 100,
     "ardent_glorious__piece_heavy_legs": 150,
     "ardent_glorious__piece_medium_chest": 250,
@@ -5466,7 +5517,8 @@
     "ardent_glorious__piece_heavy_chest": 250,
     "ardent_glorious__piece_heavy_gloves": 100,
     "ardent_glorious__piece_heavy_boots": 100,
-    "star_of_glory": 400
+    "star_of_glory": 400,
+    "mist_band_route_pvp": 150
    },
    "farmable": true,
    "sources": [
@@ -5535,18 +5587,18 @@
     "ardent_glorious",
     "gift_of_glory",
     "gift_of_skirmishing",
-    "mist_band_infused",
     "the_ascension",
     "transcendence",
-    "jar_of_distilled_glory"
+    "jar_of_distilled_glory",
+    "mist_band_route_pvp"
    ],
    "qty": {
     "transcendence": 500,
-    "mist_band_infused": 170,
     "gift_of_skirmishing": 250,
     "ardent_glorious__per_piece": 250,
     "gift_of_glory": 250,
-    "jar_of_distilled_glory": 1000
+    "jar_of_distilled_glory": 1000,
+    "mist_band_route_pvp": 170
    },
    "farmable": true,
    "sources": [
@@ -8979,7 +9031,8 @@
    "name": "Fractal Relic",
    "apiId": 7,
    "needed_for": [
-    "gift_of_ascension_fractal"
+    "gift_of_ascension_fractal",
+    "integrated_fractal_matrix"
    ],
    "farmable": true,
    "sources": [
@@ -9003,7 +9056,8 @@
     }
    ],
    "qty": {
-    "gift_of_ascension_fractal": 500
+    "gift_of_ascension_fractal": 500,
+    "integrated_fractal_matrix": 15
    },
    "kind": "acquire",
    "best": "daily_reward",
@@ -9049,33 +9103,39 @@
    "name": "Pristine Fractal Relic",
    "apiId": 24,
    "needed_for": [
-    "mist_band_infused",
-    "transcendence"
+    "transcendence",
+    "mist_band_route_fractals"
    ],
    "farmable": true,
    "sources": [
     {
      "type": "fractals_daily",
-     "tip": {
-      "fr": "1 par fractale T4 quotidienne. Max 4-5/jour via recommandées + quotidiennes T4.",
-      "en": "1 per daily T4 fractal. Max 4-5/day via recommended + T4 dailies."
-     },
      "free_repeatable": true,
-     "cadence": "quotidienne"
+     "cadence": "quotidienne",
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/pristine_fractal_relic.html, Acquisition",
+     "tip": {
+      "fr": "Coffres des succès quotidiens de fractales : 3 par palier quotidien (4 paliers) et 1 par recommandée (3), soit le gros du revenu. Les modes défi en ajoutent.",
+      "en": "Daily fractal achievement chests: 3 per daily tier (4 tiers) and 1 per recommended (3), the bulk of the income. Challenge modes add more."
+     }
     },
     {
      "type": "challenge_mode",
-     "tip": {
-      "fr": "Pristine Relics bonus via les fractales en Challenge Mode.",
-      "en": "Bonus Pristine Relics from Challenge Mode fractals."
-     },
      "free_repeatable": true,
-     "cadence": "hebdomadaire"
+     "cadence": "quotidienne",
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/pristine_fractal_relic.html, Acquisition",
+     "tip": {
+      "fr": "Fractales en mode défi : reliques immaculées en plus des dailies.",
+      "en": "Challenge-mode fractals: Pristine Relics on top of the dailies."
+     }
     }
    ],
    "qty": {
     "transcendence": 100,
-    "mist_band_infused": 100
+    "mist_band_route_fractals": 100
    },
    "kind": "acquire",
    "best": "fractals_daily",
@@ -9130,7 +9190,7 @@
    },
    "verified": true,
    "checked": "2026-08-22",
-   "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+   "ref": "ressources/wiki/pristine_fractal_relic.html"
   },
   "fractal_research_page": {
    "name": "Fractal Research Page",
@@ -11492,7 +11552,6 @@
     "strife_unending": 3000,
     "mist_enhanced_mithril": 750,
     "mist_pearl": 750,
-    "mist_band_infused": 350,
     "commanders_wings_of_war": 875,
     "recruits_wings_of_war": 350,
     "soldiers_wings_of_war": 525,
@@ -11516,7 +11575,8 @@
     "triumphant_hero__piece_heavy_gloves": 175,
     "triumphant_hero__piece_heavy_legs": 260,
     "essence_of_annihilation": 350,
-    "legendary_war_insight": 1095
+    "legendary_war_insight": 1095,
+    "mist_band_route_wvw": 350
    },
    "farmable": true,
    "sources": [
@@ -11574,13 +11634,13 @@
     "commanders_wings_of_war",
     "essence_of_annihilation",
     "generals_wings_of_war",
-    "mist_band_infused",
     "mist_enhanced_mithril",
     "mist_pearl",
     "recruits_wings_of_war",
     "soldiers_wings_of_war",
     "triumphant_hero",
-    "legendary_war_insight"
+    "legendary_war_insight",
+    "mist_band_route_wvw"
    ],
    "timegate": true,
    "timegate_note": {
@@ -32468,6 +32528,125 @@
    "verified": true,
    "checked": "2026-10-20",
    "ref": "ressources/wiki/fractal_journal.html"
+  },
+  "integrated_fractal_matrix": {
+   "name": "Integrated Fractal Matrix",
+   "apiId": 79230,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "mist_band_route_fractals": 2
+   },
+   "needed_for": [
+    "mist_band_route_fractals"
+   ],
+   "best": "vendor",
+   "sources": [
+    {
+     "type": "vendor",
+     "npc": "BLING-9009 / INFUZ-5959",
+     "map": "Mistlock Observatory",
+     "tip": {
+      "fr": "10 Stabilizing Matrices + 15 reliques fractales, à l'Observatoire de Gardebrume.",
+      "en": "10 Stabilizing Matrices + 15 Fractal Relics, in the Mistlock Observatory."
+     },
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/integrated_fractal_matrix.html, Sold by"
+    },
+    {
+     "type": "fractals",
+     "free_repeatable": true,
+     "tip": {
+      "fr": "Récompense des fractales en mode défi (Kinfall, Lonely Tower, Nightmare, Shattered Observatory, Silent Surf, Sunqua Peak).",
+      "en": "Reward from challenge-mode fractals (Kinfall, Lonely Tower, Nightmare, Shattered Observatory, Silent Surf, Sunqua Peak)."
+     },
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/integrated_fractal_matrix.html, Rewarded by"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/integrated_fractal_matrix.html"
+  },
+  "mist_band_route_fractals": {
+   "name": {
+    "fr": "Fractales (BUY-2046 PFR)",
+    "en": "Fractals (BUY-2046 PFR)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Band_(Infused)",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "BUY-2046 PFR, Observatoire de Gardebrume : 100 reliques immaculées + 2 Integrated Fractal Matrix.",
+      "en": "BUY-2046 PFR, Mistlock Observatory: 100 Pristine Fractal Relics + 2 Integrated Fractal Matrix."
+     },
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/mist_band_infused.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/mist_band_infused.html"
+  },
+  "mist_band_route_pvp": {
+   "name": {
+    "fr": "JcJ (vendeurs de ligue)",
+    "en": "PvP (league vendors)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Band_(Infused)",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Ascended Armor League Vendor / League Armor Vendor (Hall of Memories) : 150 Ascended Shards of Glory + 170 Shards of Glory. Les Ascended Shards viennent des paliers finaux des pistes de ligue.",
+      "en": "Ascended Armor League Vendor / League Armor Vendor (Hall of Memories): 150 Ascended Shards of Glory + 170 Shards of Glory. Ascended Shards come from the league tracks' final tiers."
+     },
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/mist_band_infused.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/mist_band_infused.html"
+  },
+  "mist_band_route_wvw": {
+   "name": {
+    "fr": "McM (Skirmish Supervisor)",
+    "en": "WvW (Skirmish Supervisor)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Band_(Infused)",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Skirmish Supervisor (McM), Lionguard (Arche du Lion) ou Mercenary (Armistice Bastion) : 250 Memory of Battle + 350 tickets d'escarmouche — les tickets sont déjà le facteur limitant de Conflux.",
+      "en": "Skirmish Supervisor (WvW), Lionguard (Lion's Arch) or Mercenary (Armistice Bastion): 250 Memory of Battle + 350 Skirmish Claim Tickets — tickets are already Conflux's bottleneck."
+     },
+     "verified": true,
+     "checked": "2026-10-20",
+     "ref": "ressources/wiki/mist_band_infused.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-10-20",
+   "ref": "ressources/wiki/mist_band_infused.html"
   }
  },
  "enchaînements_recommandés": {
@@ -78364,6 +78543,10 @@
    "is_trophy_matrix": {
     "fr": "Vrai pour le seul selecteur t6, qui n'est pas un legendaire mais une projection : la matrice des trophees fins, chiffree sur la selection propre du joueur. Il ne porte donc aucune exigence materielle, et has_material_requirement s'eteint pour lui — sans cette regle, l'onglet Composants se fermerait et la matrice deviendrait inatteignable.",
     "en": "True for the t6 selector alone, which is not a legendary but a projection: the fine trophy matrix, computed from the player's own selection. It carries no material requirement, so has_material_requirement goes false for it - without this rule the Components tab would close and the matrix become unreachable."
+   },
+   "has_metas": {
+    "fr": "Vrai si au moins une meta est rattachee au legendaire : une meta dont une ressource (`rewards`) reste a farmer pour lui (deduite du moteur, collections faites deduites), ou une meta sans ressource declaree dans sa liste `metas`.",
+    "en": "True if at least one meta is tied to the legendary: a meta whose resource (`rewards`) is still to farm for it (derived from the engine, completed collections deducted), or a resource-less meta listed in its `metas`."
    }
   },
   "order": [
@@ -78415,8 +78598,7 @@
     "when": {
      "any_of": [
       {
-       "count": "metas",
-       "min": 1
+       "computed": "has_metas"
       },
       {
        "count": "wvwActivities",
@@ -80798,6 +80980,29 @@
    "ref": "pages wiki Tribute to X (lot du 09/09/2026), 6 lignes de vendeurs par page, meme quantite pour les 6 monnaies",
    "verified": true,
    "checked": "2026-09-09"
+  },
+  "mist_band_route": {
+   "qty": 1,
+   "options": [
+    "mist_band_route_fractals",
+    "mist_band_route_pvp",
+    "mist_band_route_wvw"
+   ],
+   "default": "mist_band_route_fractals",
+   "targets": [
+    "mist_band_infused"
+   ],
+   "label": {
+    "fr": "Mist Band (Infused) — un seul achat, selon ton mode de jeu",
+    "en": "Mist Band (Infused) — one purchase, by game mode"
+   },
+   "note": {
+    "fr": "Trois vendeurs vendent la même bague. Fractales par défaut (joueur PvE) ; le JcJ ne touche pas aux tickets McM ; le McM ajoute 350 tickets à la ressource qui limite déjà Conflux.",
+    "en": "Three vendors sell the same ring. Fractals by default (PvE player); PvP leaves WvW tickets alone; WvW adds 350 tickets to the resource already limiting Conflux."
+   },
+   "ref": "ressources/wiki/mist_band_infused.html, Acquisition (trois vendeurs, trois prix)",
+   "verified": true,
+   "checked": "2026-10-20"
   }
  }
 }

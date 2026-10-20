@@ -1075,7 +1075,7 @@ const LEGENDARIES = {
                  en: "The same six weapon recipes: 30 laurels in total, once per account." } },
     ],
     raidTabLabel: { fr: "🔭 Visions of…", en: "🔭 Visions of…" },
-    metas: ["vb", "td", "ab", "ds", "co", "er", "de", "dv", "di", "sw", "am", "sp", "nk", "ew", "de2", "conv", "mb", "bn", "lw4_istan", "lw4_dragonfall"],
+    metas: [],
     bounties: [
       { id: "bt_co", map: { fr: "Oasis de cristal", en: "Crystal Oasis" }, target: "Corrupted Facet", icon: "BT",
         waypoint: "Destiny's Gorge Waypoint", wpCode: "[&BLsKAAA=]",
@@ -1167,7 +1167,7 @@ const LEGENDARIES = {
         { icon: "⏳", label: { fr: "Jours (plafond quotidien)", en: "Days (daily cap)" }, derivedFrom: "druid_runestone", rate: 1 },
       ],
     },
-    metas: ["bf", "eb", "dm", "ld", "sl", "bf_meta"],
+    metas: [],
     bounties: [],
   },
 
@@ -1182,7 +1182,7 @@ const LEGENDARIES = {
     description: { fr: "Anneau légendaire — exclusif Monde contre Monde", en: "Legendary Ring — World vs World exclusive" },
     resetType: "weekly",
     currencies: [
-      { id: "tickets", name: "Skirmish Claim Tickets", required: 2200, icon: "SK", apiId: 26 },
+      { id: "tickets", name: "Skirmish Claim Tickets", required: 1850, icon: "SK", apiId: 26 }, // v264 : Mist Band par la voie fractales (choix « mode de jeu ») ; McM = 2 200
       { id: "memory", name: "Memory of Battle", required: 1750, icon: "MB", apiId: 71581 },
       { id: "castoran", name: "Testimony of Castoran Heroics", required: 750, icon: "CH", apiId: 82 },
       { id: "badges", name: "Badge of Honor", required: 4000, icon: "BH", apiId: 15 },
@@ -1613,7 +1613,7 @@ const LEGENDARIES = {
       { id: "notes",       name: "Research Note",            icon: "RN", apiId: 61, comp: "research_note" }, // Gift of Research : 500 Hydrocatalytic a 5 notes (v408)
     ],
     currencies: [],
-    metas: ["sw", "am", "zak", "mb", "conv"],
+    metas: [],
     bounties: [],
   },
 
@@ -1691,7 +1691,7 @@ const LEGENDARIES = {
       { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
       { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
     ],
-    metas: ["hammerhart", "weald"],
+    metas: [],
     bounties: [],
   },
   stella_radians: {
@@ -1719,7 +1719,7 @@ const LEGENDARIES = {
         aside: { fr: "50 000 pour les 200 Seer Runestones (250 chacune) et 2 500 pour les réactifs hydrocatalytiques du Gift of Research — tableau du wiki.",
                  en: "50,000 for the 200 Seer Runestones (250 each) and 2,500 for the Gift of Research's hydrocatalytic reagents — wiki table." } },
     ],
-    metas: ["shackles"],
+    metas: [],
     bounties: [],
   },
   orrax_manifested: {
@@ -1745,7 +1745,7 @@ const LEGENDARIES = {
       { id: "heatstone", name: "Titan Heatstone", required: 750, icon: "TH", apiId: 102655, mapNote: "Mistburned Barrens" },
       { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 725, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },
     ],
-    metas: ["bn", "mistburned"],
+    metas: [],
     bounties: [],
   },
   ad_infinitum: {
@@ -1782,7 +1782,7 @@ const LEGENDARIES = {
           detail: { fr: "Prototype Fractal Capacitor chez BUY-4373 · ⚠ ne jamais le recycler, sa version améliorée sert à la collection II", en: "Prototype Fractal Capacitor from BUY-4373 · ⚠ never salvage it, its upgraded version is needed for collection II" } },
       ],
     },
-    metas: ["adinf_dailies", "adinf_cms", "adinf_kelvei"],
+    metas: ["adinf_kelvei"],
     bounties: [],
   },
   strife_unending: {
@@ -1894,6 +1894,11 @@ function getCommonKey() { return `gw2_common_mats`; }
 
 function getNextMetaOccurrence(meta, now) {
   if (meta.isTimeless) return null;
+  // v264 : une meta sans horaire connu (offsetUTC / intervalMin absents :
+  // Gyala Delve, Inner Nayos) n'a pas de prochaine occurrence. Sans ce garde,
+  // `null + null` restait 0 et la boucle ne finissait jamais — elles
+  // n'apparaissaient dans aucune liste avant la deduction des metas.
+  if (typeof meta.offsetUTC !== "number" || !(meta.intervalMin > 0)) return null;
   const todayUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   const curMin = now.getUTCHours() * 60 + now.getUTCMinutes();
   let next = meta.offsetUTC;
@@ -2751,6 +2756,7 @@ const SANS_GRAND_TOTAL = new Set(["t6"]);
 // l'état, et le dépliement d'une ligne montre l'action : quel gift est
 // forgeable ce soir.
 function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets, collections, armory }) {
+  useAltVersion();
   const [open, setOpen] = useState(null);
   const [picker, setPicker] = useState(false);
   const [notes, setNotes] = useState(false);
@@ -3041,6 +3047,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets, collections, a
 }
 
 function CadencesTab({ stocks = {}, acctGates = null, collections, armory }) {
+  useAltVersion();
   const t = useT();
   // La v88 écrivait selected[undefined] (identifiant mal lu) : cette clé fantôme
   // survit dans localStorage, compte pour 1 et ne produit aucun calcul.
@@ -3460,6 +3467,29 @@ function ArmorWeightPicker({ armorId }) {
 // l'instantane persiste plutot que de faire descendre l'etat par props sur
 // plusieurs niveaux — un choix fait dans un onglet est donc vu par l'autre des
 // son prochain montage (changement d'onglet), sans etat partage a cabler.
+// v264 : un choix fait dans le picker recalcule les totaux affiches tout de
+// suite (evenement global), au lieu d'attendre le prochain montage d'onglet.
+function useAltVersion() {
+  const [v, setV] = useState(0);
+  useEffect(() => {
+    const f = () => setV(x => x + 1);
+    window.addEventListener("gw2-alt-change", f);
+    return () => window.removeEventListener("gw2-alt-change", f);
+  }, []);
+  return v;
+}
+
+// Ce que coute une option : ses aretes enfants dans les sources (v264). Une
+// voie d'achat (Mist Band : fractales / JcJ / McM) montre son prix sous le
+// bouton ; une option sans enfant ou trop riche (un don de maitrise) rien.
+function coutOption(o) {
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const parts = Object.entries(cc)
+    .filter(([, c]) => typeof c?.qty?.[o] === "number")
+    .map(([cid, c]) => `${c.qty[o].toLocaleString("fr-FR")} ${L(c.name) ?? cid}`);
+  return parts.length && parts.length <= 4 ? parts.join(" + ") : null;
+}
+
 function AltGroupsPicker({ selectedIds = [], totals = {} }) {
   const cc = SOURCES_DB?.craft_components ?? {};
   const C = "#e2c97e", D = "rgba(226,201,126,";
@@ -3469,6 +3499,7 @@ function AltGroupsPicker({ selectedIds = [], totals = {} }) {
   });
   useEffect(() => {
     try { localStorage.setItem(ALT_KEY, JSON.stringify(altSel)); } catch (_) {}
+    try { window.dispatchEvent(new Event("gw2-alt-change")); } catch (_) {}
   }, [altSel]);
 
   const groupes = Object.entries(ALT_GROUPS)
@@ -3522,6 +3553,9 @@ function AltGroupsPicker({ selectedIds = [], totals = {} }) {
                       color: pick === o ? C : D + "0.5)", transition: "all 0.15s"
                     }}>
                       {L(cc[o]?.name) ?? o}
+                      {coutOption(o) ? (
+                        <span style={{ display: "block", fontSize: 9, opacity: 0.75 }}>{coutOption(o)}</span>
+                      ) : null}
                     </button>
                   ))}
                 </div>
@@ -3541,6 +3575,7 @@ function AltGroupsPicker({ selectedIds = [], totals = {} }) {
 }
 
 function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onToggleManual, stocks = {}, onSetStockManual, collections, armory }) {
+  useAltVersion();
   const t = useT();
   const [selected, setSelected] = useState({});        // legId → bool
   const [collapsed, setCollapsed] = useState({});      // groupId → bool
@@ -4051,6 +4086,7 @@ export default function GW2LegendaryTracker() {
   const t = useCallback((key, vars) => translate(key, lang, vars), [lang]);
   const [now, setNow] = useState(new Date());
   const [selectedLeg, setSelectedLeg] = useState("vision");
+  const altVersion = useAltVersion();
   const [activeTab, setActiveTab] = useState("metas");
   const [selTrinket, setSelTrinket] = useState(() => {
     try {
@@ -5448,7 +5484,24 @@ export default function GW2LegendaryTracker() {
     if (extInconnues && a?.type === "expansion") return true;
     return metaAccessible(id, extPossedees, accesManuel.lw);
   };
-  const metasLeg = isGrandTotal ? [] : (leg.metas ?? []).map(metaDuCatalogue).filter(Boolean);
+  // v264 : les metas d'un legendaire sont DEDUITES de ses besoins — toute
+  // meta dont une ressource (`rewards`) reste a farmer pour lui, collections
+  // faites deduites. `leg.metas` ne garde que ce qu'aucune ressource ne relie
+  // (deblocage de collection, PNJ). Une meta dont la ressource n'est plus
+  // necessaire disparait d'elle-meme.
+  const metasBesoins = React.useMemo(() => {
+    if (isGrandTotal || !leg) return null;
+    const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
+    if (!(SOURCES_DB?.legendaries ?? {})[cible]) return null;
+    try {
+      return computeGrandTotal([cible], { ...(allCollections ?? {}), ...(auroraCollections ?? {}), ...(visionCollections ?? {}) })?.totals ?? null;
+    } catch (_) { return null; }
+  }, [selectedLeg, isGrandTotal, allCollections, auroraCollections, visionCollections, altVersion]);
+  const metasDeduites = metasBesoins
+    ? Object.keys(SOURCES_DB?.meta_events ?? {}).filter(id =>
+        (SOURCES_DB.meta_events[id]?.rewards ?? []).some(c => (metasBesoins[c] ?? 0) > 0))
+    : [];
+  const metasLeg = isGrandTotal ? [] : [...new Set([...metasDeduites, ...(leg.metas ?? [])])].map(metaDuCatalogue).filter(Boolean);
   const metasMasquees = metasLeg.filter(m => !accessible(m.id));
   const metasVisibles = metasLeg.filter(m => accessible(m.id));
   const allTimedMetas = metasVisibles.filter(m => !m.isTimeless);
@@ -5598,7 +5651,7 @@ export default function GW2LegendaryTracker() {
     const pieces = ARMOR_IDS.includes(cible) ? { [cible]: obsRemainingCount } : undefined;
     try { return computeGrandTotal([cible], toutesCollections, pieces)?.totals ?? null; }
     catch (_) { return null; }
-  }, [selectedLeg, toutesCollections, obsRemainingCount]);
+  }, [selectedLeg, toutesCollections, obsRemainingCount, altVersion]);
 
   const wpnCurrencies = React.useMemo(() => {
     if (!isWeapons || wpnLegIds.length === 0) return [];
@@ -5798,6 +5851,8 @@ export default function GW2LegendaryTracker() {
       // t6 n'est pas un legendaire mais une projection : il ne porte aucune
       // exigence materielle, donc has_material_requirement s'eteint pour lui.
       if (rule === "is_trophy_matrix") return selectedLeg === "t6";
+      // v264 : metas deduites des besoins (+ celles sans ressource, listees).
+      if (rule === "has_metas") return metasLeg.length > 0;
       if (rule !== "has_material_requirement") return false;
       const cc = DB.craft_components ?? {};
       for (const comp of Object.values(cc)) {
@@ -6140,7 +6195,7 @@ export default function GW2LegendaryTracker() {
       {/* ══════════════════════════════════ */}
       {/* ONGLET METAS (Vision / Aurora)    */}
       {/* ══════════════════════════════════ */}
-      {activeTab === "activities" && (leg?.metas?.length ?? 0) > 0 && (
+      {activeTab === "activities" && metasLeg.length > 0 && (
         <div>
           {(() => {
             const { ext, lw } = accesConnus();

@@ -1319,6 +1319,8 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `lessons_in_arbology.html` | Lessons in Arbology | article complet | 2026-10-20 |
 | `lessons_in_metallurgy.html` | Lessons in Metallurgy | article complet | 2026-10-20 |
 | `mithril_plated_dowel.html` | Mithril Plated Dowel | article complet | 2026-10-19 |
+| `integrated_fractal_matrix.html` | Integrated Fractal Matrix | article complet | 2026-10-20 |
+| `pristine_fractal_relic.html` | Pristine Fractal Relic | article complet | 2026-10-20 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
