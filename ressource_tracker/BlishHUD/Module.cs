@@ -124,24 +124,52 @@ namespace GW2_NodeTracker
         /// de la souris se fait dans Module.Update (UpdateSelectionIndicator) :
         /// une fois le bouton enfoncé, le curseur sort vite du texte, et un
         /// suivi limité aux événements du contrôle lâcherait la prise.
+        ///
+        /// La fin du glisser vient de l'événement GLOBAL de relâchement
+        /// (GameService.Input.Mouse.LeftMouseButtonReleased), pas de
+        /// Mouse.State : l'entrée de Blish passe par des hooks, et l'état
+        /// XNA lisait « relâché » dès la première image -- le glisser
+        /// s'arrêtait avant d'avoir commencé (constaté le 21/10/2026).
         /// </summary>
         private class DraggableLabel : Label
         {
+            private static readonly Logger DragLogger = Logger.GetLogger<DraggableLabel>();
+
             public bool Dragging { get; private set; }
             public Point GrabOffset { get; private set; }
 
-            // Par défaut un Label laisse passer la souris au jeu : il faut
-            // capturer pour recevoir le clic (et ne pas cliquer dans GW2).
+            /// <summary>Levé au relâchement, avec la position finale.</summary>
+            public event Action<Point> DragEnded;
+
+            public DraggableLabel()
+            {
+                GameService.Input.Mouse.LeftMouseButtonReleased += OnGlobalLeftReleased;
+            }
+
+            // Capturer la souris : recevoir le clic, et ne pas cliquer dans GW2.
             protected override CaptureType CapturesInput() => CaptureType.Mouse;
 
             protected override void OnLeftMouseButtonPressed(Blish_HUD.Input.MouseEventArgs e)
             {
                 Dragging = true;
                 GrabOffset = GameService.Input.Mouse.Position - Location;
+                DragLogger.Debug("Indicateur saisi en {0}, decalage {1}.", Location, GrabOffset);
                 base.OnLeftMouseButtonPressed(e);
             }
 
-            public void EndDrag() => Dragging = false;
+            private void OnGlobalLeftReleased(object sender, Blish_HUD.Input.MouseEventArgs e)
+            {
+                if (!Dragging) return;
+                Dragging = false;
+                DragLogger.Debug("Indicateur lache en {0}.", Location);
+                DragEnded?.Invoke(Location);
+            }
+
+            protected override void DisposeControl()
+            {
+                GameService.Input.Mouse.LeftMouseButtonReleased -= OnGlobalLeftReleased;
+                base.DisposeControl();
+            }
         }
         private bool _showingFullList = false;
         private readonly System.Collections.Concurrent.ConcurrentQueue<string> _pendingNotifications
@@ -1021,6 +1049,11 @@ namespace GW2_NodeTracker
                     TextColor = Color.White,
                     BasicTooltipText = "Type appliqué par la capture et la correction -- glisser pour déplacer",
                 };
+                _selectionIndicator.DragEnded += pos =>
+                {
+                    _indicatorX.Value = pos.X;
+                    _indicatorY.Value = pos.Y;
+                };
             }
 
             string text = _selectedType.HasValue
@@ -1039,16 +1072,6 @@ namespace GW2_NodeTracker
                     MathHelper.Clamp(target.X, 0, Math.Max(0, screen.Width - _selectionIndicator.Width)),
                     MathHelper.Clamp(target.Y, 0, Math.Max(0, screen.Height - _selectionIndicator.Height)));
                 if (_selectionIndicator.Location != target) _selectionIndicator.Location = target;
-
-                // Fin de glisser lue sur l'état du bouton, pas sur un
-                // événement du contrôle : le relâchement a souvent lieu
-                // hors du texte.
-                if (GameService.Input.Mouse.State.LeftButton == ButtonState.Released)
-                {
-                    _selectionIndicator.EndDrag();
-                    _indicatorX.Value = target.X;
-                    _indicatorY.Value = target.Y;
-                }
             }
             else
             {
