@@ -82,6 +82,9 @@ namespace GW2_NodeTracker
         private SettingEntry<float> _detourFactor;
         private SettingEntry<string> _tracesFilePath;
         private SettingEntry<string> _routesFilePath;
+        private SettingEntry<bool> _showSelectionIndicator;
+        private SettingEntry<int> _indicatorX;
+        private SettingEntry<int> _indicatorY;
         #endregion
 
         private List<GatheredNode> _nodes = new List<GatheredNode>();
@@ -110,6 +113,36 @@ namespace GW2_NodeTracker
         private DateTime _pendingDeleteAt = DateTime.MinValue;
 
         private Panel _selectionPanel;
+
+        // Rappel permanent du type sélectionné, indépendant du panneau :
+        // la correction (Ctrl+Alt+C) applique ce type sans le montrer, et
+        // il fallait rouvrir la liste pour s'en souvenir.
+        private DraggableLabel _selectionIndicator;
+
+        /// <summary>
+        /// Label qu'on peut saisir au clic gauche et faire glisser. Le suivi
+        /// de la souris se fait dans Module.Update (UpdateSelectionIndicator) :
+        /// une fois le bouton enfoncé, le curseur sort vite du texte, et un
+        /// suivi limité aux événements du contrôle lâcherait la prise.
+        /// </summary>
+        private class DraggableLabel : Label
+        {
+            public bool Dragging { get; private set; }
+            public Point GrabOffset { get; private set; }
+
+            // Par défaut un Label laisse passer la souris au jeu : il faut
+            // capturer pour recevoir le clic (et ne pas cliquer dans GW2).
+            protected override CaptureType CapturesInput() => CaptureType.Mouse;
+
+            protected override void OnLeftMouseButtonPressed(Blish_HUD.Input.MouseEventArgs e)
+            {
+                Dragging = true;
+                GrabOffset = GameService.Input.Mouse.Position - Location;
+                base.OnLeftMouseButtonPressed(e);
+            }
+
+            public void EndDrag() => Dragging = false;
+        }
         private bool _showingFullList = false;
         private readonly System.Collections.Concurrent.ConcurrentQueue<string> _pendingNotifications
             = new System.Collections.Concurrent.ConcurrentQueue<string>();
@@ -194,6 +227,26 @@ namespace GW2_NodeTracker
                 true,
                 () => "Réétiqueter au lieu d'ajouter (végétaux)",
                 () => "À la capture, si un node végétal existe déjà dans le rayon, le réétiqueter au lieu d'en créer un second. Désactive-le si tu préfères piloter les corrections uniquement avec la touche dédiée.");
+
+            _showSelectionIndicator = settings.DefineSetting(
+                "ShowSelectionIndicator",
+                true,
+                () => "Afficher la sélection active",
+                () => "Affiche en permanence le type sélectionné à l'écran, même liste fermée -- c'est ce type que la capture et la correction appliquent.");
+
+            _indicatorX = settings.DefineSetting(
+                "SelectionIndicatorX",
+                420,
+                () => "Sélection active : position X (px)",
+                () => "Distance au bord gauche de l'écran.");
+            _indicatorX.SetRange(0, 3840);
+
+            _indicatorY = settings.DefineSetting(
+                "SelectionIndicatorY",
+                8,
+                () => "Sélection active : position Y (px)",
+                () => "Distance au bord haut de l'écran.");
+            _indicatorY.SetRange(0, 2160);
 
             _nodesFilePath = settings.DefineSetting(
                 "NodesFilePath",
@@ -352,6 +405,7 @@ namespace GW2_NodeTracker
             await LoadNodesAsync();
             _traces.Load(CleanPath(_tracesFilePath.Value));
             _routes = RouteBuilder.Load(CleanPath(_routesFilePath.Value));
+            PurgeCrossingLegsOnLoad();
             _nodesLoaded = true; // débloque Update() -- évite la course avec le premier changement de map détecté
 
             // Passe de précaution au démarrage : régénère le .taco et va
@@ -359,6 +413,29 @@ namespace GW2_NodeTracker
             // capture n'a lieu cette session -- le .taco doit refléter le
             // JSON existant dès le chargement, pas seulement après un F12.
             RequestTacoRegeneration();
+        }
+
+        /// <summary>
+        /// Nettoyage des tronçons hérités d'avant le filtre « passe par un
+        /// autre arrêt ». Idempotent : sur des routes saines, ne fait rien.
+        /// La passe d'affinage suivante reprend les tronçons purgés avec le
+        /// filtre, donc ceux que les traces couvrent correctement
+        /// redeviennent verts d'eux-mêmes.
+        /// </summary>
+        private void PurgeCrossingLegsOnLoad()
+        {
+            int purged = 0, touchedRoutes = 0;
+            foreach (var route in _routes)
+            {
+                int n = RouteBuilder.PurgeCrossingLegs(route, _routeSnapRadius.Value);
+                if (n > 0) { purged += n; touchedRoutes++; }
+            }
+
+            if (purged == 0) return;
+
+            SaveRoutes();
+            Logger.Info("{0} troncon(s) traversant un autre arret remis en ligne droite ({1} route(s)).", purged, touchedRoutes);
+            _pendingNotifications.Enqueue($"🧭 {purged} troncon(s) faux remis en ligne droite -- reaffinage a la prochaine passe");
         }
 
         protected override void OnModuleLoaded(EventArgs e)
@@ -384,6 +461,7 @@ namespace GW2_NodeTracker
                 _traces.CutSegment(); // on ne relie jamais deux maps
             }
 
+            UpdateSelectionIndicator();
             UpdatePathCorrection(gameTime, currentMapId);
             UpdateRefineTimer(gameTime, currentMapId);
             UpdateTacoDebounce(gameTime);
@@ -492,6 +570,9 @@ namespace GW2_NodeTracker
 
             _selectionPanel?.Dispose();
             _selectionPanel = null;
+
+            _selectionIndicator?.Dispose();
+            _selectionIndicator = null;
         }
 
         // -------------------------------------------------------------
@@ -882,10 +963,11 @@ namespace GW2_NodeTracker
                 }
 
                 string tag = type.Rand ? " [variable]" : "";
+                bool isSelected = _selectedType.HasValue && _selectedType.Value.Slug == type.Slug;
 
                 var button = new StandardButton
                 {
-                    Text = $"{type.Label}{tag}",
+                    Text = $"{(isSelected ? "▶ " : "")}{type.Label}{tag}",
                     Size = new Point(buttonWidth, ButtonHeight - 2),
                     Location = new Point(10, row * ButtonHeight + 5),
                     Parent = _selectionPanel,
@@ -908,10 +990,82 @@ namespace GW2_NodeTracker
             }
         }
 
+        /// <summary>
+        /// Indicateur de sélection : créé à la première passe, puis simplement
+        /// resynchronisé à chaque Update (texte, position, visibilité). Une
+        /// seule source -- _selectedType -- et aucun appel à semer après
+        /// chaque changement de sélection : le cycle (T), le clic dans la
+        /// liste, le changement de map et le repli après capture sont tous
+        /// couverts sans qu'on ait à y penser.
+        /// </summary>
+        private void UpdateSelectionIndicator()
+        {
+            bool wanted = _showSelectionIndicator.Value
+                          && GameService.GameIntegration.Gw2Instance.IsInGame;
+
+            if (!wanted)
+            {
+                if (_selectionIndicator != null) _selectionIndicator.Visible = false;
+                return;
+            }
+
+            if (_selectionIndicator == null)
+            {
+                _selectionIndicator = new DraggableLabel
+                {
+                    Parent = GameService.Graphics.SpriteScreen,
+                    AutoSizeWidth = true,
+                    AutoSizeHeight = true,
+                    ShowShadow = true,
+                    StrokeText = true,
+                    TextColor = Color.White,
+                    BasicTooltipText = "Type appliqué par la capture et la correction -- glisser pour déplacer",
+                };
+            }
+
+            string text = _selectedType.HasValue
+                ? $"Sélection : {_selectedType.Value.Label}{(_selectedType.Value.Rand ? " [variable]" : "")}  ({_selectedType.Value.Group})"
+                : "Sélection : aucune";
+
+            if (_selectionIndicator.Text != text) _selectionIndicator.Text = text;
+
+            if (_selectionIndicator.Dragging)
+            {
+                var screen = GameService.Graphics.SpriteScreen;
+                var target = GameService.Input.Mouse.Position - _selectionIndicator.GrabOffset;
+                // Borné à l'écran : un texte lâché hors champ serait
+                // irrécupérable autrement que par les réglages.
+                target = new Point(
+                    MathHelper.Clamp(target.X, 0, Math.Max(0, screen.Width - _selectionIndicator.Width)),
+                    MathHelper.Clamp(target.Y, 0, Math.Max(0, screen.Height - _selectionIndicator.Height)));
+                if (_selectionIndicator.Location != target) _selectionIndicator.Location = target;
+
+                // Fin de glisser lue sur l'état du bouton, pas sur un
+                // événement du contrôle : le relâchement a souvent lieu
+                // hors du texte.
+                if (GameService.Input.Mouse.State.LeftButton == ButtonState.Released)
+                {
+                    _selectionIndicator.EndDrag();
+                    _indicatorX.Value = target.X;
+                    _indicatorY.Value = target.Y;
+                }
+            }
+            else
+            {
+                var location = new Point(_indicatorX.Value, _indicatorY.Value);
+                if (_selectionIndicator.Location != location) _selectionIndicator.Location = location;
+            }
+
+            if (!_selectionIndicator.Visible) _selectionIndicator.Visible = true;
+        }
+
         private void OnTogglePanelKeyActivated(object sender, EventArgs e)
         {
-            if (_selectionPanel == null) RebuildSelectionPanel();
-            _selectionPanel.Visible = !_selectionPanel.Visible;
+            bool show = _selectionPanel == null || !_selectionPanel.Visible;
+            // Reconstruit à l'ouverture : le marqueur ▶ suit la sélection
+            // changée entre-temps au cycle (T) ou par la correction.
+            if (show) RebuildSelectionPanel();
+            _selectionPanel.Visible = show;
         }
 
         private void OnForceIconRefreshKeyActivated(object sender, EventArgs e)
@@ -1297,7 +1451,7 @@ namespace GW2_NodeTracker
             // Relevé AVANT de jeter les anciennes routes : leurs tronçons
             // vérifiés portent les seules longueurs réelles qu'on connaisse,
             // et c'est sur elles que le nouvel ordre va se calculer.
-            var costs = RouteBuilder.CollectEdgeCosts(_routes.Where(r => r.MapId == mapId));
+            var costs = RouteBuilder.CollectEdgeCosts(_routes.Where(r => r.MapId == mapId), _routeSnapRadius.Value);
 
             _routes.RemoveAll(r => r.MapId == mapId);
 

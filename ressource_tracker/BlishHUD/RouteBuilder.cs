@@ -1,4 +1,4 @@
-using Blish_HUD;
+﻿using Blish_HUD;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -107,8 +107,15 @@ namespace GW2_NodeTracker
             }
         }
 
-        /// <summary>Relève les coûts réels dans les tronçons vérifiés des routes existantes.</summary>
-        public static EdgeCosts CollectEdgeCosts(IEnumerable<Route> routes)
+        /// <summary>
+        /// Relève les coûts réels dans les tronçons vérifiés des routes existantes.
+        ///
+        /// Un tronçon dont le tracé passe par un autre arrêt n'est pas relevé :
+        /// sa longueur est celle de A → C → B, pas de A → B. La retenir faisait
+        /// paraître le couple (A, B) bien plus cher qu'il n'est, et le recalcul
+        /// suivant l'évitait au profit de couples jamais parcourus.
+        /// </summary>
+        public static EdgeCosts CollectEdgeCosts(IEnumerable<Route> routes, double snapRadius)
         {
             var costs = new EdgeCosts();
             if (routes == null) return costs;
@@ -123,6 +130,7 @@ namespace GW2_NodeTracker
 
                     var a = route.Stops[i];
                     var b = route.Stops[(i + 1) % route.Stops.Count];
+                    if (CrossesOtherStop(leg.Points, a, b, OtherStops(route, i), snapRadius)) continue;
                     costs.Add(a, b, leg.Length());
                 }
             }
@@ -370,7 +378,8 @@ namespace GW2_NodeTracker
                 var to = route.Stops[(i + 1) % route.Stops.Count];
                 var leg = route.Legs[i];
 
-                var match = traces.FindLeg(route.MapId, from, to, snapRadius, detourFactor);
+                var match = traces.FindLeg(route.MapId, from, to, snapRadius, detourFactor,
+                                           OtherStops(route, i));
                 if (match == null) continue;
 
                 // Le filigrane s'applique que le tronçon soit vérifié ou
@@ -406,6 +415,82 @@ namespace GW2_NodeTracker
             }
 
             return (added, refreshed);
+        }
+
+        // -------------------------------------------------------------
+        // Tronçons qui traversent d'autres arrêts
+        // -------------------------------------------------------------
+
+        /// <summary>Les arrêts de la route autres que les deux extrémités du tronçon legIndex.</summary>
+        public static List<RoutePoint> OtherStops(Route route, int legIndex)
+        {
+            int n = route.Stops.Count;
+            int a = legIndex, b = (legIndex + 1) % n;
+            var others = new List<RoutePoint>(Math.Max(0, n - 2));
+            for (int k = 0; k < n; k++)
+                if (k != a && k != b) others.Add(route.Stops[k]);
+            return others;
+        }
+
+        /// <summary>
+        /// Vrai si le tracé passe sur un autre arrêt que ses deux extrémités.
+        ///
+        /// Rayon de chaque arrêt : le rayon d'accroche, réduit à la moitié de
+        /// sa distance à l'extrémité la plus proche. Sans cette réduction, dans
+        /// un groupe de nodes espacés de 4 à 14 m pour 12 m d'accroche, tout
+        /// tronçon toucherait ses voisins et plus rien ne se vérifierait.
+        ///
+        /// Distance au tracé (segments), pas aux seuls sommets : après
+        /// simplification, deux sommets peuvent être à 30 m l'un de l'autre.
+        /// </summary>
+        public static bool CrossesOtherStop(IList<RoutePoint> path, RoutePoint from, RoutePoint to,
+                                            IEnumerable<RoutePoint> others, double snapRadius)
+        {
+            if (path == null || path.Count < 2 || others == null) return false;
+
+            foreach (var s in others)
+            {
+                double radius = Math.Min(snapRadius, 0.5 * Math.Min(s.DistanceTo(from), s.DistanceTo(to)));
+                if (radius <= 0.01) continue; // arrêt confondu avec une extrémité
+
+                for (int k = 0; k + 1 < path.Count; k++)
+                    if (PerpendicularDistance(s, path[k], path[k + 1]) <= radius)
+                        return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Remet en ligne droite les tronçons vérifiés qui traversent un autre
+        /// arrêt -- l'héritage d'avant le filtre de FindLeg.
+        ///
+        /// Contrairement à Invalidate, TraceAt est EFFACÉ : ce n'est pas un
+        /// rejet du trajet par Antoine, c'est notre lecture qui était fausse.
+        /// Avec le filigrane, le tronçon resterait rouge jusqu'au prochain
+        /// passage alors que les traces existantes suffisent peut-être à le
+        /// revalider correctement.
+        /// </summary>
+        public static int PurgeCrossingLegs(Route route, double snapRadius)
+        {
+            if (route == null || route.Stops.Count < 3) return 0;
+
+            int purged = 0;
+            for (int i = 0; i < route.Legs.Count && i < route.Stops.Count; i++)
+            {
+                var leg = route.Legs[i];
+                if (!leg.Verified) continue;
+
+                var from = route.Stops[i];
+                var to = route.Stops[(i + 1) % route.Stops.Count];
+                if (!CrossesOtherStop(leg.Points, from, to, OtherStops(route, i), snapRadius)) continue;
+
+                leg.Verified = false;
+                leg.Mount = null;
+                leg.TraceAt = null;
+                leg.Points = new List<RoutePoint> { from, to };
+                purged++;
+            }
+            return purged;
         }
 
         // -------------------------------------------------------------

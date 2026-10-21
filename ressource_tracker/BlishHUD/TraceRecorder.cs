@@ -1,4 +1,4 @@
-using Blish_HUD;
+﻿using Blish_HUD;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -288,14 +288,22 @@ namespace GW2_NodeTracker
         /// Retourne null si aucune trace ne couvre le tronçon : le tronçon
         /// reste alors en ligne droite et non vérifié.
         /// </summary>
+        /// <param name="otherStops">
+        /// Les autres arrêts de la route. Un morceau de trace qui passe sur
+        /// l'un d'eux est rejeté : c'était le trajet A → C → B, pas A → B, et
+        /// le retenir dessinait le couloir de C une seconde fois (doubles
+        /// rubans constatés le 15/10/2026 sur Timberline Falls).
+        /// </param>
         public TraceMatch FindLeg(int mapId, RoutePoint from, RoutePoint to,
-                                  double snapRadius, double detourFactor)
+                                  double snapRadius, double detourFactor,
+                                  IList<RoutePoint> otherStops = null)
         {
-            lock (_sync) { return FindLegLocked(mapId, from, to, snapRadius, detourFactor); }
+            lock (_sync) { return FindLegLocked(mapId, from, to, snapRadius, detourFactor, otherStops); }
         }
 
         private TraceMatch FindLegLocked(int mapId, RoutePoint from, RoutePoint to,
-                                         double snapRadius, double detourFactor)
+                                         double snapRadius, double detourFactor,
+                                         IList<RoutePoint> otherStops)
         {
             if (_points.Count == 0) return null;
 
@@ -305,8 +313,14 @@ namespace GW2_NodeTracker
             // déambulation ; trop bas, ces accès-là ne se vérifient jamais.
             double maxAcceptable = from.DistanceTo(to) * detourFactor + 100.0;
 
-            TraceMatch forward = FindOneWay(mapId, from, to, snapRadius, maxAcceptable);
-            TraceMatch backward = FindOneWay(mapId, to, from, snapRadius, maxAcceptable);
+            // Seuls les arrêts atteignables par un trajet de longueur
+            // acceptable peuvent être traversés : on écarte les autres d'emblée.
+            List<RoutePoint> nearbyStops = otherStops == null
+                ? new List<RoutePoint>()
+                : otherStops.Where(s => s.DistanceTo(from) <= maxAcceptable + snapRadius).ToList();
+
+            TraceMatch forward = FindOneWay(mapId, from, to, snapRadius, maxAcceptable, nearbyStops);
+            TraceMatch backward = FindOneWay(mapId, to, from, snapRadius, maxAcceptable, nearbyStops);
 
             if (backward != null)
             {
@@ -382,7 +396,8 @@ namespace GW2_NodeTracker
 
         /// <summary>Recherche dans un seul sens, de a vers b.</summary>
         private TraceMatch FindOneWay(int mapId, RoutePoint a, RoutePoint b,
-                                      double snapRadius, double maxAcceptable)
+                                      double snapRadius, double maxAcceptable,
+                                      List<RoutePoint> otherStops)
         {
             EnsureIndex();
 
@@ -426,6 +441,11 @@ namespace GW2_NodeTracker
 
                     used = j;
                     if (len > maxAcceptable) continue;
+
+                    if (otherStops.Count > 0
+                        && RouteBuilder.CrossesOtherStop(slice.Select(RoutePoint.FromTrace).ToList(),
+                                                         a, b, otherStops, snapRadius))
+                        continue; // passe par un autre arrêt : ce n'est pas le trajet A → B
 
                     var match = new TraceMatch
                     {
