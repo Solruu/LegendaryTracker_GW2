@@ -934,9 +934,10 @@ d'artisanat de /v2/recipes contre les aretes, 1 011 apiId. Puis
   dur dans le JSX, Ouvert au 18/09, 12 nonies.
 - JSX v269 : le cout d'une etape (`cost`) s'affiche sous l'etape dans
   l'onglet Collections (« Coût de l'étape : 1 000 Bandit Crest »).
-- [ ] vu au controle visuel : l'encart de l'onglet armes montre la note gen3
-  quand une arme gen1 est choisie ; collections affichees III, I, II ; compteur
-  « 0/? » sans synchro.
+- ✅ JSX v270 (controle visuel) : encart gen3 masque pour les armes gen1 /
+  gen2 ; collections d'armes dans l'ordre I, II, III, IV puis « Legendary
+  Weapon » ; compteur sur le nombre d'etapes des sources (0/15, 0/12, 0/34,
+  0/16) au lieu de « 0/? » avant synchro.
 
 ## Ordre propose
 

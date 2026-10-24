@@ -4659,6 +4659,9 @@ export default function GW2LegendaryTracker() {
         achievementId: c.id,
         name: c.name,
         tip: c.note,
+        // v270 : nombre d'etapes connu des sources — le compteur affichait
+        // « 0/? » tant qu'aucune synchro n'avait donne le maximum.
+        target: c.total ?? (c.items ?? []).length,
         bitTips: Object.fromEntries(
           (c.items ?? []).filter(i => i.how).map(i => [String(i.bit), i.how])),
         steps: (c.items ?? []).map(i => ({ index: i.bit, text: i.name })),
@@ -4677,6 +4680,17 @@ export default function GW2LegendaryTracker() {
           (c.items ?? []).filter(i => i.legendary).map(i => [String(i.bit), i.legendary])),
         noteAlt: c.note_alt,
       }))
+      // v270 : armes gen1 / gen2, collections dans l'ordre du jeu (I, II, III,
+      // IV), « Legendary Weapon : X » en dernier — elles sortaient III, I, II.
+      .sort((x, y) => {
+        if (!/^gen[12]_/.test(collCible)) return 0;
+        const rang = (c) => {
+          const n = (typeof c.name === "string" ? c.name : c.name?.en) ?? "";
+          const m = n.match(/\b(IV|III|II|I)\b\s*:/);
+          return m ? { I: 1, II: 2, III: 3, IV: 4 }[m[1]] : 9;
+        };
+        return rang(x) - rang(y);
+      })
     : [];   // plus de repli : raidAchievements a disparu du JSX
 
   const [expanded, setExpanded] = useState(null);
@@ -7525,10 +7539,14 @@ export default function GW2LegendaryTracker() {
       )}
             {activeTab === "collections" && collList.length > 0 && (
         <div>
+          {/* v270 : l'encart de l'onglet armes decrit la gen3 ; il ne s'affiche
+              que pour une arme gen3 (Frostfang montrait « Gift of Aurene's X »). */}
+          {!(selectedLeg === "weapons" && !/^gen3_/.test(collCible)) && (
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(56,189,248,0.04)", border: "1px solid rgba(56,189,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: "12px", color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
             <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)}</div>
             {(leg?.collectionNoteKeys ?? []).map((k, i) => <div key={k} style={{ marginTop: i > 0 ? 4 : 0 }}>{t(k)}</div>)}
           </div>
+          )}
           {selectedLeg === "eikasia" && (() => {
             const tier = (k) => {
               const s = apiAch[k] ?? {};
