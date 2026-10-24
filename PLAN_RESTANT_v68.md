@@ -893,6 +893,26 @@ tranchee), precurseurs gen1 et recettes de Forge aleatoires.
 
 ---
 
+### C16 — Recettes et ids confrontes a l'API (24/10, wiki hors ligne) · C — ✅
+`controle/gw2_confronte_api_v1` (nouveau, CONFRONTATION_API.md) : recettes
+d'artisanat de /v2/recipes contre les aretes, 1 011 apiId. Puis
+`integration/gw2_recettes_api_v1` (sources v423, JSX v268) :
+- Purified Rift Essence = 1 Amalgamated Rift Essence + 1 Mystic Clover :
+  Obsidian gagne 12 essences amalgamees et 12 trefles ; Endless Summer les
+  portait en cles a plat (2 500 / 1 000 / 500 essences, 500 ectos, 10
+  trefles), retirees, total inchange ;
+- Sapphire Orb : 2 Sapphire Crystal (cree) ; Gift of Souls : Gift of
+  Knowledge, source Artificier ;
+- 18 apiId designaient un autre objet (/v2/items, noms lus le 24/10) : Trade
+  Contract -> monnaie 34, PvP League Ticket -> 30 ; 16 autres en `apiId_fix`,
+  id a lire sur le wiki (Testimony of Heroics, Exotic Essence of Luck,
+  Memories of Aurene, Mist Pendant, Wings of Glory x3, Glob of Condensed
+  Spirit Energy, Gift of Ascension, Gift of Infinity, Gift of the Hylek,
+  Gift of Shadows, Fruits of the Shadow, Gift of the Seas, Gift of the
+  Obscure, Glimpse) ; leurs sources comptoir du 20/10 retirees.
+- [ ] reste : Master Maintenance Oil (recette x5, non decomposee : quantites
+  fractionnaires), 16 ids a lire sur le wiki.
+
 ## Ordre propose
 
 1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,

@@ -6336,7 +6336,6 @@ const SOURCES_DB = {
     },
     "glob_condensed_spirit_energy": {
       "name": "Glob of Condensed Spirit Energy",
-      "apiId": 83008,
       "needed_for": [
         "gift_of_competitive_dedication",
         "gift_of_war_dedication",
@@ -6354,18 +6353,16 @@ const SOURCES_DB = {
             "fr": "Drop McM (rare). Liste non exhaustive : le tableau wiki est long et trié alphabétiquement.",
             "en": "Drop WvW (rare). Non-exhaustive: the wiki table is long and alphabetically sorted."
           }
-        },
-        {
-          "type": "trading_post",
-          "tip": "Buy on TP.",
-          "paid_repeatable": true,
-          "verified": true,
-          "checked": "2026-10-20",
-          "ref": "ressources/api/comptoir_20261020.json (/v2/commerce/prices)"
         }
       ],
       "kind": "acquire",
-      "best": "drop"
+      "best": "drop",
+      "apiId_fix": {
+        "was": 83008,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 83008 = « Piece of Rare Unidentified Gear » — bon id a lire sur le wiki"
+      }
     },
     "mist_band_infused": {
       "name": "Mist Band (Infused)",
@@ -6395,7 +6392,6 @@ const SOURCES_DB = {
     },
     "testimony_of_heroics": {
       "name": "Testimony of Heroics",
-      "apiId": 26464,
       "needed_for": [
         "warbringer"
       ],
@@ -6409,20 +6405,15 @@ const SOURCES_DB = {
           "tip": "Obtained by ranking up in WvW. Also found in some Skirmish chests.",
           "free_repeatable": true,
           "cadence": "à volonté"
-        },
-        {
-          "type": "trading_post",
-          "tip": {
-            "fr": "Achetable au comptoir — raccourci en or, jamais compté.",
-            "en": "Sold on the trading post — a gold shortcut, never counted."
-          },
-          "paid_repeatable": true,
-          "verified": true,
-          "checked": "2026-10-20",
-          "ref": "ressources/api/comptoir_20261020.json (/v2/commerce/prices)"
         }
       ],
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 26464,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 26464 = « Hearty Soft Wood Scepter » — bon id a lire sur le wiki"
+      }
     },
     "badge_of_honor": {
       "name": "Badge of Honor",
@@ -6897,7 +6888,7 @@ const SOURCES_DB = {
     },
     "trade_contract": {
       "name": "Trade Contract",
-      "apiId": 87064,
+      "apiId": 34,
       "needed_for": [],
       "qty": {},
       "farmable": true,
@@ -6914,7 +6905,13 @@ const SOURCES_DB = {
         }
       ],
       "kind": "acquire",
-      "best": "map_events"
+      "best": "map_events",
+      "apiId_fix": {
+        "was": 87064,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 87064 = « Inquest Manual on Choleric Elemental Energy » ; monnaie du portefeuille 34 (gw2_currencies_ref.json)"
+      }
     },
     "recruits_wings_of_war": {
       "name": "Recruit's Wings of War",
@@ -7284,12 +7281,10 @@ const SOURCES_DB = {
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence",
-        "endless_summer",
         "klobjarne_geirr",
         "orrax_manifested"
       ],
       "qty": {
-        "endless_summer": 2500,
         "amalgamated_rift_essence": 250
       },
       "farmable": true,
@@ -7346,12 +7341,10 @@ const SOURCES_DB = {
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence",
-        "endless_summer",
         "klobjarne_geirr",
         "orrax_manifested"
       ],
       "qty": {
-        "endless_summer": 1000,
         "amalgamated_rift_essence": 100
       },
       "farmable": true,
@@ -7382,12 +7375,10 @@ const SOURCES_DB = {
       "type": "wallet_currency",
       "needed_for": [
         "amalgamated_rift_essence",
-        "endless_summer",
         "klobjarne_geirr",
         "orrax_manifested"
       ],
       "qty": {
-        "endless_summer": 500,
         "amalgamated_rift_essence": 50
       },
       "farmable": true,
@@ -7418,12 +7409,14 @@ const SOURCES_DB = {
       "needed_for": [
         "gift_of_expertise",
         "gift_of_the_dessert",
-        "gift_of_titan_understanding"
+        "gift_of_titan_understanding",
+        "purified_rift_essence"
       ],
       "qty": {
         "gift_of_expertise": 12,
         "gift_of_the_dessert": 2,
-        "gift_of_titan_understanding": 25
+        "gift_of_titan_understanding": 25,
+        "purified_rift_essence": 1
       },
       "farmable": true,
       "recipe": "Craft 400 : 250× Fine + 100× Masterwork + 50× Rare + 50× Ecto",
@@ -7733,7 +7726,6 @@ const SOURCES_DB = {
     },
     "exotic_essence_of_luck": {
       "name": "Exotic Essence of Luck",
-      "apiId": 45175,
       "needed_for": [
         "gift_of_research"
       ],
@@ -7751,7 +7743,13 @@ const SOURCES_DB = {
         }
       ],
       "kind": "acquire",
-      "best": "salvage"
+      "best": "salvage",
+      "apiId_fix": {
+        "was": 45175,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 45175 = « Fine Essence of Luck » — bon id a lire sur le wiki"
+      }
     },
     "lesser_vision_crystal": {
       "name": "Lesser Vision Crystal",
@@ -7799,7 +7797,7 @@ const SOURCES_DB = {
     },
     "pvp_league_ticket": {
       "name": "PvP League Ticket",
-      "apiId": 33781,
+      "apiId": 30,
       "needed_for": [
         "armor_pvp",
         "certificate_of_support",
@@ -7835,17 +7833,6 @@ const SOURCES_DB = {
           },
           "free_repeatable": true,
           "cadence": "à volonté"
-        },
-        {
-          "type": "trading_post",
-          "tip": {
-            "fr": "Achetable au comptoir — raccourci en or, jamais compté.",
-            "en": "Sold on the trading post — a gold shortcut, never counted."
-          },
-          "paid_repeatable": true,
-          "verified": true,
-          "checked": "2026-10-20",
-          "ref": "ressources/api/comptoir_20261020.json (/v2/commerce/prices)"
         }
       ],
       "kind": "acquire",
@@ -7871,7 +7858,13 @@ const SOURCES_DB = {
       "qty_overlap_verified": [
         "the_ascension",
         "transcendence"
-      ]
+      ],
+      "apiId_fix": {
+        "was": 33781,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 33781 = « Resilient Krytan Scepter of Agony » ; monnaie du portefeuille 30 (gw2_currencies_ref.json)"
+      }
     },
     "mist_core_fragment": {
       "name": "Mist Core Fragment",
@@ -8016,7 +8009,7 @@ const SOURCES_DB = {
       "qty": {
         "memory_essence_encapsulator": 50,
         "kralkatite_ingot": 1,
-        "endless_summer": 515,
+        "endless_summer": 15,
         "lump_of_mithrillium": 1,
         "crystalline_ingot": 1,
         "diviners_orichalcum_imbued_inscription": 5,
@@ -8080,7 +8073,14 @@ const SOURCES_DB = {
       },
       "wiki_redirects": [
         "Ectoplasm"
-      ]
+      ],
+      "qty_overlap_verified": [
+        "endless_summer"
+      ],
+      "qty_overlap_note": {
+        "fr": "Endless Summer : 500 par les 10 Purified Rift Essences (arête, via Amalgamated) ; 15 restent en clé à plat, reste de la table d'Endless Summer hors de ce chemin.",
+        "en": "Endless Summer: 500 through the 10 Purified Rift Essences (edge, via Amalgamated); 15 remain as a flat key, the rest of Endless Summer's table outside that path."
+      }
     },
     "mystic_clover": {
       "name": "Mystic Clover",
@@ -8103,7 +8103,8 @@ const SOURCES_DB = {
         "gift_of_war_prosperity",
         "mystic_tribute",
         "orrax_manifested",
-        "upgrades_combined"
+        "upgrades_combined",
+        "purified_rift_essence"
       ],
       "farmable": true,
       "sources": [
@@ -8223,7 +8224,6 @@ const SOURCES_DB = {
         }
       ],
       "qty": {
-        "endless_summer": 10,
         "gift_of_the_homesteader": 38,
         "gift_of_fortune": 77,
         "gift_of_insight": 100,
@@ -8238,7 +8238,8 @@ const SOURCES_DB = {
         "draconic_tribute": 38,
         "gift_of_competitive_prosperity": 15,
         "gift_of_prosperity": 15,
-        "gift_of_the_side_course": 30
+        "gift_of_the_side_course": 30,
+        "purified_rift_essence": 1
       },
       "kind": "acquire",
       "best": "reward_track",
@@ -9828,7 +9829,6 @@ const SOURCES_DB = {
     },
     "memories_of_aurene": {
       "name": "Memories of Aurene",
-      "apiId": 97935,
       "needed_for": [
         "gen3_gift_unique"
       ],
@@ -9848,6 +9848,12 @@ const SOURCES_DB = {
       "best_reason": {
         "fr": "garanti en méta quotidienne — coût marginal nul",
         "en": "guaranteed daily meta reward — zero marginal cost"
+      },
+      "apiId_fix": {
+        "was": 97935,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 97935 = « Reality Rig Mk2 » — bon id a lire sur le wiki"
       }
     },
     "salt_forged_mist_diamond": {
@@ -9918,7 +9924,6 @@ const SOURCES_DB = {
     },
     "mist_pendant": {
       "name": "Mist Pendant",
-      "apiId": 93279,
       "needed_for": [
         "transcendence"
       ],
@@ -9932,23 +9937,18 @@ const SOURCES_DB = {
             "fr": "Amulette PvP élevée — amélioration vers légendaire. Achat contre des Ascended Shards of Glory ou via les reward tracks PvP.",
             "en": "PvP ascended amulet — upgrade to legendary. Purchase for Ascended Shards of Glory or obtained via PvP reward tracks."
           }
-        },
-        {
-          "type": "trading_post",
-          "tip": {
-            "fr": "Achetable au comptoir — raccourci en or, jamais compté.",
-            "en": "Sold on the trading post — a gold shortcut, never counted."
-          },
-          "paid_repeatable": true,
-          "verified": true,
-          "checked": "2026-10-20",
-          "ref": "ressources/api/comptoir_20261020.json (/v2/commerce/prices)"
         }
       ],
       "qty": {
         "transcendence": 1
       },
-      "kind": "precursor"
+      "kind": "precursor",
+      "apiId_fix": {
+        "was": 93279,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 93279 = « Iron Legion Combat Blade » — bon id a lire sur le wiki"
+      }
     },
     "gift_of_skirmishing": {
       "name": "Gift of Skirmishing",
@@ -10018,7 +10018,6 @@ const SOURCES_DB = {
     },
     "wings_of_glory_recruit": {
       "name": "Recruit's Wings of Glory",
-      "apiId": 77220,
       "needed_for": [
         "wings_of_ascension"
       ],
@@ -10040,7 +10039,13 @@ const SOURCES_DB = {
       "qty": {
         "wings_of_ascension": 1
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 77220,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 77220 = « Bag of Masterwork Gear » — bon id a lire sur le wiki"
+      }
     },
     "wings_of_glory_veteran": {
       "name": "Veteran's Wings of Glory",
@@ -10069,7 +10074,6 @@ const SOURCES_DB = {
     },
     "wings_of_glory_champion": {
       "name": "Champion's Wings of Glory",
-      "apiId": 77222,
       "needed_for": [
         "wings_of_ascension"
       ],
@@ -10091,11 +10095,16 @@ const SOURCES_DB = {
       "qty": {
         "wings_of_ascension": 1
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 77222,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 77222 = « Kralkatorrik Minion Loot Box » — bon id a lire sur le wiki"
+      }
     },
     "wings_of_glory_elite": {
       "name": "Elite's Wings of Glory",
-      "apiId": 77223,
       "needed_for": [
         "wings_of_ascension"
       ],
@@ -10117,7 +10126,13 @@ const SOURCES_DB = {
       "qty": {
         "wings_of_ascension": 1
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 77223,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "/v2/items?ids=77223 (24/10) : « Practical Scribe's Backpack » — bon id a lire sur le wiki"
+      }
     },
     "wings_of_ascension": {
       "name": "Wings of Ascension",
@@ -10394,7 +10409,6 @@ const SOURCES_DB = {
     },
     "gift_of_ascension_fractal": {
       "name": "Gift of Ascension",
-      "apiId": 74986,
       "needed_for": [
         "ad_infinitum"
       ],
@@ -10420,11 +10434,16 @@ const SOURCES_DB = {
       "note": {
         "fr": "4 Dons pour Ad Infinitum : 1 dans la recette, 2 à l'étape Beta Fractal Capacitor (collection II), 1 à l'étape Fractal Capacitor (collection III).",
         "en": "4 Gifts for Ad Infinitum: 1 in the recipe, 2 at the Beta Fractal Capacitor step (collection II), 1 at the Fractal Capacitor step (collection III)."
+      },
+      "apiId_fix": {
+        "was": 74986,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 74986 = « Guild World Event » — bon id a lire sur le wiki"
       }
     },
     "gift_of_infinity": {
       "name": "Gift of Infinity",
-      "apiId": 74157,
       "needed_for": [
         "ad_infinitum"
       ],
@@ -10441,7 +10460,13 @@ const SOURCES_DB = {
       "qty": {
         "ad_infinitum": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "apiId_fix": {
+        "was": 74157,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 74157 = « Recipe: Bowl of Curry Mussel Soup » — bon id a lire sur le wiki"
+      }
     },
     "purified_rift_essence": {
       "name": "Purified Rift Essence",
@@ -10461,7 +10486,13 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "craft_400",
-          "tip": "Ne pas raffiner plus que nécessaire — 12 suffisent pour les 12 skins prérequis."
+          "verified": true,
+          "checked": "2026-10-24",
+          "ref": "ressources/api/api_recettes_composants_20261024.json (recette 100569)",
+          "tip": {
+            "fr": "Tous métiers 400 : 1 Amalgamated Rift Essence + 1 Mystic Clover. Ne pas en fabriquer plus que nécessaire.",
+            "en": "Any discipline 400: 1 Amalgamated Rift Essence + 1 Mystic Clover. Don't craft more than needed."
+          }
         }
       ],
       "kind": "craftable"
@@ -10632,7 +10663,6 @@ const SOURCES_DB = {
     },
     "gift_of_the_hylek": {
       "name": "Gift of the Hylek",
-      "apiId": 107035,
       "needed_for": [
         "endless_summer"
       ],
@@ -10649,7 +10679,13 @@ const SOURCES_DB = {
       "qty": {
         "endless_summer": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "apiId_fix": {
+        "was": 107035,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 107035 = « Mini Eye of Judgment » — bon id a lire sur le wiki"
+      }
     },
     "vial_of_liquid_shadowstone": {
       "name": "Vial of Liquid Shadowstone",
@@ -10807,7 +10843,6 @@ const SOURCES_DB = {
     },
     "gift_of_shadows_orrax": {
       "name": "Gift of Shadows",
-      "apiId": 104810,
       "needed_for": [
         "orrax_manifested"
       ],
@@ -10819,17 +10854,6 @@ const SOURCES_DB = {
             "fr": "MF (collection Unknown Nightmares) : Gift of Darkness (Armorsmith 400) + Gift of Scales (Artificer 400) + Gift of Titan Understanding (vendor JW) + autres items collection JW. Débloqué via Jorvik Jorundsson à Bava Nisos après Salvation's Cost.",
             "en": "MF (Unknown Nightmares collection): Gift of Darkness (Armorsmith 400) + Gift of Scales (Artificer 400) + Gift of Titan Understanding (JW vendor) + other JW collection items. Unlocked via Jorvik Jorundsson at Bava Nisos after Salvation's Cost."
           }
-        },
-        {
-          "type": "trading_post",
-          "tip": {
-            "fr": "Achetable au comptoir — raccourci en or, jamais compté.",
-            "en": "Sold on the trading post — a gold shortcut, never counted."
-          },
-          "paid_repeatable": true,
-          "verified": true,
-          "checked": "2026-10-20",
-          "ref": "ressources/api/comptoir_20261020.json (/v2/commerce/prices)"
         }
       ],
       "sub_components": {
@@ -10840,11 +10864,16 @@ const SOURCES_DB = {
       "qty": {
         "orrax_manifested": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "apiId_fix": {
+        "was": 104810,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 104810 = « Slumbering Lightborne Shield » — bon id a lire sur le wiki"
+      }
     },
     "fruits_of_the_shadow": {
       "name": "Fruits of the Shadow",
-      "apiId": 104820,
       "needed_for": [
         "gift_of_the_appetizer",
         "gift_of_the_dessert",
@@ -10859,17 +10888,6 @@ const SOURCES_DB = {
             "fr": "Node de homestead — achat chez Deft Lahar après Salvation's Cost (donne 2-4 fruits, node à racheter après chaque récolte).",
             "en": "Homestead node — purchase from Deft Lahar after Salvation's Cost (yields 2-4 fruits, node must be re-purchased after each harvest)."
           }
-        },
-        {
-          "type": "trading_post",
-          "tip": {
-            "fr": "Achetable au comptoir — raccourci en or, jamais compté.",
-            "en": "Sold on the trading post — a gold shortcut, never counted."
-          },
-          "paid_repeatable": true,
-          "verified": true,
-          "checked": "2026-10-20",
-          "ref": "ressources/api/comptoir_20261020.json (/v2/commerce/prices)"
         }
       ],
       "qty": {
@@ -10878,7 +10896,13 @@ const SOURCES_DB = {
         "gift_of_the_entree": 5,
         "gift_of_the_side_course": 5
       },
-      "kind": "acquire"
+      "kind": "acquire",
+      "apiId_fix": {
+        "was": 104820,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 104820 = « Mini Beige Journeykit » — bon id a lire sur le wiki"
+      }
     },
     "gift_of_the_feast": {
       "name": "Gift of the Feast",
@@ -11152,7 +11176,6 @@ const SOURCES_DB = {
     },
     "gift_of_the_seas": {
       "name": "Gift of the Seas",
-      "apiId": 106701,
       "needed_for": [
         "gift_of_castoran_mastery"
       ],
@@ -11169,7 +11192,13 @@ const SOURCES_DB = {
       "qty": {
         "gift_of_castoran_mastery": 1
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "apiId_fix": {
+        "was": 106701,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 106701 = « Track 29: A Future Carved in Jade » — bon id a lire sur le wiki"
+      }
     },
     "gift_of_castoran_mastery": {
       "name": "Gift of Castoran Mastery",
@@ -11263,7 +11292,6 @@ const SOURCES_DB = {
     },
     "gift_of_the_obscure": {
       "name": "Gift of the Obscure",
-      "apiId": 97960,
       "needed_for": [
         "legendary_relic"
       ],
@@ -11285,7 +11313,13 @@ const SOURCES_DB = {
         "fr": "Sous-composant du Gift of Relics. Achat chez Lyhr (SotO, +10 Ectos) ou Ward Crafter Lucirae (JW, +1 Ecto). Contient des matériaux spécifiques SotO.",
         "en": "Sub-component of Gift of Relics. Purchase from Lyhr (SotO, +10 Ectos) or Ward Crafter Lucirae (JW, +1 Ecto). Contains SotO-specific materials."
       },
-      "kind": "advanced_craft"
+      "kind": "advanced_craft",
+      "apiId_fix": {
+        "was": 97960,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 97960 = « Stash of Crimson Skull Coins » — bon id a lire sur le wiki"
+      }
     },
     "pile_of_lucent_crystal": {
       "name": "Pile of Lucent Crystal",
@@ -11974,7 +12008,6 @@ const SOURCES_DB = {
     },
     "glimpse": {
       "name": "Glimpse",
-      "apiId": 90112,
       "kind": "precursor",
       "needed_for": [
         "vision"
@@ -11991,6 +12024,12 @@ const SOURCES_DB = {
       ],
       "qty": {
         "vision": 1
+      },
+      "apiId_fix": {
+        "was": 90112,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 90112 = « Incredible Reward » — bon id a lire sur le wiki"
       }
     },
     "gift_of_arid_mastery": {
@@ -12250,10 +12289,13 @@ const SOURCES_DB = {
       "farmable": true,
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft_400",
+          "verified": true,
+          "checked": "2026-10-24",
+          "ref": "ressources/api/api_recettes_composants_20261024.json (recette 6509)",
           "tip": {
-            "fr": "MF : composants liés aux âmes de la Désolation — voir la fiche wiki.",
-            "en": "MF: Desolation soul-related components — see the wiki page."
+            "fr": "Artificier 400 : 250 Orichalcum Ingots + 20 ectos + 1 Gift of Knowledge + 100 Crystal Lodestones.",
+            "en": "Artificer 400: 250 Orichalcum Ingots + 20 ectos + 1 Gift of Knowledge + 100 Crystal Lodestones."
           }
         },
         {
@@ -28070,7 +28112,8 @@ const SOURCES_DB = {
       "kind": "acquire",
       "needed_for": [
         "gift_of_stealth",
-        "gift_of_weather"
+        "gift_of_weather",
+        "gift_of_souls"
       ],
       "farmable": true,
       "sources": [
@@ -28087,7 +28130,8 @@ const SOURCES_DB = {
       ],
       "qty": {
         "gift_of_stealth": 1,
-        "gift_of_weather": 1
+        "gift_of_weather": 1,
+        "gift_of_souls": 1
       },
       "verified": true,
       "checked": "2026-10-04",
@@ -41109,6 +41153,44 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-10-24",
       "ref": "ressources/api/api_ingredients_armes_20261024.json"
+    },
+    "sapphire_crystal": {
+      "name": "Sapphire Crystal",
+      "apiId": 24475,
+      "kind": "material",
+      "farmable": true,
+      "qty": {
+        "sapphire_orb": 2
+      },
+      "needed_for": [
+        "sapphire_orb"
+      ],
+      "sources": [
+        {
+          "type": "unknown",
+          "verified": true,
+          "checked": "2026-10-24",
+          "ref": "ressources/api/api_recettes_composants_20261024.json (ingredient de la recette 3435)",
+          "tip": {
+            "fr": "Gemme : voie de jeu à lire sur le wiki (hors ligne le 24/10).",
+            "en": "Gemstone: in-game route to read on the wiki (offline on 24/10)."
+          }
+        },
+        {
+          "type": "trading_post",
+          "paid_repeatable": true,
+          "verified": true,
+          "checked": "2026-10-24",
+          "ref": "/v2/commerce/prices?ids=24475 (24/10)",
+          "tip": {
+            "fr": "Achetable au comptoir — raccourci en or, jamais compté.",
+            "en": "Sold on the trading post — a gold shortcut, never counted."
+          }
+        }
+      ],
+      "verified": true,
+      "checked": "2026-10-24",
+      "ref": "ressources/api/api_recettes_composants_20261024.json"
     }
   },
   "enchaînements_recommandés": {
@@ -92653,7 +92735,8 @@ const LEGENDARIES = {
       { id: "ducat",    name: "Antiquated Ducat",     required: 500, icon: "AD", apiId: 81 },
       { id: "obsidian", name: "Obsidian Shard",       required: 250, icon: "OS", apiId: 19925 },
       { id: "gems",     name: "Amalgamated Gemstone", required: 250, icon: "AG", apiId: 68063 },
-      { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675 },
+      { id: "clovers",  name: "Mystic Clover",        required: 10,  icon: "MC", apiId: 19675,
+        aside: { fr: "Un par Purified Rift Essence : les 10 du Gift of Rays (recette de l'API).", en: "One per Purified Rift Essence: the Gift of Rays' 10 (API recipe)." } },
     ],
     metas: [],
     bounties: [],

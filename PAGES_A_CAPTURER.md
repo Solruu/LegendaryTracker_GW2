@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v422.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v423.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 83 trous de l'arbre — LA PRIORITÉ
+## 0 — 84 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -83,6 +83,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Valkyrie Orichalcum Imbued Inscription` | 3 |
 | `Deldrimor Steel Plated Dowel` | 2 |
 | `Elder Harpoon` | 2 |
+| `Purified Rift Essence` | 2 |
 | `Sheet of Ambrite` | 2 |
 | `Sunstone Lump` | 2 |
 
@@ -126,15 +127,26 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 | page wiki | désaccords portés |
 |---|---:|
 
-## 3 — 0 composants sans apiId ni page
+## 3 — 11 composants sans apiId ni page
 
 Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 « possédé » reste vide faute de pouvoir interroger l'API.
 
 | page wiki |
 |---|
+| `Exotic Essence of Luck` |
+| `Fruits of the Shadow` |
+| `Gift of Infinity` |
+| `Gift of the Hylek` |
+| `Gift of the Obscure` |
+| `Gift of the Seas` |
+| `Glimpse` |
+| `Glob of Condensed Spirit Energy` |
+| `Memories of Aurene` |
+| `Mist Pendant` |
+| `Testimony of Heroics` |
 
-## 3 bis — 45 composants dont le coût d'obtention est inconnu
+## 3 bis — 46 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
@@ -177,6 +189,7 @@ faut, pas comment on les obtient.
 | `Pouch of Yellow Pigment` |
 | `Purple Potato` |
 | `Rice Ball` |
+| `Sapphire Crystal` |
 | `Seaweed` |
 | `Sheet of Aurillium` |
 | `Spinach Leaf` |
@@ -203,7 +216,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 113 pages à capturer
+## URLs — 126 pages à capturer
 
 ```
 https://wiki.guildwars2.com/wiki/Advanced_Ammunition_Cylinder
@@ -272,8 +285,20 @@ https://wiki.guildwars2.com/wiki/Sunstone_Nugget
 https://wiki.guildwars2.com/wiki/Valkyrie_Orichalcum_Imbued_Inscription
 https://wiki.guildwars2.com/wiki/Deldrimor_Steel_Plated_Dowel
 https://wiki.guildwars2.com/wiki/Elder_Harpoon
+https://wiki.guildwars2.com/wiki/Purified_Rift_Essence
 https://wiki.guildwars2.com/wiki/Sheet_of_Ambrite
 https://wiki.guildwars2.com/wiki/Sunstone_Lump
+https://wiki.guildwars2.com/wiki/Exotic_Essence_of_Luck
+https://wiki.guildwars2.com/wiki/Fruits_of_the_Shadow
+https://wiki.guildwars2.com/wiki/Gift_of_Infinity
+https://wiki.guildwars2.com/wiki/Gift_of_the_Hylek
+https://wiki.guildwars2.com/wiki/Gift_of_the_Obscure
+https://wiki.guildwars2.com/wiki/Gift_of_the_Seas
+https://wiki.guildwars2.com/wiki/Glimpse
+https://wiki.guildwars2.com/wiki/Glob_of_Condensed_Spirit_Energy
+https://wiki.guildwars2.com/wiki/Memories_of_Aurene
+https://wiki.guildwars2.com/wiki/Mist_Pendant
+https://wiki.guildwars2.com/wiki/Testimony_of_Heroics
 https://wiki.guildwars2.com/wiki/Alpha_Wolf_Spirit
 https://wiki.guildwars2.com/wiki/Black_Diamond
 https://wiki.guildwars2.com/wiki/Black_Powder
@@ -310,6 +335,7 @@ https://wiki.guildwars2.com/wiki/Pouch_of_Red_Pigment
 https://wiki.guildwars2.com/wiki/Pouch_of_Yellow_Pigment
 https://wiki.guildwars2.com/wiki/Purple_Potato
 https://wiki.guildwars2.com/wiki/Rice_Ball
+https://wiki.guildwars2.com/wiki/Sapphire_Crystal
 https://wiki.guildwars2.com/wiki/Seaweed
 https://wiki.guildwars2.com/wiki/Sheet_of_Aurillium
 https://wiki.guildwars2.com/wiki/Spinach_Leaf
