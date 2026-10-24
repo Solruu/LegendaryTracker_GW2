@@ -157,8 +157,21 @@ SOURCEES = set(json.load(open(_E))) if _E.exists() else set()
 _M = Modele.depuis(d, SRC)
 
 
+# v12 : LES COLLECTIONS DE PRECURSEUR NE SONT PAS DANS LA TABLE. Depuis le
+# 24/10 (gw2_collections_armes_v1, decision d'Antoine : les precurseurs se
+# comptent par leurs collections), les etapes des collections gen1 / gen2
+# portent leur cout ; la table « Full material list » d'une arme s'arrete au
+# precurseur. On compare donc la table au total precurseur fait : collections
+# de precurseur cochees, « Legendary Weapon : X » laissee ouverte.
+def _precurseur_fait(leg):
+    if not leg.startswith(("gen1_", "gen2_")):
+        return None
+    cols = (d["legendaries"].get(leg) or {}).get("collections") or {}
+    return {k: {"done": True} for k in cols if not k.startswith("legendary_weapon_")} or None
+
+
 def totaux(leg):
-    return _M.totaux(leg)
+    return _M.totaux(leg, collections_faites=_precurseur_fait(leg))
 
 
 trous, accords, excedents, sans_leg = [], [], [], []

@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v421.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v422.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -15,7 +15,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 144 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 128 |
 | NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 90 |
 
 Écartés sans être comptés : 27 options d'`alt_groups` — un choix, pas un oubli.
@@ -47,7 +47,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 144
+## Ingrédients absents, cités par la recette d'une feuille — 128
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -60,12 +60,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_sac` | `Small_Venom_Sac` |  | `venom_sac` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `vial_of_blood` | `Vial_of_Thin_Blood` |  | `vial_of_blood` | sous une feuille | `aetheric_anchor`, `ardent_glorious`, `aurora` … (+49) |
 | `mithril_ingot` | `Mithril_Ore` |  | `mithril_ingot` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_frostfang` … (+34) |
-| `elder_wood_plank` | `Elder_Wood_Log` |  | `elder_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+33) |
 | `orichalcum_ingot` | `Orichalcum_Ore` |  | `orichalcum_ingot` | sous une feuille | `ad_infinitum`, `endless_summer`, `gen1_bolt` … (+32) |
 | `hard_wood_plank` | `Hard_Wood_Log` |  | `hard_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+28) |
 | `seasoned_wood_plank` | `Seasoned_Wood_Log` |  | `seasoned_wood_plank` | sous une feuille | `ad_infinitum`, `gen1_frenzy`, `gen1_howler` … (+28) |
-| `bolt_of_gossamer` | `Gossamer_Scrap` |  | `bolt_of_gossamer` | sous une feuille | `ad_infinitum`, `gen1_bolt`, `gen1_quip` … (+20) |
-| `iron_ore` | `Copper_Ore` |  | `iron_ore` | sous une feuille | `ad_infinitum`, `gen1_the_juggernaut`, `gen2_claw_of_the_khan_ur` … (+20) |
 | `soft_wood_plank` | `Soft_Wood_Log` |  | `soft_wood_plank` | sous une feuille | `ad_infinitum`, `gen2_eureka`, `gen2_flames_of_war` … (+19) |
 | `cured_thick_leather_square` | `Thick_Leather_Section` |  | `cured_thick_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+13) |
 | `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
@@ -74,18 +71,13 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `hardened_leather_section` | `Thick_Leather_Section` |  | `hardened_leather_section` | sous une feuille | `endless_summer`, `gen1_howler`, `gen1_kraitkin` … (+6) |
 | `onyx_lodestone` | `Onyx_Core` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
 | `charged_lodestone` | `Charged_Core` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
-| `destroyer_lodestone` | `Destroyer_Core` |  | `destroyer_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
 | `gift_of_maguuma` | `Gift_of_Tarir` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Chak` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Fleet` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Jungle` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `molten_lodestone` | `Molten_Core` |  | `molten_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
-| `corrupted_lodestone` | `Corrupted_Core` |  | `corrupted_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_frostfang`, `orrax_manifested` |
-| `crystal_lodestone` | `Crystal_Core` |  | `crystal_lodestone` | sous une feuille | `aetheric_anchor`, `gen1_the_juggernaut`, `orrax_manifested` |
 | `opal_crystal` | `Opal_Shard` |  | `opal_crystal` | sous une feuille | `gen1_the_bifrost`, `gen1_the_dreamer`, `gen1_the_minstrel` |
 | `bolt_of_silk` | `Silk_Scrap` |  | `bolt_of_silk` | sous une feuille | `ad_infinitum`, `stella_radians` |
-| `glacial_lodestone` | `Glacial_Core` |  | `glacial_lodestone` | sous une feuille | `gen1_frenzy`, `gen1_frostfang` |
-| `ancient_wood_log` | `Elder_Wood_Log` |  | `ancient_wood_log` | sous une feuille | `vision` |
 | `bolt_of_cotton` | `Cotton_Scrap` |  | `bolt_of_cotton` | sous une feuille | `ad_infinitum` |
 | `bolt_of_linen` | `Linen_Scrap` |  | `bolt_of_linen` | sous une feuille | `ad_infinitum` |
 | `bolt_of_wool` | `Wool_Scrap` |  | `bolt_of_wool` | sous une feuille | `ad_infinitum` |
@@ -120,9 +112,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `leaf_of_kudzu` | `Lattice_(component)` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
 | `leaf_of_kudzu` | `Pruning_Shears` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
 | `leaf_of_kudzu` | `Spirit_of_the_Perfected_Longbow` |  | `leaf_of_kudzu` | sous une feuille | `gen1_kudzu` |
-| `prototype` | `Advanced_Ammunition_Cylinder` |  | `prototype` | sous une feuille | `gen2_hope` |
 | `prototype` | `Essence_of_Anomaly` |  | `prototype` | sous une feuille | `gen2_hope` |
-| `prototype` | `Finely_Tuned_Firing_Pin` |  | `prototype` | sous une feuille | `gen2_hope` |
 | `prototype` | `Spirit_of_Development` |  | `prototype` | sous une feuille | `gen2_hope` |
 | `rage_weapon` | `Aerator` |  | `rage_weapon` | sous une feuille | `gen1_frenzy` |
 | `rage_weapon` | `Essence_of_Quaggan_Friendship` |  | `rage_weapon` | sous une feuille | `gen1_frenzy` |
@@ -170,18 +160,13 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `the_lover` | `Essence_of_Dreams` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
 | `the_lover` | `Horse_Figure` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
 | `the_lover` | `Spirit_of_the_Perfected_Short_Bow` |  | `the_lover` | sous une feuille | `gen1_the_dreamer` |
-| `the_mechanism` | `Balanced_Counterweight` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
-| `the_mechanism` | `Engraver's_Tools` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
 | `the_mechanism` | `Essence_of_Time_and_Space` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
 | `the_mechanism` | `Spirit_of_The_Apparatus` |  | `the_mechanism` | sous une feuille | `gen2_astralaria` |
 | `the_raven_staff` | `Essence_of_the_Wild_Spirit` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
 | `the_raven_staff` | `Raven_Statue_(Legendary_Component)` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
-| `the_raven_staff` | `Rune_Carving_Tools` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
 | `the_raven_staff` | `Spirit_of_the_Ravenswood_Staff` |  | `the_raven_staff` | sous une feuille | `gen2_nevermore` |
 | `tigris` | `Spirit_of_the_Ambush` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
 | `tigris` | `Spirit_of_the_Tiger` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
-| `tigris` | `Visage_of_Champawat` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
-| `tigris` | `Visage_of_Chuka` |  | `tigris` | sous une feuille | `gen2_chuka_and_champawat` |
 | `tooth_of_frostfang` | `Dragon_Mold` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
 | `tooth_of_frostfang` | `Essence_of_Freezing` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
 | `tooth_of_frostfang` | `Freezing_Core` |  | `tooth_of_frostfang` | sous une feuille | `gen1_frostfang` |
@@ -192,7 +177,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `venom_weapon` | `Spirit_of_the_Perfected_Trident` |  | `venom_weapon` | sous une feuille | `gen1_kraitkin` |
 | `vial_of_condensed_mists_essence` | `Master's_Salvage_Kit` |  | `vial_of_condensed_mists_essence` | sous une feuille | `ad_infinitum` |
 | `zap` | `Energy_Source` |  | `zap` | sous une feuille | `gen1_bolt` |
-| `zap` | `Engraver's_Tools` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
@@ -291,11 +275,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `vial_of_condensed_mists_essence` | `4 ingrédients` |  | `vial_of_condensed_mists_essence` | feuille assumée | `ad_infinitum` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 139 ingrédients, et qui les réclame
+## Palier suivant — 125 ingrédients, et qui les réclame
 
-- `Advanced_Ammunition_Cylinder` — réclamé par `prototype`
 - `Aerator` — réclamé par `rage_weapon`
-- `Balanced_Counterweight` — réclamé par `the_mechanism`
 - `Bone_Shard` — réclamé par `bone`
 - `Bow_Wings` — réclamé par `the_lover`
 - `Carved_Beam` — réclamé par `the_legend`
@@ -305,18 +287,12 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Colossus_Statue` — réclamé par `the_colossus`
 - `Confetti_Bullets` — réclamé par `chaos_gun`
 - `Congealed_Water` — réclamé par `venom_weapon`
-- `Copper_Ore` — réclamé par `iron_ore`
 - `Coral_Tentacle` — réclamé par `coral_orb`
-- `Corrupted_Core` — réclamé par `corrupted_lodestone`
 - `Cotton_Scrap` — réclamé par `bolt_of_cotton`
-- `Crystal_Core` — réclamé par `crystal_lodestone`
-- `Destroyer_Core` — réclamé par `destroyer_lodestone`
 - `Dimensional_Destabilizer` — réclamé par `dawn`, `dusk`
 - `Dragon_Mold` — réclamé par `tooth_of_frostfang`
 - `Dragon_Statue` — réclamé par `rodgorts_flame`
-- `Elder_Wood_Log` — réclamé par `ancient_wood_log`, `elder_wood_plank`
 - `Energy_Source` — réclamé par `zap`
-- `Engraver's_Tools` — réclamé par `the_mechanism`, `zap`
 - `Essence_of_Anomaly` — réclamé par `prototype`
 - `Essence_of_Bounty_Hunting` — réclamé par `the_hunter`
 - `Essence_of_Burning` — réclamé par `rodgorts_flame`
@@ -341,7 +317,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Essence_of_the_Ooze` — réclamé par `the_colossus`
 - `Essence_of_the_Wild_Spirit` — réclamé par `the_raven_staff`
 - `Everburning_Flame` — réclamé par `rodgorts_flame`
-- `Finely_Tuned_Firing_Pin` — réclamé par `prototype`
 - `Fish_Figurine` — réclamé par `rage_weapon`
 - `Freezing_Core` — réclamé par `tooth_of_frostfang`
 - `Fuel_Cannister` — réclamé par `spark_weapon`
@@ -353,11 +328,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Gift_of_the_Chak` — réclamé par `gift_of_maguuma`
 - `Gift_of_the_Fleet` — réclamé par `gift_of_maguuma`
 - `Gift_of_the_Jungle` — réclamé par `gift_of_maguuma`
-- `Glacial_Core` — réclamé par `glacial_lodestone`
 - `Glacial_Fragment` — réclamé par `glacial_shard`
 - `Globe` — réclamé par `storm`
 - `Gold_Ore` — réclamé par `gold_ingot`
-- `Gossamer_Scrap` — réclamé par `bolt_of_gossamer`
 - `Hard_Wood_Log` — réclamé par `hard_wood_plank`
 - `Harp` — réclamé par `the_bard`
 - `Horse_Figure` — réclamé par `the_lover`
@@ -383,7 +356,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Regulator_Nozzle` — réclamé par `spark_weapon`
 - `Rooster_Statues` — réclamé par `the_bard`
 - `Rugged_Leather_Section` — réclamé par `cured_rugged_leather_square`
-- `Rune_Carving_Tools` — réclamé par `the_raven_staff`
 - `Scope` — réclamé par `the_hunter`
 - `Seasoned_Wood_Log` — réclamé par `seasoned_wood_plank`
 - `Serrated_Harpoon` — réclamé par `carcharias`
@@ -428,8 +400,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Thin_Leather_Section` — réclamé par `cured_thin_leather_square`
 - `Tome_of_Heroes` — réclamé par `the_chosen`
 - `Vial_of_Thin_Blood` — réclamé par `vial_of_blood`
-- `Visage_of_Champawat` — réclamé par `tigris`
-- `Visage_of_Chuka` — réclamé par `tigris`
 - `Wolf_Statue_(exotic)` — réclamé par `howl`
 - `Wool_Scrap` — réclamé par `bolt_of_wool`
 

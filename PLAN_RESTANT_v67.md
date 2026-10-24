@@ -600,6 +600,23 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
         action (souvent gratuite). Les intermediaires (lames, manches,
         armes basiques) se decomposent par regle C7 : plusieurs centaines de
         composants a creer → accord d'Antoine sur le volume avant execution.
+        ✅ 24/10, premiere passe (feu vert d'Antoine sur le volume ; wiki hors
+        ligne) — `gw2_collections_armes_v1`, sources v422 :
+          131 achats Mossi, 136 livres Hobbs (karma + eclats d'esprit ; or
+          non pose), 179 objets d'etape fabriques (recette API) dont 32 avec
+          recette Hobbs (karma) ; 122 composants crees (pieces
+          experimentales, lodestones prismatiques, polish, cores, oozes...)
+          decomposes par leur recette API ; Spirit / Expertise / Essence =
+          produits internes a la chaine, ecartes ; Bandit Crest, Geode,
+          Karka Shell crees ; 32 precurseurs passent de « unknown » a la
+          collection ; nouveaux ids lus au comptoir
+          (ressources/api/comptoir_armes_20261024.json).
+          confronte_totaux v12 : la table d'arme s'arrete au precurseur,
+          comparee au total precurseur fait (941 accords, 0 excedent nu).
+        - [ ] reste (wiki de retour) : 78 echanges aux maitres artisans
+          (Requisitions, Art of ...), achats gen2 aupres d'autres PNJ, 46
+          composants crees sans recette (voie a lire : sources « unknown »
+          portant la description du jeu), 113 pages en file.
         Ancien detail : « Old World Magics » (100 obsidiennes) et
         « Herbal Magics » (25 Passion Flowers) dans 18 collections de
         precurseur ; 2 couts poses sur 1 978 etapes d'armes → A1 : les
