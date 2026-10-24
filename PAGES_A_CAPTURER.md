@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v423.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v424.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -146,16 +146,14 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Mist Pendant` |
 | `Testimony of Heroics` |
 
-## 3 bis — 46 composants dont le coût d'obtention est inconnu
+## 3 bis — 31 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
 
 | page wiki |
 |---|
-| `Alpha Wolf Spirit` |
 | `Black Diamond` |
-| `Black Powder` |
 | `Cheese Wedge` |
 | `Cherry` |
 | `Copper Doubloon` |
@@ -163,22 +161,13 @@ faut, pas comment on les obtient.
 | `Crystal Core` |
 | `Destroyer Core` |
 | `Drop of Indigo Mushroom Milk` |
-| `Egg of Darkness` |
-| `Egg of Winds` |
 | `Glacial Core` |
-| `Glob of Blue Ooze` |
-| `Glob of Green Ooze` |
-| `Glob of Red Ooze` |
-| `Glob of Yellow Ooze` |
 | `Gossamer Scrap` |
 | `Green Onion` |
 | `Harpy Feathers` |
 | `Indigo Mushroom` |
 | `Jar of Paint Base` |
-| `Jar of Wolf Pheromones` |
 | `Karka Shell` |
-| `Meteorite Ore` |
-| `Orrian Sea Urchin Roe` |
 | `Piece of Ambrite` |
 | `Pile of Glittering Dust` |
 | `Pouch of Blue Pigment` |
@@ -193,12 +182,8 @@ faut, pas comment on les obtient.
 | `Seaweed` |
 | `Sheet of Aurillium` |
 | `Spinach Leaf` |
-| `Swift Egg` |
 | `Tarragon Leaves` |
 | `Tiger's Eye Pebble` |
-| `Undersea Wurm Filet` |
-| `Vial of Cobalt Salts` |
-| `Vial of Manganese Dioxide` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -216,7 +201,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 126 pages à capturer
+## URLs — 111 pages à capturer
 
 ```
 https://wiki.guildwars2.com/wiki/Advanced_Ammunition_Cylinder
@@ -299,9 +284,7 @@ https://wiki.guildwars2.com/wiki/Glob_of_Condensed_Spirit_Energy
 https://wiki.guildwars2.com/wiki/Memories_of_Aurene
 https://wiki.guildwars2.com/wiki/Mist_Pendant
 https://wiki.guildwars2.com/wiki/Testimony_of_Heroics
-https://wiki.guildwars2.com/wiki/Alpha_Wolf_Spirit
 https://wiki.guildwars2.com/wiki/Black_Diamond
-https://wiki.guildwars2.com/wiki/Black_Powder
 https://wiki.guildwars2.com/wiki/Cheese_Wedge
 https://wiki.guildwars2.com/wiki/Cherry
 https://wiki.guildwars2.com/wiki/Copper_Doubloon
@@ -309,22 +292,13 @@ https://wiki.guildwars2.com/wiki/Corrupted_Core
 https://wiki.guildwars2.com/wiki/Crystal_Core
 https://wiki.guildwars2.com/wiki/Destroyer_Core
 https://wiki.guildwars2.com/wiki/Drop_of_Indigo_Mushroom_Milk
-https://wiki.guildwars2.com/wiki/Egg_of_Darkness
-https://wiki.guildwars2.com/wiki/Egg_of_Winds
 https://wiki.guildwars2.com/wiki/Glacial_Core
-https://wiki.guildwars2.com/wiki/Glob_of_Blue_Ooze
-https://wiki.guildwars2.com/wiki/Glob_of_Green_Ooze
-https://wiki.guildwars2.com/wiki/Glob_of_Red_Ooze
-https://wiki.guildwars2.com/wiki/Glob_of_Yellow_Ooze
 https://wiki.guildwars2.com/wiki/Gossamer_Scrap
 https://wiki.guildwars2.com/wiki/Green_Onion
 https://wiki.guildwars2.com/wiki/Harpy_Feathers
 https://wiki.guildwars2.com/wiki/Indigo_Mushroom
 https://wiki.guildwars2.com/wiki/Jar_of_Paint_Base
-https://wiki.guildwars2.com/wiki/Jar_of_Wolf_Pheromones
 https://wiki.guildwars2.com/wiki/Karka_Shell
-https://wiki.guildwars2.com/wiki/Meteorite_Ore
-https://wiki.guildwars2.com/wiki/Orrian_Sea_Urchin_Roe
 https://wiki.guildwars2.com/wiki/Piece_of_Ambrite
 https://wiki.guildwars2.com/wiki/Pile_of_Glittering_Dust
 https://wiki.guildwars2.com/wiki/Pouch_of_Blue_Pigment
@@ -339,10 +313,6 @@ https://wiki.guildwars2.com/wiki/Sapphire_Crystal
 https://wiki.guildwars2.com/wiki/Seaweed
 https://wiki.guildwars2.com/wiki/Sheet_of_Aurillium
 https://wiki.guildwars2.com/wiki/Spinach_Leaf
-https://wiki.guildwars2.com/wiki/Swift_Egg
 https://wiki.guildwars2.com/wiki/Tarragon_Leaves
 https://wiki.guildwars2.com/wiki/Tiger%27s_Eye_Pebble
-https://wiki.guildwars2.com/wiki/Undersea_Wurm_Filet
-https://wiki.guildwars2.com/wiki/Vial_of_Cobalt_Salts
-https://wiki.guildwars2.com/wiki/Vial_of_Manganese_Dioxide
 ```

@@ -617,3 +617,390 @@ détruire un comptage tenu à la main, qui est l'usage prévu pour ce que l'API 
 rend pas. Il faut deux espaces distincts — `synced` et `manuel` — et un
 affichage qui dise lequel parle. `__notSent` et `__syncedAt` existent déjà et
 serviront de base.
+
+## 3. Identifiants d'objets — un posé, un contredit
+
+- **`ancient_cipher`** → ✅ `apiId: 81722`. Le 404 annoncé le 22/08 était un
+  **artefact de l'outil de récupération**, qui renvoyait une réponse en cache
+  pour une autre URL — pas une réponse de l'API. Vérifié indépendamment en
+  décodant le code de discussion de la fiche, `[&AgE6PwEA]` : type 2 (objet),
+  quantité 1, identifiant 81722 en petit-boutiste.
+  **Leçon de méthode** : un échec d'outil n'est pas un fait sur le monde. Quand
+  un identifiant fourni « n'existe pas », le vérifier par un second chemin
+  avant de l'écrire dans la donnée.
+
+- **`spirit_thread`** → ✅ `apiId: 77372`, et **la cadence Gorseval est
+  rétablie**. La fiche d'Envoy I est sans ambiguïté : le fil vient de
+  **Gorseval** (Val des esprits), et le **chak gerent** sert à l'**imprégner**
+  d'énergie de ligne de faille. Le texte de l'objet ne décrit que cette
+  imprégnation — j'y avais lu une contradiction et dégradé une entrée correcte.
+  **Deuxième fois** qu'une lecture partielle me fait défaire du travail juste.
+
+---
+
+> Clos le 24/10/2026 : les deux identifiants posés (✅ dans la section).
+
+## 6. Conflits de valeur restants
+
+Aucun à ce jour. Les trois derniers (`selachimorpha` 10 vs 55,
+`obsidian__per_piece` 15 vs 9 et 250 vs 600) ont été tranchés par capture wiki,
+et **`qty` avait raison les trois fois**.
+
+Si un nouveau conflit apparaît entre `_meta.common_required` et
+`craft_components[].qty`, l'audit le signale en avertissement. Le réflexe à
+avoir : **ne pas trancher en faveur de `common_required`**, qui n'a pas suivi
+les mises à jour du jeu.
+
+> Clos le 24/10/2026 : aucun conflit ouvert, `common_required` supprimé depuis.
+
+## Noms français des sous-zones de farm (38 entrées)
+
+`trophy_matrix.farm_hubs.hubs[].zones[].name.fr` vaut `null` sur les 37 sous-zones.
+Le rendu se replie sur l'anglais, qui est le nom du wiki et reste cherchable.
+
+Ces noms sont des noms propres de lieux : les traduire de tête reviendrait à
+fabriquer 38 toponymes. Ils attendent une source vérifiée (wiki FR ou client de
+jeu en français).
+
+**Enjeu** : cosmétique en français, nul en anglais. Le bloc « Où farmer » est
+exploitable en l'état dans les deux langues.
+
+> Clos le 24/10/2026 : W7 du plan, 56/56 le 09/10.
+
+## Migration vers collections{} — ✅ TERMINÉE sauf l'Obsidienne (constat du 04/10/2026, voir PLAN_RESTANT)
+
+**Ad Infinitum migré le 27/08/2026**, forme validée avant de généraliser :
+4 collections, **46 étapes nommées, 46 `how`**, totaux comptés sur les bits du
+dump au lieu d'être écrits à la main.
+
+Les trois structures ont fusionné en une :
+`raidAchievements[]` du JSX a donné les `bitTips` par étape, `achievements[]`
+des sources la note et l'identifiant, le dump les noms d'étapes.
+
+**Marquage** : les 46 `how` portent `how_verified: false` et un `how_ref` disant
+d'où ils viennent. Ce sont des conseils éditoriaux repris tels quels, pas des
+instructions revérifiées étape par étape.
+
+**Divergence conservée** : la note d'`adinf_4` différait entre le JSX et les
+sources. La version JSX chiffre les murs d'échelle (Complexe souterrain 53,
+Étherlame 65, Mai Trin en T4), elle est retenue ; l'autre passe en `note_alt`
+plutôt que d'être perdue. `note_alt` n'est pas encore rendu — un avertissement
+d'audit le signale.
+
+**JSX** : le bloc `raidAchievements` d'Ad Infinitum est supprimé, et la garde du
+bloc « Collections & succès » masque désormais aussi quand `T.collections`
+existe — sans quoi Ad Infinitum aurait affiché les deux chemins.
+
+**Restent 10 légendaires** : Vision, Aurora, Coalescence, Selachimorpha, Eikasia,
+Upgrades, Perfected Envoy, Endless Summer, Stella Radians, Orrax Manifested,
+Strife Unending — moins Vision et Aurora qui ont déjà `collections{}` et
+demandent une fusion plutôt qu'une création.
+
+> Clos le 24/10/2026 : l'Obsidienne porte ses six collections Arcanum (W1, 08/10).
+
+## Jeton de fournisseur — ✅ **VÉRIFIÉ le 27/08/2026 sur le wiki**
+
+Le plafond n'est **pas** de 105 par compte : c'est **7 par semaine et par
+VENDEUR**. Le 105 de la prose était un total de quinze vendeurs présenté comme
+un plafond déclaré. Cadence corrigée, `verified: true`.
+
+**Repère global relevé sur la page** : **2 600 jetons** suffisent aux 52 Dons
+d'artisanat de TOUS les légendaires de l'Armurerie — 8 cachets, 7 runes, la
+relique, 36 pièces d'armure. Ce total compte l'armure d'obsidienne ET celle de
+l'Émissaire, dont les fonctions se recouvrent : une seule par classe d'armure
+ramène le besoin à **1 700**. Inscrit dans la note du composant.
+
+### Reste : 450 contre 600
+
+Troisième table parallèle, dernière du genre : le bloc `currencies` du JSX
+déclare **450** pour `upgrades` (apiId 29), la chaîne en calcule **600**
+(6 runes × 50 + 6 sigils × 50, d'après la prose des deux collections).
+
+Ni l'un ni l'autre n'est sourcé. Le 600 vient de ma lecture de la prose, le 450
+d'une saisie plus ancienne. **À vérifier en jeu avant d'aligner quoi que ce
+soit** — aligner sur un nombre non vérifié ne ferait que figer une erreur.
+
+> Clos le 24/10/2026 : 450 = moteur (6 runes + 2 cachets + relique, 9 × 50), ancre du JSX confrontée par l'audit (S3, 19/10).
+
+## Armes — ✅ liste réconciliée le 27/08/2026, deux patterns identifiés
+
+### Douze fiches inventées remplacées
+
+Chacune portait un `precursor` et un `gift_unique` **absents des 53 lignes de la
+table du wiki** : Sword of Wrath, Elegy Mosaic, Ancient Tome, Gleaming Blade,
+Sacred Jungle Defender, Keeper of the Wilds, Hope's Last Spark, Claw of
+Retribution, et quatre « of Aurene's Power ». Aucun n'existe.
+
+À leur place, les armes réelles que le tracker ne montrait pas :
+
+| gen2 | précurseur | gen3 | précurseur |
+|---|---|---|---|
+| Claw of the Khan-Ur | Claw of Resolution | Aurene's Fang | Dragon's Fang |
+| Flames of War | Liturgy | Aurene's Flight | Dragon's Flight |
+| Pharus | Spero | Aurene's Tail | Dragon's Tail |
+| Sharur | Might of Arah | Aurene's Wing | Dragon's Wing |
+| The HMS Divinity | Man o' War | | |
+| The Shining Blade | Save the Queen | | |
+| Verdarach | Call of the Void | | |
+
+**Tigris disparaît** : la table la donne en Final tier de Chuka and Champawat,
+c'est un précurseur. **The Binding of Ipos** passe sous le préfixe `gen2_` —
+vraie gen2, elle vivait hors préfixe et n'entrait donc pas dans le sélecteur du
+Grand Total. Ses références dans `craft_components` ont suivi.
+
+**Réconciliation complète** : gen1 21 (les 20 du wiki + Eternity), gen2 16/16,
+gen3 16/16, aucune manquante, aucune en trop.
+
+⚠ Les onze fiches créées portent `recipe_verified: false` : leur recette est
+reprise du gabarit de génération. **Les composants propres à chaque arme restent
+à établir** — c'est le prochain chantier.
+
+### Deux patterns pour les collections d'armes
+
+- **Pattern A** — chaîne `X I: … / II: … / III: …` dans « Legendary Weapons »,
+  plus un `Legendary Weapon: X` final. 25 armes.
+- **Pattern B** — arme d'histoire hors de cette catégorie. Caladbolg s'obtient
+  par **Knight of the Thorn**, groupe **Side Stories** : `Dreams of a Thorn`
+  (3390), `Shards of a Thorn` (3388), `Sword Taxonomy` (3389), `The Sword
+  Regrown` (3387), `Knight of the Thorn` (3391), plus `Forms of the Thorn`
+  (9221) et `Reverie of a Thorn` (9223).
+
+**Une table de correspondance ne doit donc pas se limiter à « Legendary
+Weapons »** : elle doit accepter des identifiants de n'importe quel groupe.
+
+### ✅ Collections des armes posées le 27/08/2026
+
+**25 armes en ont** — les 21 gen1 et les quatre gen2 de HoT (Astralaria, Chuka
+and Champawat, HOPE, Nevermore) — soit **87 collections et 1 978 étapes
+nommées**.
+
+**Les 28 autres n'en ont AUCUNE, et c'est un vide établi** : les douze gen2 de
+PoF (Eureka, Exordium, Sharur, Verdarach, Xiuquatl, Pharus, Shooshadoo, Claw of
+the Khan-Ur, Flames of War, The HMS Divinity, The Shining Blade, The Binding of
+Ipos) et les seize gen3 **fabriquent leur précurseur à la Forge mystique** au
+lieu de le gagner par une chaîne de succès. Aucun des 6 785 succès du
+référentiel ne les mentionne.
+
+`collections_none` le dit explicitement et **s'affiche dans l'onglet** : sans
+ça, l'onglet vide serait indiscernable d'une donnée manquante, et on relancerait
+le rapprochement à chaque session.
+
+⚠ **Aucun `how` n'est écrit sur ces 1 978 étapes.** Elles sont nommées, leur mode
+d'obtention reste à documenter — c'est le plus gros chantier éditorial restant,
+loin devant tout le reste.
+
+### Reste : les armes d'histoire comme cinquième catégorie
+
+Caladbolg, Itzel's Boon, Lorekeeper, Elegy, Reaver of the Mists, H.O.P.E.
+(Scepter) sont de vraies armes à suivre — collections, farm de composants,
+déblocages. Elles ont été **retirées** parce que leurs fiches étaient inventées,
+pas parce qu'elles n'ont pas leur place. À recréer proprement, sur leurs vraies
+chaînes de succès.
+
+**`Eordas Grip` n'existe pas** : aucune page wiki, absente de la table. Ne pas
+la recréer.
+
+> Clos le 24/10/2026 : plus aucune fiche `recipe_verified: false` (24/10).
+
+## Ouvert au 24/09/2026
+
+Les deux points ouverts le 18/09 sont regles : les monnaies de carte du groupe
+d'armes (section Z, puis remplacement du mecanisme en AA) et le marquage
+retroactif des etapes validees (sections Y et AB).
+
+> Clos le 24/10/2026 : les deux points y sont déclarés réglés.
+
+## 12 quater. Sélections de la liste — ✅ CLOS le 20/10/2026
+
+C'était la liste des métas de l'onglet Activités, retenues sur la seule gemme
+amalgamée (constat du 03/10, § 12). Close par C10 : les métas sont déduites des
+ressources encore à farmer pour chaque légendaire.
+
+Deuxième point d'Antoine, non instruit : une question sur les sélections d'une
+liste, « faite il y a looongtemps ». Reste à savoir de quelle liste il s'agit et
+ce qui est en cause. Le nom de l'écran suffira à retrouver ce qui les avait
+décidées.
+
+### 1. Captures manquantes — 19 URLs dans `PAGES_A_CAPTURER.md`
+
+**Le chiffre a explosé le 25/09, et c'est une bonne nouvelle** : la complétion
+de l'arbre a créé les 124 composants que les recettes réclamaient sans qu'ils
+existent. Leur quantité est sourcée, leur voie d'obtention non — d'où la file.
+Elle mesure enfin ce qui manque vraiment, et non ce qui manquait à l'arbre
+qu'on avait sous les yeux. Voir DETTE_ARBRE_CRAFT.md § BJ.
+
+
+Les dix URLs de cette entree sont livrees et integrees (lots des 24 et
+25/09) : branche Olmakhan, tables d'armure, feuilles. `Valkyrie_Bearkin_War_Helm`
+n'a jamais eu besoin de capture — son apiId (103257) se lit sur
+`Valkyrie_Bearkin_War_Helm_(heavy)`, deja au depot ; l'ecart etait un titre de
+redirection, pas un manque.
+
+**Les deux armures competitives ne sont plus bloquees, et ne l'etaient plus
+depuis un moment.** Les dix-neuf pages de pieces d'`Ardent_Glorious` et les
+dix-neuf de `Triumphant_Hero's` sont au depot, et les deux sets sont decomposes :
+trois dons chacun, poses en `__per_piece`, avec leurs recettes et leurs enfants.
+`Gift of War Prowess` a sa recette (1 legendary_war_insight + 1 eldritch_scroll
++ 50 obsidian_shard + 1 cube_of_stabilized_dark_energy). Il n'y a pas de piece
+individuelle a modeliser : une piece coute les memes trois dons quel que soit
+son emplacement, ce que le suffixe `__per_piece` dit deja.
+
+Les 3 URLs restantes sortent de la decomposition du 25/09 :
+`Record_of_League_Participation`, `Star_of_Glory`, `Jar_of_Distilled_Glory` —
+les trois ingredients du `Gift of Competitive Dedication` qui manquaient a
+l'arbre.
+
+### 2. Les trois valeurs d'Aurene's Rending
+
+`mystic_clover 39`, `mystic_coin 250`, `crystalline_ingot 250` : la seizieme
+gen3 ne les porte pas quand ses quinze soeurs les portent. Elles ne figurent
+dans AUCUNE table — les tables gen3 s'arretent a 38 trefles via le Draconic
+Tribute. Les completer serait une deduction par patron generationnel, et ce
+patron s'est revele faux quatre fois ici. **Demande une lecture en jeu.**
+
+### 3. Six doubles comptes qu'aucune capture ne tranche
+
+`stabilizing_matrix` sur Klobjarne Geirr, `shard_of_glory` sur Conflux, et
+quatre autres. L'audit les signale, le depot ne contient pas de quoi decider.
+
+### 4. Seize excedents uniformes, sourcés, non declarables
+
+Les seize gen3 sortent a 300 reactifs thermocatalytiques contre 250 au tableau.
+Les 50 d'ecart viennent de la piece d'arme du Poeme et sont justes, mais la
+table de l'arme ne cite pas cette piece : il n'y a aucune branche fermee a
+trouver, a un cran comme a six. Les declarer demanderait un champ nouveau —
+`qty_overlap_verified` dit autre chose. **Decision a prendre.**
+
+### 5. Verifications qui demandent le jeu ou le reseau
+
+- Les 23 feuilles se cochent-elles vraiment ? Le pont
+  `/v2/recipes/search` → `/v2/account/recipes` est ecrit et teste
+  syntaxiquement, jamais appele — le bac a sable n'atteint pas l'API GW2. Le
+  scope `unlocks` est requis.
+- Flask v40 rend-il bien `_recipes` apres redemarrage ?
+- Airship Part et Lump of Aurillium existent comme objets (74494, 75012) ET
+  comme monnaies de portefeuille (19, 22). Les composants portent les ids
+  d'objet, que les pages wiki affichent. Si le stock vit au portefeuille,
+  l'affichage montrera zero possede. **A regarder en jeu.**
+
+### 6. Coordination entre sessions
+
+`gw2_garde_concurrence_v2.py` se lance apres le clone et avant le push. Les
+sessions cowork ne peuvent pas pousser — proxy 403, bug produit ouvert sans
+contournement dans l'interface. Leur livraison passe par zip, qui ne transporte
+aucun `.py` : les deux cotes numerotent les memes outils sans se voir.
+
+> Clos le 24/10/2026 : métas déduites (C10, 20/10).
+
+## Vision — chaîne complétée le 27/08/2026, `common_required` reste à revoir
+
+Les 167 ectoplasmes manquants sont rentrés. **Total Vision : 850 → 1 017**,
+conforme à l'arbre une fois réintégrés les 300 du kralkatite que l'arbre omet
+(branche de collection).
+
+Six maillons créés : `lump_of_mithrillium`, `crystalline_ingot`, `fulgurite`,
+`diviners_orichalcum_imbued_inscription`, `banner_of_the_commander` (+ pôle et
+pennon), `olmakhan_bandolier_chain`.
+
+**Les totaux à plat ont été retranchés de ce que la chaîne apporte** — sinon les
+deux se cumulent (`_meta.flat_vs_chain_rule`). Vision : ectos 250 → 249,
+obsidienne 421 → 321. Coalescence : 499 → 249 sur les deux. **Les totaux
+calculés ne bougent pas** : Vision 421 d'obsidienne, Coalescence 499 partout.
+Seule la répartition entre plat et chaîne change.
+
+Diff exhaustif passé sur tous les légendaires : **seuls Vision et Coalescence
+bougent**, et uniquement là où c'était voulu.
+
+### Reste ouvert : `common_required` de Vision
+
+`obsidian = 250` ne correspond toujours à rien — la vraie exigence directe vaut
+**172** (100 Fulgurite + 3 × 24). Et `ectos = 250` face à un total de 1 017.
+Ces deux valeurs sont des reliquats du gabarit générique.
+
+> Clos le 24/10/2026 : `_meta.common_required` n'existe plus (moteur seul, 08/09) ; rien à revoir.
+
+## (ancien) Migration achievements[] → collections{} — décidée, en cours
+
+**Décision d'Antoine le 27/08/2026, option B** : une seule source de vérité. Les
+onze légendaires qui décrivent leurs collections en `legendaries[].achievements[]`
+passent à `legendaries[].collections{}`, la structure riche déjà utilisée par
+Prismatic, Aurora et Vision.
+
+| | `collections{}` | `achievements[]` |
+|---|---|---|
+| qui | Prismatic, Aurora, Vision | 11 autres |
+| forme | `items[]` avec `bit`, `name`, `how`, `how_ref`, `unlock_first`, `currency_cost` | `key`, `id`, `name`, `total`, `note` |
+| conseils | par étape, dans l'item | `bitTips` **dans le JSX**, indexés par bit |
+
+Aucun légendaire n'a les deux aujourd'hui.
+
+### Dump complet le 27/08/2026 — 163 succès, bilingue, zéro bit sans nom
+
+Un seul absent : **9330 `stella_forge_guard`**, que l'API ne renvoie pas
+(`not_returned: [9330]`). À instruire à part — succès retiré ou non exposé.
+
+### État par collection avant migration
+
+**13 collections sont des compteurs sans étapes** — l'API ne leur donne aucun
+bit. Ce n'est pas un trou : ce sont des succès à progression numérique (les
+quatre Path of the Ascension, les quatre Mastery d'Orrax et d'Endless Summer,
+Legendary Armorer, Vision II, les collecteurs de runes et de cachets). En
+`collections{}` elles auront un `total` mais pas d'`items[]`.
+
+**Neuf totaux divergent du dump, tous par sous-compte :**
+
+| légendaire | collection | `total` écrit | bits réels |
+|---|---|---|---|
+| Strife Unending | `strife_mists_research` | 3 | **8** |
+| Strife Unending | `strife_unending` | 10 | **11** |
+| Orrax Manifested | `orrax_contained` | absent | 5 |
+| Orrax Manifested | `orrax_isles` | absent | 13 |
+| Orrax Manifested | `orrax_shadows` | absent | 7 |
+| Orrax Manifested | `orrax_feast` | absent | 18 |
+| Orrax Manifested | `orrax_final` | absent | 1 |
+| Perfected Envoy | `envoy_1` | absent | 18 |
+| Perfected Envoy | `envoy_2` | absent | 14 |
+
+Les deux de Strife Unending sont **faux, pas absents** : `Mists Research` a bien
+8 étapes (parler à Dugan, puis sept enquêtes en McM), et `Mists Research: Strife
+Unending` en a 11. Le tracker en annonçait 3 et 10.
+
+### Ce qui bloquait : 17 succès absents du dump — ✅ résolu
+
+Le dump couvre les quatre catégories « Legendary … » des Collections. Mais 17
+succès référencés par les sources vivent **ailleurs** — Visions of Eternity,
+Janthir Wilds, PvP :
+
+The Ascension (4), Endless Summer (2), Stella Radians (2), Strife Unending (2),
+Orrax Manifested (7).
+
+`gw2_dump_bits_v7.py --sources` lit désormais `legendaries[].achievements[].id`
+et les ajoute : **26 identifiants** que le catalogue seul ne voyait pas.
+
+```
+python3 gw2_dump_bits_v7.py --catalogue --sources
+```
+
+### Quatre totaux à revérifier une fois le dump complet
+
+| légendaire | collection | `total` déclaré | bits |
+|---|---|---|---|
+| Endless Summer | `summer_krait` | absent | 0 |
+| Orrax Manifested | `orrax_final` | absent | 1 |
+| Perfected Envoy | `envoy_1` | absent | 18 |
+| Perfected Envoy | `envoy_2` | absent | 14 |
+
+Les autres concordent exactement — les totaux écrits à la main sont bons.
+
+### Ce que la migration devra préserver
+
+- `note` de collection → `note` de collection.
+- `bitTips[i]` du JSX → `items[i].how`, avec `how_verified: false` et un
+  `how_ref` disant d'où ça vient. Ce sont des conseils, pas des instructions
+  vérifiées : les promouvoir sans marqueur serait une généralisation.
+- `collection_unlocks` est indexé par `achievementId` et reste valable.
+- **JSX en dernier, une seule passe** : suppression du chemin `achievements[]`
+  et des 38 blocs `bitTips`, une fois les sources migrées et vérifiées.
+
+> Clos le 24/10/2026 : plus aucun légendaire ne porte `achievements[]` : migration achevée (voir la section close « Migration vers collections{} »).
+

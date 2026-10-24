@@ -910,6 +910,13 @@ d'artisanat de /v2/recipes contre les aretes, 1 011 apiId. Puis
   Spirit Energy, Gift of Ascension, Gift of Infinity, Gift of the Hylek,
   Gift of Shadows, Fruits of the Shadow, Gift of the Seas, Gift of the
   Obscure, Glimpse) ; leurs sources comptoir du 20/10 retirees.
+- ✅ sources v424 (`gw2_sources_descriptions_v1`) : 15 des 46 composants
+  crees sans recette prennent leur type de source dans la description du
+  jeu (butin, recolte, vendeur).
+- ✅ BACKLOG trie le 24/10 : 10 sections closes deplacees (identifiants,
+  conflits de valeur, noms des sous-zones, migrations, jeton de
+  fournisseur, armes, ouvert au 24/09, 12 quater, common_required) ; 14
+  ouvertes.
 - [ ] reste : Master Maintenance Oil (recette x5, non decomposee : quantites
   fractionnaires), 16 ids a lire sur le wiki.
 
