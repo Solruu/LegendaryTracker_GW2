@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -409,10 +409,28 @@ namespace GW2_NodeTracker
             // n'écoute que "Modifié" (cas plausible pour Pathing) ne
             // serait jamais notifié du changement, même si le contenu sur
             // disque est correct.
-            using (var destStream = new FileStream(outputPath, FileMode.Create))
-            using (var srcStream = new FileStream(tempPath, FileMode.Open))
+            //
+            // Pathing tient le fichier ouvert quelques secondes quand il le
+            // relit (au démarrage surtout) : la première écriture de chaque
+            // session échouait sur « being used by another process » et le
+            // pack restait périmé jusqu'à la capture suivante (journal du
+            // 22/10/2026). On réessaie quelques fois avant d'abandonner.
+            const int attempts = 6;
+            for (int attempt = 1; ; attempt++)
             {
-                srcStream.CopyTo(destStream);
+                try
+                {
+                    using (var destStream = new FileStream(outputPath, FileMode.Create))
+                    using (var srcStream = new FileStream(tempPath, FileMode.Open))
+                    {
+                        srcStream.CopyTo(destStream);
+                    }
+                    break;
+                }
+                catch (IOException) when (attempt < attempts)
+                {
+                    System.Threading.Thread.Sleep(500);
+                }
             }
             File.Delete(tempPath);
 

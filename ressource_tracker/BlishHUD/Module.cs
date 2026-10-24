@@ -85,6 +85,8 @@ namespace GW2_NodeTracker
         private SettingEntry<bool> _showSelectionIndicator;
         private SettingEntry<int> _indicatorX;
         private SettingEntry<int> _indicatorY;
+        private SettingEntry<int> _panelX;
+        private SettingEntry<int> _panelY;
         #endregion
 
         private List<GatheredNode> _nodes = new List<GatheredNode>();
@@ -113,63 +115,95 @@ namespace GW2_NodeTracker
         private DateTime _pendingDeleteAt = DateTime.MinValue;
 
         private Panel _selectionPanel;
+        private DragTracker _panelDrag;
+
+        // Parties persistantes du panneau : le champ de recherche ne doit
+        // pas être recréé à chaque frappe (il perdrait le focus), seule la
+        // liste en dessous l'est.
+        private StandardButton _toggleListButton;
+        private TextBox _searchBox;
+        private Panel _typeList;
+        private int _panelChromeX, _panelChromeY;
 
         // Rappel permanent du type sélectionné, indépendant du panneau :
         // la correction (Ctrl+Alt+C) applique ce type sans le montrer, et
         // il fallait rouvrir la liste pour s'en souvenir.
         private DraggableLabel _selectionIndicator;
+        private DragTracker _indicatorDrag;
 
         /// <summary>
-        /// Label qu'on peut saisir au clic gauche et faire glisser. Le suivi
-        /// de la souris se fait dans Module.Update (UpdateSelectionIndicator) :
-        /// une fois le bouton enfoncé, le curseur sort vite du texte, et un
-        /// suivi limité aux événements du contrôle lâcherait la prise.
+        /// Glisser-déposer d'un contrôle quelconque à la souris.
         ///
-        /// La fin du glisser vient de l'événement GLOBAL de relâchement
-        /// (GameService.Input.Mouse.LeftMouseButtonReleased), pas de
+        /// Saisie sur l'événement du contrôle ; suivi dans Module.Update
+        /// (Follow), parce que le curseur sort vite du contrôle une fois le
+        /// bouton enfoncé ; fin sur l'événement GLOBAL de relâchement. Pas
         /// Mouse.State : l'entrée de Blish passe par des hooks, et l'état
         /// XNA lisait « relâché » dès la première image -- le glisser
         /// s'arrêtait avant d'avoir commencé (constaté le 21/10/2026).
         /// </summary>
-        private class DraggableLabel : Label
+        private sealed class DragTracker : IDisposable
         {
-            private static readonly Logger DragLogger = Logger.GetLogger<DraggableLabel>();
+            private static readonly Logger DragLogger = Logger.GetLogger<DragTracker>();
+
+            private readonly Control _control;
+            private readonly string _name;
+            private Point _grabOffset;
 
             public bool Dragging { get; private set; }
-            public Point GrabOffset { get; private set; }
 
             /// <summary>Levé au relâchement, avec la position finale.</summary>
-            public event Action<Point> DragEnded;
+            public event Action<Point> Ended;
 
-            public DraggableLabel()
+            public DragTracker(Control control, string name)
             {
-                GameService.Input.Mouse.LeftMouseButtonReleased += OnGlobalLeftReleased;
+                _control = control;
+                _name = name;
+                _control.LeftMouseButtonPressed += OnPressed;
+                GameService.Input.Mouse.LeftMouseButtonReleased += OnGlobalReleased;
             }
 
-            // Capturer la souris : recevoir le clic, et ne pas cliquer dans GW2.
-            protected override CaptureType CapturesInput() => CaptureType.Mouse;
-
-            protected override void OnLeftMouseButtonPressed(Blish_HUD.Input.MouseEventArgs e)
+            private void OnPressed(object sender, Blish_HUD.Input.MouseEventArgs e)
             {
                 Dragging = true;
-                GrabOffset = GameService.Input.Mouse.Position - Location;
-                DragLogger.Debug("Indicateur saisi en {0}, decalage {1}.", Location, GrabOffset);
-                base.OnLeftMouseButtonPressed(e);
+                _grabOffset = GameService.Input.Mouse.Position - _control.Location;
+                DragLogger.Debug("{0} saisi en {1}.", _name, _control.Location);
             }
 
-            private void OnGlobalLeftReleased(object sender, Blish_HUD.Input.MouseEventArgs e)
+            /// <summary>À appeler à chaque Update : colle le contrôle au curseur, borné à l'écran.</summary>
+            public void Follow()
+            {
+                if (!Dragging || _control.Parent == null) return;
+
+                var screen = GameService.Graphics.SpriteScreen;
+                var target = GameService.Input.Mouse.Position - _grabOffset;
+                target = new Point(
+                    MathHelper.Clamp(target.X, 0, Math.Max(0, screen.Width - _control.Width)),
+                    MathHelper.Clamp(target.Y, 0, Math.Max(0, screen.Height - _control.Height)));
+                if (_control.Location != target) _control.Location = target;
+            }
+
+            private void OnGlobalReleased(object sender, Blish_HUD.Input.MouseEventArgs e)
             {
                 if (!Dragging) return;
                 Dragging = false;
-                DragLogger.Debug("Indicateur lache en {0}.", Location);
-                DragEnded?.Invoke(Location);
+                DragLogger.Debug("{0} lache en {1}.", _name, _control.Location);
+                Ended?.Invoke(_control.Location);
             }
 
-            protected override void DisposeControl()
+            public void Dispose()
             {
-                GameService.Input.Mouse.LeftMouseButtonReleased -= OnGlobalLeftReleased;
-                base.DisposeControl();
+                _control.LeftMouseButtonPressed -= OnPressed;
+                GameService.Input.Mouse.LeftMouseButtonReleased -= OnGlobalReleased;
             }
+        }
+
+        /// <summary>
+        /// Un Label laisse passer la souris au jeu : celui-ci la capture,
+        /// pour recevoir le clic de saisie (et ne pas cliquer dans GW2).
+        /// </summary>
+        private class DraggableLabel : Label
+        {
+            protected override CaptureType CapturesInput() => CaptureType.Mouse;
         }
         private bool _showingFullList = false;
         private readonly System.Collections.Concurrent.ConcurrentQueue<string> _pendingNotifications
@@ -275,6 +309,20 @@ namespace GW2_NodeTracker
                 () => "Sélection active : position Y (px)",
                 () => "Distance au bord haut de l'écran.");
             _indicatorY.SetRange(0, 2160);
+
+            _panelX = settings.DefineSetting(
+                "SelectionPanelX",
+                100,
+                () => "Liste des types : position X (px)",
+                () => "Distance au bord gauche de l'écran. Se règle aussi en faisant glisser le panneau par son titre.");
+            _panelX.SetRange(0, 3840);
+
+            _panelY = settings.DefineSetting(
+                "SelectionPanelY",
+                150,
+                () => "Liste des types : position Y (px)",
+                () => "Distance au bord haut de l'écran.");
+            _panelY.SetRange(0, 2160);
 
             _nodesFilePath = settings.DefineSetting(
                 "NodesFilePath",
@@ -490,6 +538,7 @@ namespace GW2_NodeTracker
             }
 
             UpdateSelectionIndicator();
+            _panelDrag?.Follow();
             UpdatePathCorrection(gameTime, currentMapId);
             UpdateRefineTimer(gameTime, currentMapId);
             UpdateTacoDebounce(gameTime);
@@ -596,9 +645,13 @@ namespace GW2_NodeTracker
             // avant que ce module n'ait eu le temps de se recharger.
             FlushTacoOnUnload();
 
+            _panelDrag?.Dispose();
+            _panelDrag = null;
             _selectionPanel?.Dispose();
             _selectionPanel = null;
 
+            _indicatorDrag?.Dispose();
+            _indicatorDrag = null;
             _selectionIndicator?.Dispose();
             _selectionIndicator = null;
         }
@@ -896,125 +949,299 @@ namespace GW2_NodeTracker
         }
 
         // -------------------------------------------------------------
-        // Panneau cliquable -- reconstruit à chaque changement de map,
-        // et à chaque bascule filtré/liste complète.
+        // Panneau cliquable
+        //
+        // Créé une fois, déplaçable par son titre. Seule la liste des types
+        // est reconstruite (changement de map, bascule filtré/complet,
+        // frappe dans la recherche) : recréer tout le panneau à chaque
+        // frappe ferait perdre le focus au champ de recherche.
         // -------------------------------------------------------------
+        private const int HeaderRows = 3; // Fermer, bascule filtré/complet, recherche
+
+        /// <summary>Point d'entrée historique : (re)construit la liste, crée le panneau s'il manque.</summary>
         private void RebuildSelectionPanel()
         {
-            bool wasVisible = _selectionPanel?.Visible ?? false;
-            _selectionPanel?.Dispose();
+            EnsureSelectionPanel();
 
-            List<NodeType> displayList = _showingFullList ? NodeType.All.ToList() : _filteredTypes;
+            _toggleListButton.Text = _showingFullList
+                ? $"↩ Revenir au filtre ({_filteredTypes.Count})"
+                : $"⊞ Voir tout ({NodeType.All.Length})";
 
-            // Compte les en-têtes de groupe nécessaires (un par groupe distinct
-            // présent dans la liste) pour dimensionner le panneau correctement.
-            int groupHeaderCount = displayList.Select(t => t.Group).Distinct().Count();
+            RefreshTypeList();
+        }
 
-            int headerRows = 2; // Fermer + bascule filtré/complet
-            int totalRows = headerRows + groupHeaderCount + displayList.Count;
-            int contentHeight = totalRows * ButtonHeight + 10;
+        private void EnsureSelectionPanel()
+        {
+            if (_selectionPanel != null) return;
 
             _selectionPanel = new Panel
             {
                 Parent = GameService.Graphics.SpriteScreen,
                 Size = new Point(PanelWidth, PanelMaxHeight),
-                Location = new Point(100, 150),
+                Location = new Point(_panelX.Value, _panelY.Value),
                 Title = "GW2 Node Tracker",
+                BasicTooltipText = "Glisser par le titre pour déplacer",
                 ShowBorder = true,
-                CanScroll = true,
-                Visible = wasVisible,
+                CanScroll = false,
+                Visible = false,
             };
 
             // La barre de titre et la bordure ne font pas partie de la zone
-            // utile : ContentRegion est plus petit que Size. Dimensionner le
-            // panneau sur la hauteur du contenu sans en tenir compte coupait
-            // les dernières lignes et faisait apparaître un ascenseur alors
-            // que tout aurait dû tenir. On mesure l'écart plutôt que de le
-            // deviner -- si Blish renvoie un ContentRegion égal à Size, les
-            // écarts valent zéro et le comportement reste l'ancien.
-            int chromeY = Math.Max(0, _selectionPanel.Size.Y - _selectionPanel.ContentRegion.Height);
-            int chromeX = Math.Max(0, _selectionPanel.Size.X - _selectionPanel.ContentRegion.Width);
+            // utile : ContentRegion est plus petit que Size. Mesuré une fois,
+            // à la création, sur une taille connue -- relu après un
+            // redimensionnement, ContentRegion peut ne pas être encore à jour.
+            // Si Blish renvoie un ContentRegion égal à Size, les écarts valent zéro.
+            _panelChromeY = Math.Max(0, _selectionPanel.Size.Y - _selectionPanel.ContentRegion.Height);
+            _panelChromeX = Math.Max(0, _selectionPanel.Size.X - _selectionPanel.ContentRegion.Width);
 
-            int visibleHeight = Math.Min(contentHeight, PanelMaxHeight - chromeY);
-            bool willScroll = contentHeight > visibleHeight;
+            // Les boutons et le champ capturent leurs propres clics : seul un
+            // clic sur le panneau lui-même (titre, marges) déclenche le
+            // glisser.
+            _panelDrag = new DragTracker(_selectionPanel, "Panneau");
+            _panelDrag.Ended += pos =>
+            {
+                _panelX.Value = pos.X;
+                _panelY.Value = pos.Y;
+            };
 
-            _selectionPanel.Size = new Point(PanelWidth + chromeX, visibleHeight + chromeY);
-
-            // Quand l'ascenseur est là, il mord sur la droite de la zone
-            // utile : les boutons pleine largeur passaient dessous.
-            int buttonWidth = PanelWidth - 20 - (willScroll ? ScrollbarWidth : 0);
+            int fullWidth = PanelWidth - 20;
 
             var closeButton = new StandardButton
             {
                 Text = "✕ Fermer",
-                Size = new Point(buttonWidth, ButtonHeight - 2),
+                Size = new Point(fullWidth, ButtonHeight - 2),
                 Location = new Point(10, 5),
                 Parent = _selectionPanel,
             };
-            closeButton.Click += (s, e) => { _selectionPanel.Visible = false; };
+            closeButton.Click += (s, e) => HideSelectionPanel();
 
-            var toggleButton = new StandardButton
+            _toggleListButton = new StandardButton
             {
-                Text = _showingFullList
-                    ? $"↩ Revenir au filtre ({_filteredTypes.Count})"
-                    : $"⊞ Voir tout ({NodeType.All.Length})",
-                Size = new Point(buttonWidth, ButtonHeight - 2),
+                Size = new Point(fullWidth, ButtonHeight - 2),
                 Location = new Point(10, ButtonHeight + 5),
                 Parent = _selectionPanel,
             };
-            toggleButton.Click += (s, e) =>
+            _toggleListButton.Click += (s, e) =>
             {
                 _showingFullList = !_showingFullList;
                 RebuildSelectionPanel();
-                _selectionPanel.Visible = true;
             };
 
-            int row = headerRows;
-            string lastGroup = null;
-
-            for (int i = 0; i < displayList.Count; i++)
+            _searchBox = new TextBox
             {
-                NodeType type = displayList[i];
+                Size = new Point(fullWidth, ButtonHeight - 2),
+                Location = new Point(10, 2 * ButtonHeight + 5),
+                PlaceholderText = "Rechercher (début du nom)…",
+                Parent = _selectionPanel,
+            };
+            _searchBox.TextChanged += (s, e) => RefreshTypeList();
+            // Entrée : prend le premier résultat, sans lâcher le clavier.
+            _searchBox.EnterPressed += (s, e) =>
+            {
+                var first = SearchResults(_searchBox.Text).FirstOrDefault();
+                if (first.Type.Slug != null) SelectType(first.Type);
+            };
 
-                if (type.Group != lastGroup)
+            _typeList = new Panel
+            {
+                Parent = _selectionPanel,
+                Location = new Point(0, HeaderRows * ButtonHeight + 5),
+                Size = new Point(PanelWidth, ButtonHeight),
+                CanScroll = true,
+                ShowBorder = false,
+            };
+        }
+
+        private void ShowSelectionPanel()
+        {
+            RebuildSelectionPanel(); // le marqueur ▶ suit la sélection changée entre-temps
+            _selectionPanel.Location = new Point(_panelX.Value, _panelY.Value);
+            _selectionPanel.Visible = true;
+            // Prêt à taper dès l'ouverture : Ctrl+Alt+L, quelques lettres, Entrée.
+            _searchBox.Focused = true;
+        }
+
+        private void HideSelectionPanel()
+        {
+            if (_selectionPanel == null) return;
+            // Rendre le clavier au jeu : un champ resté actif bloquerait les
+            // déplacements du personnage.
+            _searchBox.Focused = false;
+            if (_searchBox.Text.Length > 0) _searchBox.Text = "";
+            _selectionPanel.Visible = false;
+        }
+
+        /// <summary>Choix d'un type, depuis un clic ou Entrée dans la recherche.</summary>
+        private void SelectType(NodeType type)
+        {
+            _selectedType = type;
+            // Un type choisi hors filtre (voir tout, ou « autres types » de la
+            // recherche) rejoint le filtre de cette map -- disponible tout de
+            // suite au cycle (T).
+            if (!_filteredTypes.Any(t => t.Slug == type.Slug))
+                _filteredTypes.Add(type);
+
+            HideSelectionPanel();
+            ShowNotification($"{type.Label} sélectionné.");
+        }
+
+        /// <summary>Minuscules, sans accents, « _ » en espace : « Épice » et « epice » se valent.</summary>
+        private static string NormalizeForSearch(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return "";
+            string decomposed = text.Replace('_', ' ').Normalize(System.Text.NormalizationForm.FormD);
+            var sb = new System.Text.StringBuilder(decomposed.Length);
+            foreach (char c in decomposed)
+                if (System.Globalization.CharUnicodeInfo.GetUnicodeCategory(c)
+                    != System.Globalization.UnicodeCategory.NonSpacingMark)
+                    sb.Append(char.ToLowerInvariant(c));
+            return sb.ToString().Trim();
+        }
+
+        /// <summary>
+        /// Rang d'un type pour la saisie : 0 = le nom commence par la saisie,
+        /// 1 = un mot du nom (ou du slug) commence par elle, 2 = elle figure
+        /// ailleurs dans le nom, -1 = absent.
+        /// </summary>
+        private static int SearchRank(NodeType type, string query)
+        {
+            string label = NormalizeForSearch(type.Label);
+            string slug = NormalizeForSearch(type.Slug);
+            if (label.StartsWith(query, StringComparison.Ordinal)) return 0;
+            if ((" " + label).Contains(" " + query) || (" " + slug).Contains(" " + query)) return 1;
+            if (label.Contains(query) || slug.Contains(query)) return 2;
+            return -1;
+        }
+
+        /// <summary>
+        /// Résultats triés de la recherche. Liste filtrée par map : ses types
+        /// d'abord, puis les correspondances des autres types (Other = true)
+        /// -- un type jamais capturé sur cette map reste trouvable sans
+        /// repasser par « voir tout ».
+        /// </summary>
+        private List<(NodeType Type, bool Other)> SearchResults(string rawQuery)
+        {
+            string query = NormalizeForSearch(rawQuery);
+            var result = new List<(NodeType, bool)>();
+            if (query.Length == 0) return result;
+
+            List<NodeType> primary = _showingFullList ? NodeType.All.ToList() : _filteredTypes;
+            var primarySlugs = new HashSet<string>(primary.Select(t => t.Slug));
+
+            IEnumerable<NodeType> Ranked(IEnumerable<NodeType> source) => source
+                .Select(t => (Type: t, Rank: SearchRank(t, query)))
+                .Where(x => x.Rank >= 0)
+                .OrderBy(x => x.Rank)
+                .ThenBy(x => x.Type.Label, StringComparer.OrdinalIgnoreCase)
+                .Select(x => x.Type);
+
+            result.AddRange(Ranked(primary).Select(t => (t, false)));
+            if (!_showingFullList)
+                result.AddRange(Ranked(NodeType.All.Where(t => !primarySlugs.Contains(t.Slug))).Select(t => (t, true)));
+            return result;
+        }
+
+        /// <summary>
+        /// Lignes à afficher : sans saisie, la liste groupée habituelle ; avec
+        /// saisie, les résultats triés à plat, le groupe en suffixe.
+        /// Header != null : ligne d'en-tête, Type ignoré.
+        /// </summary>
+        private List<(string Header, NodeType Type, bool ShowGroup)> DisplayRows()
+        {
+            var rows = new List<(string, NodeType, bool)>();
+            string query = _searchBox?.Text ?? "";
+
+            if (NormalizeForSearch(query).Length == 0)
+            {
+                List<NodeType> displayList = _showingFullList ? NodeType.All.ToList() : _filteredTypes;
+                string lastGroup = null;
+                foreach (var type in displayList)
                 {
-                    lastGroup = type.Group;
-                    var groupHeader = new StandardButton
+                    if (type.Group != lastGroup)
                     {
-                        Text = $"── {type.Group.ToUpperInvariant()} ──",
+                        lastGroup = type.Group;
+                        rows.Add(($"── {type.Group.ToUpperInvariant()} ──", default(NodeType), false));
+                    }
+                    rows.Add((null, type, false));
+                }
+                return rows;
+            }
+
+            var results = SearchResults(query);
+            if (results.Count == 0)
+            {
+                rows.Add(("Aucun type ne correspond", default(NodeType), false));
+                return rows;
+            }
+
+            bool otherHeaderDone = false;
+            foreach (var r in results)
+            {
+                if (r.Other && !otherHeaderDone)
+                {
+                    rows.Add(("── AUTRES TYPES ──", default(NodeType), false));
+                    otherHeaderDone = true;
+                }
+                rows.Add((null, r.Type, true));
+            }
+            return rows;
+        }
+
+        private void RefreshTypeList()
+        {
+            if (_typeList == null) return;
+
+            foreach (var child in _typeList.Children.ToList())
+                child.Dispose();
+
+            var rows = DisplayRows();
+            int contentHeight = rows.Count * ButtonHeight + 10;
+
+            int chromeY = _panelChromeY;
+            int chromeX = _panelChromeX;
+            int headerHeight = HeaderRows * ButtonHeight + 5;
+
+            int listHeight = Math.Max(ButtonHeight, Math.Min(contentHeight, PanelMaxHeight - chromeY - headerHeight));
+            bool willScroll = contentHeight > listHeight;
+
+            _typeList.Size = new Point(PanelWidth, listHeight);
+            _selectionPanel.Size = new Point(PanelWidth + chromeX, headerHeight + listHeight + chromeY);
+
+            // L'ascenseur mord sur la droite de la liste : les boutons pleine
+            // largeur passaient dessous.
+            int buttonWidth = PanelWidth - 20 - (willScroll ? ScrollbarWidth : 0);
+
+            for (int row = 0; row < rows.Count; row++)
+            {
+                var r = rows[row];
+                var location = new Point(10, row * ButtonHeight + 5);
+
+                if (r.Header != null)
+                {
+                    new StandardButton
+                    {
+                        Text = r.Header,
                         Size = new Point(buttonWidth, ButtonHeight - 2),
-                        Location = new Point(10, row * ButtonHeight + 5),
-                        Parent = _selectionPanel,
+                        Location = location,
+                        Parent = _typeList,
                         Enabled = false, // en-tête, pas un vrai bouton
                     };
-                    row++;
+                    continue;
                 }
 
+                NodeType type = r.Type; // capture correcte dans la closure
                 string tag = type.Rand ? " [variable]" : "";
+                string group = r.ShowGroup ? $"  ({type.Group})" : "";
                 bool isSelected = _selectedType.HasValue && _selectedType.Value.Slug == type.Slug;
 
                 var button = new StandardButton
                 {
-                    Text = $"{(isSelected ? "▶ " : "")}{type.Label}{tag}",
+                    Text = $"{(isSelected ? "▶ " : "")}{type.Label}{tag}{group}",
                     Size = new Point(buttonWidth, ButtonHeight - 2),
-                    Location = new Point(10, row * ButtonHeight + 5),
-                    Parent = _selectionPanel,
+                    Location = location,
+                    Parent = _typeList,
                 };
-                row++;
-
-                NodeType capturedType = type; // capture correcte dans la closure
-                button.Click += (s, e) =>
-                {
-                    _selectedType = capturedType;
-                    // Un type choisi depuis "voir tout" et pas encore dans le
-                    // filtre de cette map rejoint le filtre -- disponible
-                    // tout de suite au cycle (T) sans repasser par "voir tout".
-                    if (!_filteredTypes.Any(t => t.Slug == capturedType.Slug))
-                        _filteredTypes.Add(capturedType);
-
-                    _selectionPanel.Visible = false;
-                    ShowNotification($"{capturedType.Label} sélectionné.");
-                };
+                button.Click += (s, e) => SelectType(type);
             }
         }
 
@@ -1049,7 +1276,8 @@ namespace GW2_NodeTracker
                     TextColor = Color.White,
                     BasicTooltipText = "Type appliqué par la capture et la correction -- glisser pour déplacer",
                 };
-                _selectionIndicator.DragEnded += pos =>
+                _indicatorDrag = new DragTracker(_selectionIndicator, "Indicateur");
+                _indicatorDrag.Ended += pos =>
                 {
                     _indicatorX.Value = pos.X;
                     _indicatorY.Value = pos.Y;
@@ -1060,18 +1288,21 @@ namespace GW2_NodeTracker
                 ? $"Sélection : {_selectedType.Value.Label}{(_selectedType.Value.Rand ? " [variable]" : "")}  ({_selectedType.Value.Group})"
                 : "Sélection : aucune";
 
-            if (_selectionIndicator.Text != text) _selectionIndicator.Text = text;
+            // L'état de l'enregistrement des trajets est sur la même ligne :
+            // sans traces, aucun tronçon ne peut devenir un chemin réel, et
+            // rien à l'écran ne disait si l'enregistrement tournait (aucune
+            // trace enregistrée entre le 05/10 et le 24/10 alors que des
+            // nodes étaient capturés tous les jours).
+            bool recording = _pathCorrectionEnabled.Value;
+            if (recording) text += "   |   ● Trajet enregistré";
+            var color = recording ? Color.LightSalmon : Color.White;
 
-            if (_selectionIndicator.Dragging)
+            if (_selectionIndicator.Text != text) _selectionIndicator.Text = text;
+            if (_selectionIndicator.TextColor != color) _selectionIndicator.TextColor = color;
+
+            if (_indicatorDrag.Dragging)
             {
-                var screen = GameService.Graphics.SpriteScreen;
-                var target = GameService.Input.Mouse.Position - _selectionIndicator.GrabOffset;
-                // Borné à l'écran : un texte lâché hors champ serait
-                // irrécupérable autrement que par les réglages.
-                target = new Point(
-                    MathHelper.Clamp(target.X, 0, Math.Max(0, screen.Width - _selectionIndicator.Width)),
-                    MathHelper.Clamp(target.Y, 0, Math.Max(0, screen.Height - _selectionIndicator.Height)));
-                if (_selectionIndicator.Location != target) _selectionIndicator.Location = target;
+                _indicatorDrag.Follow();
             }
             else
             {
@@ -1084,11 +1315,8 @@ namespace GW2_NodeTracker
 
         private void OnTogglePanelKeyActivated(object sender, EventArgs e)
         {
-            bool show = _selectionPanel == null || !_selectionPanel.Visible;
-            // Reconstruit à l'ouverture : le marqueur ▶ suit la sélection
-            // changée entre-temps au cycle (T) ou par la correction.
-            if (show) RebuildSelectionPanel();
-            _selectionPanel.Visible = show;
+            if (_selectionPanel == null || !_selectionPanel.Visible) ShowSelectionPanel();
+            else HideSelectionPanel();
         }
 
         private void OnForceIconRefreshKeyActivated(object sender, EventArgs e)

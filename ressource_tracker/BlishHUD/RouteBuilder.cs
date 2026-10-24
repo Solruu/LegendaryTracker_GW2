@@ -623,6 +623,19 @@ namespace GW2_NodeTracker
             catch (Exception ex)
             {
                 Logger.Warn(ex, "Lecture des routes impossible ({0}).", path);
+                // Copie de sauvegarde AVANT toute réécriture : sans elle, la
+                // prochaine sauvegarde écraserait le fichier illisible avec un
+                // contenu vide, et l'historique serait perdu sans recours.
+                try
+                {
+                    string backup = path + ".illisible-" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                    File.Copy(path, backup, overwrite: false);
+                    Logger.Warn("Copie du fichier illisible conservée : {0}", backup);
+                }
+                catch (Exception copyEx)
+                {
+                    Logger.Error(copyEx, "Impossible de sauvegarder le fichier illisible ({0}).", path);
+                }
                 return new List<Route>();
             }
         }
