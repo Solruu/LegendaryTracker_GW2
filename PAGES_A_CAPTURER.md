@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v424.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v427.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -8,7 +8,7 @@ interrogé avant toute ligne. Chaque page à capturer figure une seule fois,
 avec son URL, dans la section « URLs » en fin de fichier.
 
 
-## 0 — 84 trous de l'arbre — LA PRIORITÉ
+## 0 — 85 trous de l'arbre — LA PRIORITÉ
 
 Ces composants ont des enfants dans la donnée, mais ni boîte Recipe ni
 coût vendeur au dépôt : l'arbre sait qu'il faut les fabriquer, il ne sait
@@ -83,6 +83,7 @@ et les totaux restent tributaires des coûts recopiés à plat.
 | `Valkyrie Orichalcum Imbued Inscription` | 3 |
 | `Deldrimor Steel Plated Dowel` | 2 |
 | `Elder Harpoon` | 2 |
+| `Master Maintenance Oil` | 2 |
 | `Purified Rift Essence` | 2 |
 | `Sheet of Ambrite` | 2 |
 | `Sunstone Lump` | 2 |
@@ -201,7 +202,7 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 | | succès | légendaire | id | ce qui manque | où le lire | comment |
 |---|---|---|---:|---|---|---|
 
-## URLs — 111 pages à capturer
+## URLs — 112 pages à capturer
 
 ```
 https://wiki.guildwars2.com/wiki/Advanced_Ammunition_Cylinder
@@ -270,6 +271,7 @@ https://wiki.guildwars2.com/wiki/Sunstone_Nugget
 https://wiki.guildwars2.com/wiki/Valkyrie_Orichalcum_Imbued_Inscription
 https://wiki.guildwars2.com/wiki/Deldrimor_Steel_Plated_Dowel
 https://wiki.guildwars2.com/wiki/Elder_Harpoon
+https://wiki.guildwars2.com/wiki/Master_Maintenance_Oil
 https://wiki.guildwars2.com/wiki/Purified_Rift_Essence
 https://wiki.guildwars2.com/wiki/Sheet_of_Ambrite
 https://wiki.guildwars2.com/wiki/Sunstone_Lump

@@ -3145,7 +3145,8 @@
     "dragon_hatchling_doll_adornments",
     "legendary_underwater_inscription",
     "soros_assassin_inscription",
-    "stonecleavers_valkyrie_inscription"
+    "stonecleavers_valkyrie_inscription",
+    "master_maintenance_oil"
    ],
    "farmable": true,
    "sources": [
@@ -3238,7 +3239,8 @@
     "dragon_hatchling_doll_adornments": 15,
     "legendary_underwater_inscription": 5,
     "soros_assassin_inscription": 10,
-    "stonecleavers_valkyrie_inscription": 10
+    "stonecleavers_valkyrie_inscription": 10,
+    "master_maintenance_oil": 3
    },
    "kind": "acquire",
    "best": "drop",
@@ -5188,15 +5190,6 @@
      "ref": "wiki:Warbringer#Full_material_list + guildjen:legendary-ring-conflux-guide, recoupes"
     }
    },
-   "qty_conflict": {
-    "strife_unending": {
-     "jsx": 250,
-     "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-    }
-   },
    "qty_overlap_verified": [
     "triumphant_hero"
    ],
@@ -6333,22 +6326,6 @@
    "verified": true,
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-   "qty_conflict": {
-    "selachimorpha": {
-     "jsx": 250,
-     "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-    },
-    "endless_summer": {
-     "jsx": 250,
-     "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-    }
-   },
    "qty_overlap_verified": [
     "vision"
    ],
@@ -7587,15 +7564,6 @@
    "verified": true,
    "checked": "2026-08-20",
    "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
-   "qty_conflict": {
-    "orrax_manifested": {
-     "jsx": 38,
-     "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-    }
-   },
    "best_reason": {
     "fr": "voie par défaut : gratuite, seulement du temps de jeu, avec les 20 trèfles par saison du Coffre du Sorcier. Vendeurs et Forge sont des alternatives coûteuses, à n'utiliser qu'en connaissance de cause.",
     "en": "default route: free, playtime only, plus the Wizard's Vault's 20 clovers per season. Vendors and the Forge are costly alternatives, only to be used knowingly."
@@ -8508,29 +8476,6 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "verified": true,
-   "qty_conflict": {
-    "ad_infinitum": {
-     "jsx": 250,
-     "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
-    },
-    "coalescence": {
-     "jsx": 250,
-     "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
-    },
-    "stella_radians": {
-     "jsx": 250,
-     "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-    }
-   },
    "qty_overlap_verified": []
   },
   "mystic_runestone": {
@@ -12317,16 +12262,7 @@
     "gift_of_titan_understanding",
     "klobjarne_geirr",
     "orrax_manifested"
-   ],
-   "qty_conflict": {
-    "orrax_manifested": {
-     "jsx": 300,
-     "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-     "verified": false,
-     "checked": "2026-08-22",
-     "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-    }
-   }
+   ]
   },
   "research_note": {
    "name": "Research Note",
@@ -24689,7 +24625,13 @@
    "ref": "note de kralkatite_ingot (50 lingots par arme, 6 armes, 300 lingots) et etape bit5 de Visions of Istan",
    "checked": "2026-09-18",
    "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur",
-   "apiId": 85760
+   "apiId_fix": {
+    "was": 85760,
+    "checked": "2026-10-24",
+    "verified": true,
+    "ref": "ressources/api/api_noms_composants_20261024.json : 85760 = « Marshal's Astral Cleaver », une des six armes ; groupe sans id d'objet"
+   },
+   "sources": []
   },
   "vial_of_awakened_blood": {
    "name": "Vial of Awakened Blood",
@@ -24784,14 +24726,16 @@
     "red_lentil_saobosa",
     "ball_of_dough",
     "sheet_of_coarse_paper",
-    "sheet_of_quality_paper"
+    "sheet_of_quality_paper",
+    "master_maintenance_oil"
    ],
    "qty": {
     "sheet_of_premium_paper": 1,
     "red_lentil_saobosa": 2,
     "ball_of_dough": 1,
     "sheet_of_coarse_paper": 1,
-    "sheet_of_quality_paper": 1
+    "sheet_of_quality_paper": 1,
+    "master_maintenance_oil": 20
    },
    "sources": [
     {
@@ -37038,7 +36982,7 @@
   "master_maintenance_oil": {
    "name": "Master Maintenance Oil",
    "apiId": 9461,
-   "kind": "refined",
+   "kind": "intermediate",
    "farmable": true,
    "qty": {
     "jar_of_luminesce_polish": 10
@@ -37071,7 +37015,8 @@
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/api/api_ingredients_armes_20261024.json",
+   "lot": 5
   },
   "prismatic_lodestone": {
    "name": "Prismatic Lodestone",

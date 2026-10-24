@@ -920,6 +920,24 @@ d'artisanat de /v2/recipes contre les aretes, 1 011 apiId. Puis
 - [ ] reste : Master Maintenance Oil (recette x5, non decomposee : quantites
   fractionnaires), 16 ids a lire sur le wiki.
 
+### C17 — Sans wiki, suite (24/10) · C — ✅
+- LOT DE PRODUCTION (accord d'Antoine) : champ `lot` sur le composant, aretes
+  enfants par fabrication, moteurs Python v7 et JSX v269 comptent
+  ceil(besoin / lot) fabrications ; Master Maintenance Oil lot 5 (3 Crystalline
+  Dust + 20 Jug of Water), un Jar of Luminesce Polish = 2 fabrications.
+  Conformite 0 ecart ; CONFRONTATION_API lit le lot.
+- `astral_weapons` : apiId 85760 (une seule des six armes) en `apiId_fix`.
+- `qty_conflict` : les 8 declarations retirees, aucune divergence restante
+  (ancres JSX = moteur depuis S2).
+- BACKLOG : 9 sections de plus closes ; restent ouvertes Completude
+  (Aetheric Anchor a voir en jeu), Etapes des armes, Requiem Experiments en
+  dur dans le JSX, Ouvert au 18/09, 12 nonies.
+- JSX v269 : le cout d'une etape (`cost`) s'affiche sous l'etape dans
+  l'onglet Collections (« Coût de l'étape : 1 000 Bandit Crest »).
+- [ ] vu au controle visuel : l'encart de l'onglet armes montre la note gen3
+  quand une arme gen1 est choisie ; collections affichees III, I, II ; compteur
+  « 0/? » sans synchro.
+
 ## Ordre propose
 
 1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,

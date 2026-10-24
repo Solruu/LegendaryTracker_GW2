@@ -2191,6 +2191,25 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel, orderTitle })
 // `qty` vise celui de l'etape. Un cran, pas de recursion — la cascade complete
 // a son moteur, ce n'en sera pas une onzieme implementation. Le jour ou la
 // chaine change, cette ligne change avec elle.
+// Le `cost` d'une etape de collection, tel que le moteur le compte.
+function CoutEtape({ cout, NX }) {
+  if (!cout) return null;
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const lignes = Object.entries(cout).filter(([, n]) => typeof n === "number" && n > 0);
+  if (!lignes.length) return null;
+  return (
+    <div style={{ margin: "1px 0 3px 18px", fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(251,191,36,0.55)", lineHeight: 1.45 }}>
+      {NX({ fr: "Coût de l'étape : ", en: "Step cost: " })}
+      {lignes.map(([id, n], k) => (
+        <span key={id}>
+          {k > 0 ? " · " : ""}
+          {n.toLocaleString()} {NX(cc[id]?.name) ?? id}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function FactureEtape({ cid, NX }) {
   if (!cid) return null;
   const cc = SOURCES_DB?.craft_components ?? {};
@@ -2654,6 +2673,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
   // d'Orrax descend a 7 niveaux (cadeau, plat, salade ascalonienne,
   // vinaigrette ascalonienne, vinaigrette simple, sel et poivre, sel) et le
   // sel s'arretait 300 sous le moteur Python (sources v377).
+  // Lot de production (sources v425, moteur Python v7) : un parent qui porte
+  // `lot` se fabrique par lots ; ses aretes enfants sont par fabrication, on
+  // compte ceil(besoin / lot) fabrications.
+  const fabrications = (key, besoin) => {
+    const lot = cc[key]?.lot;
+    return (Number.isInteger(lot) && lot > 1) ? Math.ceil(besoin / lot - 1e-9) : besoin;
+  };
   for (let pass = 0; pass < 20; pass++) {
     const add = {};
     for (const [compId, comp] of Object.entries(cc)) {
@@ -2661,7 +2687,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
       for (const [key, val] of Object.entries(comp?.qty ?? {})) {
         if (typeof val !== "number" || !cc[key]) continue;
         const parent = totals[key] ?? 0;
-        if (parent > 0) add[compId] = (add[compId] ?? 0) + val * parent;
+        if (parent > 0) add[compId] = (add[compId] ?? 0) + val * fabrications(key, parent);
       }
     }
     // Cibles COMPOSANTS d'un choix : la presence vaut le total deja calcule.
@@ -4640,6 +4666,10 @@ export default function GW2LegendaryTracker() {
         // ses sources et sa cadence vivent dans craft_components, on les lit la.
         bitComponents: Object.fromEntries(
           (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
+        // Ce que l'etape CONSOMME (`cost`, compte par le moteur tant qu'elle
+        // n'est pas faite) : affiche sous l'etape (v269, collections d'armes).
+        bitCosts: Object.fromEntries(
+          (c.items ?? []).filter(i => i.cost).map(i => [String(i.bit), i.cost])),
         // Une etape peut etre une autre legendaire : Eternity se forge depuis
         // Sunrise et Twilight. On y renvoie, on ne recopie pas leur chaine.
         unlock: c.unlock,
@@ -7858,12 +7888,14 @@ export default function GW2LegendaryTracker() {
                               ?? csrc?.tip
                               ?? ltip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
-                            return (btip || cid) ? (
+                            const bcout = a.bitCosts?.[String(i)];
+                            return (btip || cid || bcout) ? (
                               <>
                                 {btip && (
                                   <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
                                 )}
                                 <FactureEtape cid={cid} NX={NX} />
+                                <CoutEtape cout={bcout} NX={NX} />
                               </>
                             ) : null;
                           })()}

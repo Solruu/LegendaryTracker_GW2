@@ -50,15 +50,16 @@ def nom(i):
     return (A["items"].get(str(i)) or {}).get("name", str(i))
 
 
-def lire(rid):
+def lire(rid, lot=None):
     r = A["recipes"][str(rid)]
+    div = 1 if lot == r["n"] else r["n"]  # aretes par fabrication quand `lot` vaut la sortie
     att, inconnus = {}, []
     for g in r["ing"]:
         ks = api.get(g["item_id"])
         if not ks:
             inconnus.append(f"{g['count']} {nom(g['item_id'])}")
             continue
-        q = g["count"] / r["n"]
+        q = g["count"] / div
         att[ks[0]] = att.get(ks[0], 0) + q
     return r, att, inconnus
 
@@ -78,7 +79,7 @@ for k, c in sorted(cc.items()):
         continue
     best = None
     for rid in rids:
-        r, att, inc = lire(rid)
+        r, att, inc = lire(rid, c.get("lot"))
         diff = set(att) ^ set(have)
         score = len(diff) + sum(1 for x in set(att) & set(have) if abs(att[x] - have[x]) > 1e-9) + len(inc)
         if best is None or score < best[0]:

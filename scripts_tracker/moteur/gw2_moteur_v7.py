@@ -35,6 +35,7 @@ ce cote-la.
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -374,6 +375,18 @@ class Modele:
                     t[cid] = t.get(cid, 0) + n
         # Les apports de la cascade sont REMPLACES a chaque tour, jamais
         # cumules : les additionner ferait grossir un total a chaque passe.
+        # v7 : LOT DE PRODUCTION (decision d'Antoine, 24/10). Une recette peut
+        # rendre plusieurs unites (Master Maintenance Oil : 5 par fabrication).
+        # Un composant qui porte `lot` a ses aretes ENFANTS exprimees par
+        # fabrication, telles que la recette les lit ; on compte
+        # ceil(besoin / lot) fabrications. Meme regle cote JSX.
+        lots = {k: c.brut.get("lot") for k, c in self.composants.items()
+                if isinstance(c.brut.get("lot"), int) and c.brut.get("lot") > 1}
+
+        def fabrications(k):
+            v = t.get(k, 0)
+            return math.ceil(v / lots[k] - 1e-9) if k in lots else v
+
         pose: dict[str, float] = {}
         for _ in range(PROFONDEUR):
             apport: dict[str, float] = {}
@@ -383,7 +396,7 @@ class Modele:
                 for k, v in c.qty.items():
                     if isinstance(v, (int, float)) and not isinstance(v, bool) \
                             and k in self.composants and t.get(k, 0) > 0:
-                        apport[cid] = apport.get(cid, 0) + v * t[k]
+                        apport[cid] = apport.get(cid, 0) + v * fabrications(k)
             for ch in self.choix.values():
                 for x in ch.cibles:
                     if x in self.composants and t.get(x, 0):

@@ -1,14 +1,14 @@
 # Confrontation des recettes avec l'API
 
-Source : `gw2_sources_v424.json` contre `ressources/api/api_recettes_composants_20261024.json` (recettes d'artisanat ; la Forge mystique n'est pas dans l'API). Regle : pour un id confirme, l'API a raison.
+Source : `gw2_sources_v427.json` contre `ressources/api/api_recettes_composants_20261024.json` (recettes d'artisanat ; la Forge mystique n'est pas dans l'API). Regle : pour un id confirme, l'API a raison.
 
 | classe | nombre |
 |---|---:|
-| ACCORD | 338 |
-| ECART | 2 |
+| ACCORD | 339 |
+| ECART | 1 |
 | VOIE_RETENUE | 4 |
 | CHOIX | 1 |
-| FEUILLE_MULTI | 1 |
+| FEUILLE_MULTI | 0 |
 | FEUILLE_VOIE | 33 |
 | FEUILLE_RAFFINAGE | 31 |
 | PLUSIEURS | 5 |
@@ -17,14 +17,12 @@ Source : `gw2_sources_v424.json` contre `ressources/api/api_recettes_composants_
 
 | composant | recette | detail | best |
 |---|---|---|---|
-| `astral_weapons` | Weaponsmith 400 | ingredient sans composant : 1 Orichalcum Axe Blade ; ingredient sans composant : 1 Small Ancient Haft ; ingredient sans composant : 1 Inscription of the Spearmarshal |  |
 | `banner_pennon` | Leatherworker/Armorsmith/Tailor 400 | en trop 1 recipe_banner_pennon |  |
 
 ## FEUILLE_MULTI
 
 | composant | recette | detail | best |
 |---|---|---|---|
-| `master_maintenance_oil` | Huntsman 400, x5 | 3 Pile of Crystalline Dust, 20 Jug of Water |  |
 
 ## VOIE_RETENUE
 

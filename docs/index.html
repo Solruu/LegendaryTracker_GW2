@@ -3977,7 +3977,8 @@ const SOURCES_DB = {
         "dragon_hatchling_doll_adornments",
         "legendary_underwater_inscription",
         "soros_assassin_inscription",
-        "stonecleavers_valkyrie_inscription"
+        "stonecleavers_valkyrie_inscription",
+        "master_maintenance_oil"
       ],
       "farmable": true,
       "sources": [
@@ -4070,7 +4071,8 @@ const SOURCES_DB = {
         "dragon_hatchling_doll_adornments": 15,
         "legendary_underwater_inscription": 5,
         "soros_assassin_inscription": 10,
-        "stonecleavers_valkyrie_inscription": 10
+        "stonecleavers_valkyrie_inscription": 10,
+        "master_maintenance_oil": 3
       },
       "kind": "acquire",
       "best": "drop",
@@ -6020,15 +6022,6 @@ const SOURCES_DB = {
           "ref": "wiki:Warbringer#Full_material_list + guildjen:legendary-ring-conflux-guide, recoupes"
         }
       },
-      "qty_conflict": {
-        "strife_unending": {
-          "jsx": 250,
-          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-        }
-      },
       "qty_overlap_verified": [
         "triumphant_hero"
       ],
@@ -7165,22 +7158,6 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-22",
       "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-      "qty_conflict": {
-        "selachimorpha": {
-          "jsx": 250,
-          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-        },
-        "endless_summer": {
-          "jsx": 250,
-          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-        }
-      },
       "qty_overlap_verified": [
         "vision"
       ],
@@ -8419,15 +8396,6 @@ const SOURCES_DB = {
       "verified": true,
       "checked": "2026-08-20",
       "ref": "wiki:Obsidian_armor, table Material list (capture Antoine 20/08/2026)",
-      "qty_conflict": {
-        "orrax_manifested": {
-          "jsx": 38,
-          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-        }
-      },
       "best_reason": {
         "fr": "voie par défaut : gratuite, seulement du temps de jeu, avec les 20 trèfles par saison du Coffre du Sorcier. Vendeurs et Forge sont des alternatives coûteuses, à n'utiliser qu'en connaissance de cause.",
         "en": "default route: free, playtime only, plus the Wizard's Vault's 20 clovers per season. Vendors and the Forge are costly alternatives, only to be used knowingly."
@@ -9340,29 +9308,6 @@ const SOURCES_DB = {
       "checked": "2026-08-22",
       "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
       "verified": true,
-      "qty_conflict": {
-        "ad_infinitum": {
-          "jsx": 250,
-          "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
-        },
-        "coalescence": {
-          "jsx": 250,
-          "note": "l'arbre GW2Efficiency donne cette valeur, le JSX en porte une autre — l'arbre reflete un plan d'achat tenant compte du stock, le JSX une exigence editoriale. Non tranche.",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
-        },
-        "stella_radians": {
-          "jsx": 250,
-          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-        }
-      },
       "qty_overlap_verified": []
     },
     "mystic_runestone": {
@@ -13149,16 +13094,7 @@ const SOURCES_DB = {
         "gift_of_titan_understanding",
         "klobjarne_geirr",
         "orrax_manifested"
-      ],
-      "qty_conflict": {
-        "orrax_manifested": {
-          "jsx": 300,
-          "note": "l'arbre de recette donne cette valeur en developpant la chaine complete, le JSX en porte une autre en exigence directe — non tranche, voir BACKLOG",
-          "verified": false,
-          "checked": "2026-08-22",
-          "ref": "arbres GW2Efficiency des 9 legendaires restants (exports Antoine 22/08/2026)"
-        }
-      }
+      ]
     },
     "research_note": {
       "name": "Research Note",
@@ -25521,7 +25457,13 @@ const SOURCES_DB = {
       "ref": "note de kralkatite_ingot (50 lingots par arme, 6 armes, 300 lingots) et etape bit5 de Visions of Istan",
       "checked": "2026-09-18",
       "verified": "le total reste a 300 lingots : le cout change de porteur, pas de valeur",
-      "apiId": 85760
+      "apiId_fix": {
+        "was": 85760,
+        "checked": "2026-10-24",
+        "verified": true,
+        "ref": "ressources/api/api_noms_composants_20261024.json : 85760 = « Marshal's Astral Cleaver », une des six armes ; groupe sans id d'objet"
+      },
+      "sources": []
     },
     "vial_of_awakened_blood": {
       "name": "Vial of Awakened Blood",
@@ -25616,14 +25558,16 @@ const SOURCES_DB = {
         "red_lentil_saobosa",
         "ball_of_dough",
         "sheet_of_coarse_paper",
-        "sheet_of_quality_paper"
+        "sheet_of_quality_paper",
+        "master_maintenance_oil"
       ],
       "qty": {
         "sheet_of_premium_paper": 1,
         "red_lentil_saobosa": 2,
         "ball_of_dough": 1,
         "sheet_of_coarse_paper": 1,
-        "sheet_of_quality_paper": 1
+        "sheet_of_quality_paper": 1,
+        "master_maintenance_oil": 20
       },
       "sources": [
         {
@@ -37870,7 +37814,7 @@ const SOURCES_DB = {
     "master_maintenance_oil": {
       "name": "Master Maintenance Oil",
       "apiId": 9461,
-      "kind": "refined",
+      "kind": "intermediate",
       "farmable": true,
       "qty": {
         "jar_of_luminesce_polish": 10
@@ -37903,7 +37847,8 @@ const SOURCES_DB = {
       ],
       "verified": true,
       "checked": "2026-10-24",
-      "ref": "ressources/api/api_ingredients_armes_20261024.json"
+      "ref": "ressources/api/api_ingredients_armes_20261024.json",
+      "lot": 5
     },
     "prismatic_lodestone": {
       "name": "Prismatic Lodestone",
@@ -93225,6 +93170,25 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel, orderTitle })
 // `qty` vise celui de l'etape. Un cran, pas de recursion — la cascade complete
 // a son moteur, ce n'en sera pas une onzieme implementation. Le jour ou la
 // chaine change, cette ligne change avec elle.
+// Le `cost` d'une etape de collection, tel que le moteur le compte.
+function CoutEtape({ cout, NX }) {
+  if (!cout) return null;
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const lignes = Object.entries(cout).filter(([, n]) => typeof n === "number" && n > 0);
+  if (!lignes.length) return null;
+  return (
+    <div style={{ margin: "1px 0 3px 18px", fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(251,191,36,0.55)", lineHeight: 1.45 }}>
+      {NX({ fr: "Coût de l'étape : ", en: "Step cost: " })}
+      {lignes.map(([id, n], k) => (
+        <span key={id}>
+          {k > 0 ? " · " : ""}
+          {n.toLocaleString()} {NX(cc[id]?.name) ?? id}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function FactureEtape({ cid, NX }) {
   if (!cid) return null;
   const cc = SOURCES_DB?.craft_components ?? {};
@@ -93688,6 +93652,13 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
   // d'Orrax descend a 7 niveaux (cadeau, plat, salade ascalonienne,
   // vinaigrette ascalonienne, vinaigrette simple, sel et poivre, sel) et le
   // sel s'arretait 300 sous le moteur Python (sources v377).
+  // Lot de production (sources v425, moteur Python v7) : un parent qui porte
+  // `lot` se fabrique par lots ; ses aretes enfants sont par fabrication, on
+  // compte ceil(besoin / lot) fabrications.
+  const fabrications = (key, besoin) => {
+    const lot = cc[key]?.lot;
+    return (Number.isInteger(lot) && lot > 1) ? Math.ceil(besoin / lot - 1e-9) : besoin;
+  };
   for (let pass = 0; pass < 20; pass++) {
     const add = {};
     for (const [compId, comp] of Object.entries(cc)) {
@@ -93695,7 +93666,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
       for (const [key, val] of Object.entries(comp?.qty ?? {})) {
         if (typeof val !== "number" || !cc[key]) continue;
         const parent = totals[key] ?? 0;
-        if (parent > 0) add[compId] = (add[compId] ?? 0) + val * parent;
+        if (parent > 0) add[compId] = (add[compId] ?? 0) + val * fabrications(key, parent);
       }
     }
     // Cibles COMPOSANTS d'un choix : la presence vaut le total deja calcule.
@@ -95674,6 +95645,10 @@ function GW2LegendaryTracker() {
         // ses sources et sa cadence vivent dans craft_components, on les lit la.
         bitComponents: Object.fromEntries(
           (c.items ?? []).filter(i => i.component).map(i => [String(i.bit), i.component])),
+        // Ce que l'etape CONSOMME (`cost`, compte par le moteur tant qu'elle
+        // n'est pas faite) : affiche sous l'etape (v269, collections d'armes).
+        bitCosts: Object.fromEntries(
+          (c.items ?? []).filter(i => i.cost).map(i => [String(i.bit), i.cost])),
         // Une etape peut etre une autre legendaire : Eternity se forge depuis
         // Sunrise et Twilight. On y renvoie, on ne recopie pas leur chaine.
         unlock: c.unlock,
@@ -98892,12 +98867,14 @@ function GW2LegendaryTracker() {
                               ?? csrc?.tip
                               ?? ltip
                               ?? (unnamed ? { fr: "Libellé non publié par l'API — le panneau de succès en jeu l'affiche.", en: "Label not published by the API — the in-game achievement panel shows it." } : null);
-                            return (btip || cid) ? (
+                            const bcout = a.bitCosts?.[String(i)];
+                            return (btip || cid || bcout) ? (
                               <>
                                 {btip && (
                                   <div style={{ margin: "1px 0 3px 18px", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.42)", lineHeight: 1.45 }}>{NX(btip)}</div>
                                 )}
                                 <FactureEtape cid={cid} NX={NX} />
+                                <CoutEtape cout={bcout} NX={NX} />
                               </>
                             ) : null;
                           })()}

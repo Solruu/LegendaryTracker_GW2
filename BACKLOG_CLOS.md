@@ -1004,3 +1004,501 @@ Les autres concordent exactement — les totaux écrits à la main sont bons.
 
 > Clos le 24/10/2026 : plus aucun légendaire ne porte `achievements[]` : migration achevée (voir la section close « Migration vers collections{} »).
 
+## 0. Etat du 08/09/2026 — le depliage est repartis
+
+Le depliage etait immobile depuis cinq passes. La cause n'etait pas un manque
+de captures : le deplieur REFUSAIT toute arete dont l'apport ne valait pas
+exactement la cle a plat. `gw2_deplie_wiki_v10` ramene desormais la cle au
+RELIQUAT — 250 pieces mystiques sur une gen1 valent 77 apportees par les
+trefles plus 173 encore a plat — et le total affiche ne bouge pas d'un point.
+
+Deux instruments ont ete corrigés en amont : la division des totaux des tables,
+qui ne marchait qu'au deuxieme niveau et annoncait 700 000 lingots de mithril
+sur The Binding of Ipos, et la regle d'audit qui comparait le JSX a la cle a
+plat au lieu du total affiche.
+
+**Tranche le 08/09 par Antoine : le trefle mystique n'a pas un cout, il a des
+voies.** Pistes de recompenses PvP/WvW (gratuites, voie principale), Forge
+mystique (31 % de reussite), six vendeurs, coffre du Magicien. Modelise en
+`alt_groups acquisition_trefle`, defaut sur la piste de recompenses — donc cout
+nul par defaut, et le prix remonte dans l'arbre si Antoine choisit un vendeur.
+Consequence en cascade : le trefle ne mangeant plus de pieces mystiques,
+l'arete `mystic_coin <- mystic_tribute 250` se pose enfin, dix-sept cles a plat
+disparaissent et les huit gen2 sans collection passent de zero a 250.
+
+**Regle le 08/09 : Conflux n'avait pas besoin d'arbitrage.** La page porte une
+section « Required currencies » qui donne ligne par ligne 1 850 tickets,
+1 750 memoires, **1 500 insignes**, **750 temoignages de Castoran**, 250 eclats
+de gloire et 100 eclats d'esprit. La chaine donnait deja les quatre premiers au
+nombre pres ; c'est le JSX qui portait 750 et 250. Corrige en v185, qty_conflict
+leves. Je n'avais pas lu ce tableau — j'avais lu une fenetre de 160 caracteres
+autour du mot « Badge ».
+
+**Ouvert et chiffre : la Mist Band (Infused) s'achete de trois facons et la
+donnee les compte LES TROIS.** 100 reliques de fractale prealables + 2 matrices,
+ou 150 eclats de gloire ascendants + 170 eclats de gloire, ou 350 tickets
+d'escarmouche + 250 memoires. D'ou 420 eclats de gloire affiches contre 250 au
+wiki, et 80 eclats d'esprit contre 100. Meme motif que le trefle, meme
+traitement — mais l'arithmetique des tickets ne se referme pas : le wiki annonce
+1 850 HORS option McM et nos 1 850 incluent deja les 350 de cette option. A
+elucider avant de poser un defaut.
+
+**Trou d'outillage : le parseur de tables ne lit que TROIS colonnes.** Conflux
+et Warbringer en ont quatre (« Quaternary components »), donc leurs tables ne
+sont pas confrontees du tout — c'est pourquoi les 420 eclats de gloire n'ont
+jamais ete signales. Dix-sept pages a table ne sont rattachees a aucun
+legendaire, ce chiffre en fait probablement partie.
+
+> Clos le 24/10/2026 : état historique ; le dépliage a été mené à terme (CONFRONTATION 0 écart, 24/10).
+
+## 0 ter. Les voies du trefle sont revenues d'ou elles n'auraient pas du sortir
+
+Antoine a pose la question qui tranche : la quantite exigee (77 trefles) et la
+voie d'acquisition (10 par semaine chez BUY-4373) sont deux natures
+differentes. Elles etaient DEJA separees dans la base — `qty` porte l'exigence,
+`sources[]` et `cadence.sources[]` portent l'acquisition, et l'onglet Cadences
+lit `need = totals[id]` puis somme les plafonds. J'avais quand meme cree dix
+composants `clover_*` et un `alt_groups` qui recopiaient tout cela.
+
+Defait. `alt_groups` revient a ce pour quoi il existe : un choix d'INGREDIENT a
+un niveau. Le travail « par niveau » reste valable, il ne portait pas sur le
+trefle. **Un seul composant change de total a l'ecran : le faux
+`clover_reward_track` disparait. Aucun autre nombre ne bouge.**
+
+Garde-fou pose : l'audit refuse desormais tout composant de `kind`
+« acquisition ». Et la regle qui empeche la recette du trefle de revenir n'est
+plus adossee au modele mais A LA PAGE — une section Acquisition qui s'ouvre par
+un « Overview » enumerant les methodes est une page a plusieurs voies. Deux
+pages sur 682.
+
+> Clos le 24/10/2026 : état historique ; règle du trèfle confirmée depuis (voie par défaut = pistes de récompense).
+
+## 0 bis. Le moteur de calcul est ecrit UNE fois — 08/09
+
+La cascade etait reimplementee **dix fois** : neuf scripts Python et le JSX. Et
+elles avaient deja diverge. `gw2_deplie_wiki_v10` et `gw2_arbitrages_v5`
+calculaient leurs totaux **en ignorant `alt_groups`**, quand l'audit, les deux
+confrontations et le JSX les appliquaient. Le deplieur — qui ECRIT la donnee —
+decidait « deja compte par cascade » sur des nombres ou douze armes gen2
+portaient zero don de maitrise.
+
+`gw2_moteur_v1.py` porte desormais le seul calcul. Modele, Composant,
+Legendaire, Choix. **Les vues derivees ne sont plus stockees** :
+`consommateurs` et `composants` se calculent depuis `qty` au lieu d'etre
+recopies — parce que `needed_for` dit deja la meme chose dans la donnee et ne
+la dit **plus pareil pour 140 composants sur 506**, dont un qui pointe vers un
+legendaire inexistant (`armor_perfected_envoy`).
+
+Migres et verifies : audit v39 (**sortie identique au caractere pres**),
+confrontation des totaux v2 (**identique**), confrontation de bas en haut v2
+(**identique**), arbitrages v6 (**100 -> 136 desaccords** : l'ancien
+sous-comptait, faute d'appliquer les choix), deplieur v11 (memes 63 refus, mais
+pris sur les bons totaux).
+
+Le moteur signale au passage **14 cibles fantomes** visees par `qty` et absentes
+de `legendaries`, dont un `gen3` nu et huit gen2 a collections.
+
+**Le JSX garde la dixieme implementation** — le calcul se refait a chaque clic,
+dans le navigateur. La parade n'est pas de la supprimer mais de la CONFRONTER :
+`gw2_conformite_moteurs_v1.py` decoupe `computeGrandTotal` du fichier JSX, la
+vraie fonction et non une copie, l'evalue dans node et compare tous les totaux.
+**98 cibles, 5 603 totaux, aucun ecart.** A lancer avant chaque push touchant
+au calcul.
+
+Il a servi tout de suite : mon premier jet retirait les surcouts `qty_extras`
+du cote JSX pour comparer, ce qui etait faux — leur effet SE PROPAGE dans la
+cascade, et les retirer laissait 1 050 lingots de mithril d'ecart sur Aurora.
+Le moteur Python les calcule desormais lui aussi, sous option `surcouts=True`.
+
+**Regle posee le 08/09 par Antoine, sur les options :**
+
+1. **Un choix s'applique par NIVEAU, pas au total.** On fait du McM pour une
+   piece, des fractales pour une autre, une session de raids pour la troisieme :
+   c'est tout le point du tracker. La selection est donc indexee par
+   (groupe, cible) et le selecteur affiche une ligne par cible concernee. Douze
+   armes gen2 acceptent Maguuma ou Desert et repondent chacune pour elle-meme.
+2. **Le defaut est la voie la plus EFFICIENTE quand il y en a une, sinon la
+   premiere de la liste.** Les deux se disent avec un seul fait : la voie
+   retenue se met en TETE de `options`, sa raison va dans `note`, et l'audit
+   refuse tout `default` qui ne serait pas `options[0]`. Aucun champ nouveau.
+
+**Ce qui reste a trancher, par ordre d'enjeu :**
+
+1. **Conflux, deux ecarts declares** (`qty_conflict`, 08/09) : la chaine donne
+   1 500 insignes et 750 temoignages Castoran, le JSX 750 et 250. La page ecrit
+   « 1,500 Badge of Honor » dans une phrase qui mentionne aussi la version
+   Infused — le 750 pourrait etre le Conflux seul. Antoine peut lire le cout en
+   jeu ; personne d'autre ne peut trancher.
+2. **39 trous de `CONFRONTATION_TOTAUX.md`** : le total affiche est SOUS ce
+   qu'ecrit la table. Ceux-la sont certains, pas discutables. En tete :
+   HMS Divinity (4 000 lingots, 3 000 planches, 100 curios : sa branche de
+   tesson n'est pas modelisee) et les huit gen2 sans collection, a 77 pieces
+   mystiques la ou la table en demande 250 par le Mystic Tribute.
+3. **18 excedents nus** : l'affichage depasse la table sans qu'une branche
+   fermee l'explique. Doublon ou branche legitime a nommer.
+4. **1 desaccord de table**, artefact connu : `pvp_league_ticket <-
+   certificate_of_support`. La recette dit 5 par certificat, la table de
+   The Ascension ecrit 25 sans donner le nombre de certificats — donc sans
+   diviseur. La recette fait foi ; le rapport ne sait pas encore le dire.
+5. **Cibles fantomes** : `gen3_aurenes_fang`, `_guard`, `_reckoning`,
+   `_tenderness`, `_wrath` portent des couts mais ne figurent pas dans
+   `legendaries`, ou les memes armes existent sous la convention
+   `gen3_aurene_s_*`. Meme cause que les doublons de captures : l'apostrophe.
+   A fusionner apres verification.
+
+Points en attente d'une vérification en jeu ou sur le wiki. Chacun est **connu,
+localisé et chiffré** — ce ne sont pas des inconnues, ce sont des arbitrages
+qui demandent une source que le conteneur ne peut pas atteindre.
+
+Règle : tant qu'un point est ici, la donnée reste **en l'état** dans le fichier.
+On ne devine pas à la place de la vérification — trois conflits de valeur
+tranchés au jugé auraient donné trois erreurs (voir `selachimorpha`, où
+l'intuition « la référence fait foi » aurait été fausse).
+
+---
+
+> Clos le 24/10/2026 : moteur unique en place (v7 au 24/10), conformité JS/Python à 0 écart.
+
+## 3 sexies. Trois arbres appliqués — méthode corrigée
+
+**Correction de méthode :** GW2Efficiency affiche des quantités **absolues** à
+chaque nœud, déjà multipliées. Les cumuler en cascade produisait des nombres à
+neuf chiffres (3,9 milliards d'éclats d'obsidienne pour Coalescence). **On somme
+les occurrences, on ne multiplie pas.**
+
+**12 exigences posées, 10 corrigées** sur Coalescence, Vision et Ad Infinitum.
+Les plus notables :
+
+- **Ad Infinitum** : 1 500 Minerai de dragonite, 1 500 Fragments empyréens,
+  1 500 Poussière de pierre de sang, 600 Matrices stabilisatrices — **tous
+  absents**. Et 1 039 Globes d'ectoplasme au lieu de 250.
+- **Coalescence** : 300 Mosaïques d'élégie, 250 Lingots cristallins, 250
+  Gemmes amalgamées.
+- **Vision** : 540 Réactifs thermocatalytiques, 250 Éclats de gloire, 100
+  Pierres runiques glacées.
+
+**Périmètre déclaré** (`_meta.raw_materials_scope`) : les matières premières
+génériques de l'artisanat élevé — mithril, argent, or, orichalque, planches,
+cuir, soie, essences de chance — ne sont **pas** modélisées. Les arbres en
+listent des milliers, mais elles s'achètent sans y penser et ne portent aucun
+timegate. Les modéliser doublerait le fichier sans servir la question du
+tracker : *que puis-je faire avancer aujourd'hui ?*
+
+**Trois divergences JSX déclarées** en `qty_conflict` : Mystic Coin sur
+Ad Infinitum et Coalescence, Pristine Fractal Relic sur Ad Infinitum.
+
+---
+
+> Clos le 24/10/2026 : trois divergences déclarées levées (S2) ; `qty_conflict` retiré (sources v427, 24/10).
+
+## 4 ter. Six divergences JSX déclarées
+
+`memory_of_battle`/Strife Unending, `obsidian_shard`/Selachimorpha et
+Endless Summer, `mystic_clover`/Orrax, `mystic_coin`/Stella Radians,
+`ursus_oblige`/Orrax. L'arbre développe la chaîne complète, le JSX porte une
+exigence directe — déclarées en `qty_conflict`, visibles à chaque exécution.
+
+---
+
+> Clos le 24/10/2026 : plus aucune divergence : ancres JSX = moteur, `qty_conflict` retiré (sources v427, 24/10).
+
+## Doubles comptes — 1 sur 3 tranché le 27/08/2026
+
+### ✅ Fragment de pierre de sang — corrigé
+
+Aurora, Vision et Coalescence portaient **1 à plat** en plus du Don de maîtrise
+qui l'exige déjà : total de **2 pour 1 requis**. L'arbre est net — Vision
+`1 <- Gift of Arid Mastery`, Coalescence `1 <- Gift of Desert Mastery`, aucun
+nœud direct. Les trois totaux à plat sont retirés, la chaîne suffit.
+
+### ✅ Ball of Dark Energy et Stabilizing Matrix — tranchés le 27/08/2026
+
+Les deux portent une exigence **à plat sur `obsidian__per_piece`** ET une
+exigence **via `cube_stabilized_dark_energy`**, qui lui-même vaut 1 par pièce :
+
+| composant | à plat / pièce | via le cube | total calculé |
+|---|---|---|---|
+| Ball of Dark Energy | 1 | 1 × 1 | **2** |
+| Stabilizing Matrix | 75 | 1 × 75 | **150** |
+
+**L'arbre de la cuirasse tranche** : par pièce, tout passe par le cube.
+`75 Stabilizing Matrix <- Cube`, `1 Ball of Dark Energy <- Cube`, **aucun nœud
+direct sur la pièce**. Les entrées à plat étaient bien un doublon.
+
+Corrigé : la matrice repasse de 150 à **75** par pièce, la boule de 2 à **1**.
+Sur les six pièces d'un set, **450 matrices de trop** disparaissent.
+
+> Clos le 24/10/2026 : les trois cas tranchés dans la section même (fragment, balle, matrice).
+
+## Étapes documentées — Wayfarer's Henge fait le 27/08/2026
+
+**339 étapes sur 468 (72 %)**, contre 284 (60 %) avant.
+
+Les quatre collections d'Aurora sont complètes : **55 conseils ajoutés**, tirés
+de la colonne Notes du tableau « Collection items » du wiki. Ce sont les
+**premiers `how` marqués `how_verified: true`** — les 284 autres viennent des
+anciens `bitTips` et restent à `false`.
+
+`gw2_parse_collection_v1.py` fait le travail. Deux pièges du HTML wiki traités :
+le JavaScript inline des liens de point de passage, qui finissait sinon dans la
+note, et les entités des chatlinks `[&BMUJAAA=]`, qu'il faut au contraire garder.
+
+**Rapprochement par rang, avec garde-fou** : tenté seulement si les deux listes
+ont la même longueur. Le contrôle par nom ne vaut rien ici — l'API rend une
+phrase d'action (« Bring a Fire Orchid to Kodama… ») là où le wiki rend le nom
+de l'objet (« A Flower for Kodama »). Deux vocabulaires, un seul ordre.
+
+42 étapes prennent le libellé du wiki, plus lisible ; l'ancien reste en `name_api`.
+
+### Bilinguisme : les noms oui, les conseils non
+
+- **Les `name` sont des chaînes anglaises**, comme partout ailleurs dans
+  `collections{}` — `NXS` les traduit au rendu par le dictionnaire de termes.
+  Rien ne change, la convention est respectée.
+- **Les 55 `how` du wiki sont en anglais seul.** Leur champ `fr` vaut `null`,
+  pas une copie de l'anglais : recopier ferait croire à une traduction qui
+  n'existe pas. `L()` se replie sur l'anglais, même convention que les noms de
+  sous-zones. `how_fr_missing: true` les rend dénombrables.
+
+**À faire un jour** : traduire ces 55 conseils. Cosmétique en anglais, nul en
+français — le contenu est là, seule la langue manque. Les 6 autres `how` dont
+le français est identique à l'anglais viennent des anciens `bitTips` et sont
+sans doute dans le même cas.
+
+### Reste : 10 étapes sur 468, toutes sans objet — **458/458 utiles**
+
+| collection | légendaire | sans conseil | pourquoi |
+|---|---|---|---|
+| Unknown Nightmares: Gift of the Feast | Orrax | 10 | **rien à écrire** : ce sont des plats de cuisine, le wiki ne met pas de note sur ces lignes et le nom suffit |
+
+**`Incursive Investigation: Working Together` est fait** (succès 8830). Ce
+n'était pas une redirection à contourner : la collection **est documentée dans
+la page de catégorie**, section Objectives, sans tableau d'objets. Les quatre
+rendez-vous avec le Mist Stranger ont leur `how` — la zone instanciée dédiée,
+accessible depuis l'Arche du Lion.
+
+### ⚠ Piège découvert : l'ordre des bits n'est pas celui du wiki
+
+Sur cette collection, **le bit 9 porte l'objectif 2**. Un rapprochement par rang
+aurait tout décalé d'un cran. Le champ `note_ordering` le signale sur la
+collection concernée.
+
+**Vérification faite sur les 20 collections déjà traitées** : aucun nom d'étape
+ne correspond au texte d'un autre bit — le rapprochement par rang y était sain.
+Mais la garde « même longueur » ne suffit pas à le garantir : il faudrait
+comparer les contenus, pas seulement les comptes.
+
+> Clos le 24/10/2026 : reste « sans objet » ; les conseils anglais ont été traduits (S6, 12/10).
+
+## 12. Activités par légendaire — les horaires de métas vivent DEUX fois (27/09/2026)
+
+Sujet ouvert par Antoine : décalage sur les horaires de certaines métas de
+Vision, vieux sujet, onglet « Activités ».
+
+### Ce que la vérification a trouvé : deux tables, aucune synchronisation
+
+Les horaires existent à **deux endroits indépendants** :
+
+- `meta_events` dans les sources — **20 entrées**, clés `vb`, `td`, `ab`, `co`,
+  `conv`… avec `offsetUTC` (minutes depuis minuit UTC), `intervalMin`,
+  `durationMin`, plus `efficience`, `population`, `waypoint`, `next` ;
+- un tableau `metas: [...]` **écrit en dur dans le JSX** — **35 entrées**, clés
+  `vm`, `di`, `obs_sw`, `obs_conv_on`, `weald`, `hammerhart`… mêmes champs
+  d'horaire, conventions de nommage inversées (les sources mettent la méta dans
+  `name` et le lieu dans `subname`, le JSX l'inverse).
+
+**C'est l'onglet qui affiche la table du JSX.** Corriger `meta_events` ne
+change donc rien à l'écran, et rien ne vérifie que les deux disent la même
+chose. C'est exactement la table parallèle que le projet s'interdit, et c'est la
+cause structurelle du décalage : deux listes tenues à la main finissent
+toujours par diverger.
+
+Écart déjà visible : **Convergence Outer Nayos** — JSX `obs_conv_on` offset 30,
+sources `conv` offset **90**. Une heure d'écart. Laquelle est juste, seul le
+wiki le dit.
+
+### Ce que l'API ne donnera pas
+
+**Aucun endpoint ne publie les horaires de métas.** `/v1/events` a été désactivé
+lors du passage aux mégaserveurs, et la v2 n'a jamais eu d'équivalent — le seul
+`timers` de la v2 est `/v2/wvw/timers`, qui concerne le McM. Les outils de la
+communauté (timer du wiki, gw2timer) calculent tous depuis des cycles fixes,
+exactement comme nous.
+
+La seule autorité est donc la page **Event timers** du wiki, et les pages de
+chaque méta. **Il faut les capturer** : sans elles, aucun horaire du dépôt n'est
+arbitrable.
+
+### État des 20 entrées des sources
+
+**Aucune ne porte de `ref`.** Un drapeau `needs_verification` existe, à `true`
+sur deux seulement (`gy` Ravenous Wanderer, `zak` Citadel of Zakiros).
+
+Trois entrées n'ont pas d'horaire exploitable : `gy` (`offsetUTC: null`), `in`
+et `zak` (`offsetUTC` ET `intervalMin` nuls — métas conditionnelles, pilotées
+par la progression de carte, pas par l'horloge).
+
+Une valeur détonne : `co` Casino Blitz, offset **21**. C'est le seul offset des
+vingt qui ne soit pas un multiple de 5 — à vérifier en priorité.
+
+Les notes heures paires/impaires (`sp`, `nk`, `ew`, `de2`) sont, elles,
+cohérentes avec leurs offsets : 90 → 01:30, 0 → 00:00, 100 → 01:40, 60 → 01:00.
+
+### Pourquoi ces métas-là : la réponse est « elles donnent une gemme »
+
+Question d'Antoine : quelles métas ont été sélectionnées, et pourquoi.
+
+**Les 20 de `meta_events` portent toutes `rewards: ["amalgamated_gemstone"]`,
+et rien d'autre.** Le critère de sélection est donc explicite dans la donnée :
+ce sont les métas dont le Hero's Choice Chest rend une Gemme amalgamée. Sa
+lecture est confirmée.
+
+**La table du JSX, elle, ne porte AUCUN champ de récompense** — zéro occurrence
+de `rewards`. Et elle contient des métas qui ne donnent pas de gemme :
+`di` Palawadan (kralkatite), `lw4_istan`, `lw4_dragonfall`, `bf`, `eb`, `dm`,
+`ld`, `sl`. C'est ce qui a coûté une session à Antoine : il a fait Palawadan en
+attendant une gemme, et Palawadan donne de la kralkatite.
+
+Les deux tables ne mélangent donc pas seulement des horaires, elles mélangent
+deux CRITÈRES : l'une liste les métas à gemme, l'autre y ajoute les métas de
+ressource de carte, sans dire laquelle donne quoi.
+
+**Demande d'Antoine, à instruire avec la fusion** : chaque méta doit identifier
+la ressource qu'elle rend, et l'affichage doit pouvoir filtrer dessus — une
+méta dont la ressource n'est plus nécessaire disparaît de la liste. Le champ
+`rewards` existe déjà côté sources et doit devenir le seul, porté par la table
+unique. Il faudra le remplir pour les 15 entrées que le JSX ajoute.
+
+### La mesure exacte, avant de toucher à quoi que ce soit (27/09)
+
+Ce n'est pas « une table dans les sources contre une dans le JSX ». Le JSX porte
+**20 blocs `metas:`, un par onglet de légendaire**, pour **77 entrées** décrivant
+**62 métas distinctes**. Chaque entrée recopie l'horaire complet.
+
+- 17 de ces 62 sont aussi dans `meta_events` ; **45 n'existent que dans le JSX** ;
+  3 n'existent que dans les sources (`gy`, `in`, `zak`).
+- 35 métas sont déclarées plusieurs fois, une par légendaire concernée.
+- Bonne nouvelle : **aucune de ces copies ne se contredit** — les 35 doublons
+  portent le même horaire. La dérive n'est donc pas interne, elle est entre le
+  JSX et la réalité, faute de source.
+
+`meta_events` n'est pas la table de référence : c'est un sous-ensemble, celui
+des métas à gemme. La table qui sert vraiment, c'est celle du JSX.
+
+### Comment on implémente
+
+1. **Un catalogue unique, dans les sources.** `meta_events` accueille les 62
+   métas, avec leurs champs actuels plus deux ajouts : `rewards` — la ou les
+   ressources rendues, en clés de `craft_components` — et `ref`, la capture qui
+   établit l'horaire.
+2. **Chaque légendaire ne déclare plus qu'une liste de clés** :
+   `metas: ["vb", "td", …]`. 77 copies deviennent 20 listes courtes. L'horaire
+   n'existe plus qu'une fois, donc il ne peut plus diverger.
+3. **Le filtre d'Antoine** : une méta s'affiche tant qu'au moins une de ses
+   `rewards` est encore nécessaire, c'est-à-dire `legTotals[reward] > 0`. Elle
+   disparaît d'elle-même quand la ressource est finie. Ça réutilise le moteur
+   qu'on vient de corriger — « zéro est une réponse » (§ BO) est exactement ce
+   qui rend ce filtre possible.
+4. **Audit v56** : toute clé de méta citée par un légendaire existe au
+   catalogue ; toute `rewards` est une vraie clé de composant ; tout horaire
+   porte un `ref` ; `offsetUTC` est dans `[0, intervalMin[`.
+5. **Conformité** : comparer JSX ↔ sources pendant la transition, puis
+   supprimer la table du JSX. Tant que les deux existent, la correction se perd.
+
+### Deux choses vues en répondant à Antoine (27/09)
+
+**Palawadan ne donne pas de difluorite.** L'exemple « kralkatite ou difluorite »
+donné plus haut dans un échange était faux : la difluorite est aux Îles
+balayées, Palawadan au Domaine d'Istan, et les deux ne partagent aucune méta.
+L'exemple correct de double ressource est `lw4_istan` — les nœuds de Brandstone
+rendent kralkatite **et** magie volatile. C'est là que « au moins une encore
+utile » a un sens.
+
+**La table du JSX mélange deux natures d'entrée.** À côté des métas à horaire,
+elle porte des entrées `isTimeless: true` dont `offsetUTC`, `intervalMin` et
+`durationMin` valent zéro : `lw4_istan`, `bf`, `eb`, `dm`, `ld`, `sl`,
+`obs_spider`… Ce sont des farms de nœuds ou de vendeurs. Elles n'ont pas
+d'horaire du tout — elles ont un soft-reset quotidien et un `farmType`
+(`per_char`, `per_account`).
+
+Conséquences sur le plan :
+
+- l'invariant `offsetUTC ∈ [0, intervalMin[` ne vaut que pour les entrées à
+  horaire ; pour les autres, l'audit doit exiger `isTimeless` **et** l'absence
+  d'horaire, pas un horaire nul ;
+- `ref` ne désigne pas la même source des deux côtés : la page Event timers ne
+  dira rien des nœuds, qui relèvent des pages de carte et de vendeur.
+
+Au passage : `meta_events.in` porte `rewards: ["amalgamated_gemstone",
+"amalgamated_gemstone"]` — la même ressource deux fois. À corriger au moment du
+catalogue.
+
+### Ce qu'il faut pour commencer
+
+- La capture de **`Event_timers`**, qui porte tous les horaires dans une seule
+  page — c'est ce qui permet d'arbitrer les 62 d'un coup et de poser les `ref`.
+  Risque à vérifier : cette page est peut-être rendue côté client.
+- `Casino_Blitz` et `Convergence`, les deux suspects nommés.
+- Deux décisions d'Antoine : que faire d'une méta **sans ressource** (affichée
+  toujours ? rattachée à l'étape de collection qu'elle sert ?), et confirmation
+  que le filtre est bien « au moins une ressource encore utile » et non
+  « toutes ».
+
+> Clos le 24/10/2026 : le JSX ne déclare plus que des clés de métas ; horaires dans `meta_events` seul (C10, 20/10).
+
+## 12 octies. Quelles métas valent le détour — la trace existe (01/10/2026)
+
+Antoine corrige le postulat de depart : on avait mutualise les métas par zone et
+extension du legendaire. Mais ce qui compte, c'est **ce que la méta rend**, et
+certaines ne rendent rien d'utile.
+
+### Le critère est traçable, en deux crans
+
+**Cran 1 — la méta donne-t-elle un coffre ?** Les captures le disent, avec leur
+cadence : « The Desolation: Hero's Choice Chest (guaranteed) (once a day per
+account, shared daily limit with… ) ». **43 captures du dépôt** portent cette
+mention.
+
+**Cran 2 — ce coffre contient-il la ressource ?** La page `Amalgamated Gemstone`
+liste, dans son « Contained in », les dix coffres qui en rendent une :
+
+> Amnytas · Auric Basin · Citadel of Zakiros · Convergence · Crystal Oasis ·
+> Domain of Vabbi · Dragon's End · Dragon's Stand · Echovald Wilds ·
+> Elon Riverlands
+
+Le croisement est mécanique : nom du coffre cité par la capture de la méta ×
+liste de la page de la ressource. **Rien à capturer de plus.**
+
+### Ce que ça contredit déjà
+
+- **« toutes les métas VoE sont exclues » est trop large.** `secrets_of_the_weald`
+  et `hammerhart_rumble` donnent bien un coffre Castora, « guaranteed, once per
+  day per account ». Reste à voir ce que le coffre Castora contient — il n'est
+  pas dans la liste des dix, donc **pas de gemme**, mais peut-être autre chose
+  d'utile (`chromatic_sap` et `raw_enchanting_stone` le citent).
+- **Nos 20 `rewards` ne sont pas sourcés.** Aucun ne porte de `ref`, et certains
+  sont probablement faux : `de` (Junundu Rising, The Desolation) et `er`
+  (Elon Riverlands) declarent une gemme, mais The Desolation n'est **pas** dans
+  les dix. Antoine soupçonnait justement les vers géants.
+- Les 9 métas entrées au catalogue le 01/10 n'ont pas encore de `rewards`.
+
+### Point 2 — lire les extensions depuis l'API : oui, en partie
+
+`/v2/account` rend un champ **`access`** : `GuildWars2`, `HeartOfThorns`,
+`PathOfFire`, `EndOfDragons`, `SecretsOfTheObscure`, `JanthirWilds`, et
+`PlayForFree`. `PathOfFire` implique `HeartOfThorns`. **Le dépôt appelle déjà
+cet endpoint** — `commander` en vient — donc c'est un champ à lire, pas un appel
+à ajouter.
+
+**Ce que l'API ne dit PAS : les épisodes de Living World.** LW2, LW3, LW4 et
+l'Icebrood Saga se débloquent épisode par épisode, et aucun endpoint ne les
+expose. Or une bonne part des métas à gemme en dépend.
+
+Donc hybride, et c'est la seule forme honnête : les extensions viennent de
+`access`, en lecture seule et non modifiables à la main ; les épisodes LW
+viennent d'une case à cocher locale, par défaut **tout décoché** — supposer
+qu'Antoine possède un épisode lui ferait planifier une méta inaccessible, ce qui
+coûte plus cher que l'inverse.
+
+> Clos le 24/10/2026 : métas déduites des ressources `rewards` (C10, 20/10).
+
