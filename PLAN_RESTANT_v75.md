@@ -964,6 +964,13 @@ sur les aretes (il ecrivait « x6 » et 6 lingots Xunlai au lieu de 18), masque
 a zero. Balayage des autres legendaires (cle a plat citee par une etape sans
 cout) : aucun autre cas.
 
+### C20 — Pieces d'or lues en cuivre (26/10, signale par Antoine) · C — ✅
+Le portefeuille rend la monnaie 1 en cuivre ; `gold_coin` se compte en or.
+L'arbre affichait 1 526 225 / 100. JSX v275 : `stockUnite` convertit, et les
+quatre lectures de stock par apiId (arbre, matrice T6, cadences, grand total)
+passent par lui. Les blocs Prerequis restent en cuivre (cout en pieces,
+affiche en po/pa/pc).
+
 ## Ordre propose
 
 1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,

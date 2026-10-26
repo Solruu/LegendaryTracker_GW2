@@ -2189,6 +2189,17 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel, orderTitle })
 // `qty` vise celui de l'etape. Un cran, pas de recursion — la cascade complete
 // a son moteur, ce n'en sera pas une onzieme implementation. Le jour ou la
 // chaine change, cette ligne change avec elle.
+// v275 : le stock d'un composant dans SON unite. Le portefeuille rend les
+// pieces (monnaie 1) en CUIVRE, alors que le composant `gold_coin` se compte
+// en pieces d'or : l'arbre affichait 1 526 225 « Gold coin » pour 152 po
+// (signale par Antoine, 26/10). Toute lecture de stock par apiId passe ici.
+function stockUnite(stocks, apiId) {
+  if (apiId == null) return undefined;
+  const v = stocks?.[String(apiId)];
+  if (typeof v !== "number") return v;
+  return apiId === 1 ? Math.floor(v / 10000) : v;
+}
+
 // ── Arbre des composants (v271) ─────────────────────────────
 // Facon gw2efficiency : parents et enfants indentes, quantites deja
 // multipliees le long du chemin. Les racines et les couts d'etape viennent de
@@ -2237,7 +2248,7 @@ function ArbreComposants({ calc, stocks, NX, NXS, couleur }) {
   const Noeud = ({ id, q, niv, cle, chemin, choisi }) => {
     const c = cc[id] ?? {};
     const kids = chemin.includes(id) ? [] : (enfants[id] ?? []);
-    const st = c.apiId != null ? stocks[String(c.apiId)] : undefined;
+    const st = stockUnite(stocks, c.apiId);
     const ok = typeof st === "number" && st >= q;
     const ouvert = kids.length > 0 && estOuvert(cle, niv, ok);
     const tp = statut(c);
@@ -2961,7 +2972,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets, collections, a
   const tierCle = hubTiers.some(x => x.key === hubTier) ? hubTier : (hubTiers[0]?.key ?? null);
   const stockOf = (cid) => {
     const api = cc[cid]?.apiId;
-    return api != null && stocks[String(api)] != null ? stocks[String(api)] : null;
+    return api != null && stocks[String(api)] != null ? stockUnite(stocks, api) : null;
   };
   const cell = (cid) => {
     const need = totals[cid] ?? 0;
@@ -3322,7 +3333,7 @@ function CadencesTab({ stocks = {}, acctGates = null, collections, armory }) {
     .map(([id, c]) => {
       const cad = c.cadence;
       const need = totals[id] ?? 0;
-      const owned = c.apiId ? (stocks[String(c.apiId)] ?? null) : null;
+      const owned = c.apiId ? (stockUnite(stocks, c.apiId) ?? null) : null;
       const missing = need > 0 && owned !== null ? Math.max(0, need - owned) : null;
       // Débit hebdomadaire plafonné : les sources sans plafond sont exclus
       // du calcul (ils fausseraient une projection de délai).
@@ -3817,7 +3828,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
       const src = comp.sources?.[0] ?? {};
       const apiId = comp.apiId;
       const hasStock = apiId && (String(apiId) in stocks);
-      const owned = apiId ? (stocks[String(apiId)] ?? 0) : null;
+      const owned = apiId ? (stockUnite(stocks, apiId) ?? 0) : null;
       const missing = owned !== null ? Math.max(0, qty - owned) : null;
       const pct = owned !== null ? Math.min(100, (owned / qty) * 100) : null;
       const stockKnown = owned !== null; // true si apiId connu (même si 0)
