@@ -1,6 +1,6 @@
 # Confrontation des recettes avec l'API
 
-Source : `gw2_sources_v427.json` contre `ressources/api/api_recettes_composants_20261024.json` (recettes d'artisanat ; la Forge mystique n'est pas dans l'API). Regle : pour un id confirme, l'API a raison.
+Source : `gw2_sources_v428.json` contre `ressources/api/api_recettes_composants_20261024.json` (recettes d'artisanat ; la Forge mystique n'est pas dans l'API). Regle : pour un id confirme, l'API a raison.
 
 | classe | nombre |
 |---|---:|

@@ -241,7 +241,6 @@ const I18N = {
     vision_reqnote: "The Requiem Experiments provide the necessary Elegy Mosaics.",
     vision_reward_1: "Reward: Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Reward: Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
-    x6_required: "×6 required",
     vision_mee_craft: "⚠ Artificer 400 · Recipe must be purchased (Arborstone / Juno vendors)",
     vision_mee_note: "Xunlai Electrum Ingot: EoD vendor recipe (Arborstone) · Electrum Ingot + Jade Sliver ×10",
     vision_elegy_label: "Requiem Experiments — Elegy Mosaics",
@@ -484,7 +483,6 @@ const I18N = {
     vision_reqnote: "Les succès « Requiem: Experiment 1 » à « Requiem: Experiment 6 » fournissent les Elegy Mosaic nécessaires.",
     vision_reward_1: "Récompense : Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
-    x6_required: "×6 requis",
     vision_mee_craft: "⚠ Artificier 400 · Recette à acheter (vendeurs Arborstone / Juno)",
     vision_mee_note: "Xunlai Electrum Ingot : recette de vendeur EoD (Arborstone) · Electrum Ingot + 10× Jade Sliver",
     vision_elegy_label: "Requiem Experiments — Elegy Mosaics",
@@ -7464,13 +7462,21 @@ export default function GW2LegendaryTracker() {
               {/* ── Required craft: Memory Essence Encapsulator ── */}
               {(() => {
                 const mee = SOURCES_DB?.craft_components?.memory_essence_encapsulator;
-                if (!mee) return null;
+                // v274 : nombre et ingredients lus sur le moteur et les aretes —
+                // le bloc ecrivait « x6 » et multipliait `craft.ingredients`
+                // par 6 (6 lingots Xunlai la ou la recette en demande 18), et
+                // restait affiche collections terminees.
+                const nMee = Math.round(legTotals?.memory_essence_encapsulator ?? 0);
+                if (!mee || nMee <= 0) return null;
+                const ingMee = Object.entries(SOURCES_DB?.craft_components ?? {})
+                  .filter(([, c]) => typeof c?.qty?.memory_essence_encapsulator === "number")
+                  .map(([id, c]) => ({ id, name: c.name, qty: c.qty.memory_essence_encapsulator }));
                 return (
                   <div style={{ margin: "6px 0 0", padding: "9px 13px", background: "rgba(167,139,250,0.03)", border: "1px solid rgba(167,139,250,0.15)", borderRadius: 6 }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 5 }}>
                       <div>
                         <span style={{ fontSize: 11, fontWeight: 700, color: C, fontFamily: "'Cinzel', serif", letterSpacing: "0.04em" }}>{NX("Memory Essence Encapsulator")}</span>
-                        <span style={{ fontSize: 9, color: "rgba(167,139,250,0.5)", marginLeft: 7 }}>{t("x6_required")}</span>
+                        <span style={{ fontSize: 9, color: "rgba(167,139,250,0.5)", marginLeft: 7 }}>{NX({ fr: `×${nMee} restant(s)`, en: `×${nMee} remaining` })}</span>
                       </div>
                       <a href={`https://wiki.guildwars2.com/wiki/${mee.wiki}`} target="_blank" rel="noreferrer"
                         style={{ fontSize: 9, color: "rgba(167,139,250,0.5)", textDecoration: "none", border: "1px solid rgba(167,139,250,0.2)", borderRadius: 3, padding: "1px 5px" }}>
@@ -7481,10 +7487,10 @@ export default function GW2LegendaryTracker() {
                       {t("vision_mee_craft")}
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                      {mee.craft?.ingredients?.map(ing => (
-                        <div key={ing.apiId} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>
+                      {ingMee.map(ing => (
+                        <div key={ing.id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10, color: "rgba(226,201,126,0.6)", fontFamily: "'Crimson Text', serif" }}>
                           <span>{NX(ing.name)}</span>
-                          <span style={{ color: "rgba(226,201,126,0.35)" }}>×{ing.qty * 6}</span>
+                          <span style={{ color: "rgba(226,201,126,0.35)" }}>×{ing.qty * nMee}</span>
                         </div>
                       ))}
                     </div>

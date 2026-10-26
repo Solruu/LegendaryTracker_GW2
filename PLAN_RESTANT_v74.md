@@ -953,6 +953,17 @@ est retiree.
 JSX v273 (demande d'Antoine) : une branche dont le parent est couvert par
 le stock se replie par defaut (✓), un clic la rouvre.
 
+### C19 — Encapsulateurs de Vision (26/10, signale par Antoine) · C — ✅
+Collections terminees, l'onglet reclamait encore 6 Memory Essence
+Encapsulators : cle a plat `vision: 6`. Sources v428
+(`gw2_encapsulateurs_v1`) : un `cost` de 1 sur chacune des six etapes
+« Vision of Enemies » (bit 3 de vis_istan, kourna, jahai, sandswept,
+thunderhead, dragonfall), meme total a vierge, tombe a la validation. JSX
+v274 : le bloc de craft de Vision lit le nombre au moteur et les ingredients
+sur les aretes (il ecrivait « x6 » et 6 lingots Xunlai au lieu de 18), masque
+a zero. Balayage des autres legendaires (cle a plat citee par une etape sans
+cout) : aucun autre cas.
+
 ## Ordre propose
 
 1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,
