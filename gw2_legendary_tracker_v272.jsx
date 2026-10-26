@@ -2245,7 +2245,8 @@ function ArbreComposants({ calc, stocks, NX, NXS, couleur }) {
     const n = fab(id, q);
     return (
       <div>
-        <div onClick={() => kids.length && basculer(cle, niv)} title={src?.tip ? NX(src.tip) : undefined}
+        <div onClick={() => kids.length && basculer(cle, niv)}
+          title={[src?.tip ? NX(src.tip) : null, c.best_reason ? NX(c.best_reason) : null].filter(Boolean).join(" — ") || undefined}
           style={{ display: "flex", alignItems: "baseline", gap: 6, padding: "3px 14px 3px " + (14 + niv * 16) + "px",
             cursor: kids.length ? "pointer" : "default", borderLeft: niv ? "1px solid rgba(226,201,126,0.06)" : "none",
             marginLeft: niv ? 14 + (niv - 1) * 16 : 0, paddingLeft: niv ? 8 : 14 }}>
