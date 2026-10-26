@@ -2232,20 +2232,22 @@ function ArbreComposants({ calc, stocks, NX, NXS, couleur }) {
     const a = c?.apiId;
     return (typeof a === "number" && a > 100 && !inconnus.includes(a)) ? "lie" : null;
   };
-  const estOuvert = (cle, niv) => (ouverts && cle in ouverts) ? ouverts[cle] : niv < profondeur - 1;
-  const basculer = (cle, niv) => setOuverts(o => ({ ...(o ?? {}), [cle]: !estOuvert(cle, niv) }));
+  // v273 : une branche dont le parent est COUVERT par le stock se replie par
+  // defaut (rien a farmer dessous) ; un clic la rouvre quand meme.
+  const estOuvert = (cle, niv, couvert) => (ouverts && cle in ouverts) ? ouverts[cle] : (!couvert && niv < profondeur - 1);
+  const basculer = (cle, niv, couvert) => setOuverts(o => ({ ...(o ?? {}), [cle]: !estOuvert(cle, niv, couvert) }));
   const Noeud = ({ id, q, niv, cle, chemin, choisi }) => {
     const c = cc[id] ?? {};
     const kids = chemin.includes(id) ? [] : (enfants[id] ?? []);
-    const ouvert = kids.length > 0 && estOuvert(cle, niv);
     const st = c.apiId != null ? stocks[String(c.apiId)] : undefined;
     const ok = typeof st === "number" && st >= q;
+    const ouvert = kids.length > 0 && estOuvert(cle, niv, ok);
     const tp = statut(c);
     const src = (c.sources ?? []).find(s => s?.type === c.best) ?? (c.sources ?? [])[0];
     const n = fab(id, q);
     return (
       <div>
-        <div onClick={() => kids.length && basculer(cle, niv)}
+        <div onClick={() => kids.length && basculer(cle, niv, ok)}
           title={[src?.tip ? NX(src.tip) : null, c.best_reason ? NX(c.best_reason) : null].filter(Boolean).join(" — ") || undefined}
           style={{ display: "flex", alignItems: "baseline", gap: 6, padding: "3px 14px 3px " + (14 + niv * 16) + "px",
             cursor: kids.length ? "pointer" : "default", borderLeft: niv ? "1px solid rgba(226,201,126,0.06)" : "none",
@@ -2259,6 +2261,7 @@ function ArbreComposants({ calc, stocks, NX, NXS, couleur }) {
             {n !== q && <span style={{ marginLeft: 6, fontSize: 9, opacity: 0.5 }}>{NX({ fr: `${n} fabrication(s)`, en: `${n} craft(s)` })}</span>}
           </span>
           <span style={{ fontSize: 11, fontFamily: "'Cinzel', serif", whiteSpace: "nowrap", color: ok ? "#4ade80" : "#e2c97e" }}>
+            {ok && kids.length > 0 && !ouvert && <span style={{ opacity: 0.55, marginRight: 4 }}>✓</span>}
             {typeof st === "number" && <span style={{ opacity: 0.55 }}>{st.toLocaleString()} / </span>}{fmt(q)}
           </span>
         </div>

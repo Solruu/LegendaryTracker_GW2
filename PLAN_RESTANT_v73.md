@@ -950,6 +950,8 @@ en section a part. Aucune donnee nouvelle : `computeGrandTotal` expose ses
 racines, couts d'etape, choix et composants satisfaits (un seul calcul).
 L'ancienne liste par familles (`components` + `needed_for`, sans quantites)
 est retiree.
+JSX v273 (demande d'Antoine) : une branche dont le parent est couvert par
+le stock se replie par defaut (✓), un clic la rouvre.
 
 ## Ordre propose
 
