@@ -939,6 +939,18 @@ d'artisanat de /v2/recipes contre les aretes, 1 011 apiId. Puis
   Weapon » ; compteur sur le nombre d'etapes des sources (0/15, 0/12, 0/34,
   0/16) au lieu de « 0/? » avant synchro.
 
+### C18 — Arbre des composants facon gw2efficiency (26/10) · C — ✅
+Demande d'Antoine : l'onglet Composants ne montrait ni quels dons, ni
+combien, ni sous quoi. JSX v271 : `ArbreComposants` en tete de l'onglet —
+racines = exigences directes du legendaire, puis descente par les aretes
+`qty`, les choix retenus (⇄) et les lots, quantites multipliees le long de la
+branche ; stock / besoin, vert si couvert ; etiquette comptoir / lie ; trois
+niveaux ouverts, « Tout deplier » / « Tout replier » ; couts d'etape a faire
+en section a part. Aucune donnee nouvelle : `computeGrandTotal` expose ses
+racines, couts d'etape, choix et composants satisfaits (un seul calcul).
+L'ancienne liste par familles (`components` + `needed_for`, sans quantites)
+est retiree.
+
 ## Ordre propose
 
 1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,

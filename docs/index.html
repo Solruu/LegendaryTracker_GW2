@@ -93170,6 +93170,114 @@ function WaypointList({ items, isDone, copied, onCopy, orderLabel, orderTitle })
 // `qty` vise celui de l'etape. Un cran, pas de recursion — la cascade complete
 // a son moteur, ce n'en sera pas une onzieme implementation. Le jour ou la
 // chaine change, cette ligne change avec elle.
+// ── Arbre des composants (v271) ─────────────────────────────
+// Facon gw2efficiency : parents et enfants indentes, quantites deja
+// multipliees le long du chemin. Les racines et les couts d'etape viennent de
+// computeGrandTotal (`racines`, `etapes`), la descente suit les memes aretes
+// `qty` et les memes choix (`choix`) que la cascade, lots compris : un seul
+// calcul. Un composant peut apparaitre sous plusieurs branches — son total
+// est la somme, comme dans l'onglet Grand Total. Trois niveaux ouverts par
+// defaut.
+function ArbreComposants({ calc, stocks, NX, NXS, couleur }) {
+  const cc = SOURCES_DB?.craft_components ?? {};
+  const meta = SOURCES_DB?._meta?.comptoir ?? {};
+  const inconnus = meta.inconnus_api ?? [];
+  const sat = new Set(calc?.satisfaits ?? []);
+  const enfants = React.useMemo(() => {
+    const m = {};
+    for (const [cid, c] of Object.entries(cc)) {
+      if (sat.has(cid)) continue;
+      for (const [p, v] of Object.entries(c?.qty ?? {})) {
+        if (typeof v === "number" && v > 0 && cc[p]) (m[p] = m[p] ?? []).push([cid, v]);
+      }
+    }
+    for (const [tg, lst] of Object.entries(calc?.choix ?? {})) {
+      for (const { opt, qty } of lst) (m[tg] = m[tg] ?? []).push([opt, qty, true]);
+    }
+    return m;
+  }, [calc]);
+  const [ouverts, setOuverts] = React.useState(null); // null = profondeur par defaut
+  const [profondeur, setProfondeur] = React.useState(3);
+  const fab = (id, q) => {
+    const lot = cc[id]?.lot;
+    return (Number.isInteger(lot) && lot > 1) ? Math.ceil(q / lot - 1e-9) : q;
+  };
+  const ORDRE = { advanced_craft: 0, precursor: 1, intermediate: 2, craftable: 2, purchase: 3, account_unlock: 4, currency: 5, acquire: 6, refined: 7, material: 8 };
+  const trier = (a, b) => ((ORDRE[cc[a[0]]?.kind] ?? 9) - (ORDRE[cc[b[0]]?.kind] ?? 9)) || (b[1] - a[1]);
+  const nom = (id) => NXS(cc[id]?.name ?? id.replace(/_/g, " "));
+  const fmt = (q) => (Number.isInteger(q) ? q : Math.round(q * 100) / 100).toLocaleString();
+  const statut = (c) => {
+    if ((c?.sources ?? []).some(s => s?.type === "trading_post")) return "tp";
+    const a = c?.apiId;
+    return (typeof a === "number" && a > 100 && !inconnus.includes(a)) ? "lie" : null;
+  };
+  const estOuvert = (cle, niv) => (ouverts && cle in ouverts) ? ouverts[cle] : niv < profondeur - 1;
+  const basculer = (cle, niv) => setOuverts(o => ({ ...(o ?? {}), [cle]: !estOuvert(cle, niv) }));
+  const Noeud = ({ id, q, niv, cle, chemin, choisi }) => {
+    const c = cc[id] ?? {};
+    const kids = chemin.includes(id) ? [] : (enfants[id] ?? []);
+    const ouvert = kids.length > 0 && estOuvert(cle, niv);
+    const st = c.apiId != null ? stocks[String(c.apiId)] : undefined;
+    const ok = typeof st === "number" && st >= q;
+    const tp = statut(c);
+    const src = (c.sources ?? []).find(s => s?.type === c.best) ?? (c.sources ?? [])[0];
+    const n = fab(id, q);
+    return (
+      <div>
+        <div onClick={() => kids.length && basculer(cle, niv)} title={src?.tip ? NX(src.tip) : undefined}
+          style={{ display: "flex", alignItems: "baseline", gap: 6, padding: "3px 14px 3px " + (14 + niv * 16) + "px",
+            cursor: kids.length ? "pointer" : "default", borderLeft: niv ? "1px solid rgba(226,201,126,0.06)" : "none",
+            marginLeft: niv ? 14 + (niv - 1) * 16 : 0, paddingLeft: niv ? 8 : 14 }}>
+          <span style={{ width: 10, fontSize: 9, color: "rgba(226,201,126,0.45)", flexShrink: 0 }}>{kids.length ? (ouvert ? "▾" : "▸") : "·"}</span>
+          <span style={{ fontSize: niv === 0 ? 12 : 11, fontWeight: niv === 0 ? 600 : 400, fontFamily: niv === 0 ? "'Cinzel', serif" : "inherit",
+            color: ok ? "#4ade80" : (niv === 0 ? couleur : "rgba(226,201,126,0.8)"), flex: 1, minWidth: 0 }}>
+            {choisi && <span title={NX({ fr: "Option retenue d'un choix", en: "Chosen option" })} style={{ marginRight: 4, opacity: 0.6 }}>⇄</span>}
+            {nom(id)}
+            {tp && <span style={{ marginLeft: 6, fontSize: 8, padding: "0 4px", borderRadius: 2, color: tp === "tp" ? "#c9a227" : "rgba(226,201,126,0.45)", border: `1px solid ${tp === "tp" ? "#c9a22755" : "rgba(226,201,126,0.18)"}` }}>{tp === "tp" ? NX({ fr: "comptoir", en: "TP" }) : NX({ fr: "lié", en: "bound" })}</span>}
+            {n !== q && <span style={{ marginLeft: 6, fontSize: 9, opacity: 0.5 }}>{NX({ fr: `${n} fabrication(s)`, en: `${n} craft(s)` })}</span>}
+          </span>
+          <span style={{ fontSize: 11, fontFamily: "'Cinzel', serif", whiteSpace: "nowrap", color: ok ? "#4ade80" : "#e2c97e" }}>
+            {typeof st === "number" && <span style={{ opacity: 0.55 }}>{st.toLocaleString()} / </span>}{fmt(q)}
+          </span>
+        </div>
+        {ouvert && [...kids].sort(trier).map(([k, v, choisiK]) => (
+          <Noeud key={k} id={k} q={v * n} niv={niv + 1} cle={cle + ">" + k} chemin={[...chemin, id]} choisi={choisiK} />
+        ))}
+      </div>
+    );
+  };
+  const racines = Object.entries(calc?.racines ?? {}).filter(([, v]) => typeof v === "number" && v > 0).sort(trier);
+  const etapes = Object.entries(calc?.etapes ?? {}).filter(([, v]) => typeof v === "number" && v > 0).sort(trier);
+  const bouton = (label, on) => (
+    <button onClick={on} style={{ padding: "2px 8px", borderRadius: 3, fontSize: 9, cursor: "pointer", fontFamily: "'Cinzel', serif",
+      border: "1px solid rgba(226,201,126,0.18)", background: "rgba(255,255,255,0.02)", color: "rgba(226,201,126,0.6)" }}>{label}</button>
+  );
+  return (
+    <div>
+      <div className="section-label">{NX({ fr: "Arbre des composants", en: "Component tree" })}</div>
+      <div style={{ margin: "2px 14px 6px", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+        <span style={{ fontSize: 10, fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", flex: 1, minWidth: 200 }}>
+          {NX({ fr: "Quantités multipliées le long de chaque branche ; stock / besoin à droite, en vert quand il suffit. Toucher une ligne pour l'ouvrir.", en: "Quantities multiplied along each branch; stock / need on the right, green when covered. Tap a row to open it." })}
+        </span>
+        {bouton(NX({ fr: "3 niveaux", en: "3 levels" }), () => { setOuverts(null); setProfondeur(3); })}
+        {bouton(NX({ fr: "Tout déplier", en: "Expand all" }), () => { setOuverts(null); setProfondeur(99); })}
+        {bouton(NX({ fr: "Tout replier", en: "Collapse all" }), () => { setOuverts(null); setProfondeur(1); })}
+      </div>
+      <div style={{ margin: "0 0 8px" }}>
+        {racines.map(([id, q]) => <Noeud key={id} id={id} q={q} niv={0} cle={id} chemin={[]} />)}
+      </div>
+      {etapes.length > 0 && (
+        <>
+          <div style={{ margin: "10px 14px 4px", fontSize: "10px", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif", color: "rgba(226,201,126,0.45)" }}>
+            {NX({ fr: "Étapes de collection encore à faire", en: "Collection steps still to do" })}
+          </div>
+          {etapes.map(([id, q]) => <Noeud key={"e_" + id} id={id} q={q} niv={0} cle={"e_" + id} chemin={[]} />)}
+        </>
+      )}
+    </div>
+  );
+}
+
 // Le `cost` d'une etape de collection, tel que le moteur le compte.
 function CoutEtape({ cout, NX }) {
   if (!cout) return null;
@@ -93475,10 +93583,18 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
   if (composes.length) {
     const totals = {};
     const variable = {};
+    const racines = {};
+    const etapes = {};
+    const choix = {};
+    const satisfaitsC = new Set();
     const fusion = (part, n) => {
       for (const [cid, v] of Object.entries(part?.totals ?? {})) {
         if (typeof v === "number") totals[cid] = (totals[cid] ?? 0) + v * n;
       }
+      for (const [cid, v] of Object.entries(part?.racines ?? {})) racines[cid] = (racines[cid] ?? 0) + v * n;
+      for (const [cid, v] of Object.entries(part?.etapes ?? {})) etapes[cid] = (etapes[cid] ?? 0) + v * n;
+      Object.assign(choix, part?.choix ?? {});
+      for (const s of (part?.satisfaits ?? [])) satisfaitsC.add(s);
       for (const cid of Object.keys(part?.variable ?? {})) variable[cid] = true;
     };
     if (plats.length) fusion(computeGrandTotal(plats, collectionsByLeg, piecesRestantes), 1);
@@ -93487,7 +93603,7 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
         fusion(computeGrandTotal([sous], collectionsByLeg, piecesRestantes), n);
       }
     }
-    return { totals, variable };
+    return { totals, variable, racines, etapes, choix, satisfaits: [...satisfaitsC] };
   }
   // Surcouts conditionnels : meme declaration et meme regle que l'onglet du
   // legendaire. Sans cet appel, le grand total affichait un nombre fige qui
@@ -93623,6 +93739,11 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
     }
   }
 
+  // v271 : l'arbre de l'onglet Composants part de ces racines (exigences
+  // directes) et des couts d'etape, puis descend par les memes aretes que la
+  // cascade ci-dessous : un seul calcul, deux lectures.
+  const racines = { ...totals };
+  const etapes = {};
   // Ce qu'une etape de collection CONSOMME tant qu'elle n'est pas faite.
   // `component` dit l'inverse — une etape validee rend un composant inutile.
   // Il manquait le sens direct : les sept miroirs de Vision demandent chacun
@@ -93636,7 +93757,10 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
     for (const { item, cle, faite } of etapesCollections(cible, colls)) {
       if (!item?.cost || faite || !dansPerimetre(cle)) continue;
       for (const [cid, n] of Object.entries(item.cost)) {
-        if (typeof n === "number" && !satisfaits.has(cid)) totals[cid] = (totals[cid] ?? 0) + n;
+        if (typeof n === "number" && !satisfaits.has(cid)) {
+          totals[cid] = (totals[cid] ?? 0) + n;
+          etapes[cid] = (etapes[cid] ?? 0) + n;
+        }
       }
     }
   }
@@ -93701,8 +93825,18 @@ function computeGrandTotal(selectedIds, collectionsByLeg, piecesRestantes, perim
     const v = totals[k];
     if (typeof v === "number" && !Number.isInteger(v)) totals[k] = Math.round(v * 100) / 100;
   }
+  // Choix retenus pour les cibles COMPOSANTS (l'arbre y descend comme la
+  // cascade) — meme `altPick` que plus haut.
+  const choix = {};
+  for (const [gid, g] of Object.entries(altGroups)) {
+    for (const tg of (g.targets ?? [])) {
+      if (!cc[tg]) continue;
+      const opt = altPick(gid, tg);
+      if (opt && !satisfaits.has(opt)) choix[tg] = [...(choix[tg] ?? []), { opt, qty: g.qty ?? 0, gid }];
+    }
+  }
 
-  return { totals, variable };
+  return { totals, variable, racines, etapes, choix, satisfaits: [...satisfaits] };
 }
 
 // ── Composant principal Grand Total ──────────────────────────
@@ -96705,15 +96839,16 @@ function GW2LegendaryTracker() {
   // trouve. La distinction compte : un total tombe a zero DISPARAIT de la table
   // (il n'y a pas de cle a zero), et sans elle on ne peut pas faire la
   // difference entre « le moteur dit zero » et « le moteur n'a pas repondu ».
-  const legTotals = React.useMemo(() => {
+  const legCalc = React.useMemo(() => {
     const cible = SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg;
     if (!cible || !(SOURCES_DB?.legendaries ?? {})[cible]) return null;
     // Set d'armure : le moteur compte les pieces RESTANTES (v258), meme
     // regle que le compteur affiche au-dessus de la grille.
     const pieces = ARMOR_IDS.includes(cible) ? { [cible]: obsRemainingCount } : undefined;
-    try { return computeGrandTotal([cible], toutesCollections, pieces)?.totals ?? null; }
+    try { return computeGrandTotal([cible], toutesCollections, pieces) ?? null; }
     catch (_) { return null; }
   }, [selectedLeg, toutesCollections, obsRemainingCount, altVersion]);
+  const legTotals = legCalc?.totals ?? null;
 
   const wpnCurrencies = React.useMemo(() => {
     if (!isWeapons || wpnLegIds.length === 0) return [];
@@ -98991,6 +99126,14 @@ function GW2LegendaryTracker() {
 
       {activeTab === "components" && selectedLeg !== "t6" && (
         <div>
+          {/* v271 : arbre simplifie facon gw2efficiency, en tete de l'onglet
+              (demande d'Antoine, 26/10). Il remplace la liste par familles
+              (`components` + index inverse `needed_for`), qui ne disait ni
+              combien ni sous quoi. Racines et descente = le calcul du moteur
+              (legCalc) : un seul calcul. */}
+          {!legObtenu && legCalc && (
+            <ArbreComposants calc={legCalc} stocks={gtStocks ?? {}} NX={NX} NXS={NXS} couleur={legColor} />
+          )}
           {collList.length === 0 && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} leg={leg} collections={toutesCollections} piecesRestantes={isArmorSet ? { [SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg]: obsRemainingCount } : undefined} />}
           <div className="section-label">{t("sec_currency", { name: leg?.name })}</div>
           {(leg?.currencyNoteKeys ?? []).map(k => (
@@ -99227,117 +99370,7 @@ function GW2LegendaryTracker() {
               </>
             )}
 
-            {tops.length > 0 && (() => {
-              const KINDS = [
-                ["advanced_craft", { fr: "◆ Crafts avancés (gifts)", en: "◆ Advanced crafts (gifts)" }],
-                ["craftable",      { fr: "⚒ Craftables", en: "⚒ Craftable" }],
-                ["acquire",        { fr: "🗺 À récupérer", en: "🗺 To acquire" }],
-                ["precursor",      { fr: "★ Précurseurs (collections)", en: "★ Precursors (collections)" }],
-              ];
-              const coin = (c) => {
-                const g = Math.floor(c / 10000), s = Math.floor((c % 10000) / 100);
-                return g > 0 ? `${g},${String(s).padStart(2, "0")} po` : `${s} pa`;
-              };
-              const renderTradeoff = (t) => {
-                const px = (id) => tpPrices[String(id)]?.sell ?? 0;
-                const cost = (t.ingredients ?? []).reduce((s, i) => s + px(i.apiId) * i.qty, 0);
-                const unit = cost / (t.yield || 1);
-                const direct = px(t.target_api_id);
-                if (!cost || !direct) return null;
-                const craftWins = unit < direct;
-                return (
-                  <div style={{ marginTop: 7, padding: "7px 9px", background: "rgba(94,234,212,0.05)", border: "1px solid rgba(94,234,212,0.15)", borderRadius: 6, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>
-                    <div style={{ color: craftWins ? "#4ade80" : "#fbbf24", fontWeight: 600 }}>
-                      {craftWins
-                        ? NX({ fr: `⭐ Craft rentable — ${coin(unit)}/unité contre ${coin(direct)} à l'achat`, en: `⭐ Crafting pays off — ${coin(unit)}/unit vs ${coin(direct)} to buy` })
-                        : NX({ fr: `Acheter — ${coin(direct)}/unité contre ${coin(unit)} en craft`, en: `Buy — ${coin(direct)}/unit vs ${coin(unit)} crafted` })}
-                    </div>
-                    <div style={{ color: "rgba(226,201,126,0.45)", marginTop: 2 }}>
-                      {NX({ fr: `Rendement retenu : ${t.yield}/forge. Prix de vente immédiate, hors coffres de méta (gratuits).`, en: `Assumed yield: ${t.yield}/forge. Instant-buy prices, excluding meta chests (free).` })}
-                    </div>
-                  </div>
-                );
-              };
-              const byKind = {};
-              for (const g of tops) {
-                const k = cc[g]?.kind ?? "acquire";
-                (byKind[k] = byKind[k] ?? []).push(g);
-              }
-              return (
-                <>
-                <div className="section-label">{NX({ fr: "Arbre des composants", en: "Component tree" })}</div>
-                <div style={{ margin: "2px 14px 6px", fontSize: "10px", fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>
-                  {NX({ fr: "Toucher un composant pour voir ses matériaux et leurs sources.", en: "Tap a component to see its materials and their sources." })}
-                </div>
-                {KINDS.filter(([k]) => (byKind[k] ?? []).length > 0).map(([k, klabel]) => (
-                  <div key={k}>
-                    <div style={{ margin: "10px 14px 4px", fontSize: "10px", letterSpacing: "0.08em", fontFamily: "'Cinzel', serif", color: "rgba(226,201,126,0.45)" }}>{NX(klabel)}</div>
-                    {byKind[k].map(g => {
-                      const C = cc[g] ?? {};
-                      const subs = subsOf(g);
-                      const srcs = C.sources ?? [];
-                      const open = expanded === `gift_${g}`;
-                      const bestSrc = C.best ? srcs.find(s => s.type === C.best) : null;
-                      const stock = C.apiId ? (gtStocks?.[String(C.apiId)] ?? null) : null;
-                      return (
-                        <div key={g} style={{ margin: "6px 14px", padding: "11px 14px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(226,201,126,0.08)", borderRadius: "8px" }}
-                          onClick={() => setExpanded(open ? null : `gift_${g}`)}>
-                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                            <div style={{ fontSize: "12px", fontWeight: 600, color: legColor, fontFamily: "'Cinzel', serif" }}>{open ? "▾ " : "▸ "}{label(g)}</div>
-                            <div style={{ display: "flex", alignItems: "center", gap: 7, whiteSpace: "nowrap" }}>
-                              {stock != null && <span style={{ fontSize: "11px", color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{stock}</span>}
-                              <span style={{ fontSize: "10px", color: "rgba(226,201,126,0.3)", fontFamily: "'Crimson Text', serif" }}>
-                                {subs.length > 0 ? NX({ fr: `${subs.length} mat.`, en: `${subs.length} mat.` }) : (srcs.length > 1 ? NX({ fr: `${srcs.length} voies`, en: `${srcs.length} routes` }) : "")}
-                              </span>
-                            </div>
-                          </div>
-                          {bestSrc && (
-                            <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(74,222,128,0.85)", lineHeight: 1.45 }}>
-                              ⭐ {NX(bestSrc.tip)}{C.best_reason ? <span style={{ opacity: 0.65 }}> — {NX(C.best_reason)}</span> : null}
-                            </div>
-                          )}
-                          {!bestSrc && srcs[0]?.tip && (
-                            <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.45)", lineHeight: 1.45 }}>{NX(srcs[0].tip)}</div>
-                          )}
-                          {C.tradeoff && renderTradeoff(C.tradeoff)}
-                          {C.recipe && (
-                            <div style={{ marginTop: 5, fontSize: "10.5px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)", lineHeight: 1.45 }}>
-                              <span style={{ color: "rgba(226,201,126,0.4)", fontWeight: 600 }}>{NX({ fr: "Recette : ", en: "Recipe: " })}</span>{NX(C.recipe)}
-                            </div>
-                          )}
-                          {open && (
-                            <div style={{ marginTop: 8, borderTop: "1px solid rgba(226,201,126,0.08)", paddingTop: 7 }}>
-                              {subs.map(([sk, sv]) => {
-                                const st = sv.apiId ? (gtStocks?.[String(sv.apiId)] ?? null) : null;
-                                const s0 = (sv.sources ?? [])[0];
-                                return (
-                                  <div key={sk} style={{ padding: "3px 0" }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: "11px" }}>
-                                      <span style={{ color: "rgba(226,201,126,0.75)" }}>{NXS(sv.name ?? sk)}</span>
-                                      {st != null && <span style={{ color: "#5eead4", fontFamily: "'Crimson Text', serif" }}>{st}</span>}
-                                    </div>
-                                    {s0?.tip && <div style={{ fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", lineHeight: 1.4 }}>{NX(s0.tip)}</div>}
-                                  </div>
-                                );
-                              })}
-                              {srcs.filter(s => s !== bestSrc).map((s, si) => (
-                                <div key={si} style={{ padding: "3px 0", fontSize: "10px", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.4)", lineHeight: 1.45 }}>
-                                  ○ {NX(s.tip)}
-                                </div>
-                              ))}
-                              {subs.length === 0 && srcs.length === 0 && (
-                                <div style={{ fontSize: "10px", fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Détail dans l'onglet Guide.", en: "Details in the Guide tab." })}</div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
-                </>
-              );
-            })()}
+
           </div>
         );
       })()}
