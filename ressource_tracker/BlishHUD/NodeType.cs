@@ -23,10 +23,11 @@ namespace GW2_NodeTracker
         }
 
         // ---------------------------------------------------------------
-        // Source de vérité du module (les scripts Python sont archivés) -- 133 entrées.
+        // Source de vérité du module (les scripts Python sont archivés) -- 136 entrées.
         // +22 types ajoutés depuis wiki.guildwars2.com/wiki/Gathering (15/09/2026).
         // +1 (27/10/2026) : Soybeans -- wiki.guildwars2.com/wiki/Soybeans, produit Pile of Soybeans (97105).
         // +1 (27/10/2026) : Cherry Blossom Sapling -- wiki.guildwars2.com/wiki/Cherry_Blossom_Sapling, produit Elder Wood Log.
+        // +3 (27/10/2026) : Bamboo Sapling et Eerie Driftwood (Elder Wood Log), Lowland Pine Sapling (Lowland Pine Log, 102503) -- pages wiki homonymes.
         // ---------------------------------------------------------------
         public static readonly NodeType[] All = {
             new NodeType("copper", "Minerai", "Copper Ore", false),
@@ -57,10 +58,12 @@ namespace GW2_NodeTracker
             new NodeType("ancient_spiderknot_tree", "Bois", "Ancient Spiderknot Tree", false),
             new NodeType("ancient_wood", "Bois", "Ancient Wood Log", false),
             new NodeType("aspen", "Bois", "Aspen Sapling", false),
+            new NodeType("bamboo", "Bois", "Bamboo Sapling", false),
             new NodeType("banyan", "Bois", "Banyan Sapling", false),
             new NodeType("baoba", "Bois", "Baoba Sapling", false),
             new NodeType("cherry_blossom", "Bois", "Cherry Blossom Sapling", false),
             new NodeType("cypress", "Bois", "Cypress Sapling", false),
+            new NodeType("eerie_driftwood", "Bois", "Eerie Driftwood", false),
             new NodeType("ekku", "Bois", "Ekku Sapling", false),
             new NodeType("elder_wood", "Bois", "Elder Wood Log", false),
             new NodeType("fir", "Bois", "Fir Sapling", false),
@@ -69,6 +72,7 @@ namespace GW2_NodeTracker
             new NodeType("hard_wood", "Bois", "Hard Wood Log", false),
             new NodeType("inglewood", "Bois", "Inglewood Sapling", false),
             new NodeType("kertch", "Bois", "Kertch Sapling", false),
+            new NodeType("lowland_pine", "Bois", "Lowland Pine Sapling", false),
             new NodeType("mebahya", "Bois", "Mebahya Sapling", false),
             new NodeType("mimosa", "Bois", "Mimosa Sapling", false),
             new NodeType("orrian_sapling", "Bois", "Orrian Sapling", false),
