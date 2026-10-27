@@ -98,6 +98,7 @@ namespace GW2_NodeTracker
             ["aspen"] = IconSource.Item(19723),
             ["banyan"] = IconSource.Item(19724),
             ["baoba"] = IconSource.Item(19722),
+            ["cherry_blossom"] = IconSource.Item(19722),
             ["cypress"] = IconSource.Item(19722),
             ["ekku"] = IconSource.Item(19723),
             ["elder_wood"] = IconSource.Item(19722),

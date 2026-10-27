@@ -23,9 +23,10 @@ namespace GW2_NodeTracker
         }
 
         // ---------------------------------------------------------------
-        // Source de vérité du module (les scripts Python sont archivés) -- 132 entrées.
+        // Source de vérité du module (les scripts Python sont archivés) -- 133 entrées.
         // +22 types ajoutés depuis wiki.guildwars2.com/wiki/Gathering (15/09/2026).
         // +1 (27/10/2026) : Soybeans -- wiki.guildwars2.com/wiki/Soybeans, produit Pile of Soybeans (97105).
+        // +1 (27/10/2026) : Cherry Blossom Sapling -- wiki.guildwars2.com/wiki/Cherry_Blossom_Sapling, produit Elder Wood Log.
         // ---------------------------------------------------------------
         public static readonly NodeType[] All = {
             new NodeType("copper", "Minerai", "Copper Ore", false),
@@ -58,6 +59,7 @@ namespace GW2_NodeTracker
             new NodeType("aspen", "Bois", "Aspen Sapling", false),
             new NodeType("banyan", "Bois", "Banyan Sapling", false),
             new NodeType("baoba", "Bois", "Baoba Sapling", false),
+            new NodeType("cherry_blossom", "Bois", "Cherry Blossom Sapling", false),
             new NodeType("cypress", "Bois", "Cypress Sapling", false),
             new NodeType("ekku", "Bois", "Ekku Sapling", false),
             new NodeType("elder_wood", "Bois", "Elder Wood Log", false),

@@ -17,7 +17,7 @@ l'ordre des catégories se fait ici, en C#.
 ## Fichiers
 
 ### Sources
-- `NodeType.cs` — 132 types de nodes (slug, groupe, libellé, sortie variable).
+- `NodeType.cs` — 133 types de nodes (slug, groupe, libellé, sortie variable).
   Groupes : Minerai, Bois, Vegetal, Special, Festival.
 - `GatheredNode.cs` — schéma JSON de `../gw2_nodes.json`
 - `TacoGenerator.cs` — génère le `.taco` (XML + zip). `GroupOrder` et
