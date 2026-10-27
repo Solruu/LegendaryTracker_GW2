@@ -23,8 +23,9 @@ namespace GW2_NodeTracker
         }
 
         // ---------------------------------------------------------------
-        // Source de vérité du module (les scripts Python sont archivés) -- 131 entrées.
+        // Source de vérité du module (les scripts Python sont archivés) -- 132 entrées.
         // +22 types ajoutés depuis wiki.guildwars2.com/wiki/Gathering (15/09/2026).
+        // +1 (27/10/2026) : Soybeans -- wiki.guildwars2.com/wiki/Soybeans, produit Pile of Soybeans (97105).
         // ---------------------------------------------------------------
         public static readonly NodeType[] All = {
             new NodeType("copper", "Minerai", "Copper Ore", false),
@@ -128,6 +129,7 @@ namespace GW2_NodeTracker
             new NodeType("seaweed", "Vegetal", "Seaweed", false),
             new NodeType("shing_jea_orchid", "Vegetal", "Shing Jea Orchid", false),
             new NodeType("snow_truffle", "Vegetal", "Snow Truffle", false),
+            new NodeType("soybeans", "Vegetal", "Soybeans", false),
             new NodeType("spinach", "Vegetal", "Spinach", true),
             new NodeType("strawberry", "Vegetal", "Strawberry Patch", true),
             new NodeType("sugar_pumpkin", "Vegetal", "Sugar Pumpkin", true),

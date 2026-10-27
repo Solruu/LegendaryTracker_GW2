@@ -171,6 +171,7 @@ namespace GW2_NodeTracker
             ["seaweed"] = IconSource.Item(12509),
             ["shing_jea_orchid"] = IconSource.Generic(NodeTool.Sickle),
             ["snow_truffle"] = IconSource.Item(12144),
+            ["soybeans"] = IconSource.Item(97105),
             ["spinach"] = IconSource.Item(12241),
             ["strawberry"] = IconSource.Item(12253),
             ["sugar_pumpkin"] = IconSource.Item(12538),
