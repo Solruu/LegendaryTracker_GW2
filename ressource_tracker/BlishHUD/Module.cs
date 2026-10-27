@@ -1031,7 +1031,7 @@ namespace GW2_NodeTracker
             {
                 Size = new Point(fullWidth, ButtonHeight - 2),
                 Location = new Point(10, 2 * ButtonHeight + 5),
-                PlaceholderText = "Rechercher (début du nom)…",
+                PlaceholderText = "Cliquer ici pour rechercher…",
                 Parent = _selectionPanel,
             };
             _searchBox.TextChanged += (s, e) => RefreshTypeList();
@@ -1057,8 +1057,11 @@ namespace GW2_NodeTracker
             RebuildSelectionPanel(); // le marqueur ▶ suit la sélection changée entre-temps
             _selectionPanel.Location = new Point(_panelX.Value, _panelY.Value);
             _selectionPanel.Visible = true;
-            // Prêt à taper dès l'ouverture : Ctrl+Alt+L, quelques lettres, Entrée.
-            _searchBox.Focused = true;
+            // PAS de focus automatique sur la recherche : le champ prenait le
+            // clavier pendant que touche de déplacement était encore enfoncée,
+            // le jeu ne recevait jamais son relâchement et le personnage
+            // continuait d'avancer, verrouillé (signalé le 27/10/2026, près
+            // d'une falaise). Un clic dans le champ suffit pour taper.
         }
 
         private void HideSelectionPanel()
