@@ -46,7 +46,7 @@ def _charger(nom, fichier):
 
 LISTE = _charger("liste", "gw2_parse_material_list_v4.py")
 RECETTE = _charger("recette", "gw2_parse_wiki_recipe_v1.py")
-VENDEUR = _charger("vendeur", "gw2_parse_vendor_cost_v1.py")
+VENDEUR = _charger("vendeur", "gw2_parse_vendor_cost_v2.py")
 
 TITRE = re.compile(r'<h1[^>]*id="firstHeading"[^>]*>(?:<[^>]+>)*([^<]+)', re.S)
 API = re.compile(r"api\.guildwars2\.com/v2/items\?ids=(\d+)")

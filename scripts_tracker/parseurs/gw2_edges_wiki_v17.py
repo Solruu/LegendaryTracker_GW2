@@ -143,7 +143,7 @@ composant direct et comme cout d'un intermediaire.
 """
 import json, re, collections, sys
 from pathlib import Path
-import gw2_parse_vendor_cost_v1 as _V
+import gw2_parse_vendor_cost_v2 as _V
 # Le fichier de sources est resolu au plus haut _vN plutot que code en dur :
 # une version figee ici devient introuvable des la passe suivante.
 SRC = max(Path(__file__).resolve().parents[2].glob('gw2_sources_v*.json'),
@@ -357,7 +357,12 @@ def achat_au_choix(page):
     i = txt.find('id="Acquisition"')
     if i < 0:
         return False
-    fin = re.search(r'<h2>.*?id="(?!Acquisition)[A-Za-z_]+"', txt[i + 1:], re.S)
+    # 03/11/2026 : le wiki (MediaWiki mis a jour apres la faille PHP) ecrit
+    # desormais <div class="mw-heading mw-heading2"><h2 id="X"> au lieu de
+    # <h2><span class="mw-headline" id="X">. Le litteral <h2> ne bornait plus
+    # la section : elle courait jusqu'a la fin de la page (Used in compris).
+    # <h2\b accepte les deux formes ; seul le debut du match sert de borne.
+    fin = re.search(r'<h2\b.*?id="(?!Acquisition)[A-Za-z_]+"', txt[i + 1:], re.S)
     seg = txt[i:i + 1 + fin.start()] if fin else txt[i:]
     avec = sans = 0
     for tbl in re.findall(r"<table[^>]*>(.*?)</table>", seg, re.S):

@@ -24,8 +24,8 @@ Les couts sont donc dedupliques, et une divergence entre deux vendeurs est
 signalee plutot que tranchee.
 
 Usage :
-    python3 gw2_parse_vendor_cost_v1.py ressources/wiki/gift_of_the_itzel.html
-    python3 gw2_parse_vendor_cost_v1.py --dir ressources/wiki --json out.json
+    python3 gw2_parse_vendor_cost_v2.py ressources/wiki/gift_of_the_itzel.html
+    python3 gw2_parse_vendor_cost_v2.py --dir ressources/wiki --json out.json
 """
 import json
 import re
@@ -71,8 +71,13 @@ def couts(chemin):
     i = html.find('id="Acquisition"')
     if i < 0:
         return [], []
+    # 03/11/2026 : le wiki (MediaWiki mis a jour apres la faille PHP) ecrit
+    # desormais <div class="mw-heading mw-heading2"><h2 id="X"> au lieu de
+    # <h2><span class="mw-headline" id="X">. Le litteral <h2> ne bornait plus
+    # la section : elle courait jusqu'a la fin de la page (Used in compris).
+    # <h2\b accepte les deux formes ; seul le debut du match sert de borne.
     fin = re.search(
-        r'<h2>.*?id="(?!Acquisition)[A-Za-z_]+"', html[i + 1:], re.S)
+        r'<h2\b.*?id="(?!Acquisition)[A-Za-z_]+"', html[i + 1:], re.S)
     borne = i + 1 + fin.start() if fin else len(html)
     vus, divergences = {}, []
     for tbl in re.finditer(r"<table[^>]*>(.*?)</table>", html[i:borne], re.S):
