@@ -1,6 +1,6 @@
 # Pages wiki à capturer
 
-Calculé depuis `gw2_sources_v429.json` et `ressources/INDEX_CONTENU.json` par
+Calculé depuis `gw2_sources_v430.json` et `ressources/INDEX_CONTENU.json` par
 `gw2_pages_a_capturer_v14.py`. **Ne pas éditer à la main** : régénérer.
 
 Une page déjà au dépôt n'est jamais redemandée — l'index de contenu est
@@ -50,7 +50,7 @@ ignore ce que la cible contient réellement.
 | page wiki | coûts à plat concernés |
 |---|---:|
 
-## 2 — 1 composants en arbitrage sans page au dépôt
+## 2 — 0 composants en arbitrage sans page au dépôt
 
 Cités dans `ARBITRAGES.md`. Leur boîte Recipe et leur table vendeur
 tranchent une partie des désaccords — en particulier si le vendeur propose
@@ -58,7 +58,6 @@ un **choix** ou une **liste**, ce que la capture aplatie ne dit pas.
 
 | page wiki | désaccords portés |
 |---|---:|
-| `Gift of the Tides` | 2 |
 
 ## 3 — 3 composants sans apiId ni page
 
@@ -71,7 +70,7 @@ Quantité juste, identité inconnue : le besoin s'affiche, la colonne
 | `Gift of the Obscure` |
 | `Memories of Aurene` |
 
-## 3 bis — 2 composants dont le coût d'obtention est inconnu
+## 3 bis — 3 composants dont le coût d'obtention est inconnu
 
 Exigés par l'arbre, identifiés, mais sans page : on sait combien il en
 faut, pas comment on les obtient.
@@ -80,6 +79,7 @@ faut, pas comment on les obtient.
 |---|
 | `Harpy Feathers` |
 | `Pile of Glittering Dust` |
+| `Sapphire Shard` |
 
 ## 4 — 0 collections incomplètes — 0 introuvables au dépôt
 
@@ -100,10 +100,10 @@ renvoie 404. Rien ici ne part dans la section « URLs ».
 ## URLs — 6 pages à capturer
 
 ```
-https://wiki.guildwars2.com/wiki/Gift_of_the_Tides
 https://wiki.guildwars2.com/wiki/Fruits_of_the_Shadow
 https://wiki.guildwars2.com/wiki/Gift_of_the_Obscure
 https://wiki.guildwars2.com/wiki/Memories_of_Aurene
 https://wiki.guildwars2.com/wiki/Harpy_Feathers
 https://wiki.guildwars2.com/wiki/Pile_of_Glittering_Dust
+https://wiki.guildwars2.com/wiki/Sapphire_Shard
 ```

@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v250",
+  "version": "v251",
   "last_updated": "2026-11-03",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -2971,7 +2971,8 @@
     "chrysocola_crystal",
     "beryl_crystal",
     "emerald_crystal",
-    "ruby_crystal"
+    "ruby_crystal",
+    "sapphire_crystal"
    ],
    "farmable": true,
    "sources": [
@@ -3014,7 +3015,8 @@
     "chrysocola_crystal": 1,
     "beryl_crystal": 1,
     "emerald_crystal": 1,
-    "ruby_crystal": 1
+    "ruby_crystal": 1,
+    "sapphire_crystal": 1
    },
    "kind": "acquire",
    "best": "drop",
@@ -3403,12 +3405,10 @@
     "cube_stabilized_dark_energy",
     "klobjarne_geirr",
     "strife_unending",
-    "transcendence",
     "integrated_fractal_matrix"
    ],
    "qty": {
     "cube_stabilized_dark_energy": 75,
-    "transcendence": 20,
     "integrated_fractal_matrix": 10
    },
    "farmable": true,
@@ -3433,14 +3433,7 @@
    "verified": true,
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
-   "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece",
-   "qty_overlap_verified": [
-    "transcendence"
-   ],
-   "qty_overlap_note": {
-    "fr": "Transcendence : 75 par le cube du Gift of the Mists (arête) + 20 pour les 2 Integrated Fractal Matrix (clé à plat) — arbre gw2efficiency, 95.",
-    "en": "Transcendence: 75 through the Gift of the Mists cube (edge) + 20 for the 2 Integrated Fractal Matrix (flat key) — gw2efficiency tree, 95."
-   }
+   "flat_removed_ref": "arbre GW2Efficiency de la cuirasse d'obsidienne lourde (ressources/gw2efficiency/obsidian_armor_breastplate.html) : 75 Stabilizing Matrix <- Cube, 1 Ball of Dark Energy <- Cube, aucun noeud direct sur la piece"
   },
   "gift_of_battle": {
    "name": "Gift of Battle",
@@ -5078,7 +5071,8 @@
     "experimental_rifle_barrel",
     "experimental_rifle_stock",
     "hunters_short_bow_stave",
-    "hunters_short_bow_string"
+    "hunters_short_bow_string",
+    "mist_pendant_route_wvw"
    ],
    "qty": {
     "triumphant_hero__per_piece": 250,
@@ -5130,7 +5124,8 @@
     "experimental_rifle_barrel": 100,
     "experimental_rifle_stock": 100,
     "hunters_short_bow_stave": 100,
-    "hunters_short_bow_string": 100
+    "hunters_short_bow_string": 100,
+    "mist_pendant_route_wvw": 250
    },
    "farmable": true,
    "sources": [
@@ -5619,7 +5614,8 @@
     "armor_pvp",
     "transcendence",
     "star_of_glory",
-    "mist_band_route_pvp"
+    "mist_band_route_pvp",
+    "mist_pendant_route_pvp"
    ],
    "qty": {
     "transcendence": 500,
@@ -5643,7 +5639,8 @@
     "ardent_glorious__piece_heavy_gloves": 100,
     "ardent_glorious__piece_heavy_boots": 100,
     "star_of_glory": 400,
-    "mist_band_route_pvp": 150
+    "mist_band_route_pvp": 150,
+    "mist_pendant_route_pvp": 125
    },
    "farmable": true,
    "sources": [
@@ -5757,7 +5754,8 @@
     "experimental_rifle_barrel",
     "experimental_rifle_stock",
     "hunters_short_bow_stave",
-    "hunters_short_bow_string"
+    "hunters_short_bow_string",
+    "mist_pendant_route_pvp"
    ],
    "qty": {
     "transcendence": 500,
@@ -5807,7 +5805,8 @@
     "experimental_rifle_barrel": 100,
     "experimental_rifle_stock": 100,
     "hunters_short_bow_stave": 100,
-    "hunters_short_bow_string": 100
+    "hunters_short_bow_string": 100,
+    "mist_pendant_route_pvp": 170
    },
    "farmable": true,
    "sources": [
@@ -5918,12 +5917,10 @@
    "name": "Magnetite Shard",
    "apiId": 28,
    "needed_for": [
-    "gift_of_complex_emotions",
-    "gift_of_patience"
+    "gift_of_complex_emotions"
    ],
    "qty": {
-    "gift_of_complex_emotions": 100,
-    "gift_of_patience": 100
+    "gift_of_complex_emotions": 100
    },
    "farmable": true,
    "sources": [
@@ -6623,7 +6620,7 @@
     "gift_of_mighty_prosperity",
     "gift_of_relics",
     "gift_of_the_elders",
-    "selachimorpha"
+    "gift_of_the_seas"
    ],
    "qty": {
     "gift_of_aurenes_argument": 1,
@@ -6648,7 +6645,7 @@
     "gift_of_mighty_prosperity": 1,
     "gift_of_the_elders": 1,
     "gift_of_relics": 1,
-    "selachimorpha": 2
+    "gift_of_the_seas": 2
    },
    "farmable": true,
    "sources": [
@@ -7690,7 +7687,8 @@
     "gift_of_the_homesteader",
     "gift_of_the_sun",
     "gift_of_war_prosperity",
-    "mystic_tribute"
+    "mystic_tribute",
+    "gift_of_the_seas"
    ],
    "farmable": true,
    "sources": [
@@ -7709,7 +7707,6 @@
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
-    "selachimorpha": 2,
     "mystic_tribute": 2,
     "draconic_tribute": 1,
     "gift_of_the_homesteader": 1,
@@ -7718,7 +7715,8 @@
     "gift_of_war_prosperity": 1,
     "gift_of_competitive_prosperity": 1,
     "gift_of_prosperity": 1,
-    "gift_of_the_sun": 2
+    "gift_of_the_sun": 2,
+    "gift_of_the_seas": 2
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -7729,7 +7727,7 @@
    "ref": "wiki:Mystic_Tribute + wiki:Draconic_Tribute (captures Antoine 20/08/2026)",
    "verified": true,
    "note": {
-    "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur coiffe, épaulières et plastron. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire. Selachimorpha consomme 2 gifts condenses de chaque via son Gift of the Seas, mais AUCUN Mystic Tribute : elle demande donc 200 de chacun des 8 trophees T6 sans les 250 Mystic Coins. Seul colifichet du fichier dans ce cas.",
+    "fr": "Armure d'Obsidienne : 3 par set complet, un par pièce sur coiffe, épaulières et plastron. ⚠ Compté en __full_set et non en __per_piece : ce dernier multiplie par 6 et annoncerait 6 gifts de chaque type, soit le double du nécessaire. Selachimorpha consomme 2 gifts condenses de chaque via son Gift of the Seas (arete posee le 03/11), mais AUCUN Mystic Tribute : elle demande donc 200 de chacun des 8 trophees T6 sans les 250 Mystic Coins. Seul colifichet du fichier dans ce cas.",
     "en": "Obsidian armor: 3 per full set, one per piece on headgear, shoulders and chest. ⚠ Counted as __full_set rather than __per_piece: the latter multiplies by 6 and would announce 6 gifts of each type, twice what is needed. Selachimorpha consumes 2 condensed gifts of each through its Gift of the Seas, but NO Mystic Tribute: it therefore needs 200 of each of the 8 T6 trophies without the 250 Mystic Coins. The only trinket in the file in that situation."
    }
   },
@@ -7746,7 +7744,8 @@
     "gift_of_the_homesteader",
     "gift_of_the_sun",
     "gift_of_war_prosperity",
-    "mystic_tribute"
+    "mystic_tribute",
+    "gift_of_the_seas"
    ],
    "farmable": true,
    "sources": [
@@ -7765,7 +7764,6 @@
     "legendary_rune": 1,
     "legendary_sigil": 1,
     "legendary_relic": 1,
-    "selachimorpha": 2,
     "mystic_tribute": 2,
     "draconic_tribute": 1,
     "gift_of_the_homesteader": 1,
@@ -7774,7 +7772,8 @@
     "gift_of_war_prosperity": 1,
     "gift_of_competitive_prosperity": 1,
     "gift_of_prosperity": 1,
-    "gift_of_the_sun": 2
+    "gift_of_the_sun": 2,
+    "gift_of_the_seas": 2
    },
    "kind": "advanced_craft",
    "recipe": {
@@ -7955,7 +7954,8 @@
    "needed_for": [
     "gift_of_gliding",
     "gift_of_the_exalted",
-    "gift_of_the_pact"
+    "gift_of_the_pact",
+    "sheet_of_aurillium"
    ],
    "farmable": true,
    "sources": [
@@ -7974,7 +7974,8 @@
    "qty": {
     "gift_of_the_pact": 250,
     "gift_of_the_exalted": 500,
-    "gift_of_gliding": 300
+    "gift_of_gliding": 300,
+    "sheet_of_aurillium": 5
    },
    "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
    "kind": "acquire",
@@ -9045,13 +9046,14 @@
    "farmable": false,
    "sources": [
     {
-     "type": "pvp_vendor",
-     "npc": "Ascended Armor League Vendor",
-     "map": "Heart of the Mists",
+     "type": "vendor",
      "tip": {
-      "fr": "Amulette PvP élevée — amélioration vers légendaire. Achat contre des Ascended Shards of Glory ou via les reward tracks PvP.",
-      "en": "PvP ascended amulet — upgrade to legendary. Purchase for Ascended Shards of Glory or obtained via PvP reward tracks."
-     }
+      "fr": "Un seul achat, quatre prix au choix : fractales, JcJ (ligue ou tournois) ou McM (choix « mode de jeu »).",
+      "en": "One purchase, four prices to pick from: fractals, PvP (league or tournaments) or WvW (\"game mode\" choice)."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/mist_pendant.html, Acquisition"
     }
    ],
    "qty": {
@@ -9064,7 +9066,10 @@
     "verified": true,
     "ref": "ressources/wiki/mist_pendant.html (API 79980) + /v2/items?ids=79980 lu le 03/11 (« Pendentif de brume », ressources/api/api_ids_wiki_20261103.json)"
    },
-   "apiId": 79980
+   "apiId": 79980,
+   "ref": "ressources/wiki/mist_pendant.html",
+   "verified": true,
+   "checked": "2026-11-03"
   },
   "gift_of_skirmishing": {
    "name": "Gift of Skirmishing",
@@ -9347,8 +9352,8 @@
    "name": "Pristine Fractal Relic",
    "apiId": 24,
    "needed_for": [
-    "transcendence",
-    "mist_band_route_fractals"
+    "mist_band_route_fractals",
+    "mist_pendant_route_fractals"
    ],
    "farmable": true,
    "sources": [
@@ -9378,8 +9383,8 @@
     }
    ],
    "qty": {
-    "transcendence": 100,
-    "mist_band_route_fractals": 100
+    "mist_band_route_fractals": 100,
+    "mist_pendant_route_fractals": 100
    },
    "kind": "acquire",
    "best": "fractals_daily",
@@ -9786,10 +9791,26 @@
    "farmable": true,
    "sources": [
     {
-     "type": "vendor",
+     "type": "achievement_collection",
+     "collection": "summer_sungod",
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/gift_of_the_hylek.html, Achievements (« Reward: »)",
      "tip": {
-      "fr": "Acheté aux vendeurs de hearts VoE (Jardin de l'éternité / Rive aux épaves). Contient des currencies VoE + items Hylek.",
-      "en": "Purchased from VoE renown heart vendors (Eternity's Garden / Shipwreck Strand). Contains VoE currencies + Hylek items."
+      "fr": "Récompense de la collection « Radiance of the Sun God » (onglet Collections) : le premier exemplaire ne coûte que la collection.",
+      "en": "Reward of the \"Radiance of the Sun God\" collection (Collections tab): the first copy costs only the collection."
+     }
+    },
+    {
+     "type": "vendor",
+     "npc": "Shaman Palak (Hullgarden, Shipwreck Strand)",
+     "paid_repeatable": true,
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/gift_of_the_hylek.html, Sold by (« Requires the achievement Radiance of the Sun God »)",
+     "tip": {
+      "fr": "Copies suivantes, une fois la collection faite : 200 or + 250 Sun Beads + 300 000 karma. Alternative, jamais comptée.",
+      "en": "Further copies, once the collection is done: 200 gold + 250 Sun Beads + 300,000 karma. Alternative, never counted."
      }
     }
    ],
@@ -9803,7 +9824,11 @@
     "verified": true,
     "ref": "ressources/wiki/gift_of_the_hylek.html (API 106986) + /v2/items?ids=106986 lu le 03/11 (« Don des Hyleks », ressources/api/api_ids_wiki_20261103.json)"
    },
-   "apiId": 106986
+   "apiId": 106986,
+   "best": "achievement_collection",
+   "ref": "ressources/wiki/gift_of_the_hylek.html",
+   "verified": true,
+   "checked": "2026-11-03"
   },
   "vial_of_liquid_shadowstone": {
    "name": "Vial of Liquid Shadowstone",
@@ -10224,7 +10249,8 @@
    "name": "Gift of the Tides",
    "apiId": 106500,
    "needed_for": [
-    "gift_of_the_elders"
+    "gift_of_the_elders",
+    "gift_of_the_seas"
    ],
    "farmable": false,
    "sources": [
@@ -10237,7 +10263,8 @@
     }
    ],
    "qty": {
-    "gift_of_the_elders": 1
+    "gift_of_the_elders": 1,
+    "gift_of_the_seas": 1
    },
    "kind": "advanced_craft"
   },
@@ -10301,10 +10328,15 @@
    "sources": [
     {
      "type": "vendor",
+     "npc": "Acolyte of Balance Dexx / Astral Ward Agent Snarlcrow / Canach / …",
+     "map": "Leyspring Hollows, Shipwreck Strand, Starlit Weald, Eternity's Garden",
      "tip": {
-      "fr": "Acheté aux vendeurs VoE (hearts de la Rive aux épaves / Bois étoilé). Currencies spécifiques VoE.",
-      "en": "Purchased from VoE vendors (Shipwreck Strand / Starlit Weald renown hearts). VoE-specific currencies."
-     }
+      "fr": "1 Gift of the Tides + 2 Gift of Condensed Magic + 2 Gift of Condensed Might + 2 Gift of Research, même prix chez les onze vendeurs (Dexx et Snarlcrow à Leyspring Hollows, Canach et Castaway Agnes à la Rive aux épaves, Captain Emund au Bois étoilé…).",
+      "en": "1 Gift of the Tides + 2 Gift of Condensed Magic + 2 Gift of Condensed Might + 2 Gift of Research, same price at all eleven vendors (Dexx and Snarlcrow in Leyspring Hollows, Canach and Castaway Agnes in Shipwreck Strand, Captain Emund in Starlit Weald…)."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/gift_of_the_seas.html, Sold by"
     }
    ],
    "qty": {
@@ -10317,7 +10349,10 @@
     "verified": true,
     "ref": "ressources/wiki/gift_of_the_seas.html (API 106747) + /v2/items?ids=106747 lu le 03/11 (« Don des mers », ressources/api/api_ids_wiki_20261103.json)"
    },
-   "apiId": 106747
+   "apiId": 106747,
+   "ref": "ressources/wiki/gift_of_the_seas.html",
+   "verified": true,
+   "checked": "2026-11-03"
   },
   "gift_of_castoran_mastery": {
    "name": "Gift of Castoran Mastery",
@@ -11525,10 +11560,26 @@
    "farmable": true,
    "sources": [
     {
-     "type": "mystic_forge",
+     "type": "achievement_collection",
+     "collection": "coalescence_3",
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/gift_of_patience.html, Achievements (« Reward: »)",
      "tip": {
-      "fr": "MF : assemblé après Coalescence III (essences purifiées) — voir l'onglet Collections.",
-      "en": "MF: assembled after Coalescence III (purified essences) — see the Collections tab."
+      "fr": "Récompense de la collection « Coalescence III: Culmination » (onglet Collections) : le premier exemplaire ne coûte que la collection.",
+      "en": "Reward of the \"Coalescence III: Culmination\" collection (Collections tab): the first copy costs only the collection."
+     }
+    },
+    {
+     "type": "vendor",
+     "npc": "Scholar Glenna / Qadim's Portable Magnetite Shard Exchange / Wizard's Gobbler",
+     "paid_repeatable": true,
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/gift_of_patience.html, Sold by (« Requires the achievement Coalescence III: Culmination »)",
+     "tip": {
+      "fr": "Copies suivantes, une fois la collection faite : 100 Magnetite Shards + 1 or. Alternative, jamais comptée.",
+      "en": "Further copies, once the collection is done: 100 Magnetite Shards + 1 gold. Alternative, never counted."
      }
     }
    ],
@@ -11536,7 +11587,11 @@
     "coalescence": 1,
     "coalescence_ring": 1
    },
-   "apiId": 91193
+   "apiId": 91193,
+   "best": "achievement_collection",
+   "ref": "ressources/wiki/gift_of_patience.html",
+   "verified": true,
+   "checked": "2026-11-03"
   },
   "ars_goetia": {
    "name": "Ars Goetia",
@@ -11712,8 +11767,7 @@
    "apiId": 46733,
    "qty": {
     "dragonite_ingot": 100,
-    "mystic_essence_of_carnage": 250,
-    "binding_of_the_dragon": 25
+    "mystic_essence_of_carnage": 250
    },
    "kind": "base",
    "farmable": true,
@@ -11743,8 +11797,7 @@
    },
    "needed_for": [
     "dragonite_ingot",
-    "mystic_essence_of_carnage",
-    "binding_of_the_dragon"
+    "mystic_essence_of_carnage"
    ],
    "note": {
     "fr": "Arbres gw2efficiency de Conflux et Warbringer : deux noeuds distincts, 250 et 1 000.",
@@ -12004,7 +12057,8 @@
     "triumphant_hero__piece_heavy_legs": 260,
     "essence_of_annihilation": 350,
     "legendary_war_insight": 1095,
-    "mist_band_route_wvw": 350
+    "mist_band_route_wvw": 350,
+    "mist_pendant_route_wvw": 260
    },
    "farmable": true,
    "sources": [
@@ -12068,7 +12122,8 @@
     "soldiers_wings_of_war",
     "triumphant_hero",
     "legendary_war_insight",
-    "mist_band_route_wvw"
+    "mist_band_route_wvw",
+    "mist_pendant_route_wvw"
    ],
    "timegate": true,
    "timegate_note": {
@@ -12473,7 +12528,6 @@
     "gift_of_the_desolation": 23331,
     "bottle_of_coconut_milk": 249,
     "sun_bead": 21,
-    "binding_of_the_dragon": 22500,
     "druid_runestone": 4200
    },
    "farmable": true,
@@ -12509,7 +12563,6 @@
     "gift_of_the_desolation",
     "bottle_of_coconut_milk",
     "sun_bead",
-    "binding_of_the_dragon",
     "druid_runestone"
    ]
   },
@@ -25027,8 +25080,7 @@
     "triumphant_hero__piece_medium_legs": 2,
     "triumphant_hero__piece_medium_shoulders": 2,
     "icy_runestone": 1,
-    "mystic_runestone": 1,
-    "binding_of_the_dragon": 5
+    "mystic_runestone": 1
    },
    "needed_for": [
     "ardent_glorious__piece_heavy_boots",
@@ -25071,8 +25123,7 @@
     "triumphant_hero__piece_medium_gloves",
     "triumphant_hero__piece_medium_helm",
     "triumphant_hero__piece_medium_legs",
-    "triumphant_hero__piece_medium_shoulders",
-    "binding_of_the_dragon"
+    "triumphant_hero__piece_medium_shoulders"
    ],
    "sources": [
     {
@@ -25829,20 +25880,36 @@
    "farmable": true,
    "sources": [
     {
-     "type": "vendor",
-     "npc": "Gharr Leadclaw / Portable Wizard's Tower Exchange",
-     "tip": {
-      "fr": "Seule voie : 25 Dragonite Ore + 22 500 karma + 5 or, après le succès Unknown Nightmares: Experiments in the Shadows.",
-      "en": "Only route: 25 Dragonite Ore + 22,500 karma + 5 gold, after the Unknown Nightmares: Experiments in the Shadows achievement."
-     },
+     "type": "achievement_collection",
+     "collection": "orrax_experiments",
      "verified": true,
-     "checked": "2026-10-08",
-     "ref": "ressources/wiki/binding_of_the_dragon.html, Acquisition"
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/binding_of_the_dragon.html, Achievements (« Reward: »)",
+     "tip": {
+      "fr": "Récompense de la collection « Unknown Nightmares: Experiments in the Shadows » (onglet Collections) : le premier exemplaire ne coûte que la collection.",
+      "en": "Reward of the \"Unknown Nightmares: Experiments in the Shadows\" collection (Collections tab): the first copy costs only the collection."
+     }
+    },
+    {
+     "type": "vendor",
+     "npc": "Gharr Leadclaw / Portable Wizard's Tower Exchange / Wizard's Gobbler",
+     "paid_repeatable": true,
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/binding_of_the_dragon.html, Sold by (« Requires the achievement Unknown Nightmares: Experiments in the Shadows »)",
+     "tip": {
+      "fr": "Copies suivantes, une fois la collection faite : 25 Dragonite Ore + 22 500 karma + 5 or. Alternative, jamais comptée.",
+      "en": "Further copies, once the collection is done: 25 Dragonite Ore + 22,500 karma + 5 gold. Alternative, never counted."
+     }
     }
    ],
    "qty": {
     "orrax_contained": 1
-   }
+   },
+   "best": "achievement_collection",
+   "ref": "ressources/wiki/binding_of_the_dragon.html",
+   "verified": true,
+   "checked": "2026-11-03"
   },
   "bolt_of_damask": {
    "name": "Bolt of Damask",
@@ -35869,10 +35936,12 @@
    "kind": "acquire",
    "farmable": true,
    "qty": {
-    "mist_band_route_fractals": 2
+    "mist_band_route_fractals": 2,
+    "mist_pendant_route_fractals": 2
    },
    "needed_for": [
-    "mist_band_route_fractals"
+    "mist_band_route_fractals",
+    "mist_pendant_route_fractals"
    ],
    "best": "vendor",
    "sources": [
@@ -39651,19 +39720,21 @@
    "needed_for": [],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 75612, description)",
+     "type": "vendor",
+     "npc": "Exalted Mastery Vendor",
+     "map": "Noble Ledges (Auric Basin), Verdant Brink",
      "tip": {
-      "fr": "Voie à lire sur le wiki (hors ligne le 24/10).",
-      "en": "Route to read on the wiki (offline on 24/10)."
-     }
+      "fr": "5 Lump of Aurillium + 21 pa 12 pc l'unité. Maîtrise Exalted Acceptance requise, et seulement pendant la collection Astralaria III: The Mechanism.",
+      "en": "5 Lump of Aurillium + 21 s 12 c each. Requires the Exalted Acceptance mastery, and only while the Astralaria III: The Mechanism collection is active."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/sheet_of_aurillium.html, Acquisition"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/wiki/sheet_of_aurillium.html"
   },
   "finely_tuned_firing_pin": {
    "name": "Finely Tuned Firing Pin",
@@ -40285,13 +40356,13 @@
    ],
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_recettes_composants_20261024.json (ingredient de la recette 3435)",
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/sapphire_crystal.html, Recipe",
      "tip": {
-      "fr": "Gemme : voie de jeu à lire sur le wiki (hors ligne le 24/10).",
-      "en": "Gemstone: in-game route to read on the wiki (offline on 24/10)."
+      "fr": "Joaillier 275 : 2 Sapphire Shard + 1 Pile of Luminous Dust (même forme que Ruby et Emerald Crystal). Tombe aussi de nombreux coffres et nœuds (Gathered from).",
+      "en": "Jeweler 275: 2 Sapphire Shard + 1 Pile of Luminous Dust (same shape as Ruby and Emerald Crystal). Also drops from many chests and nodes (Gathered from)."
      }
     },
     {
@@ -40309,6 +40380,164 @@
    "verified": true,
    "checked": "2026-10-24",
    "ref": "ressources/api/api_recettes_composants_20261024.json"
+  },
+  "pvp_tournament_voucher": {
+   "name": "PvP Tournament Voucher",
+   "apiId": 46,
+   "kind": "currency",
+   "farmable": true,
+   "qty": {
+    "mist_pendant_route_tournament": 4
+   },
+   "needed_for": [
+    "mist_pendant_route_tournament"
+   ],
+   "sources": [
+    {
+     "type": "pvp",
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "gw2_currencies_ref.json (id 46, description)",
+     "tip": {
+      "fr": "Gagné dans les tournois automatisés mensuels (JcJ).",
+      "en": "Earned in monthly automated tournaments (PvP)."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-03",
+   "ref": "gw2_currencies_ref.json (id 46)"
+  },
+  "mist_pendant_route_fractals": {
+   "name": {
+    "fr": "Mist Pendant — fractales (BUY-2046 PFR)",
+    "en": "Mist Pendant — fractals (BUY-2046 PFR)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Pendant",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "BUY-2046 PFR, Observatoire de Gardebrume : 100 reliques immaculées + 2 Integrated Fractal Matrix.",
+      "en": "BUY-2046 PFR, Mistlock Observatory: 100 Pristine Fractal Relics + 2 Integrated Fractal Matrix."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/mist_pendant.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-03",
+   "ref": "ressources/wiki/mist_pendant.html"
+  },
+  "mist_pendant_route_pvp": {
+   "name": {
+    "fr": "Mist Pendant — JcJ (vendeurs de ligue)",
+    "en": "Mist Pendant — PvP (league vendors)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Pendant",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Ascended Armor League Vendor / League Armor Vendor (Hall of Memories) : 125 Ascended Shards of Glory + 170 Shards of Glory.",
+      "en": "Ascended Armor League Vendor / League Armor Vendor (Hall of Memories): 125 Ascended Shards of Glory + 170 Shards of Glory."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/mist_pendant.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-03",
+   "ref": "ressources/wiki/mist_pendant.html"
+  },
+  "mist_pendant_route_tournament": {
+   "name": {
+    "fr": "Mist Pendant — JcJ (tournois automatisés)",
+    "en": "Mist Pendant — PvP (automated tournaments)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Pendant",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Harald / Lambdin the Latish (Hall of Memories) : 4 PvP Tournament Vouchers.",
+      "en": "Harald / Lambdin the Latish (Hall of Memories): 4 PvP Tournament Vouchers."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/mist_pendant.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-03",
+   "ref": "ressources/wiki/mist_pendant.html"
+  },
+  "mist_pendant_route_wvw": {
+   "name": {
+    "fr": "Mist Pendant — McM (Skirmish Supervisor)",
+    "en": "Mist Pendant — WvW (Skirmish Supervisor)"
+   },
+   "kind": "purchase",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "wiki": "Mist_Pendant",
+   "sources": [
+    {
+     "type": "vendor",
+     "tip": {
+      "fr": "Skirmish Supervisor (McM), Lionguard (Arche du Lion) ou Mercenary (Armistice Bastion) : 250 Memory of Battle + 260 tickets d'escarmouche.",
+      "en": "Skirmish Supervisor (WvW), Lionguard (Lion's Arch) or Mercenary (Armistice Bastion): 250 Memory of Battle + 260 Skirmish Claim Tickets."
+     },
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/mist_pendant.html, Acquisition"
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-03",
+   "ref": "ressources/wiki/mist_pendant.html"
+  },
+  "sapphire_shard": {
+   "name": "Sapphire Shard",
+   "apiId": 24876,
+   "kind": "material",
+   "farmable": true,
+   "qty": {
+    "sapphire_crystal": 2
+   },
+   "needed_for": [
+    "sapphire_crystal"
+   ],
+   "sources": [
+    {
+     "type": "unknown",
+     "verified": true,
+     "checked": "2026-11-03",
+     "ref": "ressources/wiki/sapphire_crystal.html (boite Recipe) ; identite depuis gw2_materials_ref.json (apiId 24876)",
+     "tip": {
+      "fr": "Ingrédient de la recette du Sapphire Crystal ; voie d'obtention à lire sur sa page.",
+      "en": "Ingredient of the Sapphire Crystal recipe; acquisition route to read on its page."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-03",
+   "ref": "gw2_materials_ref.json (id 24876)"
   }
  },
  "enchaînements_recommandés": {
@@ -59054,9 +59283,10 @@
         "onyx_lodestone": 1,
         "darksteel_ingot": 25,
         "quartz_crystal": 5,
-        "karma": 5005
+        "karma": 5005,
+        "obsidian_shard": 10
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11182) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Gloominator)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11182) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Gloominator) ; obsidian_shard : ingredient de la recette 11182, ecarte a tort le 24/10"
       },
       {
        "bit": 1,
@@ -66664,9 +66894,10 @@
        "cost": {
         "charged_quartz_crystal": 5,
         "thermocatalytic_reagent": 10,
-        "karma": 5005
+        "karma": 5005,
+        "dust_crystalline": 10
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10119) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Krait Focusing Crystal)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10119) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Krait Focusing Crystal) ; dust_crystalline : ingredient de la recette 10119, ecarte a tort le 24/10"
       },
       {
        "bit": 2,
@@ -69380,9 +69611,10 @@
        "wiki": "Meteorite_Ingot",
        "cost": {
         "meteorite_ore": 25,
-        "thermocatalytic_reagent": 10
+        "thermocatalytic_reagent": 10,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11710)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11710) ; glob_of_ectoplasm : ingredient de la recette 11710, ecarte a tort le 24/10"
       },
       {
        "bit": 1,
@@ -69415,9 +69647,10 @@
        "cost": {
         "sheet_of_aurillium": 100,
         "deldrimor_steel_ingot": 1,
-        "thermocatalytic_reagent": 10
+        "thermocatalytic_reagent": 10,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11230)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11230) ; glob_of_ectoplasm : ingredient de la recette 11230, ecarte a tort le 24/10"
       },
       {
        "bit": 3,
@@ -69469,9 +69702,10 @@
        "cost": {
         "charged_quartz_crystal": 5,
         "deldrimor_steel_ingot": 1,
-        "thermocatalytic_reagent": 10
+        "thermocatalytic_reagent": 10,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 9969)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 9969) ; glob_of_ectoplasm : ingredient de la recette 9969, ecarte a tort le 24/10"
       },
       {
        "bit": 7,
@@ -69498,9 +69732,11 @@
        "wiki": "Obsidian_Magma_Container",
        "cost": {
         "deldrimor_steel_ingot": 1,
-        "thermocatalytic_reagent": 10
+        "thermocatalytic_reagent": 10,
+        "obsidian_shard": 50,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10651)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10651) ; obsidian_shard : ingredient de la recette 10651, ecarte a tort le 24/10 ; glob_of_ectoplasm : ingredient de la recette 10651, ecarte a tort le 24/10"
       },
       {
        "bit": 9,
@@ -69529,9 +69765,10 @@
         "vial_of_condensed_mists_essence": 3,
         "deldrimor_steel_ingot": 1,
         "thermocatalytic_reagent": 10,
-        "karma": 5005
+        "karma": 5005,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 9981) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Meteorite Ingot)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 9981) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Meteorite Ingot) ; glob_of_ectoplasm : ingredient de la recette 9981, ecarte a tort le 24/10"
       },
       {
        "bit": 11,
@@ -69782,9 +70019,10 @@
        "wiki": "Runed_Sphere_Casing",
        "cost": {
         "deldrimor_steel_ingot": 1,
-        "spiritwood_plank": 1
+        "spiritwood_plank": 1,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 9951)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 9951) ; glob_of_ectoplasm : ingredient de la recette 9951, ecarte a tort le 24/10"
       },
       {
        "bit": 29,
@@ -70746,9 +70984,11 @@
        "wiki": "Empty_Hylek_Flask",
        "cost": {
         "pile_of_coarse_sand": 10,
-        "deldrimor_steel_ingot": 3
+        "deldrimor_steel_ingot": 3,
+        "glob_of_ectoplasm": 10,
+        "dust_crystalline": 25
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11193)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11193) ; glob_of_ectoplasm : ingredient de la recette 11193, ecarte a tort le 24/10 ; dust_crystalline : ingredient de la recette 11193, ecarte a tort le 24/10"
       },
       {
        "bit": 25,
@@ -71690,9 +71930,10 @@
        "wiki": "Filtered_Honey",
        "cost": {
         "lump_of_coal": 250,
-        "bolt_of_damask": 5
+        "bolt_of_damask": 5,
+        "dust_crystalline": 25
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10303)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10303) ; dust_crystalline : ingredient de la recette 10303, ecarte a tort le 24/10"
       },
       {
        "bit": 12,
@@ -72546,9 +72787,10 @@
         "orichalcum_ingot": 10,
         "sheet_of_ambrite": 2,
         "bloodstone_dust": 50,
-        "karma": 5005
+        "karma": 5005,
+        "glob_of_ectoplasm": 2
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11236) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Subtle Spyglass)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11236) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Subtle Spyglass) ; glob_of_ectoplasm : ingredient de la recette 11236, ecarte a tort le 24/10"
       },
       {
        "bit": 1,
@@ -72565,9 +72807,10 @@
         "spiritwood_plank": 3,
         "glob_of_dark_matter": 1,
         "stabilizing_matrix": 5,
-        "karma": 5005
+        "karma": 5005,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11310) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Spirit Containment Unit)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 11310) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Spirit Containment Unit) ; glob_of_ectoplasm : ingredient de la recette 11310, ecarte a tort le 24/10"
       },
       {
        "bit": 2,
@@ -73315,9 +73558,10 @@
         "spiritwood_plank": 3,
         "deldrimor_steel_ingot": 1,
         "stabilizing_matrix": 10,
-        "karma": 5005
+        "karma": 5005,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10262) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Incubation Box)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10262) ; ressources/wiki/grandmaster_craftsman_hobbs.html (Recipe: Incubation Box) ; glob_of_ectoplasm : ingredient de la recette 10262, ecarte a tort le 24/10"
       },
       {
        "bit": 10,
@@ -73437,9 +73681,10 @@
        "cost": {
         "spiritwood_plank": 3,
         "deldrimor_steel_ingot": 1,
-        "elaborate_totem": 10
+        "elaborate_totem": 10,
+        "glob_of_ectoplasm": 5
        },
-       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10198)"
+       "cost_ref": "ressources/api/api_collections_armes_20261020.json (recette 10198) ; glob_of_ectoplasm : ingredient de la recette 10198, ecarte a tort le 24/10"
       },
       {
        "bit": 19,
@@ -90947,6 +91192,30 @@
    "ref": "ressources/wiki/mist_band_infused.html, Acquisition (trois vendeurs, trois prix)",
    "verified": true,
    "checked": "2026-10-20"
+  },
+  "mist_pendant_route": {
+   "qty": 1,
+   "options": [
+    "mist_pendant_route_fractals",
+    "mist_pendant_route_pvp",
+    "mist_pendant_route_tournament",
+    "mist_pendant_route_wvw"
+   ],
+   "default": "mist_pendant_route_fractals",
+   "targets": [
+    "mist_pendant"
+   ],
+   "label": {
+    "fr": "Mist Pendant — un seul achat, selon ton mode de jeu",
+    "en": "Mist Pendant — one purchase, by game mode"
+   },
+   "note": {
+    "fr": "Quatre prix pour le même pendentif. Fractales par défaut (joueur PvE, même choix que Mist Band).",
+    "en": "Four prices for the same pendant. Fractals by default (PvE player, same choice as Mist Band)."
+   },
+   "ref": "ressources/wiki/mist_pendant.html, Acquisition (neuf vendeurs, quatre prix)",
+   "verified": true,
+   "checked": "2026-11-03"
   }
  }
 }

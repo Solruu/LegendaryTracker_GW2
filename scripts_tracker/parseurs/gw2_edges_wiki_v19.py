@@ -309,8 +309,12 @@ for p, vs in variantes.items():
     for cible in communs:
         c = to_id(cible)
         if c: edges[p][c] = (vs[0][cible], 'recette')
+# 03/11/2026 : « Achievements » rejoint la liste. Gift of the Hylek est la
+# recompense de « Radiance of the Sun God » (palier 1) ; Shaman Palak ne vend
+# que les copies suivantes (200 or + 250 Sun Beads + 300 000 karma). Lu comme
+# un achat, il doublait le karma et les Sun Beads d'Endless Summer.
 LIBRE = ("Contained_in", "Gathered_from", "Dropped_by", "Rewarded_by",
-         "Reward_tracks", "Salvaged_from", "Recipe", "Recipes")
+         "Reward_tracks", "Salvaged_from", "Recipe", "Recipes", "Achievements")
 
 
 def autre_voie(page):
@@ -324,6 +328,13 @@ def autre_voie(page):
     j = re.search(r'id="(Used_in|Notes|References|Trivia)"', seg)
     if j:
         seg = seg[:j.start()]
+    # « Achievements » ne vaut autre voie que si le vendeur EXIGE ce succes :
+    # c'est alors le meme objet, rendu une fois par le succes puis revendu
+    # (Gift of the Hylek, Binding of the Dragon, Gift of Patience). Gift of
+    # Ascension, lui, se vend sans condition a cote de « Pact Reformer » : deux
+    # voies distinctes, l'achat reste lu.
+    if 'id="Achievements"' in seg and "Requires the achievement" not in seg:
+        return any(f'id="{s}"' in seg for s in LIBRE if s != "Achievements")
     return any(f'id="{s}"' in seg for s in LIBRE)
 
 

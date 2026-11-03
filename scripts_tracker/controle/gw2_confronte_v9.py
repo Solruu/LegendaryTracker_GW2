@@ -87,6 +87,13 @@ for _cid, _c in cc.items():
     for _k in (_c.get("qty") or {}):
         if _k in cc:
             _ENFANTS[_k].add(_cid)
+# v9 : UNE CIBLE DE CHOIX A DEJA SES ENFANTS, SES OPTIONS. Mist Pendant (03/11)
+# se vend a quatre prix ; les voies sont des options d'`alt_groups`, pas des
+# aretes `qty`, et la table vendeur reposait les quatre prix a la fois
+# (+260 tickets, +250 Memory of Battle, +125 Ascended Shards… sur Transcendence).
+for _g in groupes.values():
+    for _t in (_g.get("targets") or []):
+        _ENFANTS[_t].update(_g.get("options") or [])
 # v6 : UNE FEUILLE TRANCHEE RESTE UNE FEUILLE (regle C7 d'Antoine, 14/10).
 # Opal Crystal, Glacial Shard, Pile of Foul Essence ont une promotion en
 # Forge dans leur capture, mais la voie retenue est le butin (`best` hors
