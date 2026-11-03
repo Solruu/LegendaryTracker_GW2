@@ -1535,6 +1535,11 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `visage_of_champawat.html` | Visage of Champawat | article complet | 2026-11-03 |
 | `visage_of_chuka.html` | Visage of Chuka | article complet | 2026-11-03 |
 | `weighted_axe_haft.html` | Weighted Axe Haft | article complet | 2026-11-03 |
+| `basic_axe_requisition.html` | Basic Axe Requisition | article complet | 2026-11-03 |
+| `fruit_of_the_shadow.html` | Fruit of the Shadow | article complet | 2026-11-03 |
+| `pile_of_glittering_dust.html` | Pile of Glittering Dust | article complet | 2026-11-03 |
+| `sapphire_shard.html` | Sapphire Shard | article complet | 2026-11-03 |
+| `the_art_of_woodworking_axe_haft_edition_vol_2.html` | The Art of Woodworking: Axe Haft Edition Vol. 2 | article complet | 2026-11-03 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
