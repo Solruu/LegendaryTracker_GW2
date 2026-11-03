@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "version": "v252",
+  "version": "v253",
   "last_updated": "2026-11-03",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
@@ -55272,26 +55272,26 @@
      "items": [
       {
        "bit": 0,
-       "name": "Perfected Dagger",
+       "name": "Icy Core",
        "name_api": "Acquire an icy core from the chest after defeating the Svanir Shaman Chief at the Frozen Maw in Wayfarer Foothills.",
        "how": {
-        "fr": "Fabriqué à partir d'une recette obtenue en terminant la collection Incinerator II: The Perfected Dagger.",
-        "en": "Crafted from a recipe received by completing the Incinerator II: The Perfected Dagger collection"
+        "fr": "Récupère un noyau glacé dans le coffre après avoir vaincu le Svanir Shaman Chief à Frozen Maw, dans les Contreforts du voyageur.",
+        "en": "Acquire an icy core from the chest after defeating the Svanir Shaman Chief at the Frozen Maw in Wayfarer Foothills"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Icy_Core"
       },
       {
        "bit": 1,
-       "name": "Incinerator Vol. 3",
+       "name": "Fire Core",
        "name_api": "Gather the fiery core of the elemental formed by the cleanup efforts in the ruins of the Thaumanova Reactor in Metrica Province.",
        "how": {
-        "fr": "Acheté auprès de Grandmaster Craftsman Hobbs après avoir entraîné la capacité Historian of the Armaments dans la piste de maîtrise Legendary Crafting",
-        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track"
+        "fr": "Récupère le noyau ardent de l'élémentaire né des opérations de nettoyage dans les ruines du Thaumanova Reactor, à la Province de Metrica",
+        "en": "Gather the fiery core of the elemental formed by the cleanup efforts in the ruins of the Thaumanova Reactor in Metrica Province"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Fire_Core",
        "cost": {
         "spirit_shard": 5,
@@ -55301,110 +55301,110 @@
       },
       {
        "bit": 2,
-       "name": "Ever-Burning Fuel",
+       "name": "Putrid Ichor",
        "name_api": "Acquire putrid ichor from the chest after defeating Tequatl the Sunless in Sparkfly Fen.",
        "how": {
-        "fr": "Utilise l'équipement de laboratoire de la fractale Thaumanova Reactor pour mélanger de la Destructive Substance et ton Searing Concoction et former de l'Ever-Burning Fuel",
-        "en": "Use the laboratory equipment found in the Thaumanova Reactor Fractal to mix a blend of Destructive Substance and your Searing Concoction to form Ever-Burning Fuel"
+        "fr": "Récupère de l'ichor putride dans le coffre après avoir vaincu Tequatl the Sunless au Marais de Lumillule.",
+        "en": "Acquire putrid ichor from the chest after defeating Tequatl the Sunless in Sparkfly Fen"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Putrid_Ichor"
       },
       {
        "bit": 3,
-       "name": "Destructive Substance",
-       "name_api": "Acquire a corrupted ice shard from the chest after killing the Claw of Jormag in Frostgorge Sound.",
-       "how": {
-        "fr": "Utilise l'énergie des générateurs du Bauxite Alchemicals Lab, au Saut de Malchor, pour combiner l'Acrid Jelly et la Corrosive Paste et former une Destructive Substance",
-        "en": "Use power from the generators in the Bauxite Alchemicals Lab in Malchor's Leap to combine Acrid Jelly and Corrosive Paste to form a Destructive Substance"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Corrupted_Ice_Shard_(trophy)"
-      },
-      {
-       "bit": 4,
-       "name": "Acrid Jelly",
-       "name_api": "Acquire swamp gas from the Mossman in the Swampland Fractal.",
-       "how": {
-        "fr": "Utilise de la Cryo Dust et les Scalding Fumes de la fractale Molten Boss pour stabiliser l'Unstable Miasma et former une Acrid Jelly",
-        "en": "Use Cryo Dust and the Scalding Fumes from the Molten Boss Fractal to stabilize Unstable Miasma and form an Acrid Jelly"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Swamp_Gas"
-      },
-      {
-       "bit": 5,
-       "name": "Cryo Dust",
-       "name_api": "Obtain an Inquest Power Core from the chest after defeating the Inquest Golem Mark II in Mount Maelstrom.",
-       "how": {
-        "fr": "Utilise le Boiling-Hot Magma de la fractale Volcanic pour mélanger 10 Piles of Bloodstone Dust avec un Corrupted Ice Shard et former de la Cryo Dust",
-        "en": "Use the Boiling-Hot Magma in the Volcanic Fractal to blend 10 Piles of Bloodstone Dust with a Corrupted Ice Shard to form Cryo Dust"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Inquest_Power_Core"
-      },
-      {
-       "bit": 6,
        "name": "Corrupted Ice Shard",
-       "name_api": "Acquire an ever-burning ember from Drakin Cinderspire's chest in the Iron Marches.",
+       "name_api": "Acquire a corrupted ice shard from the chest after killing the Claw of Jormag in Frostgorge Sound.",
        "how": {
         "fr": "Récupère un éclat de glace corrompu dans le coffre après avoir tué Claw of Jormag au Détroit des gorges glacées.",
         "en": "Acquire a corrupted ice shard from the chest after killing the Claw of Jormag in Frostgorge Sound"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Corrupted_Ice_Shard_(trophy)"
+      },
+      {
+       "bit": 4,
+       "name": "Swamp Gas",
+       "name_api": "Acquire swamp gas from the Mossman in the Swampland Fractal.",
+       "how": {
+        "fr": "Récupère du gaz des marais sur le Mossman dans Swampland Fractal.",
+        "en": "Acquire swamp gas from the Mossman in the Swampland Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Swamp_Gas"
+      },
+      {
+       "bit": 5,
+       "name": "Inquest Power Core",
+       "name_api": "Obtain an Inquest Power Core from the chest after defeating the Inquest Golem Mark II in Mount Maelstrom.",
+       "how": {
+        "fr": "Obtiens un Inquest Power Core dans le coffre après avoir vaincu l'Inquest Golem Mark II, au Mont Maelström",
+        "en": "Obtain an Inquest Power Core from the chest after defeating the Inquest Golem Mark II in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Inquest_Power_Core"
+      },
+      {
+       "bit": 6,
+       "name": "Ever-Burning Ember",
+       "name_api": "Acquire an ever-burning ember from Drakin Cinderspire's chest in the Iron Marches.",
+       "how": {
+        "fr": "Récupère une braise éternelle dans le coffre de Drakin Cinderspire aux Marais de fer.",
+        "en": "Acquire an ever-burning ember from Drakin Cinderspire 's chest in the Iron Marches"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ever-Burning_Ember"
       },
       {
        "bit": 7,
-       "name": "Unstable Miasma",
+       "name": "Flame Jelly",
        "name_api": "Use the frigid energy of the Elemental Source in the Snowblind Fractal to form Flame Jelly out of a Fire Core and 10 Piles of Bloodstone Dust.",
        "how": {
-        "fr": "Profite de la pression des profondeurs océaniques des Iron Horse Mines, au Détroit des gorges glacées, pour former un Unstable Miasma à partir d'une Mordrem Thrasher Gas Bladder et de 10 Piles of Bloodstone Dust. Note : il te faudra deux Pieces of Mordrem Thrasher Gas Bladder pour créer une vessie",
-        "en": "Use the pressure in the depths of the ocean in the Iron Horse Mines of Frostgorge Sound to form an Unstable Miasma from a Mordrem Thrasher Gas Bladder and 10 Piles of Bloodstone Dust . Note that you will need two Pieces of Mordrem Thrasher Gas Bladder to create one bladder"
+        "fr": "Utilise l'énergie glaciale de l'Elemental Source dans la fractale Snowblind pour former de la Flame Jelly à partir d'un Fire Core et de 10 Piles of Bloodstone Dust",
+        "en": "Use the frigid energy of the Elemental Source in the Snowblind Fractal to form Flame Jelly out of a Fire Core and 10 Piles of Bloodstone Dust"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Flame_Jelly"
       },
       {
        "bit": 8,
-       "name": "Corrosive Paste",
+       "name": "Blasting Powder",
        "name_api": "Use the cold environment near the Frost Portal at Drakkar Spurs in Frostgorge Sound to prevent an explosion while mixing an Ever-Burning Ember with 10 Piles of Bloodstone Dust to form Blasting Powder.",
        "how": {
-        "fr": "Utilise les matériaux du point de passage détruit du Vexa's Lab, à la Montée de Flambecœur, avec de la Gelid Paste pour solidifier les Explosive Fumes en une Corrosive Paste",
-        "en": "Use the materials from the shattered waypoint in Vexa's Lab in Fireheart Rise along with Gelid Paste to congeal the Explosive Fumes into a Corrosive Paste"
+        "fr": "Profite du froid près du Frost Portal, à Drakkar Spurs, au Détroit des gorges glacées, pour éviter une explosion en mélangeant un Ever-Burning Ember avec 10 Piles of Bloodstone Dust et former de la Blasting Powder",
+        "en": "Use the cold environment near the Frost Portal at Drakkar Spurs in Frostgorge Sound to prevent an explosion while mixing an Ever-Burning Ember with 10 Piles of Bloodstone Dust to form Blasting Powder"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Blasting_Powder"
       },
       {
        "bit": 9,
-       "name": "Gelid Paste",
+       "name": "Cryo Dust",
        "name_api": "Use the Boiling-Hot Magma in the Volcanic Fractal to blend 10 Piles of Bloodstone Dust with a Corrupted Ice Shard to form Cryo Dust.",
+       "how": {
+        "fr": "Utilise le Boiling-Hot Magma de la fractale Volcanic pour mélanger 10 Piles of Bloodstone Dust avec un Corrupted Ice Shard et former de la Cryo Dust",
+        "en": "Use the Boiling-Hot Magma in the Volcanic Fractal to blend 10 Piles of Bloodstone Dust with a Corrupted Ice Shard to form Cryo Dust"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Cryo_Dust"
+      },
+      {
+       "bit": 10,
+       "name": "Gelid Paste",
+       "name_api": "Use the heat from the Heart of the Destroyer in Mount Maelstrom to fuse 10 Piles of Bloodstone Dust with an Icy Core to form Gelid Paste.",
        "how": {
         "fr": "Utilise la chaleur du Heart of the Destroyer, au Mont Maelström, pour fusionner 10 Piles of Bloodstone Dust avec un Icy Core et former de la Gelid Paste",
         "en": "Use the heat from the Heart of the Destroyer in Mount Maelstrom to fuse 10 Piles of Bloodstone Dust with an Icy Core to form Gelid Paste"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Cryo_Dust"
-      },
-      {
-       "bit": 10,
-       "name": "Icy Core",
-       "name_api": "Use the heat from the Heart of the Destroyer in Mount Maelstrom to fuse 10 Piles of Bloodstone Dust with an Icy Core to form Gelid Paste.",
-       "how": {
-        "fr": "Récupère un noyau glacé dans le coffre après avoir vaincu le Svanir Shaman Chief à Frozen Maw, dans les Contreforts du voyageur.",
-        "en": "Acquire an icy core from the chest after defeating the Svanir Shaman Chief at the Frozen Maw in Wayfarer Foothills"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Gelid_Paste"
       },
       {
@@ -55421,146 +55421,146 @@
       },
       {
        "bit": 12,
-       "name": "Swamp Gas",
+       "name": "Unstable Miasma",
        "name_api": "Use the pressure in the depths of the ocean in the Iron Horse Mines of Frostgorge Sound to form an Unstable Miasma from a Mordrem Thrasher Gas Bladder and 10 Piles of Bloodstone Dust.",
        "how": {
-        "fr": "Récupère du gaz des marais sur le Mossman dans Swampland Fractal.",
-        "en": "Acquire swamp gas from the Mossman in the Swampland Fractal"
+        "fr": "Profite de la pression des profondeurs océaniques des Iron Horse Mines, au Détroit des gorges glacées, pour former un Unstable Miasma à partir d'une Mordrem Thrasher Gas Bladder et de 10 Piles of Bloodstone Dust. Note : il te faudra deux Pieces of Mordrem Thrasher Gas Bladder pour créer une vessie",
+        "en": "Use the pressure in the depths of the ocean in the Iron Horse Mines of Frostgorge Sound to form an Unstable Miasma from a Mordrem Thrasher Gas Bladder and 10 Piles of Bloodstone Dust . Note that you will need two Pieces of Mordrem Thrasher Gas Bladder to create one bladder"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Unstable_Miasma"
       },
       {
        "bit": 13,
-       "name": "Searing Concoction",
-       "name_api": "Use the low-pressure environment of Goemm's Lab high above Metrica Province to safely combine 10 Piles of Bloodstone Dust with Putrid Ichor at a Console to form a Volatile Compound.",
-       "how": {
-        "fr": "Utilise l'équipement du Frizz's Lab dans la fractale Aetherblade pour combiner le Smouldering Concoction avec la Combustive Substance et former un Searing Concoction",
-        "en": "Use the equipment from Frizz's Lab in the Aetherblade Fractal to combine the Smouldering Concoction with the Combustive Substance to form a Searing Concoction"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Volatile_Compound"
-      },
-      {
-       "bit": 14,
-       "name": "Smouldering Concoction",
-       "name_api": "Form caustic paste by combining 10 Piles of Bloodstone Dust with the elements from an Inquest Power Core in the low-pressure environment found at the top of the Uncategorized Fractal.",
-       "how": {
-        "fr": "Profite du froid de la fractale Underground Facility pour faire réagir sans danger la Flame Jelly avec la Caustic Paste au pilier de glace et former un Smouldering Concoction",
-        "en": "Use the cold environment found in the Underground Facility Fractal to safely react Flame Jelly with Caustic Paste at the ice pillar to form a Smouldering Concoction"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Caustic_Paste"
-      },
-      {
-       "bit": 15,
-       "name": "Flame Jelly",
-       "name_api": "Use the cold environment found in the Underground Facility Fractal to safely react Flame Jelly with Caustic Paste at the ice pillar to form a Smouldering Concoction.",
-       "how": {
-        "fr": "Utilise l'énergie glaciale de l'Elemental Source dans la fractale Snowblind pour former de la Flame Jelly à partir d'un Fire Core et de 10 Piles of Bloodstone Dust",
-        "en": "Use the frigid energy of the Elemental Source in the Snowblind Fractal to form Flame Jelly out of a Fire Core and 10 Piles of Bloodstone Dust"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Smouldering_Concoction"
-      },
-      {
-       "bit": 16,
-       "name": "Fire Core",
-       "name_api": "Use Cryo Dust and the Scalding Fumes from the Molten Boss Fractal to stabilize Unstable Miasma and form an Acrid Jelly.",
-       "how": {
-        "fr": "Récupère le noyau ardent de l'élémentaire né des opérations de nettoyage dans les ruines du Thaumanova Reactor, à la Province de Metrica",
-        "en": "Gather the fiery core of the elemental formed by the cleanup efforts in the ruins of the Thaumanova Reactor in Metrica Province"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Acrid_Jelly"
-      },
-      {
-       "bit": 17,
-       "name": "Caustic Paste",
-       "name_api": "Use the materials from the shattered waypoint in Vexa's Lab in Fireheart Rise along with Gelid Paste to congeal the Explosive Fumes into a Corrosive Paste.",
-       "how": {
-        "fr": "Forme une pâte caustique en combinant 10 Piles of Bloodstone Dust avec les éléments d'un Inquest Power Core, dans l'environnement à basse pression au sommet de l'Uncategorized Fractal",
-        "en": "Form caustic paste by combining 10 Piles of Bloodstone Dust with the elements from an Inquest Power Core in the low-pressure environment found at the top of the Uncategorized Fractal"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Corrosive_Paste"
-      },
-      {
-       "bit": 18,
-       "name": "Inquest Power Core",
-       "name_api": "Use the lasers via the console in Spekk's Lab in Caledon Forest to meld Blasting Powder with the Volatile Compound into a Combustive Substance.",
-       "how": {
-        "fr": "Obtiens un Inquest Power Core dans le coffre après avoir vaincu l'Inquest Golem Mark II, au Mont Maelström",
-        "en": "Obtain an Inquest Power Core from the chest after defeating the Inquest Golem Mark II in Mount Maelstrom"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Combustive_Substance"
-      },
-      {
-       "bit": 19,
-       "name": "Combustive Substance",
-       "name_api": "Use power from the generators in the Bauxite Alchemicals Lab in Malchor's Leap to combine Acrid Jelly and Corrosive Paste to form a Destructive Substance.",
-       "how": {
-        "fr": "Utilise les lasers via la console du Spekk's Lab, à la Forêt de Caledon, pour fusionner la Blasting Powder avec le Volatile Compound en une Combustive Substance",
-        "en": "Use the lasers via the console in Spekk's Lab in Caledon Forest to meld Blasting Powder with the Volatile Compound into a Combustive Substance"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Destructive_Substance"
-      },
-      {
-       "bit": 20,
-       "name": "Blasting Powder",
-       "name_api": "Use the equipment from Frizz's Lab in the Aetherblade Fractal to combine the Smouldering Concoction with the Combustive Substance to form a Searing Concoction.",
-       "how": {
-        "fr": "Profite du froid près du Frost Portal, à Drakkar Spurs, au Détroit des gorges glacées, pour éviter une explosion en mélangeant un Ever-Burning Ember avec 10 Piles of Bloodstone Dust et former de la Blasting Powder",
-        "en": "Use the cold environment near the Frost Portal at Drakkar Spurs in Frostgorge Sound to prevent an explosion while mixing an Ever-Burning Ember with 10 Piles of Bloodstone Dust to form Blasting Powder"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Searing_Concoction"
-      },
-      {
-       "bit": 21,
-       "name": "Ever-Burning Ember",
-       "name_api": "Use the laboratory equipment found in the Thaumanova Reactor Fractal to mix a blend of Destructive Substance and your Searing Concoction to form Ever-Burning Fuel.",
-       "how": {
-        "fr": "Récupère une braise éternelle dans le coffre de Drakin Cinderspire aux Marais de fer.",
-        "en": "Acquire an ever-burning ember from Drakin Cinderspire 's chest in the Iron Marches"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Ever-Burning_Fuel"
-      },
-      {
-       "bit": 22,
        "name": "Volatile Compound",
-       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
+       "name_api": "Use the low-pressure environment of Goemm's Lab high above Metrica Province to safely combine 10 Piles of Bloodstone Dust with Putrid Ichor at a Console to form a Volatile Compound.",
        "how": {
         "fr": "Profite de la basse pression du Goemm's Lab, très haut au-dessus de la Province de Metrica, pour combiner sans danger 10 Piles of Bloodstone Dust avec du Putrid Ichor à une console et former un Volatile Compound",
         "en": "Use the low-pressure environment of Goemm's Lab high above Metrica Province to safely combine 10 Piles of Bloodstone Dust with Putrid Ichor at a Console to form a Volatile Compound"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Volatile_Compound"
+      },
+      {
+       "bit": 14,
+       "name": "Caustic Paste",
+       "name_api": "Form caustic paste by combining 10 Piles of Bloodstone Dust with the elements from an Inquest Power Core in the low-pressure environment found at the top of the Uncategorized Fractal.",
+       "how": {
+        "fr": "Forme une pâte caustique en combinant 10 Piles of Bloodstone Dust avec les éléments d'un Inquest Power Core, dans l'environnement à basse pression au sommet de l'Uncategorized Fractal",
+        "en": "Form caustic paste by combining 10 Piles of Bloodstone Dust with the elements from an Inquest Power Core in the low-pressure environment found at the top of the Uncategorized Fractal"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Caustic_Paste"
+      },
+      {
+       "bit": 15,
+       "name": "Smouldering Concoction",
+       "name_api": "Use the cold environment found in the Underground Facility Fractal to safely react Flame Jelly with Caustic Paste at the ice pillar to form a Smouldering Concoction.",
+       "how": {
+        "fr": "Profite du froid de la fractale Underground Facility pour faire réagir sans danger la Flame Jelly avec la Caustic Paste au pilier de glace et former un Smouldering Concoction",
+        "en": "Use the cold environment found in the Underground Facility Fractal to safely react Flame Jelly with Caustic Paste at the ice pillar to form a Smouldering Concoction"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Smouldering_Concoction"
+      },
+      {
+       "bit": 16,
+       "name": "Acrid Jelly",
+       "name_api": "Use Cryo Dust and the Scalding Fumes from the Molten Boss Fractal to stabilize Unstable Miasma and form an Acrid Jelly.",
+       "how": {
+        "fr": "Utilise de la Cryo Dust et les Scalding Fumes de la fractale Molten Boss pour stabiliser l'Unstable Miasma et former une Acrid Jelly",
+        "en": "Use Cryo Dust and the Scalding Fumes from the Molten Boss Fractal to stabilize Unstable Miasma and form an Acrid Jelly"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Acrid_Jelly"
+      },
+      {
+       "bit": 17,
+       "name": "Corrosive Paste",
+       "name_api": "Use the materials from the shattered waypoint in Vexa's Lab in Fireheart Rise along with Gelid Paste to congeal the Explosive Fumes into a Corrosive Paste.",
+       "how": {
+        "fr": "Utilise les matériaux du point de passage détruit du Vexa's Lab, à la Montée de Flambecœur, avec de la Gelid Paste pour solidifier les Explosive Fumes en une Corrosive Paste",
+        "en": "Use the materials from the shattered waypoint in Vexa's Lab in Fireheart Rise along with Gelid Paste to congeal the Explosive Fumes into a Corrosive Paste"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Corrosive_Paste"
+      },
+      {
+       "bit": 18,
+       "name": "Combustive Substance",
+       "name_api": "Use the lasers via the console in Spekk's Lab in Caledon Forest to meld Blasting Powder with the Volatile Compound into a Combustive Substance.",
+       "how": {
+        "fr": "Utilise les lasers via la console du Spekk's Lab, à la Forêt de Caledon, pour fusionner la Blasting Powder avec le Volatile Compound en une Combustive Substance",
+        "en": "Use the lasers via the console in Spekk's Lab in Caledon Forest to meld Blasting Powder with the Volatile Compound into a Combustive Substance"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Combustive_Substance"
+      },
+      {
+       "bit": 19,
+       "name": "Destructive Substance",
+       "name_api": "Use power from the generators in the Bauxite Alchemicals Lab in Malchor's Leap to combine Acrid Jelly and Corrosive Paste to form a Destructive Substance.",
+       "how": {
+        "fr": "Utilise l'énergie des générateurs du Bauxite Alchemicals Lab, au Saut de Malchor, pour combiner l'Acrid Jelly et la Corrosive Paste et former une Destructive Substance",
+        "en": "Use power from the generators in the Bauxite Alchemicals Lab in Malchor's Leap to combine Acrid Jelly and Corrosive Paste to form a Destructive Substance"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Destructive_Substance"
+      },
+      {
+       "bit": 20,
+       "name": "Searing Concoction",
+       "name_api": "Use the equipment from Frizz's Lab in the Aetherblade Fractal to combine the Smouldering Concoction with the Combustive Substance to form a Searing Concoction.",
+       "how": {
+        "fr": "Utilise l'équipement du Frizz's Lab dans la fractale Aetherblade pour combiner le Smouldering Concoction avec la Combustive Substance et former un Searing Concoction",
+        "en": "Use the equipment from Frizz's Lab in the Aetherblade Fractal to combine the Smouldering Concoction with the Combustive Substance to form a Searing Concoction"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Searing_Concoction"
+      },
+      {
+       "bit": 21,
+       "name": "Ever-Burning Fuel",
+       "name_api": "Use the laboratory equipment found in the Thaumanova Reactor Fractal to mix a blend of Destructive Substance and your Searing Concoction to form Ever-Burning Fuel.",
+       "how": {
+        "fr": "Utilise l'équipement de laboratoire de la fractale Thaumanova Reactor pour mélanger de la Destructive Substance et ton Searing Concoction et former de l'Ever-Burning Fuel",
+        "en": "Use the laboratory equipment found in the Thaumanova Reactor Fractal to mix a blend of Destructive Substance and your Searing Concoction to form Ever-Burning Fuel"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Ever-Burning_Fuel"
+      },
+      {
+       "bit": 22,
+       "name": "Incinerator Vol. 3",
+       "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
+       "how": {
+        "fr": "Acheté auprès de Grandmaster Craftsman Hobbs après avoir entraîné la capacité Historian of the Armaments dans la piste de maîtrise Legendary Crafting",
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Incinerator_Vol._3"
       },
       {
        "bit": 23,
-       "name": "Putrid Ichor",
+       "name": "Perfected Dagger",
        "name_api": "Perfected Dagger",
        "how": {
-        "fr": "Récupère de l'ichor putride dans le coffre après avoir vaincu Tequatl the Sunless au Marais de Lumillule.",
-        "en": "Acquire putrid ichor from the chest after defeating Tequatl the Sunless in Sparkfly Fen"
+        "fr": "Fabriqué à partir d'une recette obtenue en terminant la collection Incinerator II: The Perfected Dagger.",
+        "en": "Crafted from a recipe received by completing the Incinerator II: The Perfected Dagger collection"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
+       "how_ref": "ressources/wiki/incinerator_iii_spark.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Perfected_Dagger",
        "cost": {
         "jar_of_luminesce_polish": 1,
@@ -76322,62 +76322,62 @@
      "items": [
       {
        "bit": 0,
-       "name": "The Mechanism",
+       "name": "Celestial Cartographer's Gear",
        "name_api": "Take the Sextant, Astrolabe, Incomplete Star Charts, and Star Charter's Bag along with Ogden's Notes to the Durmand Priory, and use the Cartographer's Workbench to create the Celestial Cartographer's Gear.",
        "how": {
-        "fr": "Fabriqué à partir d'une recette obtenue en terminant la collection Astralaria III: The Mechanism.",
-        "en": "Crafted from a recipe received by completing the Astralaria III: The Mechanism collection"
+        "fr": "Apporte le Sextant, l'Astrolabe, les Incomplete Star Charts et le Star Charter's Bag ainsi que les Ogden's Notes au Durmand Priory, et utilise le Cartographer's Workbench pour créer le Celestial Cartographer's Gear.",
+        "en": "Take the Sextant , Astrolabe , Incomplete Star Charts , and Star Charter's Bag along with Ogden's Notes to the Durmand Priory , and use the Cartographer's Workbench to create the Celestial Cartographer's Gear"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Celestial_Cartographer%27s_Gear"
       },
       {
        "bit": 1,
-       "name": "Astralaria Vol. 4",
+       "name": "Sextant",
        "name_api": "Take the Counterweighting Mechanism, Dredge Cogs, Magnification Lens, and Hollow Saurian Bone to the Durmand Priory and use the Cartographer's Workbench to craft a Sextant.",
        "how": {
-        "fr": "Acheté auprès de Grandmaster Craftsman Hobbs après avoir entraîné la capacité Scholar of Secrets dans la piste de maîtrise Legendary Crafting",
-        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track"
+        "fr": "Apporte le Counterweighting Mechanism, les Dredge Cogs, la Magnification Lens et le Hollow Saurian Bone au Durmand Priory et utilise le Cartographer's Workbench pour fabriquer un Sextant.",
+        "en": "Take the Counterweighting Mechanism , Dredge Cogs , Magnification Lens , and Hollow Saurian Bone to the Durmand Priory and use the Cartographer's Workbench to craft a Sextant"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Sextant"
       },
       {
        "bit": 2,
-       "name": "Cosmic Power",
+       "name": "Astrolabe",
        "name_api": "Take the Ancient Charting Device, Ancient Planetarium Slide, Finely Tuned Watchwork Mechanism, and Flawless Ancient Karka Husk to the Durmand Priory and use the Cartographer's Workbench to craft an Astrolabe.",
        "how": {
-        "fr": "Combine Magic of the Elder Dragons, Power of the Ley Lines, Energy of the Mists et un Vision Crystal pour créer le Cosmic Power.",
-        "en": "Combine the Magic of the Elder Dragons , Power of the Ley Lines , Energy of the Mists , and a Vision Crystal to create the Cosmic Power"
+        "fr": "Apporte l'Ancient Charting Device, l'Ancient Planetarium Slide, le Finely Tuned Watchwork Mechanism et le Flawless Ancient Karka Husk au Durmand Priory et utilise le Cartographer's Workbench pour fabriquer un Astrolabe.",
+        "en": "Take the Ancient Charting Device , Ancient Planetarium Slide , Finely Tuned Watchwork Mechanism , and Flawless Ancient Karka Husk to the Durmand Priory and use the Cartographer's Workbench to craft an Astrolabe"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Astrolabe"
       },
       {
        "bit": 3,
-       "name": "Magic of the Elder Dragons",
+       "name": "Incomplete Star Charts",
        "name_api": "Found in the chest inside the treasure room of the Collapsed Observatory in Kessex Hills.",
        "how": {
-        "fr": "Après avoir rassemblé la magie des quatre dragons ancestraux, combine-les en Magic of the Elder Dragons.",
-        "en": "After gathering the four elder dragons' magic, combine them into the Magic of the Elder Dragons"
+        "fr": "Dans le coffre de la salle au trésor du Collapsed Observatory, aux Collines de Kessex",
+        "en": "Found in the chest inside the treasure room of the Collapsed Observatory in Kessex Hills"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Incomplete_Star_Charts"
       },
       {
        "bit": 4,
-       "name": "Zhaitan's Magic",
+       "name": "Star Charter's Bag",
        "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Obtenu dans le coffre après avoir vaincu Tequatl the Sunless, au Marais de Lumillule",
-        "en": "Obtained from the chest after defeating Tequatl the Sunless in Sparkfly Fen"
+        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
+        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Charter%27s_Bag",
        "cost": {
         "elonian_leather_square": 10
@@ -76386,14 +76386,14 @@
       },
       {
        "bit": 5,
-       "name": "Jormag's Magic",
+       "name": "Weighted Golem Cube",
        "name_api": "Weighted Golem Cube",
        "how": {
-        "fr": "Obtenu dans le coffre après avoir vaincu Claw of Jormag, au Détroit des gorges glacées",
-        "en": "Obtained from the chest after defeating Claw of Jormag in Frostgorge Sound"
+        "fr": "Dans le coffre après la défaite de l'Inquest Golem Mark II, au Mont Maelström",
+        "en": "Found in the chest after defeating the Inquest Golem Mark II in Mount Maelstrom"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Weighted_Golem_Cube",
        "cost": {
         "karma": 2380
@@ -76402,14 +76402,14 @@
       },
       {
        "bit": 6,
-       "name": "Kralkatorrik's Magic",
+       "name": "Counterweighting Mechanism",
        "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Obtenu dans le coffre après avoir vaincu le Shatterer, dans les Steppes de la strie flamboyante",
-        "en": "Obtained from the chest after defeating the Shatterer in Blazeridge Steppes"
+        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
+        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Counterweighting_Mechanism",
        "cost": {
         "watchwork_mechanism": 1,
@@ -76420,14 +76420,14 @@
       },
       {
        "bit": 7,
-       "name": "Mordremoth's Magic",
+       "name": "Dredge Cogs",
        "name_api": "Found by looting the Champion Dredge Commissar at Tribulation Rift in Dredgehaunt Cliffs.",
        "how": {
-        "fr": "Obtenu dans le coffre après avoir vaincu Mordremoth, au Repli du dragon. (Voir aussi Ley-Line Font Energy ci-dessous.)",
-        "en": "Obtained from the chest after defeating Mordremoth in Dragon's Stand . (See also Ley-Line Font Energy below.)"
+        "fr": "Obtenu en pillant le Champion Dredge Commissar à Tribulation Rift, aux Falaises de Hantedraguerre",
+        "en": "Found by looting the Champion Dredge Commissar at Tribulation Rift in Dredgehaunt Cliffs"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Dredge_Cogs",
        "cost": {
         "karma": 2380
@@ -76436,26 +76436,26 @@
       },
       {
        "bit": 8,
-       "name": "Power of the Ley Lines",
+       "name": "Magnification Lens",
        "name_api": "Found by looting the Eye of Zhaitan while helping the Pact capture the Promenade of the Gods in Cursed Shore.",
        "how": {
-        "fr": "Combine les quatre énergies pour créer le Power of the Ley Lines.",
-        "en": "Combine the four energies to create the Power of the Ley Lines"
+        "fr": "Obtenu en pillant l'Eye of Zhaitan en aidant le Pacte à prendre la Promenade of the Gods au Rivage maudit, ou pendant l'événement Kill the Eye of Zhaitan patrolling the King's Passage au Saut de Malchor. Réussir l'événement de défense des Gates of Arah donne aussi cet objet",
+        "en": "Found by looting the Eye of Zhaitan while helping the Pact capture the Promenade of the Gods in Cursed Shore or during the event Kill the Eye of Zhaitan patrolling the King's Passage in Malchor's Leap . Successfully completing the defense event for the Gates of Arah will also yield this item"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Magnification_Lens"
       },
       {
        "bit": 9,
-       "name": "Ley-Line Hub Energy",
+       "name": "Hollow Saurian Bone",
        "name_api": "Occasionally looted from saurians in Auric Basin.",
        "how": {
-        "fr": "Énergie récoltée en obtenant un rang argent ou supérieur dans l'aventure « Ley-Line Run », aux Profondeurs verdoyantes",
-        "en": "Energy gathered from earning a rank of silver or better in the Ley-Line Run adventure in Tangled Depths"
+        "fr": "Butin occasionnel des sauriens au Bassin aurique",
+        "en": "Occasionally looted from saurians in Auric Basin"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Hollow_Saurian_Bone",
        "cost": {
         "karma": 2380
@@ -76464,14 +76464,14 @@
       },
       {
        "bit": 10,
-       "name": "Ley-Line Stream Energy",
+       "name": "Ancient Charting Device",
        "name_api": "Found in the chest after defeating the statue of Dwayna located at the Cathedral of Zephyrs in Malchor's Leap.",
        "how": {
-        "fr": "Énergie récoltée en planant sur les lignes de force à travers le Ley-Line Confluence, aux Profondeurs verdoyantes",
-        "en": "Energy gathered while ley-line gliding through the Ley-Line Confluence in Tangled Depths"
+        "fr": "Dans le coffre après la défaite de la statue de Dwayna, ou sur les Risen Priestess of Dwayna ou Risen Lieutenant à la Cathédrale des zéphyrs, au Saut de Malchor",
+        "en": "Found in the chest after defeating the statue of Dwayna or looted from Risen Priestess of Dwayna or Risen Lieutenant located at the Cathedral of Zephyrs in Malchor's Leap"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ancient_Charting_Device",
        "cost": {
         "karma": 2380
@@ -76480,14 +76480,14 @@
       },
       {
        "bit": 11,
-       "name": "Exalted Energy",
+       "name": "Ancient Planetarium Slide",
        "name_api": "Found in chest after defeating the Legendary Risen High Wizard in Cursed Shore.",
        "how": {
-        "fr": "Énergie recueillie en obtenant l'argent ou mieux à l'aventure On Wings of Gold, au Bassin aurique.",
-        "en": "Energy gathered by earning silver or better in the On Wings of Gold adventure located inside Auric Basin"
+        "fr": "Dans le coffre après la défaite du Legendary Risen High Wizard, au Rivage maudit",
+        "en": "Found in chest after defeating the Legendary Risen High Wizard in Cursed Shore"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ancient_Planetarium_Slide",
        "cost": {
         "karma": 2380
@@ -76496,14 +76496,14 @@
       },
       {
        "bit": 12,
-       "name": "Ley-Line Font Energy",
+       "name": "Finely Tuned Watchwork Mechanism",
        "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Énergie recueillie en communiant avec le point de défi de héros près de Serenity's Cove, au Repli du dragon.",
-        "en": "Energy gathered from communing with the hero challenge point near Serenity's Cove in Dragon's Stand"
+        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
+        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Finely_Tuned_Watchwork_Mechanism",
        "cost": {
         "watchwork_mechanism": 1,
@@ -76513,26 +76513,26 @@
       },
       {
        "bit": 13,
-       "name": "Energy of the Mists",
+       "name": "Flawless Ancient Karka Husk",
        "name_api": "Found in the chest after defeating the Legendary Karka Queen in Southsun Cove.",
        "how": {
-        "fr": "Combine les quatre énergies des Brumes pour créer l'Energy of the Mists.",
-        "en": "Combine the four Mists energies to create the Energy of the Mists"
+        "fr": "Dans le coffre après la défaite de la Legendary Karka Queen, à la Crique de Sud-Soleil",
+        "en": "Found in the chest after defeating the Legendary Karka Queen in Southsun Cove"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Flawless_Ancient_Karka_Husk"
       },
       {
        "bit": 14,
-       "name": "Whisper of Jade Wind",
+       "name": "Krait Oil",
        "name_api": "Occasionally found while looting a krait's possessions.",
        "how": {
-        "fr": "Un artefact plein d'énergie des Brumes, trouvé dans le coffre après avoir vaincu Jade Maw dans Solid Ocean Fractal.",
-        "en": "An artifact full of Mists energy found in the chest after defeating the Jade Maw in the Solid Ocean Fractal"
+        "fr": "Trouvé parfois en fouillant les possessions d'un krait",
+        "en": "Occasionally found while looting a krait 's possessions"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Krait_Oil",
        "cost": {
         "karma": 2380
@@ -76541,14 +76541,14 @@
       },
       {
        "bit": 15,
-       "name": "Memory of the Ages",
+       "name": "Swamp-Cured Leather",
        "name_api": "Looted from the Mossman in the Swampland Fractal.",
        "how": {
-        "fr": "Énergie des Brumes obtenue en communiant avec le défi de héros du Temple of the Ages, à la Vallée de la reine",
-        "en": "Mists energy found by communing with the Temple of the Ages hero challenge in Queensdale"
+        "fr": "Butin du Mossman dans la Swampland Fractal",
+        "en": "Looted from the Mossman in the Swampland Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Swamp-Cured_Leather",
        "cost": {
         "karma": 2380
@@ -76557,14 +76557,14 @@
       },
       {
        "bit": 16,
-       "name": "Echo of the Foefire",
+       "name": "Soft Fur",
        "name_api": "Found in the treasure room of the Windy Cave in Lornar's Pass.",
        "how": {
-        "fr": "Une volute d'énergie du Foefire et des Brumes, parfois trouvée en tuant ceux qui sont maudits par le Foefire.",
-        "en": "A wisp of Foefire and Mists energy occasionally found when killing those cursed by the Foefire"
+        "fr": "Dans la salle au trésor de la Windy Cave, au Passage de Lornar",
+        "en": "Found in the treasure room of the Windy Cave in Lornar's Pass"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Soft_Fur",
        "cost": {
         "karma": 2380
@@ -76573,14 +76573,14 @@
       },
       {
        "bit": 17,
-       "name": "Tomb of the Primeval Kings Fragment",
+       "name": "Ogden's Notes",
        "name_api": "Speak with Ogden in the Durmand Priory in Lornar's Pass to get his notes.",
        "how": {
-        "fr": "Un artefact imprégné d'énergie des Brumes, remis par Sage Salim dans Forgotten City of Tarir, au Bassin aurique, après avoir appris la capacité de maîtrise Exalted Acceptance.",
-        "en": "An artifact laced with Mists energy, granted by Sage Salim in the Forgotten City of Tarir in Auric Basin after training the Exalted Acceptance Mastery ability"
+        "fr": "Parle avec Ogden, au Durmand Priory au Passage de Lornar, pour obtenir ses notes.",
+        "en": "Speak with Ogden in the Durmand Priory in Lornar's Pass to get his notes"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ogden%27s_Notes",
        "cost": {
         "karma": 2380
@@ -76589,38 +76589,38 @@
       },
       {
        "bit": 18,
-       "name": "Celestial Cartographer's Gear",
+       "name": "Tuning Instruments",
        "name_api": "Take the long way around to loot this from the Grand Chest near Fryxx in Straits of Devastation.",
        "how": {
-        "fr": "Apporte le Sextant, l'Astrolabe, les Incomplete Star Charts et le Star Charter's Bag ainsi que les Ogden's Notes au Durmand Priory, et utilise le Cartographer's Workbench pour créer le Celestial Cartographer's Gear.",
-        "en": "Take the Sextant , Astrolabe , Incomplete Star Charts , and Star Charter's Bag along with Ogden's Notes to the Durmand Priory , and use the Cartographer's Workbench to create the Celestial Cartographer's Gear"
+        "fr": "Fais The Long Way Around pour récupérer ceci dans le Grand Chest près de Fryxx, au Détroit de la dévastation.",
+        "en": "Take The Long Way Around to loot this from the Grand Chest near Fryxx in Straits of Devastation"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Tuning_Instruments"
       },
       {
        "bit": 19,
-       "name": "Sextant",
+       "name": "Watchwork Pivots",
        "name_api": "Found in the chest at the end of the Aetherblade Fractal.",
        "how": {
-        "fr": "Apporte le Counterweighting Mechanism, les Dredge Cogs, la Magnification Lens et le Hollow Saurian Bone au Durmand Priory et utilise le Cartographer's Workbench pour fabriquer un Sextant.",
-        "en": "Take the Counterweighting Mechanism , Dredge Cogs , Magnification Lens , and Hollow Saurian Bone to the Durmand Priory and use the Cartographer's Workbench to craft a Sextant"
+        "fr": "Dans le coffre à la fin de l'Aetherblade Fractal",
+        "en": "Found in the chest at the end of the Aetherblade Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Watchwork_Pivots"
       },
       {
        "bit": 20,
-       "name": "Counterweighting Mechanism",
+       "name": "Tyrian Constellation Almanac",
        "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
         "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
         "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Tyrian_Constellation_Almanac",
        "cost": {
         "elonian_leather_square": 10,
@@ -76630,14 +76630,14 @@
       },
       {
        "bit": 21,
-       "name": "Weighted Golem Cube",
+       "name": "Human Constellation Chapter",
        "name_api": "Combine the four human star charts into the Human Constellation Chapter.",
        "how": {
-        "fr": "Dans le coffre après la défaite de l'Inquest Golem Mark II, au Mont Maelström",
-        "en": "Found in the chest after defeating the Inquest Golem Mark II in Mount Maelstrom"
+        "fr": "Combine les quatre cartes célestes humaines pour obtenir le Human Constellation Chapter.",
+        "en": "Combine the four human star charts into the Human Constellation Chapter"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Human_Constellation_Chapter",
        "cost": {
         "karma": 1020
@@ -76646,14 +76646,14 @@
       },
       {
        "bit": 22,
-       "name": "Dredge Cogs",
+       "name": "Star Chart: Eye of Grenth",
        "name_api": "During the night, use the Celestial Cartographer's Gear near the chest at the top of the Vizier's Tower in the Straits of Devastation to chart the human constellation Eye of Grenth.",
        "how": {
-        "fr": "Obtenu en pillant le Champion Dredge Commissar à Tribulation Rift, aux Falaises de Hantedraguerre",
-        "en": "Found by looting the Champion Dredge Commissar at Tribulation Rift in Dredgehaunt Cliffs"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre au sommet de la Vizier's Tower, au Détroit de la dévastation, pour cartographier la constellation humaine Eye of Grenth.",
+        "en": "During the night, use the Celestial Cartographer's Gear near the chest at the top of the Vizier's Tower in the Straits of Devastation to chart the human constellation Eye of Grenth"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Eye_of_Grenth",
        "cost": {
         "karma": 1020
@@ -76662,14 +76662,14 @@
       },
       {
        "bit": 23,
-       "name": "Magnification Lens",
+       "name": "Star Chart: Gnarl of Melandru",
        "name_api": "During the night, use the Celestial Cartographer's Gear near the Sylvan Chest after uncovering the secrets of the hidden garden in Mount Maelstrom to chart the human constellation, Gnarl of Melandru.",
        "how": {
-        "fr": "Obtenu en pillant l'Eye of Zhaitan en aidant le Pacte à prendre la Promenade of the Gods au Rivage maudit, ou pendant l'événement Kill the Eye of Zhaitan patrolling the King's Passage au Saut de Malchor. Réussir l'événement de défense des Gates of Arah donne aussi cet objet",
-        "en": "Found by looting the Eye of Zhaitan while helping the Pact capture the Promenade of the Gods in Cursed Shore or during the event Kill the Eye of Zhaitan patrolling the King's Passage in Malchor's Leap . Successfully completing the defense event for the Gates of Arah will also yield this item"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du Sylvan Chest après avoir percé les secrets du jardin caché du Mont Maelström, pour cartographier la constellation humaine Gnarl of Melandru.",
+        "en": "During the night, use the Celestial Cartographer's Gear near the Sylvan Chest after uncovering the secrets of the hidden garden in Mount Maelstrom to chart the human constellation, Gnarl of Melandru"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Gnarl_of_Melandru",
        "cost": {
         "karma": 1020
@@ -76678,14 +76678,14 @@
       },
       {
        "bit": 24,
-       "name": "Hollow Saurian Bone",
+       "name": "Star Chart: Hounds of Balthazar",
        "name_api": "During the night, use the Celestial Cartographer's Gear at Balthazar's Rest in Auric Basin.",
        "how": {
-        "fr": "Butin occasionnel des sauriens au Bassin aurique",
-        "en": "Occasionally looted from saurians in Auric Basin"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear à Balthazar's Rest, au Bassin aurique.",
+        "en": "During the night, use the Celestial Cartographer's Gear at Balthazar's Rest in Auric Basin"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Hounds_of_Balthazar",
        "cost": {
         "karma": 1020
@@ -76694,26 +76694,26 @@
       },
       {
        "bit": 25,
-       "name": "Astrolabe",
+       "name": "Star Chart: Kormir's Scales of Order",
        "name_api": "During the night, use the Celestial Cartographer's Gear in the Ossan Quarter of Divinity's Reach.",
        "how": {
-        "fr": "Apporte l'Ancient Charting Device, l'Ancient Planetarium Slide, le Finely Tuned Watchwork Mechanism et le Flawless Ancient Karka Husk au Durmand Priory et utilise le Cartographer's Workbench pour fabriquer un Astrolabe.",
-        "en": "Take the Ancient Charting Device , Ancient Planetarium Slide , Finely Tuned Watchwork Mechanism , and Flawless Ancient Karka Husk to the Durmand Priory and use the Cartographer's Workbench to craft an Astrolabe"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear dans l'Ossan Quarter du Promontoire divin.",
+        "en": "During the night, use the Celestial Cartographer's Gear in the Ossan Quarter of Divinity's Reach"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Kormir%27s_Scales_of_Order"
       },
       {
        "bit": 26,
-       "name": "Ancient Charting Device",
+       "name": "Charr Constellation Chapter",
        "name_api": "Combine the four charr star charts into the Charr Constellation Chapter.",
        "how": {
-        "fr": "Dans le coffre après la défaite de la statue de Dwayna, ou sur les Risen Priestess of Dwayna ou Risen Lieutenant à la Cathédrale des zéphyrs, au Saut de Malchor",
-        "en": "Found in the chest after defeating the statue of Dwayna or looted from Risen Priestess of Dwayna or Risen Lieutenant located at the Cathedral of Zephyrs in Malchor's Leap"
+        "fr": "Combine les quatre cartes célestes charr pour obtenir le Charr Constellation Chapter.",
+        "en": "Combine the four charr star charts into the Charr Constellation Chapter"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Charr_Constellation_Chapter",
        "cost": {
         "karma": 1020
@@ -76722,14 +76722,14 @@
       },
       {
        "bit": 27,
-       "name": "Ancient Planetarium Slide",
+       "name": "Star Chart: Cauldron",
        "name_api": "Use the Celestial Cartographer's Gear near the chest after completing the Urban Battleground Fractal.",
        "how": {
-        "fr": "Dans le coffre après la défaite du Legendary Risen High Wizard, au Rivage maudit",
-        "en": "Found in chest after defeating the Legendary Risen High Wizard in Cursed Shore"
+        "fr": "Utilise le Celestial Cartographer's Gear près du coffre après avoir terminé la fractale Urban Battleground",
+        "en": "Use the Celestial Cartographer's Gear near the chest after completing the Urban Battleground Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Cauldron",
        "cost": {
         "karma": 1020
@@ -76738,26 +76738,26 @@
       },
       {
        "bit": 28,
-       "name": "Finely Tuned Watchwork Mechanism",
+       "name": "Star Chart: Unnamed Soldier",
        "name_api": "During the night, use the Celestial Cartographer's Gear near the chest at the end of Wall Breach Blitz in Diessa Plateau.",
        "how": {
-        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
-        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre à la fin de Wall Breach Blitz, sur le Plateau de Diessa.",
+        "en": "During the night, use the Celestial Cartographer's Gear near the chest at the end of Wall Breach Blitz in Diessa Plateau"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Unnamed_Soldier"
       },
       {
        "bit": 29,
-       "name": "Tuning Instruments",
+       "name": "Star Chart: Siege Devourer",
        "name_api": "During the night, use the Celestial Cartographer's Gear at Steeleye Span in Blazeridge Steppes.",
        "how": {
-        "fr": "Fais The Long Way Around pour récupérer ceci dans le Grand Chest près de Fryxx, au Détroit de la dévastation.",
-        "en": "Take The Long Way Around to loot this from the Grand Chest near Fryxx in Straits of Devastation"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear à Steeleye Span, dans les Steppes de la strie flamboyante.",
+        "en": "During the night, use the Celestial Cartographer's Gear at Steeleye Span in Blazeridge Steppes"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Siege_Devourer",
        "cost": {
         "karma": 1020
@@ -76766,14 +76766,14 @@
       },
       {
        "bit": 30,
-       "name": "Watchwork Pivots",
+       "name": "Star Chart: Claw of the Khan-Ur",
        "name_api": "During the night, climb up to the canopy in Verdant Brink to the Pact wreckage above Stonetwist Paths and use the Celestial Cartographer's Gear near the Maguuma Mastery Insight.",
        "how": {
-        "fr": "Dans le coffre à la fin de l'Aetherblade Fractal",
-        "en": "Found in the chest at the end of the Aetherblade Fractal"
+        "fr": "De nuit, grimpe jusqu'à la canopée de l'Orée d'émeraude, vers l'épave du Pacte au-dessus de Stonetwist Paths, et utilise le Celestial Cartographer's Gear près du sanctuaire de maîtrise Maguuma.",
+        "en": "During the night, climb up to the canopy in Verdant Brink to the Pact wreckage above Stonetwist Paths and use the Celestial Cartographer's Gear near the Maguuma Mastery Insight"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Claw_of_the_Khan-Ur",
        "cost": {
         "karma": 1020
@@ -76782,14 +76782,14 @@
       },
       {
        "bit": 31,
-       "name": "Flawless Ancient Karka Husk",
+       "name": "Norn Constellation Chapter",
        "name_api": "Combine the four norn star charts into the Norn Constellation Chapter.",
        "how": {
-        "fr": "Dans le coffre après la défaite de la Legendary Karka Queen, à la Crique de Sud-Soleil",
-        "en": "Found in the chest after defeating the Legendary Karka Queen in Southsun Cove"
+        "fr": "Combine les quatre cartes célestes norn pour obtenir le Norn Constellation Chapter.",
+        "en": "Combine the four norn star charts into the Norn Constellation Chapter"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Norn_Constellation_Chapter",
        "cost": {
         "karma": 1020
@@ -76798,14 +76798,14 @@
       },
       {
        "bit": 32,
-       "name": "Incomplete Star Charts",
+       "name": "Star Chart: Great Spirit Bear",
        "name_api": "During the night, use the Celestial Cartographer's Gear near Shifting Waves, who stands in Snow Climb at Frostgorge Sound.",
        "how": {
-        "fr": "Dans le coffre de la salle au trésor du Collapsed Observatory, aux Collines de Kessex",
-        "en": "Found in the chest inside the treasure room of the Collapsed Observatory in Kessex Hills"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près de Shifting Waves, qui se tient à Snow Climb, au Détroit des gorges glacées.",
+        "en": "During the night, use the Celestial Cartographer's Gear near Shifting Waves , who stands in Snow Climb at Frostgorge Sound"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Great_Spirit_Bear",
        "cost": {
         "karma": 1020
@@ -76814,26 +76814,26 @@
       },
       {
        "bit": 33,
-       "name": "Star Charter's Bag",
+       "name": "Star Chart: Great Spirit Raven",
        "name_api": "During the night, use the Celestial Cartographer's Gear near the chest of the Griffonrook Run in Lornar's Pass.",
        "how": {
-        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
-        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre de Griffonrook Run, au Passage de Lornar.",
+        "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Griffonrook Run in Lornar's Pass"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Great_Spirit_Raven"
       },
       {
        "bit": 34,
-       "name": "Krait Oil",
+       "name": "Star Chart: Great Spirit Wolf",
        "name_api": "During the night, use the Celestial Cartographer's Gear near the chest of the Tribulation Rift Scaffolding in Dredgehaunt Cliffs.",
        "how": {
-        "fr": "Trouvé parfois en fouillant les possessions d'un krait",
-        "en": "Occasionally found while looting a krait 's possessions"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre de Tribulation Rift Scaffolding, aux Falaises de Hantedraguerre.",
+        "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Tribulation Rift Scaffolding in Dredgehaunt Cliffs"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Great_Spirit_Wolf",
        "cost": {
         "karma": 1020
@@ -76842,14 +76842,14 @@
       },
       {
        "bit": 35,
-       "name": "Swamp-Cured Leather",
+       "name": "Star Chart: Great Spirit Snow Leopard",
        "name_api": "During the night, use the Celestial Cartographer's Gear near the chest at the Shattered Ice Ruins in Frostgorge Sound.",
        "how": {
-        "fr": "Butin du Mossman dans la Swampland Fractal",
-        "en": "Looted from the Mossman in the Swampland Fractal"
+        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre des Shattered Ice Ruins, au Détroit des gorges glacées.",
+        "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Shattered Ice Ruins in Frostgorge Sound"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Star_Chart:_Great_Spirit_Snow_Leopard",
        "cost": {
         "karma": 1020
@@ -76858,14 +76858,14 @@
       },
       {
        "bit": 36,
-       "name": "Soft Fur",
+       "name": "Cosmic Power",
        "name_api": "Combine the Magic of the Elder Dragons, Power of the Ley Lines, Energy from the Mists, and a Vision Crystal to create the Cosmic Power.",
        "how": {
-        "fr": "Dans la salle au trésor de la Windy Cave, au Passage de Lornar",
-        "en": "Found in the treasure room of the Windy Cave in Lornar's Pass"
+        "fr": "Combine Magic of the Elder Dragons, Power of the Ley Lines, Energy of the Mists et un Vision Crystal pour créer le Cosmic Power.",
+        "en": "Combine the Magic of the Elder Dragons , Power of the Ley Lines , Energy of the Mists , and a Vision Crystal to create the Cosmic Power"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Cosmic_Power",
        "cost": {
         "karma": 1020
@@ -76874,50 +76874,50 @@
       },
       {
        "bit": 37,
-       "name": "Ogden's Notes",
+       "name": "Magic of the Elder Dragons",
        "name_api": "After gathering the four elder dragons' magic, combine them into the Magic of the Elder Dragons.",
        "how": {
-        "fr": "Parle avec Ogden, au Durmand Priory au Passage de Lornar, pour obtenir ses notes.",
-        "en": "Speak with Ogden in the Durmand Priory in Lornar's Pass to get his notes"
+        "fr": "Après avoir rassemblé la magie des quatre dragons ancestraux, combine-les en Magic of the Elder Dragons.",
+        "en": "After gathering the four elder dragons' magic, combine them into the Magic of the Elder Dragons"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Magic_of_the_Elder_Dragons"
       },
       {
        "bit": 38,
-       "name": "Tyrian Constellation Almanac",
+       "name": "Zhaitan's Magic",
        "name_api": "Obtained from the chest after defeating Tequatl the Sunless in Sparkfly Fen.",
        "how": {
-        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
-        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "Obtenu dans le coffre après avoir vaincu Tequatl the Sunless, au Marais de Lumillule",
+        "en": "Obtained from the chest after defeating Tequatl the Sunless in Sparkfly Fen"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Zhaitan%27s_Magic"
       },
       {
        "bit": 39,
-       "name": "Human Constellation Chapter",
+       "name": "Jormag's Magic",
        "name_api": "Obtained from the chest after defeating Claw of Jormag in Frostgorge Sound.",
        "how": {
-        "fr": "Combine les quatre cartes célestes humaines pour obtenir le Human Constellation Chapter.",
-        "en": "Combine the four human star charts into the Human Constellation Chapter"
+        "fr": "Obtenu dans le coffre après avoir vaincu Claw of Jormag, au Détroit des gorges glacées",
+        "en": "Obtained from the chest after defeating Claw of Jormag in Frostgorge Sound"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Jormag%27s_Magic"
       },
       {
        "bit": 40,
-       "name": "Star Chart: Eye of Grenth",
+       "name": "Kralkatorrik's Magic",
        "name_api": "Obtained from the chest after defeating the Shatterer in Blazeridge Steppes.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre au sommet de la Vizier's Tower, au Détroit de la dévastation, pour cartographier la constellation humaine Eye of Grenth.",
-        "en": "During the night, use the Celestial Cartographer's Gear near the chest at the top of the Vizier's Tower in the Straits of Devastation to chart the human constellation Eye of Grenth"
+        "fr": "Obtenu dans le coffre après avoir vaincu le Shatterer, dans les Steppes de la strie flamboyante",
+        "en": "Obtained from the chest after defeating the Shatterer in Blazeridge Steppes"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Kralkatorrik%27s_Magic",
        "cost": {
         "karma": 2380
@@ -76926,14 +76926,14 @@
       },
       {
        "bit": 41,
-       "name": "Star Chart: Gnarl of Melandru",
+       "name": "Mordremoth's Magic",
        "name_api": "Obtained from the chest after defeating Mordremoth in Dragon's Stand.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du Sylvan Chest après avoir percé les secrets du jardin caché du Mont Maelström, pour cartographier la constellation humaine Gnarl of Melandru.",
-        "en": "During the night, use the Celestial Cartographer's Gear near the Sylvan Chest after uncovering the secrets of the hidden garden in Mount Maelstrom to chart the human constellation, Gnarl of Melandru"
+        "fr": "Obtenu dans le coffre après avoir vaincu Mordremoth, au Repli du dragon. (Voir aussi Ley-Line Font Energy ci-dessous.)",
+        "en": "Obtained from the chest after defeating Mordremoth in Dragon's Stand . (See also Ley-Line Font Energy below.)"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Mordremoth%27s_Magic",
        "cost": {
         "karma": 2380
@@ -76942,14 +76942,14 @@
       },
       {
        "bit": 42,
-       "name": "Star Chart: Hounds of Balthazar",
+       "name": "Power of the Ley Lines",
        "name_api": "Combine the four energies to create the Power of the Ley Lines.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear à Balthazar's Rest, au Bassin aurique.",
-        "en": "During the night, use the Celestial Cartographer's Gear at Balthazar's Rest in Auric Basin"
+        "fr": "Combine les quatre énergies pour créer le Power of the Ley Lines.",
+        "en": "Combine the four energies to create the Power of the Ley Lines"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Power_of_the_Ley_Lines",
        "cost": {
         "karma": 2380
@@ -76958,14 +76958,14 @@
       },
       {
        "bit": 43,
-       "name": "Star Chart: Kormir's Scales of Order",
+       "name": "Ley-Line Hub Energy",
        "name_api": "Energy gathered from earning a rank of silver or better in the Ley-Line Run adventure in Tangled Depths.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear dans l'Ossan Quarter du Promontoire divin.",
-        "en": "During the night, use the Celestial Cartographer's Gear in the Ossan Quarter of Divinity's Reach"
+        "fr": "Énergie récoltée en obtenant un rang argent ou supérieur dans l'aventure « Ley-Line Run », aux Profondeurs verdoyantes",
+        "en": "Energy gathered from earning a rank of silver or better in the Ley-Line Run adventure in Tangled Depths"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ley-Line_Hub_Energy",
        "cost": {
         "karma": 2380
@@ -76974,26 +76974,26 @@
       },
       {
        "bit": 44,
-       "name": "Charr Constellation Chapter",
+       "name": "Ley-Line Stream Energy",
        "name_api": "Energy gathered while ley-line gliding through the Ley-Line Confluence in Tangled Depths.",
        "how": {
-        "fr": "Combine les quatre cartes célestes charr pour obtenir le Charr Constellation Chapter.",
-        "en": "Combine the four charr star charts into the Charr Constellation Chapter"
+        "fr": "Énergie récoltée en planant sur les lignes de force à travers le Ley-Line Confluence, aux Profondeurs verdoyantes",
+        "en": "Energy gathered while ley-line gliding through the Ley-Line Confluence in Tangled Depths"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ley-Line_Stream_Energy"
       },
       {
        "bit": 45,
-       "name": "Star Chart: Cauldron",
+       "name": "Exalted Energy",
        "name_api": "Energy gathered by earning rank silver or better in the Wings of Gold adventure located inside Auric Basin.",
        "how": {
-        "fr": "Utilise le Celestial Cartographer's Gear près du coffre après avoir terminé la fractale Urban Battleground",
-        "en": "Use the Celestial Cartographer's Gear near the chest after completing the Urban Battleground Fractal"
+        "fr": "Énergie recueillie en obtenant l'argent ou mieux à l'aventure On Wings of Gold, au Bassin aurique.",
+        "en": "Energy gathered by earning silver or better in the On Wings of Gold adventure located inside Auric Basin"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Exalted_Energy",
        "cost": {
         "karma": 2380
@@ -77002,14 +77002,14 @@
       },
       {
        "bit": 46,
-       "name": "Star Chart: Unnamed Soldier",
+       "name": "Ley-Line Font Energy",
        "name_api": "Energy gathered from communing with the hero challenge point near Serenity's Cove in Dragon's Stand.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre à la fin de Wall Breach Blitz, sur le Plateau de Diessa.",
-        "en": "During the night, use the Celestial Cartographer's Gear near the chest at the end of Wall Breach Blitz in Diessa Plateau"
+        "fr": "Énergie recueillie en communiant avec le point de défi de héros près de Serenity's Cove, au Repli du dragon.",
+        "en": "Energy gathered from communing with the hero challenge point near Serenity's Cove in Dragon's Stand"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ley-Line_Font_Energy",
        "cost": {
         "karma": 2380
@@ -77018,14 +77018,14 @@
       },
       {
        "bit": 47,
-       "name": "Star Chart: Siege Devourer",
+       "name": "Energy of the Mists",
        "name_api": "Combine the four Mists energies to create the Energy from the Mists.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear à Steeleye Span, dans les Steppes de la strie flamboyante.",
-        "en": "During the night, use the Celestial Cartographer's Gear at Steeleye Span in Blazeridge Steppes"
+        "fr": "Combine les quatre énergies des Brumes pour créer l'Energy of the Mists.",
+        "en": "Combine the four Mists energies to create the Energy of the Mists"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Energy_of_the_Mists",
        "cost": {
         "karma": 2380
@@ -77034,14 +77034,14 @@
       },
       {
        "bit": 48,
-       "name": "Star Chart: Claw of the Khan-Ur",
+       "name": "Whisper of Jade Wind",
        "name_api": "An artifact full of Mists energy found in the chest after defeating the Jade Maw in the Solid Ocean Fractal.",
        "how": {
-        "fr": "De nuit, grimpe jusqu'à la canopée de l'Orée d'émeraude, vers l'épave du Pacte au-dessus de Stonetwist Paths, et utilise le Celestial Cartographer's Gear près du sanctuaire de maîtrise Maguuma.",
-        "en": "During the night, climb up to the canopy in Verdant Brink to the Pact wreckage above Stonetwist Paths and use the Celestial Cartographer's Gear near the Maguuma Mastery Insight"
+        "fr": "Un artefact plein d'énergie des Brumes, trouvé dans le coffre après avoir vaincu Jade Maw dans Solid Ocean Fractal.",
+        "en": "An artifact full of Mists energy found in the chest after defeating the Jade Maw in the Solid Ocean Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Whisper_of_Jade_Wind",
        "cost": {
         "karma": 2380
@@ -77050,26 +77050,26 @@
       },
       {
        "bit": 49,
-       "name": "Norn Constellation Chapter",
+       "name": "Memory of the Ages",
        "name_api": "Mists energy found by communing with the Temple of Ages hero challenge in Queensdale.",
        "how": {
-        "fr": "Combine les quatre cartes célestes norn pour obtenir le Norn Constellation Chapter.",
-        "en": "Combine the four norn star charts into the Norn Constellation Chapter"
+        "fr": "Énergie des Brumes obtenue en communiant avec le défi de héros du Temple of the Ages, à la Vallée de la reine",
+        "en": "Mists energy found by communing with the Temple of the Ages hero challenge in Queensdale"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Memory_of_the_Ages"
       },
       {
        "bit": 50,
-       "name": "Star Chart: Great Spirit Bear",
+       "name": "Echo of the Foefire",
        "name_api": "A wisp of Foefire and Mists energy occasionally found when killing those cursed by the Foefire.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près de Shifting Waves, qui se tient à Snow Climb, au Détroit des gorges glacées.",
-        "en": "During the night, use the Celestial Cartographer's Gear near Shifting Waves , who stands in Snow Climb at Frostgorge Sound"
+        "fr": "Une volute d'énergie du Foefire et des Brumes, parfois trouvée en tuant ceux qui sont maudits par le Foefire.",
+        "en": "A wisp of Foefire and Mists energy occasionally found when killing those cursed by the Foefire"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Echo_of_the_Foefire",
        "cost": {
         "karma": 2380
@@ -77078,14 +77078,14 @@
       },
       {
        "bit": 51,
-       "name": "Star Chart: Great Spirit Raven",
+       "name": "Tomb of the Primeval Kings Fragment",
        "name_api": "An artifact laced with Mists energy, granted by Sage Salim in the Forgotten City of Tarir in Auric Basin after training the Exalted Acceptance Mastery ability.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre de Griffonrook Run, au Passage de Lornar.",
-        "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Griffonrook Run in Lornar's Pass"
+        "fr": "Un artefact imprégné d'énergie des Brumes, remis par Sage Salim dans Forgotten City of Tarir, au Bassin aurique, après avoir appris la capacité de maîtrise Exalted Acceptance.",
+        "en": "An artifact laced with Mists energy, granted by Sage Salim in the Forgotten City of Tarir in Auric Basin after training the Exalted Acceptance Mastery ability"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Tomb_of_the_Primeval_Kings_Fragment",
        "cost": {
         "karma": 2380
@@ -77094,14 +77094,14 @@
       },
       {
        "bit": 52,
-       "name": "Star Chart: Great Spirit Wolf",
+       "name": "Astralaria Vol. 4",
        "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track.",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre de Tribulation Rift Scaffolding, aux Falaises de Hantedraguerre.",
-        "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Tribulation Rift Scaffolding in Dredgehaunt Cliffs"
+        "fr": "Acheté auprès de Grandmaster Craftsman Hobbs après avoir entraîné la capacité Scholar of Secrets dans la piste de maîtrise Legendary Crafting",
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Scholar of Secrets ability in the Legendary Crafting Mastery Track"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Astralaria_Vol._4",
        "cost": {
         "karma": 2380
@@ -77110,14 +77110,14 @@
       },
       {
        "bit": 53,
-       "name": "Star Chart: Great Spirit Snow Leopard",
+       "name": "The Mechanism",
        "name_api": "The Mechanism",
        "how": {
-        "fr": "De nuit, utilise le Celestial Cartographer's Gear près du coffre des Shattered Ice Ruins, au Détroit des gorges glacées.",
-        "en": "During the night, use the Celestial Cartographer's Gear near the chest of the Shattered Ice Ruins in Frostgorge Sound"
+        "fr": "Fabriqué à partir d'une recette obtenue en terminant la collection Astralaria III: The Mechanism.",
+        "en": "Crafted from a recipe received by completing the Astralaria III: The Mechanism collection"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iv_the_cosmos.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "The_Mechanism",
        "cost": {
         "balanced_counterweight": 1,
@@ -77157,14 +77157,14 @@
      "items": [
       {
        "bit": 0,
-       "name": "The Apparatus",
+       "name": "Meteorite Ingot",
        "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Recycle cette arme pour obtenir son esprit, nécessaire pour fabriquer le palier suivant de ce précurseur légendaire",
-        "en": "Salvage this weapon to receive its spirit , needed to craft the next tier of this legendary precursor"
+        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion. (La recette produit 25 unités)",
+        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch . (Recipe produces 25)"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Meteorite_Ingot",
        "cost": {
         "meteorite_ore": 25,
@@ -77175,14 +77175,14 @@
       },
       {
        "bit": 1,
-       "name": "Astralaria Vol. 3",
+       "name": "Ultrahot Sphere",
        "name_api": "Use the Searing Cauldron near Ironhead Lake in Iron Marches to combine the Wyvern's Liquid Fire, Elemental Flames, Destroyer's Heat, a Flame Effigy Band, and a Fire Imbued Heart, to create the Ultra Hot Sphere.",
        "how": {
-        "fr": "Acheté auprès de Grandmaster Craftsman Hobbs après avoir entraîné la capacité Historian of the Armaments dans la piste de maîtrise Legendary Crafting",
-        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track"
+        "fr": "Utilise le Searing Cauldron près d'Ironhead Lake, aux Marais de fer, pour combiner le Wyvern's Liquid Fire, les Elemental Flames, le Destroyer's Heat, une Flame Effigy Embers et un Fire Imbued Heart afin de créer l'Ultra Hot Sphere",
+        "en": "Use the Searing Cauldron near Ironhead Lake in Iron Marches to combine the Wyvern's Liquid Fire , Elemental Flames , Destroyer's Heat , a Flame Effigy Embers , and a Fire Imbued Heart , to create the Ultra Hot Sphere"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ultrahot_Sphere",
        "cost": {
         "spirit_shard": 5,
@@ -77192,14 +77192,14 @@
       },
       {
        "bit": 2,
-       "name": "Ley-Line Bezoar",
+       "name": "Aurillium Capsule",
        "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Butin du coffre de fin de la méta Legendary Chak Gerent, aux Profondeurs verdoyantes",
-        "en": "Looted from the Legendary Chak Gerent map meta event completion chest in Tangled Depths"
+        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
+        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Aurillium_Capsule",
        "cost": {
         "sheet_of_aurillium": 100,
@@ -77211,50 +77211,50 @@
       },
       {
        "bit": 3,
-       "name": "Runed Sphere Casing",
+       "name": "Wyvern's Liquid Fire",
        "name_api": "Gathered by being struck by the Legendary Matriarch Wyvern's Fire Breath at Matriarch's Perch in the canopy of Verdant Brink during nighttime with the Aurillium Capsule in your inventory.",
        "how": {
-        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
-        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "Obtenu en étant frappé par le Fire Breath de la Legendary Matriarch Wyvern à Matriarch's Perch, dans la canopée de l'Orée d'émeraude, de nuit, avec l'Aurillium Capsule dans ton inventaire",
+        "en": "Gathered by being struck by the Legendary Matriarch Wyvern 's Fire Breath at Matriarch's Perch in the canopy of Verdant Brink during nighttime with the Aurillium Capsule in your inventory"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Wyvern%27s_Liquid_Fire"
       },
       {
        "bit": 4,
-       "name": "Tail of the Star God Fragment",
+       "name": "Thaumanova Flames Siphon",
        "name_api": "Offered for purchase by CLEAN Researcher Borpp at the Thaumanova Reactor in Metrica Province after successfully helping the CLEAN krewe.",
        "how": {
-        "fr": "Sur les grawls autour de la Tail of the Star God, aux Steppes de la strie flamboyante",
-        "en": "Found on the grawl around the Tail of the Star God in Blazeridge Steppes"
+        "fr": "En vente chez CLEAN Researcher Borpp au Thaumanova Reactor, dans la Province de Metrica, après avoir aidé la krewe CLEAN",
+        "en": "Offered for purchase by CLEAN Researcher Borpp at the Thaumanova Reactor in Metrica Province after successfully helping the CLEAN krewe"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Thaumanova_Flames_Siphon"
       },
       {
        "bit": 5,
-       "name": "Wondrous Compass",
+       "name": "Elemental Flames",
        "name_api": "Gathered by looting the Legendary Fire Elemental's chest in the Thaumanova Reactor of Metrica Province with the Thaumanova Flames Syphon in your inventory.",
        "how": {
-        "fr": "Apporte « Elder Dragons and Star Navigation Theories Vol. III », le Skritt Salvaged Compass, le Damaged Airship Compass et l'Ancient Orrian Compass chez Scarlet, à Cimesèche, et utilise son établi pour créer le Wondrous Compass.",
-        "en": "Take the \" Elder Dragons and Star Navigation Theories Vol. III ,\" the Skritt Salvaged Compass , the Damaged Airship Compass and the Ancient Orrian Compass to Scarlet 's home in Dry Top , and use her workbench to create the Wondrous Compass"
+        "fr": "Obtenu en pillant le coffre du Legendary Fire Elemental dans le Thaumanova Reactor de la Province de Metrica avec le Thaumanova Flames Siphon dans ton inventaire",
+        "en": "Gathered by looting the Legendary Fire Elemental 's chest in the Thaumanova Reactor of Metrica Province with the Thaumanova Flames Siphon in your inventory"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Elemental_Flames"
       },
       {
        "bit": 6,
-       "name": "Elder Dragons and Star Navigation Theories Vol. III",
+       "name": "Quartz Vial",
        "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Dans le coffre de la salle au trésor du Vexa's Lab, à la Montée de Flambecœur",
-        "en": "Found in the chest inside the treasure room of Vexa's Lab in Fireheart Rise"
+        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
+        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Quartz_Vial",
        "cost": {
         "charged_quartz_crystal": 5,
@@ -77266,26 +77266,26 @@
       },
       {
        "bit": 7,
-       "name": "Ancient Orrian Compass",
+       "name": "Destroyer's Heat",
        "name_api": "Gathered by looting the Megadestroyer's chest in Mount Maelstrom with the Quartz Vial in your inventory.",
        "how": {
-        "fr": "Butin du champion Risen Captain, dans la Chapel of Lady Glaive, au Détroit de la dévastation",
-        "en": "Looted from the Champion Risen Captain , found inside the Chapel of Lady Glaive in Straits of Devastation"
+        "fr": "Obtenu en pillant le coffre du Megadestroyer au Mont Maelström avec le Quartz Vial dans ton inventaire",
+        "en": "Gathered by looting the Megadestroyer 's chest in Mount Maelstrom with the Quartz Vial in your inventory"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Destroyer%27s_Heat"
       },
       {
        "bit": 8,
-       "name": "Damaged Airship Compass",
+       "name": "Obsidian Magma Container",
        "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Dans l'épave du dirigeable écrasé à Mossheart Walk, au Bassin aurique",
-        "en": "Found inside the wreckage of the airship crashed in Mossheart Walk in Auric Basin"
+        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
+        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Obsidian_Magma_Container",
        "cost": {
         "deldrimor_steel_ingot": 1,
@@ -77297,26 +77297,26 @@
       },
       {
        "bit": 9,
-       "name": "Salvaged Compass",
+       "name": "Flame Effigy Embers",
        "name_api": "Gathered by looting the Champion Flame Effigy in Fireheart Rise with the Obsidian Magma Container in your inventory.",
        "how": {
-        "fr": "Dans le coffre au bout de Drydock Scratch, aux Contrées sauvages d'argent",
-        "en": "Found in the chest at the end of Drydock Scratch in the Silverwastes"
+        "fr": "Obtenu en pillant le Champion Flame Effigy à la Montée de Flambecœur avec l'Obsidian Magma Container dans ton inventaire",
+        "en": "Gathered by looting the Champion Flame Effigy in Fireheart Rise with the Obsidian Magma Container in your inventory"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Flame_Effigy_Embers"
       },
       {
        "bit": 10,
-       "name": "Meteorite Ingot",
+       "name": "Mists Imbued Jar",
        "name_api": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion. (La recette produit 25 unités)",
-        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch . (Recipe produces 25)"
+        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
+        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Mists_Imbued_Jar",
        "cost": {
         "vial_of_condensed_mists_essence": 3,
@@ -77329,50 +77329,50 @@
       },
       {
        "bit": 11,
-       "name": "Ultrahot Sphere",
+       "name": "Fire Imbued Heart",
        "name_api": "Gathered by looting the Legendary Imbued Shaman in the Volcanic Fractal while having the Mists Imbued Jar in your inventory.",
        "how": {
-        "fr": "Utilise le Searing Cauldron près d'Ironhead Lake, aux Marais de fer, pour combiner le Wyvern's Liquid Fire, les Elemental Flames, le Destroyer's Heat, une Flame Effigy Embers et un Fire Imbued Heart afin de créer l'Ultra Hot Sphere",
-        "en": "Use the Searing Cauldron near Ironhead Lake in Iron Marches to combine the Wyvern's Liquid Fire , Elemental Flames , Destroyer's Heat , a Flame Effigy Embers , and a Fire Imbued Heart , to create the Ultra Hot Sphere"
+        "fr": "Obtenu en pillant le Legendary Imbued Shaman dans la Volcanic Fractal avec le Mists Imbued Jar dans ton inventaire",
+        "en": "Gathered by looting the Legendary Imbued Shaman in the Volcanic Fractal while having the Mists Imbued Jar in your inventory"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Fire_Imbued_Heart"
       },
       {
        "bit": 12,
-       "name": "Wyvern's Liquid Fire",
+       "name": "Technomancy Blueprint",
        "name_api": "Take the Stabilizing Gyroscope, the Aetherblade Gearbox Mechanism, the Steam Cogs, and the Charr Helicopter Gearbox to the Craftsman's Workbench in the Durmand Priory library to create the Technomancy Blueprint.",
        "how": {
-        "fr": "Obtenu en étant frappé par le Fire Breath de la Legendary Matriarch Wyvern à Matriarch's Perch, dans la canopée de l'Orée d'émeraude, de nuit, avec l'Aurillium Capsule dans ton inventaire",
-        "en": "Gathered by being struck by the Legendary Matriarch Wyvern 's Fire Breath at Matriarch's Perch in the canopy of Verdant Brink during nighttime with the Aurillium Capsule in your inventory"
+        "fr": "Apporte le Stabilizing Gyroscope, l'Aetherblade Gearbox Mechanism, les Steam Cogs et la Charr Helicopter Gearbox au Craftsman's Workbench de la bibliothèque du Durmand Priory pour créer le Technomancy Blueprint.",
+        "en": "Take the Stabilizing Gyroscope , the Aetherblade Gearbox Mechanism , the Steam Cogs , and the Charr Helicopter Gearbox to the Craftsman's Workbench in the Durmand Priory library to create the Technomancy Blueprint"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Technomancy_Blueprint"
       },
       {
        "bit": 13,
-       "name": "Aurillium Capsule",
+       "name": "Stabilizing Gyroscope",
        "name_api": "Found in the chest at the end of the Molten Boss Fractal after defeating the leaders of the Molten Alliance.",
        "how": {
-        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
-        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "Dans le coffre à la fin de la Molten Boss Fractal, après la défaite des chefs de la Molten Alliance",
+        "en": "Found in the chest at the end of the Molten Boss Fractal after defeating the leaders of the Molten Alliance"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Stabilizing_Gyroscope"
       },
       {
        "bit": 14,
-       "name": "Elemental Flames",
+       "name": "Aetherblade Gearbox Mechanism",
        "name_api": "Found in the chest at the top of the Second Aetherblade Site in Gendarran Fields.",
        "how": {
-        "fr": "Obtenu en pillant le coffre du Legendary Fire Elemental dans le Thaumanova Reactor de la Province de Metrica avec le Thaumanova Flames Siphon dans ton inventaire",
-        "en": "Gathered by looting the Legendary Fire Elemental 's chest in the Thaumanova Reactor of Metrica Province with the Thaumanova Flames Siphon in your inventory"
+        "fr": "Dans le coffre au sommet du Second Aetherblade Site, aux Champs de Gendarran",
+        "en": "Found in the chest at the top of the Second Aetherblade Site in Gendarran Fields"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Aetherblade_Gearbox_Mechanism",
        "cost": {
         "karma": 1020
@@ -77381,26 +77381,26 @@
       },
       {
        "bit": 15,
-       "name": "Thaumanova Flames Siphon",
+       "name": "Steam Cogs",
        "name_api": "Harvested from steam creatures.",
        "how": {
-        "fr": "En vente chez CLEAN Researcher Borpp au Thaumanova Reactor, dans la Province de Metrica, après avoir aidé la krewe CLEAN",
-        "en": "Offered for purchase by CLEAN Researcher Borpp at the Thaumanova Reactor in Metrica Province after successfully helping the CLEAN krewe"
+        "fr": "Récolté sur les créatures de vapeur",
+        "en": "Harvested from steam creatures"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Steam_Cogs"
       },
       {
        "bit": 16,
-       "name": "Destroyer's Heat",
+       "name": "Charr Helicopter Gearbox",
        "name_api": "Salvaged from the charr helicopter entangled in vines in the northeast of the SCAR Field Operations in Tangled Depths.",
        "how": {
-        "fr": "Obtenu en pillant le coffre du Megadestroyer au Mont Maelström avec le Quartz Vial dans ton inventaire",
-        "en": "Gathered by looting the Megadestroyer 's chest in Mount Maelstrom with the Quartz Vial in your inventory"
+        "fr": "Récupéré en recyclant l'hélicoptère charr pris dans les lianes au nord-est de SCAR Field Operations, aux Profondeurs verdoyantes",
+        "en": "Salvaged from the charr helicopter entangled in vines in the northeast of the SCAR Field Operations in Tangled Depths"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Charr_Helicopter_Gearbox",
        "cost": {
         "karma": 1020
@@ -77409,26 +77409,26 @@
       },
       {
        "bit": 17,
-       "name": "Quartz Vial",
+       "name": "Mists Enchanted Mechanism",
        "name_api": "Found in the chest at the end of the Uncategorized fractal.",
        "how": {
-        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
-        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "Dans le coffre à la fin de l'Uncategorized Fractal",
+        "en": "Found in the chest at the end of Uncategorized Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Mists_Enchanted_Mechanism"
       },
       {
        "bit": 18,
-       "name": "Flame Effigy Embers",
+       "name": "Elder Dragons and Star Navigation Theories Vol. III",
        "name_api": "Found in the chest inside the treasure room of Vexa's Lab in Fireheart Rise.",
        "how": {
-        "fr": "Obtenu en pillant le Champion Flame Effigy à la Montée de Flambecœur avec l'Obsidian Magma Container dans ton inventaire",
-        "en": "Gathered by looting the Champion Flame Effigy in Fireheart Rise with the Obsidian Magma Container in your inventory"
+        "fr": "Dans le coffre de la salle au trésor du Vexa's Lab, à la Montée de Flambecœur",
+        "en": "Found in the chest inside the treasure room of Vexa's Lab in Fireheart Rise"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Elder_Dragons_and_Star_Navigation_Theories_Vol._III",
        "cost": {
         "karma": 1020
@@ -77437,26 +77437,26 @@
       },
       {
        "bit": 19,
-       "name": "Obsidian Magma Container",
+       "name": "Ancient Orrian Compass",
        "name_api": "Looted from the Champion Risen Captain, found inside the Chapel of Lady Glaive in Straits of Devastation.",
        "how": {
-        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
-        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "Butin du champion Risen Captain, dans la Chapel of Lady Glaive, au Détroit de la dévastation",
+        "en": "Looted from the Champion Risen Captain , found inside the Chapel of Lady Glaive in Straits of Devastation"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ancient_Orrian_Compass"
       },
       {
        "bit": 20,
-       "name": "Fire Imbued Heart",
+       "name": "Damaged Airship Compass",
        "name_api": "Found inside the wreckage of the airship crashed in Mossheart Walk in Auric Basin.",
        "how": {
-        "fr": "Obtenu en pillant le Legendary Imbued Shaman dans la Volcanic Fractal avec le Mists Imbued Jar dans ton inventaire",
-        "en": "Gathered by looting the Legendary Imbued Shaman in the Volcanic Fractal while having the Mists Imbued Jar in your inventory"
+        "fr": "Dans l'épave du dirigeable écrasé à Mossheart Walk, au Bassin aurique",
+        "en": "Found inside the wreckage of the airship crashed in Mossheart Walk in Auric Basin"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Damaged_Airship_Compass",
        "cost": {
         "karma": 1020
@@ -77465,38 +77465,38 @@
       },
       {
        "bit": 21,
-       "name": "Mists Imbued Jar",
+       "name": "Salvaged Compass",
        "name_api": "Found in the chest at the end of Drydock Scratch in the Silverwastes.",
        "how": {
-        "fr": "La recette se trouve dans les recettes Heat Containment Units, vendues par Grandmaster Craftsman Hobbs à l'Arche du Lion",
-        "en": "The recipe for this is contained in the Heat Containment Units recipes, offered for sale by Grandmaster Craftsman Hobbs in Lion's Arch"
+        "fr": "Dans le coffre au bout de Drydock Scratch, aux Contrées sauvages d'argent",
+        "en": "Found in the chest at the end of Drydock Scratch in the Silverwastes"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Salvaged_Compass"
       },
       {
        "bit": 22,
-       "name": "Rune Enchanted Rings",
+       "name": "Wondrous Compass",
        "name_api": "Take the \"Elder Dragons and Star Navigation Theories Vol. III,\" the Skritt Salvaged Compass, the Ancient Orrian Compass, and the Damaged Airship Compass to Scarlet's home in Dry Top, and use her workbench to create the Wondrous Compass.",
+       "how": {
+        "fr": "Apporte « Elder Dragons and Star Navigation Theories Vol. III », le Skritt Salvaged Compass, le Damaged Airship Compass et l'Ancient Orrian Compass chez Scarlet, à Cimesèche, et utilise son établi pour créer le Wondrous Compass.",
+        "en": "Take the \" Elder Dragons and Star Navigation Theories Vol. III ,\" the Skritt Salvaged Compass , the Damaged Airship Compass and the Ancient Orrian Compass to Scarlet 's home in Dry Top , and use her workbench to create the Wondrous Compass"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Wondrous_Compass"
+      },
+      {
+       "bit": 23,
+       "name": "Rune Enchanted Rings",
+       "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
         "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
         "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
-       "wiki": "Wondrous_Compass"
-      },
-      {
-       "bit": 23,
-       "name": "Pact Airship Strut",
-       "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
-       "how": {
-        "fr": "Obtenu en terminant l'aventure « Flying Circus » à l'Orée d'émeraude avec un rang argent ou supérieur",
-        "en": "Gained by completing the Flying Circus adventure in Verdant Brink with a rank of silver or better"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Rune_Enchanted_Rings",
        "cost": {
         "orichalcum_ingot": 15
@@ -77505,14 +77505,14 @@
       },
       {
        "bit": 24,
-       "name": "Divinity's Reach's Garden Rings",
+       "name": "Pact Airship Strut",
        "name_api": "Gained by completing the Flying Circus adventure in Verdant Brink with a rank of silver or better.",
        "how": {
-        "fr": "Médite devant les anneaux du jardin central du Promontoire divin",
-        "en": "Ponder the rings in the central garden in Divinity's Reach"
+        "fr": "Obtenu en terminant l'aventure « Flying Circus » à l'Orée d'émeraude avec un rang argent ou supérieur",
+        "en": "Gained by completing the Flying Circus adventure in Verdant Brink with a rank of silver or better"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Pact_Airship_Strut",
        "cost": {
         "karma": 1020
@@ -77521,26 +77521,26 @@
       },
       {
        "bit": 25,
-       "name": "Cosmic Mechanism",
+       "name": "Divinity's Reach's Garden Rings",
        "name_api": "Ponder the rings in the central garden in Divinity's Reach.",
        "how": {
-        "fr": "Apporte le Mists Enchanted Mechanism, le Technomancy Blueprint, l'Ancient Runed Tablet et 10 Meteorite Ingots au Craftsman's Workbench de la bibliothèque du Durmand Priory pour créer le Cosmic Mechanism.",
-        "en": "Take the Mists Enchanted Mechanism , the Technomancy Blueprint , the Ancient Runed Tablet and 10 Meteorite Ingots to the Craftsman's Workbench in the Durmand Priory Library to create the Cosmic Mechanism"
+        "fr": "Médite devant les anneaux du jardin central du Promontoire divin",
+        "en": "Ponder the rings in the central garden in Divinity's Reach"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Divinity%27s_Reach%27s_Garden_Rings"
       },
       {
        "bit": 26,
-       "name": "Ancient Runed Tablet",
+       "name": "Tail of the Star God Fragment",
        "name_api": "Found on the grawl around the Tail of the Star God in Blazeridge Steppes.",
        "how": {
-        "fr": "Dans le coffre d'Admiral Taidha Covington après l'avoir vaincue sur Laughing Gull Island, à la Côte de la marée sanglante",
-        "en": "Found in Admiral Taidha Covington 's chest after defeating her on Laughing Gull Island in Bloodtide Coast"
+        "fr": "Sur les grawls autour de la Tail of the Star God, aux Steppes de la strie flamboyante",
+        "en": "Found on the grawl around the Tail of the Star God in Blazeridge Steppes"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Tail_of_the_Star_God_Fragment",
        "cost": {
         "karma": 1020
@@ -77549,14 +77549,14 @@
       },
       {
        "bit": 27,
-       "name": "Mists Enchanted Mechanism",
+       "name": "Ley-Line Bezoar",
        "name_api": "Looted from the Legendary Chak Gerent in Tangled Depths.",
        "how": {
-        "fr": "Dans le coffre à la fin de l'Uncategorized Fractal",
-        "en": "Found in the chest at the end of Uncategorized Fractal"
+        "fr": "Butin du coffre de fin de la méta Legendary Chak Gerent, aux Profondeurs verdoyantes",
+        "en": "Looted from the Legendary Chak Gerent map meta event completion chest in Tangled Depths"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ley-Line_Bezoar",
        "cost": {
         "karma": 1020
@@ -77565,14 +77565,14 @@
       },
       {
        "bit": 28,
-       "name": "Technomancy Blueprint",
+       "name": "Runed Sphere Casing",
        "name_api": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch.",
        "how": {
-        "fr": "Apporte le Stabilizing Gyroscope, l'Aetherblade Gearbox Mechanism, les Steam Cogs et la Charr Helicopter Gearbox au Craftsman's Workbench de la bibliothèque du Durmand Priory pour créer le Technomancy Blueprint.",
-        "en": "Take the Stabilizing Gyroscope , the Aetherblade Gearbox Mechanism , the Steam Cogs , and the Charr Helicopter Gearbox to the Craftsman's Workbench in the Durmand Priory library to create the Technomancy Blueprint"
+        "fr": "Achète cette recette auprès de Grandmaster Craftsman Hobbs, à l'Arche du Lion",
+        "en": "Purchase this recipe from Grandmaster Craftsman Hobbs in Lion's Arch"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Runed_Sphere_Casing",
        "cost": {
         "deldrimor_steel_ingot": 1,
@@ -77583,14 +77583,14 @@
       },
       {
        "bit": 29,
-       "name": "Stabilizing Gyroscope",
+       "name": "Ancient Runed Tablet",
        "name_api": "Found in Admiral Taidha Covington's chest after defeating her on Laughing Gull Island in Bloodtide Coast.",
        "how": {
-        "fr": "Dans le coffre à la fin de la Molten Boss Fractal, après la défaite des chefs de la Molten Alliance",
-        "en": "Found in the chest at the end of the Molten Boss Fractal after defeating the leaders of the Molten Alliance"
+        "fr": "Dans le coffre d'Admiral Taidha Covington après l'avoir vaincue sur Laughing Gull Island, à la Côte de la marée sanglante",
+        "en": "Found in Admiral Taidha Covington 's chest after defeating her on Laughing Gull Island in Bloodtide Coast"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ancient_Runed_Tablet",
        "cost": {
         "karma": 1020
@@ -77599,14 +77599,14 @@
       },
       {
        "bit": 30,
-       "name": "Aetherblade Gearbox Mechanism",
+       "name": "Cosmic Mechanism",
        "name_api": "Take the Mist Enchanted Mechanism, the Technomancy Blueprint, the Ancient Runed Tablet and 10 Meteorite Ingots to the Craftsman's Workbench in the Durmand Priory Library to create the Cosmic Mechanism.",
        "how": {
-        "fr": "Dans le coffre au sommet du Second Aetherblade Site, aux Champs de Gendarran",
-        "en": "Found in the chest at the top of the Second Aetherblade Site in Gendarran Fields"
+        "fr": "Apporte le Mists Enchanted Mechanism, le Technomancy Blueprint, l'Ancient Runed Tablet et 10 Meteorite Ingots au Craftsman's Workbench de la bibliothèque du Durmand Priory pour créer le Cosmic Mechanism.",
+        "en": "Take the Mists Enchanted Mechanism , the Technomancy Blueprint , the Ancient Runed Tablet and 10 Meteorite Ingots to the Craftsman's Workbench in the Durmand Priory Library to create the Cosmic Mechanism"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Cosmic_Mechanism",
        "cost": {
         "karma": 1020
@@ -77615,14 +77615,14 @@
       },
       {
        "bit": 31,
-       "name": "Steam Cogs",
+       "name": "Astralaria Vol. 3",
        "name_api": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track.",
        "how": {
-        "fr": "Récolté sur les créatures de vapeur",
-        "en": "Harvested from steam creatures"
+        "fr": "Acheté auprès de Grandmaster Craftsman Hobbs après avoir entraîné la capacité Historian of the Armaments dans la piste de maîtrise Legendary Crafting",
+        "en": "Purchased from Grandmaster Craftsman Hobbs after training the Historian of the Armaments ability in the Legendary Crafting Mastery Track"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Astralaria_Vol._3",
        "cost": {
         "karma": 1020
@@ -77631,14 +77631,14 @@
       },
       {
        "bit": 32,
-       "name": "Charr Helicopter Gearbox",
+       "name": "The Apparatus",
        "name_api": "The Apparatus",
        "how": {
-        "fr": "Récupéré en recyclant l'hélicoptère charr pris dans les lianes au nord-est de SCAR Field Operations, aux Profondeurs verdoyantes",
-        "en": "Salvaged from the charr helicopter entangled in vines in the northeast of the SCAR Field Operations in Tangled Depths"
+        "fr": "Recycle cette arme pour obtenir son esprit, nécessaire pour fabriquer le palier suivant de ce précurseur légendaire",
+        "en": "Salvage this weapon to receive its spirit , needed to craft the next tier of this legendary precursor"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/astralaria_*.html",
+       "how_ref": "ressources/wiki/astralaria_iii_the_mechanism.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "The_Apparatus",
        "cost": {
         "jar_of_luminesce_polish": 1,
@@ -78242,62 +78242,62 @@
      "items": [
       {
        "bit": 0,
-       "name": "Dwarven Spell Trap",
+       "name": "Transcendent Energy",
        "name_api": "Take the Charged Dwarven Spell Trap, Energized Soul Battery Fragment, Case of Corrupted Phials, and Chaotic Magic to the Metal Forest on Pyrite Peninsula in Malchor's Leap to combine them into Transcendent Energy.",
+       "how": {
+        "fr": "Apporte le Charged Dwarven Spell Trap, l'Energized Soul Battery Fragment, la Case of Corrupted Crystalline Phials et les Chaotic Magics à la Metal Forest, sur Pyrite Peninsula, au Saut de Malchor, pour les combiner en Transcendent Energy.",
+        "en": "Take the Charged Dwarven Spell Trap , Energized Soul Battery Fragment , Case of Corrupted Crystalline Phials , and Chaotic Magics to the Metal Forest on Pyrite Peninsula in Malchor's Leap to combine them into Transcendent Energy"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Transcendent_Energy"
+      },
+      {
+       "bit": 1,
+       "name": "Dwarven Spell Trap",
+       "name_api": "Speak with Ogden, in the Durmand Priory within Lornar's Pass, to obtain this.",
        "how": {
         "fr": "Parle avec Ogden, au Durmand Priory au Passage de Lornar, pour l'obtenir.",
         "en": "Speak with Ogden , in the Durmand Priory within Lornar's Pass , to obtain this"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Transcendent_Energy"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Dwarven_Spell_Trap"
       },
       {
-       "bit": 1,
+       "bit": 2,
        "name": "Fleshreaver's Magic",
-       "name_api": "Speak with Ogden, in the Durmand Priory within Lornar's Pass, to obtain this.",
+       "name_api": "Activate the Dwarven Spell Trap before defeating the Fleshreaver inside the cave at Onager Bivouac in Fireheart Rise to collect its ancient magic.",
        "how": {
         "fr": "Active le Dwarven Spell Trap avant de vaincre le Fleshreaver dans la grotte d'Onager Bivouac, à la Montée de Flambecœur, pour recueillir sa magie ancienne.",
         "en": "Activate the Dwarven Spell Trap before defeating the Fleshreaver inside the cave at Onager Bivouac in Fireheart Rise to collect its ancient magic"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Dwarven_Spell_Trap"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Fleshreaver%27s_Magic"
       },
       {
-       "bit": 2,
+       "bit": 3,
        "name": "Karka Queen's Magic",
-       "name_api": "Activate the Dwarven Spell Trap before defeating the Fleshreaver inside the cave at Onager Bivouac in Fireheart Rise to collect its ancient magic.",
+       "name_api": "Activate the Dwarven Spell Trap before defeating the Legendary Karka Queen in Southsun Cove to collect her ancient magic.",
        "how": {
         "fr": "Active le Dwarven Spell Trap avant de vaincre la Legendary Karka Queen à la Crique de Sud-Soleil pour recueillir sa magie ancienne.",
         "en": "Activate the Dwarven Spell Trap before defeating the Legendary Karka Queen in Southsun Cove to collect her ancient magic"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Fleshreaver%27s_Magic"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Karka_Queen%27s_Magic"
       },
       {
-       "bit": 3,
+       "bit": 4,
        "name": "Fleshgrazer's Magic",
-       "name_api": "Activate the Dwarven Spell Trap before defeating the Legendary Karka Queen in Southsun Cove to collect her ancient magic.",
+       "name_api": "Activate the Dwarven Spell Trap before defeating Fleshgrazer inside Forsaken Fortune in Dredgehaunt Cliffs to collect its ancient magic.",
        "how": {
         "fr": "Active le Dwarven Spell Trap avant de vaincre Fleshgrazer dans Forsaken Fortune, aux Falaises de Hantedraguerre, pour recueillir sa magie ancienne.",
         "en": "Activate the Dwarven Spell Trap before defeating Fleshgrazer inside Forsaken Fortune in Dredgehaunt Cliffs to collect its ancient magic"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Karka_Queen%27s_Magic"
-      },
-      {
-       "bit": 4,
-       "name": "Charged Dwarven Spell Trap",
-       "name_api": "Activate the Dwarven Spell Trap before defeating Fleshgrazer inside Forsaken Fortune in Dredgehaunt Cliffs to collect its ancient magic.",
-       "how": {
-        "fr": "Utilise le Dwarven Spell Trap après avoir rassemblé les trois magies anciennes pour le charger complètement",
-        "en": "Use the Dwarven Spell Trap after gathering the three ancient magics to completely charge it"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Fleshgrazer%27s_Magic",
        "cost": {
         "karma": 2380
@@ -78366,50 +78366,50 @@
       },
       {
        "bit": 10,
-       "name": "Energized Soul Battery Fragment",
-       "name_api": "Speak with the Priestess of Dwayna, at the Plaza of Dwayna in Divinity's Reach, to purchase Pure Crystalline Phials.",
-       "how": {
-        "fr": "Récupère quatre énergies d'âme pour alimenter le Soul Battery Fragment",
-        "en": "Gather four soul energies to power the Soul Battery Fragment"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Pure_Crystalline_Phial"
-      },
-      {
-       "bit": 11,
        "name": "Pure Crystalline Phial",
-       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Veteran Branded Spark found east of Skara Braevus in Blazeridge Steppes.",
+       "name_api": "Speak with the Priestess of Dwayna, at the Plaza of Dwayna in Divinity's Reach, to purchase Pure Crystalline Phials.",
        "how": {
         "fr": "Parle avec la Priestess of Dwayna, sur la Plaza of Dwayna au Promontoire divin, pour acheter une Pure Crystalline Phial.",
         "en": "Speak with the Priestess of Dwayna , at the Plaza of Dwayna in Divinity's Reach , to purchase a Pure Crystalline Phial"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Branded_Crystalline_Phial"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Pure_Crystalline_Phial"
       },
       {
-       "bit": 12,
+       "bit": 11,
        "name": "Branded Crystalline Phial",
-       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Champion Icebrood Quaggan, one of which is located inside the cave in the south of Leopard's Tail Valley of Frostgorge Sound.",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Veteran Branded Spark found east of Skara Braevus in Blazeridge Steppes.",
        "how": {
         "fr": "Corromps une Pure Crystalline Phial dans ton inventaire en battant un vétéran Branded Spark à l'est de Skara Braevus, dans les Steppes de la strie flamboyante.",
         "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Veteran Branded Spark found east of Skara Braevus in Blazeridge Steppes"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Icebrood_Crystalline_Phial"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Branded_Crystalline_Phial"
       },
       {
-       "bit": 13,
+       "bit": 12,
        "name": "Icebrood Crystalline Phial",
-       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap.",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating a Champion Icebrood Quaggan, one of which is located inside the cave in the south of Leopard's Tail Valley of Frostgorge Sound.",
        "how": {
         "fr": "Corromps une Pure Crystalline Phial dans ton inventaire en battant le champion Icebrood Quaggan, dans la grotte au sud de Leopard's Tail Valley, au Détroit des gorges glacées.",
         "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Icebrood Quaggan located inside the cave in the south of Leopard's Tail Valley in Frostgorge Sound"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Icebrood_Crystalline_Phial"
+      },
+      {
+       "bit": 13,
+       "name": "Risen Crystalline Phial",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap.",
+       "how": {
+        "fr": "Corromps une Pure Crystalline Phial dans ton inventaire en battant le champion Risen Wraith à la Cathédrale de la lueur éternelle, au Saut de Malchor.",
+        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Risen_Crystalline_Phial",
        "cost": {
         "karma": 2380
@@ -78418,38 +78418,38 @@
       },
       {
        "bit": 14,
-       "name": "Risen Crystalline Phial",
-       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating Vinetooth Prime inside Vinetooth's Den in Auric Basin.",
-       "how": {
-        "fr": "Corromps une Pure Crystalline Phial dans ton inventaire en battant le champion Risen Wraith à la Cathédrale de la lueur éternelle, au Saut de Malchor.",
-        "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Champion Risen Wraith at the Cathedral of Eternal Radiance in Malchor's Leap"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Mordrem-Influenced_Crystalline_Phial"
-      },
-      {
-       "bit": 15,
        "name": "Mordrem-Influenced Crystalline Phial",
-       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Shadow Behemoth when it arises in Godslost Swamp of Queensdale.",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating Vinetooth Prime inside Vinetooth's Den in Auric Basin.",
        "how": {
         "fr": "Corromps une Pure Crystalline Phial dans ton inventaire en battant Vinetooth Prime dans le Vinetooth's Den, au Bassin aurique.",
         "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating Vinetooth Prime inside Vinetooth's Den in Auric Basin"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Dhuum-Touched_Crystalline_Phial"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Mordrem-Influenced_Crystalline_Phial"
       },
       {
-       "bit": 16,
+       "bit": 15,
        "name": "Dhuum-Touched Crystalline Phial",
-       "name_api": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials.",
+       "name_api": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Shadow Behemoth when it arises in Godslost Swamp of Queensdale.",
        "how": {
         "fr": "Corromps une Pure Crystalline Phial dans ton inventaire en battant le Shadow Behemoth lorsqu'il surgit au Marais d'Anathema, dans la Vallée de la reine.",
         "en": "Corrupt a Pure Crystalline Phial in your inventory by defeating the Shadow Behemoth when it arises in Godslost Swamp in Queensdale"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Dhuum-Touched_Crystalline_Phial"
+      },
+      {
+       "bit": 16,
+       "name": "Case of Corrupted Crystalline Phials",
+       "name_api": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials.",
+       "how": {
+        "fr": "Combine cinq fioles cristallines corrompues différentes pour obtenir le Case of Corrupted Crystalline Phials.",
+        "en": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Case_of_Corrupted_Crystalline_Phials",
        "cost": {
         "karma": 2380
@@ -78458,14 +78458,14 @@
       },
       {
        "bit": 17,
-       "name": "Case of Corrupted Crystalline Phials",
+       "name": "Chaotic Magics",
        "name_api": "Gather and combine the three chaotic energies with a piece of Crystallized Magic to create the Chaotic Magic.",
        "how": {
-        "fr": "Combine cinq fioles cristallines corrompues différentes pour obtenir le Case of Corrupted Crystalline Phials.",
-        "en": "Combine five different corrupted crystalline phials into the Case of Corrupted Crystalline Phials"
+        "fr": "Récupère les trois énergies chaotiques et combine-les avec un Crystallized Magic pour créer le Chaotic Magic",
+        "en": "Gather and combine the three chaotic energies with a piece of Crystallized Magic to create the Chaotic Magic"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Chaotic_Magics",
        "cost": {
         "karma": 2380
@@ -78530,26 +78530,26 @@
       },
       {
        "bit": 22,
-       "name": "Chaotic Magics",
+       "name": "Alchemical Catalyst",
        "name_api": "Take the Concentrated Volatile Substance, Ichor Alkahest, Arachnid Venom Decanter, and Concentrated Maguuma Bacteria to the Alchemy Mixing Table near Atlalli, Master Alchemist in the Hunting Banks of Timberline Falls, to create the Alchemical Catalyst.",
        "how": {
-        "fr": "Récupère les trois énergies chaotiques et combine-les avec un Crystallized Magic pour créer le Chaotic Magic",
-        "en": "Gather and combine the three chaotic energies with a piece of Crystallized Magic to create the Chaotic Magic"
+        "fr": "Apporte la Concentrated Volatile Substance, l'Ichor Alkahest, l'Arachnid Venom Decanter et les Concentrated Maguuma Bacteria à l'Alchemy Mixing Table près d'Atlalli, Master Alchemist, dans les Hunting Banks des Chutes de la canopée, pour créer l'Alchemical Catalyst.",
+        "en": "Take the Concentrated Volatile Substance, Ichor Alkahest, Arachnid Venom Decanter, and Concentrated Maguuma Bacteria to the Alchemy Mixing Table near Atlalli, Master Alchemist , in the Hunting Banks of Timberline Falls , to create the Alchemical Catalyst"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Alchemical_Catalyst"
       },
       {
        "bit": 23,
-       "name": "Transcendent Energy",
+       "name": "Concentrated Volatile Substance",
        "name_api": "With an Empty Hylek Flask in your inventory, mix the four volatile ingredients to form the Concentrated Volatile Substance.",
        "how": {
-        "fr": "Apporte le Charged Dwarven Spell Trap, l'Energized Soul Battery Fragment, la Case of Corrupted Crystalline Phials et les Chaotic Magics à la Metal Forest, sur Pyrite Peninsula, au Saut de Malchor, pour les combiner en Transcendent Energy.",
-        "en": "Take the Charged Dwarven Spell Trap , Energized Soul Battery Fragment , Case of Corrupted Crystalline Phials , and Chaotic Magics to the Metal Forest on Pyrite Peninsula in Malchor's Leap to combine them into Transcendent Energy"
+        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les quatre ingrédients volatils pour former la Concentrated Volatile Substance",
+        "en": "With an Empty Hylek Flask your inventory, mix the four volatile ingredients to form the Concentrated Volatile Substance"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Concentrated_Volatile_Substance"
       },
       {
@@ -78637,14 +78637,14 @@
       },
       {
        "bit": 29,
-       "name": "Concentrated Volatile Substance",
+       "name": "Ichor Alkahest",
        "name_api": "With an Empty Hylek Flask in your inventory, mix all four ichors together to create the Ichor Alkahest.",
        "how": {
-        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les quatre ingrédients volatils pour former la Concentrated Volatile Substance",
-        "en": "With an Empty Hylek Flask your inventory, mix the four volatile ingredients to form the Concentrated Volatile Substance"
+        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les quatre ichors pour créer l'Ichor Alkahest",
+        "en": "With an Empty Hylek Flask in your inventory, mix all four ichors together to create the Ichor Alkahest"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Ichor_Alkahest",
        "cost": {
         "karma": 1020
@@ -78721,14 +78721,14 @@
       },
       {
        "bit": 35,
-       "name": "Ichor Alkahest",
+       "name": "Arachnid Venom Decanter",
        "name_api": "With an Empty Hylek Flask in your inventory, mix the four spider venoms to create the Arachnid Venom Decanter.",
        "how": {
-        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les quatre ichors pour créer l'Ichor Alkahest",
-        "en": "With an Empty Hylek Flask in your inventory, mix all four ichors together to create the Ichor Alkahest"
+        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les quatre venins d'araignée pour créer l'Arachnid Venom Decanter",
+        "en": "With an Empty Hylek Flask in your inventory, mix the four spider venoms to create the Arachnid Venom Decanter"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Arachnid_Venom_Decanter",
        "cost": {
         "karma": 2380
@@ -78813,14 +78813,14 @@
       },
       {
        "bit": 41,
-       "name": "Arachnid Venom Decanter",
+       "name": "M-PEC",
        "name_api": "Speak with Jett, along the southern road exiting Griffonfall in Auric Basin, to obtain the M-PEC.",
        "how": {
-        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les quatre venins d'araignée pour créer l'Arachnid Venom Decanter",
-        "en": "With an Empty Hylek Flask in your inventory, mix the four spider venoms to create the Arachnid Venom Decanter"
+        "fr": "Parle avec Jett, sur la route sud qui sort de Griffonfall, au Bassin aurique, pour obtenir le M-PEC.",
+        "en": "Speak with Jett , along the southern road exiting Griffonfall in Auric Basin , to obtain the M-PEC"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "M-PEC",
        "cost": {
         "karma": 2380
@@ -78829,14 +78829,14 @@
       },
       {
        "bit": 42,
-       "name": "M-PEC",
+       "name": "Concentrated Maguuma Bacteria",
        "name_api": "With an Empty Hylek Flask in your inventory, mix the six jungle bacteria to create the Concentrated Maguuma Bacteria.",
        "how": {
-        "fr": "Parle avec Jett, sur la route sud qui sort de Griffonfall, au Bassin aurique, pour obtenir le M-PEC.",
-        "en": "Speak with Jett , along the southern road exiting Griffonfall in Auric Basin , to obtain the M-PEC"
+        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les six bactéries de la jungle pour créer la Concentrated Maguuma Bacteria",
+        "en": "With an Empty Hylek Flask in your inventory, mix the six jungle bacteria to create the Concentrated Maguuma Bacteria"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Concentrated_Maguuma_Bacteria"
       },
       {
@@ -78937,62 +78937,62 @@
       },
       {
        "bit": 49,
-       "name": "Concentrated Maguuma Bacteria",
+       "name": "Catalytic Converter",
        "name_api": "To complete the Catalytic Converter, combine the jungle dragon cores with the Incomplete Catalytic Converter and a Vision Crystal by channeling the Ancient Power Core inside the secret lab beneath the Decayed Hive in Tangled Depths.",
        "how": {
-        "fr": "Avec un Empty Hylek Flask dans ton inventaire, mélange les six bactéries de la jungle pour créer la Concentrated Maguuma Bacteria",
-        "en": "With an Empty Hylek Flask in your inventory, mix the six jungle bacteria to create the Concentrated Maguuma Bacteria"
+        "fr": "Pour terminer le Catalytic Converter, combine les noyaux du dragon de la jungle avec l'Incomplete Catalytic Converter et un Vision Crystal en canalisant l'Ancient Power Core dans le laboratoire secret sous la Decayed Hive, aux Profondeurs verdoyantes",
+        "en": "To complete the Catalytic Converter, combine the jungle dragon cores with the Incomplete Catalytic Converter and a Vision Crystal by channeling the Ancient Power Core inside the secret lab beneath the Decayed Hive in Tangled Depths"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Catalytic_Converter"
       },
       {
        "bit": 50,
-       "name": "Alchemical Catalyst",
-       "name_api": "Speak with G.O.X. 2.0 at Zinn's Office, located inside the Rata Novus Command Center in Tangeled Depths, to gain the Incomplete Catalytic Converter.",
-       "how": {
-        "fr": "Apporte la Concentrated Volatile Substance, l'Ichor Alkahest, l'Arachnid Venom Decanter et les Concentrated Maguuma Bacteria à l'Alchemy Mixing Table près d'Atlalli, Master Alchemist, dans les Hunting Banks des Chutes de la canopée, pour créer l'Alchemical Catalyst.",
-        "en": "Take the Concentrated Volatile Substance, Ichor Alkahest, Arachnid Venom Decanter, and Concentrated Maguuma Bacteria to the Alchemy Mixing Table near Atlalli, Master Alchemist , in the Hunting Banks of Timberline Falls , to create the Alchemical Catalyst"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Incomplete_Catalytic_Converter"
-      },
-      {
-       "bit": 51,
        "name": "Incomplete Catalytic Converter",
-       "name_api": "After obtaining the incomplete catalytic converter, gather the Blademaster's jungle dragon core by defeating Mordremoth's commander near the Central Blighting Tower in Dragon's Stand.",
+       "name_api": "Speak with G.O.X. 2.0 at Zinn's Office, located inside the Rata Novus Command Center in Tangeled Depths, to gain the Incomplete Catalytic Converter.",
        "how": {
         "fr": "Parle avec G.O.X. 2.0 au Zinn's Office, dans le Rata Novus Command Center, aux Profondeurs verdoyantes, pour obtenir l'Incomplete Catalytic Converter.",
         "en": "Speak with G.O.X. 2.0 at Zinn's Office, located inside the Rata Novus Command Center in Tangled Depths , to gain the Incomplete Catalytic Converter"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Blademaster%27s_Core"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Incomplete_Catalytic_Converter"
       },
       {
-       "bit": 52,
+       "bit": 51,
        "name": "Blademaster's Core",
-       "name_api": "After obtaining the incomplete catalytic converter, gather the Axemaster's jungle dragon core by defeating Mordremoth's commander near the Southern Blighting Tower in Dragon's Stand.",
+       "name_api": "After obtaining the incomplete catalytic converter, gather the Blademaster's jungle dragon core by defeating Mordremoth's commander near the Central Blighting Tower in Dragon's Stand.",
        "how": {
         "fr": "Après avoir obtenu l'Incomplete Catalytic Converter, recueille le noyau de dragon de la jungle du Blademaster en vainquant le commandant de Mordremoth près de la Tour viciée centrale, au Repli du dragon.",
         "en": "After obtaining the Incomplete Catalytic Converter , gather the Blademaster's jungle dragon core by defeating Mordremoth's commander near the Central Blighting Tower in Dragon's Stand"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Axemaster%27s_Core"
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Blademaster%27s_Core"
       },
       {
-       "bit": 53,
+       "bit": 52,
        "name": "Axemaster's Core",
-       "name_api": "After obtaining the incomplete catalytic converter, gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand.",
+       "name_api": "After obtaining the incomplete catalytic converter, gather the Axemaster's jungle dragon core by defeating Mordremoth's commander near the Southern Blighting Tower in Dragon's Stand.",
        "how": {
         "fr": "Après avoir obtenu l'Incomplete Catalytic Converter, recueille le noyau de dragon de la jungle de l'Axemaster en vainquant le commandant de Mordremoth près de Southern Blighting Tower, au Repli du dragon.",
         "en": "After obtaining the Incomplete Catalytic Converter , gather the Axemaster's jungle dragon core by defeating Mordremoth's commander near the Southern Blighting Tower in Dragon's Stand"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Axemaster%27s_Core"
+      },
+      {
+       "bit": 53,
+       "name": "Stavemaster's Core",
+       "name_api": "After obtaining the incomplete catalytic converter, gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand.",
+       "how": {
+        "fr": "Après avoir obtenu l'Incomplete Catalytic Converter, recueille le noyau de dragon de la jungle du Stavemaster en vainquant le commandant de Mordremoth près de la Tour viciée nord, au Repli du dragon.",
+        "en": "After obtaining the Incomplete Catalytic Converter , gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Stavemaster%27s_Core",
        "cost": {
         "karma": 2380
@@ -79001,26 +79001,26 @@
       },
       {
        "bit": 54,
-       "name": "Stavemaster's Core",
-       "name_api": "After obtaining the incomplete catalytic converter, gather Mordremoth's core by slaying the Elder Dragon in Dragon's Stand.",
-       "how": {
-        "fr": "Après avoir obtenu l'Incomplete Catalytic Converter, recueille le noyau de dragon de la jungle du Stavemaster en vainquant le commandant de Mordremoth près de la Tour viciée nord, au Repli du dragon.",
-        "en": "After obtaining the Incomplete Catalytic Converter , gather the Stavemaster's jungle dragon core by defeating Mordremoth's commander near the Northern Blighting Tower in Dragon's Stand"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Mordremoth%27s_Core"
-      },
-      {
-       "bit": 55,
        "name": "Mordremoth's Core",
-       "name_api": "Gather four soul energies to power the Soul Battery Fragment.",
+       "name_api": "After obtaining the incomplete catalytic converter, gather Mordremoth's core by slaying the Elder Dragon in Dragon's Stand.",
        "how": {
         "fr": "Après avoir obtenu l'Incomplete Catalytic Converter, recueille le noyau de Mordremoth en tuant le dragon ancestral au Repli du dragon.",
         "en": "After obtaining the Incomplete Catalytic Converter , gather Mordremoth 's core by slaying the Elder Dragon in Dragon's Stand"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Mordremoth%27s_Core"
+      },
+      {
+       "bit": 55,
+       "name": "Energized Soul Battery Fragment",
+       "name_api": "Gather four soul energies to power the Soul Battery Fragment.",
+       "how": {
+        "fr": "Récupère quatre énergies d'âme pour alimenter le Soul Battery Fragment",
+        "en": "Gather four soul energies to power the Soul Battery Fragment"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Energized_Soul_Battery_Fragment",
        "cost": {
         "karma": 2380
@@ -79029,14 +79029,14 @@
       },
       {
        "bit": 56,
-       "name": "Catalytic Converter",
+       "name": "Charged Dwarven Spell Trap",
        "name_api": "Use the Dwarven Spell Trap after gathering the three ancient magics to completely charge it.",
        "how": {
-        "fr": "Pour terminer le Catalytic Converter, combine les noyaux du dragon de la jungle avec l'Incomplete Catalytic Converter et un Vision Crystal en canalisant l'Ancient Power Core dans le laboratoire secret sous la Decayed Hive, aux Profondeurs verdoyantes",
-        "en": "To complete the Catalytic Converter, combine the jungle dragon cores with the Incomplete Catalytic Converter and a Vision Crystal by channeling the Ancient Power Core inside the secret lab beneath the Decayed Hive in Tangled Depths"
+        "fr": "Utilise le Dwarven Spell Trap après avoir rassemblé les trois magies anciennes pour le charger complètement",
+        "en": "Use the Dwarven Spell Trap after gathering the three ancient magics to completely charge it"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iv_the_catalyst.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Charged_Dwarven_Spell_Trap"
       },
       {
@@ -79685,278 +79685,278 @@
      "items": [
       {
        "bit": 0,
-       "name": "Empty Branded Crystal",
-       "name_api": "Take the five reactor components to the Snaff Memorial Lab in Rata Sum, and use the Synergetics Workstation to create the Experimental Reactor.",
-       "how": {
-        "fr": "Dans le coffre après la défaite du Shatterer, aux Steppes de la strie flamboyante",
-        "en": "Found in the chest after defeating the Shatterer in Blazeridge Steppes"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Experimental_Reactor"
-      },
-      {
-       "bit": 1,
-       "name": "Chak Crystal Charge",
-       "name_api": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province.",
-       "how": {
-        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal dans le nid de chaks près du Ley Line Node, aux Profondeurs verdoyantes",
-        "en": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley Line Node in Tangled Depths"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Damaged_Reactor_Housing"
-      },
-      {
-       "bit": 2,
-       "name": "Ley-Line Crystal Charge",
-       "name_api": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom.",
-       "how": {
-        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal après avoir atteint le rang argent ou mieux dans l'aventure Ley-Line Run, aux Profondeurs verdoyantes",
-        "en": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Golem_Capacitor"
-      },
-      {
-       "bit": 3,
-       "name": "Chaos Crystal Charge",
-       "name_api": "A reactor component found in the chest at the end of the Uncategorized Fractal.",
-       "how": {
-        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal près du coffre au bout de la Chaos Crystal Cavern, aux Marais de fer",
-        "en": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Old_Tom%27s_New_Reactor"
-      },
-      {
-       "bit": 4,
-       "name": "Omadd's Crystal Charge",
-       "name_api": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top.",
-       "how": {
-        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal près de l'Omadd's Machine, dans la Cavern of the Shining Lights, à Cimesèche",
-        "en": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Aspect_Elemental_Reactor"
-      },
-      {
-       "bit": 5,
-       "name": "Hexfoundry Crystal Charge",
-       "name_api": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal.",
-       "how": {
-        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal près du coffre de la fonderie sous Darkweather Rise, au Marais de Lumillule",
-        "en": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Aetherized_Capacitor"
-      },
-      {
-       "bit": 6,
-       "name": "Energized Branded Crystal",
-       "name_api": "Found in the chest at the end of the Thaumanova Reactor Fractal.",
-       "how": {
-        "fr": "Récupère les cinq charges de cristal pour alimenter l'Empty Branded Crystal.",
-        "en": "Collect the five crystal charges to energize the Empty Branded Crystal"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Thaumanova_Anomaly_Spark"
-      },
-      {
-       "bit": 7,
-       "name": "Aetherized Capacitor",
-       "name_api": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen.",
-       "how": {
-        "fr": "Un composant de réacteur pillé dans le coffre à la fin de Captain Mai Trin Boss Fractal.",
-        "en": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Perpetual_Energy_Coil"
-      },
-      {
-       "bit": 8,
-       "name": "Aspect Elemental Reactor",
-       "name_api": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom.",
-       "how": {
-        "fr": "Un composant de réacteur obtenu en pillant l'Inquest Experimental Aspect Suit à Cimesèche.",
-        "en": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Infinitely_Spiraled_Device"
-      },
-      {
-       "bit": 9,
-       "name": "Damaged Reactor Housing",
-       "name_api": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom.",
-       "how": {
-        "fr": "Un composant de réacteur pillé dans le coffre après avoir vaincu le Fire Elemental situé dans Thaumanova Reactor, dans la Province de Metrica.",
-        "en": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Sabotaged_Weapon_Parts"
-      },
-      {
-       "bit": 10,
-       "name": "Old Tom's New Reactor",
-       "name_api": "Collect the five crystal charges to energize the Empty Branded Crystal.",
-       "how": {
-        "fr": "Un composant de réacteur trouvé dans le coffre à la fin de Uncategorized Fractal.",
-        "en": "A reactor component found in the chest at the end of the Uncategorized Fractal"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Energized_Branded_Crystal"
-      },
-      {
-       "bit": 11,
-       "name": "Golem Capacitor",
-       "name_api": "Found in the chest after defeating the Shatterer in Blazeridge Steppes.",
-       "how": {
-        "fr": "Un composant de réacteur pillé dans le coffre après avoir vaincu Inquest Golem Mark II au Mont Maelström.",
-        "en": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Empty_Branded_Crystal"
-      },
-      {
-       "bit": 12,
        "name": "Experimental Reactor",
-       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top.",
+       "name_api": "Take the five reactor components to the Snaff Memorial Lab in Rata Sum, and use the Synergetics Workstation to create the Experimental Reactor.",
        "how": {
         "fr": "Apporte les cinq composants du réacteur au Snaff Memorial Lab de Rata Sum, et utilise la Synergetics Workstation pour créer l'Experimental Reactor.",
         "en": "Take the five reactor components to the Snaff Memorial Lab in Rata Sum, and use the Synergetics Workstation to create the Experimental Reactor"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Omadd%27s_Crystal_Charge"
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Experimental_Reactor"
       },
       {
-       "bit": 13,
-       "name": "Infinitely Spiraled Device",
-       "name_api": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley-Line Node in Tangled Depths.",
+       "bit": 1,
+       "name": "Damaged Reactor Housing",
+       "name_api": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province.",
        "how": {
-        "fr": "Obtenu en pillant le Champion Infinity Coil Commander au Mont Maelström",
-        "en": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom"
+        "fr": "Un composant de réacteur pillé dans le coffre après avoir vaincu le Fire Elemental situé dans Thaumanova Reactor, dans la Province de Metrica.",
+        "en": "A reactor component looted from the chest after defeating the Fire Elemental located in the Thaumanova Reactor of Metrica Province"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Chak_Crystal_Charge"
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Damaged_Reactor_Housing"
       },
       {
-       "bit": 14,
-       "name": "Sabotaged Weapon Parts",
-       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches.",
+       "bit": 2,
+       "name": "Golem Capacitor",
+       "name_api": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom.",
        "how": {
-        "fr": "S'achète auprès de Lightbringer Krentch après avoir aidé l'Ordre des Soupirs à saboter les essais d'armes de l'Inquisition sur le village hylek de Tzanopl Grounds, au Mont Maelström",
-        "en": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom"
+        "fr": "Un composant de réacteur pillé dans le coffre après avoir vaincu Inquest Golem Mark II au Mont Maelström.",
+        "en": "A reactor component looted from the chest after defeating Inquest Golem Mark II in Mount Maelstrom"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Chaos_Crystal_Charge"
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Golem_Capacitor"
       },
       {
-       "bit": 15,
-       "name": "Perpetual Energy Coil",
-       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen.",
+       "bit": 3,
+       "name": "Old Tom's New Reactor",
+       "name_api": "A reactor component found in the chest at the end of the Uncategorized Fractal.",
        "how": {
-        "fr": "Recette en vente chez Kamma après l'avoir aidée à tester son arme expérimentale à l'United Arcanist Lab, au Marais de Lumillule. Nécessite Energized Branded Crystal, Experimental Reactor, Infinitely Spiraled Device et Sabotaged Weapon Parts",
-        "en": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen. Requires Energized Branded Crystal , Experimental Reactor , Infinitely Spiraled Device and Sabotaged Weapon Parts"
+        "fr": "Un composant de réacteur trouvé dans le coffre à la fin de Uncategorized Fractal.",
+        "en": "A reactor component found in the chest at the end of the Uncategorized Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Hexfoundry_Crystal_Charge"
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Old_Tom%27s_New_Reactor"
       },
       {
-       "bit": 16,
-       "name": "Charged Auric Particles",
-       "name_api": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths.",
+       "bit": 4,
+       "name": "Aspect Elemental Reactor",
+       "name_api": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top.",
        "how": {
-        "fr": "Obtenu en atteignant un rang argent ou supérieur dans l'aventure « On Wings of Gold », au Bassin aurique",
-        "en": "Gathered by earning a rank of silver or better in the On Wings of Gold adventure in Auric Basin"
+        "fr": "Un composant de réacteur obtenu en pillant l'Inquest Experimental Aspect Suit à Cimesèche.",
+        "en": "A reactor component gathered from looting the Inquest Experimental Aspect Suit in Dry Top"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Ley-Line_Crystal_Charge"
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Aspect_Elemental_Reactor"
       },
       {
-       "bit": 17,
-       "name": "Golden Oxide Compound",
-       "name_api": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom.",
+       "bit": 5,
+       "name": "Aetherized Capacitor",
+       "name_api": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal.",
        "how": {
-        "fr": "Obtenu en pillant le Champion Gold Ooze dans la grotte de Westwatch Patch, au Bassin aurique",
-        "en": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin"
+        "fr": "Un composant de réacteur pillé dans le coffre à la fin de Captain Mai Trin Boss Fractal.",
+        "en": "A reactor component looted from the chest at the end of the Captain Mai Trin Boss Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Perplexing_Energized_Cube"
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Aetherized_Capacitor"
       },
       {
-       "bit": 18,
-       "name": "Ley-Line Mercuric Compound",
-       "name_api": "Purchase the recipe for the Unstable Energy Concoction from Atlalli the Master Alchemist in the Hunting Banks of Timberline Falls.",
-       "how": {
-        "fr": "Butin occasionnel des chak lobbers vétérans aux Profondeurs verdoyantes",
-        "en": "Occasionally looted from veteran chak lobbers in Tangled Depths"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Alkaline_Solution"
-      },
-      {
-       "bit": 19,
-       "name": "Nuhoch Saliva",
-       "name_api": "Gathered by earning a rank of silver or better in the Wings of Gold adventure in Auric Basin.",
-       "how": {
-        "fr": "Obtenu sur un Nuhoch Spittoon près du défi de héros de Stonetwist Paths, à l'Orée d'émeraude",
-        "en": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Charged_Auric_Particles"
-      },
-      {
-       "bit": 20,
-       "name": "Alkaline Solution",
-       "name_api": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin.",
-       "how": {
-        "fr": "Achète la recette de l'Unstable Energy Concoction à Atlalli, Master Alchemist, à Hunting Banks, aux Chutes de la canopée. Nécessite les 4 objets ci-dessus comme ingrédients",
-        "en": "Purchase the recipe for the Unstable Energy Concoction from Atlalli, Master Alchemist in the Hunting Banks of Timberline Falls. Requires the 4 items above as ingredients"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Golden_Oxide_Compound"
-      },
-      {
-       "bit": 21,
-       "name": "Perplexing Energized Cube",
-       "name_api": "Occasionally looted from veteran chak lobbers in Tangled Depths.",
-       "how": {
-        "fr": "Dans le coffre au fond de Cubular Fells, au Mont Maelström",
-        "en": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom"
-       },
-       "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
-       "wiki": "Ley-Line_Mercuric_Compound"
-      },
-      {
-       "bit": 22,
+       "bit": 6,
        "name": "Thaumanova Anomaly Spark",
-       "name_api": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink.",
+       "name_api": "Found in the chest at the end of the Thaumanova Reactor Fractal.",
        "how": {
         "fr": "Dans le coffre à la fin de la Thaumanova Reactor Fractal",
         "en": "Found in the chest at the end of the Thaumanova Reactor Fractal"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Thaumanova_Anomaly_Spark"
+      },
+      {
+       "bit": 7,
+       "name": "Perpetual Energy Coil",
+       "name_api": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen.",
+       "how": {
+        "fr": "Recette en vente chez Kamma après l'avoir aidée à tester son arme expérimentale à l'United Arcanist Lab, au Marais de Lumillule. Nécessite Energized Branded Crystal, Experimental Reactor, Infinitely Spiraled Device et Sabotaged Weapon Parts",
+        "en": "Recipe offered for purchase by Kamma after successfully helping her test her experimental weapon at the United Arcanist Lab in Sparkfly Fen. Requires Energized Branded Crystal , Experimental Reactor , Infinitely Spiraled Device and Sabotaged Weapon Parts"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Perpetual_Energy_Coil"
+      },
+      {
+       "bit": 8,
+       "name": "Infinitely Spiraled Device",
+       "name_api": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom.",
+       "how": {
+        "fr": "Obtenu en pillant le Champion Infinity Coil Commander au Mont Maelström",
+        "en": "Found by looting the Champion Infinity Coil Commander in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Infinitely_Spiraled_Device"
+      },
+      {
+       "bit": 9,
+       "name": "Sabotaged Weapon Parts",
+       "name_api": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom.",
+       "how": {
+        "fr": "S'achète auprès de Lightbringer Krentch après avoir aidé l'Ordre des Soupirs à saboter les essais d'armes de l'Inquisition sur le village hylek de Tzanopl Grounds, au Mont Maelström",
+        "en": "Purchase from Lightbringer Krentch after successfully helping the Order of Whispers sabotage Inquest weapon tests on the hylek village of Tzanopl Grounds in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Sabotaged_Weapon_Parts"
+      },
+      {
+       "bit": 10,
+       "name": "Energized Branded Crystal",
+       "name_api": "Collect the five crystal charges to energize the Empty Branded Crystal.",
+       "how": {
+        "fr": "Récupère les cinq charges de cristal pour alimenter l'Empty Branded Crystal.",
+        "en": "Collect the five crystal charges to energize the Empty Branded Crystal"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Energized_Branded_Crystal"
+      },
+      {
+       "bit": 11,
+       "name": "Empty Branded Crystal",
+       "name_api": "Found in the chest after defeating the Shatterer in Blazeridge Steppes.",
+       "how": {
+        "fr": "Dans le coffre après la défaite du Shatterer, aux Steppes de la strie flamboyante",
+        "en": "Found in the chest after defeating the Shatterer in Blazeridge Steppes"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Empty_Branded_Crystal"
+      },
+      {
+       "bit": 12,
+       "name": "Omadd's Crystal Charge",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top.",
+       "how": {
+        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal près de l'Omadd's Machine, dans la Cavern of the Shining Lights, à Cimesèche",
+        "en": "Use the Empty Branded Crystal to gain a crystal charge near Omadd's Machine at the Cavern of the Shining Lights in Dry Top"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Omadd%27s_Crystal_Charge"
+      },
+      {
+       "bit": 13,
+       "name": "Chak Crystal Charge",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley-Line Node in Tangled Depths.",
+       "how": {
+        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal dans le nid de chaks près du Ley Line Node, aux Profondeurs verdoyantes",
+        "en": "Use the Empty Branded Crystal to gain a crystal charge inside the chak nest near the Ley Line Node in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Chak_Crystal_Charge"
+      },
+      {
+       "bit": 14,
+       "name": "Chaos Crystal Charge",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches.",
+       "how": {
+        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal près du coffre au bout de la Chaos Crystal Cavern, aux Marais de fer",
+        "en": "Use the Empty Branded Crystal to gain a crystal charge near the chest at the end of the Chaos Crystal Cavern in Iron Marches"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Chaos_Crystal_Charge"
+      },
+      {
+       "bit": 15,
+       "name": "Hexfoundry Crystal Charge",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen.",
+       "how": {
+        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal près du coffre de la fonderie sous Darkweather Rise, au Marais de Lumillule",
+        "en": "Use the Empty Branded Crystal to gain a crystal charge near the chest of the foundry under Darkweather Rise in Sparkfly Fen"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Hexfoundry_Crystal_Charge"
+      },
+      {
+       "bit": 16,
+       "name": "Ley-Line Crystal Charge",
+       "name_api": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths.",
+       "how": {
+        "fr": "Utilise l'Empty Branded Crystal pour obtenir une charge de cristal après avoir atteint le rang argent ou mieux dans l'aventure Ley-Line Run, aux Profondeurs verdoyantes",
+        "en": "Use the Empty Branded Crystal to gain a crystal charge after earning rank silver or better in the Ley-Line Run adventure in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Ley-Line_Crystal_Charge"
+      },
+      {
+       "bit": 17,
+       "name": "Perplexing Energized Cube",
+       "name_api": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom.",
+       "how": {
+        "fr": "Dans le coffre au fond de Cubular Fells, au Mont Maelström",
+        "en": "Found in the chest in the depths of Cubular Fells in Mount Maelstrom"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Perplexing_Energized_Cube"
+      },
+      {
+       "bit": 18,
+       "name": "Alkaline Solution",
+       "name_api": "Purchase the recipe for the Unstable Energy Concoction from Atlalli the Master Alchemist in the Hunting Banks of Timberline Falls.",
+       "how": {
+        "fr": "Achète la recette de l'Unstable Energy Concoction à Atlalli, Master Alchemist, à Hunting Banks, aux Chutes de la canopée. Nécessite les 4 objets ci-dessus comme ingrédients",
+        "en": "Purchase the recipe for the Unstable Energy Concoction from Atlalli, Master Alchemist in the Hunting Banks of Timberline Falls. Requires the 4 items above as ingredients"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Alkaline_Solution"
+      },
+      {
+       "bit": 19,
+       "name": "Charged Auric Particles",
+       "name_api": "Gathered by earning a rank of silver or better in the Wings of Gold adventure in Auric Basin.",
+       "how": {
+        "fr": "Obtenu en atteignant un rang argent ou supérieur dans l'aventure « On Wings of Gold », au Bassin aurique",
+        "en": "Gathered by earning a rank of silver or better in the On Wings of Gold adventure in Auric Basin"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Charged_Auric_Particles"
+      },
+      {
+       "bit": 20,
+       "name": "Golden Oxide Compound",
+       "name_api": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin.",
+       "how": {
+        "fr": "Obtenu en pillant le Champion Gold Ooze dans la grotte de Westwatch Patch, au Bassin aurique",
+        "en": "Gathered by looting the Champion Gold Ooze inside the cave at Westwatch Patch in Auric Basin"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Golden_Oxide_Compound"
+      },
+      {
+       "bit": 21,
+       "name": "Ley-Line Mercuric Compound",
+       "name_api": "Occasionally looted from veteran chak lobbers in Tangled Depths.",
+       "how": {
+        "fr": "Butin occasionnel des chak lobbers vétérans aux Profondeurs verdoyantes",
+        "en": "Occasionally looted from veteran chak lobbers in Tangled Depths"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
+       "wiki": "Ley-Line_Mercuric_Compound"
+      },
+      {
+       "bit": 22,
+       "name": "Nuhoch Saliva",
+       "name_api": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink.",
+       "how": {
+        "fr": "Obtenu sur un Nuhoch Spittoon près du défi de héros de Stonetwist Paths, à l'Orée d'émeraude",
+        "en": "Gathered from a Nuhoch Spittoon near the Hero Challenge at Stonetwist Paths in Verdant Brink"
+       },
+       "how_verified": true,
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Nuhoch_Saliva"
       },
       {
@@ -79977,14 +79977,14 @@
       },
       {
        "bit": 24,
-       "name": "Proximity Test: Fungus Among Us Adventure",
+       "name": "Proximity Test: Tequatl",
        "name_api": "Take the Synergetic Generator to Sparkfly Fen and test the energy reactions near the chest after defeating Tequatl the Sunless.",
        "how": {
-        "fr": "Emmène le Synergetic Generator au Bassin aurique et teste les réactions énergétiques après avoir obtenu au moins le rang argent dans l'aventure A Fungus Among Us.",
-        "en": "Take the Synergetic Generator to Auric Basin and test the energy reactions after gaining a rank of silver or better in the adventure A Fungus Among Us"
+        "fr": "Emmène le Synergetic Generator au Marais de Lumillule et teste les réactions énergétiques près du coffre après avoir vaincu Tequatl the Sunless.",
+        "en": "Take the Synergetic Generator to Sparkfly Fen and test the energy reactions near the chest after defeating Tequatl the Sunless"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Proximity_Test:_Tequatl"
       },
       {
@@ -80025,14 +80025,14 @@
       },
       {
        "bit": 28,
-       "name": "Proximity Test: Tequatl",
+       "name": "Proximity Test: Fungus Among Us Adventure",
        "name_api": "Take the Synergetic Generator to Auric Basin and test the energy reactions after gaining a rank of silver or better in the adventure A Fungus Among Us.",
        "how": {
-        "fr": "Emmène le Synergetic Generator au Marais de Lumillule et teste les réactions énergétiques près du coffre après avoir vaincu Tequatl the Sunless.",
-        "en": "Take the Synergetic Generator to Sparkfly Fen and test the energy reactions near the chest after defeating Tequatl the Sunless"
+        "fr": "Emmène le Synergetic Generator au Bassin aurique et teste les réactions énergétiques après avoir obtenu au moins le rang argent dans l'aventure A Fungus Among Us.",
+        "en": "Take the Synergetic Generator to Auric Basin and test the energy reactions after gaining a rank of silver or better in the adventure A Fungus Among Us"
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collection items » — ressources/wiki/hope_*.html",
+       "how_ref": "ressources/wiki/hope_iii_prototype.html, Collection items (ligne de l'objet du bit, 03/11)",
        "wiki": "Proximity_Test:_Fungus_Among_Us_Adventure"
       },
       {

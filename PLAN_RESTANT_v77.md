@@ -985,17 +985,42 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       (`gw2_apiid_wiki_v1`, sources v429) : Testimony of Heroics, Exotic
       Essence of Luck, Mist Pendant, Gift of Infinity, Gift of the Hylek,
       Gift of the Seas, Glimpse. Audit 71 -> 64.
-- [ ] Nouvelles pages, nouveaux constats (ARBITRAGES 0 -> 9, CONFRONTATION
-      0 -> 56 ecarts sur 4 legendaires) : Gift of the Seas (Selachimorpha,
-      tout double), Gift of the Hylek (Endless Summer, karma et Sun Beads
-      doubles), Mist Pendant (Transcendence : voies fractales / JcJ / McM a
-      modeliser en choix, comme Mist Band), Sheet of Aurillium et Sapphire
-      Crystal (Astralaria). Lecture par lecture, aucune donnee touchee.
-- [ ] Requisitions et « Art of » -> couts d'etape des collections gen1
-      (ex. Basic Mithril Axe Requisition = 250 Basic Mithril Axe ; Art of
-      Forging: Axe Blade = 5 lames de chaque palier, bronze a Deldrimor).
-      Demande les pages et recettes des lames / manches / armes basiques par
-      palier : nouveau lot de captures, puis composants a creer.
+- [x] Nouvelles pages, nouveaux constats (sources v430, `gw2_retour_wiki_couts_v1`) :
+      Gift of the Seas (3 dons descendus de Selachimorpha, +1 Gift of the
+      Tides) ; Hylek / Binding of the Dragon / Gift of Patience = recompense
+      de collection, vendeur = copies suivantes (Orrax -25 dragonite -22 500
+      karma -5 or ; Coalescence -100 magnetite) ; Mist Pendant en choix
+      (defaut fractales, +30 Fractal Relics) ; Sheet of Aurillium, Sapphire
+      Crystal / Shard ; 16 ingredients d'etape gen2 ecartes a tort le 24/10.
+      Outils : edges_wiki v19 (Achievements si le vendeur exige le succes),
+      confronte v9 (cibles de choix). ARBITRAGES et CONFRONTATION a 0.
+- [x] Requisitions et « Art of » (sources v431) : 74 etapes chiffrees,
+      195 composants crees par recettes API (`parse_requisitions_v1`,
+      `gw2_requisitions_v1`, ids par la base semantique du wiki).
+- [x] 132 sources « unknown » typees depuis les captures (`gw2_voies_wiki_v1`),
+      17 restent (pages sans sous-titre d'acquisition).
+- [x] 6 apiId de plus (`gw2_apiid_pages_v1`) ; titres Fruit of the Shadow,
+      Harpy Feather.
+- [x] Libelles d'etape decales (sources v432, `gw2_libelles_etapes_v1`) :
+      162 etapes sur 194 (Astralaria III/IV, Hope III/IV, Incinerator III).
+      Restent 32 (Nevermore IV 16, Astralaria II 6, Juggernaut II 4, Orrax 3,
+      Selachimorpha 2, Endless Summer 1) : page de collection a un autre nom.
+- [ ] CAPTURE EN COURS (navigateur integre, base IndexedDB `gw2cap20261103b`
+      de wiki.guildwars2.com, fonction de reprise a recoller) : 192 pages des
+      pieces de palier et armes basiques, qui confirmeront les recettes API.
+      Zipper, verser, relancer la chaine ; aucune donnee ne bouge si l'API
+      et le wiki concordent.
+- [ ] A valider par Antoine (suppressions) : `gift_of_the_obscure` (aucune
+      recette du Legendary Relic ne le cite : Gift of Relics + Gift of
+      Craftsmanship + 2 dons condenses ; il n'a aucun enfant, il n'ajoute rien
+      au total mais s'affiche comme exigence) ; `memories_of_aurene` (orphelin,
+      doublon de `memory_of_aurene`, page 404).
+- [ ] Couts d'etape encore absents (lus dans les conseils) : Stella Radians
+      (6 pieces Forge Guard chez l'Alliance Field Quartermaster, 17 armes
+      Glimmering Resin) — pages a capturer ; Endless Summer (Dragonfly Steaks,
+      Cook Huelic) ; Perfected Envoy (Itzel Spirit Poison, Polished
+      Aurillium). Le reste des 163 lignes reperees est a relire apres le
+      reetiquetage.
 - [ ] Parseur vendeur : un cout enveloppe de `<span class="inline-icon">`
       n'est pas lu (ex. 9 Astral Acclaim sur mystic_coin.html, Wizard's
       Vault) — 18 pages du corpus concernees ; a trancher page par page,
