@@ -1355,6 +1355,186 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `powdered_gemstone_research.html` | Powdered Gemstone Research | article complet | 2026-10-20 |
 | `grandmaster_craftsman_hobbs.html` | Grandmaster Craftsman Hobbs | article complet | 2026-10-20 |
 | `scholar_mossi.html` | Scholar Mossi | article complet | 2026-10-20 |
+| `advanced_ammunition_cylinder.html` | Advanced Ammunition Cylinder | article complet | 2026-11-03 |
+| `assassins_orichalcum_imbued_inscription.html` | Assassin's Orichalcum Imbued Inscription | article complet | 2026-11-03 |
+| `balanced_counterweight.html` | Balanced Counterweight | article complet | 2026-11-03 |
+| `basic_elder_focus_requisition.html` | Basic Elder Focus Requisition | article complet | 2026-11-03 |
+| `basic_elder_longbow_requisition.html` | Basic Elder Longbow Requisition | article complet | 2026-11-03 |
+| `basic_elder_short_bow_requisition.html` | Basic Elder Short Bow Requisition | article complet | 2026-11-03 |
+| `basic_elder_staff_requisition.html` | Basic Elder Staff Requisition | article complet | 2026-11-03 |
+| `basic_elder_wood_warhorn_requisition.html` | Basic Elder Wood Warhorn Requisition | article complet | 2026-11-03 |
+| `basic_mithril_axe_requisition.html` | Basic Mithril Axe Requisition | article complet | 2026-11-03 |
+| `basic_mithril_dagger_requisition.html` | Basic Mithril Dagger Requisition | article complet | 2026-11-03 |
+| `basic_mithril_daysword_requisition.html` | Basic Mithril Daysword Requisition | article complet | 2026-11-03 |
+| `basic_mithril_hammer_requisition.html` | Basic Mithril Hammer Requisition | article complet | 2026-11-03 |
+| `basic_mithril_mace_requisition.html` | Basic Mithril Mace Requisition | article complet | 2026-11-03 |
+| `basic_mithril_nightsword_requisition.html` | Basic Mithril Nightsword Requisition | article complet | 2026-11-03 |
+| `basic_mithril_pistol_requisition.html` | Basic Mithril Pistol Requisition | article complet | 2026-11-03 |
+| `basic_mithril_rifle_requisition.html` | Basic Mithril Rifle Requisition | article complet | 2026-11-03 |
+| `basic_mithril_sword_requisition.html` | Basic Mithril Sword Requisition | article complet | 2026-11-03 |
+| `basic_pistol_requisition.html` | Basic Pistol Requisition | article complet | 2026-11-03 |
+| `basic_short_bow_requisition.html` | Basic Short-Bow Requisition | article complet | 2026-11-03 |
+| `basic_staff_requisition.html` | Basic Staff Requisition | article complet | 2026-11-03 |
+| `black_diamond.html` | Black Diamond | article complet | 2026-11-03 |
+| `bowl_of_mushroom_paste.html` | Bowl of Mushroom Paste | article complet | 2026-11-03 |
+| `cheese_wedge.html` | Cheese Wedge | article complet | 2026-11-03 |
+| `cherry.html` | Cherry | article complet | 2026-11-03 |
+| `colored_paper.html` | Colored Paper | article complet | 2026-11-03 |
+| `copper_doubloon.html` | Copper Doubloon | article complet | 2026-11-03 |
+| `corrupted_core.html` | Corrupted Core | article complet | 2026-11-03 |
+| `crystal_core.html` | Crystal Core | article complet | 2026-11-03 |
+| `deldrimor_steel_plated_dowel.html` | Deldrimor Steel Plated Dowel | article complet | 2026-11-03 |
+| `destroyer_core.html` | Destroyer Core | article complet | 2026-11-03 |
+| `drop_of_indigo_mushroom_milk.html` | Drop of Indigo Mushroom Milk | article complet | 2026-11-03 |
+| `elder_hammer_haft_requisition.html` | Elder Hammer Haft Requisition | article complet | 2026-11-03 |
+| `elder_harpoon.html` | Elder Harpoon | article complet | 2026-11-03 |
+| `elder_longbow_stave_requisition.html` | Elder Longbow Stave Requisition | article complet | 2026-11-03 |
+| `elder_short_bow_stave_requisition.html` | Elder Short Bow Stave Requisition | article complet | 2026-11-03 |
+| `engravers_tools.html` | Engraver's Tools | article complet | 2026-11-03 |
+| `exotic_essence_of_luck.html` | Exotic Essence of Luck | article complet | 2026-11-03 |
+| `experimental_axe_blade.html` | Experimental Axe Blade | article complet | 2026-11-03 |
+| `experimental_axe_haft.html` | Experimental Axe Haft | article complet | 2026-11-03 |
+| `experimental_dagger_blade.html` | Experimental Dagger Blade | article complet | 2026-11-03 |
+| `experimental_dagger_hilt.html` | Experimental Dagger Hilt | article complet | 2026-11-03 |
+| `experimental_daysword_blade.html` | Experimental Daysword Blade | article complet | 2026-11-03 |
+| `experimental_daysword_hilt.html` | Experimental Daysword Hilt | article complet | 2026-11-03 |
+| `experimental_focus_casing.html` | Experimental Focus Casing | article complet | 2026-11-03 |
+| `experimental_focus_core.html` | Experimental Focus Core | article complet | 2026-11-03 |
+| `experimental_hammer_haft.html` | Experimental Hammer Haft | article complet | 2026-11-03 |
+| `experimental_hammer_head.html` | Experimental Hammer Head | article complet | 2026-11-03 |
+| `experimental_harpoon.html` | Experimental Harpoon | article complet | 2026-11-03 |
+| `experimental_harpoon_gun_stock.html` | Experimental Harpoon Gun Stock | article complet | 2026-11-03 |
+| `experimental_horn.html` | Experimental Horn | article complet | 2026-11-03 |
+| `experimental_longbow_stave.html` | Experimental Longbow Stave | article complet | 2026-11-03 |
+| `experimental_longbow_string.html` | Experimental Longbow String | article complet | 2026-11-03 |
+| `experimental_mace_haft.html` | Experimental Mace Haft | article complet | 2026-11-03 |
+| `experimental_mace_head.html` | Experimental Mace Head | article complet | 2026-11-03 |
+| `experimental_nightsword_blade.html` | Experimental Nightsword Blade | article complet | 2026-11-03 |
+| `experimental_nightsword_hilt.html` | Experimental Nightsword Hilt | article complet | 2026-11-03 |
+| `experimental_pistol_barrel.html` | Experimental Pistol Barrel | article complet | 2026-11-03 |
+| `experimental_pistol_frame.html` | Experimental Pistol Frame | article complet | 2026-11-03 |
+| `experimental_rifle_barrel.html` | Experimental Rifle Barrel | article complet | 2026-11-03 |
+| `experimental_rifle_stock.html` | Experimental Rifle Stock | article complet | 2026-11-03 |
+| `experimental_scepter_core.html` | Experimental Scepter Core | article complet | 2026-11-03 |
+| `experimental_scepter_rod.html` | Experimental Scepter Rod | article complet | 2026-11-03 |
+| `experimental_shield_backing.html` | Experimental Shield Backing | article complet | 2026-11-03 |
+| `experimental_shield_boss.html` | Experimental Shield Boss | article complet | 2026-11-03 |
+| `experimental_short_bow_stave.html` | Experimental Short Bow Stave | article complet | 2026-11-03 |
+| `experimental_short_bow_string.html` | Experimental Short Bow String | article complet | 2026-11-03 |
+| `experimental_spear_haft.html` | Experimental Spear Haft | article complet | 2026-11-03 |
+| `experimental_spear_head.html` | Experimental Spear Head | article complet | 2026-11-03 |
+| `experimental_staff_head.html` | Experimental Staff Head | article complet | 2026-11-03 |
+| `experimental_staff_shaft.html` | Experimental Staff Shaft | article complet | 2026-11-03 |
+| `experimental_sword_blade.html` | Experimental Sword Blade | article complet | 2026-11-03 |
+| `experimental_sword_hilt.html` | Experimental Sword Hilt | article complet | 2026-11-03 |
+| `experimental_torch_handle.html` | Experimental Torch Handle | article complet | 2026-11-03 |
+| `experimental_torch_head.html` | Experimental Torch Head | article complet | 2026-11-03 |
+| `experimental_trident_head.html` | Experimental Trident Head | article complet | 2026-11-03 |
+| `experimental_trident_shaft.html` | Experimental Trident Shaft | article complet | 2026-11-03 |
+| `experimental_warhorn_mouthpiece.html` | Experimental Warhorn Mouthpiece | article complet | 2026-11-03 |
+| `finely_tuned_firing_pin.html` | Finely Tuned Firing Pin | article complet | 2026-11-03 |
+| `gift_of_infinity.html` | Gift of Infinity | article complet | 2026-11-03 |
+| `gift_of_the_hylek.html` | Gift of the Hylek | article complet | 2026-11-03 |
+| `gift_of_the_seas.html` | Gift of the Seas | article complet | 2026-11-03 |
+| `glacial_core.html` | Glacial Core | article complet | 2026-11-03 |
+| `glimpse.html` | Glimpse | article complet moins « Available prefixes » | 2026-11-03 |
+| `glob_of_condensed_spirit_energy.html` | Glob of Condensed Spirit Energy | article complet | 2026-11-03 |
+| `gossamer_scrap.html` | Gossamer Scrap | article complet | 2026-11-03 |
+| `green_onion.html` | Green Onion | article complet | 2026-11-03 |
+| `harpy_feather.html` | Harpy Feather | article complet | 2026-11-03 |
+| `honed_axe_blade.html` | Honed Axe Blade | article complet | 2026-11-03 |
+| `hunters_short_bow_stave.html` | Hunter's Short-Bow Stave | article complet | 2026-11-03 |
+| `hunters_short_bow_string.html` | Hunter's Short-Bow String | article complet | 2026-11-03 |
+| `indigo_mushroom.html` | Indigo Mushroom | article complet | 2026-11-03 |
+| `jar_of_luminesce_polish.html` | Jar of Luminesce Polish | article complet | 2026-11-03 |
+| `jar_of_paint_base.html` | Jar of Paint Base | article complet | 2026-11-03 |
+| `karka_shell.html` | Karka Shell | article complet | 2026-11-03 |
+| `legendary_underwater_inscription.html` | Legendary Underwater Inscription | article complet | 2026-11-03 |
+| `master_maintenance_oil.html` | Master Maintenance Oil | article complet | 2026-11-03 |
+| `mist_pendant.html` | Mist Pendant | article complet moins « Available prefixes » | 2026-11-03 |
+| `mithril_dagger_blade_requisition.html` | Mithril Dagger Blade Requisition | article complet | 2026-11-03 |
+| `mithril_dagger_hilt_requisition.html` | Mithril Dagger Hilt Requisition | article complet | 2026-11-03 |
+| `mithril_daysword_blade_requisition.html` | Mithril Daysword Blade Requisition | article complet | 2026-11-03 |
+| `mithril_daysword_hilt_requisition.html` | Mithril Daysword Hilt Requisition | article complet | 2026-11-03 |
+| `mithril_hammer_head_requisition.html` | Mithril Hammer Head Requisition | article complet | 2026-11-03 |
+| `mithril_nightsword_blade_requisition.html` | Mithril Nightsword Blade Requisition | article complet | 2026-11-03 |
+| `mithril_nightsword_hilt_requisition.html` | Mithril Nightsword Hilt Requisition | article complet | 2026-11-03 |
+| `piece_of_ambrite.html` | Piece of Ambrite | article complet | 2026-11-03 |
+| `pouch_of_blue_pigment.html` | Pouch of Blue Pigment | article complet | 2026-11-03 |
+| `pouch_of_green_pigment.html` | Pouch of Green Pigment | article complet | 2026-11-03 |
+| `pouch_of_orange_pigment.html` | Pouch of Orange Pigment | article complet | 2026-11-03 |
+| `pouch_of_purple_pigment.html` | Pouch of Purple Pigment | article complet | 2026-11-03 |
+| `pouch_of_red_pigment.html` | Pouch of Red Pigment | article complet | 2026-11-03 |
+| `pouch_of_yellow_pigment.html` | Pouch of Yellow Pigment | article complet | 2026-11-03 |
+| `prismatic_lodestone.html` | Prismatic Lodestone | article complet | 2026-11-03 |
+| `purified_rift_essence.html` | Purified Rift Essence | article complet | 2026-11-03 |
+| `purple_potato.html` | Purple Potato | article complet | 2026-11-03 |
+| `quiche_of_darkness_vegetable_mix.html` | Quiche of Darkness Vegetable Mix | article complet | 2026-11-03 |
+| `raven_statue.html` | Raven Statue | article complet | 2026-11-03 |
+| `rice_ball.html` | Rice Ball | article complet | 2026-11-03 |
+| `rune_carving_tools.html` | Rune Carving Tools | article complet | 2026-11-03 |
+| `sapphire_crystal.html` | Sapphire Crystal | article complet | 2026-11-03 |
+| `seaweed.html` | Seaweed | article complet | 2026-11-03 |
+| `sheet_of_ambrite.html` | Sheet of Ambrite | article complet | 2026-11-03 |
+| `sheet_of_aurillium.html` | Sheet of Aurillium | article complet | 2026-11-03 |
+| `sheet_of_coarse_paper.html` | Sheet of Coarse Paper | article complet | 2026-11-03 |
+| `sheet_of_quality_paper.html` | Sheet of Quality Paper | article complet | 2026-11-03 |
+| `soros_assassin_inscription.html` | Soros' Assassin Inscription | article complet | 2026-11-03 |
+| `spinach_leaf.html` | Spinach Leaf | article complet | 2026-11-03 |
+| `stonecleavers_valkyrie_inscription.html` | Stonecleaver's Valkyrie Inscription | article complet | 2026-11-03 |
+| `sunstone_lump.html` | Sunstone Lump | article complet | 2026-11-03 |
+| `sunstone_nugget.html` | Sunstone Nugget | article complet | 2026-11-03 |
+| `tarragon_leaves.html` | Tarragon Leaves | article complet | 2026-11-03 |
+| `testimony_of_heroics.html` | Testimony of Heroics | article complet | 2026-11-03 |
+| `the_art_of_forging_axe_blade_edition.html` | The Art of Forging: Axe Blade Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_axe_blade_edition_vol_2.html` | The Art of Forging: Axe Blade Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_forging_dagger_blade_edition.html` | The Art of Forging: Dagger Blade Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_dagger_hilt_edition.html` | The Art of Forging: Dagger Hilt Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_daysword_blade_edition.html` | The Art of Forging: Daysword Blade Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_daysword_hilt_edition.html` | The Art of Forging: Daysword Hilt Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_hammer_head_edition.html` | The Art of Forging: Hammer Head Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_mace_head_edition.html` | The Art of Forging: Mace Head Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_nightsword_blade_edition.html` | The Art of Forging: Nightsword Blade Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_nightsword_hilt_edition.html` | The Art of Forging: Nightsword Hilt Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_pistol_barrel_edition.html` | The Art of Forging: Pistol Barrel Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_pistol_barrel_edition_vol_2.html` | The Art of Forging: Pistol Barrel Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_forging_rifle_barrel_edition.html` | The Art of Forging: Rifle Barrel Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_shield_backing_edition.html` | The Art of Forging: Shield Backing Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_shield_boss_edition.html` | The Art of Forging: Shield Boss Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_sword_blade_edition.html` | The Art of Forging: Sword Blade Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_sword_hilt_edition.html` | The Art of Forging: Sword Hilt Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_torch_head_edition.html` | The Art of Forging: Torch Head Edition | article complet | 2026-11-03 |
+| `the_art_of_forging_warhorn_mouthpiece_edition.html` | The Art of Forging: Warhorn Mouthpiece Edition | article complet | 2026-11-03 |
+| `the_art_of_tanning_longbow_string_edition.html` | The Art of Tanning: Longbow String Edition | article complet | 2026-11-03 |
+| `the_art_of_tanning_short_bow_string_edition.html` | The Art of Tanning: Short Bow String Edition | article complet | 2026-11-03 |
+| `the_art_of_tanning_short_bow_string_edition_vol_2.html` | The Art of Tanning: Short-Bow String Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_woodworking_axe_haft_edition.html` | The Art of Woodworking: Axe Haft Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_focus_casing_edition.html` | The Art of Woodworking: Focus Casing Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_focus_core_edition.html` | The Art of Woodworking: Focus Core Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_hammer_haft_edition.html` | The Art of Woodworking: Hammer Haft Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_horn_edition.html` | The Art of Woodworking: Horn Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_longbow_stave_edition.html` | The Art of Woodworking: Longbow Stave Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_mace_haft_edition.html` | The Art of Woodworking: Mace Haft Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_pistol_frame_edition.html` | The Art of Woodworking: Pistol Frame Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_pistol_frame_edition_vol_2.html` | The Art of Woodworking: Pistol Frame Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_woodworking_rifle_stock_edition.html` | The Art of Woodworking: Rifle Stock Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_scepter_core_edition.html` | The Art of Woodworking: Scepter Core Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_scepter_rod_edition.html` | The Art of Woodworking: Scepter Rod Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_short_bow_stave_edition.html` | The Art of Woodworking: Short Bow Stave Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_short_bow_stave_edition_vol_2.html` | The Art of Woodworking: Short-Bow Stave Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_woodworking_staff_head_edition.html` | The Art of Woodworking: Staff Head Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_staff_head_edition_vol_2.html` | The Art of Woodworking: Staff Head Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_woodworking_staff_shaft_edition.html` | The Art of Woodworking: Staff Shaft Edition | article complet | 2026-11-03 |
+| `the_art_of_woodworking_staff_shaft_edition_vol_2.html` | The Art of Woodworking: Staff Shaft Edition Vol. 2 | article complet | 2026-11-03 |
+| `the_art_of_woodworking_torch_handle_edition.html` | The Art of Woodworking: Torch Handle Edition | article complet | 2026-11-03 |
+| `thick_longbow_string_requisition.html` | Thick Longbow String Requisition | article complet | 2026-11-03 |
+| `thick_short_bow_string_requisition.html` | Thick Short Bow String Requisition | article complet | 2026-11-03 |
+| `tigers_eye_pebble.html` | Tiger's Eye Pebble | article complet | 2026-11-03 |
+| `valkyrie_orichalcum_imbued_inscription.html` | Valkyrie Orichalcum Imbued Inscription | article complet | 2026-11-03 |
+| `vial_of_cadmium_salts.html` | Vial of Cadmium Salts | article complet | 2026-11-03 |
+| `visage_of_champawat.html` | Visage of Champawat | article complet | 2026-11-03 |
+| `visage_of_chuka.html` | Visage of Chuka | article complet | 2026-11-03 |
+| `weighted_axe_haft.html` | Weighted Axe Haft | article complet | 2026-11-03 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
@@ -1456,3 +1636,18 @@ de succès, qui ne contient aucun tableau d'objets. Il faut atteindre la page de
 collection elle-même, pas la redirection.
 
 Les 32 pages des huit lignes de trophées sont versées, du T3 au T6.
+
+Vérification du 03/11/2026 (retour du wiki après sa mise à jour de sécurité) :
+180 captures nouvelles (file de `PAGES_A_CAPTURER.md` et 72 réquisitions /
+livres « The Art of … » des collections d'armes gen1), aucune recapture. 3 titres
+en 404 (`Fruits of the Shadow`, `Gift of the Obscure`, `Memories of Aurene`),
+1 échec répété en 503 (`Pile of Glittering Dust`), 1 redirection
+(`Harpy Feathers` → `Harpy Feather`). **Le HTML du wiki a changé de forme** :
+les titres de section s'écrivent `<div class="mw-heading mw-heading2"><h2 id="X">`
+(au lieu de `<h2><span class="mw-headline" id="X">`), et les icônes sont
+enveloppées de `<span typeof="mw:File">`. Les deux formes cohabitent désormais
+dans `wiki/`. Parseurs adaptés (`gw2_edges_wiki_v18`, `gw2_parse_vendor_cost_v3`),
+contrôlés sur 4 pages recapturées et comparées à leur ancienne capture
+(Gift of the Itzel, Glob of Ectoplasm, Mystic Coin, Gift of Craftsmanship) :
+recettes, tables et coûts vendeur identiques. Ces 4 recaptures ne sont pas versées : l'ancienne capture reste la
+référence tant que rien ne change dans la donnée.
