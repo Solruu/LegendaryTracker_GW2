@@ -1,7 +1,7 @@
 {
  "_meta": {
   "version": "v253",
-  "last_updated": "2026-11-03",
+  "last_updated": "2026-11-04",
   "notes": {
    "fr": "Base de données des sources d'acquisition pour ressources légendaires. offsetUTC en minutes depuis minuit UTC. interval en minutes. efficience : S=≤15min fiable / A=15-30min / B=30-45min ou pop variable / C=long ou pop morte.",
    "en": "Acquisition source database for legendary resources. offsetUTC in minutes from midnight UTC. interval in minutes. efficiency: S=≤15min reliable / A=15-30min / B=30-45min or variable pop / C=long or dead pop."
@@ -8947,35 +8947,6 @@
    "recipe": "MF : 38× Mystic Clover + 1× Gift of Condensed Magic + 1× Gift of Condensed Might + 5× Amalgamated Draconic Lodestone",
    "kind": "advanced_craft"
   },
-  "memories_of_aurene": {
-   "name": "Memories of Aurene",
-   "needed_for": [
-    "gen3_gift_unique"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "meta_drop",
-     "tip": {
-      "fr": "Drop dans les chests finaux de Dragonstorm, Trépas du dragon meta, Chute draconique meta.",
-      "en": "Drops from the final chests of Dragonstorm, Dragon's End meta, Dragonfall meta."
-     }
-    }
-   ],
-   "qty": {},
-   "kind": "acquire",
-   "best": "meta_drop",
-   "best_reason": {
-    "fr": "garanti en méta quotidienne — coût marginal nul",
-    "en": "guaranteed daily meta reward — zero marginal cost"
-   },
-   "apiId_fix": {
-    "was": 97935,
-    "checked": "2026-10-24",
-    "verified": true,
-    "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 97935 = « Reality Rig Mk2 » — bon id a lire sur le wiki"
-   }
-  },
   "salt_forged_mist_diamond": {
    "name": "Salt-Forged Mist Diamond",
    "apiId": 93280,
@@ -10458,37 +10429,6 @@
      "ref": "recette declaree sur le composant"
     }
    ]
-  },
-  "gift_of_the_obscure": {
-   "name": "Gift of the Obscure",
-   "needed_for": [
-    "legendary_relic"
-   ],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "vendor",
-     "npc": "Lyhr / Ward Crafter Lucirae",
-     "tip": {
-      "fr": "Achat chez Lyhr (Tour du sorcier, SotO) ou Lucirae (JW). Contient des matériaux spécifiques SotO (Lucent Motes, etc.). ≈190k Lucent Motes nécessaires pour la relique complète.",
-      "en": "Purchase from Lyhr (Wizard's Tower, SotO) or Lucirae (JW). Contains SotO-specific materials (Lucent Motes, etc.). ≈190k Lucent Motes needed for the full relic."
-     }
-    }
-   ],
-   "qty": {
-    "legendary_relic": 1
-   },
-   "note": {
-    "fr": "Sous-composant du Gift of Relics. Achat chez Lyhr (SotO, +10 Ectos) ou Ward Crafter Lucirae (JW, +1 Ecto). Contient des matériaux spécifiques SotO.",
-    "en": "Sub-component of Gift of Relics. Purchase from Lyhr (SotO, +10 Ectos) or Ward Crafter Lucirae (JW, +1 Ecto). Contains SotO-specific materials."
-   },
-   "kind": "advanced_craft",
-   "apiId_fix": {
-    "was": 97960,
-    "checked": "2026-10-24",
-    "verified": true,
-    "ref": "ressources/api/api_noms_composants_20261024.json : /v2/items 97960 = « Stash of Crimson Skull Coins » — bon id a lire sur le wiki"
-   }
   },
   "pile_of_lucent_crystal": {
    "name": "Pile of Lucent Crystal",
@@ -49753,8 +49693,8 @@
      },
      "total": 6,
      "note": {
-      "fr": "5 PS. Déverrouiller les 6 apparences Forge Guard. Achat chez n'importe quel Alliance Field Quartermaster du Jardin de l'Éternité, plein tarif ou réduit avec un jeton. Les jetons ne tombent QUE dans le Jardin de l'Éternité : Heaume via le chapitre « So It Is Written », Épaulières via le miroir magique (Long-Lost Keepsake Box, Obscured Chests), Cuirasse via le succès de maîtrise du Jardin de l'Éternité. Récompense : Don de Repousse, composant du Don de Galdra. ⚠ Ce succès n'est pas exposé par l'API — sa progression ne peut pas être synchronisée automatiquement, coche-la à la main.",
-      "en": "5 AP. Unlock all 6 Forge Guard skins. Bought from any Alliance Field Quartermaster in Eternity's Garden, full price or reduced with a token. Tokens drop ONLY in Eternity's Garden: Helmet from the 'So It Is Written' story chapter, Shoulders from the magic mirror (Long-Lost Keepsake Box, Obscured Chests), Cuirass from the Eternity's Garden Mastery achievement. Reward: Gift of Regrowth, a Gift of Galdra component. ⚠ This achievement is not exposed by the API - its progress cannot sync automatically, tick it manually."
+      "fr": "5 PS. Déverrouiller les 6 apparences Forge Guard. Voie retenue : butin (Forge Guard's Armor Box, dans la Castoran Gear Box). Alternative : achat chez n'importe quel Alliance Field Quartermaster du Jardin de l'Éternité, plein tarif ou réduit avec un jeton. Les jetons ne tombent QUE dans le Jardin de l'Éternité : Heaume via le chapitre « So It Is Written », Épaulières via le miroir magique (Long-Lost Keepsake Box, Obscured Chests), Cuirasse via le succès de maîtrise du Jardin de l'Éternité. Récompense : Don de Repousse, composant du Don de Galdra. ⚠ Ce succès n'est pas exposé par l'API — sa progression ne peut pas être synchronisée automatiquement, coche-la à la main.",
+      "en": "5 AP. Unlock all 6 Forge Guard skins. Default route: loot (Forge Guard's Armor Box, from the Castoran Gear Box). Alternative: buy from any Alliance Field Quartermaster in Eternity's Garden, full price or reduced with a token. Tokens drop ONLY in Eternity's Garden: Helmet from the 'So It Is Written' story chapter, Shoulders from the magic mirror (Long-Lost Keepsake Box, Obscured Chests), Cuirass from the Eternity's Garden Mastery achievement. Reward: Gift of Regrowth, a Gift of Galdra component. ⚠ This achievement is not exposed by the API - its progress cannot sync automatically, tick it manually."
      },
      "note_alt": {
       "fr": "Rare Collections — débloquer les 6 skins Forge Guard (n'importe quel poids : 1 pièce débloquée = les 3 poids). Sources : drops VoE, Alliance Field Quartermaster, boîtes du méta-succès de carte.",
@@ -49766,66 +49706,66 @@
        "bit": 0,
        "name": "Forge Guard's Medium Helmet",
        "how": {
-        "fr": "Débloque l'apparence Forge Guard's Medium Helmet (apparence). S'achète auprès de n'importe quel Alliance Field Quartermaster du Jardin de l'éternité, au prix fort ou à prix réduit avec un jeton.",
-        "en": "Unlock the Forge Guard's Medium Helmet skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+        "fr": "Débloque l'apparence Forge Guard's Medium Helmet. Voie retenue : butin — Forge Guard's Armor Box (au choix), contenue dans la Castoran Gear Box. Alternative : Alliance Field Quartermaster (Jardin de l'Éternité), 100 or + 150 Shadowstone Fragment + 70 000 karma, ou 1 Forge Guard's Token: Helmet.",
+        "en": "Unlock the Forge Guard's Medium Helmet skin. Default route: loot — Forge Guard's Armor Box (choice), contained in the Castoran Gear Box. Alternative: Alliance Field Quartermaster (Eternity's Garden), 100 gold + 150 Shadowstone Fragment + 70 000 karma, or 1 Forge Guard's Token: Helmet."
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html",
+       "how_ref": "ressources/wiki/forge_guards_medium_helmet.html (Contained in, Sold by) ; ressources/wiki/forge_guards_armor_box.html ; voie butin tranchee par Antoine le 2026-11-04",
        "wiki": "Forge_Guard%27s_Medium_Helmet_(skin)"
       },
       {
        "bit": 1,
        "name": "Forge Guard's Medium Pauldron",
        "how": {
-        "fr": "Débloque l'apparence Forge Guard's Medium Pauldron (apparence). S'achète auprès de n'importe quel Alliance Field Quartermaster du Jardin de l'éternité, au prix fort ou à prix réduit avec un jeton.",
-        "en": "Unlock the Forge Guard's Medium Pauldron skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+        "fr": "Débloque l'apparence Forge Guard's Medium Pauldron. Voie retenue : butin — Forge Guard's Armor Box (au choix), contenue dans la Castoran Gear Box. Alternative : Alliance Field Quartermaster (Jardin de l'Éternité), 200 or + 200 Shadowstone Fragment + 105 000 karma, ou 1 Forge Guard's Token: Shoulders.",
+        "en": "Unlock the Forge Guard's Medium Pauldron skin. Default route: loot — Forge Guard's Armor Box (choice), contained in the Castoran Gear Box. Alternative: Alliance Field Quartermaster (Eternity's Garden), 200 gold + 200 Shadowstone Fragment + 105 000 karma, or 1 Forge Guard's Token: Shoulders."
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html",
+       "how_ref": "ressources/wiki/forge_guards_medium_pauldron.html (Contained in, Sold by) ; ressources/wiki/forge_guards_armor_box.html ; voie butin tranchee par Antoine le 2026-11-04",
        "wiki": "Forge_Guard%27s_Medium_Pauldron_(skin)"
       },
       {
        "bit": 2,
        "name": "Forge Guard's Medium Cuirass",
        "how": {
-        "fr": "Débloque l'apparence Forge Guard's Medium Cuirass (apparence). S'achète auprès de n'importe quel Alliance Field Quartermaster du Jardin de l'éternité, au prix fort ou à prix réduit avec un jeton.",
-        "en": "Unlock the Forge Guard's Medium Cuirass skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+        "fr": "Débloque l'apparence Forge Guard's Medium Cuirass. Voie retenue : butin — Forge Guard's Armor Box (au choix), contenue dans la Castoran Gear Box. Alternative : Alliance Field Quartermaster (Jardin de l'Éternité), 250 or + 250 Shadowstone Fragment + 175 000 karma, ou 1 Forge Guard's Token: Cuirass.",
+        "en": "Unlock the Forge Guard's Medium Cuirass skin. Default route: loot — Forge Guard's Armor Box (choice), contained in the Castoran Gear Box. Alternative: Alliance Field Quartermaster (Eternity's Garden), 250 gold + 250 Shadowstone Fragment + 175 000 karma, or 1 Forge Guard's Token: Cuirass."
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html",
+       "how_ref": "ressources/wiki/forge_guards_medium_cuirass.html (Contained in, Sold by) ; ressources/wiki/forge_guards_armor_box.html ; voie butin tranchee par Antoine le 2026-11-04",
        "wiki": "Forge_Guard%27s_Medium_Cuirass_(skin)"
       },
       {
        "bit": 3,
        "name": "Forge Guard's Medium Gloves",
        "how": {
-        "fr": "Débloque l'apparence Forge Guard's Medium Gloves (apparence). S'achète auprès de n'importe quel Alliance Field Quartermaster du Jardin de l'éternité, au prix fort ou à prix réduit avec un jeton.",
-        "en": "Unlock the Forge Guard's Medium Gloves skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+        "fr": "Débloque l'apparence Forge Guard's Medium Gloves. Voie retenue : butin — Forge Guard's Armor Box (au choix), contenue dans la Castoran Gear Box. Alternative : Alliance Field Quartermaster (Jardin de l'Éternité), 150 or + 150 Shadowstone Fragment + 70 000 karma, ou 1 Forge Guard's Token: Gloves.",
+        "en": "Unlock the Forge Guard's Medium Gloves skin. Default route: loot — Forge Guard's Armor Box (choice), contained in the Castoran Gear Box. Alternative: Alliance Field Quartermaster (Eternity's Garden), 150 gold + 150 Shadowstone Fragment + 70 000 karma, or 1 Forge Guard's Token: Gloves."
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html",
+       "how_ref": "ressources/wiki/forge_guards_medium_gloves.html (Contained in, Sold by) ; ressources/wiki/forge_guards_armor_box.html ; voie butin tranchee par Antoine le 2026-11-04",
        "wiki": "Forge_Guard%27s_Medium_Gloves_(skin)"
       },
       {
        "bit": 4,
        "name": "Forge Guard's Medium Leggings",
        "how": {
-        "fr": "Débloque l'apparence Forge Guard's Medium Leggings (apparence). S'achète auprès de n'importe quel Alliance Field Quartermaster du Jardin de l'éternité, au prix fort ou à prix réduit avec un jeton.",
-        "en": "Unlock the Forge Guard's Medium Leggings skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+        "fr": "Débloque l'apparence Forge Guard's Medium Leggings. Voie retenue : butin — Forge Guard's Armor Box (au choix), contenue dans la Castoran Gear Box. Alternative : Alliance Field Quartermaster (Jardin de l'Éternité), 200 or + 200 Shadowstone Fragment + 105 000 karma, ou 1 Forge Guard's Token: Leggings.",
+        "en": "Unlock the Forge Guard's Medium Leggings skin. Default route: loot — Forge Guard's Armor Box (choice), contained in the Castoran Gear Box. Alternative: Alliance Field Quartermaster (Eternity's Garden), 200 gold + 200 Shadowstone Fragment + 105 000 karma, or 1 Forge Guard's Token: Leggings."
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html",
+       "how_ref": "ressources/wiki/forge_guards_medium_leggings.html (Contained in, Sold by) ; ressources/wiki/forge_guards_armor_box.html ; voie butin tranchee par Antoine le 2026-11-04",
        "wiki": "Forge_Guard%27s_Medium_Leggings_(skin)"
       },
       {
        "bit": 5,
        "name": "Forge Guard's Medium Boots",
        "how": {
-        "fr": "Débloque l'apparence Forge Guard's Medium Boots (apparence). S'achète auprès de n'importe quel Alliance Field Quartermaster du Jardin de l'éternité, au prix fort ou à prix réduit avec un jeton.",
-        "en": "Unlock the Forge Guard's Medium Boots skin (Skin). Bought from any Alliance Field Quartermaster in the Garden of Eternity, full price or discounted with a token."
+        "fr": "Débloque l'apparence Forge Guard's Medium Boots. Voie retenue : butin — Forge Guard's Armor Box (au choix), contenue dans la Castoran Gear Box. Alternative : Alliance Field Quartermaster (Jardin de l'Éternité), 150 or + 150 Shadowstone Fragment + 70 000 karma, ou 1 Forge Guard's Token: Boots.",
+        "en": "Unlock the Forge Guard's Medium Boots skin. Default route: loot — Forge Guard's Armor Box (choice), contained in the Castoran Gear Box. Alternative: Alliance Field Quartermaster (Eternity's Garden), 150 gold + 150 Shadowstone Fragment + 70 000 karma, or 1 Forge Guard's Token: Boots."
        },
        "how_verified": true,
-       "how_ref": "wiki, tableau « Collectible » — ressources/wiki/forge_guards_armor_collection.html",
+       "how_ref": "ressources/wiki/forge_guards_medium_boots.html (Contained in, Sold by) ; ressources/wiki/forge_guards_armor_box.html ; voie butin tranchee par Antoine le 2026-11-04",
        "wiki": "Forge_Guard%27s_Medium_Boots_(skin)"
       }
      ],

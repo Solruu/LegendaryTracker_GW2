@@ -1005,22 +1005,24 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       162 etapes sur 194 (Astralaria III/IV, Hope III/IV, Incinerator III).
       Restent 32 (Nevermore IV 16, Astralaria II 6, Juggernaut II 4, Orrax 3,
       Selachimorpha 2, Endless Summer 1) : page de collection a un autre nom.
-- [ ] CAPTURE EN COURS (navigateur integre, base IndexedDB `gw2cap20261103b`
-      de wiki.guildwars2.com, fonction de reprise a recoller) : 192 pages des
-      pieces de palier et armes basiques, qui confirmeront les recettes API.
-      Zipper, verser, relancer la chaine ; aucune donnee ne bouge si l'API
-      et le wiki concordent.
-- [ ] A valider par Antoine (suppressions) : `gift_of_the_obscure` (aucune
-      recette du Legendary Relic ne le cite : Gift of Relics + Gift of
-      Craftsmanship + 2 dons condenses ; il n'a aucun enfant, il n'ajoute rien
-      au total mais s'affiche comme exigence) ; `memories_of_aurene` (orphelin,
-      doublon de `memory_of_aurene`, page 404).
-- [ ] Couts d'etape encore absents (lus dans les conseils) : Stella Radians
-      (6 pieces Forge Guard chez l'Alliance Field Quartermaster, 17 armes
-      Glimmering Resin) — pages a capturer ; Endless Summer (Dragonfly Steaks,
-      Cook Huelic) ; Perfected Envoy (Itzel Spirit Poison, Polished
-      Aurillium). Le reste des 163 lignes reperees est a relire apres le
-      reetiquetage.
+- [x] Capture des 192 pieces de palier et armes basiques (04/11, `a3c9971`) :
+      les 192 recettes du wiki concordent avec celles posees depuis l'API.
+- [x] Suppressions validees par Antoine (04/11, sources v433,
+      `gw2_forge_guard_butin_v1`) : `gift_of_the_obscure`, `memories_of_aurene`.
+- [x] Forge Guard (Stella Radians, 6 etapes) : voie par defaut = butin
+      (Forge Guard's Armor Box, dans la Castoran Gear Box), tranche par Antoine
+      le 04/11 ; vendeur en alternative (or + Shadowstone Fragment + karma, ou
+      jeton), aucun cout compte. Sources v433.
+- [ ] Glimmering Resin (Stella Radians, 17 etapes) : pages objet capturees
+      (`berserkers_glimmering_resin_*`, `92aae4f`). Voies lues : Glimmering
+      Resin Weapon Cache (au choix), Historian Meliza / Steward Brizio
+      (1 + 6 + 12 + 300, monnaies a lire), recette. Voie par defaut a trancher.
+- [ ] Couts d'etape encore absents : Endless Summer (Dragonfly Steaks : Cook
+      Huelic / Michotl Flycook, 7 000 [monnaie a lire], si Radiance of the Sun
+      God active) ; Perfected Envoy (Itzel Spirit Poison : Jaka Itzel, 100 + 1,
+      maitrise Itzel Language ; Polished Aurillium : Ash Legion Provisioner /
+      Astral Ward Mage, 1) — pages capturees le 04/11, a integrer. Le reste des
+      163 lignes reperees est a relire apres le reetiquetage.
 - [ ] Parseur vendeur : un cout enveloppe de `<span class="inline-icon">`
       n'est pas lu (ex. 9 Astral Acclaim sur mystic_coin.html, Wizard's
       Vault) — 18 pages du corpus concernees ; a trancher page par page,
