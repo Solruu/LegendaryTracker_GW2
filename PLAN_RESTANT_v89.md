@@ -917,8 +917,14 @@ d'artisanat de /v2/recipes contre les aretes, 1 011 apiId. Puis
   conflits de valeur, noms des sous-zones, migrations, jeton de
   fournisseur, armes, ouvert au 24/09, 12 quater, common_required) ; 14
   ouvertes.
-- [ ] reste : Master Maintenance Oil (recette x5, non decomposee : quantites
-  fractionnaires), 16 ids a lire sur le wiki.
+- [x] reste : Master Maintenance Oil — decomposee depuis le champ `lot`
+  (lot de 5 : 3 Pile of Crystalline Dust + 20 Jug of Water), constate le
+  05/11. Ids : 13 poses le 03/11, 3 de plus le 05/11 (sources v444,
+  `gw2_apiid_restants_v1`, /v2/items) : Fruit of the Shadow 104844,
+  Veteran's Wings of Glory 77522, Gift of Kamohoali'i Kotaki 19657 ;
+  « So It Is Written » est un chapitre d'histoire (la Vial of Liquid
+  Shadowstone en est la recompense), source relue. Memories of Aurene et
+  Gift of the Obscure ont ete supprimes le 04/11.
 
 ### C17 — Sans wiki, suite (24/10) · C — ✅
 - LOT DE PRODUCTION (accord d'Antoine) : champ `lot` sur le composant, aretes
@@ -1021,8 +1027,9 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       deja le bit). Les 6 autres ne sont pas des decalages : etape d'action
       dont l'objet est la recompense (Return to Palak, Return to the shaman,
       Sharkmaw Caverns, miroir d'Orrax), accent mal normalise (Gift of the
-      Entrée), et Orrax feast bit 16 « Amalgamated Rift Essence » contre
-      `Amalgamated_Kryptis_Essence` a relire.
+      Entrée), et Orrax feast bit 16 : `Amalgamated_Kryptis_Essence` est
+      l'ancien titre, meme icone que la page Amalgamated Rift Essence au
+      depot (redirection) — rien a corriger.
 - [x] Capture des 192 pieces de palier et armes basiques (04/11, `a3c9971`) :
       les 192 recettes du wiki concordent avec celles posees depuis l'API.
 - [x] Suppressions validees par Antoine (04/11, sources v433,
