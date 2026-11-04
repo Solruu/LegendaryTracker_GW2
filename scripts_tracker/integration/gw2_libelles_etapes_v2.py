@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 """Noms et conseils d'etape decales d'une ligne dans 12 collections (03/11).
 
-Usage : python3 scripts_tracker/integration/gw2_libelles_etapes_v1.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_libelles_etapes_v2.py SRC DST
+
+v2 (05/11) : le nouveau HTML du wiki (captures depuis le 03/11) n'a plus que
+CINQ colonnes au tableau « Collection items » (#, objet, type, sous-type,
+notes) ; v1 en exigeait six et sautait donc toutes les pages recapturees :
+Nevermore IV (16 etapes), Astralaria II (6), The Juggernaut II (4). La note
+est desormais lue dans la DERNIERE cellule, quel que soit leur nombre.
 
 Chaque etape porte l'objet du bit (`wiki`, `name_api` : API, fait foi) et un
 nom + conseil (`name`, `how`) lus dans le tableau « Collection items » de la
@@ -25,7 +31,7 @@ from pathlib import Path
 
 SRC, DST = Path(sys.argv[1]), Path(sys.argv[2])
 d = json.loads(SRC.read_text(encoding="utf-8"))
-J = "2026-11-03"
+J = "2026-11-05"
 WK = Path("ressources/wiki")
 
 
@@ -42,13 +48,13 @@ def tableau(page):
     lignes = {}
     for r in re.findall(r"<tr[^>]*>(.*?)</tr>", tb, re.S):
         cs = re.findall(r"<td[^>]*>(.*?)</td>", r, re.S)
-        if len(cs) < 6:
+        if len(cs) < 5:
             continue
         lien = re.findall(r'href="/wiki/([^"#]+)"', cs[1])
         if not lien:
             continue
         nom = re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", cs[1]))).strip()
-        note = re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", cs[5]))).strip()
+        note = re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", cs[-1]))).strip()
         lignes[norm(lien[0])] = (nom, note)
     return lignes
 
@@ -76,7 +82,7 @@ for l, L in d["legendaries"].items():
                 st["name"] = nom
                 st["how"] = {"fr": note, "en": note}
                 st["how_fr_a_traduire"] = True
-            st["how_ref"] = f"ressources/wiki/{ck}.html, Collection items (ligne de l'objet du bit, 03/11)"
+            st["how_ref"] = f"ressources/wiki/{ck}.html, Collection items (ligne de l'objet du bit, {J})"
             faits += 1
         print(l, ck, len(mal))
 print(faits, "etapes reetiquetees")

@@ -1014,6 +1014,15 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       162 etapes sur 194 (Astralaria III/IV, Hope III/IV, Incinerator III).
       Restent 32 (Nevermore IV 16, Astralaria II 6, Juggernaut II 4, Orrax 3,
       Selachimorpha 2, Endless Summer 1) : page de collection a un autre nom.
+      ✅ 05/11 (sources v443, `gw2_libelles_etapes_v2`) : 26 de ces 32
+      etaient sur des pages au depot, sautees parce que le nouveau HTML n'a
+      plus que 5 colonnes au tableau (v1 en exigeait 6) : Nevermore IV 16,
+      Astralaria II 6, The Juggernaut II 4 reetiquetees (les couts suivaient
+      deja le bit). Les 6 autres ne sont pas des decalages : etape d'action
+      dont l'objet est la recompense (Return to Palak, Return to the shaman,
+      Sharkmaw Caverns, miroir d'Orrax), accent mal normalise (Gift of the
+      Entrée), et Orrax feast bit 16 « Amalgamated Rift Essence » contre
+      `Amalgamated_Kryptis_Essence` a relire.
 - [x] Capture des 192 pieces de palier et armes basiques (04/11, `a3c9971`) :
       les 192 recettes du wiki concordent avec celles posees depuis l'API.
 - [x] Suppressions validees par Antoine (04/11, sources v433,
