@@ -1540,6 +1540,226 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `pile_of_glittering_dust.html` | Pile of Glittering Dust | article complet | 2026-11-03 |
 | `sapphire_shard.html` | Sapphire Shard | article complet | 2026-11-03 |
 | `the_art_of_woodworking_axe_haft_edition_vol_2.html` | The Art of Woodworking: Axe Haft Edition Vol. 2 | article complet | 2026-11-03 |
+| `alliance_field_quartermaster.html` | Alliance Field Quartermaster | article complet | 2026-11-04 |
+| `ancient_focus_casing.html` | Ancient Focus Casing | article complet | 2026-11-04 |
+| `ancient_focus_core.html` | Ancient Focus Core | article complet | 2026-11-04 |
+| `ancient_longbow_stave.html` | Ancient Longbow Stave | article complet | 2026-11-04 |
+| `ancient_pistol_frame.html` | Ancient Pistol Frame | article complet | 2026-11-04 |
+| `ancient_rifle_stock.html` | Ancient Rifle Stock | article complet | 2026-11-04 |
+| `ancient_scepter_core.html` | Ancient Scepter Core | article complet | 2026-11-04 |
+| `ancient_scepter_rod.html` | Ancient Scepter Rod | article complet | 2026-11-04 |
+| `ancient_short_bow_stave.html` | Ancient Short-Bow Stave | article complet | 2026-11-04 |
+| `ancient_staff_head.html` | Ancient Staff Head | article complet | 2026-11-04 |
+| `ancient_staff_shaft.html` | Ancient Staff Shaft | article complet | 2026-11-04 |
+| `ancient_torch_handle.html` | Ancient Torch Handle | article complet | 2026-11-04 |
+| `basic_elder_focus.html` | Basic Elder Focus | article complet | 2026-11-04 |
+| `basic_elder_longbow.html` | Basic Elder Longbow | article complet | 2026-11-04 |
+| `basic_elder_short_bow.html` | Basic Elder Short Bow | article complet | 2026-11-04 |
+| `basic_elder_staff.html` | Basic Elder Staff | article complet | 2026-11-04 |
+| `basic_elder_wood_warhorn.html` | Basic Elder Wood Warhorn | article complet | 2026-11-04 |
+| `basic_mithril_axe.html` | Basic Mithril Axe | article complet | 2026-11-04 |
+| `basic_mithril_dagger.html` | Basic Mithril Dagger | article complet | 2026-11-04 |
+| `basic_mithril_greatsword.html` | Basic Mithril Greatsword | article complet | 2026-11-04 |
+| `basic_mithril_hammer.html` | Basic Mithril Hammer | article complet | 2026-11-04 |
+| `basic_mithril_mace.html` | Basic Mithril Mace | article complet | 2026-11-04 |
+| `basic_mithril_pistol.html` | Basic Mithril Pistol | article complet | 2026-11-04 |
+| `basic_mithril_rifle.html` | Basic Mithril Rifle | article complet | 2026-11-04 |
+| `basic_mithril_sword.html` | Basic Mithril Sword | article complet | 2026-11-04 |
+| `bronze_axe_blade.html` | Bronze Axe Blade | article complet | 2026-11-04 |
+| `bronze_dagger_blade.html` | Bronze Dagger Blade | article complet | 2026-11-04 |
+| `bronze_dagger_hilt.html` | Bronze Dagger Hilt | article complet | 2026-11-04 |
+| `bronze_greatsword_blade.html` | Bronze Greatsword Blade | article complet | 2026-11-04 |
+| `bronze_greatsword_hilt.html` | Bronze Greatsword Hilt | article complet | 2026-11-04 |
+| `bronze_hammer_head.html` | Bronze Hammer Head | article complet | 2026-11-04 |
+| `bronze_horn.html` | Bronze Horn | article complet | 2026-11-04 |
+| `bronze_mace_head.html` | Bronze Mace Head | article complet | 2026-11-04 |
+| `bronze_pistol_barrel.html` | Bronze Pistol Barrel | article complet | 2026-11-04 |
+| `bronze_rifle_barrel.html` | Bronze Rifle Barrel | article complet | 2026-11-04 |
+| `bronze_shield_backing.html` | Bronze Shield Backing | article complet | 2026-11-04 |
+| `bronze_shield_boss.html` | Bronze Shield Boss | article complet | 2026-11-04 |
+| `bronze_sword_blade.html` | Bronze Sword Blade | article complet | 2026-11-04 |
+| `bronze_sword_hilt.html` | Bronze Sword Hilt | article complet | 2026-11-04 |
+| `bronze_torch_head.html` | Bronze Torch Head | article complet | 2026-11-04 |
+| `bronze_warhorn_mouthpiece.html` | Bronze Warhorn Mouthpiece | article complet | 2026-11-04 |
+| `coarse_string.html` | Coarse String | article complet | 2026-11-04 |
+| `cook_huelic.html` | Cook Huelic | article complet | 2026-11-04 |
+| `darksteel_axe_blade.html` | Darksteel Axe Blade | article complet | 2026-11-04 |
+| `darksteel_dagger_blade.html` | Darksteel Dagger Blade | article complet | 2026-11-04 |
+| `darksteel_dagger_hilt.html` | Darksteel Dagger Hilt | article complet | 2026-11-04 |
+| `darksteel_greatsword_blade.html` | Darksteel Greatsword Blade | article complet | 2026-11-04 |
+| `darksteel_greatsword_hilt.html` | Darksteel Greatsword Hilt | article complet | 2026-11-04 |
+| `darksteel_hammer_head.html` | Darksteel Hammer Head | article complet | 2026-11-04 |
+| `darksteel_horn.html` | Darksteel Horn | article complet | 2026-11-04 |
+| `darksteel_mace_head.html` | Darksteel Mace Head | article complet | 2026-11-04 |
+| `darksteel_pistol_barrel.html` | Darksteel Pistol Barrel | article complet | 2026-11-04 |
+| `darksteel_rifle_barrel.html` | Darksteel Rifle Barrel | article complet | 2026-11-04 |
+| `darksteel_shield_backing.html` | Darksteel Shield Backing | article complet | 2026-11-04 |
+| `darksteel_shield_boss.html` | Darksteel Shield Boss | article complet | 2026-11-04 |
+| `darksteel_sword_blade.html` | Darksteel Sword Blade | article complet | 2026-11-04 |
+| `darksteel_sword_hilt.html` | Darksteel Sword Hilt | article complet | 2026-11-04 |
+| `darksteel_torch_head.html` | Darksteel Torch Head | article complet | 2026-11-04 |
+| `darksteel_warhorn_mouthpiece.html` | Darksteel Warhorn Mouthpiece | article complet | 2026-11-04 |
+| `dragonfly_steaks.html` | Dragonfly Steaks | article complet | 2026-11-04 |
+| `elder_focus_casing.html` | Elder Focus Casing | article complet | 2026-11-04 |
+| `elder_focus_core.html` | Elder Focus Core | article complet | 2026-11-04 |
+| `elder_longbow_stave.html` | Elder Longbow Stave | article complet | 2026-11-04 |
+| `elder_pistol_frame.html` | Elder Pistol Frame | article complet | 2026-11-04 |
+| `elder_rifle_stock.html` | Elder Rifle Stock | article complet | 2026-11-04 |
+| `elder_scepter_core.html` | Elder Scepter Core | article complet | 2026-11-04 |
+| `elder_scepter_rod.html` | Elder Scepter Rod | article complet | 2026-11-04 |
+| `elder_short_bow_stave.html` | Elder Short-Bow Stave | article complet | 2026-11-04 |
+| `elder_staff_head.html` | Elder Staff Head | article complet | 2026-11-04 |
+| `elder_staff_shaft.html` | Elder Staff Shaft | article complet | 2026-11-04 |
+| `elder_torch_handle.html` | Elder Torch Handle | article complet | 2026-11-04 |
+| `forge_guards_medium_boots.html` | Forge Guard's Medium Boots | article complet moins « Available prefixes » | 2026-11-04 |
+| `forge_guards_medium_cuirass.html` | Forge Guard's Medium Cuirass | article complet moins « Available prefixes » | 2026-11-04 |
+| `forge_guards_medium_gloves.html` | Forge Guard's Medium Gloves | article complet moins « Available prefixes » | 2026-11-04 |
+| `forge_guards_medium_helmet.html` | Forge Guard's Medium Helmet | article complet moins « Available prefixes » | 2026-11-04 |
+| `forge_guards_medium_leggings.html` | Forge Guard's Medium Leggings | article complet moins « Available prefixes » | 2026-11-04 |
+| `forge_guards_medium_pauldron.html` | Forge Guard's Medium Pauldron | article complet moins « Available prefixes » | 2026-11-04 |
+| `glimmering_resin_axe.html` | Glimmering Resin Axe | article complet | 2026-11-04 |
+| `glimmering_resin_dagger.html` | Glimmering Resin Dagger | article complet | 2026-11-04 |
+| `glimmering_resin_focus.html` | Glimmering Resin Focus | article complet | 2026-11-04 |
+| `glimmering_resin_greatsword.html` | Glimmering Resin Greatsword | article complet | 2026-11-04 |
+| `glimmering_resin_hammer.html` | Glimmering Resin Hammer | article complet | 2026-11-04 |
+| `glimmering_resin_longbow.html` | Glimmering Resin Longbow | article complet | 2026-11-04 |
+| `glimmering_resin_mace.html` | Glimmering Resin Mace | article complet | 2026-11-04 |
+| `glimmering_resin_pistol.html` | Glimmering Resin Pistol | article complet | 2026-11-04 |
+| `glimmering_resin_rifle.html` | Glimmering Resin Rifle | article complet | 2026-11-04 |
+| `glimmering_resin_scepter.html` | Glimmering Resin Scepter | article complet | 2026-11-04 |
+| `glimmering_resin_shield.html` | Glimmering Resin Shield | article complet | 2026-11-04 |
+| `glimmering_resin_short_bow.html` | Glimmering Resin Short Bow | article complet | 2026-11-04 |
+| `glimmering_resin_spear.html` | Glimmering Resin Spear | article complet | 2026-11-04 |
+| `glimmering_resin_staff.html` | Glimmering Resin Staff | article complet | 2026-11-04 |
+| `glimmering_resin_sword.html` | Glimmering Resin Sword | article complet | 2026-11-04 |
+| `glimmering_resin_torch.html` | Glimmering Resin Torch | article complet | 2026-11-04 |
+| `glimmering_resin_warhorn.html` | Glimmering Resin Warhorn | article complet | 2026-11-04 |
+| `green_focus_casing.html` | Green Focus Casing | article complet | 2026-11-04 |
+| `green_focus_core.html` | Green Focus Core | article complet | 2026-11-04 |
+| `green_longbow_stave.html` | Green Longbow Stave | article complet | 2026-11-04 |
+| `green_pistol_frame.html` | Green Pistol Frame | article complet | 2026-11-04 |
+| `green_rifle_stock.html` | Green Rifle Stock | article complet | 2026-11-04 |
+| `green_scepter_core.html` | Green Scepter Core | article complet | 2026-11-04 |
+| `green_scepter_rod.html` | Green Scepter Rod | article complet | 2026-11-04 |
+| `green_short_bow_stave.html` | Green Short-Bow Stave | article complet | 2026-11-04 |
+| `green_staff_head.html` | Green Staff Head | article complet | 2026-11-04 |
+| `green_staff_shaft.html` | Green Staff Shaft | article complet | 2026-11-04 |
+| `green_torch_handle.html` | Green Torch Handle | article complet | 2026-11-04 |
+| `hard_focus_casing.html` | Hard Focus Casing | article complet | 2026-11-04 |
+| `hard_focus_core.html` | Hard Focus Core | article complet | 2026-11-04 |
+| `hard_longbow_stave.html` | Hard Longbow Stave | article complet | 2026-11-04 |
+| `hard_pistol_frame.html` | Hard Pistol Frame | article complet | 2026-11-04 |
+| `hard_rifle_stock.html` | Hard Rifle Stock | article complet | 2026-11-04 |
+| `hard_scepter_core.html` | Hard Scepter Core | article complet | 2026-11-04 |
+| `hard_scepter_rod.html` | Hard Scepter Rod | article complet | 2026-11-04 |
+| `hard_short_bow_stave.html` | Hard Short-Bow Stave | article complet | 2026-11-04 |
+| `hard_staff_head.html` | Hard Staff Head | article complet | 2026-11-04 |
+| `hard_staff_shaft.html` | Hard Staff Shaft | article complet | 2026-11-04 |
+| `hard_torch_handle.html` | Hard Torch Handle | article complet | 2026-11-04 |
+| `hardened_string.html` | Hardened String | article complet | 2026-11-04 |
+| `iron_axe_blade.html` | Iron Axe Blade | article complet | 2026-11-04 |
+| `iron_dagger_blade.html` | Iron Dagger Blade | article complet | 2026-11-04 |
+| `iron_dagger_hilt.html` | Iron Dagger Hilt | article complet | 2026-11-04 |
+| `iron_greatsword_blade.html` | Iron Greatsword Blade | article complet | 2026-11-04 |
+| `iron_greatsword_hilt.html` | Iron Greatsword Hilt | article complet | 2026-11-04 |
+| `iron_hammer_head.html` | Iron Hammer Head | article complet | 2026-11-04 |
+| `iron_horn.html` | Iron Horn | article complet | 2026-11-04 |
+| `iron_mace_head.html` | Iron Mace Head | article complet | 2026-11-04 |
+| `iron_pistol_barrel.html` | Iron Pistol Barrel | article complet | 2026-11-04 |
+| `iron_rifle_barrel.html` | Iron Rifle Barrel | article complet | 2026-11-04 |
+| `iron_shield_backing.html` | Iron Shield Backing | article complet | 2026-11-04 |
+| `iron_shield_boss.html` | Iron Shield Boss | article complet | 2026-11-04 |
+| `iron_sword_blade.html` | Iron Sword Blade | article complet | 2026-11-04 |
+| `iron_sword_hilt.html` | Iron Sword Hilt | article complet | 2026-11-04 |
+| `iron_torch_head.html` | Iron Torch Head | article complet | 2026-11-04 |
+| `iron_warhorn_mouthpiece.html` | Iron Warhorn Mouthpiece | article complet | 2026-11-04 |
+| `itzel_spirit_poison.html` | Itzel Spirit Poison | article complet | 2026-11-04 |
+| `large_ancient_haft.html` | Large Ancient Haft | article complet | 2026-11-04 |
+| `large_elder_haft.html` | Large Elder Haft | article complet | 2026-11-04 |
+| `large_green_haft.html` | Large Green Haft | article complet | 2026-11-04 |
+| `large_hard_haft.html` | Large Hard Haft | article complet | 2026-11-04 |
+| `large_seasoned_haft.html` | Large Seasoned Haft | article complet | 2026-11-04 |
+| `large_soft_haft.html` | Large Soft Haft | article complet | 2026-11-04 |
+| `mithril_axe_blade.html` | Mithril Axe Blade | article complet | 2026-11-04 |
+| `mithril_dagger_blade.html` | Mithril Dagger Blade | article complet | 2026-11-04 |
+| `mithril_dagger_hilt.html` | Mithril Dagger Hilt | article complet | 2026-11-04 |
+| `mithril_greatsword_blade.html` | Mithril Greatsword Blade | article complet | 2026-11-04 |
+| `mithril_greatsword_hilt.html` | Mithril Greatsword Hilt | article complet | 2026-11-04 |
+| `mithril_hammer_head.html` | Mithril Hammer Head | article complet | 2026-11-04 |
+| `mithril_horn.html` | Mithril Horn | article complet | 2026-11-04 |
+| `mithril_mace_head.html` | Mithril Mace Head | article complet | 2026-11-04 |
+| `mithril_pistol_barrel.html` | Mithril Pistol Barrel | article complet | 2026-11-04 |
+| `mithril_rifle_barrel.html` | Mithril Rifle Barrel | article complet | 2026-11-04 |
+| `mithril_shield_backing.html` | Mithril Shield Backing | article complet | 2026-11-04 |
+| `mithril_shield_boss.html` | Mithril Shield Boss | article complet | 2026-11-04 |
+| `mithril_sword_blade.html` | Mithril Sword Blade | article complet | 2026-11-04 |
+| `mithril_sword_hilt.html` | Mithril Sword Hilt | article complet | 2026-11-04 |
+| `mithril_torch_head.html` | Mithril Torch Head | article complet | 2026-11-04 |
+| `mithril_warhorn_mouthpiece.html` | Mithril Warhorn Mouthpiece | article complet | 2026-11-04 |
+| `orichalcum_axe_blade.html` | Orichalcum Axe Blade | article complet | 2026-11-04 |
+| `orichalcum_dagger_blade.html` | Orichalcum Dagger Blade | article complet | 2026-11-04 |
+| `orichalcum_dagger_hilt.html` | Orichalcum Dagger Hilt | article complet | 2026-11-04 |
+| `orichalcum_greatsword_blade.html` | Orichalcum Greatsword Blade | article complet | 2026-11-04 |
+| `orichalcum_greatsword_hilt.html` | Orichalcum Greatsword Hilt | article complet | 2026-11-04 |
+| `orichalcum_hammer_head.html` | Orichalcum Hammer Head | article complet | 2026-11-04 |
+| `orichalcum_horn.html` | Orichalcum Horn | article complet | 2026-11-04 |
+| `orichalcum_mace_head.html` | Orichalcum Mace Head | article complet | 2026-11-04 |
+| `orichalcum_pistol_barrel.html` | Orichalcum Pistol Barrel | article complet | 2026-11-04 |
+| `orichalcum_rifle_barrel.html` | Orichalcum Rifle Barrel | article complet | 2026-11-04 |
+| `orichalcum_shield_backing.html` | Orichalcum Shield Backing | article complet | 2026-11-04 |
+| `orichalcum_shield_boss.html` | Orichalcum Shield Boss | article complet | 2026-11-04 |
+| `orichalcum_sword_blade.html` | Orichalcum Sword Blade | article complet | 2026-11-04 |
+| `orichalcum_sword_hilt.html` | Orichalcum Sword Hilt | article complet | 2026-11-04 |
+| `orichalcum_torch_head.html` | Orichalcum Torch Head | article complet | 2026-11-04 |
+| `orichalcum_warhorn_mouthpiece.html` | Orichalcum Warhorn Mouthpiece | article complet | 2026-11-04 |
+| `polished_aurillium.html` | Polished Aurillium | article complet | 2026-11-04 |
+| `rawhide_string.html` | Rawhide String | article complet | 2026-11-04 |
+| `rugged_string.html` | Rugged String | article complet | 2026-11-04 |
+| `seasoned_focus_casing.html` | Seasoned Focus Casing | article complet | 2026-11-04 |
+| `seasoned_focus_core.html` | Seasoned Focus Core | article complet | 2026-11-04 |
+| `seasoned_longbow_stave.html` | Seasoned Longbow Stave | article complet | 2026-11-04 |
+| `seasoned_pistol_frame.html` | Seasoned Pistol Frame | article complet | 2026-11-04 |
+| `seasoned_rifle_stock.html` | Seasoned Rifle Stock | article complet | 2026-11-04 |
+| `seasoned_scepter_core.html` | Seasoned Scepter Core | article complet | 2026-11-04 |
+| `seasoned_scepter_rod.html` | Seasoned Scepter Rod | article complet | 2026-11-04 |
+| `seasoned_short_bow_stave.html` | Seasoned Short-Bow Stave | article complet | 2026-11-04 |
+| `seasoned_staff_head.html` | Seasoned Staff Head | article complet | 2026-11-04 |
+| `seasoned_staff_shaft.html` | Seasoned Staff Shaft | article complet | 2026-11-04 |
+| `seasoned_torch_handle.html` | Seasoned Torch Handle | article complet | 2026-11-04 |
+| `small_ancient_haft.html` | Small Ancient Haft | article complet | 2026-11-04 |
+| `small_elder_haft.html` | Small Elder Haft | article complet | 2026-11-04 |
+| `small_green_haft.html` | Small Green Haft | article complet | 2026-11-04 |
+| `small_hard_haft.html` | Small Hard Haft | article complet | 2026-11-04 |
+| `small_seasoned_haft.html` | Small Seasoned Haft | article complet | 2026-11-04 |
+| `small_soft_haft.html` | Small Soft Haft | article complet | 2026-11-04 |
+| `soft_focus_casing.html` | Soft Focus Casing | article complet | 2026-11-04 |
+| `soft_focus_core.html` | Soft Focus Core | article complet | 2026-11-04 |
+| `soft_longbow_stave.html` | Soft Longbow Stave | article complet | 2026-11-04 |
+| `soft_pistol_frame.html` | Soft Pistol Frame | article complet | 2026-11-04 |
+| `soft_rifle_stock.html` | Soft Rifle Stock | article complet | 2026-11-04 |
+| `soft_scepter_core.html` | Soft Scepter Core | article complet | 2026-11-04 |
+| `soft_scepter_rod.html` | Soft Scepter Rod | article complet | 2026-11-04 |
+| `soft_short_bow_stave.html` | Soft Short-Bow Stave | article complet | 2026-11-04 |
+| `soft_staff_head.html` | Soft Staff Head | article complet | 2026-11-04 |
+| `soft_staff_shaft.html` | Soft Staff Shaft | article complet | 2026-11-04 |
+| `soft_torch_handle.html` | Soft Torch Handle | article complet | 2026-11-04 |
+| `steel_axe_blade.html` | Steel Axe Blade | article complet | 2026-11-04 |
+| `steel_dagger_blade.html` | Steel Dagger Blade | article complet | 2026-11-04 |
+| `steel_dagger_hilt.html` | Steel Dagger Hilt | article complet | 2026-11-04 |
+| `steel_greatsword_blade.html` | Steel Greatsword Blade | article complet | 2026-11-04 |
+| `steel_greatsword_hilt.html` | Steel Greatsword Hilt | article complet | 2026-11-04 |
+| `steel_hammer_head.html` | Steel Hammer Head | article complet | 2026-11-04 |
+| `steel_horn.html` | Steel Horn | article complet | 2026-11-04 |
+| `steel_mace_head.html` | Steel Mace Head | article complet | 2026-11-04 |
+| `steel_pistol_barrel.html` | Steel Pistol Barrel | article complet | 2026-11-04 |
+| `steel_rifle_barrel.html` | Steel Rifle Barrel | article complet | 2026-11-04 |
+| `steel_shield_backing.html` | Steel Shield Backing | article complet | 2026-11-04 |
+| `steel_shield_boss.html` | Steel Shield Boss | article complet | 2026-11-04 |
+| `steel_sword_blade.html` | Steel Sword Blade | article complet | 2026-11-04 |
+| `steel_sword_hilt.html` | Steel Sword Hilt | article complet | 2026-11-04 |
+| `steel_torch_head.html` | Steel Torch Head | article complet | 2026-11-04 |
+| `steel_warhorn_mouthpiece.html` | Steel Warhorn Mouthpiece | article complet | 2026-11-04 |
+| `thin_string.html` | Thin String | article complet | 2026-11-04 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

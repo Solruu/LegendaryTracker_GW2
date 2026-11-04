@@ -1,0 +1,604 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"><div id="mw-dismissablenotice-anonplace"></div><script>(function(){var node=document.getElementById("mw-dismissablenotice-anonplace");if(node){node.outerHTML="\u003Cdiv class=\"mw-dismissable-notice\"\u003E\u003Cdiv class=\"mw-dismissable-notice-close\"\u003E[\u003Ca tabindex=\"0\" role=\"button\"\u003Edismiss\u003C/a\u003E]\u003C/div\u003E\u003Cdiv class=\"mw-dismissable-notice-body\"\u003E\u003Cdiv id=\"localNotice\" data-nosnippet=\"\"\u003E\u003Cdiv class=\"sitenotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cdiv style=\"border: 1px solid #0000FF; background: #CCCCEB; padding: 5px; margin-top: 2px; text-align: center;\"\u003EThe wikis have been updated due to a recent PHP vulnerability. You may experience performance issues as we continue fine-tuning the servers and some content may be broken as updates are being rolled out. We may have to take the wiki servers down again for emergency maintenance as we continue to rollout these fixes. We appreciate your patience. \u003Ca href=\"/wiki/Guild_Wars_2_Wiki:Reporting_wiki_bugs\" title=\"Guild Wars 2 Wiki:Reporting wiki bugs\"\u003EPlease report any issues you encounter\u003C/a\u003E.\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E";}}());</script></div>
+			<div class="mw-indicators">
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Cook Huelic</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub"><div id="mw-content-subtitle"></div></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content"><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><div class="infobox npc">
+<div class="infobox-icon"><span typeof="mw:File"><a href="/wiki/File:Renown_heart_NPC.png" class="mw-file-description"><img src="/images/thumb/4/49/Renown_heart_NPC.png/40px-Renown_heart_NPC.png" decoding="async" width="40" height="32" class="mw-file-element" srcset="/images/thumb/4/49/Renown_heart_NPC.png/60px-Renown_heart_NPC.png 1.5x, /images/thumb/4/49/Renown_heart_NPC.png/80px-Renown_heart_NPC.png 2x" data-file-width="84" data-file-height="67"></a></span></div>
+<p class="heading">Cook Huelic</p>
+<div class="wrapper">
+<p class="image_wrapper"><span typeof="mw:File"><a href="/wiki/File:Blue_Hylek_Light_Armor.jpg" class="mw-file-description"><img src="/images/thumb/3/30/Blue_Hylek_Light_Armor.jpg/240px-Blue_Hylek_Light_Armor.jpg" decoding="async" width="240" height="192" class="mw-file-element" srcset="/images/thumb/3/30/Blue_Hylek_Light_Armor.jpg/360px-Blue_Hylek_Light_Armor.jpg 1.5x, /images/thumb/3/30/Blue_Hylek_Light_Armor.jpg/480px-Blue_Hylek_Light_Armor.jpg 2x" data-file-width="1328" data-file-height="1063"></a></span>
+</p>
+<dl><dt><a href="/wiki/Bestiary" title="Bestiary">Race</a></dt>
+<dd><a href="/wiki/Hylek" title="Hylek">Hylek</a></dd>
+<dt><a href="/wiki/Level" title="Level">Level</a></dt>
+<dd>10</dd>
+<dt><a href="/wiki/Location" title="Location">Location</a></dt>
+<dd><a href="/wiki/Michoan_Marsh" title="Michoan Marsh">Michoan Marsh</a> <br><small>(<a href="/wiki/Metrica_Province" title="Metrica Province">Metrica Province</a>)</small></dd>
+<dt><a href="/wiki/Category:Organizations" title="Category:Organizations">Organization</a></dt>
+<dd><a href="/wiki/Michotl" title="Michotl">Michotl</a></dd>
+<dt><a href="/wiki/Service" title="Service">Services</a></dt>
+<dd><a href="/wiki/Renown_Heart" title="Renown Heart">Renown Heart</a></dd>
+<dt>Part of</dt>
+<dd><a href="/wiki/Help_the_Michotl_tribe" title="Help the Michotl tribe">Help the Michotl tribe</a></dd></dl>
+</div>
+<table style="width:100%">
+<tbody><tr>
+<td><b>Image(s)</b>
+</td></tr>
+<tr style="text-align:center;">
+<td>
+<p class="mw-empty-elt"></p><div id="infoboxmap1" class="infoboxmap"></div>
+<style>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css");
+
+.leaflet-container {
+    background: #000;
+}
+.leaflet-attribution-flag {
+    width: 0px;
+}
+
+.mapchatlink {
+    width: 6.6em;
+}
+</style>
+<script type="text/javascript">
+if (typeof GLOBAL_leafletscript === 'undefined') {
+    var GLOBAL_leafletscript = document.createElement('script');
+    GLOBAL_leafletscript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js');
+    document.body.appendChild(GLOBAL_leafletscript);
+}
+
+// DEFER LOADING SCRIPT UNTIL JQUERY AND LEAFLET ARE READY. WAIT 40MS BETWEEN ATTEMPTS.
+function deferI(method) {
+    if (window.jQuery && window.L) {
+        if (!(window.infobox_map_output)) {
+            $.ajaxSetup({ cache: true });
+            window.infobox_map_output = $.getScript('/index.php?title=Widget:Interactive_map_data_builder/infobox-map-output.js&action=raw&ctype=text/javascript')
+        }
+        if (window.wiki_waypoints) {
+            method();
+        } else {
+            window.infobox_map_output.done(function( data, textStatus, jqxhr ) {
+                method();
+            })
+            window.infobox_map_output.fail(function( jqxhr, settings, exception ) {
+                console.log('Failed to load "infobox-map-output.js" script', jqxhr, settings, exception);
+            });
+        }
+    } else {
+        setTimeout(function() { deferI(method) }, 40);
+    }
+}
+
+// INITIALISATION
+deferI(function () {
+    infoboxMap({
+        container_id: "infoboxmap" + "1",
+        iconUrl: "https://wiki.guildwars2.com/images/6/6e/Renown_Heart_%28map_icon%29.png",
+        icoords: "[41062,35136]", // string pairs of [x,y] separated by comma - e.g. [x1,y1],[x2,y2],[x3,y3]
+        ipath: "", // string pairs of [x,y] separated by comma
+        ibounds: "", // string pairs of [x,y] separated by comma
+        manualWaypoint: "" // string which is representing a numerical id.
+    });
+});
+
+function infoboxMap(options) {
+    // Helper function to convert delimited coordinates into arrays of coordinates
+    function text2coordinates(text) {
+        text = text.replace(/\s/g,'').split('],[').join('];[').replace(/\]\]/g,']').replace(/\[\[/g,'[');
+        if (text == '') {
+            return null;
+        }
+        var coords = [];
+        $.map( text.split(';'), function(q){
+            if (q == '') {
+                return;
+            } else {
+                q = q.trim().replace('[','').replace(']','');
+                var p = $.map( q.split(','), function(x){
+                    return Number(x);
+                });
+                coords.push( p );
+            }
+        });
+        return coords;
+    }
+
+    // Helper function to convert GW2 coordinates into Leaflet coordinates
+    function unproject(coord) {
+        return map.unproject(coord, map.getMaxZoom() );
+    }
+
+    // Helper function to return clicked coordinates before moving and then reset position to the marker.
+    function restorePosition(e) {
+        console.log('You clicked the map at ' + '[' + Math.round( 10 * map.project(e.latlng, map.getMaxZoom()).x )/10 + ', ' + Math.round( 10 * map.project(e.latlng, map.getMaxZoom()).y )/10 + ']' );
+        map.panTo(unproject(coords_ctr));
+    }
+
+    // Helper function to find center of polygon
+    function getCentroid(arr) {
+        return arr.reduce(function (x,y) {
+            return [x[0] + y[0]/arr.length, x[1] + y[1]/arr.length]
+        }, [0,0])
+    }
+
+    // Helper function to find size of polygon
+    function getSize(arr) {
+        var x = arr.map(function(p) {return p[0] });
+        var y = arr.map(function(p) {return p[1] });
+        var min_arr = [ Math.min.apply(null, x), Math.min.apply(null, y) ];
+        var max_arr = [ Math.max.apply(null, x), Math.max.apply(null, y) ];
+
+        return [(max_arr[0] - min_arr[0]), (max_arr[1] - min_arr[1])];
+    }
+
+    // If all inputs are empty, quit.
+    if (options.icoords == '' && options.ipath == '' && ibounds == ''){
+        return;
+    }
+
+    // Convert from strings to nested arrays
+    var coords = text2coordinates(options.icoords);
+    var path   = text2coordinates(options.ipath  );
+    var bounds = text2coordinates(options.ibounds);
+
+    // Get the continent and floor from the highest priority available input
+    var mastercoord;
+    if (coords) {
+        mastercoords = coords;
+    } else if (path) {
+        mastercoords = path;
+    } else {
+        mastercoords = bounds;
+    }
+
+    // Collect floor and continent
+    var floor_id = 1;
+    if (typeof mastercoords[0][2] !== 'undefined') {
+        floor_id = mastercoords[0][2];
+    }
+    var continent_id = 1;
+    if (typeof mastercoords[0][3] !== 'undefined') {
+        continent_id = mastercoords[0][3];
+    }
+    var coords_ctr = getCentroid(mastercoords);
+    var coords_size = getSize(mastercoords);
+
+    var map;
+
+    // Get continent details
+    var minzoom = 1, maxzoom = 7, continent_dims = [[0,0],[131072,131072]];
+    if (continent_id === 2) {
+        continent_dims = [[0,0],[16384,16384]];
+    }
+
+    // Main map function
+    // Initialise map
+    $('#' + options.container_id).css('height','250px').css('width','auto').css('margin','0px auto');
+    map = L.map(options.container_id, {
+        minZoom: 0,
+        maxZoom: maxzoom,
+        crs: L.CRS.Simple
+    });
+    var mapbounds_rect = new L.LatLngBounds( unproject([0,0]), unproject(continent_dims[1]) );
+    L.tileLayer("https://tiles.guildwars2.com/" + continent_id + "/" + floor_id + "/{z}/{x}/{y}.jpg", {
+        minZoom: 0,
+        minNativeZoom: minzoom,
+        noWrap: true,
+        bounds: mapbounds_rect,
+        attribution: 'Map &copy; <a href="https://www.arena.net/" target="_blank">ArenaNet</a>'
+    }).addTo(map);
+
+    // Add panes in stacked order such that the top layer is preferentially visible versus the lower layers
+    map.createPane('bottom'); // -- for bounds and paths
+    map.createPane('middle'); // -- for various markers
+    map.createPane('top'); // -- for waypoints
+
+    // Zoom in and center the map on the NPC position
+    map.setView(unproject(coords_ctr), maxzoom);
+
+    // Image overlay(s) due to outdated API tiles.
+    // Remarks: To calculate the coords, use the separately available zoom level 7 tiles. Pick any such tile and determine its position on the overlay image. The top left tip of the pixel in the tile's top left corner's at <picked tile X>*256 and <picked tile Y>*256 in continent coordinates. Subtract or add the amount of pixels that the overlay image has relative to that position in order to get the positions of the top left and bottom right corners of the overlay image in continent coordinates.
+    let mapImageOverlays = [
+        {continent_id: 1, floors: [0, 1, 2, 3], coords: [[12*256, 234*256], [22*256, 247*256]], image_url: "https://wiki.guildwars2.com/images/d/d3/Eternity's_Garden_map_overlay.webp"},
+        {continent_id: 1, floors: [0, 1, 2, 3], coords: [[20*256-1992, 229*256-1240], [20*256+1536, 229*256+1196]], image_url: "https://wiki.guildwars2.com/images/c/c3/Leyspring_Hollows_map_overlay.webp"}
+    ];
+    for (let mio of mapImageOverlays) {
+        if (mio.continent_id !== continent_id || !mio.floors.includes(floor_id)) {
+            continue;
+        }
+
+        let imageOverlay = L.imageOverlay(
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4XmNgYAAAAAMAAcTn5P8AAAAASUVORK5CYII=", // Fully transparent 1x1 PNG.
+            mio.coords.map(p => unproject(p))
+        ).addTo(map);
+
+        let watchForImageVisible = function() {
+            imageOverlay.off("load", watchForImageVisible);
+            let intersectionObserver = new IntersectionObserver(entries => {
+                for (let entry of entries) {
+                    if (entry.target === imageOverlay.getElement()
+                     && entry.isIntersecting) {
+                        imageOverlay.setUrl(mio.image_url);
+                        intersectionObserver.disconnect();
+                    }
+                }
+            });
+            intersectionObserver.observe(imageOverlay.getElement());
+        };
+        imageOverlay.on("load", watchForImageVisible);
+    }
+
+    // Add path flag-line-flag if given
+    if ( path && path.length > 0 ) {
+        var newbounds = $.map(path, function(v) { return unproject(v) });
+        var line = L.polyline(newbounds, {
+            clickable: false,
+            color: 'rgba(255,255,255,0.8)',
+            fillOpacity: 0,
+            weight: 6,
+            dashArray: '1,12',
+            pane: 'bottom'
+        });
+        line.addTo(map);
+        map.fitBounds(line.getBounds().pad(0.3));
+
+        var startMarker = L.icon({
+            iconUrl: '/images/2/26/Event_flag_green_(map_icon).png',
+            iconSize: [32, 32],
+            iconAnchor: [14, 28]
+        });
+        var endMarker = L.icon({
+            iconUrl: '/images/e/e7/Event_flag_red_(map_icon).png',
+            iconSize: [32, 32],
+            iconAnchor: [14, 28]
+        });
+
+        L.marker(newbounds[(newbounds.length - 1)], {icon: endMarker, pane: 'middle' }).addTo(map);
+        L.marker(newbounds[0], {icon: startMarker, pane: 'middle' }).addTo(map);
+    }
+
+    // Add marker if given
+    if ( coords && coords.length > 0 ) {
+        var markerGroup = L.FeatureGroup;
+        var eventMarker = L.icon({
+            iconUrl: options.iconUrl,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+        });
+        var defaultMarker = L.icon({
+            iconUrl: '/images/2/23/Widget_map_dot.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+        });
+        var yellowSwirl = L.icon({
+            iconUrl: '/images/8/8d/Widget_map_yellow_swirl.png',
+            iconSize: [128, 128],
+            iconAnchor: [64, 64]
+        });
+        var n = {};
+
+        // Typically we plot the ingame icon, a yellow circle around it, and consider any bounds given.
+        // However we don't want to show the yellow circle if bounds are given too - becomes too complicated.
+        if ( options.iconUrl != '' && ((bounds && bounds.length) || (coords.length > 1)) > 0) {
+            // SCENARIO 1: Icon specified, has bounds given OR multiple sets of coordinates (do not plot a circle)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: eventMarker, pane: 'middle' })
+                ];
+            }) );
+
+        } else if ( options.iconUrl != '' && !(bounds && bounds.length > 0) && coords.length <= 1 ) {
+            // SCENARIO 2: Icon specified, has no bounds given AND multiple sets of coordinates are not provided (so plot a circle too)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: eventMarker, pane: 'middle' }),
+                    L.marker(unproject(c), {icon: yellowSwirl, pane: 'middle' })
+                ];
+            }) );
+
+        } else if ( (bounds && bounds.length > 0) || (coords.length > 1) ) {
+            // SCENARIO 3: Icon not specified (so use default), has bounds given OR multiple sets of coordinates (do not plot a circle)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: defaultMarker, pane: 'middle' })
+                ];
+            }) );
+
+        } else {
+            // SCENARIO 4: Icon not specified (so use default), has no bounds given (so plot a circle too)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: defaultMarker, pane: 'middle' }),
+                    L.marker(unproject(c), {icon: yellowSwirl, pane: 'middle' })
+                ];
+            }) );
+        }
+
+        n.addTo(map);
+        map.fitBounds(n.getBounds());
+    }
+
+    // Add bounds polygon if given
+    if ( bounds && bounds.length > 0 ) {
+        var newbounds = $.map(bounds, function(v) { return unproject(v) });
+        var poly = L.polygon(newbounds, {
+            clickable: false,
+            color: 'rgba(255,221,0,0.8)',
+            fillOpacity: 0.2,
+            weight: 6,
+            pane: 'bottom'
+        });
+        poly.addTo(map);
+        map.fitBounds(poly.getBounds());
+    }
+
+    var wpicon = L.icon({
+        iconUrl: '/images/d/d2/Waypoint_(map_icon).png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -16]
+    });
+
+    // If we're on Tyria, find the closest WP within the zone rect and draw it.
+    //  additionally checks that the markers are not extremely spread out (over 7000 coordinate units between max x [or y] and min x [or y] - 120% of the width of Crystal Oasis)
+    if (options.manualWaypoint === '') {
+        if (continent_id === 1 && !(coords_size[0] > 7000 ||  coords_size[1] > 7000)) {
+
+            var waypoints = [];
+
+            // If the waypoint isn't in the same zone, don't bother showing the waypoint.
+            $.each(wiki_waypoints[continent_id], function(mk, mv){
+                if ( coords_ctr[0] >= mv.continent_rect[0][0] &&
+                     coords_ctr[0]  < mv.continent_rect[1][0] &&
+                     coords_ctr[1] >= mv.continent_rect[0][1] &&
+                     coords_ctr[1]  < mv.continent_rect[1][1] ) {
+                    $.map(mv.waypoints, function(wv, wk) {
+                        waypoints.push(wv);
+                    });
+                }
+            });
+            
+            // Return to original version of the script
+
+            // Filter waypoints for the same floor only as the objective
+            if (waypoints.length > 0) {
+                waypoints = waypoints.filter(function(a){
+                    return a.floors.indexOf(floor_id) !== -1;
+                });
+            }
+
+            // Check there actually is a waypoint on the given floor
+            if (waypoints.length > 0) {
+                var temp = 0, dist = 4000000000000000, index = -1;
+                $.each(waypoints, function(waypointkey, waypoint){
+                    temp = Math.pow(coords_ctr[0] - waypoint['coord'][0],2) + Math.pow(coords_ctr[1] - waypoint['coord'][1],2);
+                    if ( temp < dist ) {
+                        dist = temp;
+                        index = waypointkey;
+                    }
+                });
+
+                // Finally confirm the distance isn't totally crazy (over 5000 units)
+                if (dist < 25000000) {
+                    L.marker(unproject(waypoints[index]['coord']), { icon: wpicon, title: waypoints[index]['name'], pane: 'top' })
+                    .bindPopup('<a href="/wiki/' + encodeURIComponent(waypoints[index]['name']) + '" target="_blank">' + waypoints[index]['name'] + '</a><br><input class="mapchatlink" type="text" value="' + waypoints[index]['chat_link'] + '" readonly="readonly" onclick="this.select(); return false;"/>').addTo(map);
+                }
+            }
+        }
+    } else {
+        // Else manual waypoint is specified. This is initially a string but represents the waypoint id (some duplicate names exist so cannot use those).
+        options.manualWaypoint = Number(options.manualWaypoint);
+
+        var waypoints = [];
+
+        // Filter waypoints for the same id as specified
+        $.each(wiki_waypoints[continent_id], function(mk, mv){
+            $.map(mv.waypoints, function(wv, wk) {
+                if (wv.id === options.manualWaypoint) {
+                    waypoints.push(wv);
+                }
+            });
+        });
+
+        if (waypoints.length > 0) {
+            L.marker(unproject(waypoints[0]['coord']), { icon: wpicon, title: waypoints[0]['name'], pane: 'top' })
+            .bindPopup('<a href="/wiki/' + encodeURIComponent(waypoints[0]['name']) + '" target="_blank">' + waypoints[0]['name'] + '</a><br><input class="mapchatlink" type="text" value="' + waypoints[0]['chat_link'] + '" readonly="readonly" onclick="this.select(); return false;"/>').addTo(map);
+        } else {
+            console.log('[[Widget:Infobox map]]: Manual waypoint id specified but no result found with that ID, ignoring.');
+        }
+    }
+
+    // Add a function to reset the x,y position
+    map.on('click', restorePosition);
+}
+</script>
+<p class="mw-empty-elt"></p>
+<p style="font-size:.9em;">Interactive map  </p>
+</td></tr></tbody></table>
+</div> 
+<p><a class="mw-selflink selflink">Cook Huelic</a> is a <a href="/wiki/Renown_Heart_NPC" title="Renown Heart NPC">Renown Heart NPC</a> located in the <a href="/wiki/Michoan_Marsh" title="Michoan Marsh">Michoan Marsh</a> of <a href="/wiki/Metrica_Province" title="Metrica Province">Metrica Province</a>. After players <a href="/wiki/Help_the_Michotl_tribe" title="Help the Michotl tribe">helped the Michotl tribe</a>, he will offer some items in exchange for <a href="/wiki/Karma" title="Karma">karma</a>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Location"><span class="tocnumber">1</span> <span class="toctext">Location</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Heart_involvement"><span class="tocnumber">2</span> <span class="toctext">Heart involvement</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Items_offered"><span class="tocnumber">3</span> <span class="toctext">Items offered</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Historical_items"><span class="tocnumber">3.1</span> <span class="toctext">Historical items</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Dialogue"><span class="tocnumber">4</span> <span class="toctext">Dialogue</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Trivia"><span class="tocnumber">5</span> <span class="toctext">Trivia</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Location">Location</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Cook_Huelic&amp;action=edit&amp;section=1" title="Edit section: Location">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt><a href="/wiki/Maguuma_Jungle" title="Maguuma Jungle">Maguuma Jungle</a></dt></dl>
+<ul><li><a href="/wiki/Metrica_Province" title="Metrica Province">Metrica Province</a>
+<ul><li><a href="/wiki/Michoan_Marsh" title="Michoan Marsh">Michoan Marsh</a></li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Heart_involvement">Heart involvement</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Cook_Huelic&amp;action=edit&amp;section=2" title="Edit section: Heart involvement">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/f/f8/Complete_heart_%28map_icon%29.png/20px-Complete_heart_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/f/f8/Complete_heart_%28map_icon%29.png/30px-Complete_heart_%28map_icon%29.png 1.5x, /images/f/f8/Complete_heart_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> <a href="/wiki/Help_the_Michotl_tribe" title="Help the Michotl tribe">Help the Michotl tribe</a> (11)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Items_offered">Items offered</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Cook_Huelic&amp;action=edit&amp;section=3" title="Edit section: Items offered">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<table class="npc sortable table" style="display: table">
+<tbody><tr>
+<th>Item</th>
+<th>Type</th>
+<th>Rarity</th>
+<th>Level
+</th>
+<th>Cost
+</th></tr>
+<tr id="vendor1" class="">
+<td data-sort-value="Dragonfly-Wing Earrings"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Dragonfly-Wing_Earrings" title="Dragonfly-Wing Earrings"><img src="/images/thumb/1/16/Dragonfly-Wing_Earrings.png/20px-Dragonfly-Wing_Earrings.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/1/16/Dragonfly-Wing_Earrings.png/30px-Dragonfly-Wing_Earrings.png 1.5x, /images/thumb/1/16/Dragonfly-Wing_Earrings.png/40px-Dragonfly-Wing_Earrings.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Dragonfly-Wing_Earrings" title="Dragonfly-Wing Earrings">Dragonfly-Wing Earrings</a></td>
+<td style="text-align:center"><a href="/wiki/Accessory" title="Accessory">Accessory</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">C</span><span class="rarity-fine"><b>Fine</b></span></td>
+<td style="text-align:center">11
+</td>
+<td data-sort-value="KARMA 00000140" style="text-align:right">140&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr>
+<tr id="vendor2" class="">
+<td data-sort-value="Hylek Crab Skewer"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Hylek_Crab_Skewer" title="Hylek Crab Skewer"><img src="/images/thumb/d/dc/Harpoon.png/20px-Harpoon.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/d/dc/Harpoon.png/30px-Harpoon.png 1.5x, /images/thumb/d/dc/Harpoon.png/40px-Harpoon.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Hylek_Crab_Skewer" title="Hylek Crab Skewer">Hylek Crab Skewer</a></td>
+<td style="text-align:center"><a href="/wiki/Spear" title="Spear">Spear</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">C</span><span class="rarity-fine"><b>Fine</b></span></td>
+<td style="text-align:center">11
+</td>
+<td data-sort-value="KARMA 00000168" style="text-align:right">168&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr>
+<tr id="vendor3" class="">
+<td data-sort-value="Hylek Fishing Pole"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Hylek_Fishing_Pole" title="Hylek Fishing Pole"><img src="/images/thumb/6/66/Basic_Speargun.png/20px-Basic_Speargun.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/6/66/Basic_Speargun.png/30px-Basic_Speargun.png 1.5x, /images/thumb/6/66/Basic_Speargun.png/40px-Basic_Speargun.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Hylek_Fishing_Pole" title="Hylek Fishing Pole">Hylek Fishing Pole</a></td>
+<td style="text-align:center"><a href="/wiki/Harpoon_gun" title="Harpoon gun">Harpoon gun</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">C</span><span class="rarity-fine"><b>Fine</b></span></td>
+<td style="text-align:center">11
+</td>
+<td data-sort-value="KARMA 00000168" style="text-align:right">168&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr>
+<tr id="vendor4" class="">
+<td data-sort-value="Hylek Fish Poker"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Hylek_Fish_Poker" title="Hylek Fish Poker"><img src="/images/thumb/a/ad/Basic_Trident.png/20px-Basic_Trident.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/a/ad/Basic_Trident.png/30px-Basic_Trident.png 1.5x, /images/thumb/a/ad/Basic_Trident.png/40px-Basic_Trident.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Hylek_Fish_Poker" title="Hylek Fish Poker">Hylek Fish Poker</a></td>
+<td style="text-align:center"><a href="/wiki/Trident" title="Trident">Trident</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">C</span><span class="rarity-fine"><b>Fine</b></span></td>
+<td style="text-align:center">11
+</td>
+<td data-sort-value="KARMA 00000168" style="text-align:right">168&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr>
+<tr id="vendor5" class="">
+<td data-sort-value="Michotl Tribe's Herbs"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Michotl_Tribe%27s_Herbs" title="Michotl Tribe's Herbs"><img src="/images/thumb/5/58/Michotl_Tribe%27s_Herbs.png/20px-Michotl_Tribe%27s_Herbs.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/5/58/Michotl_Tribe%27s_Herbs.png/30px-Michotl_Tribe%27s_Herbs.png 1.5x, /images/thumb/5/58/Michotl_Tribe%27s_Herbs.png/40px-Michotl_Tribe%27s_Herbs.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Michotl_Tribe%27s_Herbs" title="Michotl Tribe's Herbs">Michotl Tribe's Herbs</a>      <br><small>(Only if the <a href="/wiki/HOPE_I:_Research" title="HOPE I: Research">HOPE I: Research</a> <a href="/wiki/Collection" class="mw-redirect" title="Collection">collection</a> is active.)</small></td>
+<td style="text-align:center"><a href="/wiki/Crafting_material" title="Crafting material">Crafting material</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">F</span><span class="rarity-exotic"><b>Exotic</b></span></td>
+<td style="text-align:center">—
+</td>
+<td data-sort-value="KARMA 00001071" style="text-align:right">1,071&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr>
+<tr id="vendor6" class="">
+<td data-sort-value="Dragonfly Steaks"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Dragonfly_Steaks" title="Dragonfly Steaks"><img src="/images/thumb/d/de/Poached_Salmon_Filet.png/20px-Poached_Salmon_Filet.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/d/de/Poached_Salmon_Filet.png/30px-Poached_Salmon_Filet.png 1.5x, /images/thumb/d/de/Poached_Salmon_Filet.png/40px-Poached_Salmon_Filet.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Dragonfly_Steaks" title="Dragonfly Steaks">Dragonfly Steaks</a>      <br><small>(Only if the <a href="/wiki/Radiance_of_the_Sun_God" title="Radiance of the Sun God">Radiance of the Sun God</a> <a href="/wiki/Collection" class="mw-redirect" title="Collection">collection</a> is active.)</small></td>
+<td style="text-align:center"><a href="/wiki/Service" title="Service">Service</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">B</span><span class="rarity-basic"><b>Basic</b></span></td>
+<td style="text-align:center">—
+</td>
+<td data-sort-value="KARMA 00007000" style="text-align:right">7,000&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Historical_items">Historical items</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Cook_Huelic&amp;action=edit&amp;section=4" title="Edit section: Historical items">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>These items are no longer sold as of the <a href="/wiki/Game_updates/2012-09-08" title="Game updates/2012-09-08">September 8, 2012 game update</a>.
+</p>
+<table class="npc sortable table" style="display: table">
+<tbody><tr>
+<th>Item</th>
+<th>Type</th>
+<th>Rarity</th>
+<th>Level
+</th>
+<th>Cost
+</th></tr>
+<tr id="vendor7" class="gray">
+<td data-sort-value="Vanilla Beans in Bulk"><span class="small item-icon thumb-icon"><span class="mw-valign-bottom" typeof="mw:File"><a href="/wiki/Vanilla_Beans_in_Bulk" title="Vanilla Beans in Bulk"><img src="/images/thumb/f/f6/Vanilla_Beans_in_Bulk.png/20px-Vanilla_Beans_in_Bulk.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/f/f6/Vanilla_Beans_in_Bulk.png/30px-Vanilla_Beans_in_Bulk.png 1.5x, /images/thumb/f/f6/Vanilla_Beans_in_Bulk.png/40px-Vanilla_Beans_in_Bulk.png 2x" data-file-width="64" data-file-height="64"></a></span></span>&nbsp;<a href="/wiki/Vanilla_Beans_in_Bulk" title="Vanilla Beans in Bulk">Vanilla Beans in Bulk</a></td>
+<td style="text-align:center"><a href="/wiki/Container" title="Container">Container</a></td>
+<td style="text-align:center"><span class="noexcerpt" style="display:none">B</span><span class="rarity-basic"><b>Basic</b></span></td>
+<td style="text-align:center">—
+</td>
+<td data-sort-value="KARMA 00000021" style="text-align:right">21&nbsp;<span style="position:relative; bottom:2px;"><span typeof="mw:File"><a href="/wiki/Karma" title="Karma"><img alt="Karma" src="/images/thumb/a/af/Karma.png/18px-Karma.png" decoding="async" width="18" height="14" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/27px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/36px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span>
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Dialogue">Dialogue</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Cook_Huelic&amp;action=edit&amp;section=5" title="Edit section: Dialogue">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> So much to worry about, how will I ever feed the tribe? I'm the chef here. I make all the food, but it's hard to cook with no supplies.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Why don't you have supplies?</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> The Cuatl are constantly raiding our larders! Our strongest fighters stay and protect them, which means our hunting parties bring home fewer dragonflies.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Cuatl?</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> The Cuatl are brutes and they take from everyone, even us. Any Cuatl you kill helps to keep this village fed. When they're not raiding the village, they can be found in the marsh's eastern part.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/e/e2/Talk_back_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Anything else I can do?</i> <small><b>(Same as below)</b></small></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I'll see what I can do?</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Dragonflies?</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> We love dragonflies. We settled here because dragonflies nest here. But they're no easy prey. The nests are full of tasty dragonflies, but the only way to get them is to smoke them out with a cloud of poison.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>How can I help?</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> Keeping the hunting parties on their feet and killing dragonflies would be very helpful. If you are feeling really generous I have a task I would ask of you.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I'm listening.</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> There's nothing better than fresh dragonflies. I have some <a href="/wiki/Sedative_Dart" title="Sedative Dart">poisoned darts</a> that would subdue them, but not taint the meat. I would love if you could bring me back some live dragonflies.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/e/e2/Talk_back_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Anything else I can do?</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> There is so much to do around here. We have to feed ourselves, and we also have to feed our tadpoles. If only the Cuatl would stay of<span id="sic" style="margin: 0em 0.1em; font-size: 85%; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">[<i><a href="https://en.wikipedia.org/wiki/sic" class="extiw" title="wikipedia:sic"><span style="cursor: help; border-bottom: 1px dotted silver;" title="should be off or off of">sic</span></a></i>]</span> our supplies.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>How can I help you feed yourselves?</i> <small><b>(Same as "How can I help?" above)</b></small></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Cuatl?</i> <small><b>(Same as above)</b></small></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>How do you feed your offspring?</i>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/20px-Renown_Heart_empty_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/2/23/Renown_Heart_empty_%28map_icon%29.png/30px-Renown_Heart_empty_%28map_icon%29.png 1.5x, /images/2/23/Renown_Heart_empty_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> When our young hatch, they require strong nutrients to survive. Leaves of soft marsh plants are perfect for them. Unfortunately, skelf and drakes roam the north where the plant thrives.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/e/e2/Talk_back_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Anything else I can do?</i> <small><b>(Same as above)</b></small></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I see.</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I have to go. Good-bye.</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I'll take some darts.</i></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I'm not interested.</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>No, thanks. I have to go.</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I'll go look for them.</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I'll just figure it out for myself.</i></dd></dl></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>I need a dart gun.</i></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>Not my problem.</i></dd></dl>
+<dl><dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Renown_Heart" title="Renown Heart"><img src="/images/thumb/f/f8/Complete_heart_%28map_icon%29.png/20px-Complete_heart_%28map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/f/f8/Complete_heart_%28map_icon%29.png/30px-Complete_heart_%28map_icon%29.png 1.5x, /images/f/f8/Complete_heart_%28map_icon%29.png 2x" data-file-width="32" data-file-height="32"></a></span></span> We feast like kings tonight! Thank you.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Karma_merchant" title="Karma merchant"><img src="/images/thumb/a/af/Karma.png/20px-Karma.png" decoding="async" width="20" height="15" class="mw-file-element" srcset="/images/thumb/a/af/Karma.png/30px-Karma.png 1.5x, /images/thumb/a/af/Karma.png/40px-Karma.png 2x" data-file-width="63" data-file-height="48"></a></span></span> <i>Show me what you've got.</i></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18"></span></span></span> <i>My pleasure.</i></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Trivia">Trivia</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Cook_Huelic&amp;action=edit&amp;section=6" title="Edit section: Trivia">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>Huelic is a Classic Nahuatl word meaning "delicious".</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20261104193227
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+[SMW] In‐text annotation parser time: 0.201 seconds
+CPU time usage: 0.646 seconds
+Real time usage: 10.891 seconds
+Preprocessor visited node count: 5384/1000000
+Post‐expand include size: 44455/2097152 bytes
+Template argument size: 4673/2097152 bytes
+Highest expansion depth: 14/100
+Expensive parser function count: 1/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 8807.412      1 -total
+ 56.50% 4976.392      7 Template:Vendor_table_row
+ 27.51% 2422.604      1 Template:NPC_infobox
+ 17.34% 1527.407     14 Template:Vendor_table_row_result_format
+  7.81%  687.709      1 Template:Infobox_location
+  5.42%  477.019      1 Template:Heart
+  4.58%  403.654      2 Template:Vendor_table_header
+  3.65%  321.255      2 Template:Vendor_table_notes
+  3.30%  290.737      2 Template:Cname
+  2.34%  205.946      7 Template:Currency
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:42523:|#|:idhash:dateformat=default and timestamp 20261104193227 and revision id 3104816. Rendering was triggered because: unknown
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Cook_Huelic&amp;oldid=3104816">https://wiki.guildwars2.com/index.php?title=Cook_Huelic&amp;oldid=3104816</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Hylek" title="Category:Hylek">Hylek</a></li><li><a href="/wiki/Category:Normal_NPCs" title="Category:Normal NPCs">Normal NPCs</a></li><li><a href="/wiki/Category:Michotl" title="Category:Michotl">Michotl</a></li><li><a href="/wiki/Category:Renown_Heart_NPCs" title="Category:Renown Heart NPCs">Renown Heart NPCs</a></li><li><a href="/wiki/Category:Text_errors" title="Category:Text errors">Text errors</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		
