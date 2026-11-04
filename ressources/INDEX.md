@@ -1779,6 +1779,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `berserkers_glimmering_resin_warhorn.html` | Berserker's Glimmering Resin Warhorn | article complet | 2026-11-04 |
 | `forge_guards_armor_box.html` | Forge Guard's Armor Box | article complet | 2026-11-04 |
 | `glimmering_resin_weapons.html` | Glimmering Resin weapons | article complet | 2026-11-04 |
+| `alembic_apparatus.html` | Alembic Apparatus | article complet | 2026-11-04 |
+| `crystalline_heart.html` | Crystalline Heart | article complet | 2026-11-04 |
+| `sawgill_mushroom.html` | Sawgill Mushroom | article complet | 2026-11-04 |
+| `updated_record_of_jokos_deeds.html` | Updated Record of Joko's Deeds | article complet | 2026-11-04 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades

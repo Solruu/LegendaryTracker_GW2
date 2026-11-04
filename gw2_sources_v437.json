@@ -5306,9 +5306,12 @@
      "type": "wvw_vendor",
      "npc": "Heroics Notary (WvW maps)",
      "tip": {
-      "fr": "Achat pour 500 Testimony of Heroics.",
-      "en": "Purchase for 500 Testimony of Heroics."
-     }
+      "fr": "Achat pour 500 Testimony of Castoran Heroics.",
+      "en": "Purchase for 500 Testimony of Castoran Heroics."
+     },
+     "ref": "ressources/wiki/essence_of_animosity.html, Acquisition (vendeurs actuels : Testimony of Castoran Heroics)",
+     "verified": true,
+     "checked": "2026-11-04"
     }
    ],
    "kind": "intermediate",
@@ -5508,9 +5511,12 @@
      "type": "wvw_vendor",
      "npc": "Legendary Commander War Razor (WvW maps spawn)",
      "tip": {
-      "fr": "Achat pour 250 Testimony of Heroics.",
-      "en": "Purchase for 250 Testimony of Heroics."
-     }
+      "fr": "Achat pour 250 Testimony of Castoran Heroics.",
+      "en": "Purchase for 250 Testimony of Castoran Heroics."
+     },
+     "ref": "ressources/wiki/certificate_of_heroics.html, Acquisition (vendeurs actuels : Testimony of Castoran Heroics)",
+     "verified": true,
+     "checked": "2026-11-04"
     }
    ],
    "kind": "intermediate",
@@ -5951,10 +5957,10 @@
    "name": "Magnetite Shard",
    "apiId": 28,
    "needed_for": [
-    "gift_of_complex_emotions"
+    "alembic_apparatus"
    ],
    "qty": {
-    "gift_of_complex_emotions": 100
+    "alembic_apparatus": 100
    },
    "farmable": true,
    "sources": [
@@ -6254,10 +6260,10 @@
     "klobjarne_geirr",
     "orrax_manifested",
     "stella_radians",
-    "strife_unending"
+    "strife_unending",
+    "gift_of_prowess"
    ],
    "qty": {
-    "perfected_envoy__per_piece": 50,
     "vision": 72,
     "fulgurite": 1,
     "gift_of_mastery": 250,
@@ -6271,7 +6277,8 @@
     "funerary_incense": 1,
     "gift_of_competitive_prowess": 50,
     "gift_of_war_prowess": 50,
-    "gift_of_expertise": 50
+    "gift_of_expertise": 50,
+    "gift_of_prowess": 50
    },
    "farmable": true,
    "sources": [
@@ -6370,7 +6377,8 @@
    "checked": "2026-08-22",
    "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
    "qty_overlap_verified": [
-    "vision"
+    "vision",
+    "perfected_envoy"
    ],
    "note": {
     "fr": "Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par la fulgurite.",
@@ -6394,6 +6402,10 @@
       "ref": "ressources/wiki/obsidian_shard.html"
      }
     ]
+   },
+   "qty_overlap_note": {
+    "fr": "Perfected Envoy : 300 par la table de l'armure (Gift of Prowess) et 100 par le Crystalline Heart d'Envoy Armor II (100 Crystalline Ingot, 1 Fulgurite chacun, 1 obsidienne chacune) — deux exigences réelles.",
+    "en": "Perfected Envoy: 300 from the armor table (Gift of Prowess) and 100 from Envoy Armor II's Crystalline Heart (100 Crystalline Ingot, 1 Fulgurite each, 1 shard each) — two real requirements."
    }
   },
   "gift_of_exploration": {
@@ -7686,7 +7698,8 @@
     "gift_of_competitive_prowess",
     "gift_of_expertise",
     "gift_of_war_prowess",
-    "transcendent_crystal"
+    "transcendent_crystal",
+    "gift_of_prowess"
    ],
    "farmable": false,
    "sources": [
@@ -7701,11 +7714,11 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 1,
     "gift_of_expertise": 1,
     "gift_of_competitive_prowess": 1,
     "gift_of_war_prowess": 1,
-    "transcendent_crystal": 1
+    "transcendent_crystal": 1,
+    "gift_of_prowess": 1
    },
    "kind": "acquire"
   },
@@ -7856,7 +7869,8 @@
    "name": "Chak Egg",
    "apiId": 72205,
    "needed_for": [
-    "armor_perfected_envoy"
+    "armor_perfected_envoy",
+    "gift_of_dedication"
    ],
    "farmable": true,
    "sources": [
@@ -7873,7 +7887,7 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 5
+    "gift_of_dedication": 5
    },
    "kind": "acquire",
    "best": "meta_drop",
@@ -7886,7 +7900,8 @@
    "name": "Auric Ingot",
    "apiId": 73537,
    "needed_for": [
-    "armor_perfected_envoy"
+    "armor_perfected_envoy",
+    "gift_of_dedication"
    ],
    "farmable": true,
    "sources": [
@@ -7903,7 +7918,7 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 5
+    "gift_of_dedication": 5
    },
    "kind": "acquire",
    "best": "craft_or_vendor",
@@ -7916,7 +7931,8 @@
    "name": "Reclaimed Metal Plate",
    "apiId": 74356,
    "needed_for": [
-    "armor_perfected_envoy"
+    "armor_perfected_envoy",
+    "gift_of_dedication"
    ],
    "farmable": true,
    "sources": [
@@ -7933,7 +7949,7 @@
     }
    ],
    "qty": {
-    "perfected_envoy__per_piece": 5
+    "gift_of_dedication": 5
    },
    "kind": "acquire",
    "best": "meta_drop",
@@ -12421,7 +12437,8 @@
    "kind": "currency",
    "qty": {
     "vision__onetime": 3000,
-    "olmakhan_latigo_strap": 250
+    "olmakhan_latigo_strap": 250,
+    "updated_record_of_jokos_deeds": 50
    },
    "farmable": true,
    "sources": [
@@ -12493,7 +12510,8 @@
    "timegate": true,
    "needed_for": [
     "vision",
-    "olmakhan_latigo_strap"
+    "olmakhan_latigo_strap",
+    "updated_record_of_jokos_deeds"
    ],
    "qty_overlap_verified": [
     "vision"
@@ -20969,14 +20987,34 @@
    ],
    "sources": [
     {
-     "type": "craft",
+     "type": "achievement_collection",
+     "collection": "coalescence_2",
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/gift_of_complex_emotions.html, Achievement (« Reward: »)",
      "tip": {
-      "fr": "Extrait de la section « Full material list » des pages d'armes du wiki.",
-      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+      "fr": "Récompense de la collection « Coalescence II: The Gift » (onglet Collections) : le premier exemplaire ne coûte que la collection.",
+      "en": "Reward of the \"Coalescence II: The Gift\" collection (Collections tab): the first copy costs only the collection."
+     }
+    },
+    {
+     "type": "vendor",
+     "npc": "Scholar Glenna / Magnetite Shard Exchange / Wizard's Gobbler",
+     "paid_repeatable": true,
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/gift_of_complex_emotions.html, Sold by (« Requires the achievement Coalescence II: The Gift »)",
+     "tip": {
+      "fr": "Copies suivantes, une fois la collection faite : 100 Magnetite Shard + 1 or. Alternative, jamais comptée.",
+      "en": "Further copies, once the collection is done: 100 Magnetite Shard + 1 gold. Alternative, never counted."
      }
     }
    ],
-   "apiId": 88909
+   "apiId": 88909,
+   "best": "achievement_collection",
+   "ref": "ressources/wiki/gift_of_complex_emotions.html",
+   "verified": true,
+   "checked": "2026-11-04"
   },
   "gift_of_dedication": {
    "name": "Gift of Dedication",
@@ -25493,7 +25531,8 @@
     "triumphant_hero__piece_medium_shoulders": 2,
     "icy_runestone": 1,
     "mystic_runestone": 1,
-    "itzel_spirit_poison": 1
+    "itzel_spirit_poison": 1,
+    "alembic_apparatus": 10
    },
    "needed_for": [
     "ardent_glorious__piece_heavy_boots",
@@ -25537,7 +25576,8 @@
     "triumphant_hero__piece_medium_helm",
     "triumphant_hero__piece_medium_legs",
     "triumphant_hero__piece_medium_shoulders",
-    "itzel_spirit_poison"
+    "itzel_spirit_poison",
+    "alembic_apparatus"
    ],
    "sources": [
     {
@@ -47746,6 +47786,88 @@
    "verified": true,
    "checked": "2026-11-04",
    "ref": "ressources/wiki/polished_aurillium.html, Acquisition"
+  },
+  "sawgill_mushroom": {
+   "name": "Sawgill Mushroom",
+   "apiId": 73504,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "best": "gathering",
+   "ref": "ressources/wiki/sawgill_mushroom.html",
+   "sources": [
+    {
+     "type": "gathering",
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/sawgill_mushroom.html, Gathered from",
+     "tip": {
+      "fr": "Récolte (Sawgill Mushrooms, Homegrown Sawgill Mushrooms) ; tombe aussi sur les champignons de Maguuma.",
+      "en": "Gathered (Sawgill Mushrooms, Homegrown Sawgill Mushrooms); also dropped by Maguuma mushrooms."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-04"
+  },
+  "alembic_apparatus": {
+   "name": "Alembic Apparatus",
+   "apiId": 88975,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "best": "vendor",
+   "ref": "ressources/wiki/alembic_apparatus.html",
+   "sources": [
+    {
+     "type": "vendor",
+     "npc": "Scholar Glenna / Magnetite Shard Exchange",
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/alembic_apparatus.html, Acquisition",
+     "cost": {
+      "fr": "100 Magnetite Shard + 10 or",
+      "en": "100 Magnetite Shard + 10 gold"
+     },
+     "tip": {
+      "fr": "Scholar Glenna (Mythwright Gambit) ou un Magnetite Shard Exchange portable : 100 Magnetite Shard + 10 or. Requis avant de ramasser la moindre bouteille vide.",
+      "en": "Scholar Glenna (Mythwright Gambit) or a portable Magnetite Shard Exchange: 100 Magnetite Shard + 10 gold. Required before picking up any empty bottle."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-04"
+  },
+  "updated_record_of_jokos_deeds": {
+   "name": "Updated Record of Joko's Deeds",
+   "apiId": 91013,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "best": "vendor",
+   "ref": "ressources/wiki/updated_record_of_jokos_deeds.html",
+   "sources": [
+    {
+     "type": "vendor",
+     "npc": "Trader Hyacinth (Yatendi Village)",
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/updated_record_of_jokos_deeds.html, Acquisition",
+     "cost": {
+      "fr": "50 Volatile Magic + 8 cuivres",
+      "en": "50 Volatile Magic + 8 copper"
+     },
+     "tip": {
+      "fr": "Trader Hyacinth, après la maîtrise « A Star to Guide Us », collection Visions of Jahai active, 1 par compte. Le recyclage rend 50 Volatile Magic.",
+      "en": "Trader Hyacinth, after the 'A Star to Guide Us' Mastery, Visions of Jahai collection active, 1 per account. Salvaging returns 50 Volatile Magic."
+     }
+    }
+   ],
+   "verified": true,
+   "checked": "2026-11-04"
   }
  },
  "enchaînements_recommandés": {
@@ -52463,7 +52585,11 @@
         "fr": "⏳ 5 Spirit Threads : 1/semaine sur Gorseval (min. 5 semaines — à lancer EN PREMIER). Énergiser au Chak Gerent (méta TD) : taguer les 4 lanes énergise jusqu'à 4 threads en un cycle. 5 énergisés → double-clic.",
         "en": "⏳ 5 Spirit Threads: 1/week from Gorseval (min. 5 weeks — start this FIRST). Energize at Chak Gerent (TD meta): tagging all 4 lanes energizes up to 4 threads in one cycle. 5 energized → double-click."
        },
-       "wiki": "Spirit_Weave"
+       "wiki": "Spirit_Weave",
+       "cost": {
+        "spirit_thread": 5
+       },
+       "cost_ref": "ressources/wiki/envoy_armor_i_experimental_armor.html, tableau « Collection items » (how) ; compte le 2026-11-04"
       },
       {
        "bit": 4,
@@ -52527,7 +52653,12 @@
         "fr": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (CP/stock). Les 4 en inventaire → consommer Gills ou Cap.",
         "en": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (TP/storage). All 4 in inventory → consume Gills or Cap."
        },
-       "wiki": "Mushroom_Medley"
+       "wiki": "Mushroom_Medley",
+       "cost": {
+        "orrian_truffle": 1,
+        "sawgill_mushroom": 1
+       },
+       "cost_ref": "ressources/wiki/envoy_armor_i_experimental_armor.html, tableau « Collection items » (how) ; compte le 2026-11-04"
       },
       {
        "bit": 8,
@@ -52745,7 +52876,11 @@
         "fr": "100 Crystalline Ingots (craft 500 : 1 Fulgurite [Obsi Shard + Airship Oil + Auric Dust + Ley Line Spark] + Crystalline Ore des Noxious Pods du Repli du dragon) → Master Craftsman d'armure à l'Arche du Lion. UN SEUL cœur sert pour toutes les étapes (réutilisable).",
         "en": "100 Crystalline Ingots (craft 500: 1 Fulgurite [Obsi Shard + Airship Oil + Auric Dust + Ley Line Spark] + Crystalline Ore from Dragon's Stand Noxious Pods) → Armor Master Craftsman in Lion's Arch. ONE heart is reused for every step."
        },
-       "wiki": "Crystalline_Heart"
+       "wiki": "Crystalline_Heart",
+       "cost": {
+        "crystalline_ingot": 100
+       },
+       "cost_ref": "ressources/wiki/crystalline_heart.html, Acquisition ; compte le 2026-11-04"
       },
       {
        "bit": 1,
@@ -55716,7 +55851,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/incinerator_*.html",
-       "wiki": "Pile_of_Beryl_Dust"
+       "wiki": "Pile_of_Beryl_Dust",
+       "cost": {
+        "beryl_orb": 5
+       },
+       "cost_ref": "tableau « Collection items » (how) ; compte le 2026-11-04"
       },
       {
        "bit": 1,
@@ -63649,7 +63788,11 @@
        },
        "how_verified": true,
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/rodgort_*.html",
-       "wiki": "Cleansing_Fire_(trophy)"
+       "wiki": "Cleansing_Fire_(trophy)",
+       "cost": {
+        "elder_wood_log": 10
+       },
+       "cost_ref": "tableau « Collection items » (how) ; compte le 2026-11-04"
       },
       {
        "bit": 24,
@@ -89072,7 +89215,11 @@
         "fr": "Acheter chez la Marchande Hyacinth, juste à côté du point de passage du village de Yatendi [&BH4LAAA=], pour 50 magie volatile + 8 pc. ⚠ Elle n'ouvre son stock qu'une fois la maîtrise « A Star to Guide Us » terminée — c'est le seul prérequis de la collection qui passe par un autre méta d'épisode.",
         "en": "Buy from Trader Hyacinth, right next to Yatendi Village Waypoint [&BH4LAAA=], for 50 Volatile Magic + 8 c. ⚠ She only opens her stock once the 'A Star to Guide Us' Mastery is complete — the collection's only prerequisite routed through another episode meta."
        },
-       "wiki": "Updated_Record_of_Joko%27s_Deeds"
+       "wiki": "Updated_Record_of_Joko%27s_Deeds",
+       "cost": {
+        "updated_record_of_jokos_deeds": 1
+       },
+       "cost_ref": "ressources/wiki/updated_record_of_jokos_deeds.html, Acquisition ; compte le 2026-11-04"
       },
       {
        "bit": 1,
@@ -91134,7 +91281,11 @@
         "fr": "Appareil à alambic : chez Érudite Glenna (100 Éclats de magnétite + 10 po). ⚠ Indispensable AVANT de pouvoir ramasser le moindre flacon vide.",
         "en": "Alembic Apparatus: from Scholar Glenna (100 Magnetite Shards + 10 g). ⚠ Required BEFORE you can pick up any empty bottle."
        },
-       "wiki": "Alembic_Apparatus"
+       "wiki": "Alembic_Apparatus",
+       "cost": {
+        "alembic_apparatus": 1
+       },
+       "cost_ref": "ressources/wiki/alembic_apparatus.html, Acquisition ; compte le 2026-11-04"
       },
       {
        "bit": 1,

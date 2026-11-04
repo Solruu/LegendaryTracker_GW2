@@ -333,6 +333,10 @@ def autre_voie(page):
     # (Gift of the Hylek, Binding of the Dragon, Gift of Patience). Gift of
     # Ascension, lui, se vend sans condition a cote de « Pact Reformer » : deux
     # voies distinctes, l'achat reste lu.
+    # 04/11/2026 : le titre est parfois au singulier, « Achievement » (Gift of
+    # Complex Emotions, recompense de Coalescence II : « Sold by » exige le
+    # succes). Sans lui, le vendeur des copies suivantes etait lu comme achat.
+    seg = seg.replace('id="Achievement"', 'id="Achievements"')
     if 'id="Achievements"' in seg and "Requires the achievement" not in seg:
         return any(f'id="{s}"' in seg for s in LIBRE if s != "Achievements")
     return any(f'id="{s}"' in seg for s in LIBRE)

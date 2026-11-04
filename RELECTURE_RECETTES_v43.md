@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v436.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v437.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -14,7 +14,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 2 |
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
-| AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 5 |
+| AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 0 |
 | PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 126 |
 | NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 89 |
 
@@ -26,16 +26,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
-
-## Ingrédients rattachés ailleurs sous le même légendaire — 5
-
-| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
-|---|---|---:|---|---|---|
-| `gift_of_dedication` | `Auric_Ingot` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
-| `gift_of_dedication` | `Chak_Egg` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
-| `gift_of_dedication` | `Reclaimed_Metal_Plate` | 5 | `gift_of_dedication` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
-| `gift_of_prowess` | `Eldritch_Scroll` | 1 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
-| `gift_of_prowess` | `Obsidian_Shard` | 50 | `gift_of_prowess` | rattaché à perfected_envoy__per_piece | `perfected_envoy` |
 
 ## Enfants déclarés que la recette ne cite pas — 5
 

@@ -1041,6 +1041,25 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
 - [ ] Emblem of the Avenger / Conqueror : sources reduites a « Full material
       list » ; les captures donnent les echanges croises (100 Avenger ->
       Conqueror chez les marchands d'escarmouche) — a relire avant d'y toucher.
+- [x] Etapes dont le conseil chiffre une consommation non comptee (04/11,
+      sources v437, `gw2_couts_conseils_v1`) : 99 reperees, 7 retenues et
+      sourcees (Beryl Orb x5, Elder Wood Log x10, Spirit Thread x5, Orrian
+      Truffle + Sawgill Mushroom, Crystalline Ingot x100, Alembic Apparatus
+      100 magnetite + 10 or, Updated Record of Joko's Deeds 50 Volatile Magic),
+      les autres ecartees motif par motif (docstring). Gift of Complex
+      Emotions passe en recompense de Coalescence II (meme regle que Hylek /
+      Patience ; edges_wiki v20 lit le titre « Achievement » au singulier).
+      Ingredients des dons d'Envoy (Prowess, Dedication) rattaches au don
+      (AILLEURS 5 -> 0, total inchange). JSX v276 : Volatile Magic de Vision
+      7 250 -> 7 300.
+- [ ] Obsidian Shard / Perfected Envoy : chevauchement declare (table 300 +
+      Crystalline Heart 100) ; l'audit l'avertit « declaration obsolete » car
+      il attend une cle a plat, CONFRONTATION_TOTAUX en a besoin. Accorder
+      les deux outils (cout d'etape de collection = branche hors table).
+- [ ] Gift of Prowess porte 25 legendary_insight ET 25
+      legendary_insight_consumable (RELECTURE : EN_TROP) — double compte
+      possible de 150 par set ; meme question sur Gift of Compassion (150).
+      A trancher contre la recette (ambiguite Legendary_Insight).
 
 ## Ordre propose
 

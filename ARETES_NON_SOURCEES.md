@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v436.json`. **27 aretes** sur 19 parents dont les captures lisent la composition,
+Source : `gw2_sources_v437.json`. **28 aretes** sur 20 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -11,6 +11,7 @@ Research, retire le 04/10).
 | `agony_infusion_5` | `agony_infusion_3` | 4 | agony_infusion_4 2, thermocatalytic_reagent 1 |
 | `agony_infusion_7` | `agony_infusion_5` | 4 | agony_infusion_6 2, thermocatalytic_reagent 1 |
 | `agony_infusion_9` | `agony_infusion_7` | 4 | agony_infusion_8 2, thermocatalytic_reagent 1 |
+| `alembic_apparatus` | `gold_coin` | 10 | magnetite_shard 100 |
 | `banner_pennon` | `recipe_banner_pennon` | 1 | bolt_of_gossamer 5, glob_of_ectoplasm 5, olmakhan_latigo_strap 5, spool_of_gossamer_thread 100 |
 | `bottle_of_coconut_milk` | `karma` | 249 | difluorite_crystal 1 |
 | `commanders_wings_of_war` | `badge_of_honor` | 250 | skirmish_claim_ticket 875 |
