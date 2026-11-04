@@ -1760,6 +1760,25 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `steel_torch_head.html` | Steel Torch Head | article complet | 2026-11-04 |
 | `steel_warhorn_mouthpiece.html` | Steel Warhorn Mouthpiece | article complet | 2026-11-04 |
 | `thin_string.html` | Thin String | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_axe.html` | Berserker's Glimmering Resin Axe | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_dagger.html` | Berserker's Glimmering Resin Dagger | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_focus.html` | Berserker's Glimmering Resin Focus | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_greatsword.html` | Berserker's Glimmering Resin Greatsword | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_hammer.html` | Berserker's Glimmering Resin Hammer | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_longbow.html` | Berserker's Glimmering Resin Longbow | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_mace.html` | Berserker's Glimmering Resin Mace | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_pistol.html` | Berserker's Glimmering Resin Pistol | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_rifle.html` | Berserker's Glimmering Resin Rifle | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_scepter.html` | Berserker's Glimmering Resin Scepter | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_shield.html` | Berserker's Glimmering Resin Shield | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_short_bow.html` | Berserker's Glimmering Resin Short Bow | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_spear.html` | Berserker's Glimmering Resin Spear | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_staff.html` | Berserker's Glimmering Resin Staff | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_sword.html` | Berserker's Glimmering Resin Sword | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_torch.html` | Berserker's Glimmering Resin Torch | article complet | 2026-11-04 |
+| `berserkers_glimmering_resin_warhorn.html` | Berserker's Glimmering Resin Warhorn | article complet | 2026-11-04 |
+| `forge_guards_armor_box.html` | Forge Guard's Armor Box | article complet | 2026-11-04 |
+| `glimmering_resin_weapons.html` | Glimmering Resin weapons | article complet | 2026-11-04 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
