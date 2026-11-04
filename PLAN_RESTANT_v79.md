@@ -1013,10 +1013,11 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       (Forge Guard's Armor Box, dans la Castoran Gear Box), tranche par Antoine
       le 04/11 ; vendeur en alternative (or + Shadowstone Fragment + karma, ou
       jeton), aucun cout compte. Sources v433.
-- [ ] Glimmering Resin (Stella Radians, 17 etapes) : pages objet capturees
-      (`berserkers_glimmering_resin_*`, `92aae4f`). Voies lues : Glimmering
-      Resin Weapon Cache (au choix), Historian Meliza / Steward Brizio
-      (1 + 6 + 12 + 300, monnaies a lire), recette. Voie par defaut a trancher.
+- [x] Glimmering Resin (Stella Radians, 17 etapes) : voie principale = butin
+      (Glimmering Resin Weapon Cache), options vendeur (Meliza / Brizio :
+      1 Chromatic Resin + 6 Shadowstone + 12 ectos + 300 notes) et recette
+      (1 Chromatic Resin + 1 piece Oiled + 10 ectos + 250 notes), tranche par
+      Antoine le 04/11 ; aucun cout compte. Sources v434.
 - [ ] Couts d'etape encore absents : Endless Summer (Dragonfly Steaks : Cook
       Huelic / Michotl Flycook, 7 000 [monnaie a lire], si Radiance of the Sun
       God active) ; Perfected Envoy (Itzel Spirit Poison : Jaka Itzel, 100 + 1,
