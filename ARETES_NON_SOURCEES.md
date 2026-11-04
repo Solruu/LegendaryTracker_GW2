@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v434.json`. **26 aretes** sur 18 parents dont les captures lisent la composition,
+Source : `gw2_sources_v435.json`. **27 aretes** sur 19 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -19,6 +19,7 @@ Research, retire le 04/10).
 | `gift_of_the_exalted` | `gold_coin` | 1 | lump_of_aurillium 500 |
 | `gift_of_the_itzel` | `gold_coin` | 1 | airship_part 500 |
 | `gift_of_the_nuhoch` | `gold_coin` | 1 | ley_line_crystal 500 |
+| `itzel_spirit_poison` | `gold_coin` | 1 | airship_part 100 |
 | `nyr_hrammr` | `standing_stones_timepiece` | 1 | gift_of_metal 1, gift_of_sharpened_tip 1 |
 | `nyr_hrammr` | `valkyrie_bearkin_war_helm` | 1 | gift_of_metal 1, gift_of_sharpened_tip 1 |
 | `orrax_contained` | `askur_camping_cookout_backpiece` | 1 | binding_of_the_dragon 1, draconic_tribute 1 |

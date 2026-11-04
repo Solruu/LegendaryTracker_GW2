@@ -7889,7 +7889,8 @@
    "needed_for": [
     "gift_of_gliding",
     "gift_of_the_itzel",
-    "gift_of_the_pact"
+    "gift_of_the_pact",
+    "itzel_spirit_poison"
    ],
    "farmable": true,
    "sources": [
@@ -7908,7 +7909,8 @@
    "qty": {
     "gift_of_the_pact": 250,
     "gift_of_the_itzel": 500,
-    "gift_of_gliding": 300
+    "gift_of_gliding": 300,
+    "itzel_spirit_poison": 100
    },
    "note": "HoT map currency — not exposed by /v2/account/wallet. Manual entry only.",
    "kind": "acquire",
@@ -10787,10 +10789,12 @@
    "kind": "acquire",
    "farmable": true,
    "needed_for": [
-    "gift_of_craftsmanship"
+    "gift_of_craftsmanship",
+    "polished_aurillium"
    ],
    "qty": {
-    "gift_of_craftsmanship": 50
+    "gift_of_craftsmanship": 50,
+    "polished_aurillium": 1
    },
    "sources": [
     {
@@ -12483,7 +12487,8 @@
     "gift_of_the_desolation": 23331,
     "bottle_of_coconut_milk": 249,
     "sun_bead": 21,
-    "druid_runestone": 4200
+    "druid_runestone": 4200,
+    "dragonfly_steaks": 7000
    },
    "farmable": true,
    "sources": [
@@ -12518,7 +12523,8 @@
     "gift_of_the_desolation",
     "bottle_of_coconut_milk",
     "sun_bead",
-    "druid_runestone"
+    "druid_runestone",
+    "dragonfly_steaks"
    ]
   },
   "powerful_venom_sac": {
@@ -25426,7 +25432,8 @@
     "triumphant_hero__piece_medium_legs": 2,
     "triumphant_hero__piece_medium_shoulders": 2,
     "icy_runestone": 1,
-    "mystic_runestone": 1
+    "mystic_runestone": 1,
+    "itzel_spirit_poison": 1
    },
    "needed_for": [
     "ardent_glorious__piece_heavy_boots",
@@ -25469,7 +25476,8 @@
     "triumphant_hero__piece_medium_gloves",
     "triumphant_hero__piece_medium_helm",
     "triumphant_hero__piece_medium_legs",
-    "triumphant_hero__piece_medium_shoulders"
+    "triumphant_hero__piece_medium_shoulders",
+    "itzel_spirit_poison"
    ],
    "sources": [
     {
@@ -47591,6 +47599,93 @@
    "verified": true,
    "checked": "2026-11-03",
    "ref": "ressources/api/api_requisitions_armes_20261103.json"
+  },
+  "dragonfly_steaks": {
+   "name": "Dragonfly Steaks",
+   "apiId": 107076,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "sources": [
+    {
+     "type": "vendor",
+     "npc": "Cook Huelic / Michotl Flycook",
+     "tip": {
+      "fr": "Cook Huelic ou Michotl Flycook (Marais michéen, Province de Metrica) : 7 000 karma. En vente seulement pendant la collection Radiance of the Sun God.",
+      "en": "Cook Huelic or Michotl Flycook (Michoan Marsh, Metrica Province): 7,000 karma. Only sold while the Radiance of the Sun God collection is active."
+     },
+     "cost": {
+      "fr": "7 000 karma",
+      "en": "7,000 karma"
+     },
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/dragonfly_steaks.html, Acquisition"
+    }
+   ],
+   "best": "vendor",
+   "verified": true,
+   "checked": "2026-11-04",
+   "ref": "ressources/wiki/dragonfly_steaks.html, Acquisition"
+  },
+  "itzel_spirit_poison": {
+   "name": "Itzel Spirit Poison",
+   "apiId": 78920,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "sources": [
+    {
+     "type": "vendor",
+     "npc": "Jaka Itzel / Xochitl",
+     "tip": {
+      "fr": "Vendeur de maîtrise Itzel (Jaka Itzel, Tarir) ou Xochitl (Profondeurs Verdoyantes) : 100 Airship Part + 1 or. Maîtrise Itzel Language requise.",
+      "en": "Itzel mastery vendor (Jaka Itzel, Tarir) or Xochitl (Tangled Depths): 100 Airship Part + 1 gold. Requires the Itzel Language mastery."
+     },
+     "cost": {
+      "fr": "100 Airship Part + 1 or",
+      "en": "100 Airship Part + 1 gold"
+     },
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/itzel_spirit_poison.html, Acquisition"
+    }
+   ],
+   "best": "vendor",
+   "verified": true,
+   "checked": "2026-11-04",
+   "ref": "ressources/wiki/itzel_spirit_poison.html, Acquisition"
+  },
+  "polished_aurillium": {
+   "name": "Polished Aurillium",
+   "apiId": 78846,
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {},
+   "needed_for": [],
+   "sources": [
+    {
+     "type": "vendor",
+     "npc": "Faction Provisioner (Scavenger Rakatin, Bassin aurique)",
+     "tip": {
+      "fr": "N'importe quel Faction Provisioner, dont Scavenger Rakatin (Bassin aurique) : 1 Provisioner Token.",
+      "en": "Any Faction Provisioner, including Scavenger Rakatin (Auric Basin): 1 Provisioner Token."
+     },
+     "cost": {
+      "fr": "1 Provisioner Token",
+      "en": "1 Provisioner Token"
+     },
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/polished_aurillium.html, Acquisition"
+    }
+   ],
+   "best": "vendor",
+   "verified": true,
+   "checked": "2026-11-04",
+   "ref": "ressources/wiki/polished_aurillium.html, Acquisition"
   }
  },
  "enchaînements_recommandés": {
@@ -49419,7 +49514,11 @@
        "how_jsx": {
         "fr": "Les steaks de libellule s'achètent chez le cuisinier hylek au Marais michéen. Achète-les avant de traverser la carte, l'étape 11 suit immédiatement.",
         "en": "The dragonfly steaks are sold by the hylek cook at Mickelson's Marsh. Buy them before crossing the map, step 11 follows immediately."
-       }
+       },
+       "cost": {
+        "dragonfly_steaks": 1
+       },
+       "cost_ref": "ressources/wiki/dragonfly_steaks.html, Acquisition ; prix compte le 2026-11-04"
       },
       {
        "bit": 10,
@@ -52480,7 +52579,11 @@
         "fr": "Stone Soul : Keep Construct (W3). Puis se faire toucher par le Goop d'un Veteran Chak Lobber/Slinger et consommer le Stone Soul SOUS l'effet Goop.",
         "en": "Stone Soul: Keep Construct (W3). Then get hit by a Veteran Chak Lobber/Slinger Goop and consume the Stone Soul WHILE under the Goop effect."
        },
-       "wiki": "Tormented_Aurillium"
+       "wiki": "Tormented_Aurillium",
+       "cost": {
+        "polished_aurillium": 1
+       },
+       "cost_ref": "ressources/wiki/polished_aurillium.html, Acquisition ; prix compte le 2026-11-04"
       },
       {
        "bit": 15,
@@ -52496,7 +52599,11 @@
         "fr": "⚠ Acheter Itzel Spirit Poison (vendeur de maîtrise Itzel/Xochitl : 100 Airship Parts + 1 po) et l'avoir ACTIF en ouvrant le coffer de Keep Construct (pas le coffre d'environnement). Oubli = +1 semaine.",
         "en": "⚠ Buy Itzel Spirit Poison (Itzel mastery vendor/Xochitl: 100 Airship Parts + 1 g) and have it ACTIVE when opening Keep Construct's coffer (not the environmental chest). Miss it = +1 week."
        },
-       "wiki": "Spirit_Strings"
+       "wiki": "Spirit_Strings",
+       "cost": {
+        "itzel_spirit_poison": 1
+       },
+       "cost_ref": "ressources/wiki/itzel_spirit_poison.html, Acquisition ; prix compte le 2026-11-04"
       },
       {
        "bit": 16,

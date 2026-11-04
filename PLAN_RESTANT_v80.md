@@ -1018,12 +1018,17 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       1 Chromatic Resin + 6 Shadowstone + 12 ectos + 300 notes) et recette
       (1 Chromatic Resin + 1 piece Oiled + 10 ectos + 250 notes), tranche par
       Antoine le 04/11 ; aucun cout compte. Sources v434.
-- [ ] Couts d'etape encore absents : Endless Summer (Dragonfly Steaks : Cook
-      Huelic / Michotl Flycook, 7 000 [monnaie a lire], si Radiance of the Sun
-      God active) ; Perfected Envoy (Itzel Spirit Poison : Jaka Itzel, 100 + 1,
-      maitrise Itzel Language ; Polished Aurillium : Ash Legion Provisioner /
-      Astral Ward Mage, 1) — pages capturees le 04/11, a integrer. Le reste des
-      163 lignes reperees est a relire apres le reetiquetage.
+- [x] Petits achats d'etape comptes (04/11, sources v435, `gw2_petits_achats_v1`) :
+      Dragonfly Steaks (Endless Summer, 7 000 karma), Itzel Spirit Poison
+      (Perfected Envoy, 100 Airship Part + 1 or), Polished Aurillium (Perfected
+      Envoy, 1 Provisioner Token) — composants achetes + `cost` d'etape.
+      L'or de l'Itzel Spirit Poison sort en arete non sourcee : le parseur
+      vendeur ne lit que les Airship Parts sur cette page (meme famille que
+      le point ci-dessous).
+- [ ] Envoy Armor I : les `how_jsx` des bits 2 et 14 semblent decales (bit 2
+      parle de Polished Aurillium / Twisted Castle, bit 14 de Stone Soul) — a
+      verifier contre le tableau de la collection. Le reste des 163 lignes
+      reperees est a relire apres le reetiquetage.
 - [ ] Parseur vendeur : un cout enveloppe de `<span class="inline-icon">`
       n'est pas lu (ex. 9 Astral Acclaim sur mystic_coin.html, Wizard's
       Vault) — 18 pages du corpus concernees ; a trancher page par page,
