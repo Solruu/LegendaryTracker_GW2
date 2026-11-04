@@ -1038,9 +1038,14 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       deja en source sur Mystic Clover et Mystic Coin, ajoutes sur Obsidian
       Shard (30 AA, 20/saison) et Vision Crystal (150 AA, 4/saison), avec
       cadence structuree, non comptes.
-- [ ] Emblem of the Avenger / Conqueror : sources reduites a « Full material
-      list » ; les captures donnent les echanges croises (100 Avenger ->
-      Conqueror chez les marchands d'escarmouche) — a relire avant d'y toucher.
+- [x] Emblem of the Avenger / Conqueror (05/11, sources v440,
+      `gw2_emblemes_mcm_v1`) : sources relues sur les captures. Voie par
+      defaut = succes McM repetables a l'infini (Avenger : 100 joueurs
+      vaincus ; Conqueror : 100 objectifs captures OU defendus, camps et
+      ruines exclus des captures, toutes les defenses comptent). Conseil du
+      Conqueror corrige, cadence « unique » -> « a volonte ». Echanges croises
+      (5 Avengers pour 1 Conqueror, 100 Avengers pour 1 Conqueror) en option
+      non comptee. Aucune arete ni total touche.
 - [x] Etapes dont le conseil chiffre une consommation non comptee (04/11,
       sources v437, `gw2_couts_conseils_v1`) : 99 reperees, 7 retenues et
       sourcees (Beryl Orb x5, Elder Wood Log x10, Spirit Thread x5, Orrian

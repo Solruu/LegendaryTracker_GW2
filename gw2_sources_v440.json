@@ -5400,11 +5400,25 @@
     {
      "type": "wvw_achievement",
      "tip": {
-      "fr": "Récompense du succès McM « Emblem of the Conqueror » — capturer 100 objectifs McM (tours, forts, châteaux). Camps et ruines ne comptent pas.",
-      "en": "Reward for WvW achievement 'Emblem of the Conqueror' — capture 100 WvW objectives (towers, keeps, castles). Camps and ruins don't count."
+      "fr": "Voie par défaut. Succès McM « Emblem of the Conqueror » : capturer ou défendre 100 objectifs. Les captures de camps et de ruines ne comptent pas ; toute défense réussie compte, camps compris. Répétable à l'infini, gratuit.",
+      "en": "Default route. WvW achievement 'Emblem of the Conqueror': capture or defend 100 objectives. Camp and ruin captures don't count; every successful defense counts, camps included. Infinitely repeatable, free."
      },
      "free_repeatable": true,
-     "cadence": "unique"
+     "cadence": "à volonté",
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/emblem_of_the_conqueror.html, Acquisition > Achievements, Notes"
+    },
+    {
+     "type": "wvw_vendor",
+     "npc": "Lionguard (Fort Marriner, Lion's Arch), Mercenary (Armistice Bastion) or Skirmish Supervisor (WvW maps)",
+     "tip": {
+      "fr": "Option, non comptée : 100 Emblems of the Avenger chez Lionguard (Fort Marriner, Arche du Lion), Mercenaire (Bastion de l'Armistice) ou Superviseur d'escarmouche (cartes McM).",
+      "en": "Option, not counted: 100 Emblems of the Avenger from Lionguard (Fort Marriner, Lion's Arch), Mercenary (Armistice Bastion) or Skirmish Supervisor (WvW maps)."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/emblem_of_the_conqueror.html, Acquisition > Sold by"
     }
    ],
    "kind": "acquire",
@@ -20865,11 +20879,27 @@
    ],
    "sources": [
     {
-     "type": "acquire",
+     "type": "wvw_achievement",
      "tip": {
-      "fr": "Extrait de la section « Full material list » des pages d'armes du wiki.",
-      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
-     }
+      "fr": "Voie par défaut. Succès McM « Emblem of the Avenger » : vaincre 100 joueurs. Répétable à l'infini, gratuit.",
+      "en": "Default route. WvW achievement 'Emblem of the Avenger': defeat 100 players. Infinitely repeatable, free."
+     },
+     "free_repeatable": true,
+     "cadence": "à volonté",
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/emblem_of_the_avenger.html, Acquisition > Achievements"
+    },
+    {
+     "type": "wvw_vendor",
+     "npc": "Lionguard (Fort Marriner, Lion's Arch), Mercenary (Armistice Bastion) or Skirmish Supervisor (WvW maps)",
+     "tip": {
+      "fr": "Option, non comptée : 5 Emblems of the Avenger pour 1 Emblem of the Conqueror chez Lionguard (Fort Marriner, Arche du Lion), Mercenaire (Bastion de l'Armistice) ou Superviseur d'escarmouche (cartes McM).",
+      "en": "Option, not counted: 5 Emblems of the Avenger for 1 Emblem of the Conqueror from Lionguard (Fort Marriner, Lion's Arch), Mercenary (Armistice Bastion) or Skirmish Supervisor (WvW maps)."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/emblem_of_the_avenger.html, Acquisition > Sold by"
     }
    ],
    "apiId": 93075
