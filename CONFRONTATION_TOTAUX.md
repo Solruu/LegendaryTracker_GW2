@@ -1,6 +1,6 @@
 # Confrontation des TOTAUX — ce qui s'affiche contre ce qu'ecrit la table
 
-Source : `gw2_sources_v438.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
+Source : `gw2_sources_v439.json`, 1137 totaux compares sur les tables rattachees a un legendaire.
 
 Les quantites d'une table « Full material list » sont des totaux pour le
 legendaire. Mais la table s'arrete ou elle veut : elle ecrit 2 000 lingots
@@ -10,8 +10,8 @@ plus. **Son total est donc un plancher, pas une egalite.**
 - **940 accords** — le nombre affiche est celui de la table.
 - **0 trous** — l'affichage est SOUS le plancher. Certains.
 - **197 excedents expliques** — le surplus vient d'une branche
-  que la table cite sans l'ouvrir, ou d'un chevauchement declare en
-  `qty_overlap_verified`.
+  que la table cite sans l'ouvrir, d'un cout d'etape de collection, ou
+  d'un chevauchement declare en `qty_overlap_verified`.
 - **0 excedents nus** — rien dans la donnee ne les explique : soit
   un double comptage, soit une branche legitime qu'il faut nommer.
 
@@ -114,7 +114,7 @@ plus. **Son total est donc un plancher, pas une egalite.**
 | `gen2_flames_of_war` | `mystic_curio` | 200 | 100 | `liturgy` |
 | `gen2_nevermore` | `dust_luminous` | 350 | 250 | `gift_of_dust` |
 | `gen2_nevermore` | `dust_radiant` | 350 | 250 | `gift_of_dust` |
-| `perfected_envoy` | `obsidian_shard` | 400 | 300 | `qty_overlap_verified` |
+| `perfected_envoy` | `obsidian_shard` | 400 | 300 | `etape:crystalline_ingot` |
 | `gen2_pharus` | `shard_of_spero` | 200 | 100 | `spero` |
 | `gen2_pharus` | `tribute_to_spero` | 200 | 100 | `spero` |
 | `gen2_pharus` | `mystic_curio` | 200 | 100 | `spero` |

@@ -1052,10 +1052,13 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       Ingredients des dons d'Envoy (Prowess, Dedication) rattaches au don
       (AILLEURS 5 -> 0, total inchange). JSX v276 : Volatile Magic de Vision
       7 250 -> 7 300.
-- [ ] Obsidian Shard / Perfected Envoy : chevauchement declare (table 300 +
-      Crystalline Heart 100) ; l'audit l'avertit « declaration obsolete » car
-      il attend une cle a plat, CONFRONTATION_TOTAUX en a besoin. Accorder
-      les deux outils (cout d'etape de collection = branche hors table).
+- [x] Obsidian Shard / Perfected Envoy (05/11, sources v439,
+      `gw2_confronte_totaux_v13`) : les deux outils accordes. confronte_totaux
+      descend desormais des couts d'etape de collection du legendaire (branche
+      que la table n'ouvre jamais) : l'excedent de 100 s'explique par
+      `etape:crystalline_ingot`. La declaration `qty_overlap_verified` de
+      Perfected Envoy est retiree (Vision reste) ; audit 64 -> 63, aucun total
+      ne bouge.
 - [x] Legendary Insight comptee deux fois (04/11, sources v438,
       `gw2_insight_double_v1`) : Gift of Prowess et Gift of Compassion
       portaient la monnaie ET l'objet consommable. legendary_insight.html :
