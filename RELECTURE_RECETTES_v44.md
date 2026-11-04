@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v437.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v438.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -12,7 +12,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
 | MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 2 |
-| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
+| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 0 |
 | PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 126 |
@@ -26,6 +26,13 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
+
+## Ingrédients présents dans l'arbre mais non rattachés au parent — 2
+
+| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
+|---|---|---:|---|---|---|
+| `gift_of_compassion` | `Legendary_Insight_(consumable)` | 150 | `gift_of_compassion` | apiId | `coalescence` |
+| `gift_of_prowess` | `Legendary_Insight_(consumable)` | 25 | `gift_of_prowess` | apiId | `perfected_envoy` |
 
 ## Enfants déclarés que la recette ne cite pas — 5
 

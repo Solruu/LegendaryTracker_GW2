@@ -5926,8 +5926,8 @@
     }
    ],
    "verified": true,
-   "checked": "2026-08-13",
-   "ref": "gw2_currencies_ref : devise 70",
+   "checked": "2026-11-04",
+   "ref": "ressources/wiki/legendary_insight.html (Acquisition, Currency for)",
    "apiId_note": "Devise de portefeuille 70, et non l'objet 77302 que donne le referentiel materiaux. Le Legendary Insight a ete converti en devise de portefeuille : l'objet historique existe encore mais n'est plus ce que renvoie le compte. Le tracker lit les identifiants inferieurs a 1000 dans le portefeuille, 70 est donc correct.",
    "cadence": {
     "sources": [
@@ -28311,26 +28311,24 @@
    "name": "Legendary Insight (consumable)",
    "apiId": 77302,
    "kind": "acquire",
-   "needed_for": [
-    "gift_of_compassion",
-    "gift_of_prowess"
-   ],
+   "needed_for": [],
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "conversion",
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/legendary_insight_consumable.html (« discontinued », « Double-click to add to wallet »)",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
-     },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_compassion.html, gift_of_prowess.html"
+      "fr": "Objet retiré du jeu : un double-clic le convertit en Legendary Insight du portefeuille, 1 pour 1. Les recettes se comptent en monnaie.",
+      "en": "Discontinued item: double-click converts it to wallet Legendary Insight, 1 for 1. Recipes are counted in the currency."
+     }
     }
    ],
-   "qty": {
-    "gift_of_compassion": 150,
-    "gift_of_prowess": 25
+   "qty": {},
+   "note": {
+    "fr": "Ne se compte plus : la monnaie `legendary_insight` porte le coût des dons (04/11).",
+    "en": "No longer counted: the `legendary_insight` currency carries the gifts' cost (04/11)."
    }
   },
   "liturgy": {

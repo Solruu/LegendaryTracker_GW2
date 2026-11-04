@@ -1056,10 +1056,16 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       Crystalline Heart 100) ; l'audit l'avertit « declaration obsolete » car
       il attend une cle a plat, CONFRONTATION_TOTAUX en a besoin. Accorder
       les deux outils (cout d'etape de collection = branche hors table).
-- [ ] Gift of Prowess porte 25 legendary_insight ET 25
-      legendary_insight_consumable (RELECTURE : EN_TROP) — double compte
-      possible de 150 par set ; meme question sur Gift of Compassion (150).
-      A trancher contre la recette (ambiguite Legendary_Insight).
+- [x] Legendary Insight comptee deux fois (04/11, sources v438,
+      `gw2_insight_double_v1`) : Gift of Prowess et Gift of Compassion
+      portaient la monnaie ET l'objet consommable. legendary_insight.html :
+      la monnaie est la voie actuelle ; le consommable est retire du jeu et se
+      convertit 1 pour 1. Aretes du consommable retirees : -150 sur Perfected
+      Envoy, -150 sur Coalescence.
+- [ ] Suite : RELECTURE sort 2 NON_RELIE (la recette du wiki cite encore le
+      consommable). Le resolveur apparie par apiId de page avant
+      `wiki_redirects` : supprimer `legendary_insight_consumable` (plus aucun
+      consommateur) fermerait le cas — suppression, a valider par Antoine.
 
 ## Ordre propose
 
