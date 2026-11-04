@@ -12579,7 +12579,8 @@
     "bottle_of_coconut_milk": 249,
     "sun_bead": 21,
     "druid_runestone": 4200,
-    "dragonfly_steaks": 7000
+    "dragonfly_steaks": 7000,
+    "jar_of_paint_base": 1848
    },
    "farmable": true,
    "sources": [
@@ -12615,7 +12616,8 @@
     "bottle_of_coconut_milk",
     "sun_bead",
     "druid_runestone",
-    "dragonfly_steaks"
+    "dragonfly_steaks",
+    "jar_of_paint_base"
    ]
   },
   "powerful_venom_sac": {
@@ -25340,11 +25342,19 @@
    },
    "sources": [
     {
-     "type": "unknown",
+     "type": "vendor",
+     "npc": "Master craftsmen",
+     "cost": {
+      "fr": "10 or",
+      "en": "10 gold"
+     },
      "tip": {
-      "fr": "Page non capturée — seule son exigence pour le bandoulier est sourcée.",
-      "en": "Page not captured — only its requirement for the bandolier is sourced."
-     }
+      "fr": "Achat chez le maître artisan de la discipline : 10 or.",
+      "en": "Purchased from the discipline's master craftsman: 10 gold."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/superior_rune_of_holding.html, Acquisition"
     },
     {
      "type": "trading_post",
@@ -25360,7 +25370,8 @@
    ],
    "ref": "boite Recipe de Simple Olmakhan Bandolier",
    "checked": "2026-09-20",
-   "verified": "exigence sourcee, provenance inconnue"
+   "verified": "exigence sourcee, provenance inconnue",
+   "best": "vendor"
   },
   "olmakhan_charm": {
    "name": "Olmakhan Charm",
@@ -25549,7 +25560,8 @@
     "icy_runestone": 1,
     "mystic_runestone": 1,
     "itzel_spirit_poison": 1,
-    "alembic_apparatus": 10
+    "alembic_apparatus": 10,
+    "superior_rune_of_holding": 10
    },
    "needed_for": [
     "ardent_glorious__piece_heavy_boots",
@@ -25594,7 +25606,8 @@
     "triumphant_hero__piece_medium_legs",
     "triumphant_hero__piece_medium_shoulders",
     "itzel_spirit_poison",
-    "alembic_apparatus"
+    "alembic_apparatus",
+    "superior_rune_of_holding"
    ],
    "sources": [
     {
@@ -26327,19 +26340,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "achievement",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Récompense du succès « Bava Nisos Mastery » : réussir 10 succès de carte à Bava Nisos.",
+      "en": "Reward of the 'Bava Nisos Mastery' achievement: complete 10 map achievements in Bava Nisos."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de orrax_contained.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/askur_camping_cookout_backpiece.html, Acquisition"
     }
    ],
    "qty": {
     "orrax_contained": 1
-   }
+   },
+   "best": "achievement"
   },
   "binding_of_the_dragon": {
    "name": "Binding of the Dragon",
@@ -28443,19 +28457,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "achievement",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Récompense d'un succès de Klobjarne Geirr : boss du monde ou méta-événements (contenu des extensions et du Monde vivant). Réinitialisable en achetant Recollection of the Bearkin's Adversaries pour une copie de plus (prix non capturé).",
+      "en": "Reward of a Klobjarne Geirr achievement: world bosses or meta-events (expansion and Living World content). Resettable by purchasing Recollection of the Bearkin's Adversaries for another copy (price not captured)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_sharpened_tip.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/memory_of_bearkins_adversaries.html, Acquisition"
     }
    ],
    "qty": {
     "gift_of_sharpened_tip": 1
-   }
+   },
+   "best": "achievement"
   },
   "memory_of_the_bearkins_hunts": {
    "name": "Memory of the Bearkin's Hunts",
@@ -28467,19 +28482,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "achievement",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Récompense d'un succès de Klobjarne Geirr : vaincre 250 ennemis à la lance sur les cartes de Janthir Wilds. Réinitialisable en achetant Recollection of the Bearkin's Hunts pour une copie de plus (prix non capturé).",
+      "en": "Reward of a Klobjarne Geirr achievement: defeat 250 enemies with spears in Janthir Wilds maps. Resettable by purchasing Recollection of the Bearkin's Hunts for another copy (price not captured)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_recollector_of_memories.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/memory_of_the_bearkins_hunts.html, Acquisition"
     }
    ],
    "qty": {
     "gift_of_recollector_of_memories": 1
-   }
+   },
+   "best": "achievement"
   },
   "memory_of_the_bearkins_victories": {
    "name": "Memory of the Bearkin's Victories",
@@ -28491,19 +28507,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "achievement",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Récompense d'un succès de Klobjarne Geirr : convergences de Janthir Wilds ou raids (les raids avancent plus vite). Réinitialisable en achetant Recollection of the Bearkin's Victories pour une copie de plus (prix non capturé).",
+      "en": "Reward of a Klobjarne Geirr achievement: Janthir Wilds Convergences or Raids (raids grant more progress). Resettable by purchasing Recollection of the Bearkin's Victories for another copy (price not captured)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de gift_of_recollector_of_memories.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/memory_of_the_bearkins_victories.html, Acquisition"
     }
    ],
    "qty": {
     "gift_of_recollector_of_memories": 1
-   }
+   },
+   "best": "achievement"
   },
   "might_of_arah": {
    "name": "Might of Arah",
@@ -29017,19 +29034,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "craft",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "N'importe quelle relique. Reliques de base : artisanat (recettes chez les maîtres armuriers, travailleurs du cuir et tailleurs) ou comptoir ; reliques d'extension : collections, fractales, missions d'attaque, pistes, succès, histoire.",
+      "en": "Any relic. Core relics: crafting (recipes from Master Armorsmiths, Leatherworkers and Tailors) or the trading post; expansion relics: collections, fractals, strikes, reward tracks, achievements, story."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de mystic_facet.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/relic.html, Acquisition"
     }
    ],
    "qty": {
     "mystic_facet": 1
-   }
+   },
+   "best": "craft"
   },
   "rodgorts_flame": {
    "name": "Rodgort's Flame",
@@ -29152,19 +29170,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "achievement",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Récompense du succès « Mistburned Barrens Mastery » : réussir 17 succès de carte à Mistburned Barrens.",
+      "en": "Reward of the 'Mistburned Barrens Mastery' achievement: complete 17 map achievements in Mistburned Barrens."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de orrax_contained.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/salmon_of_knowledge_backpiece.html, Acquisition"
     }
    ],
    "qty": {
     "orrax_contained": 1
-   }
+   },
+   "best": "achievement"
   },
   "save_the_queen": {
    "name": "Save the Queen",
@@ -32722,14 +32741,14 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Contenu garanti de Chef Starter Kit (×10) ; au hasard dans divers sacs. La page ne cite aucun vendeur.",
+      "en": "Guaranteed contents of Chef Starter Kit (×10); random in various bags. The page lists no vendor."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de plate_of_truffle_steak.html ; identite depuis gw2_materials_ref.json (apiId 12138)"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/stick_of_butter.html, Acquisition"
     },
     {
      "type": "trading_post",
@@ -32747,7 +32766,8 @@
     "plate_of_truffle_steak": 1,
     "ball_of_dough": 1,
     "bowl_of_bakers_wet_ingredients": 1
-   }
+   },
+   "best": "chest"
   },
   "symbol_ingredient": {
    "name": "Symbol (ingredient)",
@@ -32756,14 +32776,14 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "acquire",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Page de désambiguïsation, aucun objet : désigne l'un des trois symboles. Plus aucun consommateur (v441).",
+      "en": "Disambiguation page, no item: stands for any of the three symbols. No consumer left (v441)."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de symbol_of_control.html, symbol_of_enhancement.html, symbol_of_pain.html"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/symbol_ingredient.html"
     }
    ],
    "qty": {}
@@ -33706,19 +33726,20 @@
    "farmable": true,
    "sources": [
     {
-     "type": "unknown",
+     "type": "chest",
      "tip": {
-      "fr": "Page au dépôt depuis le lot du 27/09. Voie d'obtention à lire : recette posée si la capture en porte une, sinon à reprendre à la main.",
-      "en": "Page in the repo since the 27/09 batch. Acquisition path to read: recipe posted if the capture carries one, otherwise to be done by hand."
+      "fr": "Contenu garanti de Shallots in Bulk (×25) ; au hasard dans divers sacs. La page ne cite aucun vendeur.",
+      "en": "Guaranteed contents of Shallots in Bulk (×25); random in various bags. The page lists no vendor."
      },
-     "verified": false,
-     "checked": "2026-09-25",
-     "ref": "recette de bowl_of_fancy_tangy_sautee_mix.html ; identite depuis gw2_materials_ref.json (apiId 12517)"
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/shallot.html, Acquisition"
     }
    ],
    "qty": {
     "bowl_of_fancy_tangy_sautee_mix": 1
-   }
+   },
+   "best": "chest"
   },
   "black_peppercorn": {
    "name": "Black Peppercorn",
@@ -39595,19 +39616,20 @@
    "needed_for": [],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 76038, description)",
+     "type": "craft",
      "tip": {
-      "fr": "Description du jeu : « Ingredient Squeezed from the flesh of indigo mushrooms. » — voie détaillée à lire sur le wiki.",
-      "en": "In-game description: \"Ingredient Squeezed from the flesh of indigo mushrooms.\" — route to read on the wiki."
-     }
+      "fr": "Utiliser un Indigo Mushroom avec au moins 25 dans l'inventaire du personnage : 25 champignons donnent 1 goutte (10 gouttes pour 250).",
+      "en": "Use an Indigo Mushroom with 25 or more in the character's inventory: 25 mushrooms make 1 drop (10 drops from 250)."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/drop_of_indigo_mushroom_milk.html, Acquisition, Related achievements"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/api/api_ingredients_armes_20261024.json",
+   "best": "craft"
   },
   "cherry": {
    "name": "Cherry",
@@ -39651,19 +39673,20 @@
    "needed_for": [],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 71287, description)",
+     "type": "gathering",
      "tip": {
-      "fr": "Description du jeu : « Ingredient A rare potato found hidden in potato patches. A rare and wonderfully complex potato. » — voie détaillée à lire sur le wiki.",
-      "en": "In-game description: \"Ingredient A rare potato found hidden in potato patches. A rare and wonderfully complex potato.\" — route to read on the wiki."
-     }
+      "fr": "Récolte des nœuds de pommes de terre.",
+      "en": "Harvested from potato nodes."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/purple_potato.html, Acquisition"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/api/api_ingredients_armes_20261024.json",
+   "best": "gathering"
   },
   "bowl_of_mushroom_paste": {
    "name": "Bowl of Mushroom Paste",
@@ -39790,26 +39813,29 @@
    "kind": "material",
    "farmable": true,
    "qty": {
-    "quiche_of_darkness_vegetable_mix": 5
+    "quiche_of_darkness_vegetable_mix": 5,
+    "drop_of_indigo_mushroom_milk": 25
    },
    "needed_for": [
-    "quiche_of_darkness_vegetable_mix"
+    "quiche_of_darkness_vegetable_mix",
+    "drop_of_indigo_mushroom_milk"
    ],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 75851, description)",
+     "type": "gathering",
      "tip": {
-      "fr": "Description du jeu : « Ingredient A rare mushroom found in mushroom patches. Double-click to squeeze 25 mushrooms for their milk. Fabled mushrooms of vibrant hue. » — voie détaillée à lire sur le wiki.",
-      "en": "In-game description: \"Ingredient A rare mushroom found in mushroom patches. Double-click to squeeze 25 mushrooms for their milk. Fabled mushrooms of vibrant hue.\" — route to read on the wiki."
-     }
+      "fr": "Récolte des nœuds de champignons (Button, Portobello, Sawgill, Varied, Orrian Truffle, Snow Truffle) — ne tombe qu'une fois The Moot III ou The Minstrel I débloquée, puis indéfiniment.",
+      "en": "Gathered from mushroom nodes (Button, Portobello, Sawgill, Varied, Orrian Truffle, Snow Truffle) — drops only once The Moot III or The Minstrel I is unlocked, then indefinitely."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/indigo_mushroom.html, Acquisition, Notes"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/api/api_ingredients_armes_20261024.json",
+   "best": "gathering"
   },
   "orrian_sea_urchin_roe": {
    "name": "Orrian Sea Urchin Roe",
@@ -40546,19 +40572,20 @@
    ],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 12159, description)",
+     "type": "chest",
      "tip": {
-      "fr": "Description du jeu : « Ingredient » — voie détaillée à lire sur le wiki.",
-      "en": "In-game description: \"Ingredient\" — route to read on the wiki."
-     }
+      "fr": "Contenu garanti de Cheese Wedges in Bulk (×25) ; au hasard dans divers sacs. La page ne cite aucun vendeur.",
+      "en": "Guaranteed contents of Cheese Wedges in Bulk (×25); random in various bags. The page lists no vendor."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/cheese_wedge.html, Acquisition"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/api/api_ingredients_armes_20261024.json",
+   "best": "chest"
   },
   "swift_egg": {
    "name": "Swift Egg",
@@ -41440,19 +41467,26 @@
    "needed_for": [],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 76076, description)",
+     "type": "vendor",
+     "npc": "Tirzie the Painter",
+     "map": "Orlaf Escarpments (Queensdale)",
+     "cost": {
+      "fr": "1 848 karma",
+      "en": "1,848 karma"
+     },
      "tip": {
-      "fr": "Description du jeu : « Tirzie the Painter's special blend to ensure long-lasting, vibrant color. » — voie détaillée à lire sur le wiki.",
-      "en": "In-game description: \"Tirzie the Painter's special blend to ensure long-lasting, vibrant color.\" — route to read on the wiki."
-     }
+      "fr": "Achat chez Tirzie la Peintre (Escarpements d'Orlaf, Plaine de la Reine) : 1 848 karma.",
+      "en": "Purchased from Tirzie the Painter (Orlaf Escarpments, Queensdale): 1,848 karma."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/jar_of_paint_base.html, Acquisition"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
-   "ref": "ressources/api/api_ingredients_armes_20261024.json"
+   "ref": "ressources/api/api_ingredients_armes_20261024.json",
+   "best": "vendor"
   },
   "glob_of_red_ooze": {
    "name": "Glob of Red Ooze",
@@ -42276,20 +42310,23 @@
    "needed_for": [],
    "sources": [
     {
-     "type": "unknown",
-     "verified": true,
-     "checked": "2026-10-24",
-     "ref": "ressources/api/api_ingredients_armes_20261024.json (/v2/items 8764, description)",
+     "type": "vendor",
+     "npc": "Forager Hitkiti",
+     "map": "Harathi Hinterlands",
      "tip": {
-      "fr": "Description du jeu : « Double-click to gain a pile of harpy feathers. » — voie détaillée à lire sur le wiki.",
-      "en": "In-game description: \"Double-click to gain a pile of harpy feathers.\" — route to read on the wiki."
-     }
+      "fr": "Paquet vendu par Forager Hitkiti (Hinterlands harathis), utilisé dans Nevermore IV. Prix non capturé (la page lue est la désambiguïsation).",
+      "en": "Bundle sold by Forager Hitkiti (Harathi Hinterlands), used in Nevermore IV. Price not captured (the page read is the disambiguation)."
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/harpy_feather.html (desambiguisation)"
     }
    ],
    "verified": true,
    "checked": "2026-10-24",
    "ref": "ressources/api/api_ingredients_armes_20261024.json",
-   "wiki": "Harpy_Feather"
+   "wiki": "Harpy_Feather",
+   "best": "vendor"
   },
   "gossamer_scrap": {
    "name": "Gossamer Scrap",

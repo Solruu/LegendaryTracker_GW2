@@ -999,6 +999,15 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       `gw2_requisitions_v1`, ids par la base semantique du wiki).
 - [x] 132 sources « unknown » typees depuis les captures (`gw2_voies_wiki_v1`),
       17 restent (pages sans sous-titre d'acquisition).
+- [x] Les 16 restantes lues a la main (05/11, sources v442,
+      `gw2_sources_inconnues_v1`) : plus aucune source « unknown ». Trois
+      couts lus en passant : Superior Rune of Holding 10 or chez le maitre
+      artisan (Vision +20 or), Jar of Paint Base 1 848 karma chez Tirzie
+      (The Bifrost +11 088 karma), Drop of Indigo Mushroom Milk = 25 Indigo
+      Mushrooms (The Moot 1 -> 251, le nombre de la page). Beurre, echalote,
+      fromage : contenu garanti d'un lot, aucun vendeur sur leur page ;
+      Harpy Feathers et les trois Recollection de Klobjarne : prix non
+      captures.
 - [x] 6 apiId de plus (`gw2_apiid_pages_v1`) ; titres Fruit of the Shadow,
       Harpy Feather.
 - [x] Libelles d'etape decales (sources v432, `gw2_libelles_etapes_v1`) :
