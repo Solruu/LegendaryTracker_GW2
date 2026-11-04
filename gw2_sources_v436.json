@@ -5227,10 +5227,40 @@
       "fr": "Craft 500 (ascended) — automatiquement appris. 1× Ecto + matériaux ascended tier 7. Demande Artificer/Weaponsmith/etc. 500.",
       "en": "Craft 500 (ascended) - learned automatically. 1x Ecto + ascended tier 7 materials. Requires Artificer/Weaponsmith/etc. 500."
      }
+    },
+    {
+     "type": "vendor",
+     "npc": "Coffre du Sorcier",
+     "tip": {
+      "fr": "150 Astral Acclaim pièce, plafond 4 par saison. Voie alternative, non comptée.",
+      "en": "150 Astral Acclaim each, capped 4 per season. Alternative route, not counted."
+     },
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/vision_crystal.html, Acquisition (Wizard's Vault)"
     }
    ],
    "kind": "craftable",
-   "best": "craft"
+   "best": "craft",
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Coffre du Sorcier",
+       "en": "Wizard's Vault"
+      },
+      "period": "season",
+      "cap": 4,
+      "cost": {
+       "fr": "150 AA",
+       "en": "150 AA"
+      },
+      "verified": true,
+      "checked": "2026-11-04",
+      "ref": "ressources/wiki/vision_crystal.html"
+     }
+    ]
+   }
   },
   "essence_of_strategy": {
    "name": "Essence of Strategy",
@@ -6310,6 +6340,17 @@
      "ref": "wiki:Obsidian_Shard#Acquisition",
      "free_repeatable": true,
      "cadence": "à volonté"
+    },
+    {
+     "type": "vendor",
+     "npc": "Coffre du Sorcier",
+     "tip": {
+      "fr": "30 Astral Acclaim pièce, plafond 20 par saison. Voie alternative, non comptée.",
+      "en": "30 Astral Acclaim each, capped 20 per season. Alternative route, not counted."
+     },
+     "verified": true,
+     "checked": "2026-11-04",
+     "ref": "ressources/wiki/obsidian_shard.html, Acquisition (Wizard's Vault)"
     }
    ],
    "kind": "acquire",
@@ -6334,6 +6375,25 @@
    "note": {
     "fr": "Arbre gw2efficiency Coalescence/Vision : noeuds 249 et 250, le second par la fulgurite.",
     "en": null
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Coffre du Sorcier",
+       "en": "Wizard's Vault"
+      },
+      "period": "season",
+      "cap": 20,
+      "cost": {
+       "fr": "30 AA",
+       "en": "30 AA"
+      },
+      "verified": true,
+      "checked": "2026-11-04",
+      "ref": "ressources/wiki/obsidian_shard.html"
+     }
+    ]
    }
   },
   "gift_of_exploration": {
@@ -52384,8 +52444,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Use an Energy Crystal from the Vale Guardian in Spirit Vale to capture Auric energy from the Inner Chamber of Tarir, the Forgotten City.",
        "how_jsx": {
-        "fr": "Acheter Polished Aurillium (Faction Provisioner), puis atteindre 18 stacks de Madness pendant Twisted Castle (W3) avec l'objet utilisé.",
-        "en": "Buy Polished Aurillium (any Faction Provisioner), then reach 18 stacks of Madness during Twisted Castle (W3) with the item consumed."
+        "fr": "Energy Crystal : drop du Vale Guardian (W1). L'apporter à l'œuf de Glint (chambre intérieure de Tarir, AB) — transformation automatique.",
+        "en": "Energy Crystal: Vale Guardian drop (W1). Bring it to Glint's Egg (Tarir inner chamber, AB) — auto-transforms."
        },
        "wiki": "Auric_Energy_Crystal"
       },
@@ -52400,8 +52460,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Infuse Spirit Threads from Gorseval the Multifarious in Spirit Vale with ley-line energy released when defeating a chak gerent near the Ley-Line Confluence in the Tangled Depths. Combine 5 Energized Spirit Threads to create a Spirit Weave.",
        "how_jsx": {
-        "fr": "Energy Crystal : drop du Vale Guardian (W1). L'apporter à l'œuf de Glint (chambre intérieure de Tarir, AB) — transformation automatique.",
-        "en": "Energy Crystal: Vale Guardian drop (W1). Bring it to Glint's Egg (Tarir inner chamber, AB) — auto-transforms."
+        "fr": "⏳ 5 Spirit Threads : 1/semaine sur Gorseval (min. 5 semaines — à lancer EN PREMIER). Énergiser au Chak Gerent (méta TD) : taguer les 4 lanes énergise jusqu'à 4 threads en un cycle. 5 énergisés → double-clic.",
+        "en": "⏳ 5 Spirit Threads: 1/week from Gorseval (min. 5 weeks — start this FIRST). Energize at Chak Gerent (TD meta): tagging all 4 lanes energizes up to 4 threads in one cycle. 5 energized → double-click."
        },
        "wiki": "Spirit_Weave"
       },
@@ -52416,8 +52476,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect Ectoplasmic Residue from the Spirit Woods and use it to create Coagulated Ectoplasm.",
        "how_jsx": {
-        "fr": "⏳ 5 Spirit Threads : 1/semaine sur Gorseval (min. 5 semaines — à lancer EN PREMIER). Énergiser au Chak Gerent (méta TD) : taguer les 4 lanes énergise jusqu'à 4 threads en un cycle. 5 énergisés → double-clic.",
-        "en": "⏳ 5 Spirit Threads: 1/week from Gorseval (min. 5 weeks — start this FIRST). Energize at Chak Gerent (TD meta): tagging all 4 lanes energizes up to 4 threads in one cycle. 5 energized → double-click."
+        "fr": "10 Ectoplasmic Residues → double-clic. Résidus dans les coffres cachés de W1/W2/W3 (spots fixes, cartes sur Hardstuck).",
+        "en": "10 Ectoplasmic Residues → double-click. Residues from the hidden chests in W1/W2/W3 (fixed spots, maps on Hardstuck)."
        },
        "wiki": "Coagulated_Ectoplasm"
       },
@@ -52432,8 +52492,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect a Flame Core from the chest after defeating Sabetha the Saboteur.",
        "how_jsx": {
-        "fr": "10 Ectoplasmic Residues → double-clic. Résidus dans les coffres cachés de W1/W2/W3 (spots fixes, cartes sur Hardstuck).",
-        "en": "10 Ectoplasmic Residues → double-click. Residues from the hidden chests in W1/W2/W3 (fixed spots, maps on Hardstuck)."
+        "fr": "Coffre de Sabetha (W1) après le kill.",
+        "en": "Sabetha's chest (W1) after the kill."
        },
        "wiki": "Core_of_Flame"
       },
@@ -52448,8 +52508,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect Powdered Aurillium from high above central Tarir and combine it with Bloodstone Powder from Salvation Pass in the Forsaken Thicket.",
        "how_jsx": {
-        "fr": "Coffre de Sabetha (W1) après le kill.",
-        "en": "Sabetha's chest (W1) after the kill."
+        "fr": "Bloodstone Powder (coffre de Matthias, W2) + Powdered Aurillium (coffre au sommet de la chambre intérieure de Tarir, fin du Sanctum Scramble — accessible en monture sans faire l'aventure). Consommer l'un des deux.",
+        "en": "Bloodstone Powder (Matthias coffer, W2) + Powdered Aurillium (chest atop Tarir's inner chamber, Sanctum Scramble end — reachable by mount without the adventure). Consume either."
        },
        "wiki": "Arcane_Dust"
       },
@@ -52464,8 +52524,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Create a Mushroom Medley by combining a Noxious Mushroom Cap, Mushroom Emperor Gills, an Orrian Truffle, and a Sawgill Mushroom.",
        "how_jsx": {
-        "fr": "Bloodstone Powder (coffre de Matthias, W2) + Powdered Aurillium (coffre au sommet de la chambre intérieure de Tarir, fin du Sanctum Scramble — accessible en monture sans faire l'aventure). Consommer l'un des deux.",
-        "en": "Bloodstone Powder (Matthias coffer, W2) + Powdered Aurillium (chest atop Tarir's inner chamber, Sanctum Scramble end — reachable by mount without the adventure). Consume either."
+        "fr": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (CP/stock). Les 4 en inventaire → consommer Gills ou Cap.",
+        "en": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (TP/storage). All 4 in inventory → consume Gills or Cap."
        },
        "wiki": "Mushroom_Medley"
       },
@@ -52480,8 +52540,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect a Giant Beehive from the trees high above Salvation Pass.",
        "how_jsx": {
-        "fr": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (CP/stock). Les 4 en inventaire → consommer Gills ou Cap.",
-        "en": "Mushroom Emperor Gills (Champion Mushroom Emperor, Order of Whispers Outpost, TD) + Noxious Mushroom Cap (Slothasor, W2) + 1 Orrian Truffle + 1 Sawgill Mushroom (TP/storage). All 4 in inventory → consume Gills or Cap."
+        "fr": "W2 : ruche en haut d'un arbre au sud du plan d'eau près du Prison Camp — mini-JP depuis l'arbre au chemin de bois (SO), tir à distance pour la faire tomber, looter dans l'eau.",
+        "en": "W2: hive high in a tree south of the water by the Prison Camp — mini-JP from the wooden-path tree (SW), shoot it down with a ranged attack, loot in the water below."
        },
        "wiki": "Giant_Beehive_(trophy)"
       },
@@ -52496,8 +52556,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect a vial of water from the fountains in the Temple of Salvation.",
        "how_jsx": {
-        "fr": "W2 : ruche en haut d'un arbre au sud du plan d'eau près du Prison Camp — mini-JP depuis l'arbre au chemin de bois (SO), tir à distance pour la faire tomber, looter dans l'eau.",
-        "en": "W2: hive high in a tree south of the water by the Prison Camp — mini-JP from the wooden-path tree (SW), shoot it down with a ranged attack, loot in the water below."
+        "fr": "Après le kill de Matthias (W2), marcher dans une des 4 fontaines du temple — DANS l'instance du kill (rejoindre une autre instance ne compte pas).",
+        "en": "After killing Matthias (W2), walk into one of the temple's 4 fountains — IN the kill instance (joining another instance doesn't count)."
        },
        "wiki": "Vial_of_Forsaken_Thicket_Waters"
       },
@@ -52512,8 +52572,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Create a Spirit Quest Tonic by combining Arcane Dust, Mushroom Medley, a Giant Beehive, and a Vial of Forsaken Thicket Waters.",
        "how_jsx": {
-        "fr": "Après le kill de Matthias (W2), marcher dans une des 4 fontaines du temple — DANS l'instance du kill (rejoindre une autre instance ne compte pas).",
-        "en": "After killing Matthias (W2), walk into one of the temple's 4 fountains — IN the kill instance (joining another instance doesn't count)."
+        "fr": "Se crée en consommant l'un de : Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (les 4 en inventaire).",
+        "en": "Created by consuming any of: Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (all 4 in inventory)."
        },
        "wiki": "Spirit_Quest_Tonic"
       },
@@ -52528,8 +52588,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect a Bloodstone Fragment from the chest after defeating Matthias Gabrel.",
        "how_jsx": {
-        "fr": "Se crée en consommant l'un de : Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (les 4 en inventaire).",
-        "en": "Created by consuming any of: Arcane Dust + Mushroom Medley + Giant Beehive + Vial of Forsaken Thicket Waters (all 4 in inventory)."
+        "fr": "Loot direct sur Matthias (W2).",
+        "en": "Direct loot from Matthias (W2)."
        },
        "wiki": "Bloodstone_Fragment_(trophy)"
       },
@@ -52544,8 +52604,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect a Bloodstone Battery from the Stronghold of the Faithful and charge it with energy using the machinery at Rata Novus.",
        "how_jsx": {
-        "fr": "Loot direct sur Matthias (W2).",
-        "en": "Direct loot from Matthias (W2)."
+        "fr": "Batterie vide : coffre de McLeod (Escort, W3). La charger au socket du 2e étage du Command Center de Rata Novus (TD) — tourelles mortelles si le centre n'est pas repris : traverser vite en monture ou faire l'event chain.",
+        "en": "Empty battery: McLeod's chest (Escort, W3). Charge it at the 2nd-floor socket of the Rata Novus Command Center (TD) — deadly turrets if not retaken: rush through on a mount or do the event chain."
        },
        "wiki": "Bloodstone_Battery_(Charged)"
       },
@@ -52560,8 +52620,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Collect a Stone Soul after defeating the Keep Construct and use chak goop to free the soul inside.",
        "how_jsx": {
-        "fr": "Batterie vide : coffre de McLeod (Escort, W3). La charger au socket du 2e étage du Command Center de Rata Novus (TD) — tourelles mortelles si le centre n'est pas repris : traverser vite en monture ou faire l'event chain.",
-        "en": "Empty battery: McLeod's chest (Escort, W3). Charge it at the 2nd-floor socket of the Rata Novus Command Center (TD) — deadly turrets if not retaken: rush through on a mount or do the event chain."
+        "fr": "Stone Soul : Keep Construct (W3). Puis se faire toucher par le Goop d'un Veteran Chak Lobber/Slinger et consommer le Stone Soul SOUS l'effet Goop.",
+        "en": "Stone Soul: Keep Construct (W3). Then get hit by a Veteran Chak Lobber/Slinger Goop and consume the Stone Soul WHILE under the Goop effect."
        },
        "wiki": "Soul_of_the_Keep"
       },
@@ -52576,8 +52636,8 @@
        "how_ref": "wiki, tableau « Collection items » — ressources/wiki/envoy_armor_i_experimental_armor.html",
        "name_api": "Trade with Scavenger Rakatin in Auric Basin to acquire a piece of Polished Aurillium and use it to capture the tormented energies of the Twisted Castle.",
        "how_jsx": {
-        "fr": "Stone Soul : Keep Construct (W3). Puis se faire toucher par le Goop d'un Veteran Chak Lobber/Slinger et consommer le Stone Soul SOUS l'effet Goop.",
-        "en": "Stone Soul: Keep Construct (W3). Then get hit by a Veteran Chak Lobber/Slinger Goop and consume the Stone Soul WHILE under the Goop effect."
+        "fr": "Acheter Polished Aurillium (Faction Provisioner), puis atteindre 18 stacks de Madness pendant Twisted Castle (W3) avec l'objet utilisé.",
+        "en": "Buy Polished Aurillium (any Faction Provisioner), then reach 18 stacks of Madness during Twisted Castle (W3) with the item consumed."
        },
        "wiki": "Tormented_Aurillium",
        "cost": {

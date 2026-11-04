@@ -1025,14 +1025,22 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       L'or de l'Itzel Spirit Poison sort en arete non sourcee : le parseur
       vendeur ne lit que les Airship Parts sur cette page (meme famille que
       le point ci-dessous).
-- [ ] Envoy Armor I : les `how_jsx` des bits 2 et 14 semblent decales (bit 2
-      parle de Polished Aurillium / Twisted Castle, bit 14 de Stone Soul) — a
-      verifier contre le tableau de la collection. Le reste des 163 lignes
-      reperees est a relire apres le reetiquetage.
-- [ ] Parseur vendeur : un cout enveloppe de `<span class="inline-icon">`
-      n'est pas lu (ex. 9 Astral Acclaim sur mystic_coin.html, Wizard's
-      Vault) — 18 pages du corpus concernees ; a trancher page par page,
-      plusieurs sont des tables « Currency for » mal bornees.
+- [x] Envoy Armor I : conseils rediges decales d'un cran sur les bits 2 a 14
+      (rotation), reattribues (sources v436, `gw2_conseils_envoy_v1`). Un
+      detecteur par recouvrement de mots ne trouve aucune autre collection
+      touchee (Selachimorpha Diver : faux positif, conseil generique). Le reste
+      des 163 lignes reperees est a relire apres le reetiquetage.
+- [x] Parseur vendeur / `<span class="inline-icon">` : tranche page par page
+      (04/11, docstring de `gw2_coffre_sorcier_v1`). Le parseur reste tel quel :
+      14 pages portent des echanges, des cumuls de paliers ou des catalogues
+      qu'il ne faut pas lire comme prix. Les 4 achats au Coffre du Sorcier
+      (Astral Acclaim, plafonds saisonniers) sont des voies alternatives :
+      deja en source sur Mystic Clover et Mystic Coin, ajoutes sur Obsidian
+      Shard (30 AA, 20/saison) et Vision Crystal (150 AA, 4/saison), avec
+      cadence structuree, non comptes.
+- [ ] Emblem of the Avenger / Conqueror : sources reduites a « Full material
+      list » ; les captures donnent les echanges croises (100 Avenger ->
+      Conqueror chez les marchands d'escarmouche) — a relire avant d'y toucher.
 
 ## Ordre propose
 
