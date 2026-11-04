@@ -1070,6 +1070,17 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       la monnaie est la voie actuelle ; le consommable est retire du jeu et se
       convertit 1 pour 1. Aretes du consommable retirees : -150 sur Perfected
       Envoy, -150 sur Coalescence.
+- [x] Symboles et charmes (05/11, sources v441,
+      `gw2_symboles_charmes_hasard_v1`) : les six pages ecrivent que 3
+      symboles (charmes) quelconques + 1 Philosopher's Stone donnent un
+      symbole AU HASARD. La donnee en avait fait leur recette, avec un
+      ingredient « Symbol (ingredient) » / « Charm (ingredient) » qui est une
+      page de desambiguisation. 18 aretes retirees, conversion en option non
+      comptee, recyclage en voie par defaut. Totaux : Legendary Sigil -675
+      symboles fantomes -225 Philosopher's Stones ; Legendary Rune -450 charmes
+      fantomes -600 pierres ; 20 armes gen1 -1 a -3 pierres et -3 a -9
+      symboles fantomes. `symbol_ingredient` / `charm_ingredient` restent sans
+      consommateur : suppression a valider par Antoine.
 - [ ] Suite : RELECTURE sort 2 NON_RELIE (la recette du wiki cite encore le
       consommable). Le resolveur apparie par apiId de page avant
       `wiki_redirects` : supprimer `legendary_insight_consumable` (plus aucun

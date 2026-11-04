@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v440.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v441.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -16,7 +16,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 0 |
 | PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 126 |
-| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 89 |
+| NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 95 |
 
 Écartés sans être comptés : 27 options d'`alt_groups` — un choix, pas un oubli.
 
@@ -175,7 +175,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `zap` | `Essence_of_Energy` |  | `zap` | sous une feuille | `gen1_bolt` |
 | `zap` | `Spirit_of_the_Perfected_Sword` |  | `zap` | sous une feuille | `gen1_bolt` |
 
-## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 89
+## Nœuds ayant une recette et aucun enfant (feuilles assumées) — 95
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -220,8 +220,11 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `cured_coarse_leather_square` | `1 ingrédients` |  | `cured_coarse_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
 | `cured_rugged_leather_square` | `1 ingrédients` |  | `cured_rugged_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
 | `cured_thin_leather_square` | `1 ingrédients` |  | `cured_thin_leather_square` | feuille assumée | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
+| `symbol_of_control` | `2 ingrédients` |  | `symbol_of_control` | feuille assumée | `gen1_frostfang`, `gen1_kudzu`, `gen1_quip` … (+7) |
 | `hardened_leather_section` | `3 ingrédients` |  | `hardened_leather_section` | feuille assumée | `endless_summer`, `gen1_howler`, `gen1_kraitkin` … (+6) |
+| `symbol_of_enhancement` | `2 ingrédients` |  | `symbol_of_enhancement` | feuille assumée | `gen1_frenzy`, `gen1_howler`, `gen1_kraitkin` … (+4) |
 | `onyx_lodestone` | `4 ingrédients` |  | `onyx_lodestone` | feuille assumée | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
+| `symbol_of_pain` | `2 ingrédients` |  | `symbol_of_pain` | feuille assumée | `gen1_bolt`, `gen1_incinerator`, `gen1_meteorlogicus` … (+2) |
 | `charged_lodestone` | `4 ingrédients` |  | `charged_lodestone` | feuille assumée | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
 | `destroyer_lodestone` | `4 ingrédients` |  | `destroyer_lodestone` | feuille assumée | `aetheric_anchor`, `gen1_incinerator`, `gen1_rodgort` … (+1) |
 | `gift_of_maguuma` | `4 ingrédients` |  | `gift_of_maguuma` | feuille assumée | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
@@ -237,6 +240,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `bolt_of_wool` | `1 ingrédients` |  | `bolt_of_wool` | feuille assumée | `ad_infinitum` |
 | `carcharias` | `4 ingrédients` |  | `carcharias` | feuille assumée | `gen1_kamohoalii_kotaki` |
 | `chaos_gun` | `4 ingrédients` |  | `chaos_gun` | feuille assumée | `gen1_quip` |
+| `charm_of_brilliance` | `2 ingrédients` |  | `charm_of_brilliance` | feuille assumée | `legendary_rune` |
+| `charm_of_potence` | `2 ingrédients` |  | `charm_of_potence` | feuille assumée | `legendary_rune` |
+| `charm_of_skill` | `2 ingrédients` |  | `charm_of_skill` | feuille assumée | `legendary_rune` |
 | `coral_orb` | `2 ingrédients` |  | `coral_orb` | feuille assumée | `endless_summer` |
 | `dawn` | `4 ingrédients` |  | `dawn` | feuille assumée | `gen1_sunrise` |
 | `dusk` | `4 ingrédients` |  | `dusk` | feuille assumée | `gen1_twilight` |
