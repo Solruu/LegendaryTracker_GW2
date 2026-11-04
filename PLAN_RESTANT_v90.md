@@ -1054,7 +1054,9 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       (rotation), reattribues (sources v436, `gw2_conseils_envoy_v1`). Un
       detecteur par recouvrement de mots ne trouve aucune autre collection
       touchee (Selachimorpha Diver : faux positif, conseil generique). Le reste
-      des 163 lignes reperees est a relire apres le reetiquetage.
+      des 163 lignes reperees est a relire apres le reetiquetage. ✅ 05/11 : rejoue
+      apres les reetiquetages (conseil redige contre conseil du wiki, 283
+      etapes qui portent les deux) : plus aucun conseil sur le mauvais bit.
 - [x] Parseur vendeur / `<span class="inline-icon">` : tranche page par page
       (04/11, docstring de `gw2_coffre_sorcier_v1`). Le parseur reste tel quel :
       14 pages portent des echanges, des cumuls de paliers ou des catalogues
@@ -1110,6 +1112,19 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       consommable). Le resolveur apparie par apiId de page avant
       `wiki_redirects` : supprimer `legendary_insight_consumable` (plus aucun
       consommateur) fermerait le cas — suppression, a valider par Antoine.
+
+### C22 — Passe du 05/11 · W+C — en cours
+- [x] Pistes renouvelables (sources v445, `gw2_pistes_renouvelables_v1`) :
+      21 avertissements « aucune piste renouvelable » lus page par page.
+      Airship Part, Ley Line Crystal, Lump of Aurillium (coffres de carte),
+      Exotic Essence of Luck (recyclage), Fractalline Dust (fractales
+      Quickplay, succes Incursive Investigation), Refined Homestead x3
+      (echange de recoltes du domaine) : gratuits, repetables. Icy Runestone :
+      Rojan the Penitent, 1 or ou 1 Mystic Runestone (la « Forge mystique, 1
+      po » des arbres GW2Efficiency n'est pas sur la page), Jormag Defender's
+      Kit. 12 tessons gen2 : conseil « ingredients non modelises » perime,
+      remplace par leur recette (artisan 450), `free_via_ingredients`.
+      Aucun total ne bouge ; audit 63 -> 43.
 
 ## Ordre propose
 

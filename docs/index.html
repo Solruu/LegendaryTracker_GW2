@@ -4128,24 +4128,31 @@ const SOURCES_DB = {
       "sources": [
         {
           "type": "vendor",
-          "tip": {
-            "fr": "Achetees 1 po piece chez les marchands de la Forge mystique. Pas de source gratuite : c'est un poste d'or pur, a budgeter comme tel.",
-            "en": "Bought for 1 gold each from Mystic Forge merchants. No free source: a pure gold line, to be budgeted as such."
-          },
-          "free_repeatable": false,
-          "verified": true,
-          "checked": "2026-08-22",
-          "ref": "arbres de recette complets GW2Efficiency, exports HTML (Antoine 22/08/2026)"
-        },
-        {
-          "type": "vendor",
           "npc": "Rojan the Penitent",
           "map": "Frostgorge Sound",
           "wpCode": "[&BNABAAA=]",
+          "paid_repeatable": true,
+          "cost": {
+            "fr": "1 or",
+            "en": "1 gold"
+          },
           "tip": {
-            "fr": "Disponible après avoir tué la Claw of Jormag (event toutes les 3h). ⚠ Un relevé ancien annonçait ~2 pa pièce : rien ne le confirme aujourd'hui et le prix retenu est celui de la Forge mystique, 1 po.",
-            "en": "Available after killing the Claw of Jormag (event every 3h). ⚠ An old note claimed ~2s each: nothing confirms it today, and the price used is the Mystic Forge one, 1 gold."
-          }
+            "fr": "Rojan le Pénitent (Bassin de Tremblesol, Détroit de la Hache-de-Givre), après la réussite de « Breaking the Claw of Jormag » : 1 or la rune, ou 1 Mystic Runestone.",
+            "en": "Rojan the Penitent (Earthshake Basin, Frostgorge Sound), after a successful 'Breaking the Claw of Jormag': 1 gold each, or 1 Mystic Runestone."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/icy_runestone.html, Sold by"
+        },
+        {
+          "type": "chest",
+          "tip": {
+            "fr": "Contenu garanti du Jormag Defender's Kit (×10).",
+            "en": "Guaranteed contents of the Jormag Defender's Kit (×10)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/icy_runestone.html, Contained in"
         }
       ],
       "qty": {
@@ -4181,7 +4188,8 @@ const SOURCES_DB = {
       "kind": "acquire",
       "verified": true,
       "checked": "2026-08-22",
-      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)"
+      "ref": "arbres GW2Efficiency de Coalescence, Vision et Ad Infinitum, lus en hierarchie (export Antoine 22/08/2026)",
+      "best": "vendor"
     },
     "ball_dark_energy": {
       "name": "Ball of Dark Energy",
@@ -7801,7 +7809,11 @@ const SOURCES_DB = {
           "tip": {
             "fr": "Obtenues en recyclant des items rares (jaunes). Les essences de chance inférieures s'améliorent via Artificer.",
             "en": "Obtained by salvaging rare (yellow) items. Lower luck essences upgraded via Artificer."
-          }
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/exotic_essence_of_luck.html, Salvaged from"
         }
       ],
       "kind": "acquire",
@@ -8822,7 +8834,11 @@ const SOURCES_DB = {
           "tip": {
             "fr": "Events et coffres Airship Cargo — Orée d'émeraude. Requiert la maîtrise Itzel Language.",
             "en": "Events and Airship Cargo chests — Verdant Brink. Requires Itzel Language mastery."
-          }
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/airship_part.html, Gathered from"
         }
       ],
       "qty": {
@@ -8858,7 +8874,11 @@ const SOURCES_DB = {
           "tip": {
             "fr": "Events et coffres Nuhoch — Profondeurs verdoyantes. Requiert la maîtrise Nuhoch Language.",
             "en": "Events and Nuhoch chests — Tangled Depths. Requires Nuhoch Language mastery."
-          }
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/ley_line_crystal.html, Gathered from"
         }
       ],
       "qty": {
@@ -8893,7 +8913,11 @@ const SOURCES_DB = {
           "tip": {
             "fr": "Events et Exalted Chests — Bassin aurique. Requiert la maîtrise Exalted Acceptance.",
             "en": "Events and Exalted Chests — Auric Basin. Requires Exalted Acceptance mastery."
-          }
+          },
+          "free_repeatable": true,
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/lump_of_aurillium.html, Gathered from"
         }
       ],
       "qty": {
@@ -21787,14 +21811,20 @@ const SOURCES_DB = {
       ],
       "sources": [
         {
-          "type": "acquire",
+          "type": "fractals",
+          "free_repeatable": true,
+          "cadence": "à volonté",
           "tip": {
-            "fr": "Extrait de la section « Full material list » des pages d'armes du wiki.",
-            "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
-          }
+            "fr": "4 à 6 par fractale terminée en mode Quickplay (personnages niveau 80) ; 10 par succès « Incursive Investigation » (3 incursions fractales en monde ouvert, en haut de l'heure).",
+            "en": "4-6 per Fractal completed in Quickplay mode (level 80 characters); 10 per 'Incursive Investigation' achievement (3 open-world Fractal Incursions, at the top of the hour)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/fractalline_dust.html, Rewarded by, Achievements"
         }
       ],
-      "apiId": 105336
+      "apiId": 105336,
+      "best": "fractals"
     },
     "fractalline_spark": {
       "name": "Fractalline Spark",
@@ -23035,17 +23065,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Arah. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Arah.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Arah. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Arah."
-          }
+            "fr": "Recette (Forgeron d'armes 450) : 1 Tribute to Arah + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Weaponsmith 450): 1 Tribute to Arah + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_arah.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Arah → 100 Shard of Arah",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 82069
+      "apiId": 82069,
+      "free_via_ingredients": true
     },
     "shard_of_call_of_the_void": {
       "name": "Shard of Call of the Void",
@@ -23060,17 +23094,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Verdarach. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Call of the Void.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Verdarach. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Call of the Void."
-          }
+            "fr": "Recette (Chasseur 450) : 1 Tribute to the Call of the Void + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Huntsman 450): 1 Tribute to the Call of the Void + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_call_of_the_void.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Verdarach → 100 Shard of Call of the Void",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 87711
+      "apiId": 87711,
+      "free_via_ingredients": true
     },
     "shard_of_endeavor": {
       "name": "Shard of Endeavor",
@@ -23085,17 +23123,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Eureka. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Endeavor.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Eureka. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Endeavor."
-          }
+            "fr": "Recette (Forgeron d'armes 450) : 1 Tribute to Endeavor + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Weaponsmith 450): 1 Tribute to Endeavor + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_endeavor.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Eureka → 100 Shard of Endeavor",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 79445
+      "apiId": 79445,
+      "free_via_ingredients": true
     },
     "shard_of_exitare": {
       "name": "Shard of Exitare",
@@ -23110,17 +23152,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Exordium. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Exitare.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Exordium. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Exitare."
-          }
+            "fr": "Recette (Forgeron d'armes 450) : 1 Tribute to the Exitare + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Weaponsmith 450): 1 Tribute to the Exitare + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_exitare.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Exordium → 100 Shard of Exitare",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 90390
+      "apiId": 90390,
+      "free_via_ingredients": true
     },
     "shard_of_friendship": {
       "name": "Shard of Friendship",
@@ -23135,17 +23181,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Shooshadoo. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Friendship.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Shooshadoo. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Friendship."
-          }
+            "fr": "Recette (Forgeron d'armes 450) : 1 Tribute to Friendship + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Weaponsmith 450): 1 Tribute to Friendship + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_friendship.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Shooshadoo → 100 Shard of Friendship",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 79784
+      "apiId": 79784,
+      "free_via_ingredients": true
     },
     "shard_of_liturgy": {
       "name": "Shard of Liturgy",
@@ -23160,17 +23210,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Balthazar. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Liturgy.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Balthazar. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Liturgy."
-          }
+            "fr": "Recette (Chasseur 450) : 1 Tribute to Liturgy + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Huntsman 450): 1 Tribute to Liturgy + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_liturgy.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Balthazar → 100 Shard of Liturgy",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 81051
+      "apiId": 81051,
+      "free_via_ingredients": true
     },
     "shard_of_resolution": {
       "name": "Shard of Resolution",
@@ -23185,17 +23239,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of the Four Legions. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Resolution.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of the Four Legions. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Resolution."
-          }
+            "fr": "Recette (Forgeron d'armes 450) : 1 Tribute to Resolution + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Weaponsmith 450): 1 Tribute to Resolution + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_resolution.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of the Four Legions → 100 Shard of Resolution",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 87031
+      "apiId": 87031,
+      "free_via_ingredients": true
     },
     "shard_of_spero": {
       "name": "Shard of Spero",
@@ -23210,17 +23268,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Pharus. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Spero.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Pharus. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Spero."
-          }
+            "fr": "Recette (Chasseur 450) : 1 Tribute to Spero + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Huntsman 450): 1 Tribute to Spero + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_spero.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Pharus → 100 Shard of Spero",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 89947
+      "apiId": 89947,
+      "free_via_ingredients": true
     },
     "shard_of_tlehco": {
       "name": "Shard of Tlehco",
@@ -23235,17 +23297,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Xiuquatl. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to Tlehco.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Xiuquatl. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to Tlehco."
-          }
+            "fr": "Recette (Artificier 450) : 1 Tribute to Tlehco + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Artificer 450): 1 Tribute to Tlehco + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_tlehco.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Xiuquatl → 100 Shard of Tlehco",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 88738
+      "apiId": 88738,
+      "free_via_ingredients": true
     },
     "shard_of_the_crown": {
       "name": "Shard of the Crown",
@@ -23260,17 +23326,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of the Blade. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Queen.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of the Blade. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Queen."
-          }
+            "fr": "Recette (Forgeron d'armes 450) : 1 Tribute to the Queen + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Weaponsmith 450): 1 Tribute to the Queen + 1 Mystic Curio + 30 Mithril Ingot + 20 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_the_crown.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of the Blade → 100 Shard of the Crown",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 81961
+      "apiId": 81961,
+      "free_via_ingredients": true
     },
     "shard_of_the_dark_arts": {
       "name": "Shard of the Dark Arts",
@@ -23285,17 +23355,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à une arme. 100 exemplaires pour Gift of Ipos. Ingrédients non modélisés : 1 Mystic Curio, 1 Tribute to the Dark Arts.",
-            "en": "Precursor shard, specific to one weapon. 100 needed for Gift of Ipos. Ingredients not modelled: 1 Mystic Curio, 1 Tribute to the Dark Arts."
-          }
+            "fr": "Recette (Artificier 450) : 1 Tribute to the Dark Arts + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Artificer 450): 1 Tribute to the Dark Arts + 1 Mystic Curio + 20 Mithril Ingot + 10 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_of_the_dark_arts.html, Recipe, Contained in"
         }
       ],
       "ref": "table « Full material list » — Gift of Ipos → 100 Shard of the Dark Arts",
       "checked": "2026-09-08",
       "verified": "tables « Full material list » des pages d'armes gen2, colonne 3 divisee par les 100 tessons de la colonne 2",
-      "apiId": 86120
+      "apiId": 86120,
+      "free_via_ingredients": true
     },
     "mystic_curio": {
       "name": "Mystic Curio",
@@ -24888,17 +24962,21 @@ const SOURCES_DB = {
       },
       "sources": [
         {
-          "type": "mystic_forge",
+          "type": "craft",
           "tip": {
-            "fr": "Tesson de précurseur, propre à The HMS Divinity. 100 exemplaires pour le Gift of Divinity.",
-            "en": "Precursor shard, specific to The HMS Divinity. 100 needed for the Gift of Divinity."
-          }
+            "fr": "Recette (Chasseur 450) : 1 Tribute to the Man o' War + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option : Chest of Legendary Shards (3, au choix).",
+            "en": "Recipe (Huntsman 450): 1 Tribute to the Man o' War + 1 Mystic Curio + 40 Mithril Ingot + 30 Elder Wood Plank. Option: Chest of Legendary Shards (3, choice)."
+          },
+          "verified": true,
+          "checked": "2026-11-05",
+          "ref": "ressources/wiki/shard_o_war.html, Recipe, Contained in"
         }
       ],
       "ref": "boite Recipe de Gift of Divinity (100 Shard o' War) et table « Full material list » de The HMS Divinity",
       "checked": "2026-09-17",
       "verified": "deux sources concordantes : la boite Recipe du Gift of Divinity et la table de l'arme",
-      "apiId": 80380
+      "apiId": 80380,
+      "free_via_ingredients": true
     },
     "tribute_to_the_man_o_war": {
       "name": "Tribute to the Man o' War",
@@ -29740,11 +29818,16 @@ const SOURCES_DB = {
         {
           "type": "vendor",
           "verified": true,
-          "checked": "2026-11-03",
+          "checked": "2026-11-05",
           "ref": "ressources/wiki/refined_homestead_fiber.html, Sold by",
           "tip": {
             "fr": "Vendu par : Homestead Upgrade: Fiber Trade Capacity, Homestead Refinement—Farm, Homestead Upgrade: Fiber Trade Efficiency (+64) — 14 Artichoke + 2 Asparagus Spear + 8 Bay Leaf + 15 Beet + 2 Black Peppercorn + 2 Blackberry + 2 Blueberry + 14 Butternut Squash + 1 Carrot + 2 Cassava Root + 2 Cayenne Pepper + 2 Chili Pepper + 2 Clove + 10 Dill Sprig + 2 Ghost Pepper + 8 Grape + 12 Green Onion + 2 Handful of Red Lentils + 10 Head of Cabbage + 16 Head of Cauliflower + 1 Head of Garlic + 2 Head of Lettuce + 1 Kale Leaf + 14 Leek + 8 Lemongrass + 8 Lotus Root + 14 Mint Leaf + 1 Mushroom + 12 Nopal + 2 Omnomberry + 4 Onion + 10 Oregano Leaf + 1 Orrian Truffle + 1 Parsley Leaf + 14 Parsnip + 10 Passion Fruit + 2 Pile of Allspice Berries + 1 Pile of Flax Seeds + 3 Portobello Mushroom + 4 Potato + 12 Prickly Pear + 1 Raspberry + 2 Rosemary Sprig + 2 Rutabaga + 1 Saffron Thread + 2 Sage Leaf + 12 Sawgill Mushroom + 1 Seaweed + 4 Sesame Seed + 4 Snow Truffle + 1 Spinach Leaf + 1 Strawberry + 16 Sugar Pumpkin + 2 Tarragon Leaves + 1 Thyme Leaf + 12 Turnip + 2 Vanilla Bean + 8 Yam + 4 Zucchini (prix lu, non compté).",
             "en": "Sold by: Homestead Upgrade: Fiber Trade Capacity, Homestead Refinement—Farm, Homestead Upgrade: Fiber Trade Efficiency (+64) — 14 Artichoke + 2 Asparagus Spear + 8 Bay Leaf + 15 Beet + 2 Black Peppercorn + 2 Blackberry + 2 Blueberry + 14 Butternut Squash + 1 Carrot + 2 Cassava Root + 2 Cayenne Pepper + 2 Chili Pepper + 2 Clove + 10 Dill Sprig + 2 Ghost Pepper + 8 Grape + 12 Green Onion + 2 Handful of Red Lentils + 10 Head of Cabbage + 16 Head of Cauliflower + 1 Head of Garlic + 2 Head of Lettuce + 1 Kale Leaf + 14 Leek + 8 Lemongrass + 8 Lotus Root + 14 Mint Leaf + 1 Mushroom + 12 Nopal + 2 Omnomberry + 4 Onion + 10 Oregano Leaf + 1 Orrian Truffle + 1 Parsley Leaf + 14 Parsnip + 10 Passion Fruit + 2 Pile of Allspice Berries + 1 Pile of Flax Seeds + 3 Portobello Mushroom + 4 Potato + 12 Prickly Pear + 1 Raspberry + 2 Rosemary Sprig + 2 Rutabaga + 1 Saffron Thread + 2 Sage Leaf + 12 Sawgill Mushroom + 1 Seaweed + 4 Sesame Seed + 4 Snow Truffle + 1 Spinach Leaf + 1 Strawberry + 16 Sugar Pumpkin + 2 Tarragon Leaves + 1 Thyme Leaf + 12 Turnip + 2 Vanilla Bean + 8 Yam + 4 Zucchini (price read, not counted)."
+          },
+          "free_repeatable": true,
+          "note": {
+            "fr": "Échange de matériaux récoltés au domaine : gratuit, plafonné par semaine et par matériau (voir la page).",
+            "en": "Exchange of materials gathered in the homestead: free, capped per week and per material (see the page)."
           }
         },
         {
@@ -29786,11 +29869,16 @@ const SOURCES_DB = {
         {
           "type": "vendor",
           "verified": true,
-          "checked": "2026-11-03",
+          "checked": "2026-11-05",
           "ref": "ressources/wiki/refined_homestead_metal.html, Sold by",
           "tip": {
             "fr": "Vendu par : Hearth's Glow, Comosus Isle, Silver Ore (+10) — 2 Copper Ore + 2 Gold Ore + 1 Iron Ore + 1 Mithril Ore + 1 Orichalcum Ore + 1 Platinum Ore + 10 Silver Ore (prix lu, non compté).",
             "en": "Sold by: Hearth's Glow, Comosus Isle, Silver Ore (+10) — 2 Copper Ore + 2 Gold Ore + 1 Iron Ore + 1 Mithril Ore + 1 Orichalcum Ore + 1 Platinum Ore + 10 Silver Ore (price read, not counted)."
+          },
+          "free_repeatable": true,
+          "note": {
+            "fr": "Échange de matériaux récoltés au domaine : gratuit, plafonné par semaine et par matériau (voir la page).",
+            "en": "Exchange of materials gathered in the homestead: free, capped per week and per material (see the page)."
           }
         },
         {
@@ -29832,11 +29920,16 @@ const SOURCES_DB = {
         {
           "type": "vendor",
           "verified": true,
-          "checked": "2026-11-03",
+          "checked": "2026-11-05",
           "ref": "ressources/wiki/refined_homestead_wood.html, Sold by",
           "tip": {
             "fr": "Vendu par : Homestead Refinement—Lumber Mill, Hearth's Glow, Comosus Isle (+10) — 1 Ancient Wood Log + 2 Elder Wood Log + 5 Green Wood Log + 2 Hard Wood Log + 2 Seasoned Wood Log + 12 Soft Wood Log (prix lu, non compté).",
             "en": "Sold by: Homestead Refinement—Lumber Mill, Hearth's Glow, Comosus Isle (+10) — 1 Ancient Wood Log + 2 Elder Wood Log + 5 Green Wood Log + 2 Hard Wood Log + 2 Seasoned Wood Log + 12 Soft Wood Log (price read, not counted)."
+          },
+          "free_repeatable": true,
+          "note": {
+            "fr": "Échange de matériaux récoltés au domaine : gratuit, plafonné par semaine et par matériau (voir la page).",
+            "en": "Exchange of materials gathered in the homestead: free, capped per week and per material (see the page)."
           }
         },
         {
