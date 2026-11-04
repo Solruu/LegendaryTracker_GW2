@@ -100718,8 +100718,10 @@ const LEGENDARIES = {
             detail: { fr: "25 Mystic Facets × 750 piles · chaque forge peut rarement en produire 5 d'un coup", en: "25 Mystic Facets × 750 piles · each forge can rarely yield 5 at once" } },
           { icon: "📓", label: { fr: "Research Notes", en: "Research Notes" }, curKey: "notes",
             detail: { fr: "Gift of Research : 500 Hydrocatalytic Reagents à 5 notes chez les maîtres artisans", en: "Gift of Research: 500 Hydrocatalytic Reagents at 5 notes each from master craftspeople" } },
-          { icon: "🗿", label: { fr: "Reliques exotiques", en: "Exotic relics" }, perUnit: 25,
-            detail: { fr: "N'importe lesquelles — les moins chères au comptoir", en: "Any of them — cheapest on the TP" } },
+          // v277 : la relique generique est un composant (`relic`, 1 par Mystic
+          // Facet, sources v442) : le moteur la compte, plus de `perUnit` recopie.
+          { icon: "🗿", label: { fr: "Reliques", en: "Relics" }, comp: "relic",
+            detail: { fr: "1 par Mystic Facet, n'importe laquelle — reliques de base par artisanat (recettes chez les maîtres armuriers, travailleurs du cuir, tailleurs)", en: "1 per Mystic Facet, any of them — core relics by crafting (recipes from Master Armorsmiths, Leatherworkers, Tailors)" } },
           { icon: "🎫", label: { fr: "Provisioner Tokens", en: "Provisioner Tokens" }, curKey: "provisioner" },
           { icon: "🍀", label: { fr: "Mystic Clovers", en: "Mystic Clovers" }, curKey: "clovers" },
           { icon: "🔮", label: { fr: "Globs of Ectoplasm", en: "Globs of Ectoplasm" }, curKey: "ectos" },

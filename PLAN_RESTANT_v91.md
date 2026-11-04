@@ -1125,6 +1125,14 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       Kit. 12 tessons gen2 : conseil « ingredients non modelises » perime,
       remplace par leur recette (artisan 450), `free_via_ingredients`.
       Aucun total ne bouge ; audit 63 -> 43.
+- [x] JSX v277 : la ligne « Reliques exotiques » du bloc Relique
+      legendaire lisait un `perUnit: 25` recopie ; elle lit desormais le
+      composant `relic` dans le moteur (25, verifie a l'ecran). Restent en
+      `perUnit` les sous-chaines du Henge d'Aurora et des pages d'Ad Infinitum.
+- Restent 40 avertissements « payante sans plafond chiffre » (cadence
+  d'achat inconnue) et 3 « lecture colonne 3 » sur les infusions d'agonie
+  (voie vendeur 4 x palier inferieur, lue sur les pages et tranchee le 04/11 :
+  faux positifs connus, le controle ne lit que la boite Recipe).
 
 ## Ordre propose
 
