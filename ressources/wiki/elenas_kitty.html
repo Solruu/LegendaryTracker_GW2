@@ -1,0 +1,487 @@
+
+			<a id="top"></a>
+			<div id="siteNotice"><div id="mw-dismissablenotice-anonplace"></div><script>(function(){var node=document.getElementById("mw-dismissablenotice-anonplace");if(node){node.outerHTML="\u003Cdiv class=\"mw-dismissable-notice\"\u003E\u003Cdiv class=\"mw-dismissable-notice-close\"\u003E[\u003Ca tabindex=\"0\" role=\"button\"\u003Edismiss\u003C/a\u003E]\u003C/div\u003E\u003Cdiv class=\"mw-dismissable-notice-body\"\u003E\u003Cdiv id=\"localNotice\" data-nosnippet=\"\"\u003E\u003Cdiv class=\"sitenotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cdiv style=\"border: 1px solid #0000FF; background: #CCCCEB; padding: 5px; margin-top: 2px; text-align: center;\"\u003EThe wikis have been updated due to a recent PHP vulnerability. You may experience performance issues as we continue fine-tuning the servers and some content may be broken as updates are being rolled out. We may have to take the wiki servers down again for emergency maintenance as we continue to rollout these fixes. We appreciate your patience. \u003Ca href=\"/wiki/Guild_Wars_2_Wiki:Reporting_wiki_bugs\" title=\"Guild Wars 2 Wiki:Reporting wiki bugs\"\u003EPlease report any issues you encounter\u003C/a\u003E.\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E";}}());</script></div>
+			<div class="mw-indicators">
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Elena's Kitty</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Guild Wars 2 Wiki</div>
+				<div id="contentSub" ><div id="mw-content-subtitle"></div></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content"><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><div class="infobox npc">
+<p class="heading">Elena's Kitty</p>
+<div class="wrapper">
+<p class="image&#95;wrapper"><span typeof="mw:File"><a href="/wiki/File:Jaguar_Cub.jpg" class="mw-file-description"><img src="/images/thumb/3/3d/Jaguar_Cub.jpg/240px-Jaguar_Cub.jpg" decoding="async" width="240" height="240" class="mw-file-element" srcset="/images/thumb/3/3d/Jaguar_Cub.jpg/360px-Jaguar_Cub.jpg 1.5x, /images/thumb/3/3d/Jaguar_Cub.jpg/480px-Jaguar_Cub.jpg 2x" data-file-width="566" data-file-height="566" /></a></span>
+</p>
+<dl><dt><a href="/wiki/Bestiary" title="Bestiary">Race</a></dt>
+<dd><a href="/wiki/Feline" title="Feline">Feline</a></dd>
+<dt><a href="/wiki/Level" title="Level">Level</a></dt>
+<dd>1</dd>
+<dt><a href="/wiki/Location" title="Location">Location</a></dt>
+<dd><a href="/wiki/The_Mire_Sea" title="The Mire Sea">The Mire Sea</a> <br /><small>(<a href="/wiki/Mount_Maelstrom" title="Mount Maelstrom">Mount Maelstrom</a>)</small></dd></dl>
+</div>
+<table style="width:100%">
+<tbody><tr>
+<td><b>Image(s)</b>
+</td></tr>
+<tr style="text-align:center;">
+<td>
+<p><span typeof="mw:File"><a href="/wiki/File:Jungle_Stalker_Cub.jpg" class="mw-file-description"><img src="/images/thumb/9/95/Jungle_Stalker_Cub.jpg/200px-Jungle_Stalker_Cub.jpg" decoding="async" width="200" height="200" class="mw-file-element" srcset="/images/thumb/9/95/Jungle_Stalker_Cub.jpg/300px-Jungle_Stalker_Cub.jpg 1.5x, /images/thumb/9/95/Jungle_Stalker_Cub.jpg/400px-Jungle_Stalker_Cub.jpg 2x" data-file-width="588" data-file-height="588" /></a></span>
+</p>
+<p style="font-size:.9em;">Click to enlarge.</p><div id="infoboxmap1" class="infoboxmap"></div>
+<style>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css");
+
+.leaflet-container {
+    background: #000;
+}
+.leaflet-attribution-flag {
+    width: 0px;
+}
+
+.mapchatlink {
+    width: 6.6em;
+}
+</style>
+<script type="text/javascript">
+if (typeof GLOBAL_leafletscript === 'undefined') {
+    var GLOBAL_leafletscript = document.createElement('script');
+    GLOBAL_leafletscript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js');
+    document.body.appendChild(GLOBAL_leafletscript);
+}
+
+// DEFER LOADING SCRIPT UNTIL JQUERY AND LEAFLET ARE READY. WAIT 40MS BETWEEN ATTEMPTS.
+function deferI(method) {
+    if (window.jQuery && window.L) {
+        if (!(window.infobox_map_output)) {
+            $.ajaxSetup({ cache: true });
+            window.infobox_map_output = $.getScript('/index.php?title=Widget:Interactive_map_data_builder/infobox-map-output.js&action=raw&ctype=text/javascript')
+        }
+        if (window.wiki_waypoints) {
+            method();
+        } else {
+            window.infobox_map_output.done(function( data, textStatus, jqxhr ) {
+                method();
+            })
+            window.infobox_map_output.fail(function( jqxhr, settings, exception ) {
+                console.log('Failed to load "infobox-map-output.js" script', jqxhr, settings, exception);
+            });
+        }
+    } else {
+        setTimeout(function() { deferI(method) }, 40);
+    }
+}
+
+// INITIALISATION
+deferI(function () {
+    infoboxMap({
+        container_id: "infoboxmap" + "1",
+        iconUrl: "",
+        icoords: "[52750, 38955], [52748, 38952]", // string pairs of [x,y] separated by comma - e.g. [x1,y1],[x2,y2],[x3,y3]
+        ipath: "", // string pairs of [x,y] separated by comma
+        ibounds: "", // string pairs of [x,y] separated by comma
+        manualWaypoint: "" // string which is representing a numerical id.
+    });
+});
+
+function infoboxMap(options) {
+    // Helper function to convert delimited coordinates into arrays of coordinates
+    function text2coordinates(text) {
+        text = text.replace(/\s/g,'').split('],[').join('];[').replace(/\]\]/g,']').replace(/\[\[/g,'[');
+        if (text == '') {
+            return null;
+        }
+        var coords = [];
+        $.map( text.split(';'), function(q){
+            if (q == '') {
+                return;
+            } else {
+                q = q.trim().replace('[','').replace(']','');
+                var p = $.map( q.split(','), function(x){
+                    return Number(x);
+                });
+                coords.push( p );
+            }
+        });
+        return coords;
+    }
+
+    // Helper function to convert GW2 coordinates into Leaflet coordinates
+    function unproject(coord) {
+        return map.unproject(coord, map.getMaxZoom() );
+    }
+
+    // Helper function to return clicked coordinates before moving and then reset position to the marker.
+    function restorePosition(e) {
+        console.log('You clicked the map at ' + '[' + Math.round( 10 * map.project(e.latlng, map.getMaxZoom()).x )/10 + ', ' + Math.round( 10 * map.project(e.latlng, map.getMaxZoom()).y )/10 + ']' );
+        map.panTo(unproject(coords_ctr));
+    }
+
+    // Helper function to find center of polygon
+    function getCentroid(arr) {
+        return arr.reduce(function (x,y) {
+            return [x[0] + y[0]/arr.length, x[1] + y[1]/arr.length]
+        }, [0,0])
+    }
+
+    // Helper function to find size of polygon
+    function getSize(arr) {
+        var x = arr.map(function(p) {return p[0] });
+        var y = arr.map(function(p) {return p[1] });
+        var min_arr = [ Math.min.apply(null, x), Math.min.apply(null, y) ];
+        var max_arr = [ Math.max.apply(null, x), Math.max.apply(null, y) ];
+
+        return [(max_arr[0] - min_arr[0]), (max_arr[1] - min_arr[1])];
+    }
+
+    // If all inputs are empty, quit.
+    if (options.icoords == '' && options.ipath == '' && ibounds == ''){
+        return;
+    }
+
+    // Convert from strings to nested arrays
+    var coords = text2coordinates(options.icoords);
+    var path   = text2coordinates(options.ipath  );
+    var bounds = text2coordinates(options.ibounds);
+
+    // Get the continent and floor from the highest priority available input
+    var mastercoord;
+    if (coords) {
+        mastercoords = coords;
+    } else if (path) {
+        mastercoords = path;
+    } else {
+        mastercoords = bounds;
+    }
+
+    // Collect floor and continent
+    var floor_id = 1;
+    if (typeof mastercoords[0][2] !== 'undefined') {
+        floor_id = mastercoords[0][2];
+    }
+    var continent_id = 1;
+    if (typeof mastercoords[0][3] !== 'undefined') {
+        continent_id = mastercoords[0][3];
+    }
+    var coords_ctr = getCentroid(mastercoords);
+    var coords_size = getSize(mastercoords);
+
+    var map;
+
+    // Get continent details
+    var minzoom = 1, maxzoom = 7, continent_dims = [[0,0],[131072,131072]];
+    if (continent_id === 2) {
+        continent_dims = [[0,0],[16384,16384]];
+    }
+
+    // Main map function
+    // Initialise map
+    $('#' + options.container_id).css('height','250px').css('width','auto').css('margin','0px auto');
+    map = L.map(options.container_id, {
+        minZoom: 0,
+        maxZoom: maxzoom,
+        crs: L.CRS.Simple
+    });
+    var mapbounds_rect = new L.LatLngBounds( unproject([0,0]), unproject(continent_dims[1]) );
+    L.tileLayer("https://tiles.guildwars2.com/" + continent_id + "/" + floor_id + "/{z}/{x}/{y}.jpg", {
+        minZoom: 0,
+        minNativeZoom: minzoom,
+        noWrap: true,
+        bounds: mapbounds_rect,
+        attribution: 'Map &copy; <a href="https://www.arena.net/" target="_blank">ArenaNet</a>'
+    }).addTo(map);
+
+    // Add panes in stacked order such that the top layer is preferentially visible versus the lower layers
+    map.createPane('bottom'); // -- for bounds and paths
+    map.createPane('middle'); // -- for various markers
+    map.createPane('top'); // -- for waypoints
+
+    // Zoom in and center the map on the NPC position
+    map.setView(unproject(coords_ctr), maxzoom);
+
+    // Image overlay(s) due to outdated API tiles.
+    // Remarks: To calculate the coords, use the separately available zoom level 7 tiles. Pick any such tile and determine its position on the overlay image. The top left tip of the pixel in the tile's top left corner's at <picked tile X>*256 and <picked tile Y>*256 in continent coordinates. Subtract or add the amount of pixels that the overlay image has relative to that position in order to get the positions of the top left and bottom right corners of the overlay image in continent coordinates.
+    let mapImageOverlays = [
+        {continent_id: 1, floors: [0, 1, 2, 3], coords: [[12*256, 234*256], [22*256, 247*256]], image_url: "https://wiki.guildwars2.com/images/d/d3/Eternity's_Garden_map_overlay.webp"},
+        {continent_id: 1, floors: [0, 1, 2, 3], coords: [[20*256-1992, 229*256-1240], [20*256+1536, 229*256+1196]], image_url: "https://wiki.guildwars2.com/images/c/c3/Leyspring_Hollows_map_overlay.webp"}
+    ];
+    for (let mio of mapImageOverlays) {
+        if (mio.continent_id !== continent_id || !mio.floors.includes(floor_id)) {
+            continue;
+        }
+
+        let imageOverlay = L.imageOverlay(
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4XmNgYAAAAAMAAcTn5P8AAAAASUVORK5CYII=", // Fully transparent 1x1 PNG.
+            mio.coords.map(p => unproject(p))
+        ).addTo(map);
+
+        let watchForImageVisible = function() {
+            imageOverlay.off("load", watchForImageVisible);
+            let intersectionObserver = new IntersectionObserver(entries => {
+                for (let entry of entries) {
+                    if (entry.target === imageOverlay.getElement()
+                     && entry.isIntersecting) {
+                        imageOverlay.setUrl(mio.image_url);
+                        intersectionObserver.disconnect();
+                    }
+                }
+            });
+            intersectionObserver.observe(imageOverlay.getElement());
+        };
+        imageOverlay.on("load", watchForImageVisible);
+    }
+
+    // Add path flag-line-flag if given
+    if ( path && path.length > 0 ) {
+        var newbounds = $.map(path, function(v) { return unproject(v) });
+        var line = L.polyline(newbounds, {
+            clickable: false,
+            color: 'rgba(255,255,255,0.8)',
+            fillOpacity: 0,
+            weight: 6,
+            dashArray: '1,12',
+            pane: 'bottom'
+        });
+        line.addTo(map);
+        map.fitBounds(line.getBounds().pad(0.3));
+
+        var startMarker = L.icon({
+            iconUrl: '/images/2/26/Event_flag_green_(map_icon).png',
+            iconSize: [32, 32],
+            iconAnchor: [14, 28]
+        });
+        var endMarker = L.icon({
+            iconUrl: '/images/e/e7/Event_flag_red_(map_icon).png',
+            iconSize: [32, 32],
+            iconAnchor: [14, 28]
+        });
+
+        L.marker(newbounds[(newbounds.length - 1)], {icon: endMarker, pane: 'middle' }).addTo(map);
+        L.marker(newbounds[0], {icon: startMarker, pane: 'middle' }).addTo(map);
+    }
+
+    // Add marker if given
+    if ( coords && coords.length > 0 ) {
+        var markerGroup = L.FeatureGroup;
+        var eventMarker = L.icon({
+            iconUrl: options.iconUrl,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+        });
+        var defaultMarker = L.icon({
+            iconUrl: '/images/2/23/Widget_map_dot.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+        });
+        var yellowSwirl = L.icon({
+            iconUrl: '/images/8/8d/Widget_map_yellow_swirl.png',
+            iconSize: [128, 128],
+            iconAnchor: [64, 64]
+        });
+        var n = {};
+
+        // Typically we plot the ingame icon, a yellow circle around it, and consider any bounds given.
+        // However we don't want to show the yellow circle if bounds are given too - becomes too complicated.
+        if ( options.iconUrl != '' && ((bounds && bounds.length) || (coords.length > 1)) > 0) {
+            // SCENARIO 1: Icon specified, has bounds given OR multiple sets of coordinates (do not plot a circle)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: eventMarker, pane: 'middle' })
+                ];
+            }) );
+
+        } else if ( options.iconUrl != '' && !(bounds && bounds.length > 0) && coords.length <= 1 ) {
+            // SCENARIO 2: Icon specified, has no bounds given AND multiple sets of coordinates are not provided (so plot a circle too)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: eventMarker, pane: 'middle' }),
+                    L.marker(unproject(c), {icon: yellowSwirl, pane: 'middle' })
+                ];
+            }) );
+
+        } else if ( (bounds && bounds.length > 0) || (coords.length > 1) ) {
+            // SCENARIO 3: Icon not specified (so use default), has bounds given OR multiple sets of coordinates (do not plot a circle)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: defaultMarker, pane: 'middle' })
+                ];
+            }) );
+
+        } else {
+            // SCENARIO 4: Icon not specified (so use default), has no bounds given (so plot a circle too)
+            n = L.featureGroup( $.map(coords, function(c){
+                return [
+                    L.marker(unproject(c), {icon: defaultMarker, pane: 'middle' }),
+                    L.marker(unproject(c), {icon: yellowSwirl, pane: 'middle' })
+                ];
+            }) );
+        }
+
+        n.addTo(map);
+        map.fitBounds(n.getBounds());
+    }
+
+    // Add bounds polygon if given
+    if ( bounds && bounds.length > 0 ) {
+        var newbounds = $.map(bounds, function(v) { return unproject(v) });
+        var poly = L.polygon(newbounds, {
+            clickable: false,
+            color: 'rgba(255,221,0,0.8)',
+            fillOpacity: 0.2,
+            weight: 6,
+            pane: 'bottom'
+        });
+        poly.addTo(map);
+        map.fitBounds(poly.getBounds());
+    }
+
+    var wpicon = L.icon({
+        iconUrl: '/images/d/d2/Waypoint_(map_icon).png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -16]
+    });
+
+    // If we're on Tyria, find the closest WP within the zone rect and draw it.
+    //  additionally checks that the markers are not extremely spread out (over 7000 coordinate units between max x [or y] and min x [or y] - 120% of the width of Crystal Oasis)
+    if (options.manualWaypoint === '') {
+        if (continent_id === 1 && !(coords_size[0] > 7000 ||  coords_size[1] > 7000)) {
+
+            var waypoints = [];
+
+            // If the waypoint isn't in the same zone, don't bother showing the waypoint.
+            $.each(wiki_waypoints[continent_id], function(mk, mv){
+                if ( coords_ctr[0] >= mv.continent_rect[0][0] &&
+                     coords_ctr[0]  < mv.continent_rect[1][0] &&
+                     coords_ctr[1] >= mv.continent_rect[0][1] &&
+                     coords_ctr[1]  < mv.continent_rect[1][1] ) {
+                    $.map(mv.waypoints, function(wv, wk) {
+                        waypoints.push(wv);
+                    });
+                }
+            });
+            
+            // Return to original version of the script
+
+            // Filter waypoints for the same floor only as the objective
+            if (waypoints.length > 0) {
+                waypoints = waypoints.filter(function(a){
+                    return a.floors.indexOf(floor_id) !== -1;
+                });
+            }
+
+            // Check there actually is a waypoint on the given floor
+            if (waypoints.length > 0) {
+                var temp = 0, dist = 4000000000000000, index = -1;
+                $.each(waypoints, function(waypointkey, waypoint){
+                    temp = Math.pow(coords_ctr[0] - waypoint['coord'][0],2) + Math.pow(coords_ctr[1] - waypoint['coord'][1],2);
+                    if ( temp < dist ) {
+                        dist = temp;
+                        index = waypointkey;
+                    }
+                });
+
+                // Finally confirm the distance isn't totally crazy (over 5000 units)
+                if (dist < 25000000) {
+                    L.marker(unproject(waypoints[index]['coord']), { icon: wpicon, title: waypoints[index]['name'], pane: 'top' })
+                    .bindPopup('<a href="/wiki/' + encodeURIComponent(waypoints[index]['name']) + '" target="_blank">' + waypoints[index]['name'] + '</a><br><input class="mapchatlink" type="text" value="' + waypoints[index]['chat_link'] + '" readonly="readonly" onclick="this.select(); return false;"/>').addTo(map);
+                }
+            }
+        }
+    } else {
+        // Else manual waypoint is specified. This is initially a string but represents the waypoint id (some duplicate names exist so cannot use those).
+        options.manualWaypoint = Number(options.manualWaypoint);
+
+        var waypoints = [];
+
+        // Filter waypoints for the same id as specified
+        $.each(wiki_waypoints[continent_id], function(mk, mv){
+            $.map(mv.waypoints, function(wv, wk) {
+                if (wv.id === options.manualWaypoint) {
+                    waypoints.push(wv);
+                }
+            });
+        });
+
+        if (waypoints.length > 0) {
+            L.marker(unproject(waypoints[0]['coord']), { icon: wpicon, title: waypoints[0]['name'], pane: 'top' })
+            .bindPopup('<a href="/wiki/' + encodeURIComponent(waypoints[0]['name']) + '" target="_blank">' + waypoints[0]['name'] + '</a><br><input class="mapchatlink" type="text" value="' + waypoints[0]['chat_link'] + '" readonly="readonly" onclick="this.select(); return false;"/>').addTo(map);
+        } else {
+            console.log('[[Widget:Infobox map]]: Manual waypoint id specified but no result found with that ID, ignoring.');
+        }
+    }
+
+    // Add a function to reset the x,y position
+    map.on('click', restorePosition);
+}
+</script>
+<p style="font-size:.9em;">Interactive map  </p>
+</td></tr></tbody></table>
+</div> 
+<p>Two cats referred to as <a class="mw-selflink selflink">Elena's Kitties</a> can be found in a tent on <a href="/wiki/Oxbow_Isle" title="Oxbow Isle">Oxbow Isle</a>. <a href="/wiki/Warmaster_Elena" title="Warmaster Elena">Warmaster Elena</a> brought them with her due to her brother being allergic to cats—a decision she did not regret as they keep her company.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Location"><span class="tocnumber">1</span> <span class="toctext">Location</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Dialogue"><span class="tocnumber">2</span> <span class="toctext">Dialogue</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Related_achievements"><span class="tocnumber">3</span> <span class="toctext">Related achievements</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Notes"><span class="tocnumber">4</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Location">Location</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Elena%27s_Kitty&amp;action=edit&amp;section=1" title="Edit section: Location">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt><a href="/wiki/Maguuma_Jungle" title="Maguuma Jungle">Maguuma Jungle</a></dt></dl>
+<ul><li><a href="/wiki/Mount_Maelstrom" title="Mount Maelstrom">Mount Maelstrom</a>
+<ul><li><a href="/wiki/The_Mire_Sea" title="The Mire Sea">The Mire Sea</a></li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Dialogue">Dialogue</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Elena%27s_Kitty&amp;action=edit&amp;section=2" title="Edit section: Dialogue">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>While <a href="/wiki/Chuka_and_Champawat_III:_Tigris" title="Chuka and Champawat III: Tigris">Chuka and Champawat III: Tigris</a> is active and have <a href="/wiki/Slab_of_Poultry_Meat" title="Slab of Poultry Meat">Slab of Poultry Meat</a> in inventory</dt>
+<dd>This cat looks hungry.</dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/4/47/Talk_more_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18" /></span></span></span> <i>Feed it a slab of poultry meat.</i></dd>
+<dd><span class="inline-icon"><span typeof="mw:File"><span><img src="/images/f/f5/Talk_end_option_tango.png" decoding="async" width="20" height="20" class="mw-file-element" data-file-width="18" data-file-height="18" /></span></span></span> <i>Leave.</i></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Related_achievements">Related achievements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Elena%27s_Kitty&amp;action=edit&amp;section=3" title="Edit section: Related achievements">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><span typeof="mw:File"><a href="/wiki/Legendary_Weapons_(achievements)" title="Legendary Weapons (achievements)"><img src="/images/thumb/a/a9/Legendary_Weapons_%28achievements%29.png/20px-Legendary_Weapons_%28achievements%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/a/a9/Legendary_Weapons_%28achievements%29.png/30px-Legendary_Weapons_%28achievements%29.png 1.5x, /images/thumb/a/a9/Legendary_Weapons_%28achievements%29.png/40px-Legendary_Weapons_%28achievements%29.png 2x" data-file-width="64" data-file-height="64" /></a></span> <a href="/wiki/Legendary_Weapons_(achievements)" title="Legendary Weapons (achievements)">Legendary Weapons</a>&#58; <a href="/wiki/Chuka_and_Champawat_III:_Tigris" title="Chuka and Champawat III: Tigris">Chuka and Champawat III: Tigris</a> — <i>What set the tigers on their mysterious rampage? Were they simply crazed beasts, or is there a deeper story? Seek out the naturalist Cymbel for answers.</i>&#160;(3<span class="inline-icon"><span typeof="mw:File"><a href="/wiki/Achievement" title="Achievement points"><img alt="Achievement points" src="/images/thumb/c/cd/AP.png/20px-AP.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/c/cd/AP.png/30px-AP.png 1.5x, /images/thumb/c/cd/AP.png/40px-AP.png 2x" data-file-width="45" data-file-height="45" /></a></span></span><span typeof="mw:File"><a href="/wiki/Chest_of_the_Tiger" title="Chest of the Tiger"><img alt="Chest of the Tiger" src="/images/thumb/4/4e/Chest_icon.png/16px-Chest_icon.png" decoding="async" width="16" height="16" class="mw-file-element" srcset="/images/thumb/4/4e/Chest_icon.png/24px-Chest_icon.png 1.5x, /images/4/4e/Chest_icon.png 2x" data-file-width="32" data-file-height="32" /></a></span><span typeof="mw:File"><span title="This is a hidden achievement."><img alt="This is a hidden achievement." src="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/20px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png" decoding="async" width="20" height="20" class="mw-file-element" srcset="/images/thumb/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png/30px-Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 1.5x, /images/3/34/Awakened_suspicious_%28Forearmed_Is_Forewarned_map_icon%29.png 2x" data-file-width="32" data-file-height="32" /></span></span>)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=Elena%27s_Kitty&amp;action=edit&amp;section=4" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>The two cats' appearances do not fit the usual appearance of pet cats, such as <a href="/wiki/Shadow" title="Shadow">Shadow</a>, but are baby wild animals: a <a href="/wiki/Jaguar" title="Jaguar">Jaguar</a> and a <a href="/wiki/Juvenile_Jungle_Stalker" title="Juvenile Jungle Stalker">Jungle Stalker</a>, respectively.</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20261105111949
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+[SMW] In‐text annotation parser time: 0.092 seconds
+CPU time usage: 0.101 seconds
+Real time usage: 2.111 seconds
+Preprocessor visited node count: 814/1000000
+Post‐expand include size: 6593/2097152 bytes
+Template argument size: 1771/2097152 bytes
+Highest expansion depth: 16/100
+Expensive parser function count: 1/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+ExtLoops count: 0/1000
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00% 1806.624      1 -total
+ 50.64%  914.791      1 Template:NPC_infobox
+ 48.94%  884.120      1 Template:Achievement
+ 17.04%  307.918      1 Template:Infobox_location
+  6.34%  114.622      1 Template:Achievement_result_format
+  5.99%  108.235      1 Template:Infobox_status
+  5.38%   97.251      3 Template:Ifimage
+  4.98%   89.900      2 Template:Cname
+  4.93%   89.151      1 Template:Infobox_requires
+  0.85%   15.348      1 Template:Infobox_map
+-->
+
+<!-- Saved in parser cache with key en_wikidb_gw2:pcache:124975:|#|:idhash:dateformat=default and timestamp 20261105111949 and revision id 2620596. Rendering was triggered because: page-view
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.guildwars2.com/index.php?title=Elena%27s_Kitty&amp;oldid=2620596">https://wiki.guildwars2.com/index.php?title=Elena%27s_Kitty&amp;oldid=2620596</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:Felines" title="Category:Felines">Felines</a></li><li><a href="/wiki/Category:Normal_NPCs" title="Category:Normal NPCs">Normal NPCs</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		

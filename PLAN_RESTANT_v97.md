@@ -562,7 +562,9 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
       trancher un par un — la plupart des « Bring » portent un objet de
       quete, pas une consommation :
       - Chuka III : bits 12 (3) et 13 (1) poses le 09/10
-        (`gw2_couts_chuka_v1`) ; bit 11, nombre des chats d'Elena inconnu ;
+        (`gw2_couts_chuka_v1`) ; ✅ bit 11 (05/11, sources v450,
+        `gw2_chuka_bit11_v1`) : deux chats d'Elena (elenas_kitty.html),
+        2 Slabs of Poultry Meat — Chuka 4 -> 6 ;
       - ✅ 20/10 Vision `vis_brandstone` (`gw2_couts_brandstone_v1`, v419,
         JSX v266) : bits 0 (10 Kralkatite Ore), 3 (10 Powdered Rose Quartz),
         6 (10 + 5, Beam of Light) remis a Yasna, absents de la table du wiki ;

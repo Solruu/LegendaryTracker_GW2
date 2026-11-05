@@ -1789,6 +1789,8 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `recollection_of_the_bearkins_adversaries.html` | Recollection of the Bearkin's Adversaries | article complet | 2026-11-05 |
 | `recollection_of_the_bearkins_hunts.html` | Recollection of the Bearkin's Hunts | article complet | 2026-11-05 |
 | `recollection_of_the_bearkins_victories.html` | Recollection of the Bearkin's Victories | article complet | 2026-11-05 |
+| `elenas_kitty.html` | Elena's Kitty | article complet | 2026-11-05 |
+| `vigil_cat_sitter.html` | Vigil Cat Sitter | article complet | 2026-11-05 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
