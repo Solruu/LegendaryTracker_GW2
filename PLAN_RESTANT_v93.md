@@ -1136,6 +1136,12 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
   d'achat inconnue) et 3 « lecture colonne 3 » sur les infusions d'agonie
   (voie vendeur 4 x palier inferieur, lue sur les pages et tranchee le 04/11 :
   faux positifs connus, le controle ne lit que la boite Recipe).
+- [x] Lot de captures du 05/11 (5 pages : Harpy Feathers (consumable),
+      Forager Hitkiti, 3 Recollection of the Bearkin's ...) et prix en
+      conseil (sources v447, `gw2_prix_captures_0511_v1`) : Harpy Feathers
+      40 pc chez Forager Hitkiti apres un evenement ; Recollection = 25
+      Amalgamated Gemstones chez Unending Tribute, pour une copie de plus
+      (option non comptee). Aucune arete, aucun total.
 
 ## Ordre propose
 

@@ -1784,6 +1784,11 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `sawgill_mushroom.html` | Sawgill Mushroom | article complet | 2026-11-04 |
 | `updated_record_of_jokos_deeds.html` | Updated Record of Joko's Deeds | article complet | 2026-11-04 |
 | `legendary_insight.html` | Legendary Insight | article complet | 2026-11-04 |
+| `forager_hitkiti.html` | Forager Hitkiti | article complet | 2026-11-05 |
+| `harpy_feathers_consumable.html` | Harpy Feathers (consumable) | article complet | 2026-11-05 |
+| `recollection_of_the_bearkins_adversaries.html` | Recollection of the Bearkin's Adversaries | article complet | 2026-11-05 |
+| `recollection_of_the_bearkins_hunts.html` | Recollection of the Bearkin's Hunts | article complet | 2026-11-05 |
+| `recollection_of_the_bearkins_victories.html` | Recollection of the Bearkin's Victories | article complet | 2026-11-05 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
