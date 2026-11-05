@@ -12605,7 +12605,9 @@
     "sun_bead": 21,
     "druid_runestone": 4200,
     "dragonfly_steaks": 7000,
-    "jar_of_paint_base": 1848
+    "jar_of_paint_base": 1848,
+    "concentrated_chromatic_sap": 300000,
+    "patron_of_the_magical_arts_plaque": 300000
    },
    "farmable": true,
    "sources": [
@@ -12642,7 +12644,9 @@
     "sun_bead",
     "druid_runestone",
     "dragonfly_steaks",
-    "jar_of_paint_base"
+    "jar_of_paint_base",
+    "concentrated_chromatic_sap",
+    "patron_of_the_magical_arts_plaque"
    ]
   },
   "powerful_venom_sac": {
@@ -21025,10 +21029,17 @@
    ],
    "sources": [
     {
-     "type": "acquire",
+     "type": "vendor",
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/concentrated_chromatic_sap.html, Acquisition",
+     "cost": {
+      "fr": "250 po + 500 Chromatic Sap + 300 000 karma",
+      "en": "250 gold + 500 Chromatic Sap + 300,000 karma"
+     },
      "tip": {
-      "fr": "Extrait de la section « Full material list » des pages d'armes du wiki.",
-      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+      "fr": "Tyrian Alliance Representative Sharpwhisker (Glimmering Arches, Grève du Naufrage) : 250 po + 500 Chromatic Sap + 300 000 karma. Requiert le succès Shipwreck Strand Mastery.",
+      "en": "Tyrian Alliance Representative Sharpwhisker (Glimmering Arches, Shipwreck Strand): 250 gold + 500 Chromatic Sap + 300,000 karma. Requires the Shipwreck Strand Mastery achievement."
      }
     }
    ],
@@ -21667,10 +21678,17 @@
    ],
    "sources": [
     {
-     "type": "acquire",
+     "type": "vendor",
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/patron_of_the_magical_arts_plaque.html, Acquisition",
+     "cost": {
+      "fr": "250 po + 500 Raw Enchanting Stone + 300 000 karma",
+      "en": "250 gold + 500 Raw Enchanting Stone + 300,000 karma"
+     },
      "tip": {
-      "fr": "Extrait de la section « Full material list » des pages d'armes du wiki.",
-      "en": "Extrait de la section « Full material list » des pages d'armes du wiki."
+      "fr": "Huntmaster Arnorr (Untamed Crags, Bois étoilé) : 250 po + 500 Raw Enchanting Stone + 300 000 karma. Requiert le succès Starlit Weald Mastery.",
+      "en": "Huntmaster Arnorr (Untamed Crags, Starlit Weald): 250 gold + 500 Raw Enchanting Stone + 300,000 karma. Requires the Starlit Weald Mastery achievement."
      }
     }
    ],
@@ -25798,7 +25816,9 @@
     "mystic_runestone": 1,
     "itzel_spirit_poison": 1,
     "alembic_apparatus": 10,
-    "superior_rune_of_holding": 10
+    "superior_rune_of_holding": 10,
+    "concentrated_chromatic_sap": 250,
+    "patron_of_the_magical_arts_plaque": 250
    },
    "needed_for": [
     "ardent_glorious__piece_heavy_boots",
@@ -25844,7 +25864,9 @@
     "triumphant_hero__piece_medium_shoulders",
     "itzel_spirit_poison",
     "alembic_apparatus",
-    "superior_rune_of_holding"
+    "superior_rune_of_holding",
+    "concentrated_chromatic_sap",
+    "patron_of_the_magical_arts_plaque"
    ],
    "sources": [
     {
@@ -49708,7 +49730,7 @@
     "en": "Entirely open-world PvE VoE. No Gift of Battle required — first purely PvE legendary ring farmable solo. 2 copies possible (armory)."
    },
    "armory_api_id": 107022,
-   "armory_max_count": 1,
+   "armory_max_count": 2,
    "guide": [
     {
      "fr": "Maîtriser Wild Castoran Magic à fond avant de farmer (boost des monnaies de carte).",
@@ -50168,7 +50190,7 @@
     "en": "First 100% PvE accessory without Gift of Battle. Mystic Tribute shared with gen2/Transcendence. 2 craftable copies. Patch May 12, 2026."
    },
    "armory_api_id": 109070,
-   "armory_max_count": 1,
+   "armory_max_count": 2,
    "armory_note": {
     "fr": "apiId 109070 confirmé (wiki/gw2treasures).",
     "en": "apiId 109070 confirmed (wiki/gw2treasures)."
@@ -50616,7 +50638,7 @@
     }
    },
    "armory_api_id": null,
-   "armory_max_count": 1,
+   "armory_max_count": 2,
    "armory_note": "Added May 2026 — apiId to confirm.",
    "requirements": [
     {
@@ -85174,7 +85196,7 @@
     "en": "MF: Mystic Tribute + Gift of Sentience + Gift of Draconic Mastery + Spark of Sentience"
    },
    "armory_api_id": 79980,
-   "armory_max_count": 2,
+   "armory_max_count": 1,
    "note": {
     "fr": "Colifichet légendaire (LW3). Synergie visuelle avec Vision et Coalescence. Requiert d'abord les 4 sous-collections pré-Aurora (Conspiracy of Dunces, Token Collector, Cin Business, Lessons Learned) pour obtenir la Sentient Seed.",
     "en": "Legendary trinket (LW3). Visually synergizes with Vision and Coalescence. Requires 4 pre-Aurora sub-collections first (Conspiracy of Dunces, Token Collector, Cin Business, Lessons Learned) to obtain the Sentient Seed."
@@ -88438,7 +88460,7 @@
     "en": "Legendary accessory (LWS4) — all 6 episodes must be unlocked. ⚠ Account prerequisites: Skyscale + Rift Repair mastery. Start: Trance Stone from a Volatile Magic Collector. Visual synergy with Aurora and Coalescence (cumulative effect based on how many are worn), but NEITHER is a component. Main farm: the 6 LWS4 map currencies + Elegy Mosaics (legendary bounty trains in Jahai)."
    },
    "armory_api_id": 91048,
-   "armory_max_count": 2,
+   "armory_max_count": 1,
    "collections": {
     "vision_1": {
      "id": 4762,
@@ -91480,11 +91502,11 @@
     "hateful_sworl"
    ],
    "note": {
-    "fr": "Anneau légendaire (LW4), obtenu principalement via les Raids (Wing 1–5). Composant requis pour Vision. Synergie visuelle avec Aurora et Vision. Farm : Raid Proofs + Ball of Dark Energy.",
-    "en": "Legendary ring (LW4), obtained mainly via Raids (Wing 1–5). Required component for Vision. Visually synergizes with Aurora and Vision. Farm: Raid Proofs + Ball of Dark Energy."
+    "fr": "Anneau légendaire (LW4), obtenu principalement via les Raids (Wing 1–5). Synergie visuelle avec Aurora et Vision. Farm : Raid Proofs + Ball of Dark Energy.",
+    "en": "Legendary ring (LW4), obtained mainly via Raids (Wing 1–5). Visually synergizes with Aurora and Vision. Farm: Raid Proofs + Ball of Dark Energy."
    },
    "armory_api_id": 91234,
-   "armory_max_count": 2,
+   "armory_max_count": 1,
    "armory_id_note": "91234 vérifié wiki (l'ancien 88499 était erroné)",
    "totals": {
     "legendary_insights": 150,
@@ -92698,7 +92720,8 @@
    },
    "recipe_verified": "2026-07-25 (wiki)",
    "cadence_ref": "skirmish_claim_ticket",
-   "apiId": 93105
+   "apiId": 93105,
+   "armory_max_count": 2
   },
   "gen2_claw_of_the_khan_ur": {
    "name": "Claw of the Khan-Ur",

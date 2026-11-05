@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v453.json`. **26 aretes** sur 18 parents dont les captures lisent la composition,
+Source : `gw2_sources_v454.json`. **30 aretes** sur 20 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -15,6 +15,8 @@ Research, retire le 04/10).
 | `banner_pennon` | `recipe_banner_pennon` | 1 | bolt_of_gossamer 5, glob_of_ectoplasm 5, olmakhan_latigo_strap 5, spool_of_gossamer_thread 100 |
 | `bottle_of_coconut_milk` | `karma` | 249 | difluorite_crystal 1 |
 | `commanders_wings_of_war` | `badge_of_honor` | 250 | skirmish_claim_ticket 875 |
+| `concentrated_chromatic_sap` | `gold_coin` | 250 | chromatic_sap 500 |
+| `concentrated_chromatic_sap` | `karma` | 300000 | chromatic_sap 500 |
 | `gift_of_the_exalted` | `gold_coin` | 1 | lump_of_aurillium 500 |
 | `gift_of_the_itzel` | `gold_coin` | 1 | airship_part 500 |
 | `gift_of_the_nuhoch` | `gold_coin` | 1 | ley_line_crystal 500 |
@@ -23,6 +25,8 @@ Research, retire le 04/10).
 | `nyr_hrammr` | `valkyrie_bearkin_war_helm` | 1 | gift_of_metal 1, gift_of_sharpened_tip 1 |
 | `orrax_contained` | `askur_camping_cookout_backpiece` | 1 | binding_of_the_dragon 1, draconic_tribute 1 |
 | `orrax_contained` | `salmon_of_knowledge_backpiece` | 1 | binding_of_the_dragon 1, draconic_tribute 1 |
+| `patron_of_the_magical_arts_plaque` | `gold_coin` | 250 | raw_enchanting_stone 500 |
+| `patron_of_the_magical_arts_plaque` | `karma` | 300000 | raw_enchanting_stone 500 |
 | `simple_olmakhan_bandolier` | `bolt_of_gossamer` | 10 | olmakhan_charm 1, superior_rune_of_holding 1 |
 | `superior_sigil_of_benevolence` | `glob_of_ectoplasm` | 10 | crystal_lodestone 1 |
 | `superior_sigil_of_benevolence` | `pile_of_lucent_crystal` | 10 | crystal_lodestone 1 |
