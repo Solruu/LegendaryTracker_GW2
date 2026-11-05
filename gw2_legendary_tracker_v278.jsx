@@ -2236,7 +2236,10 @@ function ArbreComposants({ calc, stocks, NX, NXS, couleur }) {
   };
   const ORDRE = { advanced_craft: 0, precursor: 1, intermediate: 2, craftable: 2, purchase: 3, account_unlock: 4, currency: 5, acquire: 6, refined: 7, material: 8 };
   const trier = (a, b) => ((ORDRE[cc[a[0]]?.kind] ?? 9) - (ORDRE[cc[b[0]]?.kind] ?? 9)) || (b[1] - a[1]);
-  const nom = (id) => NXS(cc[id]?.name ?? id.replace(/_/g, " "));
+  // v278 : les composants-voies d'un choix (mist_band_route_*, 26/10) portent un
+  // nom { fr, en } ; NXS ne resout que les chaines et rendait l'objet tel quel
+  // (React #31 sur l'onglet Composants de Conflux, signale par Antoine le 05/11).
+  const nom = (id) => NX(cc[id]?.name ?? id.replace(/_/g, " "));
   const fmt = (q) => (Number.isInteger(q) ? q : Math.round(q * 100) / 100).toLocaleString();
   const statut = (c) => {
     if ((c?.sources ?? []).some(s => s?.type === "trading_post")) return "tp";
@@ -3161,7 +3164,7 @@ function TrophyMatrix({ stocks = {}, selectedIds = {}, onTargets, collections, a
                         return (
                           <div key={cid} style={{ display: "flex", gap: 8, alignItems: "baseline", padding: "2px 0", fontSize: "10.5px" }}>
                             <span style={{ width: 22, color: "rgba(226,201,126,0.4)" }}>{NX((matrix.tier_labels ?? [])[i])}</span>
-                            <span style={{ flex: 1, color: "rgba(226,201,126,0.75)" }}>{cc[cid]?.name ?? cid}</span>
+                            <span style={{ flex: 1, color: "rgba(226,201,126,0.75)" }}>{NX(cc[cid]?.name) ?? cid}</span>
                             <span style={{ color: "rgba(226,201,126,0.4)" }}>{par}/gift</span>
                             <span style={{ width: 108, textAlign: "right", color: c.missing === 0 && c.need > 0 ? "#4ade80" : "rgba(226,201,126,0.8)" }}>
                               {c.owned === null ? NX({ fr: "stock inconnu", en: "stock unknown" })
