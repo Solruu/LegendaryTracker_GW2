@@ -13,6 +13,7 @@ porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a 
 - Étapes des armes — lots identifiés, palier IV fait
 - Deux arbitrages d'interface — ouverts le 02/09/2026
 - Ouvert au 18/09/2026
+- Interface — notes d'Antoine du 05/11/2026
 - 12 nonies. Restes de la fusion du catalogue (03/10/2026)
 
 ## Complétude — état réel au 27/08/2026
@@ -321,26 +322,6 @@ vaut mieux qu'un manque caché dans une phrase de `sources`.
 
 ## Ouvert au 18/09/2026
 
-### 1. Les monnaies de carte du groupe d'armes (gen2, gen3, Klobjarne Geirr)
-
-Trente-trois legendaires n'ont **aucun bloc `currencies` propre** : les seize
-gen2, les seize gen3 et Klobjarne Geirr passent par le groupe d'armes, avec
-decouverte a l'execution. Leur onglet Composants ne peut donc pas recevoir de
-monnaie de carte par simple insertion de lignes — c'est le rendu du groupe qu'il
-faut faire parler.
-
-Ce qui leur manque, mesure sur la chaine :
-
-- **Klobjarne Geirr : 20 250 pieces anciennes** et 250 eclats du Foyer. Le cas le
-  plus gros de la liste.
-- les 16 gen2 : 800 pieces d'aeronef, 800 lingots d'aurillium, plus les quatre
-  monnaies de HoT a 250 (minerai cristallin, huile d'aeronef, poussiere aurique,
-  etincelle de ligne de force).
-- les 16 gen3 : les memes quatre monnaies de HoT a 250.
-
-`ley_line_crystal` est ecarte de toute facon : le composant n'a pas d'apiId, donc
-son stock ne peut pas etre lu. A capturer avant de pouvoir l'afficher.
-
 ### 2. Marquer « fait » ce que la synchro montre deja consomme
 
 Demande d'Antoine du 18/09. Quand une etape de collection est validee — bit a 1,
@@ -369,6 +350,16 @@ chaine, donc la decomposition ne peut pas deriver en silence.
 A etendre ensuite aux autres legendaires dont un cout est adosse a une
 collection, pas seulement Vision.
 
+## Interface — notes d'Antoine du 05/11/2026 (a traiter plus tard, pas maintenant)
+
+- **Polices trop petites, en general.** Antoine ne veut pas gerer la mise en
+  page tout de suite : a reprendre dans une passe JSX dediee.
+- **Onglet Armes, Misc (0/3)** : Aetheric Anchor n'apparait pas en tant que tel ;
+  seules ses deux sorties, Ancora Bellum et Ancora Pax, sont listees (la note du
+  panneau le dit, mais Antoine attend l'Anchor lui-meme). Les lances terrestres
+  (Klobjarne Geirr, Ancora Bellum) sont etiquetees « Harpoon » : type rendu par
+  l'API, a confirmer avant de renommer (incertain).
+
 ## 12 nonies. Restes de la fusion du catalogue (03/10/2026)
 
 - `ew.wpCode` : JSX `[&BLsNAAA=]` (garde) contre sources `[&BNMMAAA=]` — ce
@@ -381,8 +372,9 @@ collection, pas seulement Vision.
   recompenses tant qu'une source ne le tient pas (COHERENCE_CONSEILS_METAS).
 - `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
   point de passage d'Ember Bay reste a poser.
-- `bf_meta` : carte Bitterfrost Frontier (LW3) contre horaire de « The Frozen
-  Maw » (Wayfarer Foothills, base). Laquelle est la bonne ? Sans reponse, pas de
-  condition d'acces ni de `ref`.
+- ✅ `bf_meta` (constat du 05/11) : deja tranche dans les sources — « Beacons of
+  Koda », meta de carte de Bitterfrost Frontier (LW3), sans horaire fixe (cycle
+  jour-nuit), verifiee le 09/10 sur bitterfrost_frontier.html. Le Frozen Maw n'y
+  figure plus ; seul l'ancien rapport METAS_RESSOURCES_v2 garde ce libelle.
 - Codes de point de passage partages (COHERENCE_CONSEILS_METAS, regle W) :
   `[&BNMMAAA=]` sur sp / de2 / gy, `[&BDQOAAA=]` sur am / in. A relever en jeu.
