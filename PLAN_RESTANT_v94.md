@@ -1142,6 +1142,16 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       40 pc chez Forager Hitkiti apres un evenement ; Recollection = 25
       Amalgamated Gemstones chez Unending Tribute, pour une copie de plus
       (option non comptee). Aucune arete, aucun total.
+- [x] « Seule piste payante » (sources v448, `gw2_pistes_gratuites_v1`) : 25
+      composants dont la voie de jeu n'etait pas marquee recoivent un
+      `free_sources_note` lu sur leur page (raffinage depuis une matiere
+      recoltee : planches, lingots, cuir, gossamer ; recolte / butin /
+      recyclage : jade, baies, piments, truffes, magnetites, Eye of Kormir,
+      cuivre, orbes...) ; piste JcJ des teintures marquee gratuite. Audit 43 ->
+      18. Restent, a juste titre : vendeurs payants sans plafond lu (Icy
+      Runestone, Hydrocatalytic Reagent, Seer Runestone, Sun Bead), ambre gris
+      (5/jour, Local Legend), plats et composants dont un ingredient est
+      payant, 3 faux positifs des infusions d'agonie.
 
 ## Ordre propose
 
