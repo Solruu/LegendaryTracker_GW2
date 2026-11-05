@@ -1156,6 +1156,11 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       Runestone, Hydrocatalytic Reagent, Seer Runestone, Sun Bead), ambre gris
       (5/jour, Local Legend), plats et composants dont un ingredient est
       payant, 3 faux positifs des infusions d'agonie.
+- [x] Draconis Mons (sources v449, `gw2_dm_petrified_v1`) : le Petrified Wood
+      se recolte a Ember Bay (petrified_wood.html), retire du conseil de `dm`.
+- [x] BACKLOG « Marquer fait ce que la synchro consomme » : constate regle (le
+      moteur retire les `cost` d'etape des collections faites), deplace dans
+      BACKLOG_CLOS.
 
 ## Ordre propose
 

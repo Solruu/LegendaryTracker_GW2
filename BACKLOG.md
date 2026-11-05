@@ -1,4 +1,4 @@
-> **Plan du restant** : `PLAN_RESTANT_v95.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v96.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 
@@ -12,7 +12,6 @@ porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a 
 - Complétude — état réel au 27/08/2026
 - Étapes des armes — lots identifiés, palier IV fait
 - Deux arbitrages d'interface — ouverts le 02/09/2026
-- Ouvert au 18/09/2026
 - Interface — notes d'Antoine du 05/11/2026
 - 12 nonies. Restes de la fusion du catalogue (03/10/2026)
 
@@ -320,36 +319,6 @@ recette. L'exigence est sourcée, le coût ne l'est pas. Ils sont désormais en
 section 3 de `PAGES_A_CAPTURER.md`, ce qui est le point : un manque qu'on voit
 vaut mieux qu'un manque caché dans une phrase de `sources`.
 
-## Ouvert au 18/09/2026
-
-### 2. Marquer « fait » ce que la synchro montre deja consomme
-
-Demande d'Antoine du 18/09. Quand une etape de collection est validee — bit a 1,
-collection en vert — ce qu'elle coutait n'est plus a farmer. Six armes Astral
-terminees, et ni le kralkatite ni le quartz ne servent plus. Aujourd'hui l'onglet
-continue de reclamer 3 000 de chaque, sans stock en face, ce qui est decourageant
-et faux.
-
-**Le mecanisme existe deja** : `qty_extras` porte des surcouts conditionnels lies
-a un bit, que les deux moteurs neutralisent des que l'etape est validee. C'est
-exactement la forme voulue, il suffit de la renseigner. Le travail est de
-decomposer chaque cout entre son socle et sa part conditionnelle :
-
-| monnaie | socle | conditionnel | etape |
-|---|---:|---:|---|
-| Kralkatite Ore | 100 (Gift of Crystalline Magic) | 3 000 | vis_istan bit5 |
-| Powdered Rose Quartz | 0 | 3 000 | vis_istan bit5 |
-| Branded Mass | 100 (Gift of Ephemeral Magic) | 360 | vis_thunderhead bit5 |
-| Exquisite Serpentite Jewel | 0 | 18 | vis_thunderhead bit5 |
-
-Le socle reste en `required`, la part conditionnelle passe en `qty_extras` avec
-son `legendary`, son `sub` et son `bit` — comme le karma d'Aurora le fait deja
-sur neuf entrees. `check_qty_vs_jsx` continuera de confronter le tout a la
-chaine, donc la decomposition ne peut pas deriver en silence.
-
-A etendre ensuite aux autres legendaires dont un cout est adosse a une
-collection, pas seulement Vision.
-
 ## Interface — notes d'Antoine du 05/11/2026 (a traiter plus tard, pas maintenant)
 
 - **Polices trop petites, en general.** Antoine ne veut pas gerer la mise en
@@ -367,9 +336,8 @@ collection, pas seulement Vision.
 - `zak` : point de passage `Forward Bivouac` `[&BHYOAAA=]` (garde) contre
   `Citadel of Zakiros Waypoint` `[&BHMMAAA=]`. A verifier en jeu.
 - Depliage LW par episode : aucune capture ne liste les episodes.
-- `dm` : le conseil dit « Fire Orchid + Petrified Wood via nodes », mais la page
-  Draconis Mons ne cite que Fire Orchid. Petrified Wood non ajoute aux
-  recompenses tant qu'une source ne le tient pas (COHERENCE_CONSEILS_METAS).
+- ✅ `dm` (05/11, sources v449, `gw2_dm_petrified_v1`) : petrified_wood.html ne cite
+  qu'Ember Bay ; le Petrified Wood est retire du conseil de Draconis Mons.
 - `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
   point de passage d'Ember Bay reste a poser.
 - ✅ `bf_meta` (constat du 05/11) : deja tranche dans les sources — « Beacons of

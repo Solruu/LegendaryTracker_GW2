@@ -1525,3 +1525,34 @@ Ce qui leur manque, mesure sur la chaine :
 `ley_line_crystal` est ecarte de toute facon : le composant n'a pas d'apiId, donc
 son stock ne peut pas etre lu. A capturer avant de pouvoir l'afficher.
 
+## Marquer « fait » ce que la synchro montre deja consomme — ✅ clos le 05/11/2026
+
+Constat du 05/11 : les couts sont des `cost` d'etape (Brandstone, Astral Purification...), que le moteur retire des que la collection est faite. Vision, toutes collections faites : kralkatite 3 120 -> 100, quartz 3 085 -> 0, Branded Mass 460 -> 100, serpentite 18 -> 0.
+
+
+Demande d'Antoine du 18/09. Quand une etape de collection est validee — bit a 1,
+collection en vert — ce qu'elle coutait n'est plus a farmer. Six armes Astral
+terminees, et ni le kralkatite ni le quartz ne servent plus. Aujourd'hui l'onglet
+continue de reclamer 3 000 de chaque, sans stock en face, ce qui est decourageant
+et faux.
+
+**Le mecanisme existe deja** : `qty_extras` porte des surcouts conditionnels lies
+a un bit, que les deux moteurs neutralisent des que l'etape est validee. C'est
+exactement la forme voulue, il suffit de la renseigner. Le travail est de
+decomposer chaque cout entre son socle et sa part conditionnelle :
+
+| monnaie | socle | conditionnel | etape |
+|---|---:|---:|---|
+| Kralkatite Ore | 100 (Gift of Crystalline Magic) | 3 000 | vis_istan bit5 |
+| Powdered Rose Quartz | 0 | 3 000 | vis_istan bit5 |
+| Branded Mass | 100 (Gift of Ephemeral Magic) | 360 | vis_thunderhead bit5 |
+| Exquisite Serpentite Jewel | 0 | 18 | vis_thunderhead bit5 |
+
+Le socle reste en `required`, la part conditionnelle passe en `qty_extras` avec
+son `legendary`, son `sub` et son `bit` — comme le karma d'Aurora le fait deja
+sur neuf entrees. `check_qty_vs_jsx` continuera de confronter le tout a la
+chaine, donc la decomposition ne peut pas deriver en silence.
+
+A etendre ensuite aux autres legendaires dont un cout est adosse a une
+collection, pas seulement Vision.
+
