@@ -1730,7 +1730,9 @@ const LEGENDARIES = {
       // dans le grand total, mais absentes de cet onglet — donc introuvables la ou
       // on les cherche. Chaque nombre est le total du moteur ; check_qty_vs_jsx
       // refuse toute divergence.
-      { id: "ancient_coin", name: "Ancient Coin", required: 50000, icon: "AC", apiId: 66, mapNote: "Janthir Wilds" },
+      // 05/11/2026 : Ancient Coin retire. Ses 50 000 venaient de l'achat des
+      // 250 Mursaat Runestones (200 chacune) ; la voie comptee est desormais
+      // celle des coffres de Janthir (sources v455).
       { id: "mursaat_obsidian", name: "Mursaat Obsidian Chunk", required: 750, icon: "MO", apiId: 103427, mapNote: "Mistburned Barrens" },
       { id: "heatstone", name: "Titan Heatstone", required: 750, icon: "TH", apiId: 102655, mapNote: "Mistburned Barrens" },
       { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 725, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },
