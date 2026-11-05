@@ -301,13 +301,10 @@ const I18N = {
     aurora2_prereq: "Prerequisite: Aurora: Awakening completed · Sync via API to see checked boxes",
     // Vision collections
     vision_col_title: "Vision Collections — crafting prerequisites",
-    vision_reqnote: "The Requiem Experiments provide the necessary Elegy Mosaics.",
     vision_reward_1: "Reward: Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Reward: Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     vision_mee_craft: "⚠ Artificer 400 · Recipe must be purchased (Arborstone / Juno vendors)",
     vision_mee_note: "Xunlai Electrum Ingot: EoD vendor recipe (Arborstone) · Electrum Ingot + Jade Sliver ×10",
-    vision_elegy_label: "Requiem Experiments — Elegy Mosaics",
-    vision_elegy_note: "6 experiments × 50 Elegy · Accumulated: {n}/300 Elegy Mosaics",
     // Population badges
     pop_LFG: "LFG active", pop_public: "Public instance", pop_bon: "Well-populated",
     pop_moyen: "Decent population", pop_variable: "Variable pop.", pop_morte: "⚠ Dead pop.",
@@ -543,13 +540,10 @@ const I18N = {
     aurora2_help: "Aucun RNG ni time-gate. Avoir 21× Xunlai Electrum Ingot en inventaire, puis communier avec chaque point de maîtrise (Mastery Insight) listé ci-dessous.",
     aurora2_prereq: "Prérequis : Aurora: Awakening complété · Synchronise via API pour voir les cases cochées",
     vision_col_title: "Collections Vision — prérequis au craft",
-    vision_reqnote: "Les succès « Requiem: Experiment 1 » à « Requiem: Experiment 6 » fournissent les Elegy Mosaic nécessaires.",
     vision_reward_1: "Récompense : Gift of Insight · 6 Visions of [map] LW4",
     vision_reward_2: "Récompense : Gift of Prescience · The Convergence of Sorrow I: Elegy + The Convergence of Sorrow II: Requiem",
     vision_mee_craft: "⚠ Artificier 400 · Recette à acheter (vendeurs Arborstone / Juno)",
     vision_mee_note: "Xunlai Electrum Ingot : recette de vendeur EoD (Arborstone) · Electrum Ingot + 10× Jade Sliver",
-    vision_elegy_label: "Requiem Experiments — Elegy Mosaics",
-    vision_elegy_note: "6 experiments × 50 Elegy · Accumulé : {n}/300 Elegy Mosaics",
     pop_LFG: "LFG actif", pop_public: "Instance publique", pop_bon: "Bien peuplé",
     pop_moyen: "Population correcte", pop_variable: "Pop. variable", pop_morte: "⚠ Pop. morte",
     req_missing: "Requis : {req} · Manque : {miss}",
@@ -100741,18 +100735,6 @@ const LEGENDARIES = {
     // La vider preserve ce comportement a l'identique ; lui donner un vrai nom
     // demanderait de toucher a la condition, donc a d'autres legendaires.
     collections: {},
-    // ── Requiem collections (source d'Elegy Mosaic) ───────────
-    requiem: {
-      note: { fr: "Les 6 Requiem Experiments donnent chacun 50 Elegy Mosaics. Total : 300 pour Vision. Chaque collection se complète au Promontoire de Jahai via Requiem Armor sets (drop + craft).", en: "The 6 Requiem Experiments each grant 50 Elegy Mosaics. Total: 300 for Vision. Each collection is completed in Jahai Bluffs via Requiem Armor sets (drop + craft)." },
-      experiments: [
-        { id: 4344, name: "Requiem: Experiment 1", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 1 (drop Branded, craft)", en: "Collect the Requiem armor pieces tier 1 (Branded drops, craft)" } },
-        { id: 4432, name: "Requiem: Experiment 2", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 2", en: "Collect the Requiem armor pieces tier 2" } },
-        { id: 4420, name: "Requiem: Experiment 3", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 3", en: "Collect the Requiem armor pieces tier 3" } },
-        { id: 4354, name: "Requiem: Experiment 4", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 4", en: "Collect the Requiem armor pieces tier 4" } },
-        { id: 4356, name: "Requiem: Experiment 5", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 5", en: "Collect the Requiem armor pieces tier 5" } },
-        { id: 4357, name: "Requiem: Experiment 6", elegy: 50, how: { fr: "Collecter les pièces d'armure Requiem tier 6 — complète la série", en: "Collect the Requiem armor pieces tier 6 — completes the series" } },
-      ],
-    },
   },
 
   aurora: {
@@ -107022,19 +107004,13 @@ function GW2LegendaryTracker() {
         // une troisieme copie codee en dur ici meme.
         // Vision I, Vision II et leurs sous-collections sont rendues par le bloc
         // generique pilote par les sources. Ce qui suit ne garde que ce que le
-        // generique ne porte pas : le craft de l'Encapsulator et les six Requiem
-        // Experiments, qui ne sont pas dans les sources.
+        // generique ne porte pas : le craft de l'Encapsulator.
 
-        const REQUIEM = [
-          { key: "requiem_1", label: "Requiem: Experiment 1" },
-          { key: "requiem_2", label: "Requiem: Experiment 2" },
-          { key: "requiem_3", label: "Requiem: Experiment 3" },
-          { key: "requiem_4", label: "Requiem: Experiment 4" },
-          { key: "requiem_5", label: "Requiem: Experiment 5" },
-          { key: "requiem_6", label: "Requiem: Experiment 6" },
-        ];
-        const reqDone = REQUIEM.filter(r => vc[r.key]?.done).length;
-        const elegyFromReq = reqDone * 50;
+        // v279 -> v280 : le compteur « Requiem Experiments — Elegy Mosaics » est
+        // retire. a_star_to_guide_us_achievements.html : chaque Requiem:
+        // Experiment recompense une « Historic <piece> Collection », pas 50 Elegy
+        // Mosaics ; le compteur et son « /300 » etaient sans source. Les Elegy
+        // Mosaics de Vision viennent du moteur (Funerary Incense).
 
         return (
           <div style={{ paddingBottom: 20 }}>
@@ -107044,7 +107020,6 @@ function GW2LegendaryTracker() {
               <div style={{ fontSize: 12, fontWeight: 600, color: C, marginBottom: 4 }}>{t("vision_col_title")}</div>
               <div style={{ fontSize: 11, color: "rgba(226,201,126,0.6)", lineHeight: 1.6 }}>
                 {t("vision_col_intro")}
-                {t("vision_reqnote")}
                 {!hasData && <span style={{ color: "#fb923c" }}>{t("sync_to_see")}</span>}
               </div>
             </div>
@@ -107099,55 +107074,7 @@ function GW2LegendaryTracker() {
             </div>
 
             {/* Vision II et les deux Convergence of Sorrow passent aussi par le
-                bloc generique. Ne reste ici que le compteur d'Elegy Mosaics, qui
-                agrege les six Requiem Experiments — ceux-la ne sont pas dans les
-                sources et vivent encore en dur plus bas. */}
-
-            {/* ── REQUIEM Experiments (Elegy Mosaics) ── */}
-            <div style={{ margin: "10px 14px 0" }}>
-              <div
-                style={{ padding: "10px 13px", background: reqDone === 6 ? "rgba(74,222,128,0.06)" : "rgba(167,139,250,0.05)", border: `1px solid ${reqDone === 6 ? "rgba(74,222,128,0.3)" : "rgba(167,139,250,0.2)"}`, borderRadius: "8px 8px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}
-                onClick={() => setVisionSubExpanded(visionSubExpanded === "requiem" ? null : "requiem")}
-              >
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: reqDone === 6 ? "#4ade80" : C, fontFamily: "'Cinzel', serif", letterSpacing: "0.05em" }}>
-                    {reqDone === 6 ? "✓ " : ""}{t("vision_elegy_label")}
-                  </div>
-                  <div style={{ fontSize: 10, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", marginTop: 2 }}>
-                    {t("vision_elegy_note", { n: elegyFromReq })}
-                  </div>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: reqDone === 6 ? "#4ade80" : C }}>{reqDone}<span style={{ fontSize: 10, opacity: 0.5 }}>/6</span></div>
-                  <span style={{ fontSize: 10, color: "rgba(226,201,126,0.25)" }}>{visionSubExpanded === "requiem" ? "▲" : "▼"}</span>
-                </div>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderBottom: visionSubExpanded === "requiem" ? "none" : `1px solid rgba(167,139,250,0.2)`, borderRadius: visionSubExpanded === "requiem" ? 0 : "0 0 8px 8px", padding: "6px 13px 8px" }}>
-                <div className="prog-bar">
-                  <div className="prog-fill" style={{ width: `${(reqDone/6)*100}%`, background: reqDone === 6 ? "linear-gradient(90deg,#16a34a,#4ade80)" : `linear-gradient(90deg,${C}80,${C})` }} />
-                </div>
-              </div>
-              {visionSubExpanded === "requiem" && (
-                <div style={{ borderLeft: `1px solid rgba(167,139,250,0.2)`, borderRight: `1px solid rgba(167,139,250,0.2)`, borderBottom: `1px solid rgba(167,139,250,0.2)`, borderRadius: "0 0 8px 8px" }}>
-                  {REQUIEM.map((r, i) => {
-                    const done = vc[r.key]?.done ?? false;
-                    const cur  = vc[r.key]?.current ?? 0;
-                    const max  = vc[r.key]?.max ?? 0;
-                    return (
-                      <div key={r.key} style={{ padding: "7px 13px", background: done ? "rgba(74,222,128,0.02)" : "rgba(255,255,255,0.01)", borderTop: "1px solid rgba(226,201,126,0.04)", display: "flex", alignItems: "center", gap: 8 }}>
-                        <div style={{ width: 13, height: 13, borderRadius: 3, border: `1.5px solid ${done ? "#4ade80" : "rgba(167,139,250,0.4)"}`, background: done ? "rgba(74,222,128,0.2)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          {done && <span style={{ fontSize: 8, color: "#4ade80" }}>✓</span>}
-                        </div>
-                        <div style={{ flex: 1, fontSize: 11, color: done ? "#4ade80" : "rgba(226,201,126,0.75)" }}>{r.label}</div>
-                        <div style={{ fontSize: 10, color: done ? "rgba(74,222,128,0.6)" : "rgba(167,139,250,0.5)" }}>
-                          {done ? "+50 Elegy" : hasData && max > 0 ? `${cur}/${max}` : "50 Elegy"}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
+                bloc generique (v280 : le compteur Requiem est retire). */}
 
           </div>
         );

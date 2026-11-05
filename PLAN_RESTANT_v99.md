@@ -1170,6 +1170,13 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       d'Orrax, poussiere d'Eternity).
 - [x] BACKLOG : « Completude » et « Etapes des armes » constatees closes,
       deplacees dans BACKLOG_CLOS.
+- [x] JSX v280 : compteur « Requiem Experiments — Elegy Mosaics » de l'onglet
+      Vision supprime (constantes REQUIEM, bloc de rendu, donnee `requiem` de
+      l'objet vision, 3 cles i18n). La page des succes (a_star_to_guide_us)
+      donne pour recompense une « Historic <piece> Collection » : les « 6 x 50
+      Elegy, /300 » n'avaient pas de source. Les cles de synchro requiem_1..6
+      restent dans les sources et Flask (inoffensives, a retirer au prochain
+      passage de Flask).
 
 ## Ordre propose
 

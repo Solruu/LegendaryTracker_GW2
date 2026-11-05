@@ -1,4 +1,4 @@
-> **Plan du restant** : `PLAN_RESTANT_v98.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v99.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 
@@ -21,7 +21,7 @@ L'onglet dédié ne rend plus Vision I, les six `Visions of`, Vision II ni les d
 Convergence : tout passe par le rendu générique. Il ne garde que le craft de
 l'Encapsulator et les six Requiem Experiments.
 
-**Reste une donnée manquante** : les six Requiem Experiments vivent en dur dans le
+✅ **05/11 : clos autrement.** a_star_to_guide_us_achievements.html montre que chaque Requiem: Experiment récompense une « Historic <pièce> Collection », pas 50 Elegy Mosaics : le compteur était sans source, il est retiré (JSX v280). Ancien constat — **Reste une donnée manquante** : les six Requiem Experiments vivent en dur dans le
 JSX, pas dans les sources. Ce sont les six sources d'Elegy Mosaic, 50 chacune. Tant
 qu'elles n'y sont pas, elles ne peuvent pas rejoindre le rendu générique comme le
 reste. À capturer : la page wiki `Requiem: Experiment 1` à `6`, ou la page
