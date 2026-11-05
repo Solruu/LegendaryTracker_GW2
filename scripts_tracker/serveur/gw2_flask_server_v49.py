@@ -188,12 +188,6 @@ VISION_ACHIEVEMENT_IDS = {
     "vision_convergence_2":     4362,   # The Convergence of Sorrow II: Requiem
     "vision_2":                 4771,   # Vision II: Farsight (méta)
     # Requiem Experiments (source Elegy Mosaic — 50 par experiment)
-    "requiem_1":                4344,   # Requiem: Experiment 1
-    "requiem_2":                4432,   # Requiem: Experiment 2
-    "requiem_3":                4420,   # Requiem: Experiment 3
-    "requiem_4":                4354,   # Requiem: Experiment 4
-    "requiem_5":                4356,   # Requiem: Experiment 5
-    "requiem_6":                4357,   # Requiem: Experiment 6
 }
 
 OBSIDIAN_ACHIEVEMENT_IDS = {

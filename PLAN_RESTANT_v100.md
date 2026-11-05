@@ -1175,8 +1175,10 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       l'objet vision, 3 cles i18n). La page des succes (a_star_to_guide_us)
       donne pour recompense une « Historic <piece> Collection » : les « 6 x 50
       Elegy, /300 » n'avaient pas de source. Les cles de synchro requiem_1..6
-      restent dans les sources et Flask (inoffensives, a retirer au prochain
-      passage de Flask).
+      retirees le 05/11 : Flask v49 et `_meta.direct_sync` (sources v452) ;
+      conformite_synchro : les deux chemins posent les memes cles.
+- [x] BACKLOG « Deux arbitrages d'interface » constate clos (7 points),
+      deplace dans BACKLOG_CLOS.
 
 ## Ordre propose
 
