@@ -1556,3 +1556,101 @@ chaine, donc la decomposition ne peut pas deriver en silence.
 A etendre ensuite aux autres legendaires dont un cout est adosse a une
 collection, pas seulement Vision.
 
+## Complétude — état réel au 27/08/2026 — ✅ clos le 05/11/2026
+
+Constat du 05/11 : 40 légendaires portent un bloc `collections` (toutes les armes gen1/gen2 à collection, 2 551 étapes) ; 11 étapes sans conseil, toutes des recettes déjà décomposées. Le point Aetheric Anchor est reporté dans « Interface — notes d'Antoine du 05/11 ».
+
+
+### Armes gen1/gen2 — le code existait, l'onglet était mort
+
+Le sélecteur de génération, `genOf` et les notes de coût par génération étaient
+tous écrits. **Ils n'étaient jamais rendus** : `tab_contract` demandait les flags
+`isWeapons` et `isTrinkets`, qui n'existent nulle part. Les vrais s'appellent
+`isWeaponTracker` et `isTrinketTracker`.
+
+Zéro occurrence contre 4 pour `isArmorSet`, qui fonctionnait — d'où une panne
+limitée à deux hubs, et silencieuse : un flag inconnu vaut `undefined`, donc
+faux, donc l'onglet ne s'affiche pas et rien ne le signale.
+
+Corrigé dans le contrat, pas dans le JSX : les flags du JSX sont les noms
+d'origine, c'est le contrat qui les avait mal recopiés. `gw2_audit_v21.py`
+**échoue** désormais si un flag demandé par `tab_contract` n'existe pas dans le
+JSX.
+
+**Un point à vérifier en jeu, non tranché** : la découverte filtre sur
+`it.type !== "Weapon"`. Aetheric Anchor est décrit dans les sources comme
+`container → legendary spear + legendary staff` (apiId 105497). Si l'API le rend
+comme conteneur et non comme arme, il n'apparaît pas dans la liste. À regarder
+dans l'onglet Armes, catégorie Divers : il doit y avoir Klobjarne Geirr **et**
+Aetheric Anchor.
+
+### Les collections — le vrai chantier
+
+**3 légendaires sur 85 portent un bloc `collections`** : Prismatic, Aurora,
+Vision. Les 26 autres ont leur recette et leur chaîne de composants — vérifiées
+contre les arbres — mais aucune étape.
+
+Il faut deux choses, de nature différente :
+
+**a) Les définitions de bits.** `gw2_dump_bits_v4.py --catalogue` part désormais
+des quatre catégories de collections légendaires de `gw2_achievements_ref.json`
+(**147 succès**) au lieu du seul JSX, qui ne peut pas référencer ce qui n'y est
+pas encore. Le JSX en apporte 35 de plus ; les deux modes fusionnent.
+
+⚠ **À lancer en local par Antoine** : l'API GW2 renvoie **403 Forbidden** depuis
+l'environnement de Claude, et `web_fetch` réécrit les URL — une requête sur le
+succès 2351 rend le 4949. Aucun contournement.
+
+**b) Le « comment » de chaque bit.** L'API donne l'ordre et le libellé des
+étapes, jamais où ni comment les obtenir. C'est ce qui fait la valeur du
+tracker — sur Aurora, chaque bit porte un `how`, un `how_ref`, parfois un
+`unlock_first` ou un `currency_cost`. Wiki, guides, et vérification en jeu.
+
+**Ordre proposé** : Ad Infinitum (en cours), puis Endless Summer (anneau).
+
+## Étapes des armes — lots identifiés, palier IV fait — ✅ clos le 05/11/2026
+
+Constat du 05/11 : les 1 978 étapes d'armes gen1/gen2 portent le nom de leur objet (`wiki` + libellé réapparié, `gw2_libelles_etapes_v2`) ; 76 noms longs restants sont de vrais noms d'objet.
+
+
+Les quatre paliers ne coûtent pas la même chose :
+
+| palier | étapes | libellés **distincts** | mutualisation |
+|---|---|---|---|
+| **IV — succès final** | 324 | 84 | ✅ **fait** — 234 liées à un composant |
+| **II — Perfected** | 317 | **79** | 265 étapes partagées entre 24 armes |
+| I — Experimental | 382 | 348 | quasi nulle |
+| III — Précurseur | 731 | 673 | quasi nulle |
+
+### ✅ Palier IV — 234 étapes sans une seule capture
+
+Ses étapes ne sont pas des actions mais des **composants** : Icy Runestone,
+Gift of Mastery, Gift of Exploration, Bloodstone Shard, Obsidian Shard, Gift of
+Fortune, Mystic Clover… chacun ×20.
+
+Quatorze existent déjà dans `craft_components`. Elles portent désormais un champ
+`component` — une **référence, pas une copie** : sources, cadence et prix se
+lisent dans le composant, et un `how` paraphrasé aurait divergé dès la première
+mise à jour. Le rendu retombe sur le `tip` du composant.
+
+### Palier II — ⚠ **la mutualisation était un mirage**, capture d'essai du 27/08/2026
+
+`The Moot II: The Perfected Mace` a tranché. Ce que le wiki apporte, ce sont les
+**noms d'objets** — « Weighted Mace Head », « Desert Magics: Mace Edition »,
+« The Moot Vol. 2 » — que l'API ne donne pas : elle rend la phrase d'action à
+leur place. Les notes du wiki, elles, **répètent le plus souvent cette même
+phrase** ; seules 4 des 14 apportent autre chose.
+
+**Or les 79 libellés partagés étaient les DESCRIPTIONS, déjà dans le tracker.**
+Les noms, eux, sont propres à chaque arme : « Mace Edition » contre « Hammer
+Edition ». Le palier II n'est donc **pas** un lot bon marché — il faut ses
+24 pages, comme les paliers I et III.
+
+Le gain reste réel mais modeste : lisibilité des libellés. 14 noms et 14 `how`
+posés sur The Moot II.
+
+### Paliers I et III — au fil des cibles
+
+1 021 libellés distincts pour 1 113 étapes. Chaque arme a ses objets et ses
+lieux : il faut les pages, arme par arme, comme tu joues.
+

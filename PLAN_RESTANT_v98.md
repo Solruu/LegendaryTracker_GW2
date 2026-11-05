@@ -1163,6 +1163,13 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
 - [x] BACKLOG « Marquer fait ce que la synchro consomme » : constate regle (le
       moteur retire les `cost` d'etape des collections faites), deplace dans
       BACKLOG_CLOS.
+- [x] Conseils d'etape manquants (sources v451, `gw2_conseils_manquants_v1`) :
+      25 des 36 etapes sans `how` le recoivent depuis le tableau de leur
+      collection (bandoulier olmakhan de Vision x3 paliers, Eternity),
+      traduits ; les 11 autres sont des recettes deja decomposees (plats
+      d'Orrax, poussiere d'Eternity).
+- [x] BACKLOG : « Completude » et « Etapes des armes » constatees closes,
+      deplacees dans BACKLOG_CLOS.
 
 ## Ordre propose
 
