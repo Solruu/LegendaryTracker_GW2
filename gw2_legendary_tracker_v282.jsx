@@ -1735,7 +1735,7 @@ const LEGENDARIES = {
       // celle des coffres de Janthir (sources v455).
       { id: "mursaat_obsidian", name: "Mursaat Obsidian Chunk", required: 750, icon: "MO", apiId: 103427, mapNote: "Mistburned Barrens" },
       { id: "heatstone", name: "Titan Heatstone", required: 750, icon: "TH", apiId: 102655, mapNote: "Mistburned Barrens" },
-      { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 725, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },
+      { id: "mursaat_remnants", name: "Curious Mursaat Remnants", required: 1441, icon: "MR", apiId: 104829, mapNote: "Bava Nisos" },
     ],
     metas: [],
     bounties: [],

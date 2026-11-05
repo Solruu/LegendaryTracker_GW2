@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v455.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v456.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -13,7 +13,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 |---|---|---|---:|
 | MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 4 |
 | NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
-| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
+| EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 7 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 0 |
 | PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 132 |
 | NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 95 |
@@ -29,7 +29,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `Legendary_Insight_(consumable)` | 150 | `gift_of_compassion` | — | `coalescence` |
 | `gift_of_prowess` | `Legendary_Insight_(consumable)` | 25 | `gift_of_prowess` | — | `perfected_envoy` |
 
-## Enfants déclarés que la recette ne cite pas — 5
+## Enfants déclarés que la recette ne cite pas — 7
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -38,6 +38,8 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `banner_pennon` | `recipe_banner_pennon` | 1 | `banner_pennon` | direct | `vision` |
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
+| `gift_of_the_mistburned_isles` | `kodan_cache_key` | 358 | `gift_of_the_mistburned_isles` | direct | `orrax_manifested` |
+| `gift_of_uncovered_grounds` | `kodan_cache_key` | 143 | `gift_of_uncovered_grounds` | direct | `klobjarne_geirr` |
 
 ## Ingrédients absents, cités par la recette d'une feuille — 132
 

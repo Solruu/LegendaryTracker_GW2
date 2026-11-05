@@ -12607,7 +12607,8 @@
     "dragonfly_steaks": 7000,
     "jar_of_paint_base": 1848,
     "concentrated_chromatic_sap": 300000,
-    "patron_of_the_magical_arts_plaque": 300000
+    "patron_of_the_magical_arts_plaque": 300000,
+    "kodan_cache_key": 2100
    },
    "farmable": true,
    "sources": [
@@ -12646,7 +12647,8 @@
     "dragonfly_steaks",
     "jar_of_paint_base",
     "concentrated_chromatic_sap",
-    "patron_of_the_magical_arts_plaque"
+    "patron_of_the_magical_arts_plaque",
+    "kodan_cache_key"
    ]
   },
   "powerful_venom_sac": {
@@ -16838,7 +16840,8 @@
    "qty": {
     "gift_of_titan_understanding": 25,
     "mists_gate_residue": 10,
-    "shard_of_bava_nisos": 2
+    "shard_of_bava_nisos": 2,
+    "kodan_cache_key": 2
    },
    "sources": [
     {
@@ -16882,11 +16885,12 @@
     "gift_of_titan_understanding",
     "mists_gate_residue",
     "orrax_manifested",
-    "shard_of_bava_nisos"
+    "shard_of_bava_nisos",
+    "kodan_cache_key"
    ],
    "note": {
-    "fr": "⏳ 725 pour Orrax Manifested. Profil très différent des deux autres monnaies mursaat : aucune récolte, aucune cache — c'est une monnaie d'ÉVÉNEMENT. « A Titanic Voyage » en rend 32 par passage complet, soit environ 23 passages. ⚠ Le meilleur taux d'échange s'inverse ici : 20 pour 1 chez Gharr Leadclaw, quand le Commander's Choice Chest, meilleur pour la pierre de chaleur et l'obsidienne, n'en donne que 10.",
-    "en": "⏳ 725 for Orrax Manifested. A very different profile from the other two mursaat currencies: no gathering, no caches — this is an EVENT currency. 'A Titanic Voyage' yields 32 per full run, so about 23 runs. ⚠ The best exchange rate flips here: 20 for 1 from Gharr Leadclaw, while the Commander's Choice Chest, best for heatstone and obsidian, gives only 10."
+    "fr": "⏳ 1 441 pour Orrax Manifested : 725 pour ses dons, 716 pour les 358 Kodan Cache Keys de ses runestones. Profil très différent des deux autres monnaies mursaat : aucune récolte, aucune cache — c'est une monnaie d'ÉVÉNEMENT. « A Titanic Voyage » en rend 32 par passage complet, soit environ 45 passages pour l'ensemble. ⚠ Le meilleur taux d'échange s'inverse ici : 20 pour 1 chez Gharr Leadclaw, quand le Commander's Choice Chest, meilleur pour la pierre de chaleur et l'obsidienne, n'en donne que 10.",
+    "en": "⏳ 1,441 for Orrax Manifested: 725 for its gifts, 716 for the 358 Kodan Cache Keys of its runestones. A very different profile from the other two mursaat currencies: no gathering, no caches — this is an EVENT currency. 'A Titanic Voyage' yields 32 per full run, so about 45 runs in all. ⚠ The best exchange rate flips here: 20 for 1 from Gharr Leadclaw, while the Commander's Choice Chest, best for heatstone and obsidian, gives only 10."
    },
    "apiId": 104829
   },
@@ -25896,7 +25900,9 @@
      },
      "verified": true,
      "checked": "2026-09-24",
-     "ref": "gw2_currencies_ref.json — /v2/currencies id 1 « Coin »"
+     "ref": "gw2_currencies_ref.json — /v2/currencies id 1 « Coin »",
+     "free_repeatable": true,
+     "cadence": "à volonté"
     }
    ]
   },
@@ -48154,6 +48160,81 @@
    ],
    "verified": true,
    "checked": "2026-11-04"
+  },
+  "kodan_cache_key": {
+   "name": "Kodan Cache Key",
+   "kind": "acquire",
+   "farmable": true,
+   "qty": {
+    "gift_of_the_mistburned_isles": 358,
+    "gift_of_uncovered_grounds": 143
+   },
+   "sources": [
+    {
+     "type": "vendor",
+     "paid_repeatable": true,
+     "paid_cap": {
+      "n": 21,
+      "period": "day",
+      "per": "compte"
+     },
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/kodan_cache_key.html, Sold by ; ressources/wiki/major_kodan_cache.html ; ressources/wiki/mursaat_ruins_cache.html",
+     "cost": {
+      "fr": "2 Curious Mursaat Remnants + 2 100 karma",
+      "en": "2 Curious Mursaat Remnants + 2,100 karma"
+     },
+     "tip": {
+      "fr": "Davo Zes (Bava Nisos), Emlyn Digby (Côte des basses terres), Parting Kindness (Syntri de Janthir), Patches (Landes de Feu-de-Brume) : 2 Curious Mursaat Remnants + 2 100 karma, 21 par jour tous vendeurs confondus. Avec la maîtrise Janthir Explorer Proficiency : 4 de plus par jour à 1 + 1 050. Compté au premier tarif : le second ne couvre pas le volume.",
+      "en": "Davo Zes (Bava Nisos), Emlyn Digby (Lowland Shore), Parting Kindness (Janthir Syntri), Patches (Mistburned Barrens): 2 Curious Mursaat Remnants + 2,100 karma, 21 per day across all vendors. With the Janthir Explorer Proficiency mastery: 4 more per day at 1 + 1,050. Counted at the first price: the second does not cover the volume."
+     }
+    },
+    {
+     "type": "achievement",
+     "verified": true,
+     "checked": "2026-11-05",
+     "ref": "ressources/wiki/kodan_cache_key.html, Achievements",
+     "tip": {
+      "fr": "Janthiri Treasure Hunter (ouvrir 100 caches kodan) : 2 clés, une seule fois.",
+      "en": "Janthiri Treasure Hunter (open 100 kodan caches): 2 keys, once."
+     }
+    }
+   ],
+   "note": {
+    "fr": "Une clé par coffre. Comptées sur la voie Major Kodan Cache / Mursaat Ruins Cache : ~70 % de runestone, donc ceil(runestones / 0,7) coffres — 358 pour les 250 du Gift of the Mistburned Isles, 143 pour les 100 du Gift of Uncovered Grounds. 💡 Meilleur emploi d'une clé : la Locked Mythical Kodan Cache, déterrée au warclaw (1 à 3 par jour en Côte des basses terres, 1 en Syntri, 1 dans les Landes), rend 1-2 runestones garantis. Non comptée : son rendement moyen n'est pas donné par la source.",
+    "en": "One key per chest. Counted on the Major Kodan Cache / Mursaat Ruins Cache route: ~70% runestone, so ceil(runestones / 0.7) chests — 358 for the 250 of the Gift of the Mistburned Isles, 143 for the 100 of the Gift of Uncovered Grounds. 💡 Best use of a key: the Locked Mythical Kodan Cache, dug up by the warclaw (1-3 per day in Lowland Shore, 1 in Syntri, 1 in the Barrens), yields 1-2 guaranteed runestones. Not counted: the source gives no average yield."
+   },
+   "cadence": {
+    "sources": [
+     {
+      "label": {
+       "fr": "Vendeurs de pièces insolites de Janthir — 21 par jour (+4 avec Janthir Explorer Proficiency)",
+       "en": "Janthir Unusual Coin vendors — 21 per day (+4 with Janthir Explorer Proficiency)"
+      },
+      "period": "day",
+      "cap": 21,
+      "cost": {
+       "fr": "2 Curious Mursaat Remnants + 2 100 karma la clé ; plafond partagé entre les 4 vendeurs.",
+       "en": "2 Curious Mursaat Remnants + 2,100 karma per key; cap shared across the 4 vendors."
+      },
+      "verified": true,
+      "checked": "2026-11-05",
+      "ref": "ressources/wiki/kodan_cache_key.html, Sold by"
+     }
+    ],
+    "verified": true,
+    "checked": "2026-11-05",
+    "ref": "ressources/wiki/kodan_cache_key.html, Sold by"
+   },
+   "verified": true,
+   "checked": "2026-11-05",
+   "ref": "ressources/wiki/kodan_cache_key.html, Sold by ; ressources/wiki/major_kodan_cache.html ; ressources/wiki/mursaat_ruins_cache.html",
+   "needed_for": [
+    "gift_of_the_mistburned_isles",
+    "gift_of_uncovered_grounds"
+   ],
+   "apiId": 103530
   }
  },
  "enchaînements_recommandés": {

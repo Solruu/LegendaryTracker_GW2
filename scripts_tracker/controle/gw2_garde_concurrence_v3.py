@@ -12,8 +12,8 @@ entiere ecrite sur une base perimee, a refaire.
 
 Ce script se lance DEUX FOIS :
 
-    python3 gw2_garde_concurrence_v2.py            # juste apres le clone
-    python3 gw2_garde_concurrence_v2.py --avant-push   # juste avant de pousser
+    python3 gw2_garde_concurrence_v3.py            # juste apres le clone
+    python3 gw2_garde_concurrence_v3.py --avant-push   # juste avant de pousser
 
 Il ne modifie rien. Il sort en 1 quand il faut s'arreter.
 """
@@ -80,6 +80,14 @@ def main():
         print("rejouer la passe sur la base a jour. Un merge melerait deux")
         print("lignees de versions et laisserait deux fichiers par famille.")
         return 1
+    elif base == distant:
+        # v3 : EN AVANCE. Les commits locaux de la passe precedent la garde
+        # --avant-push, et rien n'est arrive en face : c'est le cas normal d'un
+        # push. La v2 le rangeait en « DIVERGENCE » (merge-base == origin/main
+        # n'etait pas traite) et bloquait a tort.
+        code, out, _ = git("log", "--oneline", "origin/main..HEAD")
+        n = len(out.splitlines())
+        print(f"en avance : {n} commit(s) local(aux), rien de nouveau sur origin/main")
     else:
         print("DIVERGENCE : ce clone et origin/main ont chacun des commits propres.")
         print("Recloner et rejouer la passe. Ne jamais forcer le push.")

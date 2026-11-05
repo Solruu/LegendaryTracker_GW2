@@ -1,6 +1,6 @@
 # Aretes non sourcees
 
-Source : `gw2_sources_v455.json`. **30 aretes** sur 20 parents dont les captures lisent la composition,
+Source : `gw2_sources_v456.json`. **33 aretes** sur 23 parents dont les captures lisent la composition,
 mais qui ne proposent pas cette arete. A lire page en main : seconde recette,
 cout en or, ambiguite de nom, ou arete fausse (le cas du cube et du Gift of
 Research, retire le 04/10).
@@ -19,8 +19,11 @@ Research, retire le 04/10).
 | `concentrated_chromatic_sap` | `karma` | 300000 | chromatic_sap 500 |
 | `gift_of_the_exalted` | `gold_coin` | 1 | lump_of_aurillium 500 |
 | `gift_of_the_itzel` | `gold_coin` | 1 | airship_part 500 |
+| `gift_of_the_mistburned_isles` | `kodan_cache_key` | 358 | gift_of_janthir_wanderlust 1, gift_of_the_mursaat_ruins 1, mursaat_runestone 250, mystic_runestone 250 |
 | `gift_of_the_nuhoch` | `gold_coin` | 1 | ley_line_crystal 500 |
+| `gift_of_uncovered_grounds` | `kodan_cache_key` | 143 | gift_of_janthir_syntri 1, gift_of_lowland_shore 1, gift_of_the_ursus 1, mursaat_runestone 100 |
 | `itzel_spirit_poison` | `gold_coin` | 1 | airship_part 100 |
+| `kodan_cache_key` | `karma` | 2100 | curious_mursaat_currency 2, curious_mursaat_remnants 2, curious_mursaat_ruin_shard 2 |
 | `nyr_hrammr` | `standing_stones_timepiece` | 1 | gift_of_metal 1, gift_of_sharpened_tip 1 |
 | `nyr_hrammr` | `valkyrie_bearkin_war_helm` | 1 | gift_of_metal 1, gift_of_sharpened_tip 1 |
 | `orrax_contained` | `askur_camping_cookout_backpiece` | 1 | binding_of_the_dragon 1, draconic_tribute 1 |

@@ -1795,6 +1795,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `lowland_expertise.html` | Lowland Expertise | article complet | 2026-11-05 |
 | `major_kodan_cache.html` | Major Kodan Cache | article complet | 2026-11-05 |
 | `mursaat_ruins_cache.html` | Mursaat Ruins Cache | article complet | 2026-11-05 |
+| `bava_nisos_commanders_choice_chest.html` | Bava Nisos: Commander's Choice Chest | article complet | 2026-11-05 |
+| `detected_treasure.html` | Detected Treasure | article complet | 2026-11-05 |
+| `locked_mythical_kodan_cache.html` | Locked Mythical Kodan Cache | article complet | 2026-11-05 |
+| `mythical_kodan_cache.html` | Mythical Kodan Cache | article complet | 2026-11-05 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
