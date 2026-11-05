@@ -799,8 +799,9 @@ function compDeLigne(leg, curKey) {
 // - sinon `cible` est le legendaire entier : total = moteur a vierge (set
 //   complet, aucune collection), reste = moteur avec les collections faites
 //   et les pieces d'armure restantes — le meme nombre que la ligne de monnaie.
-// Sans `cible` (chaine du Henge d'Aurora, pages d'Ad Infinitum : une
-// sous-chaine, pas une recette), les `perUnit` restent la donnee.
+// Sans `cible`, les `perUnit` restent la donnee — plus aucun bloc n'est dans
+// ce cas (constat du 05/11) : le Henge d'Aurora et les pages d'Ad Infinitum
+// passent par `cible` + `perimetre` depuis v261/v263.
 function RequirementsBlocks({ requirements, apiAch, currencies, leg, collections, piecesRestantes }) {
   if (!requirements) return null;
   return [].concat(requirements).map((RQ, rqi) => {
@@ -7100,56 +7101,9 @@ export default function GW2LegendaryTracker() {
                               <div style={{ fontSize: 11, fontWeight: 600, color: itemDone ? "rgba(74,222,128,0.6)" : "rgba(226,201,126,0.95)" }}><NomEtape item={item} NX={NX} /></div>
                               {missing && <div style={{ fontSize: 10, color: "rgba(226,201,126,0.45)", fontFamily: "'Crimson Text', serif", lineHeight: 1.5 }}>{NX(item.how)}</div>}
                               {missing && <FieldTip tip={item.how_jsx} NX={NX} />}
-                              {/* Prérequis chiffrés : total + restant selon les étapes déjà validées */}
-                              {missing && item.requirements && (() => {
-                                const RQ = item.requirements;
-                                const sub = achSubStatus ?? {};
-                                const chain = item.chain ?? [];
-                                const doneUnits = chain.reduce((s, st) => s + ((st.achievementId && sub[String(st.achievementId)]?.done) ? (st.units ?? 0) : 0), 0);
-                                const known = chain.some(st => st.achievementId && sub[String(st.achievementId)]);
-                                const total = RQ.unit_total ?? 0;
-                                const left = Math.max(0, total - doneUnits);
-                                const fmt = (v, kind) => kind === "wallet" && v >= 10000 && RQ.lines.find(l => l.kind === "wallet" && l.apiId === 1)
-                                  ? v : v;
-                                const coin = (c) => `${Math.floor(c / 10000)} po`;
-                                return (
-                                  <div style={{ marginTop: 7, padding: "8px 10px", background: "rgba(94,234,212,0.04)", border: "1px solid rgba(94,234,212,0.18)", borderRadius: 6 }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 5 }}>
-                                      <span style={{ fontSize: 10, fontWeight: 600, fontFamily: "'Cinzel', serif", color: "#5eead4" }}>
-                                        {NX({ fr: "📋 Prérequis", en: "📋 Requirements" })}
-                                      </span>
-                                      <span style={{ fontSize: 10, fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.6)" }}>
-                                        {known
-                                          ? NX({ fr: `reste ${left} / ${total} ${NXS(RQ.unit)}`, en: `${left} / ${total} ${NXS(RQ.unit)} left` })
-                                          : NX({ fr: `${total} ${NXS(RQ.unit)} au total`, en: `${total} ${NXS(RQ.unit)} total` })}
-                                      </span>
-                                    </div>
-                                    {(RQ.lines ?? []).map((ln, li) => {
-                                      const isGold = ln.kind === "wallet" && ln.apiId === 1;
-                                      const totalV = (ln.perUnit ?? 0) * total;
-                                      const leftV = (ln.perUnit ?? 0) * left;
-                                      const stock = ln.curKey ? (currencies?.[ln.curKey] ?? null) : ((ln.kind === "wallet" && ln.apiId) ? (gtStocks?.[String(ln.apiId)] ?? null) : null);
-                                      const show = (v) => isGold ? coin(v) : v.toLocaleString("fr-FR");
-                                      const ok = stock != null && stock >= leftV;
-                                      return (
-                                        <div key={li} style={{ padding: "3px 0", borderTop: li ? "1px solid rgba(226,201,126,0.06)" : "none" }}>
-                                          <div style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 11 }}>
-                                            <span style={{ color: "rgba(226,201,126,0.8)" }}>{ln.icon} {NX(ln.label)}</span>
-                                            <span style={{ whiteSpace: "nowrap", fontFamily: "'Crimson Text', serif" }}>
-                                              <span style={{ color: ok ? "#4ade80" : "#5eead4", fontWeight: 600 }}>{show(leftV)}</span>
-                                              {left !== total && <span style={{ color: "rgba(226,201,126,0.3)" }}> / {show(totalV)}</span>}
-                                              {stock != null && <span style={{ color: ok ? "#4ade80" : "rgba(226,201,126,0.45)" }}> · {NX({ fr: "en stock", en: "held" })} {show(stock)}</span>}
-                                            </span>
-                                          </div>
-                                          {ln.detail && <div style={{ fontSize: 9.5, color: "rgba(226,201,126,0.4)", fontFamily: "'Crimson Text', serif", lineHeight: 1.4 }}>{NX(ln.detail)}</div>}
-                                        </div>
-                                      );
-                                    })}
-                                    {RQ.unit_note && <div style={{ marginTop: 5, fontSize: 9.5, color: "rgba(251,146,60,0.7)", fontFamily: "'Crimson Text', serif", lineHeight: 1.45 }}>{NX(RQ.unit_note)}</div>}
-                                    {!known && <div style={{ marginTop: 4, fontSize: 9.5, fontStyle: "italic", color: "rgba(226,201,126,0.35)" }}>{NX({ fr: "Synchronise l'API pour déduire ce qui est déjà fait.", en: "Sync the API to subtract what's already done." })}</div>}
-                                  </div>
-                                );
-                              })()}
+                              {/* v279 : le bloc « Prerequis » par etape (item.requirements, unit_total,
+                                  perUnit) est retire : aucune etape des sources n'en porte (constat du
+                                  05/11), les prerequis passent par RequirementsBlocks et le moteur. */}
 
                               {/* Chaîne de sous-collections détaillée (ex. Wayfarer's Henge) */}
                               {missing && (item.chain ?? []).length > 0 && (

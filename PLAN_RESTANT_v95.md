@@ -1130,8 +1130,12 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       Aucun total ne bouge ; audit 63 -> 43.
 - [x] JSX v277 : la ligne « Reliques exotiques » du bloc Relique
       legendaire lisait un `perUnit: 25` recopie ; elle lit desormais le
-      composant `relic` dans le moteur (25, verifie a l'ecran). Restent en
-      `perUnit` les sous-chaines du Henge d'Aurora et des pages d'Ad Infinitum.
+      composant `relic` dans le moteur (25, verifie a l'ecran). Constat du
+      05/11 : le Henge d'Aurora et les pages d'Ad Infinitum passent deja par
+      `cible` + `perimetre` (v261/v263) — plus aucun `perUnit` dans les donnees.
+- [x] JSX v279 : bloc « Prerequis » par etape (`item.requirements`,
+      `unit_total`) supprime — code mort, aucune etape des sources n'en porte.
+      Balayage Collections + Composants des 14 legendaires (EN, FR) : 0 erreur.
 - Restent 40 avertissements « payante sans plafond chiffre » (cadence
   d'achat inconnue) et 3 « lecture colonne 3 » sur les infusions d'agonie
   (voie vendeur 4 x palier inferieur, lue sur les pages et tranchee le 04/11 :
