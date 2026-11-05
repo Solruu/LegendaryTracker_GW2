@@ -1,6 +1,6 @@
 # Relecture des recettes, légendaire par légendaire
 
-Source : `gw2_sources_v445.json` — généré par `gw2_relecture_recettes_v7.py`.
+Source : `gw2_sources_v446.json` — généré par `gw2_relecture_recettes_v7.py`.
 L'outil descend depuis chaque légendaire et compare, à chaque nœud, les
 enfants déclarés à la recette lue sur sa capture. Appariement par apiId
 d'abord (591 composants sur 601 en portent un), par nom en dernier recours,
@@ -11,28 +11,23 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 | défaut | ce que ça veut dire | ce que ça coûte | nombre |
 |---|---|---|---:|
-| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 2 |
-| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 2 |
+| MANQUANT | la recette cite un ingrédient absent de l'arbre | le coût n'existe nulle part | 4 |
+| NON_RELIÉ | l'ingrédient existe mais aucune arête `qty` ne le rattache | le coût existe et ne remonte pas — le plus sournois | 0 |
 | EN_TROP | enfant déclaré hors recette | souvent légitime (voie alternative, coût d'acquisition) | 5 |
 | AILLEURS | l'ingrédient est rattaché à un autre nœud du même légendaire | le total est probablement juste, la forme ne suit pas la recette | 0 |
-| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 126 |
+| PALIER SUIVANT | la recette d'une feuille cite un ingrédient absent | le palier d'en dessous, à créer si on veut descendre | 132 |
 | NON_DÉCOMPOSÉ | recette lue, aucun enfant | décision de modélisation à revoir, pas un bug | 95 |
 
 Écartés sans être comptés : 27 options d'`alt_groups` — un choix, pas un oubli.
 
-## Ingrédients qu'aucun composant ne représente — 2
+## Ingrédients qu'aucun composant ne représente — 4
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
 | `certificate_of_heroics` | `Testimony_of_Jade_Heroics` | 250 | `certificate_of_heroics` | — | `conflux`, `triumphant_hero` |
 | `essence_of_animosity` | `Testimony_of_Jade_Heroics` | 500 | `essence_of_animosity` | — | `conflux`, `warbringer` |
-
-## Ingrédients présents dans l'arbre mais non rattachés au parent — 2
-
-| nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
-|---|---|---:|---|---|---|
-| `gift_of_compassion` | `Legendary_Insight_(consumable)` | 150 | `gift_of_compassion` | apiId | `coalescence` |
-| `gift_of_prowess` | `Legendary_Insight_(consumable)` | 25 | `gift_of_prowess` | apiId | `perfected_envoy` |
+| `gift_of_compassion` | `Legendary_Insight_(consumable)` | 150 | `gift_of_compassion` | — | `coalescence` |
+| `gift_of_prowess` | `Legendary_Insight_(consumable)` | 25 | `gift_of_prowess` | — | `perfected_envoy` |
 
 ## Enfants déclarés que la recette ne cite pas — 5
 
@@ -44,7 +39,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `gift_of_compassion` | `legendary_insight` | 150 | `gift_of_compassion` | direct | `coalescence` |
 | `gift_of_prowess` | `legendary_insight` | 25 | `gift_of_prowess` | direct | `perfected_envoy` |
 
-## Ingrédients absents, cités par la recette d'une feuille — 126
+## Ingrédients absents, cités par la recette d'une feuille — 132
 
 | nœud | ingrédient / enfant | qté | lu sur | appariement | réclamé par |
 |---|---|---:|---|---|---|
@@ -65,8 +60,11 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `cured_coarse_leather_square` | `Coarse_Leather_Section` |  | `cured_coarse_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
 | `cured_rugged_leather_square` | `Rugged_Leather_Section` |  | `cured_rugged_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
 | `cured_thin_leather_square` | `Thin_Leather_Section` |  | `cured_thin_leather_square` | sous une feuille | `ad_infinitum`, `gen2_claw_of_the_khan_ur`, `gen2_eureka` … (+12) |
+| `symbol_of_control` | `Symbol_(ingredient)` |  | `symbol_of_control` | sous une feuille | `gen1_frostfang`, `gen1_kudzu`, `gen1_quip` … (+7) |
 | `hardened_leather_section` | `Thick_Leather_Section` |  | `hardened_leather_section` | sous une feuille | `endless_summer`, `gen1_howler`, `gen1_kraitkin` … (+6) |
+| `symbol_of_enhancement` | `Symbol_(ingredient)` |  | `symbol_of_enhancement` | sous une feuille | `gen1_frenzy`, `gen1_howler`, `gen1_kraitkin` … (+4) |
 | `onyx_lodestone` | `Onyx_Core` |  | `onyx_lodestone` | sous une feuille | `gen1_sunrise`, `gen1_the_flameseeker_prophecies`, `gen1_the_predator` … (+2) |
+| `symbol_of_pain` | `Symbol_(ingredient)` |  | `symbol_of_pain` | sous une feuille | `gen1_bolt`, `gen1_incinerator`, `gen1_meteorlogicus` … (+2) |
 | `charged_lodestone` | `Charged_Core` |  | `charged_lodestone` | sous une feuille | `endless_summer`, `gen1_bolt`, `gen1_meteorlogicus` … (+1) |
 | `gift_of_maguuma` | `Gift_of_Tarir` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
 | `gift_of_maguuma` | `Gift_of_the_Chak` |  | `gift_of_maguuma` | sous une feuille | `gen2_astralaria`, `gen2_chuka_and_champawat`, `gen2_hope` … (+1) |
@@ -86,6 +84,9 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `chaos_gun` | `Essence_of_Mischief` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
 | `chaos_gun` | `Ornate_Pistol_Frame` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
 | `chaos_gun` | `Spirit_of_the_Perfected_Pistol` |  | `chaos_gun` | sous une feuille | `gen1_quip` |
+| `charm_of_brilliance` | `Charm_(ingredient)` |  | `charm_of_brilliance` | sous une feuille | `legendary_rune` |
+| `charm_of_potence` | `Charm_(ingredient)` |  | `charm_of_potence` | sous une feuille | `legendary_rune` |
+| `charm_of_skill` | `Charm_(ingredient)` |  | `charm_of_skill` | sous une feuille | `legendary_rune` |
 | `coral_orb` | `Coral_Tentacle` |  | `coral_orb` | sous une feuille | `endless_summer` |
 | `dawn` | `Dimensional_Destabilizer` |  | `dawn` | sous une feuille | `gen1_sunrise` |
 | `dawn` | `Essence_of_Illumination` |  | `dawn` | sous une feuille | `gen1_sunrise` |
@@ -275,7 +276,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 | `vial_of_condensed_mists_essence` | `4 ingrédients` |  | `vial_of_condensed_mists_essence` | feuille assumée | `ad_infinitum` |
 | `zap` | `4 ingrédients` |  | `zap` | feuille assumée | `gen1_bolt` |
 
-## Palier suivant — 123 ingrédients, et qui les réclame
+## Palier suivant — 125 ingrédients, et qui les réclame
 
 - `Aerator` — réclamé par `rage_weapon`
 - `Bone_Shard` — réclamé par `bone`
@@ -283,6 +284,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Carved_Beam` — réclamé par `the_legend`
 - `Carved_Tear_Drop` — réclamé par `the_legend`
 - `Charged_Core` — réclamé par `charged_lodestone`
+- `Charm_(ingredient)` — réclamé par `charm_of_brilliance`, `charm_of_potence`, `charm_of_skill`
 - `Coarse_Leather_Section` — réclamé par `cured_coarse_leather_square`
 - `Colossus_Statue` — réclamé par `the_colossus`
 - `Confetti_Bullets` — réclamé par `chaos_gun`
@@ -394,6 +396,7 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 - `Spirit_of_the_Perfected_Warhorn` — réclamé par `howl`
 - `Spirit_of_the_Ravenswood_Staff` — réclamé par `the_raven_staff`
 - `Spirit_of_the_Tiger` — réclamé par `tigris`
+- `Symbol_(ingredient)` — réclamé par `symbol_of_control`, `symbol_of_enhancement`, `symbol_of_pain`
 - `Thick_Leather_Section` — réclamé par `cured_thick_leather_square`, `hardened_leather_section`
 - `Thin_Leather_Section` — réclamé par `cured_thin_leather_square`
 - `Tome_of_Heroes` — réclamé par `the_chosen`
@@ -403,5 +406,6 @@ rencontrent : un composant est une unité de craft, pas une ligne par cible.
 
 ## Ingrédients à créer, et qui les réclame
 
+- `Legendary_Insight_(consumable)` — réclamé par `gift_of_compassion`, `gift_of_prowess`
 - `Testimony_of_Jade_Heroics` — réclamé par `certificate_of_heroics`, `essence_of_animosity`
 

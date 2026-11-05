@@ -22863,12 +22863,10 @@
    "name": "Philosopher's Stone",
    "kind": "currency",
    "needed_for": [
-    "gen1_eternity",
-    "charm_ingredient"
+    "gen1_eternity"
    ],
    "qty": {
-    "gen1_eternity": 10,
-    "charm_ingredient": 1
+    "gen1_eternity": 10
    },
    "sources": [
     {
@@ -28426,30 +28424,6 @@
    },
    "best": "achievement_collection"
   },
-  "legendary_insight_consumable": {
-   "name": "Legendary Insight (consumable)",
-   "apiId": 77302,
-   "kind": "acquire",
-   "needed_for": [],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "conversion",
-     "verified": true,
-     "checked": "2026-11-04",
-     "ref": "ressources/wiki/legendary_insight_consumable.html (« discontinued », « Double-click to add to wallet »)",
-     "tip": {
-      "fr": "Objet retiré du jeu : un double-clic le convertit en Legendary Insight du portefeuille, 1 pour 1. Les recettes se comptent en monnaie.",
-      "en": "Discontinued item: double-click converts it to wallet Legendary Insight, 1 for 1. Recipes are counted in the currency."
-     }
-    }
-   ],
-   "qty": {},
-   "note": {
-    "fr": "Ne se compte plus : la monnaie `legendary_insight` porte le coût des dons (04/11).",
-    "en": "No longer counted: the `legendary_insight` currency carries the gifts' cost (04/11)."
-   }
-  },
   "liturgy": {
    "name": "Liturgy",
    "apiId": 81022,
@@ -31597,25 +31571,6 @@
    "verified": true,
    "checked": "2026-10-14"
   },
-  "charm_ingredient": {
-   "name": "Charm (ingredient)",
-   "kind": "acquire",
-   "needed_for": [],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "craft",
-     "verified": true,
-     "checked": "2026-11-03",
-     "ref": "ressources/wiki/charm_ingredient.html, Recipe",
-     "tip": {
-      "fr": "Recette — : 1 Philosopher's Stone.",
-      "en": "Recipe — : 1 Philosopher's Stone."
-     }
-    }
-   ],
-   "qty": {}
-  },
   "chrysocola_shard": {
    "name": "Chrysocola Shard",
    "apiId": 24870,
@@ -32871,25 +32826,6 @@
     "bowl_of_bakers_wet_ingredients": 1
    },
    "best": "chest"
-  },
-  "symbol_ingredient": {
-   "name": "Symbol (ingredient)",
-   "kind": "acquire",
-   "needed_for": [],
-   "farmable": true,
-   "sources": [
-    {
-     "type": "acquire",
-     "tip": {
-      "fr": "Page de désambiguïsation, aucun objet : désigne l'un des trois symboles. Plus aucun consommateur (v441).",
-      "en": "Disambiguation page, no item: stands for any of the three symbols. No consumer left (v441)."
-     },
-     "verified": true,
-     "checked": "2026-11-05",
-     "ref": "ressources/wiki/symbol_ingredient.html"
-    }
-   ],
-   "qty": {}
   },
   "visionary_inscription": {
    "name": "Visionary Inscription",

@@ -1108,10 +1108,13 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       fantomes -600 pierres ; 20 armes gen1 -1 a -3 pierres et -3 a -9
       symboles fantomes. `symbol_ingredient` / `charm_ingredient` restent sans
       consommateur : suppression a valider par Antoine.
-- [ ] Suite : RELECTURE sort 2 NON_RELIE (la recette du wiki cite encore le
-      consommable). Le resolveur apparie par apiId de page avant
-      `wiki_redirects` : supprimer `legendary_insight_consumable` (plus aucun
-      consommateur) fermerait le cas — suppression, a valider par Antoine.
+- [x] Suite : suppressions validees par Antoine le 05/11 (sources v446,
+      `gw2_suppressions_orphelins_v1`) : `legendary_insight_consumable`,
+      `symbol_ingredient`, `charm_ingredient` (+ arete restante
+      philosophers_stone -> charm_ingredient). CONFRONTATION 2 -> 0 ecart,
+      RELECTURE NON_RELIE 2 -> 0, aucun total ne bouge.
+- Regle du 05/11 (Antoine) : suppressions et ajustements de contenu
+  pre-approuves, a condition d'etre traces explicitement (commit + plan).
 
 ### C22 — Passe du 05/11 · W+C — en cours
 - [x] Pistes renouvelables (sources v445, `gw2_pistes_renouvelables_v1`) :
