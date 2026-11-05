@@ -262,7 +262,7 @@ v390, JSX v251, ref `_meta.map_names_fr_ref`), 63 cartes lues sur
       Etaient faux : `de2` et `gy`
       ([&BNMMAAA=] = id 3283, absent de leurs cartes), `in` (code d'Amnytas),
       `nk` ([&BNQMAAA=] = Qinkai, Echovald), `eb` (Savage Rise, Mont Draconis).
-- [ ] (historique) codes de point de passage : Seitung Province (`sp`), Dragon's End (`de2`),
+- [x] (historique, constate regle le 05/11 : COHERENCE v6 sans constat W) codes de point de passage : Seitung Province (`sp`), Dragon's End (`de2`),
       Gyala Delve (`gy`) — tous trois `[&BNMMAAA=]` ; Amnytas (`am`) et Inner
       Nayos (`in`) — tous deux `[&BDQOAAA=]` ; Echovald (`ew`) ; Zakiros (`zak`)
 - [x] Inner Nayos = Secrets of the Obscure (confirme par Antoine le 09/10)

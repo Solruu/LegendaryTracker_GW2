@@ -1,4 +1,4 @@
-> **Plan du restant** : `PLAN_RESTANT_v100.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v101.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 
@@ -24,18 +24,13 @@ porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a 
 
 ## 12 nonies. Restes de la fusion du catalogue (03/10/2026)
 
-- `ew.wpCode` : JSX `[&BLsNAAA=]` (garde) contre sources `[&BNMMAAA=]` — ce
-  dernier est le code de Gyala Delve, indice de copie. A verifier en jeu.
-- `zak` : point de passage `Forward Bivouac` `[&BHYOAAA=]` (garde) contre
-  `Citadel of Zakiros Waypoint` `[&BHMMAAA=]`. A verifier en jeu.
-- Depliage LW par episode : aucune capture ne liste les episodes.
-- ✅ `dm` (05/11, sources v449, `gw2_dm_petrified_v1`) : petrified_wood.html ne cite
-  qu'Ember Bay ; le Petrified Wood est retire du conseil de Draconis Mons.
-- `eb.vendorWp` retire : « Savage Rise » est une zone de Draconis Mons. Le bon
-  point de passage d'Ember Bay reste a poser.
-- ✅ `bf_meta` (constat du 05/11) : deja tranche dans les sources — « Beacons of
-  Koda », meta de carte de Bitterfrost Frontier (LW3), sans horaire fixe (cycle
-  jour-nuit), verifiee le 09/10 sur bitterfrost_frontier.html. Le Frozen Maw n'y
-  figure plus ; seul l'ancien rapport METAS_RESSOURCES_v2 garde ce libelle.
-- Codes de point de passage partages (COHERENCE_CONSEILS_METAS, regle W) :
-  `[&BNMMAAA=]` sur sp / de2 / gy, `[&BDQOAAA=]` sur am / in. A relever en jeu.
+Constat du 05/11 (sources v453, COHERENCE_CONSEILS_METAS_v6) : les points de
+passage `ew` (Junkyard), `zak` (Forward Bivouac), `eb` (Promontory) et les codes
+partages sp / de2 / gy / am / in sont regles depuis les releves du 12/10 — plus
+aucun constat W. `dm` et `bf_meta` regles (voir plan v100).
+
+- Depliage LW par episode : aucune capture ne liste les episodes ; l'acces reste
+  declare par saison. Ouvert, faible valeur.
+- COHERENCE_CONSEILS_METAS_v6 : 3 constats R sur Ad Infinitum (`adinf_dailies`
+  nomme le Fractal Journal, `adinf_kelvei` les dos Finite Result / Upper Bound) —
+  conseils d'etape, pas des recompenses de meta : faux positifs du detecteur.
