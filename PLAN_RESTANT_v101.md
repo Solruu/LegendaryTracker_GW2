@@ -589,7 +589,7 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
       - ✅ 20/10 confronte v8 : recette sous une voie retenue hors fabrication
         = alternative (meme regle qu'arbitrages) ; les 9 ecarts d'Ad Infinitum
         apparus en v418 (recettes des infusions impaires) tombent a 0.
-      - [ ] armes gen1 / gen2 — DECIDE le 20/10 : par les collections, toujours.
+      - [x] armes gen1 / gen2 — DECIDE le 20/10 : par les collections, toujours.
         Lot W10 recu le 20/10 (un zip) : scholar_mossi.html,
         grandmaster_craftsman_hobbs.html, ressources/api/
         api_collections_armes_20261020.json (bits des 102 collections,
@@ -615,7 +615,8 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
           (ressources/api/comptoir_armes_20261024.json).
           confronte_totaux v12 : la table d'arme s'arrete au precurseur,
           comparee au total precurseur fait (941 accords, 0 excedent nu).
-        - [ ] reste (wiki de retour) : 78 echanges aux maitres artisans
+        - [x] reste (constat du 05/11 : 74 Requisitions / Art of chiffrees le
+          03/11, 0 source « unknown », file de captures vide) : 78 echanges aux maitres artisans
           (Requisitions, Art of ...), achats gen2 aupres d'autres PNJ, 46
           composants crees sans recette (voie a lire : sources « unknown »
           portant la description du jeu), 113 pages en file.
