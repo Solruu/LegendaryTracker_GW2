@@ -1210,7 +1210,8 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       repere Palace of Aban (l'ancien code pointait Sandbound Towers, Elon
       Riverlands). Mistlock Observatory : zone d'instance sans point d'interet
       dans l'API, mention gardee sans code. `ds` : « Mordremoth's Bane
-      Waypoint » introuvable, sans code (a relever en jeu). `de` : le code
+      Waypoint » introuvable -> Northern Forward Camp Waypoint (2130), releve
+      par Antoine le 09/11 (`gw2_points_passage_metas_v5`, sources v461). `de` : le code
       pointe un panorama de la Desolation, garde.
 - [x] Verification des 61 collections retrouvees par leur nom (sources v460,
       `gw2_verif_etapes_par_nom_v1`) : confrontation case par case, 621

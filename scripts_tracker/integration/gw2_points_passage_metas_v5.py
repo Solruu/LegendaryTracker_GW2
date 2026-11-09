@@ -2,7 +2,12 @@
 # -*- coding: utf-8 -*-
 """Codes de chat des metas confrontes a l'API (09/11).
 
-Usage : python3 scripts_tracker/integration/gw2_points_passage_metas_v4.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_points_passage_metas_v5.py SRC DST
+
+v5 (09/11) : `ds` — Antoine, en jeu : la carte se reinitialise a chaque meta
+et tout le monde est teleporte au meme endroit, le Northern Forward Camp
+Waypoint (2130, Dragon's Stand, present dans l'API). Remplace le nom
+« Mordremoth's Bane Waypoint », inexistant.
 
 v4 (09/11, retour d'Antoine) : faute de point de passage, le code d'un POINT
 D'INTERET convient (il pointe la zone sur la carte, l'acces se choisit a la
@@ -50,12 +55,15 @@ me = d["meta_events"]
 for k, poi in (("ab", 1990), ("co", 2747), ("er", 2643), ("dm", 2509), ("dv", 2797), ("lw4_dragonfall", 3038)):
     assert API[str(poi)] == me[k]["waypoint"], (k, API[str(poi)], me[k]["waypoint"])
     me[k]["wpCode"] = code(poi)
-for k in ("ds", "adinf_dailies", "adinf_cms", "adinf_kelvei"):
+for k in ("adinf_dailies", "adinf_cms", "adinf_kelvei"):
     me[k].pop("wpCode", None)
+assert API["2130"] == "Northern Forward Camp Waypoint"
+me["ds"]["waypoint"] = "Northern Forward Camp Waypoint"
+me["ds"]["wpCode"] = code(2130)
 # point d'interet faute de point de passage (lu dans /v2/continents le 09/11)
 assert me["ld"]["waypoint"] in ("Noran's Homestead Waypoint", "Noran's Homestead (point d'intérêt)")
 me["ld"]["waypoint"] = "Noran's Homestead (point d'intérêt)"
 me["ld"]["wpCode"] = code(2475)
 out = json.dumps(d, ensure_ascii=False, indent=1)
 DST.write_text(out + ("\n" if raw.endswith("\n") else ""), encoding="utf-8")
-print("metas : 6 codes corriges, 4 supprimes, 1 point d'interet")
+print("metas : 7 codes corriges, 3 supprimes, 1 point d'interet")
