@@ -1799,6 +1799,212 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `detected_treasure.html` | Detected Treasure | article complet | 2026-11-05 |
 | `locked_mythical_kodan_cache.html` | Locked Mythical Kodan Cache | article complet | 2026-11-05 |
 | `mythical_kodan_cache.html` | Mythical Kodan Cache | article complet | 2026-11-05 |
+| `a_bouquet_for_rosewood.html` | A Bouquet for Rosewood | article complet | 2026-11-09 |
+| `ancient_hollow_propagation.html` | Ancient Hollow Propagation | article complet | 2026-11-09 |
+| `ancient_orrian_urn.html` | Ancient Orrian Urn | article complet | 2026-11-09 |
+| `ancient_spring_water_sample.html` | Ancient Spring Water Sample | article complet | 2026-11-09 |
+| `arctic_jellyfish_stinger.html` | Arctic Jellyfish Stinger | article complet | 2026-11-09 |
+| `azabe_qabar_gravestone_rubbing.html` | Azabe Qabar Gravestone Rubbing | article complet | 2026-11-09 |
+| `beautiful_black_crocus.html` | Beautiful Black Crocus | article complet | 2026-11-09 |
+| `bioluminescent_wreckage_sample.html` | Bioluminescent Wreckage Sample | article complet | 2026-11-09 |
+| `blazeridge_defender.html` | Blazeridge Defender | article complet | 2026-11-09 |
+| `bloody_bills_plunge.html` | Bloody Bill's Plunge | article complet | 2026-11-09 |
+| `blue_ice_shavings.html` | Blue Ice Shavings | article complet | 2026-11-09 |
+| `bottle_of_anguish_empty.html` | Bottle of Anguish (Empty) | article complet | 2026-11-09 |
+| `bottle_of_anguish_filled.html` | Bottle of Anguish (Filled) | article complet | 2026-11-09 |
+| `bottle_of_contempt_empty.html` | Bottle of Contempt (Empty) | article complet | 2026-11-09 |
+| `bottle_of_contempt_filled.html` | Bottle of Contempt (Filled) | article complet | 2026-11-09 |
+| `bottle_of_excitement_empty.html` | Bottle of Excitement (Empty) | article complet | 2026-11-09 |
+| `bottle_of_fear_empty.html` | Bottle of Fear (Empty) | article complet | 2026-11-09 |
+| `bottle_of_inquest_energy.html` | Bottle of Inquest Energy | article complet | 2026-11-09 |
+| `bottle_of_joy_empty.html` | Bottle of Joy (Empty) | article complet | 2026-11-09 |
+| `bottle_of_joy_filled.html` | Bottle of Joy (Filled) | article complet | 2026-11-09 |
+| `bottle_of_rage_empty.html` | Bottle of Rage (Empty) | article complet | 2026-11-09 |
+| `bottle_of_rage_filled.html` | Bottle of Rage (Filled) | article complet | 2026-11-09 |
+| `bottle_of_shame_empty.html` | Bottle of Shame (Empty) | article complet | 2026-11-09 |
+| `bottle_of_shame_filled.html` | Bottle of Shame (Filled) | article complet | 2026-11-09 |
+| `bottle_of_zephyrite_lightning.html` | Bottle of Zephyrite Lightning | article complet | 2026-11-09 |
+| `bramble_pass_water_sample.html` | Bramble Pass Water Sample | article complet | 2026-11-09 |
+| `bring_the_ancient_svanir_relic_to_rest.html` | Bring the Ancient Svanir Relic to Rest | article complet | 2026-11-09 |
+| `burn_a_fireheart_rise_black_bear.html` | Burn a Fireheart Rise Black Bear | article complet | 2026-11-09 |
+| `burn_a_fireheart_rise_marmox.html` | Burn a Fireheart Rise Marmox | article complet | 2026-11-09 |
+| `burn_a_fireheart_rise_moose.html` | Burn a Fireheart Rise Moose | article complet | 2026-11-09 |
+| `burn_a_fireheart_rise_oakheart.html` | Burn a Fireheart Rise Oakheart | article complet | 2026-11-09 |
+| `burn_a_fireheart_rise_tar_elemental.html` | Burn a Fireheart Rise Tar Elemental | article complet | 2026-11-09 |
+| `burn_a_frostgorge_alpine_stalker.html` | Burn a Frostgorge Alpine Stalker | article complet | 2026-11-09 |
+| `burn_a_frostgorge_arctodus.html` | Burn a Frostgorge Arctodus | article complet | 2026-11-09 |
+| `burn_a_frostgorge_eagle_griffon.html` | Burn a Frostgorge Eagle Griffon | article complet | 2026-11-09 |
+| `burn_a_frostgorge_longhorn.html` | Burn a Frostgorge Longhorn | article complet | 2026-11-09 |
+| `burn_a_harathi_hinterlands_bear.html` | Burn a Harathi Hinterlands Bear | article complet | 2026-11-09 |
+| `burn_a_harathi_hinterlands_eagle_griffon.html` | Burn a Harathi Hinterlands Eagle Griffon | article complet | 2026-11-09 |
+| `burn_a_harathi_hinterlands_freshwater_crab.html` | Burn a Harathi Hinterlands Freshwater Crab | article complet | 2026-11-09 |
+| `burn_a_harathi_hinterlands_longhorn.html` | Burn a Harathi Hinterlands Longhorn | article complet | 2026-11-09 |
+| `burn_a_mount_maelstrom_firefly.html` | Burn a Mount Maelstrom Firefly | article complet | 2026-11-09 |
+| `burn_a_mount_maelstrom_jungle_spider.html` | Burn a Mount Maelstrom Jungle Spider | article complet | 2026-11-09 |
+| `burn_a_mount_maelstrom_mossheart.html` | Burn a Mount Maelstrom Mossheart | article complet | 2026-11-09 |
+| `burrissons_ditty.html` | Burrisson's Ditty | article complet | 2026-11-09 |
+| `cereboth_falls_water_sample.html` | Cereboth Falls Water Sample | article complet | 2026-11-09 |
+| `cereboths_darkness.html` | Cereboth's Darkness | article complet | 2026-11-09 |
+| `cleansing_light.html` | Cleansing Light | article complet | 2026-11-09 |
+| `clear_the_temple.html` | Clear the Temple | article complet | 2026-11-09 |
+| `combustive_substance.html` | Combustive Substance | article complet | 2026-11-09 |
+| `convergence_trophy.html` | Convergence (trophy) | article complet | 2026-11-09 |
+| `corpse_burning.html` | Corpse Burning | article complet | 2026-11-09 |
+| `deadly_nightshade.html` | Deadly Nightshade | article complet | 2026-11-09 |
+| `deer_pelt.html` | Deer Pelt | article complet | 2026-11-09 |
+| `desert_oasis_sample.html` | Desert Oasis Sample | article complet | 2026-11-09 |
+| `destroyer_light.html` | Destroyer Light | article complet | 2026-11-09 |
+| `dreamy_water_sample.html` | Dreamy Water Sample | article complet | 2026-11-09 |
+| `dwarven_pottery_shard.html` | Dwarven Pottery Shard | article complet | 2026-11-09 |
+| `eirs_advice.html` | Eir's Advice | article complet | 2026-11-09 |
+| `fellmyst_falls_water_sample.html` | Fellmyst Falls Water Sample | article complet | 2026-11-09 |
+| `field_notes_on_wrecked_memorials.html` | Field Notes on Wrecked Memorials | article complet | 2026-11-09 |
+| `filtered_honey.html` | Filtered Honey | article complet | 2026-11-09 |
+| `fireheart_living_ice.html` | Fireheart Living Ice | article complet | 2026-11-09 |
+| `fishers_beach_bend_animus.html` | Fisher's Beach Bend Animus | article complet | 2026-11-09 |
+| `flame_effigy_embers.html` | Flame Effigy Embers | article complet | 2026-11-09 |
+| `flight_lessons_out_of_the_tree.html` | Flight Lessons: Out of the Tree | article complet | 2026-11-09 |
+| `flooded_castavall_animus.html` | Flooded Castavall Animus | article complet | 2026-11-09 |
+| `forgotten_treatment.html` | Forgotten Treatment | article complet | 2026-11-09 |
+| `frostgate_falls_ice_shavings.html` | Frostgate Falls Ice Shavings | article complet | 2026-11-09 |
+| `frostgorge_living_ice.html` | Frostgorge Living Ice | article complet | 2026-11-09 |
+| `garden_protector.html` | Garden Protector | article complet | 2026-11-09 |
+| `gendarran_living_ice.html` | Gendarran Living Ice | article complet | 2026-11-09 |
+| `ghostly_light.html` | Ghostly Light | article complet | 2026-11-09 |
+| `ghostly_spite.html` | Ghostly Spite | article complet | 2026-11-09 |
+| `gilded_shipwreck_souvenir.html` | Gilded Shipwreck Souvenir | article complet | 2026-11-09 |
+| `glacial_light.html` | Glacial Light | article complet | 2026-11-09 |
+| `golden_orrian_light.html` | Golden Orrian Light | article complet | 2026-11-09 |
+| `guiding_light.html` | Guiding Light | article complet | 2026-11-09 |
+| `heimdahls_stand_runestone_rubbing.html` | Heimdahl's Stand Runestone Rubbing | article complet | 2026-11-09 |
+| `hinterlands_liberator.html` | Hinterlands Liberator | article complet | 2026-11-09 |
+| `hope_falls_water_sample.html` | Hope Falls Water Sample | article complet | 2026-11-09 |
+| `hope_for_tomorrow.html` | "Hope for Tomorrow" | article complet | 2026-11-09 |
+| `hylek_artistic_perspective.html` | Hylek Artistic Perspective | article complet | 2026-11-09 |
+| `ice_elemental_residue.html` | Ice Elemental Residue | article complet | 2026-11-09 |
+| `icy_light.html` | Icy Light | article complet | 2026-11-09 |
+| `icy_shark_tooth.html` | Icy Shark Tooth | article complet | 2026-11-09 |
+| `infused_soul_mirror.html` | Infused Soul Mirror | article complet | 2026-11-09 |
+| `intricately_carved_orrian_relic.html` | Intricately Carved Orrian Relic | article complet | 2026-11-09 |
+| `invitation.html` | Invitation | article complet | 2026-11-09 |
+| `ironshells_shell_fragment.html` | Ironshell's Shell Fragment | article complet | 2026-11-09 |
+| `irradiated_water_sample.html` | Irradiated Water Sample | article complet | 2026-11-09 |
+| `itlaocols_gloom.html` | Itlaocol's Gloom | article complet | 2026-11-09 |
+| `jeztar_glow.html` | Jeztar Glow | article complet | 2026-11-09 |
+| `kandiens_thoughts.html` | Kandien's Thoughts | article complet | 2026-11-09 |
+| `kneel_before_fen.html` | Kneel before Fen | article complet | 2026-11-09 |
+| `kneel_before_the_legendary_sand_giant.html` | Kneel before the Legendary Sand Giant | article complet | 2026-11-09 |
+| `kneel_before_the_mighty_kol.html` | Kneel before the Mighty Kol | article complet | 2026-11-09 |
+| `kneel_before_the_nageling_giant.html` | Kneel before the Nageling Giant | article complet | 2026-11-09 |
+| `kneel_before_tomtom.html` | Kneel before Tomtom | article complet | 2026-11-09 |
+| `lava_boiled_water_sample.html` | Lava-Boiled Water Sample | article complet | 2026-11-09 |
+| `laying_the_star_to_rest.html` | Laying the Star to Rest | article complet | 2026-11-09 |
+| `lornars_living_ice.html` | Lornar's Living Ice | article complet | 2026-11-09 |
+| `love_driven_to_madness.html` | Love Driven to Madness | article complet | 2026-11-09 |
+| `luscious_kelp.html` | Luscious Kelp | article complet | 2026-11-09 |
+| `maguumas_orchard.html` | Maguuma's Orchard | article complet | 2026-11-09 |
+| `mamnoon_aloe.html` | Mamnoon Aloe | article complet | 2026-11-09 |
+| `mausollus_performance.html` | Mausollus Performance | article complet | 2026-11-09 |
+| `mausollus_plunge.html` | Mausollus Plunge | article complet | 2026-11-09 |
+| `meditation_log_completed_log.html` | Meditation Log: Completed Log | article complet | 2026-11-09 |
+| `meditation_log_crystal_oasis.html` | Meditation Log: Crystal Oasis | article complet | 2026-11-09 |
+| `meditation_log_desert_highlands.html` | Meditation Log: Desert Highlands | article complet | 2026-11-09 |
+| `meditation_log_domain_of_vabbi.html` | Meditation Log: Domain of Vabbi | article complet | 2026-11-09 |
+| `meditation_log_the_desolation.html` | Meditation Log: The Desolation | article complet | 2026-11-09 |
+| `melandrus_orchard.html` | Melandru's Orchard | article complet | 2026-11-09 |
+| `memorial_for_a_laborer.html` | Memorial for a Laborer | article complet | 2026-11-09 |
+| `memorial_for_a_wife_and_son.html` | Memorial for a Wife and Son | article complet | 2026-11-09 |
+| `mineral_treatment.html` | Mineral Treatment | article complet | 2026-11-09 |
+| `misty_glow.html` | Misty Glow | article complet | 2026-11-09 |
+| `nakis_and_zohaqans_tree.html` | Nakis and Zohaqan's Tree | article complet | 2026-11-09 |
+| `natural_protector.html` | Natural Protector | article complet | 2026-11-09 |
+| `nu_ii_propagation.html` | Nu II Propagation | article complet | 2026-11-09 |
+| `oasis_protector.html` | Oasis Protector | article complet | 2026-11-09 |
+| `old_stonehoofs_stone_hoof.html` | Old Stonehoof's Stone Hoof | article complet | 2026-11-09 |
+| `olmakhan_songbook.html` | Olmakhan Songbook | article complet | 2026-11-09 |
+| `orvars_spring_water_sample.html` | Orvar's Spring Water Sample | article complet | 2026-11-09 |
+| `owls_respect.html` | Owl's Respect | article complet | 2026-11-09 |
+| `penzans_lost_treasure.html` | Penzan's Lost Treasure | article complet | 2026-11-09 |
+| `pig_hide.html` | Pig Hide | article complet | 2026-11-09 |
+| `pirates_darkness.html` | Pirates Darkness | article complet | 2026-11-09 |
+| `pixxs_insight.html` | Pixx's Insight | article complet | 2026-11-09 |
+| `ponder_boles_deathrain.html` | Ponder Boles Deathrain | article complet | 2026-11-09 |
+| `ponder_ferro_the_butcher.html` | Ponder Ferro the Butcher | article complet | 2026-11-09 |
+| `ponder_jora.html` | Ponder Jora | article complet | 2026-11-09 |
+| `ponder_kalla_scorchrazor.html` | Ponder Kalla Scorchrazor | article complet | 2026-11-09 |
+| `ponder_lord_beetlestone.html` | Ponder Lord Beetlestone | article complet | 2026-11-09 |
+| `ponder_nox_darkheart.html` | Ponder Nox Darkheart | article complet | 2026-11-09 |
+| `ponder_ofela_soulcleave.html` | Ponder Ofela Soulcleave | article complet | 2026-11-09 |
+| `ponder_serenity_temple.html` | Ponder Serenity Temple | article complet | 2026-11-09 |
+| `ponder_stonewrights_steading.html` | Ponder Stonewright's Steading | article complet | 2026-11-09 |
+| `ponder_the_cleansed_balthazar_temple.html` | Ponder the Cleansed Balthazar Temple | article complet | 2026-11-09 |
+| `ponder_the_cleansed_dwayna_temple.html` | Ponder the Cleansed Dwayna Temple | article complet | 2026-11-09 |
+| `ponder_the_cleansed_grenth_temple.html` | Ponder the Cleansed Grenth Temple | article complet | 2026-11-09 |
+| `ponder_the_cleansed_lyssa_temple.html` | Ponder the Cleansed Lyssa Temple | article complet | 2026-11-09 |
+| `ponder_the_cleansed_melandru_temple.html` | Ponder the Cleansed Melandru Temple | article complet | 2026-11-09 |
+| `ponder_the_cobiah_marriner_statue.html` | Ponder the Cobiah Marriner Statue. | article complet | 2026-11-09 |
+| `ponder_the_ebonhawke_memorial.html` | Ponder the Ebonhawke Memorial | article complet | 2026-11-09 |
+| `ponder_the_godskull.html` | Ponder the Godskull | article complet | 2026-11-09 |
+| `ponder_the_mighty_oouo.html` | Ponder the Mighty Oouo | article complet | 2026-11-09 |
+| `ponder_the_ossan_statue.html` | Ponder the Ossan Statue | article complet | 2026-11-09 |
+| `ponder_the_rurikton_statues.html` | Ponder the Rurikton Statues | article complet | 2026-11-09 |
+| `ponder_the_temple_of_ages.html` | Ponder the Temple of Ages | article complet | 2026-11-09 |
+| `ponder_the_victory_cenotaph.html` | Ponder the Victory Cenotaph | article complet | 2026-11-09 |
+| `ponder_the_wytchmire.html` | Ponder the Wytchmire | article complet | 2026-11-09 |
+| `ponder_violo_raptorgaze.html` | Ponder Violo Raptorgaze | article complet | 2026-11-09 |
+| `prank_the_voice_of_koda.html` | Prank the Voice of Koda | article complet | 2026-11-09 |
+| `pristine_hot_spring_water_sample.html` | Pristine Hot-Spring Water Sample | article complet | 2026-11-09 |
+| `propagation_of_the_fire_orchid.html` | Propagation of the Fire Orchid | article complet | 2026-11-09 |
+| `protector_of_the_exalted.html` | Protector of the Exalted | article complet | 2026-11-09 |
+| `protector_of_the_weald.html` | Protector of the Weald | article complet | 2026-11-09 |
+| `protector_of_verdance.html` | Protector of Verdance | article complet | 2026-11-09 |
+| `proteus_tips.html` | Proteus' Tips | article complet | 2026-11-09 |
+| `purple_color_study.html` | Purple Color Study | article complet | 2026-11-09 |
+| `quaggan_freedom.html` | Quaggan Freedom | article complet | 2026-11-09 |
+| `quaggan_sculpture_teachings.html` | Quaggan Sculpture Teachings | article complet | 2026-11-09 |
+| `rata_arcanum_propagation.html` | Rata Arcanum Propagation | article complet | 2026-11-09 |
+| `raw_honey.html` | Raw Honey | article complet | 2026-11-09 |
+| `red_color_study.html` | Red Color Study | article complet | 2026-11-09 |
+| `risen_bull_shark_tooth.html` | Risen Bull Shark Tooth | article complet | 2026-11-09 |
+| `royal_cat_sitter.html` | Royal Cat Sitter | article complet | 2026-11-09 |
+| `seaside_ledges_propagation.html` | Seaside Ledges Propagation | article complet | 2026-11-09 |
+| `seaside_propagation.html` | Seaside Propagation | article complet | 2026-11-09 |
+| `sector_zuhl_ice_shavings.html` | Sector Zuhl Ice Shavings | article complet | 2026-11-09 |
+| `seneb_the_desecrateds_locket.html` | Seneb the Desecrated's Locket | article complet | 2026-11-09 |
+| `shadow_and_sun.html` | "Shadow and Sun" | article complet | 2026-11-09 |
+| `slavers_deeps_animus.html` | Slaver's Deeps Animus | article complet | 2026-11-09 |
+| `snowden_living_ice.html` | Snowden Living Ice | article complet | 2026-11-09 |
+| `soft_glow.html` | Soft Glow | article complet | 2026-11-09 |
+| `starcallers_aetheric_gland.html` | Starcaller's Aetheric Gland | article complet | 2026-11-09 |
+| `sun_gods_vial.html` | Sun God's Vial | article complet | 2026-11-09 |
+| `sunken_anchor.html` | Sunken Anchor | article complet | 2026-11-09 |
+| `sylvari_plant_sculpting_techniques.html` | Sylvari Plant Sculpting Techniques | article complet | 2026-11-09 |
+| `terebinth_flower.html` | Terebinth Flower | article complet | 2026-11-09 |
+| `terebinth_protector.html` | Terebinth Protector | article complet | 2026-11-09 |
+| `terebinths_calm.html` | Terebinth's Calm | article complet | 2026-11-09 |
+| `the_good_we_do_in_life.html` | "The Good We Do In Life" | article complet | 2026-11-09 |
+| `the_hatching.html` | The Hatching | article complet | 2026-11-09 |
+| `the_storm_that_consumes_all.html` | "The Storm That Consumes All" | article complet | 2026-11-09 |
+| `timberline_living_ice.html` | Timberline Living Ice | article complet | 2026-11-09 |
+| `tirzies_perspective.html` | Tirzie's Perspective | article complet | 2026-11-09 |
+| `titans_plunge.html` | Titan's Plunge | article complet | 2026-11-09 |
+| `translucent_ice_crystals.html` | Translucent Ice Crystals | article complet | 2026-11-09 |
+| `tribute_to_ancient_haivoissen.html` | Tribute to Ancient Haivoissen | article complet | 2026-11-09 |
+| `tribute_to_havfrue.html` | Tribute to Havfrue | article complet | 2026-11-09 |
+| `unbreakable_garden_trowel.html` | Unbreakable Garden Trowel | article complet | 2026-11-09 |
+| `unguent_illumination.html` | Unguent Illumination | article complet | 2026-11-09 |
+| `unreadable_words.html` | Unreadable Words | article complet | 2026-11-09 |
+| `unstable_miasma.html` | Unstable Miasma | article complet | 2026-11-09 |
+| `vial_of_healing_breath.html` | Vial of Healing Breath | article complet | 2026-11-09 |
+| `vial_of_potent_hylek_poison.html` | Vial of Potent Hylek Poison | article complet | 2026-11-09 |
+| `watered_with_mineral_water.html` | Watered with Mineral Water | article complet | 2026-11-09 |
+| `wayfarers_living_ice.html` | Wayfarer's Living Ice | article complet | 2026-11-09 |
+| `we_carry_her_loss_together.html` | "We Carry Her Loss Together" | article complet | 2026-11-09 |
+| `wealdwood_light.html` | Wealdwood Light | article complet | 2026-11-09 |
+| `wind_rider_ledge_propagation.html` | Wind Rider Ledge Propagation | article complet | 2026-11-09 |
+| `wrathwave_deeps_animus.html` | Wrathwave Deeps Animus | article complet | 2026-11-09 |
+| `wrathwave_deeps_talisman.html` | Wrathwave Deeps Talisman | article complet | 2026-11-09 |
+| `zohaqans_letter.html` | Zohaqan's Letter | article complet | 2026-11-09 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
