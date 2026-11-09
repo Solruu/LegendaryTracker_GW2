@@ -38,6 +38,9 @@ les trois cartes les plus denses, toutes en monde ouvert sans prérequis de grou
 - Cadence de réapparition des moules (quotidienne ? par personnage ou par compte ?) :
   non vérifiée, à observer en jeu.
 
+## Relevés en jeu
+- 09/11/2026, Kourna, une tournée : 38 Mussels, 0 nacre. Échantillon trop petit pour un taux, mais le taux est bas.
+
 ## Non vérifié
 - Taux de nacre par nœud : aucune source chiffrée trouvée.
 - Cadence de réapparition des nœuds.
