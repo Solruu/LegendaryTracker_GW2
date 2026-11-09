@@ -1199,9 +1199,22 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       l'etape de collection ; nom du point de passage dans la liste de lieux ;
       bouton masque sur une meta sans code ; 4 codes de primes de Visions
       recalcules (Destiny's Gorge, Augury's Shadow, Bonestrand, Vehjin Palace).
-- Restent : 24 etapes a plusieurs points de passage sur leur page ; les
-      etapes sans page d'objet ni point de passage au tableau ; Fortune's Vale,
-      Shattered Ravines, Noran's Homestead a verifier en jeu.
+- [x] Extension (09/11, retour d'Antoine ; sources v459,
+      `gw2_points_passage_etapes_v2`, `gw2_points_passage_metas_v4`) :
+      page de collection retrouvee aussi par le nom de la collection (61 de
+      plus) ; plusieurs points de passage -> le premier de la ligne ou de la
+      page (« ils se valent ») ; faute de point de passage, le point d'interet
+      de la ligne (24 etapes, libelle « (point d'interet) »). +118 etapes
+      (523 en tout) ; 39 nouveaux codes verifies contre l'API : conformes.
+      Metas : `ld` -> repere Noran's Homestead ; prime bt_dh (JSX v284) ->
+      repere Palace of Aban (l'ancien code pointait Sandbound Towers, Elon
+      Riverlands). Mistlock Observatory : zone d'instance sans point d'interet
+      dans l'API, mention gardee sans code. `ds` : « Mordremoth's Bane
+      Waypoint » introuvable, sans code (a relever en jeu). `de` : le code
+      pointe un panorama de la Desolation, garde.
+- Reste : 1 964 etapes sans point de passage ni point d'interet sur leur
+      ligne ou leur page d'objet — surtout fabrications, achats et recompenses,
+      sans lieu.
 
 ## Ordre propose
 

@@ -1077,13 +1077,15 @@ const LEGENDARIES = {
     metas: [],
     // v283 (09/11) : codes des primes recalcules depuis /v2/continents (nom garde) :
     // Destiny's Gorge, Augury's Shadow (code mal forme), Bonestrand, Vehjin Palace.
-    // Fortune's Vale absent de l'API : non verifie.
+    // bt_dh : « Fortune's Vale Waypoint » absent de l'API, son code pointait
+    // Sandbound Towers (Elon Riverlands) ; remplace par le repere Palace of Aban
+    // (2730) que cite le conseil (point d'interet faute de point de passage).
     bounties: [
       { id: "bt_co", map: { fr: "Oasis de cristal", en: "Crystal Oasis" }, target: "Corrupted Facet", icon: "BT",
         waypoint: "Destiny's Gorge Waypoint", wpCode: "[&BJMKAAA=]",
         tip: { fr: "RDV habituel des bounty trains en LFG.", en: "Usual meeting point of LFG bounty trains." }, elegy: "4–50" },
       { id: "bt_dh", map: { fr: "Hautes-terres du désert", en: "Desert Highlands" }, target: "Ellutherius Wintergust", icon: "BF",
-        waypoint: "Fortune's Vale Waypoint", wpCode: "[&BNQKAAA=]",
+        waypoint: "Palace of Aban (point d'intérêt)", wpCode: "[&BKoKAAA=]",
         tip: { fr: "Springer High Vault requis pour le Palace of Aban.", en: "Springer High Vault required for Palace of Aban." }, elegy: "4–50" },
       { id: "bt_er", map: { fr: "Rives de l'Elon", en: "Elon Riverlands" }, target: "Aetherblaze", icon: "EL",
         waypoint: "Augury's Shadow Waypoint", wpCode: "[&BFMKAAA=]",

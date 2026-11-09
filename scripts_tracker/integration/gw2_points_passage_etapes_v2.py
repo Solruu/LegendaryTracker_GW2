@@ -2,7 +2,15 @@
 # -*- coding: utf-8 -*-
 """Points de passage des etapes de collection, avec code de chat (09/11).
 
-Usage : python3 scripts_tracker/integration/gw2_points_passage_etapes_v1.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_points_passage_etapes_v2.py SRC DST
+
+v2 (09/11, apres retour d'Antoine) :
+- la page de collection se retrouve aussi par le NOM de la collection
+  (slug du titre) : 61 collections dont la cle ne donnait pas le nom de
+  fichier (Ad Infinitum, Aurora, Envoy, Flameseeker, Kamohoali'i, Chuka...) ;
+- plusieurs points de passage pour une etape : « souvent ils se valent »
+  (Antoine) — on prend le PREMIER rencontre, dans l'ordre de la ligne ou de
+  la page, et la reference le dit.
 
 Demande d'Antoine (09/11) : les etapes (ex. Bottle of Rage, Coalescence II)
 n'avaient pas de point de passage copiable, alors que le wiki en donne un.
@@ -65,6 +73,14 @@ def slug(t):
 WPRE = re.compile(r'>([^<]+?)</a><span> — </span>(?:<input[^>]*>)?<span class="gamelink"[^>]*data-type="map" data-id="(\d+)"')
 
 
+POIRE = re.compile(r'title="Point of Interest"><img[^>]*></a></span>(?:&nbsp;|\s)*<a [^>]*>([^<]+)</a>(?:<span>)? — (?:</span>)?(?:<input[^>]*>)?<span class="gamelink"[^>]*data-type="map" data-id="(\d+)"')
+
+
+def interets(fragment):
+    """Points d'interet (icone « Point of Interest ») suivis de leur gamelink."""
+    return list(dict.fromkeys((n.strip(), int(i)) for n, i in POIRE.findall(fragment)))
+
+
 def points(fragment):
     """(nom, id) distincts, dans l'ordre : le lien du modele {{waypoint}} suivi de son gamelink."""
     return list(dict.fromkeys((n.strip(), int(i)) for n, i in WPRE.findall(fragment)))
@@ -86,12 +102,14 @@ def lignes(page):
             continue
         lien = re.findall(r'href="/wiki/([^"#]+)"', cs[1])
         if lien:
-            out[norm(lien[0])] = points(r)
+            out[norm(lien[0])] = points(r) or [(f"{n} (point d'intérêt)", i) for n, i in interets(r)]
     return out
 
 
 def nom_page(ck, col):
-    for c in (ck, col.get("page"), col.get("wiki")):
+    n = col.get("name")
+    n = n.get("en") if isinstance(n, dict) else n
+    for c in (ck, col.get("page"), col.get("wiki"), slug(n) if n else None):
         if c and (W / f"{c}.html").exists():
             return c
     return None
@@ -106,12 +124,12 @@ for l, L in d["legendaries"].items():
             if it.get("waypoint") or not it.get("wiki"):
                 continue
             wps = rows.get(norm(it["wiki"])) or []
-            if len(wps) == 1:
+            if wps:
                 ref = f"ressources/wiki/{page}.html, Collection items"
+                if len(wps) > 1:
+                    ref += f" (premier des {len(wps)} points de passage de la ligne)"
+                    stat["ambigu"] += 1
                 stat["ligne"] += 1
-            elif len(wps) > 1:
-                stat["ambigu"] += 1
-                continue
             else:
                 titre = H.unescape(it["wiki"].replace("%27", "'").replace("%22", '"')).replace("_", " ")
                 v = WT.get(titre)
@@ -121,10 +139,12 @@ for l, L in d["legendaries"].items():
                 if not cap.exists():
                     cap = W / f"{slug(v['from'])}.html"
                 wps = points(cap.read_text(encoding="utf-8"))
-                if len(wps) != 1:
-                    stat["ambigu"] += 1
+                if not wps:
                     continue
                 ref = f"ressources/wiki/{cap.name} (revision {v['rev']})"
+                if len(wps) > 1:
+                    ref += f" (premier des {len(wps)} points de passage de la page)"
+                    stat["ambigu"] += 1
                 stat["page_objet"] += 1
             nom, poi = wps[0]
             if nom in IDS and IDS[nom]["id"] != poi:

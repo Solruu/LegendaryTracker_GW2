@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 """Codes de chat des metas confrontes a l'API (09/11).
 
-Usage : python3 scripts_tracker/integration/gw2_points_passage_metas_v3.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_points_passage_metas_v4.py SRC DST
+
+v4 (09/11, retour d'Antoine) : faute de point de passage, le code d'un POINT
+D'INTERET convient (il pointe la zone sur la carte, l'acces se choisit a la
+main). `ld` : « Noran's Homestead Waypoint » n'existe pas dans l'API, le repere
+Noran's Homestead (2475, Lake Doric) si ; libelle « (point d'interet) ».
+Idempotent : rejouable sur une source deja corrigee.
 
 En verifiant les 215 points de passage des etapes (tous conformes), les codes
 des metas ont ete decodes et confrontes a /v2/continents/1/floors (regle
@@ -45,8 +51,11 @@ for k, poi in (("ab", 1990), ("co", 2747), ("er", 2643), ("dm", 2509), ("dv", 27
     assert API[str(poi)] == me[k]["waypoint"], (k, API[str(poi)], me[k]["waypoint"])
     me[k]["wpCode"] = code(poi)
 for k in ("ds", "adinf_dailies", "adinf_cms", "adinf_kelvei"):
-    assert me[k].get("wpCode")
-    del me[k]["wpCode"]
+    me[k].pop("wpCode", None)
+# point d'interet faute de point de passage (lu dans /v2/continents le 09/11)
+assert me["ld"]["waypoint"] in ("Noran's Homestead Waypoint", "Noran's Homestead (point d'intérêt)")
+me["ld"]["waypoint"] = "Noran's Homestead (point d'intérêt)"
+me["ld"]["wpCode"] = code(2475)
 out = json.dumps(d, ensure_ascii=False, indent=1)
 DST.write_text(out + ("\n" if raw.endswith("\n") else ""), encoding="utf-8")
-print("metas : 6 codes corriges, 4 supprimes")
+print("metas : 6 codes corriges, 4 supprimes, 1 point d'interet")
