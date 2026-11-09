@@ -45,3 +45,16 @@ compiler en x64. Le `.bhm` produit va dans
 Les dossiers `bin/`, `obj/`, `packages/`, `ref/`, `Content/` et les binaires
 restaurés à la racine (SharpDX, CppNet, mgfxc, libmojoshader) sont exclus du
 dépôt : ils sont régénérés par la restauration NuGet et le build.
+
+## Routes : portails de sable et contournements (09/11/2026)
+
+- **Portail de sable** : un saut de plus de 50 m (seuil de téléportation) fait sur le jackal
+  de part et d'autre, et de moins de 1 000 m, ne coupe plus la trace. Le tronçon qui passe
+  par le portail peut donc se vérifier ; le saut est dessiné en ligne droite. Un waypoint
+  démonte : il reste une coupure.
+- **Contournement trop long** : un trajet parcouru de plus de 4 fois la ligne droite + 100 m
+  reste refusé comme dessin (tronçon rouge), mais sa longueur est gardée comme coût du couple
+  (`known_length`, plafond 25 fois la ligne droite + 1 000 m). Au recalcul (R), l'optimiseur
+  ne prend plus ces deux nodes pour voisins. Le champ s'efface dès que le tronçon se vérifie.
+- Tests de non-régression : `ressource_tracker/tests_routes` (`dotnet run -c Release`,
+  sortie attendue dans `ATTENDU.txt`).

@@ -31,6 +31,12 @@ namespace GW2_NodeTracker
     ///     position après un écran de chargement) : on coupe le segment.
     ///     C'est l'ancrage sur waypoints, obtenu gratuitement ;
     ///  3. un changement de map coupe aussi le segment.
+    ///
+    /// Exception à la règle 2 (09/11/2026) : un saut fait sur le jackal, de
+    /// part et d'autre, et de moins de PortalMaxHop, est un portail de sable.
+    /// Le joueur l'a réellement emprunté : on garde le segment continu, pour
+    /// que le tronçon qui le traverse puisse se vérifier. Un waypoint
+    /// démonte, il reste donc une coupure.
     /// </summary>
     public class TraceRecorder
     {
@@ -38,6 +44,19 @@ namespace GW2_NodeTracker
 
         /// <summary>Garde-fou : au-delà, les points les plus anciens sont oubliés.</summary>
         public const int MaxPoints = 400000;
+
+        /// <summary>
+        /// Plus long saut accepté comme portail de sable. Au-delà, même sur le
+        /// jackal, c'est une téléportation (ou une position aberrante) : on coupe.
+        /// </summary>
+        public const double PortalMaxHop = 1000.0;
+
+        /// <summary>Facteur maximal d'un contournement retenu comme coût (FindRejectedDetour).</summary>
+        public const double MaxDetourFactor = 25.0;
+
+        /// <summary>Monture des portails de sable, telle que Mumble la nomme.</summary>
+        private static bool IsJackal(string mount) =>
+            string.Equals(mount, "Jackal", StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
         /// L'échantillonnage tourne sur le thread de jeu et l'affinage en
@@ -111,7 +130,8 @@ namespace GW2_NodeTracker
                 if (d < minStep)
                     return false; // immobile ou pas assez avancé
 
-                if (d > teleportThreshold)
+                bool sandPortal = IsJackal(mount) && IsJackal(_last.Mount) && d <= PortalMaxHop;
+                if (d > teleportThreshold && !sandPortal)
                 {
                     // Téléportation : on n'a pas parcouru cette distance, on
                     // ne doit surtout pas relier les deux points.
@@ -342,6 +362,51 @@ namespace GW2_NodeTracker
             }
 
             return IsBetter(forward, backward) ? forward : backward;
+        }
+
+        /// <summary>
+        /// Longueur du trajet réellement parcouru entre deux arrêts quand il
+        /// dépasse ce que FindLeg accepte comme chemin (detourFactor). Null si
+        /// aucune trace ne relie les deux, ou si le trajet trouvé est assez
+        /// court pour que FindLeg l'ait déjà retenu.
+        ///
+        /// Sert uniquement au COÛT du couple, jamais à sa géométrie : le
+        /// tronçon reste en ligne droite et non vérifié, mais l'optimiseur
+        /// apprend que ces deux nodes ne sont pas voisins. Sans ça, un couple
+        /// proche à vol d'oiseau et séparé par un long contournement (le
+        /// gouffre de Kourna, 09/11/2026) restait « pas cher » à chaque
+        /// recalcul.
+        /// </summary>
+        public double? FindRejectedDetour(int mapId, RoutePoint from, RoutePoint to,
+                                          double snapRadius, double detourFactor,
+                                          IList<RoutePoint> otherStops = null)
+        {
+            lock (_sync)
+            {
+                if (_points.Count == 0) return null;
+
+                double maxAcceptable = from.DistanceTo(to) * detourFactor + 100.0;
+
+                // Plafond du contournement retenu comme coût : au-delà, c'est
+                // une session entière entre deux passages près des arrêts, pas
+                // un chemin. Il borne aussi le coût de la recherche, lancée sur
+                // chaque tronçon non vérifié à chaque affinage.
+                double maxDetour = from.DistanceTo(to) * MaxDetourFactor + 1000.0;
+                var stops = otherStops == null
+                    ? new List<RoutePoint>()
+                    : otherStops.Where(st => st.DistanceTo(from) <= maxDetour + snapRadius).ToList();
+
+                TraceMatch forward = FindOneWay(mapId, from, to, snapRadius, maxDetour, stops);
+                TraceMatch backward = FindOneWay(mapId, to, from, snapRadius, maxDetour, stops);
+
+                double? best = null;
+                foreach (var m in new[] { forward, backward })
+                {
+                    if (m == null || m.Length <= maxAcceptable) continue;
+                    if (best == null || m.Length < best.Value) best = m.Length;
+                }
+                return best;
+            }
         }
 
         /// <summary>

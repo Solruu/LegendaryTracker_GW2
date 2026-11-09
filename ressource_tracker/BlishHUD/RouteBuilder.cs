@@ -126,10 +126,19 @@ namespace GW2_NodeTracker
                 for (int i = 0; i < route.Legs.Count && i < route.Stops.Count; i++)
                 {
                     var leg = route.Legs[i];
-                    if (!leg.Verified) continue;
-
                     var a = route.Stops[i];
                     var b = route.Stops[(i + 1) % route.Stops.Count];
+
+                    if (!leg.Verified)
+                    {
+                        // Couple jamais parcouru en ligne raisonnable, mais
+                        // dont on connaît le contournement : c'est son vrai
+                        // prix. Déjà filtré sur les autres arrêts à la
+                        // recherche (FindRejectedDetour).
+                        if (leg.KnownLength.HasValue) costs.Add(a, b, leg.KnownLength.Value);
+                        continue;
+                    }
+
                     if (CrossesOtherStop(leg.Points, a, b, OtherStops(route, i), snapRadius)) continue;
                     costs.Add(a, b, leg.Length());
                 }
@@ -380,7 +389,20 @@ namespace GW2_NodeTracker
 
                 var match = traces.FindLeg(route.MapId, from, to, snapRadius, detourFactor,
                                            OtherStops(route, i));
-                if (match == null) continue;
+                if (match == null)
+                {
+                    // Pas de chemin acceptable. Un contournement trop long a
+                    // peut-être été parcouru : on en garde le coût, pas le
+                    // dessin. Le plus court connu l'emporte.
+                    if (!leg.Verified)
+                    {
+                        double? detour = traces.FindRejectedDetour(route.MapId, from, to, snapRadius,
+                                                                   detourFactor, OtherStops(route, i));
+                        if (detour.HasValue && (!leg.KnownLength.HasValue || detour.Value < leg.KnownLength.Value))
+                            leg.KnownLength = detour.Value;
+                    }
+                    continue;
+                }
 
                 // Le filigrane s'applique que le tronçon soit vérifié ou
                 // rejeté : dans les deux cas, seule une trace plus récente
@@ -410,6 +432,7 @@ namespace GW2_NodeTracker
                 leg.Verified = true;
                 leg.Mount = match.Mount;
                 leg.TraceAt = match.RecordedAt;
+                leg.KnownLength = null; // la longueur vérifiée prend le relais
 
                 if (wasVerified) refreshed++; else added++;
             }

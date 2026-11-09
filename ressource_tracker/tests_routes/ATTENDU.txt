@@ -1,0 +1,12 @@
+Sortie attendue de `dotnet run -c Release` (09/11/2026). 1, 3, 5, 6, 8, 9 : comportement d'avant
+inchange ; 2, 4, 7 : les deux corrections.
+
+1 normal      : refine=(2, 0) leg0[verified=True pts=5 len=102 mount=None known=null] cout=102
+2 detour long : refine=(0, 0) leg0[verified=False pts=2 len=100 mount=- known=576] cout=576
+3 puis direct : refine=(2, 0) leg0[verified=True pts=4 len=100 mount=None known=null] cout=100
+4 portail     : refine=(2, 0) leg0[verified=True pts=4 len=240 mount=Jackal known=null] cout=240
+5 waypoint    : refine=(0, 0) leg0[verified=False pts=2 len=240 mount=- known=null] cout=240
+6 saut enorme : refine=(0, 0) leg0[verified=False pts=2 len=1540 mount=- known=null] cout=1540
+7 ordre       : avant [P Q S R] P-Q voisins=True | apres [R P S Q] P-Q voisins=False | couts connus=1
+9 deambulation: refine=(0, 0) leg0[verified=False pts=2 len=100 mount=- known=null] cout=100
+8 ancien json : legs=1 known=null reserialise={"verified":false,"mount":null,"trace_at":null,"points":[{"x":0,"y":0,"z":0},{"x":1,"y":0,"z":0}]}

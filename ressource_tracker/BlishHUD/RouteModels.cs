@@ -52,6 +52,16 @@ namespace GW2_NodeTracker
         [JsonProperty("points")]
         public List<RoutePoint> Points { get; set; } = new List<RoutePoint>();
 
+        /// <summary>
+        /// Longueur du plus court trajet réellement parcouru entre les deux
+        /// arrêts, quand il était trop long pour servir de géométrie
+        /// (TraceRecorder.FindRejectedDetour). Null tant que rien de tel n'a
+        /// été parcouru, et remis à null dès que le tronçon se vérifie : sa
+        /// vraie longueur prend alors le relais. Absent des anciens fichiers.
+        /// </summary>
+        [JsonProperty("known_length", NullValueHandling = NullValueHandling.Ignore)]
+        public double? KnownLength { get; set; }
+
         public double Length()
         {
             double total = 0;

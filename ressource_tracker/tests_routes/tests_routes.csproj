@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Tests de non-regression de la logique de route (sans Blish HUD).
+       Lancer depuis ce dossier : dotnet run -c Release
+       Stub.cs remplace Blish_HUD.Logger et le sous-ensemble de Newtonsoft.Json utilise. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../BlishHUD/RouteBuilder.cs" />
+    <Compile Include="../BlishHUD/TraceRecorder.cs" />
+    <Compile Include="../BlishHUD/TracePoint.cs" />
+    <Compile Include="../BlishHUD/RouteModels.cs" />
+    <Compile Include="../BlishHUD/GatheredNode.cs" />
+    <Compile Include="Stub.cs" />
+    <Compile Include="Tests.cs" />
+  </ItemGroup>
+</Project>
