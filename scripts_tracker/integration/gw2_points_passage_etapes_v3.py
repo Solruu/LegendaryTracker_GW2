@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 """Points de passage des etapes de collection, avec code de chat (09/11).
 
-Usage : python3 scripts_tracker/integration/gw2_points_passage_etapes_v2.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_points_passage_etapes_v3.py SRC DST
+
+v3 (09/11) : les pages de succes « a etapes » (Acquiring Agaleus, Master
+Diver, Mists Research, Experiments in the Shadows, Vision I...) n'ont pas de
+tableau « Collection items » : leurs lignes sont lues par leur attribut
+`data-id="achievement<id>-bit<n>"`, qui donne le numero de case. Rejouable :
+les etapes deja pourvues ne sont pas touchees.
 
 v2 (09/11, apres retour d'Antoine) :
 - la page de collection se retrouve aussi par le NOM de la collection
@@ -93,7 +99,11 @@ def lignes(page):
     s = p.read_text(encoding="utf-8")
     i = s.find('id="Collection_items"')
     if i < 0:
-        return {}
+        # page de succes a etapes : lignes reperees par leur numero de case
+        out = {}
+        for b, r in re.findall(r'<tr class="widget-account-achievement" data-id="achievement\d+-bit(\d+)">(.*?)</tr>', s, re.S):
+            out[("bit", int(b))] = points(r) or [(f"{n} (point d'intérêt)", i) for n, i in interets(r)]
+        return out
     tb = s[s.find("<table", i):s.find("</table>", i)]
     out = {}
     for r in re.findall(r"<tr[^>]*>(.*?)</tr>", tb, re.S):
@@ -121,15 +131,17 @@ for l, L in d["legendaries"].items():
         page = nom_page(ck, col)
         rows = lignes(page) if page else {}
         for it in col.get("items") or []:
-            if it.get("waypoint") or not it.get("wiki"):
+            if it.get("waypoint") or not (it.get("wiki") or ("bit", it.get("bit")) in rows):
                 continue
-            wps = rows.get(norm(it["wiki"])) or []
+            wps = (rows.get(norm(it["wiki"])) if it.get("wiki") else None) or rows.get(("bit", it["bit"])) or []
             if wps:
                 ref = f"ressources/wiki/{page}.html, Collection items"
                 if len(wps) > 1:
                     ref += f" (premier des {len(wps)} points de passage de la ligne)"
                     stat["ambigu"] += 1
                 stat["ligne"] += 1
+            elif not it.get("wiki"):
+                continue
             else:
                 titre = H.unescape(it["wiki"].replace("%27", "'").replace("%22", '"')).replace("_", " ")
                 v = WT.get(titre)

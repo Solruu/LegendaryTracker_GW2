@@ -1212,7 +1212,14 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       dans l'API, mention gardee sans code. `ds` : « Mordremoth's Bane
       Waypoint » introuvable, sans code (a relever en jeu). `de` : le code
       pointe un panorama de la Desolation, garde.
-- Reste : 1 964 etapes sans point de passage ni point d'interet sur leur
+- [x] Verification des 61 collections retrouvees par leur nom (sources v460,
+      `gw2_verif_etapes_par_nom_v1`) : confrontation case par case, 621
+      etapes conformes, 51 etapes d'action au texte exact de leur ligne, 1
+      lien corrige (adinf_2 case 8 -> Beta Fractal Capacitor (Infused)).
+      `gw2_points_passage_etapes_v3` (remplace v2, supprime) : pages de succes
+      a etapes lues par `data-id=...-bit<n>` ; +18 etapes (Master Diver,
+      Experiments in the Shadows), 14 codes conformes a l'API.
+- Reste : 1 946 etapes sans point de passage ni point d'interet sur leur
       ligne ou leur page d'objet — surtout fabrications, achats et recompenses,
       sans lieu.
 
