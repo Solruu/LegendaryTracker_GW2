@@ -1220,7 +1220,15 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       `gw2_points_passage_etapes_v3` (remplace v2, supprime) : pages de succes
       a etapes lues par `data-id=...-bit<n>` ; +18 etapes (Master Diver,
       Experiments in the Shadows), 14 codes conformes a l'API.
-- Reste : 1 946 etapes sans point de passage ni point d'interet sur leur
+- [x] Points d'interet des pages d'objet (sources v462,
+      `gw2_points_passage_etapes_v4`, remplace v3 supprime) : 1 552 pages
+      relues par l'API du wiki, 39 citent un point d'interet, un panorama ou
+      un coeur ; 40 captures ajoutees ; +37 etapes (578 en tout), 27 codes
+      conformes a l'API. Instantane complet de l'etage 1 de l'API gardee :
+      ressources/api/api_floor1_points_de_passage_20261109.json.
+- [x] Les 6 etapes de Vision I (page sans tableau d'objets) : libelles
+      identiques aux 6 objectifs de la page, dans l'ordre — conformes.
+- Reste : 1 909 etapes sans point de passage ni point d'interet sur leur
       ligne ou leur page d'objet — surtout fabrications, achats et recompenses,
       sans lieu.
 

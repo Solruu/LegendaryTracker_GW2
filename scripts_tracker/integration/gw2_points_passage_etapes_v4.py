@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 """Points de passage des etapes de collection, avec code de chat (09/11).
 
-Usage : python3 scripts_tracker/integration/gw2_points_passage_etapes_v3.py SRC DST
+Usage : python3 scripts_tracker/integration/gw2_points_passage_etapes_v4.py SRC DST
+
+v4 (09/11) : sur la page d'OBJET aussi, faute de point de passage, le point
+d'interet, le panorama ou le coeur que cite son wikitexte (modeles poi, point
+of interest, vista, heart) : 39 pages relues par l'API du wiki
+(ressources/api/points_interet_wiki_20261109.json) et capturees ; l'id est
+celui du gamelink rendu dans la capture.
 
 v3 (09/11) : les pages de succes « a etapes » (Acquiring Agaleus, Master
 Diver, Mists Research, Experiments in the Shadows, Vision I...) n'ont pas de
@@ -56,6 +62,20 @@ REF = json.loads(Path("ressources/api/points_de_passage_wiki_20261109.json").rea
 IDS = REF["ids"]
 WT = {v["from"]: v for v in REF["wikitext_waypoints"].values()}
 WT.update(REF["wikitext_waypoints"])
+POI_PAGES = json.loads(Path("ressources/api/points_interet_wiki_20261109.json").read_text(encoding="utf-8"))["pages"]
+for _t, _v in POI_PAGES.items():
+    WT.setdefault(_t, _v)
+    WT.setdefault(_v["from"], _v)
+GENRE = re.compile(r'<a [^>]*>([^<]+)</a>(?:<span>)?\s*—\s*(?:</span>)?(?:<input[^>]*>)?<span class="gamelink"[^>]*data-type="map" data-id="(\d+)"')
+
+
+def lieux(fragment):
+    """Tout lien suivi d'un gamelink de carte : point de passage, point d'interet, panorama, coeur."""
+    out = []
+    for n, i in GENRE.findall(fragment):
+        n = n.strip()
+        out.append((n if n.endswith("Waypoint") else f"{n} (point d'intérêt)", int(i)))
+    return list(dict.fromkeys(out))
 
 
 def code(poi):
@@ -150,7 +170,8 @@ for l, L in d["legendaries"].items():
                 cap = W / f"{slug(titre)}.html"
                 if not cap.exists():
                     cap = W / f"{slug(v['from'])}.html"
-                wps = points(cap.read_text(encoding="utf-8"))
+                ct = cap.read_text(encoding="utf-8")
+                wps = points(ct) or lieux(ct)
                 if not wps:
                     continue
                 ref = f"ressources/wiki/{cap.name} (revision {v['rev']})"

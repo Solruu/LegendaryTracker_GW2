@@ -2005,6 +2005,45 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `wrathwave_deeps_animus.html` | Wrathwave Deeps Animus | article complet | 2026-11-09 |
 | `wrathwave_deeps_talisman.html` | Wrathwave Deeps Talisman | article complet | 2026-11-09 |
 | `zohaqans_letter.html` | Zohaqan's Letter | article complet | 2026-11-09 |
+| `arcadian_deeps_animus.html` | Arcadian Deeps Animus | article complet | 2026-11-09 |
+| `armored_fish_tooth.html` | Armored Fish Tooth | article complet | 2026-11-09 |
+| `burn_a_claw_of_jormags_scale.html` | Burn a Claw of Jormag's Scale | article complet | 2026-11-09 |
+| `burn_a_harathi_hinterlands_eagle_raptor.html` | Burn a Harathi Hinterlands Eagle Raptor | article complet | 2026-11-09 |
+| `burn_a_heart_of_a_fire_elemental.html` | Burn a Heart of a Fire Elemental | article complet | 2026-11-09 |
+| `burn_a_heart_of_a_fire_imp.html` | Burn a Heart of a Fire Imp | article complet | 2026-11-09 |
+| `burn_a_heart_of_a_flame_effigy.html` | Burn a Heart of a Flame Effigy | article complet | 2026-11-09 |
+| `burn_a_heart_of_an_ember.html` | Burn a Heart of an Ember | article complet | 2026-11-09 |
+| `burn_a_heart_of_the_megadestroyer.html` | Burn a Heart of the Megadestroyer | article complet | 2026-11-09 |
+| `burn_a_mount_maelstrom_hermit_crab.html` | Burn a Mount Maelstrom Hermit Crab | article complet | 2026-11-09 |
+| `burn_a_mount_maelstrom_pink_moa.html` | Burn a Mount Maelstrom Pink Moa | article complet | 2026-11-09 |
+| `burn_an_essence_of_fire_magic.html` | Burn an Essence of Fire Magic | article complet | 2026-11-09 |
+| `burn_away_bad_neighbors.html` | Burn Away Bad Neighbors | article complet | 2026-11-09 |
+| `burn_tequatls_eye.html` | Burn Tequatl's Eye | article complet | 2026-11-09 |
+| `burn_the_heart_of_a_destroyer.html` | Burn the Heart of a Destroyer | article complet | 2026-11-09 |
+| `burn_the_shatterers_crystal.html` | Burn the Shatterer's Crystal | article complet | 2026-11-09 |
+| `burn_the_vinewraths_petals.html` | Burn the Vinewrath's Petals | article complet | 2026-11-09 |
+| `crunchy_grasshopper.html` | Crunchy Grasshopper | article complet | 2026-11-09 |
+| `ever_flowing_ice_shavings.html` | Ever-Flowing Ice Shavings | article complet | 2026-11-09 |
+| `ever_shifting_ice_shavings.html` | Ever-Shifting Ice Shavings | article complet | 2026-11-09 |
+| `feed_roe_to_your_raven_chick.html` | Feed Roe to Your Raven Chick | article complet | 2026-11-09 |
+| `gotala_cascade_water_sample.html` | Gotala Cascade Water Sample | article complet | 2026-11-09 |
+| `hunters_journal_entry_11.html` | Hunter's Journal: Entry 11 | article complet | 2026-11-09 |
+| `hunters_journal_entry_2.html` | Hunter's Journal: Entry 2 | article complet | 2026-11-09 |
+| `hylek_protection.html` | Hylek Protection | article complet | 2026-11-09 |
+| `icebound_plunge_ice_shavings.html` | Icebound Plunge Ice Shavings | article complet | 2026-11-09 |
+| `krait_larder_animus.html` | Krait Larder Animus | article complet | 2026-11-09 |
+| `meditation_log_elon_riverlands.html` | Meditation Log: Elon Riverlands | article complet | 2026-11-09 |
+| `prank_kiel.html` | Prank Kiel | article complet | 2026-11-09 |
+| `raven_egg.html` | Raven Egg | article complet | 2026-11-09 |
+| `restless_deeps_animus.html` | Restless Deeps Animus | article complet | 2026-11-09 |
+| `sawtooth_shark_tooth.html` | Sawtooth Shark Tooth | article complet | 2026-11-09 |
+| `sipedon_deeps_animus.html` | Sipedon Deeps Animus | article complet | 2026-11-09 |
+| `stormwreck_deeps_animus.html` | Stormwreck Deeps Animus | article complet | 2026-11-09 |
+| `stygian_deeps_animus.html` | Stygian Deeps Animus | article complet | 2026-11-09 |
+| `test_crystal_lodestone_facets.html` | Test Crystal Lodestone Facets | article complet | 2026-11-09 |
+| `vision_of_dragons_aurene_jahai.html` | Vision of Dragons: Aurene (Jahai) | article complet | 2026-11-09 |
+| `vision_of_landscapes_dragonfall.html` | Vision of Landscapes: Dragonfall | article complet | 2026-11-09 |
+| `wyverns_liquid_fire.html` | Wyvern's Liquid Fire | article complet | 2026-11-09 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
