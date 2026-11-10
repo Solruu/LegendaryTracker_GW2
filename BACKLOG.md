@@ -1,4 +1,4 @@
-> **Plan du restant** : `PLAN_RESTANT_v106.md` (10/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v107.md` (10/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 

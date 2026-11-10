@@ -234,6 +234,9 @@ const I18N = {
     btn_done_checked: "✓ Done",
     btn_copied: "✓ Copied!",
     font_size: "Text size",
+    nav_trinkets: "Trinkets", nav_armors: "Armor",
+    cad_common: "Shared sources", cad_see_common: "see shared sources above",
+    unlock_common: "Common to {n} collections",
     wtype_Axe: "Axe", wtype_Dagger: "Dagger", wtype_Mace: "Mace", wtype_Pistol: "Pistol", wtype_Scepter: "Scepter", wtype_Sword: "Sword",
     wtype_Focus: "Focus", wtype_Shield: "Shield", wtype_Torch: "Torch", wtype_Warhorn: "Warhorn", wtype_Greatsword: "Greatsword", wtype_Hammer: "Hammer",
     wtype_LongBow: "Longbow", wtype_Rifle: "Rifle", wtype_ShortBow: "Short bow", wtype_Staff: "Staff", wtype_Harpoon: "Spear", wtype_Speargun: "Harpoon gun", wtype_Trident: "Trident",
@@ -481,6 +484,9 @@ const I18N = {
     btn_done_checked: "✓ Fait",
     btn_copied: "✓ Copié !",
     font_size: "Taille du texte",
+    nav_armors: "Armures", nav_trinkets: "Accessoires",
+    cad_common: "Sources communes", cad_see_common: "voir sources communes en tête",
+    unlock_common: "Commun à {n} collections",
     wtype_Axe: "Hache", wtype_Dagger: "Dague", wtype_Mace: "Masse", wtype_Pistol: "Pistolet", wtype_Scepter: "Sceptre", wtype_Sword: "Épée",
     wtype_Focus: "Focus", wtype_Shield: "Bouclier", wtype_Torch: "Torche", wtype_Warhorn: "Cor de guerre", wtype_Greatsword: "Espadon", wtype_Hammer: "Marteau",
     wtype_LongBow: "Arc long", wtype_Rifle: "Fusil", wtype_ShortBow: "Arc court", wtype_Staff: "Bâton", wtype_Harpoon: "Lance", wtype_Speargun: "Fusil-harpon", wtype_Trident: "Trident",
@@ -634,6 +640,34 @@ const unlockOf = (achievementId) => {
 // null (indécidable en l'état). Un null s'affiche « ❔ » : on ne masque jamais
 // une collection sur une porte qu'on ne sait pas trancher, parce que masquer une
 // collection jouable coûte des semaines et en afficher une de trop coûte une ligne.
+// v288 : phrases de deblocage communes a plusieurs collections. Le texte vient
+// de collection_unlocks (un par succes) ; on ne fusionne que des phrases
+// strictement identiques, dans la langue affichee.
+const decoupePhrases = (s) => String(s ?? "")
+  .split(/(?<=[.!?»)])\s+(?=[🔓⚠💡⏳❗A-ZÀ-ÖØ-Þ«])/u).map(x => x.trim()).filter(Boolean);
+const phrasesDeblocageCommunes = (collections, seuil = 3) => {
+  const compte = new Map();
+  for (const a of collections ?? []) {
+    const U = unlockOf(a?.achievementId);
+    if (!U?.text) continue;
+    for (const ph of new Set(decoupePhrases(NX(U.text)))) compte.set(ph, (compte.get(ph) ?? 0) + 1);
+  }
+  const out = [...compte].filter(([, n]) => n >= seuil).map(([ph]) => ph);
+  out.n = Math.max(0, ...[...compte].filter(([, n]) => n >= seuil).map(([, n]) => n));
+  return out;
+};
+// v288 : sources de cadence repetees a l'identique sur plusieurs monnaies.
+const cleSourceCadence = (f) => JSON.stringify([f?.label?.en ?? f?.label, f?.cost?.en ?? f?.cost]);
+const sourcesCadenceCommunes = (rows, seuil = 3) => {
+  const par = new Map();
+  for (const r of rows ?? []) for (const f of r?.cad?.sources ?? []) {
+    if (!f?.cost) continue;
+    const k = cleSourceCadence(f);
+    if (!par.has(k)) par.set(k, { f, noms: [] });
+    if (!par.get(k).noms.includes(r.comp.name)) par.get(k).noms.push(r.comp.name);
+  }
+  return [...par.values()].filter(c => c.noms.length >= seuil);
+};
 const makeGateStatus = (acct) => (gate) => {
   if (!Array.isArray(gate)) return [];
   return gate.map((g) => {
@@ -104836,7 +104870,10 @@ function TrinketGuide({ curKey, apiAch, gtOwnedIds, gtManualOwnedIds, armoryRaw 
 const TRINKET_RICH = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "strife_unending", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum"];
 const TRINKET_GUIDE_KEYS = ["the_ascension", "transcendence"];
 const TRINKET_GROUP_ORDER = ["vision", "aurora", "conflux", "warbringer", "coalescence", "selachimorpha", "prismatic", "endless_summer", "stella_radians", "orrax_manifested", "ad_infinitum", "strife_unending", ...TRINKET_GUIDE_KEYS];
-const MAIN_SELECTOR_ORDER = ["eikasia", "obsidian", "perfected_envoy", "triumphant_hero", "ardent_glorious", "weapons", "upgrades", "t6"];
+// v288 : les cinq armures passent sous un bouton « Armures », comme les
+// colifichets sous « Accessoires » ; la barre tenait sur deux ecrans.
+const ARMOR_GROUP_ORDER = ["eikasia", "obsidian", "perfected_envoy", "triumphant_hero", "ardent_glorious"];
+const MAIN_SELECTOR_ORDER = ["weapons", "upgrades", "t6"];
 
 const LEGENDARIES = {
   vision: {
@@ -105751,6 +105788,18 @@ function formatLocalTime(date) {
 // ═══════════════════════════════════════════════════════════════
 
 // ── Groupes de légendaires pour le sélecteur ──────────────────
+// v288 : t6_tracker et weapons_tracker sont des vues du tracker, pas des
+// legendaires (totaux vides) : hors du selecteur.
+const GT_HORS_SELECTEUR = ["t6_tracker", "weapons_tracker"];
+const GT_ARMES_DIVERSES = ["klobjarne_geirr", "aetheric_anchor"];
+const GT_EXCLUSIFS = { upgrades_combined: ["legendary_rune", "legendary_sigil", "legendary_relic"] };
+const gtExclure = (next, id) => {
+  for (const [pack, unites] of Object.entries(GT_EXCLUSIFS)) {
+    if (id === pack) for (const u of unites) delete next[u];
+    else if (unites.includes(id)) delete next[pack];
+  }
+  return next;
+};
 const GT_GROUPS = [
   {
     id: "gen1", label: "Gen 1 — Core", color: "#c084fc",
@@ -105765,14 +105814,26 @@ const GT_GROUPS = [
     ids: Object.keys(SOURCES_DB?.legendaries ?? {}).filter(k => k.startsWith("gen3_") && k !== "gen3_weapon_generic").sort()
   },
   {
+    id: "weapons_misc", label: { fr: "Armes diverses", en: "Other weapons" }, color: "#93c5fd",
+    ids: GT_ARMES_DIVERSES
+  },
+  {
     id: "armors", label: { fr: "Armures", en: "Armor" }, color: "#fb923c",
     ids: ["perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"]
+  },
+  {
+    // Le pack (upgrades_combined = 6 runes + 2 cachets + 1 relique) et les
+    // trois unites s'excluent : cocher l'un decoche les autres (GT_EXCLUSIFS).
+    id: "upgrades", label: { fr: "Améliorations — le pack vaut 6 runes + 2 cachets + 1 relique", en: "Upgrades — the pack is 6 runes + 2 sigils + 1 relic" }, color: "#a3e635",
+    ids: ["upgrades_combined", "legendary_rune", "legendary_sigil", "legendary_relic"], exclusive: true
   },
   {
     id: "standalone", label: { fr: "Hors série", en: "Standalone" }, color: "#f472b6",
     ids: Object.keys(SOURCES_DB?.legendaries ?? {}).filter(k =>
       !k.startsWith("gen1_") && !k.startsWith("gen2_") && !k.startsWith("gen3_") &&
       !["perfected_envoy","obsidian","triumphant_hero","ardent_glorious"].includes(k) &&
+      !GT_ARMES_DIVERSES.includes(k) && !GT_HORS_SELECTEUR.includes(k) &&
+      !["upgrades_combined", "legendary_rune", "legendary_sigil", "legendary_relic"].includes(k) &&
       !k.endsWith("_generic")
     ).sort()
   },
@@ -107186,6 +107247,7 @@ function CadencesTab({ stocks = {}, acctGates = null, collections, armory }) {
     return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
   };
 
+  const clesCommunes = new Set(sourcesCadenceCommunes(rows).map(c => cleSourceCadence(c.f)));
   return (
     <div style={{ paddingBottom: 40 }}>
       <div style={{ margin: "12px 14px", padding: "10px 12px", background: `${D}0.04)`, border: `1px solid ${D}0.16)`, borderRadius: 8 }}>
@@ -107313,6 +107375,25 @@ function CadencesTab({ stocks = {}, acctGates = null, collections, armory }) {
         );
       })()}
 
+      {(() => {
+        // v288 : une source identique sur 3 monnaies ou plus (vendeurs de
+        // Glace eternelle) est detaillee une fois ici ; chaque monnaie garde
+        // sa case a cocher et son plafond, sans le paragraphe.
+        const communes = sourcesCadenceCommunes(rows);
+        if (communes.length === 0) return null;
+        return (
+          <div style={{ margin: "0 14px 10px", padding: "9px 12px", background: `${D}0.03)`, border: `1px solid ${D}0.14)`, borderRadius: 8, fontSize: fs(11), color: `${D}0.7)` }}>
+            <div style={{ fontSize: fs(9), letterSpacing: "0.12em", textTransform: "uppercase", color: `${D}0.45)`, marginBottom: 4 }}>{t("cad_common")}</div>
+            {communes.map((c, i) => (
+              <div key={i} style={{ marginTop: i ? 6 : 0 }}>
+                <b>{L(c.f.label)}</b> <span style={{ opacity: 0.6 }}>({c.noms.map(n => NX(n)).join(", ")})</span>
+                <div style={{ opacity: 0.75 }}>{L(c.f.cost)}</div>
+              </div>
+            ))}
+          </div>
+        );
+      })()}
+
       {rows
         .filter(r => selectedIds.length === 0 || r.need > 0)
         .filter(r => !onlyOpen || (r.bloquees.length === 0 && !r.doneNow))
@@ -107371,7 +107452,7 @@ function CadencesTab({ stocks = {}, acctGates = null, collections, armory }) {
                       style={{ fontSize: fs(9), marginLeft: 4, color: f.verified ? "#4ade80" : "rgba(251,146,60,0.8)" }}>
                       {f.verified ? "✓" : "⚙"}
                     </span>
-                    <span style={{ opacity: 0.75 }}> — {f.cap == null ? t("cad_nocap") : `${f.cap}/${t("cad_per_" + per)}`}{f.per_character ? ` ${t("cad_tag_perchar")}` : ""}{f.rng ? ` ${t("cad_tag_rng")}` : ""}{f.paid_repeatable ? ` ${t("cad_tag_paid")}` : ""}{f.cost ? ` · ${L(f.cost)}` : ""}</span>
+                    <span style={{ opacity: 0.75 }}> — {f.cap == null ? t("cad_nocap") : `${f.cap}/${t("cad_per_" + per)}`}{f.per_character ? ` ${t("cad_tag_perchar")}` : ""}{f.rng ? ` ${t("cad_tag_rng")}` : ""}{f.paid_repeatable ? ` ${t("cad_tag_paid")}` : ""}{f.cost ? (clesCommunes.has(cleSourceCadence(f)) ? ` · ${t("cad_see_common")}` : ` · ${L(f.cost)}`) : ""}</span>
                   </div>
                 </div>
               );
@@ -107597,12 +107678,23 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
   // ── Toggle légendaire ────────────────────────────────────────
   const toggle = (id) => setSelected(prev => {
     const next = { ...prev };
-    if (next[id]) delete next[id]; else next[id] = true;
+    if (next[id]) delete next[id]; else { next[id] = true; gtExclure(next, id); }
     return next;
   });
 
   // ── Select/deselect groupe ───────────────────────────────────
   const toggleGroup = (group) => {
+    if (group.exclusive) {
+      // Groupe exclusif : la case du groupe coche le pack, ou vide tout.
+      const anyOn = group.ids.some(id => selected[id]);
+      setSelected(prev => {
+        const next = { ...prev };
+        for (const id of group.ids) delete next[id];
+        if (!anyOn) next[group.ids[0]] = true;
+        return next;
+      });
+      return;
+    }
     const allOn = group.ids.every(id => selected[id]);
     setSelected(prev => {
       const next = { ...prev };
@@ -107683,7 +107775,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
 
         {GT_GROUPS.map(group => {
           const isCollapsed = collapsed[group.id];
-          const allOn = group.ids.length > 0 && group.ids.every(id => selected[id]);
+          const allOn = group.ids.length > 0 && (group.exclusive ? !!selected[group.ids[0]] : group.ids.every(id => selected[id]));
           const someOn = group.ids.some(id => selected[id]);
 
           return (
@@ -108130,6 +108222,7 @@ function GW2LegendaryTracker() {
     try {
       if (TRINKET_RICH.includes(selectedLeg)) localStorage.setItem("gw2_last_trinket", selectedLeg);
       else if (selectedLeg === "trinkets") localStorage.setItem("gw2_last_trinket", "guide:" + selTrinket);
+      if (ARMOR_GROUP_ORDER.includes(selectedLeg)) localStorage.setItem("gw2_last_armor", selectedLeg);
     } catch (_) {}
   }, [selectedLeg, selTrinket]);
   CUR_LANG = lang; // sync du résolveur L() — le render racine précède les enfants
@@ -110112,7 +110205,9 @@ function GW2LegendaryTracker() {
       </div>}
 
       {/* ── SÉLECTEUR LÉGENDAIRE ── */}
-      <div className="leg-selector">
+      {/* v288 : langue et taille du texte hors de la zone qui defile. */}
+      <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid rgba(226,201,126,0.1)" }}>
+      <div className="leg-selector" style={{ flex: 1, minWidth: 0, borderBottom: "none" }}>
         <button
           className={`leg-btn ${(TRINKET_GROUP_ORDER.includes(selectedLeg) || selectedLeg === "trinkets") ? "active" : ""}`}
           style={{ "--leg-color": "#5eead4", "--leg-bg": "rgba(94,234,212,0.12)" }}
@@ -110124,8 +110219,20 @@ function GW2LegendaryTracker() {
             else { setSelectedLeg("vision"); }
           }}
         >
-          ◈ Trinkets
+          ◈ {t("nav_trinkets")}
           <span style={{ fontSize: fs(9), opacity: 0.6, marginLeft: "4px" }}>(14)</span>
+        </button>
+        <button
+          className={`leg-btn ${ARMOR_GROUP_ORDER.includes(selectedLeg) ? "active" : ""}`}
+          style={{ "--leg-color": "#818cf8", "--leg-bg": "rgba(129,140,248,0.12)" }}
+          onClick={() => {
+            let last = null;
+            try { last = localStorage.getItem("gw2_last_armor"); } catch (_) {}
+            setSelectedLeg(ARMOR_GROUP_ORDER.includes(last) ? last : "obsidian");
+          }}
+        >
+          ⬡ {t("nav_armors")}
+          <span style={{ fontSize: fs(9), opacity: 0.6, marginLeft: "4px" }}>({ARMOR_GROUP_ORDER.length})</span>
         </button>
         {MAIN_SELECTOR_ORDER.map(id => LEGENDARIES[id]).filter(Boolean).map(l => (
           <button
@@ -110133,9 +110240,9 @@ function GW2LegendaryTracker() {
             className={`leg-btn ${selectedLeg === l.id ? "active" : ""}`}
             style={{ "--leg-color": l.color, "--leg-bg": l.colorDim }}
             onClick={() => setSelectedLeg(l.id)}
+            title={NX(l.type)}
           >
             {l.icon} {NL(l.id, l.name)}
-            <span style={{ fontSize: fs(9), opacity: 0.6, marginLeft: "4px" }}>({NX(l.type)})</span>
           </button>
         ))}
         <div style={{ width: "1px", background: "rgba(226,201,126,0.12)", margin: "2px 4px", flexShrink: 0 }} />
@@ -110153,8 +110260,8 @@ function GW2LegendaryTracker() {
         >
           ⏳ {t("tab_cadences")}
         </button>
-        <div style={{ width: "1px", background: "rgba(226,201,126,0.12)", margin: "2px 4px", flexShrink: 0 }} />
-        <div style={{ display: "flex", gap: 2, flexShrink: 0, alignItems: "center" }}>
+      </div>
+        <div style={{ display: "flex", gap: 2, flexShrink: 0, alignItems: "center", padding: "0 14px 0 8px", borderLeft: "1px solid rgba(226,201,126,0.12)" }}>
           {Object.keys(LANGS).map(l => (
             <button
               key={l}
@@ -110186,6 +110293,21 @@ function GW2LegendaryTracker() {
             )}
         </div>
       </div>
+
+      {/* ── SOUS-SÉLECTEUR ARMURES ── */}
+      {ARMOR_GROUP_ORDER.includes(selectedLeg) && (
+        <div className="leg-selector" style={{ padding: "8px 16px", background: "rgba(129,140,248,0.02)" }}>
+          {ARMOR_GROUP_ORDER.map(id => LEGENDARIES[id]).filter(Boolean).map(l => (
+            <button key={l.id}
+              className={`leg-btn ${selectedLeg === l.id ? "active" : ""}`}
+              style={{ "--leg-color": l.color, "--leg-bg": l.colorDim, fontSize: fs(10), padding: "6px 10px" }}
+              onClick={() => setSelectedLeg(l.id)}>
+              {(gtOwnedIds.has(l.id) || gtManualOwnedIds.has(l.id)) ? "✓ " : ""}{l.icon} {NL(l.id, l.name)}
+              <span style={{ fontSize: fs(9), opacity: 0.6, marginLeft: "4px" }}>({NX(l.type)})</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* ── GRAND TOTAL (mode plein écran) ── */}
       {isGrandTotal && !isCadences && (
@@ -111469,6 +111591,19 @@ function GW2LegendaryTracker() {
           {!isWeapons && <RequirementsBlocks requirements={leg?.requirements} apiAch={apiAch} currencies={currencies} leg={leg} collections={toutesCollections} piecesRestantes={isArmorSet ? { [SOURCES_ALIAS?.[selectedLeg] ?? selectedLeg]: obsRemainingCount } : undefined} />}
           <div className="section-label">Collections</div>
           <div style={{ margin: "2px 14px 6px", fontSize: fs(10), fontStyle: "italic", fontFamily: "'Crimson Text', serif", color: "rgba(226,201,126,0.35)" }}>{t("bits_tap_hint")}</div>
+          {(() => {
+            // v288 : une phrase de deblocage reprise par 3 collections ou plus
+            // (Trance Stone sur Vision, Arcanum sur Obsidian) s'affiche une
+            // fois ici ; chaque collection ne garde que ce qui lui est propre.
+            const communes = phrasesDeblocageCommunes(collList);
+            if (communes.length === 0) return null;
+            return (
+              <div style={{ margin: "4px 14px 8px", padding: "7px 9px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 6, fontSize: fs(10.5), fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.85)", lineHeight: 1.5 }}>
+                <div style={{ fontSize: fs(9), letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.7, marginBottom: 3 }}>{t("unlock_common", { n: communes.n })}</div>
+                {communes.map((ph, i) => <div key={i}>{ph}</div>)}
+              </div>
+            );
+          })()}
           {collList.map(a => {
             // v250 : les collections Arcanum d'Obsidienne ne sont pas dans la
             // table de progression principale ; leur statut arrive par la
@@ -111594,9 +111729,12 @@ function GW2LegendaryTracker() {
                     );
                   }
                   const gates = makeGateStatus(acctGates)(U.gate);
+                  const communes = new Set(phrasesDeblocageCommunes(collList));
+                  const propre = decoupePhrases(NX(U.text)).filter(ph => !communes.has(ph)).join(" ");
+                  if (!propre && gates.length === 0) return null;
                   return (
                     <div style={{ marginTop: 6, padding: "6px 8px", background: "rgba(251,146,60,0.06)", border: "1px solid rgba(251,146,60,0.2)", borderRadius: 6, fontSize: fs(10.5), fontFamily: "'Crimson Text', serif", color: "rgba(251,146,60,0.85)", lineHeight: 1.5 }}>
-                      {NX(U.text)}
+                      {propre}
                       {gates.map((g, gi) => (
                         <div key={gi} style={{ marginTop: 4, fontSize: fs(10), color: g.open === false ? "rgba(248,113,113,0.9)" : "rgba(226,201,126,0.5)" }}>
                           {g.open === false ? "🔒 " : g.open === true ? "🔓 " : "❔ "}{g.label}
