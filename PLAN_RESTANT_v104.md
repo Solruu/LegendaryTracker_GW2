@@ -1232,6 +1232,18 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       ligne ou leur page d'objet — surtout fabrications, achats et recompenses,
       sans lieu.
 
+### C24 — Interface (10/11, lance par Antoine)
+- [x] Etape 1, polices (JSX v285) : les 395 tailles en dur (8 a 22 px) et les
+      8 regles CSS passent par une echelle unique `--fs` (fs(n) /
+      calc(var(--fs) * Npx)). Reglage A / A / A a cote de EN-FR : 100, 115
+      (defaut), 130 %, memorise dans le navigateur ; cle i18n `font_size`.
+      Balayage des 14 legendaires : 0 erreur.
+- [ ] Etape 2, onglet Armes : type de la lance terrestre (« Harpoon » ; a
+      verifier contre l'API avant de renommer) ; Aetheric Anchor montre comme
+      un seul legendaire, ses deux sorties dessous.
+- [ ] Etape 3 : relecture ecran par ecran avec Antoine, apres retour sur
+      l'etape 1 (lisibilite, densite).
+
 ## Ordre propose
 
 1. ~~C1, C2~~ faits (restent 4 + 1 cas, tous lies au Mist Band ou a Ardent Glorious) — en parallele **W1, W2,
