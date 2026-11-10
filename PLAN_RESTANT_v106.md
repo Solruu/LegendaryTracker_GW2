@@ -1253,9 +1253,12 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       contre l'API (nom par nom), 26 aretes fausses retirees de `_meta`.
       Script integration/gw2_armurerie_ids_v1, releve
       ressources/api/api_armurerie_ids_20261110.json.
-- [ ] Reste : `fractal_capacitor` porte armory_api_id 74155 (= Ad Infinitum),
-      pas d'apiId propre ; « Fractal Capacitor » n'est pas dans l'armurerie.
-      Posseder Ad Infinitum le coche aussi. Non tranche : a voir avec Antoine.
+- [x] `fractal_capacitor` supprime (sources v464, 10/11) : Fractal Capacitor
+      (Infused) est l'etape 9 d'Ad Infinitum III (Antoine + capture wiki), deja
+      portee par adinf_3. Retires avec lui : le renvoi du bit 8, son arete
+      armurerie 74155, needed_for du Glob of Coagulated Mists Essence, et le
+      composant orphelin spinal_blade_perfected. Script
+      integration/gw2_fractal_capacitor_v1.
 - [ ] Reste : `legendary_relic` est aussi rattache a 100916 (Relic of the
       Thief, hors armurerie) dans `_meta` ; sans effet, laisse en l'etat.
 - [ ] Etape 3 : relecture ecran par ecran avec Antoine, apres retour sur
