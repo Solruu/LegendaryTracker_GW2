@@ -1261,8 +1261,19 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       integration/gw2_fractal_capacitor_v1.
 - [ ] Reste : `legendary_relic` est aussi rattache a 100916 (Relic of the
       Thief, hors armurerie) dans `_meta` ; sans effet, laisse en l'etat.
-- [ ] Etape 3 : relecture ecran par ecran avec Antoine, apres retour sur
-      l'etape 1 (lisibilite, densite).
+- [~] Etape 3, relecture ecran par ecran (10/11, JSX v287). Corrige sans
+      arbitrage : encart « ⚔ <nom> » vide en tete des collections (affiche
+      seulement s'il porte une note) ; Obsidian Armor type et sous-titre en
+      FR ; groupes du Grand Total « Armures » / « Hors série » bilingues.
+      En attente d'Antoine :
+      a. barre de navigation : deux rangees qui debordent a 1280 px (selecteur
+         coupe a gauche, A A A coupe a droite) ;
+      b. Grand Total, « Hors série » : t6_tracker, upgrades_combined (doublon
+         de rune + sigil + relique) et weapons_tracker y sont cochables ;
+         Klobjarne Geirr et Aetheric Anchor y sont aussi, pas avec les armes ;
+      c. notes de deblocage identiques repetees (6 fois Trance Stone sur
+         Vision, 6 fois Arcanum sur Obsidian ; 5 fois Glace eternelle dans
+         Timegates) : les regrouper en tete de groupe.
 
 ## Ordre propose
 

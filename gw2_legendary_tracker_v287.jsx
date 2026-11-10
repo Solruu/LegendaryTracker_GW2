@@ -1593,12 +1593,12 @@ const LEGENDARIES = {
   obsidian: {
     id: "obsidian",
     name: "Obsidian Armor",
-    type: "Armor set",
+    type: { fr: "Set d'armure", en: "Armor set" },
     expansion: "SotO",
     color: "#818cf8",
     colorDim: "rgba(129,140,248,0.15)",
     icon: "⬡",
-    description: "Legendary Armor — Secrets of the Obscure (Open World)",
+    description: { fr: "Armure légendaire — Secrets of the Obscure (monde ouvert)", en: "Legendary Armor — Secrets of the Obscure (Open World)" },
     resetType: "daily",
     isArmorSet: true,
     pieces: 6,
@@ -1979,11 +1979,11 @@ const GT_GROUPS = [
     ids: Object.keys(SOURCES_DB?.legendaries ?? {}).filter(k => k.startsWith("gen3_") && k !== "gen3_weapon_generic").sort()
   },
   {
-    id: "armors", label: "Armures", color: "#fb923c",
+    id: "armors", label: { fr: "Armures", en: "Armor" }, color: "#fb923c",
     ids: ["perfected_envoy", "obsidian", "triumphant_hero", "ardent_glorious"]
   },
   {
-    id: "standalone", label: "Standalone", color: "#f472b6",
+    id: "standalone", label: { fr: "Hors série", en: "Standalone" }, color: "#f472b6",
     ids: Object.keys(SOURCES_DB?.legendaries ?? {}).filter(k =>
       !k.startsWith("gen1_") && !k.startsWith("gen2_") && !k.startsWith("gen3_") &&
       !["perfected_envoy","obsidian","triumphant_hero","ardent_glorious"].includes(k) &&
@@ -3919,7 +3919,7 @@ function GrandTotalTab({ ownedIds = new Set(), manualOwnedIds = new Set(), onTog
                     {someOn && !allOn && <span style={{ fontSize: fs(9), color: group.color, fontWeight: 900 }}>−</span>}
                   </div>
                   <span style={{ fontSize: fs(11), color: group.color, fontFamily: "'Cinzel', serif", letterSpacing: "0.06em" }}>
-                    {group.label}
+                    {NX(group.label)}
                   </span>
                   <span style={{ fontSize: fs(9), color: D+"0.35)", fontFamily: "'Crimson Text', serif" }}>
                     ({group.ids.filter(id => selected[id]).length}/{group.ids.length})
@@ -7646,7 +7646,8 @@ export default function GW2LegendaryTracker() {
         <div>
           {/* v270 : l'encart de l'onglet armes decrit la gen3 ; il ne s'affiche
               que pour une arme gen3 (Frostfang montrait « Gift of Aurene's X »). */}
-          {!(selectedLeg === "weapons" && !/^gen3_/.test(collCible)) && (
+          {/* v287 : sans note, l'encart n'affichait que le nom, deja en tete. */}
+          {!(selectedLeg === "weapons" && !/^gen3_/.test(collCible)) && (leg?.collectionNoteKeys ?? []).length > 0 && (
           <div style={{ margin: "10px 14px 6px", padding: "11px 13px", background: "rgba(56,189,248,0.04)", border: "1px solid rgba(56,189,248,0.15)", borderRadius: "8px", fontFamily: "'Crimson Text', serif", fontSize: fs(12), color: "rgba(226,201,126,0.65)", lineHeight: 1.5 }}>
             <div style={{ fontSize: fs(12), fontWeight: 600, color: legColor, marginBottom: "5px" }}>⚔ {NL(selectedLeg, leg?.name)}</div>
             {(leg?.collectionNoteKeys ?? []).map((k, i) => <div key={k} style={{ marginTop: i > 0 ? 4 : 0 }}>{t(k)}</div>)}
