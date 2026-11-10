@@ -234,6 +234,9 @@ const I18N = {
     btn_done_checked: "✓ Done",
     btn_copied: "✓ Copied!",
     font_size: "Text size",
+    wtype_Axe: "Axe", wtype_Dagger: "Dagger", wtype_Mace: "Mace", wtype_Pistol: "Pistol", wtype_Scepter: "Scepter", wtype_Sword: "Sword",
+    wtype_Focus: "Focus", wtype_Shield: "Shield", wtype_Torch: "Torch", wtype_Warhorn: "Warhorn", wtype_Greatsword: "Greatsword", wtype_Hammer: "Hammer",
+    wtype_LongBow: "Longbow", wtype_Rifle: "Rifle", wtype_ShortBow: "Short bow", wtype_Staff: "Staff", wtype_Harpoon: "Spear", wtype_Speargun: "Harpoon gun", wtype_Trident: "Trident",
     sec_upcoming: "⚡ Upcoming",
     sec_scheduled: "[>] Scheduled Metas",
     sec_daily: "[J] Daily Activities",
@@ -341,7 +344,7 @@ const I18N = {
     up_note1: "Une unité = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens chacun). Tokens : Rend Scorchmaul (Wizard's Tower) échange des matériaux bruts SANS limite — meilleure source de volume. Provisioners de carte SotO/JW : 1/jour chacun ; Tyrie centrale/HoT : 7/semaine (patch juin 2025).",
     up_note2: "Relique (1 seule requise) : Gift of Relics = 25 Mystic Facets (187 500 Lucent Motes !) + 25 Clovers + 150 Ectos + 1 Gift of Research. Objectif confort global : 6 runes + 2-4 sigils + 1 relique — pure QoL, aucun timer, aucun verrou d'achievement.",
     tab_weapons: "⚔ Armes ({n}/{m})",
-    wpn_target_hint: "Touche une arme pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Gen 3 (Aurene) — gen 1/2 plus tard.",
+    wpn_target_hint: "Touche une arme pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Les compteurs couvrent toutes les générations.",
     wpn_goal: "Objectif : {n} arme(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
     wpn_goal_default: "Aucune arme sélectionnée — choisis tes premières cibles (hache, masse, marteau ?).",
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
@@ -478,6 +481,9 @@ const I18N = {
     btn_done_checked: "✓ Fait",
     btn_copied: "✓ Copié !",
     font_size: "Taille du texte",
+    wtype_Axe: "Hache", wtype_Dagger: "Dague", wtype_Mace: "Masse", wtype_Pistol: "Pistolet", wtype_Scepter: "Sceptre", wtype_Sword: "Épée",
+    wtype_Focus: "Focus", wtype_Shield: "Bouclier", wtype_Torch: "Torche", wtype_Warhorn: "Cor de guerre", wtype_Greatsword: "Espadon", wtype_Hammer: "Marteau",
+    wtype_LongBow: "Arc long", wtype_Rifle: "Fusil", wtype_ShortBow: "Arc court", wtype_Staff: "Bâton", wtype_Harpoon: "Lance", wtype_Speargun: "Fusil-harpon", wtype_Trident: "Trident",
     sec_upcoming: "⚡ Prochains",
     sec_scheduled: "[>] Metas programmées",
     sec_daily: "[J] Activités quotidiennes",
@@ -940,92 +946,14 @@ const SOURCES_DB = {
       "100916": [
         "legendary_relic"
       ],
-      "30686": [
-        "gen1_frostfang"
-      ],
       "30687": [
         "gen1_incinerator"
-      ],
-      "30688": [
-        "gen1_the_moot"
-      ],
-      "30689": [
-        "gen1_quip"
-      ],
-      "30690": [
-        "gen1_meteorlogicus"
-      ],
-      "30691": [
-        "gen1_bolt"
-      ],
-      "30692": [
-        "gen1_the_minstrel"
-      ],
-      "30693": [
-        "gen1_the_flameseeker_prophecies"
-      ],
-      "30694": [
-        "gen1_rodgort"
-      ],
-      "30695": [
-        "gen1_howler"
-      ],
-      "30704": [
-        "gen1_sunrise"
-      ],
-      "30705": [
-        "gen1_twilight"
-      ],
-      "30706": [
-        "gen1_eternity"
-      ],
-      "30696": [
-        "gen1_the_juggernaut"
       ],
       "30697": [
         "gen1_frenzy"
       ],
-      "30698": [
-        "gen1_kamohoalii_kotaki"
-      ],
-      "30699": [
-        "gen1_kudzu"
-      ],
-      "30700": [
-        "gen1_the_dreamer"
-      ],
-      "30701": [
-        "gen1_the_bifrost"
-      ],
-      "30702": [
-        "gen1_kraitkin"
-      ],
-      "30703": [
-        "gen1_the_predator"
-      ],
       "74155": [
         "ad_infinitum"
-      ],
-      "74329": [
-        "gen2_hope"
-      ],
-      "74333": [
-        "gen2_nevermore"
-      ],
-      "74332": [
-        "gen2_chuka_and_champawat"
-      ],
-      "74328": [
-        "gen2_eureka"
-      ],
-      "74330": [
-        "gen2_shooshadoo"
-      ],
-      "74334": [
-        "gen2_exordium"
-      ],
-      "84536": [
-        "gen2_xiuquatl"
       ],
       "96937": [
         "gen3_aurenes_rending"
@@ -1122,6 +1050,93 @@ const SOURCES_DB = {
       ],
       "95380": [
         "prismatic_champions_regalia"
+      ],
+      "30684": [
+        "gen1_frostfang"
+      ],
+      "30692": [
+        "gen1_the_moot"
+      ],
+      "30693": [
+        "gen1_quip"
+      ],
+      "30695": [
+        "gen1_meteorlogicus"
+      ],
+      "30699": [
+        "gen1_bolt"
+      ],
+      "30688": [
+        "gen1_the_minstrel"
+      ],
+      "30696": [
+        "gen1_the_flameseeker_prophecies"
+      ],
+      "30700": [
+        "gen1_rodgort"
+      ],
+      "30702": [
+        "gen1_howler"
+      ],
+      "30703": [
+        "gen1_sunrise"
+      ],
+      "30704": [
+        "gen1_twilight"
+      ],
+      "30689": [
+        "gen1_eternity"
+      ],
+      "30690": [
+        "gen1_the_juggernaut"
+      ],
+      "30691": [
+        "gen1_kamohoalii_kotaki"
+      ],
+      "30685": [
+        "gen1_kudzu"
+      ],
+      "30686": [
+        "gen1_the_dreamer"
+      ],
+      "30698": [
+        "gen1_the_bifrost"
+      ],
+      "30701": [
+        "gen1_kraitkin"
+      ],
+      "30694": [
+        "gen1_the_predator"
+      ],
+      "72713": [
+        "gen2_hope"
+      ],
+      "71383": [
+        "gen2_nevermore"
+      ],
+      "78556": [
+        "gen2_chuka_and_champawat"
+      ],
+      "79562": [
+        "gen2_eureka"
+      ],
+      "79802": [
+        "gen2_shooshadoo"
+      ],
+      "90551": [
+        "gen2_exordium"
+      ],
+      "88576": [
+        "gen2_xiuquatl"
+      ],
+      "86098": [
+        "gen2_the_binding_of_ipos"
+      ],
+      "105653": [
+        "aetheric_anchor"
+      ],
+      "106273": [
+        "aetheric_anchor"
       ]
     },
     "armory_map_note": "armory_apiid_to_legid: maps itemIds from /v2/account/legendaryarmory to internal legendary_ids. Armor sets = detected by slot_count (6 pieces of same type). Items with apiId=null = recent additions (VoE May 2026) — apiIds to confirm via live API.",
@@ -52937,8 +52952,8 @@ const SOURCES_DB = {
       "armory_api_id": 105497,
       "armory_max_count": null,
       "armory_note": {
-        "fr": "Container — unlock Ancora Pax (106712?) + Ancora Bellum. Vérifier apiIds Ancora.",
-        "en": "Container - unlocks Ancora Pax (106712?) + Ancora Bellum. Verify Ancora apiIds."
+        "fr": "Conteneur (105497) : l'armurerie enregistre ses deux sorties, Ancora Pax 105653 (baton) et Ancora Bellum 106273 (lance). Source : API /v2/items et /v2/legendaryarmory, 10/11/2026.",
+        "en": "Container (105497): the armory records its two outputs, Ancora Pax 105653 (staff) and Ancora Bellum 106273 (spear). Source: API /v2/items and /v2/legendaryarmory, 2026-11-10."
       },
       "recipe_verified": "2026-07-25 (wiki + guildjen) — disponible depuis le lancement VoE",
       "timegate": {
@@ -55357,7 +55372,7 @@ const SOURCES_DB = {
       "precursor": "Tooth of Frostfang",
       "gift_unique": "Gift of Frostfang",
       "gen": "gen1",
-      "armory_api_id": 30686,
+      "armory_api_id": 30684,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -56724,7 +56739,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30684
+      "apiId": 30684,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30686 = the dreamer)"
     },
     "gen1_incinerator": {
       "name": "Incinerator",
@@ -58045,7 +58061,7 @@ const SOURCES_DB = {
       "precursor": "The Energizer",
       "gift_unique": "Gift of The Moot",
       "gen": "gen1",
-      "armory_api_id": 30688,
+      "armory_api_id": 30692,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -59252,7 +59268,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30692
+      "apiId": 30692,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30688 = the minstrel)"
     },
     "gen1_quip": {
       "name": "Quip",
@@ -59267,7 +59284,7 @@ const SOURCES_DB = {
       "precursor": "Chaos Gun",
       "gift_unique": "Gift of Quip",
       "gen": "gen1",
-      "armory_api_id": 30689,
+      "armory_api_id": 30693,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -60471,7 +60488,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30693
+      "apiId": 30693,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30689 = eternity)"
     },
     "gen1_meteorlogicus": {
       "name": "Meteorlogicus",
@@ -60486,7 +60504,7 @@ const SOURCES_DB = {
       "precursor": "Storm",
       "gift_unique": "Gift of Meteorlogicus",
       "gen": "gen1",
-      "armory_api_id": 30690,
+      "armory_api_id": 30695,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -61546,7 +61564,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30695
+      "apiId": 30695,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30690 = the juggernaut)"
     },
     "gen1_bolt": {
       "name": "Bolt",
@@ -61561,7 +61580,7 @@ const SOURCES_DB = {
       "precursor": "Zap",
       "gift_unique": "Gift of Bolt",
       "gen": "gen1",
-      "armory_api_id": 30691,
+      "armory_api_id": 30699,
       "armory_max_count": 4,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -62820,7 +62839,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30699
+      "apiId": 30699,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30691 = kamohoali'i kotaki)"
     },
     "gen1_the_minstrel": {
       "name": "The Minstrel",
@@ -62835,7 +62855,7 @@ const SOURCES_DB = {
       "precursor": "The Bard",
       "gift_unique": "Gift of The Minstrel",
       "gen": "gen1",
-      "armory_api_id": 30692,
+      "armory_api_id": 30688,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -64009,7 +64029,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30688
+      "apiId": 30688,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30692 = the moot)"
     },
     "gen1_the_flameseeker_prophecies": {
       "name": "The Flameseeker Prophecies",
@@ -64024,7 +64045,7 @@ const SOURCES_DB = {
       "precursor": "The Chosen",
       "gift_unique": "Gift of The Flameseeker Prophecies",
       "gen": "gen1",
-      "armory_api_id": 30693,
+      "armory_api_id": 30696,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -65144,7 +65165,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30696
+      "apiId": 30696,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30693 = quip)"
     },
     "gen1_rodgort": {
       "name": "Rodgort",
@@ -65159,7 +65181,7 @@ const SOURCES_DB = {
       "precursor": "Rodgort's Flame",
       "gift_unique": "Gift of Rodgort",
       "gen": "gen1",
-      "armory_api_id": 30694,
+      "armory_api_id": 30700,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -66438,7 +66460,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30700
+      "apiId": 30700,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30694 = the predator)"
     },
     "gen1_howler": {
       "name": "Howler",
@@ -66453,7 +66476,7 @@ const SOURCES_DB = {
       "precursor": "Howl",
       "gift_unique": "Gift of Howler",
       "gen": "gen1",
-      "armory_api_id": 30695,
+      "armory_api_id": 30702,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -67830,7 +67853,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30702
+      "apiId": 30702,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30695 = meteorlogicus)"
     },
     "gen1_sunrise": {
       "name": "Sunrise",
@@ -67845,7 +67869,7 @@ const SOURCES_DB = {
       "precursor": "Dawn",
       "gift_unique": "Gift of Sunrise",
       "gen": "gen1",
-      "armory_api_id": 30704,
+      "armory_api_id": 30703,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -69313,7 +69337,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30703
+      "apiId": 30703,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30704 = twilight)"
     },
     "gen1_twilight": {
       "name": "Twilight",
@@ -69328,7 +69353,7 @@ const SOURCES_DB = {
       "precursor": "Dusk",
       "gift_unique": "Gift of Twilight",
       "gen": "gen1",
-      "armory_api_id": 30705,
+      "armory_api_id": 30704,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -70687,7 +70712,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30704
+      "apiId": 30704,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30705 = mighty axe)"
     },
     "gen1_eternity": {
       "name": "Eternity",
@@ -70702,7 +70728,7 @@ const SOURCES_DB = {
       "precursor": "Sunrise + Twilight",
       "gift_unique": "N/A — MF direct",
       "gen": "gen1",
-      "armory_api_id": 30706,
+      "armory_api_id": 30689,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — ressources/wiki/eternity.html ; remplace le patron générationnel, qui ne s'applique pas : Eternity ne consomme ni gift d'arme ni gift de maîtrise)",
       "collections": {
@@ -70771,7 +70797,8 @@ const SOURCES_DB = {
           }
         }
       },
-      "apiId": 30689
+      "apiId": 30689,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30706 = mighty axe)"
     },
     "gen1_the_juggernaut": {
       "name": "The Juggernaut",
@@ -70786,7 +70813,7 @@ const SOURCES_DB = {
       "precursor": "The Colossus",
       "gift_unique": "Gift of The Juggernaut",
       "gen": "gen1",
-      "armory_api_id": 30696,
+      "armory_api_id": 30690,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -72377,7 +72404,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30690
+      "apiId": 30690,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30696 = the flameseeker prophecies)"
     },
     "gen1_frenzy": {
       "name": "Frenzy",
@@ -73156,7 +73184,7 @@ const SOURCES_DB = {
       "precursor": "Carcharias",
       "gift_unique": "Gift of Kamohoali'i Kotaki",
       "gen": "gen1",
-      "armory_api_id": 30698,
+      "armory_api_id": 30691,
       "armory_max_count": 4,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -74220,7 +74248,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30691
+      "apiId": 30691,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30698 = the bifrost)"
     },
     "gen1_kudzu": {
       "name": "Kudzu",
@@ -74235,7 +74264,7 @@ const SOURCES_DB = {
       "precursor": "Leaf of Kudzu",
       "gift_unique": "Gift of Kudzu",
       "gen": "gen1",
-      "armory_api_id": 30699,
+      "armory_api_id": 30685,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -75373,7 +75402,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30685
+      "apiId": 30685,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30699 = bolt)"
     },
     "gen1_the_dreamer": {
       "name": "The Dreamer",
@@ -75388,7 +75418,7 @@ const SOURCES_DB = {
       "precursor": "The Lover",
       "gift_unique": "Gift of The Dreamer",
       "gen": "gen1",
-      "armory_api_id": 30700,
+      "armory_api_id": 30686,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -76530,7 +76560,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30686
+      "apiId": 30686,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30700 = rodgort)"
     },
     "gen1_the_bifrost": {
       "name": "The Bifrost",
@@ -76545,7 +76576,7 @@ const SOURCES_DB = {
       "precursor": "The Legend",
       "gift_unique": "Gift of The Bifrost",
       "gen": "gen1",
-      "armory_api_id": 30701,
+      "armory_api_id": 30698,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -77787,7 +77818,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30698
+      "apiId": 30698,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30701 = kraitkin)"
     },
     "gen1_kraitkin": {
       "name": "Kraitkin",
@@ -77802,7 +77834,7 @@ const SOURCES_DB = {
       "precursor": "Venom",
       "gift_unique": "Gift of Kraitkin",
       "gen": "gen1",
-      "armory_api_id": 30702,
+      "armory_api_id": 30701,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -78727,7 +78759,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30701
+      "apiId": 30701,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30702 = howler)"
     },
     "gen1_the_predator": {
       "name": "The Predator",
@@ -78742,7 +78775,7 @@ const SOURCES_DB = {
       "precursor": "The Hunter",
       "gift_unique": "Gift of The Predator",
       "gen": "gen1",
-      "armory_api_id": 30703,
+      "armory_api_id": 30694,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme)",
       "collections": {
@@ -79808,7 +79841,8 @@ const SOURCES_DB = {
           "unlock_verified": true
         }
       },
-      "apiId": 30694
+      "apiId": 30694,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 30703 = sunrise)"
     },
     "gen2_astralaria": {
       "name": "Astralaria",
@@ -79825,7 +79859,7 @@ const SOURCES_DB = {
       "collection": true,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74155,
+      "armory_api_id": 76158,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
@@ -81756,7 +81790,8 @@ const SOURCES_DB = {
       "precursor_erreur": "The Device",
       "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
       "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic",
-      "apiId": 76158
+      "apiId": 76158,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74155 = ad infinitum)"
     },
     "gen2_hope": {
       "name": "HOPE",
@@ -81773,7 +81808,7 @@ const SOURCES_DB = {
       "collection": true,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74329,
+      "armory_api_id": 72713,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
@@ -84354,7 +84389,8 @@ const SOURCES_DB = {
       "precursor_erreur": "The Mechanism",
       "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
       "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic",
-      "apiId": 72713
+      "apiId": 72713,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74329 = airship essence)"
     },
     "gen2_nevermore": {
       "name": "Nevermore",
@@ -84371,7 +84407,7 @@ const SOURCES_DB = {
       "collection": true,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74333,
+      "armory_api_id": 71383,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
@@ -86244,7 +86280,8 @@ const SOURCES_DB = {
       "precursor_erreur": "Unfinished Raven Staff",
       "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
       "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic",
-      "apiId": 71383
+      "apiId": 71383,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74333 = tateos's leather breather)"
     },
     "gen2_chuka_and_champawat": {
       "name": "Chuka and Champawat",
@@ -86261,7 +86298,7 @@ const SOURCES_DB = {
       "collection": true,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74332,
+      "armory_api_id": 78556,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » — deux recettes, Maguuma ou Desert Mastery)",
       "collections": {
@@ -88790,7 +88827,8 @@ const SOURCES_DB = {
       "precursor_erreur": "Tiger's Empowerment",
       "precursor_ref": "wiki, table « Precursor weapon » (colonne Final tier) — ressources/wiki/precursor_weapon.html",
       "runestone_ref": "wiki, cascade de recette de la page de l'arme — les 4 gen2 à collections nomment l'Icy Runestone, les 12 gen2 via Hobbs et les 16 gen3 la Mystic",
-      "apiId": 78556
+      "apiId": 78556,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74332 = nightfury)"
     },
     "gen2_eureka": {
       "name": "Eureka",
@@ -88807,7 +88845,7 @@ const SOURCES_DB = {
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74328,
+      "armory_api_id": 79562,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
@@ -88817,7 +88855,8 @@ const SOURCES_DB = {
       "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes ; precurseur fabrique : ressources/wiki/memory_of_aurene.html (Used in, gen3) et pages des armes gen2 (« Requires 500 »)",
       "precursor_erreur": "Spark of Eureka",
       "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
-      "apiId": 79562
+      "apiId": 79562,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74328 = leaf fossil)"
     },
     "gen2_shooshadoo": {
       "name": "Shooshadoo",
@@ -88834,7 +88873,7 @@ const SOURCES_DB = {
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74330,
+      "armory_api_id": 79802,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
@@ -88846,7 +88885,8 @@ const SOURCES_DB = {
       "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
       "slot_erreur": "weapon (Focus)",
       "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
-      "apiId": 79802
+      "apiId": 79802,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74330 = absent de l API)"
     },
     "gen2_exordium": {
       "name": "Exordium",
@@ -88863,7 +88903,7 @@ const SOURCES_DB = {
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery",
       "gen": "gen2",
-      "armory_api_id": 74334,
+      "armory_api_id": 90551,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
@@ -88873,7 +88913,8 @@ const SOURCES_DB = {
       "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes ; precurseur fabrique : ressources/wiki/memory_of_aurene.html (Used in, gen3) et pages des armes gen2 (« Requires 500 »)",
       "precursor_erreur": "Claw of Resolution",
       "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
-      "apiId": 90551
+      "apiId": 90551,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 74334 = absent de l API)"
     },
     "gen2_xiuquatl": {
       "name": "Xiuquatl",
@@ -88890,7 +88931,7 @@ const SOURCES_DB = {
       "collection": false,
       "mastery_gift": "gift_of_maguuma_mastery|gift_of_desert_mastery",
       "gen": "gen2",
-      "armory_api_id": 84536,
+      "armory_api_id": 88576,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "collections_none": {
@@ -88900,7 +88941,8 @@ const SOURCES_DB = {
       "collections_none_ref": "table des 53 precurseurs + categorie Legendary Weapons : aucun succes ; precurseur fabrique : ressources/wiki/memory_of_aurene.html (Used in, gen3) et pages des armes gen2 (« Requires 500 »)",
       "precursor_erreur": "Xiuquatl Core",
       "precursor_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
-      "apiId": 88576
+      "apiId": 88576,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 84536 = book of awakening to light)"
     },
     "gen3_aurenes_claw": {
       "name": "Aurene's Claw",
@@ -89624,7 +89666,7 @@ const SOURCES_DB = {
         "fr": "MF : Mystic Tribute + Gift of Sentience + Gift of Draconic Mastery + Spark of Sentience",
         "en": "MF: Mystic Tribute + Gift of Sentience + Gift of Draconic Mastery + Spark of Sentience"
       },
-      "armory_api_id": 79980,
+      "armory_api_id": 81908,
       "armory_max_count": 1,
       "note": {
         "fr": "Colifichet légendaire (LW3). Synergie visuelle avec Vision et Coalescence. Requiert d'abord les 4 sous-collections pré-Aurora (Conspiracy of Dunces, Token Collector, Cin Business, Lessons Learned) pour obtenir la Sentient Seed.",
@@ -93083,7 +93125,8 @@ const SOURCES_DB = {
         "fire_orchid_blossom",
         "orrian_pearl_lw3"
       ],
-      "apiId": 81908
+      "apiId": 81908,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 79980 = mist pendant)"
     },
     "vision": {
       "name": "Vision",
@@ -97688,7 +97731,7 @@ const SOURCES_DB = {
         "mystic_tribute",
         "gift_of_conquering"
       ],
-      "armory_api_id": 93190,
+      "armory_api_id": 93105,
       "note": {
         "fr": "Anneau légendaire McM. ~1 850 Skirmish Tickets minimum (cap 365/sem → ~5-6 semaines). 100 Icy Runestones chez Rojan the Penitent (Détroit des gorges glacées, 1 po pièce — indisponible pendant Breaking the Claw of Jormag).",
         "en": "WvW legendary ring. ~1,850 Skirmish Tickets minimum (365/wk cap → ~5-6 weeks). 100 Icy Runestones from Rojan the Penitent (Frostgorge Sound, 1 g each — unavailable during Breaking the Claw of Jormag)."
@@ -97696,7 +97739,8 @@ const SOURCES_DB = {
       "recipe_verified": "2026-07-25 (wiki)",
       "cadence_ref": "skirmish_claim_ticket",
       "apiId": 93105,
-      "armory_max_count": 2
+      "armory_max_count": 2,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 93190 = gift of the world)"
     },
     "gen2_claw_of_the_khan_ur": {
       "name": "Claw of the Khan-Ur",
@@ -98081,7 +98125,7 @@ const SOURCES_DB = {
         "fr": "⚠ Correction v40 : c'est un FOCUS légendaire gen2 (LS4 ép.1 Daybreak), pas un accessoire. Précurseur : Ars Goetia. ⚠ Ne jamais stat-swap le précurseur — il deviendrait un objet élevé générique inutilisable.",
         "en": "⚠ v40 fix: this is a gen2 legendary FOCUS (LWS4 ep.1 Daybreak), not an accessory. Precursor: Ars Goetia. ⚠ Never stat-swap the precursor — it would turn into a generic ascended item, unusable."
       },
-      "armory_api_id": 91048,
+      "armory_api_id": 86098,
       "armory_max_count": 2,
       "recipe_verified": "2026-09-01 (wiki, encadré « Recipes » de la page de l'arme — deux recettes, Maguuma ou Desert Mastery)",
       "gen": "gen2",
@@ -98104,7 +98148,8 @@ const SOURCES_DB = {
       "gift_unique_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
       "slot_erreur": "focus",
       "slot_ref": "wiki, encadré « Recipes » et infobox de la page de l'arme",
-      "apiId": 86098
+      "apiId": 86098,
+      "armory_api_id_ref": "API /v2/items + /v2/legendaryarmory, 10/11/2026 — ressources/api/api_armurerie_ids_20261110.json (ancien id 91048 = vision)"
     }
   },
   "meta_eligible_note": {
@@ -109619,10 +109664,16 @@ function GW2LegendaryTracker() {
   // Le pont apiId → cle de legendaire n'existait pas : trois legendaires sur
   // 84 portaient un apiId. Les 68 poses le 18/09 viennent tous de leur propre
   // capture wiki.
+  // Les ids de l'onglet Armes sont ceux de l'armurerie : le pont passe par
+  // armoryReverseMap, comme la detection. L'apiId seul ratait les deux sorties
+  // d'Aetheric Anchor (conteneur 105497, armurerie 105653 et 106273).
   const LEG_BY_API = React.useMemo(() => {
     const m = new Map();
     for (const [lid, l] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
       if (typeof l?.apiId === "number") m.set(l.apiId, lid);
+    }
+    for (const [apiId, legIds] of Object.entries(armoryReverseMap())) {
+      if (legIds.length === 1 && !m.has(Number(apiId))) m.set(Number(apiId), legIds[0]);
     }
     return m;
   }, []);
@@ -111827,6 +111878,27 @@ function GW2LegendaryTracker() {
           // « 5 ciblees, 1 restante » sur un onglet qui n'en montre que 3.
           ? t("wpn_goal", { n: wpnTargetGen.length, o: wpnTargetOwned, r: wpnRemainingCount })
           : t("wpn_goal_default");
+        const renderWpnCell = (id) => {
+                  const cell = wpnItems?.[String(id)];
+                  if (!cell) return <div key={id} />;
+                  const owned = wpnOwnedSet.has(id);
+                  const targeted = wpnTarget.has(id);
+                  const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
+                  const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(96,165,250,0.10)" : "rgba(255,255,255,0.02)");
+                  return (
+                    <div key={id}
+                      onClick={() => { if (!owned) toggleWpnTarget(id); }}
+                      title={cell.name}
+                      style={{ padding: "8px 5px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
+                      <div style={{ fontSize: fs(11), fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
+                        {owned ? "✓ " : ""}{t(`wtype_${cell.wtype}`) === `wtype_${cell.wtype}` ? cell.wtype : t(`wtype_${cell.wtype}`)}
+                      </div>
+                      <div style={{ fontSize: fs(9), color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        {cell.name}
+                      </div>
+                    </div>
+                  );
+        };
         return (
           <div>
             <div className="section-label">{t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 })}</div>
@@ -111847,7 +111919,7 @@ function GW2LegendaryTracker() {
               {wpnGen === "gen1" && NX({ fr: "Gen 1 : précurseur via CP, forge ou craft. Par arme : Gift of Fortune (77 clovers + 250 ectos + T6 → onglet T6) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 monnaie de donjon).", en: "Gen 1: precursor via TP, forge or crafting. Per weapon: Gift of Fortune (77 clovers + 250 ectos + T6 → T6 tab) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 dungeon currency)." })}
               {wpnGen === "gen2" && NX({ fr: "Gen 2 : précurseur par collections (3 tiers). Par arme : Mystic Tribute (77 clovers + 250 coins + T6 ×2 → onglet T6) + Gift of Maguuma/Desert Mastery + gift spécifique. Pas d'achat CP possible.", en: "Gen 2: precursor via collections (3 tiers). Per weapon: Mystic Tribute (77 clovers + 250 coins + 2× T6 gifts → T6 tab) + Gift of Maguuma/Desert Mastery + weapon-specific gift. Not purchasable on TP." })}
               {wpnGen === "gen3" && NX({ fr: "Gen 3 (Aurene) : précurseur craft 500 + Gift of Jade Mastery + Draconic Tribute (38 clovers). Variantes de dragons débloquées après liaison. Totaux dans l'onglet Devises.", en: "Gen 3 (Aurene): crafted 500 precursor + Gift of Jade Mastery + Draconic Tribute (38 clovers). Elder Dragon variants unlock after binding. Totals in the Currencies tab." })}
-              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE), qui est un conteneur et apparaît sous ses deux armes de sortie, Ancora Bellum (lance) et Ancora Pax (bâton). Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (JW spear — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE), which is a container and shows up as its two outputs, Ancora Bellum (spear) and Ancora Pax (staff). Weapon-specific costs — check each wiki page." })}
+              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance, JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE). Aetheric Anchor est un conteneur : une seule fabrication donne ses deux armes, Ancora Bellum (lance) et Ancora Pax (bâton), regroupées sous son nom. Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (spear, JW — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE). Aetheric Anchor is a container: one craft gives both its weapons, Ancora Bellum (spear) and Ancora Pax (staff), grouped under its name. Weapon-specific costs — check each wiki page." })}
             </div>
             <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
               <div style={{ fontSize: fs(12), fontWeight: 600, color: legColor }}>{goalLabel}</div>
@@ -111860,26 +111932,35 @@ function GW2LegendaryTracker() {
             )}
             {wpnItems && (
               <div style={{ margin: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px" }}>
-                {[...wpnIds].sort((x, y) => ((wpnItems[String(x)] ?? {}).wtype ?? "").localeCompare((wpnItems[String(y)] ?? {}).wtype ?? "")).map(id => {
-                  const cell = wpnItems[String(id)];
-                  if (!cell) return <div key={id} />;
-                  const owned = wpnOwnedSet.has(id);
-                  const targeted = wpnTarget.has(id);
-                  const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
-                  const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(96,165,250,0.10)" : "rgba(255,255,255,0.02)");
-                  return (
-                    <div key={id}
-                      onClick={() => { if (!owned) toggleWpnTarget(id); }}
-                      title={cell.name}
-                      style={{ padding: "8px 5px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
-                      <div style={{ fontSize: fs(11), fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
-                        {owned ? "✓ " : ""}{NX(cell.wtype)}
+                {(() => {
+                  // Un legendaire qui donne plusieurs armes (Aetheric Anchor)
+                  // s'affiche comme une seule carte, ses sorties en dessous.
+                  const tri = [...wpnIds].sort((x, y) => ((wpnItems[String(x)] ?? {}).wtype ?? "").localeCompare((wpnItems[String(y)] ?? {}).wtype ?? ""));
+                  const parLeg = new Map();
+                  for (const id of tri) { const lid = LEG_BY_API.get(id); if (lid) parLeg.set(lid, [...(parLeg.get(lid) ?? []), id]); }
+                  const vus = new Set();
+                  const unites = [];
+                  for (const id of tri) {
+                    const lid = LEG_BY_API.get(id);
+                    const ids = lid ? parLeg.get(lid) : [id];
+                    if (ids.length > 1) { if (vus.has(lid)) continue; vus.add(lid); unites.push({ lid, ids }); }
+                    else unites.push({ lid: null, ids: [id] });
+                  }
+                  return unites;
+                })().map(({ lid, ids }) => {
+                  if (lid) {
+                    const l = SOURCES_DB?.legendaries?.[lid] ?? {};
+                    const nomLeg = NL(lid, String(l.wiki ?? lid).replace(/_/g, " "));
+                    return (
+                      <div key={lid} style={{ gridColumn: `span ${Math.min(ids.length, 4)}`, padding: "6px", borderRadius: "7px", border: "1px solid rgba(226,201,126,0.15)", background: "rgba(255,255,255,0.015)" }}>
+                        <div style={{ fontSize: fs(11), fontWeight: 600, color: "rgba(226,201,126,0.8)", textAlign: "center", marginBottom: "5px" }}>{nomLeg}</div>
+                        <div style={{ display: "grid", gridTemplateColumns: `repeat(${ids.length}, 1fr)`, gap: "6px" }}>
+                          {ids.map(id => renderWpnCell(id))}
+                        </div>
                       </div>
-                      <div style={{ fontSize: fs(9), color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                        {cell.name}
-                      </div>
-                    </div>
-                  );
+                    );
+                  }
+                  return renderWpnCell(ids[0]);
                 })}
               </div>
             )}

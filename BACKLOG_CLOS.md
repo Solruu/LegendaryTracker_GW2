@@ -4,6 +4,16 @@ Déplacées telles quelles depuis `BACKLOG.md` le 08/10/2026. Historique : rien 
 à faire. Les sections encore ouvertes, et le plan, sont dans `BACKLOG.md` et
 `PLAN_RESTANT_v*.md`.
 
+## Interface — notes d'Antoine du 05/11/2026 — ✅ **RÉSOLU le 10/11/2026** (polices : JSX v285 ; Armes : JSX v286, plan C24)
+
+- **Polices trop petites, en general.** Antoine ne veut pas gerer la mise en
+  page tout de suite : a reprendre dans une passe JSX dediee.
+- **Onglet Armes, Misc (0/3)** : Aetheric Anchor n'apparait pas en tant que tel ;
+  seules ses deux sorties, Ancora Bellum et Ancora Pax, sont listees (la note du
+  panneau le dit, mais Antoine attend l'Anchor lui-meme). Les lances terrestres
+  (Klobjarne Geirr, Ancora Bellum) sont etiquetees « Harpoon » : type rendu par
+  l'API, a confirmer avant de renommer (incertain).
+
 ## 1. Branded Mass : 6 armes — ✅ **RÉSOLU le 22/08/2026**
 
 **Vision demande 6 armes Dragonsblood, pas 16.** Antoine avait raison.

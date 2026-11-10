@@ -171,6 +171,9 @@ const I18N = {
     btn_done_checked: "✓ Done",
     btn_copied: "✓ Copied!",
     font_size: "Text size",
+    wtype_Axe: "Axe", wtype_Dagger: "Dagger", wtype_Mace: "Mace", wtype_Pistol: "Pistol", wtype_Scepter: "Scepter", wtype_Sword: "Sword",
+    wtype_Focus: "Focus", wtype_Shield: "Shield", wtype_Torch: "Torch", wtype_Warhorn: "Warhorn", wtype_Greatsword: "Greatsword", wtype_Hammer: "Hammer",
+    wtype_LongBow: "Longbow", wtype_Rifle: "Rifle", wtype_ShortBow: "Short bow", wtype_Staff: "Staff", wtype_Harpoon: "Spear", wtype_Speargun: "Harpoon gun", wtype_Trident: "Trident",
     sec_upcoming: "⚡ Upcoming",
     sec_scheduled: "[>] Scheduled Metas",
     sec_daily: "[J] Daily Activities",
@@ -278,7 +281,7 @@ const I18N = {
     up_note1: "Une unité = Gift of Runes/Sigils/Relics + Gift of Condensed Magic + Gift of Condensed Might + Gift of Craftsmanship (50 Provisioner Tokens chacun). Tokens : Rend Scorchmaul (Wizard's Tower) échange des matériaux bruts SANS limite — meilleure source de volume. Provisioners de carte SotO/JW : 1/jour chacun ; Tyrie centrale/HoT : 7/semaine (patch juin 2025).",
     up_note2: "Relique (1 seule requise) : Gift of Relics = 25 Mystic Facets (187 500 Lucent Motes !) + 25 Clovers + 150 Ectos + 1 Gift of Research. Objectif confort global : 6 runes + 2-4 sigils + 1 relique — pure QoL, aucun timer, aucun verrou d'achievement.",
     tab_weapons: "⚔ Armes ({n}/{m})",
-    wpn_target_hint: "Touche une arme pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Gen 3 (Aurene) — gen 1/2 plus tard.",
+    wpn_target_hint: "Touche une arme pour l'ajouter/retirer de ton objectif. ✓ = possédée (armurerie). Les compteurs couvrent toutes les générations.",
     wpn_goal: "Objectif : {n} arme(s) ciblée(s) — {o} possédée(s), {r} restante(s)",
     wpn_goal_default: "Aucune arme sélectionnée — choisis tes premières cibles (hache, masse, marteau ?).",
     wpn_resolving: "Résolution des noms d'armes via l'API GW2…",
@@ -415,6 +418,9 @@ const I18N = {
     btn_done_checked: "✓ Fait",
     btn_copied: "✓ Copié !",
     font_size: "Taille du texte",
+    wtype_Axe: "Hache", wtype_Dagger: "Dague", wtype_Mace: "Masse", wtype_Pistol: "Pistolet", wtype_Scepter: "Sceptre", wtype_Sword: "Épée",
+    wtype_Focus: "Focus", wtype_Shield: "Bouclier", wtype_Torch: "Torche", wtype_Warhorn: "Cor de guerre", wtype_Greatsword: "Espadon", wtype_Hammer: "Marteau",
+    wtype_LongBow: "Arc long", wtype_Rifle: "Fusil", wtype_ShortBow: "Arc court", wtype_Staff: "Bâton", wtype_Harpoon: "Lance", wtype_Speargun: "Fusil-harpon", wtype_Trident: "Trident",
     sec_upcoming: "⚡ Prochains",
     sec_scheduled: "[>] Metas programmées",
     sec_daily: "[J] Activités quotidiennes",
@@ -5833,10 +5839,16 @@ export default function GW2LegendaryTracker() {
   // Le pont apiId → cle de legendaire n'existait pas : trois legendaires sur
   // 84 portaient un apiId. Les 68 poses le 18/09 viennent tous de leur propre
   // capture wiki.
+  // Les ids de l'onglet Armes sont ceux de l'armurerie : le pont passe par
+  // armoryReverseMap, comme la detection. L'apiId seul ratait les deux sorties
+  // d'Aetheric Anchor (conteneur 105497, armurerie 105653 et 106273).
   const LEG_BY_API = React.useMemo(() => {
     const m = new Map();
     for (const [lid, l] of Object.entries(SOURCES_DB?.legendaries ?? {})) {
       if (typeof l?.apiId === "number") m.set(l.apiId, lid);
+    }
+    for (const [apiId, legIds] of Object.entries(armoryReverseMap())) {
+      if (legIds.length === 1 && !m.has(Number(apiId))) m.set(Number(apiId), legIds[0]);
     }
     return m;
   }, []);
@@ -8041,6 +8053,27 @@ export default function GW2LegendaryTracker() {
           // « 5 ciblees, 1 restante » sur un onglet qui n'en montre que 3.
           ? t("wpn_goal", { n: wpnTargetGen.length, o: wpnTargetOwned, r: wpnRemainingCount })
           : t("wpn_goal_default");
+        const renderWpnCell = (id) => {
+                  const cell = wpnItems?.[String(id)];
+                  if (!cell) return <div key={id} />;
+                  const owned = wpnOwnedSet.has(id);
+                  const targeted = wpnTarget.has(id);
+                  const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
+                  const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(96,165,250,0.10)" : "rgba(255,255,255,0.02)");
+                  return (
+                    <div key={id}
+                      onClick={() => { if (!owned) toggleWpnTarget(id); }}
+                      title={cell.name}
+                      style={{ padding: "8px 5px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
+                      <div style={{ fontSize: fs(11), fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
+                        {owned ? "✓ " : ""}{t(`wtype_${cell.wtype}`) === `wtype_${cell.wtype}` ? cell.wtype : t(`wtype_${cell.wtype}`)}
+                      </div>
+                      <div style={{ fontSize: fs(9), color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        {cell.name}
+                      </div>
+                    </div>
+                  );
+        };
         return (
           <div>
             <div className="section-label">{t("tab_weapons", { n: wpnOwnedSet.size, m: wpnIds.length || 16 })}</div>
@@ -8061,7 +8094,7 @@ export default function GW2LegendaryTracker() {
               {wpnGen === "gen1" && NX({ fr: "Gen 1 : précurseur via CP, forge ou craft. Par arme : Gift of Fortune (77 clovers + 250 ectos + T6 → onglet T6) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 monnaie de donjon).", en: "Gen 1: precursor via TP, forge or crafting. Per weapon: Gift of Fortune (77 clovers + 250 ectos + T6 → T6 tab) + Gift of Mastery (250 Obsidian Shards + Bloodstone Shard + Gift of Exploration + 500 dungeon currency)." })}
               {wpnGen === "gen2" && NX({ fr: "Gen 2 : précurseur par collections (3 tiers). Par arme : Mystic Tribute (77 clovers + 250 coins + T6 ×2 → onglet T6) + Gift of Maguuma/Desert Mastery + gift spécifique. Pas d'achat CP possible.", en: "Gen 2: precursor via collections (3 tiers). Per weapon: Mystic Tribute (77 clovers + 250 coins + 2× T6 gifts → T6 tab) + Gift of Maguuma/Desert Mastery + weapon-specific gift. Not purchasable on TP." })}
               {wpnGen === "gen3" && NX({ fr: "Gen 3 (Aurene) : précurseur craft 500 + Gift of Jade Mastery + Draconic Tribute (38 clovers). Variantes de dragons débloquées après liaison. Totaux dans l'onglet Devises.", en: "Gen 3 (Aurene): crafted 500 precursor + Gift of Jade Mastery + Draconic Tribute (38 clovers). Elder Dragon variants unlock after binding. Totals in the Currencies tab." })}
-              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE), qui est un conteneur et apparaît sous ses deux armes de sortie, Ancora Bellum (lance) et Ancora Pax (bâton). Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (JW spear — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE), which is a container and shows up as its two outputs, Ancora Bellum (spear) and Ancora Pax (staff). Weapon-specific costs — check each wiki page." })}
+              {wpnGen === "other" && NX({ fr: "Divers : Klobjarne Geirr (lance, JW — collections Janthir + Draconic Tribute) et Aetheric Anchor (VoE). Aetheric Anchor est un conteneur : une seule fabrication donne ses deux armes, Ancora Bellum (lance) et Ancora Pax (bâton), regroupées sous son nom. Coûts spécifiques par arme — voir la fiche wiki de chacune.", en: "Misc: Klobjarne Geirr (spear, JW — Janthir collections + Draconic Tribute) and Aetheric Anchor (VoE). Aetheric Anchor is a container: one craft gives both its weapons, Ancora Bellum (spear) and Ancora Pax (staff), grouped under its name. Weapon-specific costs — check each wiki page." })}
             </div>
             <div style={{ margin: "6px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
               <div style={{ fontSize: fs(12), fontWeight: 600, color: legColor }}>{goalLabel}</div>
@@ -8074,26 +8107,35 @@ export default function GW2LegendaryTracker() {
             )}
             {wpnItems && (
               <div style={{ margin: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px" }}>
-                {[...wpnIds].sort((x, y) => ((wpnItems[String(x)] ?? {}).wtype ?? "").localeCompare((wpnItems[String(y)] ?? {}).wtype ?? "")).map(id => {
-                  const cell = wpnItems[String(id)];
-                  if (!cell) return <div key={id} />;
-                  const owned = wpnOwnedSet.has(id);
-                  const targeted = wpnTarget.has(id);
-                  const border = owned ? "1px solid rgba(74,222,128,0.6)" : (targeted ? `1px solid ${legColor}` : "1px solid rgba(226,201,126,0.08)");
-                  const bg = owned ? "rgba(74,222,128,0.07)" : (targeted ? "rgba(96,165,250,0.10)" : "rgba(255,255,255,0.02)");
-                  return (
-                    <div key={id}
-                      onClick={() => { if (!owned) toggleWpnTarget(id); }}
-                      title={cell.name}
-                      style={{ padding: "8px 5px", borderRadius: "7px", border, background: bg, cursor: owned ? "default" : "pointer", textAlign: "center", opacity: owned || targeted ? 1 : 0.55 }}>
-                      <div style={{ fontSize: fs(11), fontWeight: 600, color: owned ? "#4ade80" : (targeted ? legColor : "rgba(226,201,126,0.7)") }}>
-                        {owned ? "✓ " : ""}{NX(cell.wtype)}
+                {(() => {
+                  // Un legendaire qui donne plusieurs armes (Aetheric Anchor)
+                  // s'affiche comme une seule carte, ses sorties en dessous.
+                  const tri = [...wpnIds].sort((x, y) => ((wpnItems[String(x)] ?? {}).wtype ?? "").localeCompare((wpnItems[String(y)] ?? {}).wtype ?? ""));
+                  const parLeg = new Map();
+                  for (const id of tri) { const lid = LEG_BY_API.get(id); if (lid) parLeg.set(lid, [...(parLeg.get(lid) ?? []), id]); }
+                  const vus = new Set();
+                  const unites = [];
+                  for (const id of tri) {
+                    const lid = LEG_BY_API.get(id);
+                    const ids = lid ? parLeg.get(lid) : [id];
+                    if (ids.length > 1) { if (vus.has(lid)) continue; vus.add(lid); unites.push({ lid, ids }); }
+                    else unites.push({ lid: null, ids: [id] });
+                  }
+                  return unites;
+                })().map(({ lid, ids }) => {
+                  if (lid) {
+                    const l = SOURCES_DB?.legendaries?.[lid] ?? {};
+                    const nomLeg = NL(lid, String(l.wiki ?? lid).replace(/_/g, " "));
+                    return (
+                      <div key={lid} style={{ gridColumn: `span ${Math.min(ids.length, 4)}`, padding: "6px", borderRadius: "7px", border: "1px solid rgba(226,201,126,0.15)", background: "rgba(255,255,255,0.015)" }}>
+                        <div style={{ fontSize: fs(11), fontWeight: 600, color: "rgba(226,201,126,0.8)", textAlign: "center", marginBottom: "5px" }}>{nomLeg}</div>
+                        <div style={{ display: "grid", gridTemplateColumns: `repeat(${ids.length}, 1fr)`, gap: "6px" }}>
+                          {ids.map(id => renderWpnCell(id))}
+                        </div>
                       </div>
-                      <div style={{ fontSize: fs(9), color: "rgba(226,201,126,0.35)", fontFamily: "'Crimson Text', serif", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                        {cell.name}
-                      </div>
-                    </div>
-                  );
+                    );
+                  }
+                  return renderWpnCell(ids[0]);
                 })}
               </div>
             )}

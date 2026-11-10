@@ -1,4 +1,4 @@
-> **Plan du restant** : `PLAN_RESTANT_v104.md` (03/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
+> **Plan du restant** : `PLAN_RESTANT_v105.md` (10/11/2026) regroupe tout ce qui reste, par lot. Ce fichier-ci garde l'historique.
 
 # Backlog
 
@@ -9,18 +9,7 @@ Trié le 08/10/2026 (27 ouvertes, 19 closes déplacées), puis le 19/10/2026 : 3
 porte ✅ sans réserve (« sauf », « reste », « ouvert »), et qu'elle n'a ni sous-section
 « Reste » ni case `- [ ]` ouverte. Dans le doute, elle reste ici.
 
-- Interface — notes d'Antoine du 05/11/2026
 - 12 nonies. Restes de la fusion du catalogue (03/10/2026)
-
-## Interface — notes d'Antoine du 05/11/2026 (a traiter plus tard, pas maintenant)
-
-- **Polices trop petites, en general.** Antoine ne veut pas gerer la mise en
-  page tout de suite : a reprendre dans une passe JSX dediee.
-- **Onglet Armes, Misc (0/3)** : Aetheric Anchor n'apparait pas en tant que tel ;
-  seules ses deux sorties, Ancora Bellum et Ancora Pax, sont listees (la note du
-  panneau le dit, mais Antoine attend l'Anchor lui-meme). Les lances terrestres
-  (Klobjarne Geirr, Ancora Bellum) sont etiquetees « Harpoon » : type rendu par
-  l'API, a confirmer avant de renommer (incertain).
 
 ## 12 nonies. Restes de la fusion du catalogue (03/10/2026)
 

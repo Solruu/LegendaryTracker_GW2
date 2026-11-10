@@ -1238,9 +1238,26 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       calc(var(--fs) * Npx)). Reglage A / A / A a cote de EN-FR : 100, 115
       (defaut), 130 %, memorise dans le navigateur ; cle i18n `font_size`.
       Balayage des 14 legendaires : 0 erreur.
-- [ ] Etape 2, onglet Armes : type de la lance terrestre (« Harpoon » ; a
-      verifier contre l'API avant de renommer) ; Aetheric Anchor montre comme
-      un seul legendaire, ses deux sorties dessous.
+- [x] Etape 2, onglet Armes (JSX v286, sources v463) : « Harpoon » est la cle
+      API des lances (Kamohoali'i Kotaki, Klobjarne Geirr, Ancora Bellum) ;
+      « Speargun » celle du fusil-harpon. Les 19 types passent par l'i18n
+      (`wtype_*`, FR : Lance, Fusil-harpon, Arc long...). Aetheric Anchor
+      (conteneur 105497) : une carte a son nom, Ancora Bellum (106273) et
+      Ancora Pax (105653) dessous ; ces deux ids rejoignent
+      `_meta.armory_apiid_to_legid` et le pont des couts de l'onglet passe
+      par `armoryReverseMap` (il ratait les deux sorties).
+- [x] Trouve en chemin : `armory_api_id` faux pour 19 armes gen1, 8 gen2,
+      Aurora, Conflux, Binding of Ipos (decales d'un rang ou pointant sur un
+      autre objet : Frostfang -> The Dreamer, Conflux -> Gift of the World...).
+      Effet : la synchro d'armurerie cochait le mauvais legendaire. Corriges
+      contre l'API (nom par nom), 26 aretes fausses retirees de `_meta`.
+      Script integration/gw2_armurerie_ids_v1, releve
+      ressources/api/api_armurerie_ids_20261110.json.
+- [ ] Reste : `fractal_capacitor` porte armory_api_id 74155 (= Ad Infinitum),
+      pas d'apiId propre ; « Fractal Capacitor » n'est pas dans l'armurerie.
+      Posseder Ad Infinitum le coche aussi. Non tranche : a voir avec Antoine.
+- [ ] Reste : `legendary_relic` est aussi rattache a 100916 (Relic of the
+      Thief, hors armurerie) dans `_meta` ; sans effet, laisse en l'etat.
 - [ ] Etape 3 : relecture ecran par ecran avec Antoine, apres retour sur
       l'etape 1 (lisibilite, densite).
 
