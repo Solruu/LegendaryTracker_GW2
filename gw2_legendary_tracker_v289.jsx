@@ -1309,7 +1309,8 @@ const LEGENDARIES = {
     resetType: "weekly",
     currencies: [
       { id: "insights",  name: "Legendary Insight", required: 150, icon: "LI", apiId: 70 },
-      { id: "gaeting",   name: "Gaeting Crystal",   required: 100, icon: "GC", apiId: 39 },
+      // v289 : l'Alembic Apparatus se paie en Magnetite Shards (Antoine, en jeu, 11/11), pas en Gaeting.
+      { id: "magnetite", name: "Magnetite Shard",   required: 100, icon: "MS", apiId: 28 },
       { id: "clovers",   name: "Mystic Clover",     required: 77,  icon: "MC", apiId: 19675 },
       { id: "coins",     name: "Mystic Coin",       required: 250, icon: "MN", apiId: 19976 },
     ],

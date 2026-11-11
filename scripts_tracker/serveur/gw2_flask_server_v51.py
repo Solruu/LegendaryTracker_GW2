@@ -1386,7 +1386,6 @@ def progression():
     coalescence = _monnaies("coalescence", {
         "insights":  wallet_dict.get(70, 0),   # Legendary Insight
         "magnetite": wallet_dict.get(28, 0),   # Magnetite Shard (W1-4)
-        "gaeting":   wallet_dict.get(39, 0),   # Gaeting Crystal PoF (W5-7) — 20=Ley Line Crystal était FAUX, 77=Gaeting Janthir
         "coins":     mat_dict.get(19976, 0),   # Mystic Coin (Mystic Tribute ×250)
     })
 

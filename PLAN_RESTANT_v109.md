@@ -1261,6 +1261,11 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       integration/gw2_fractal_capacitor_v1.
 - [ ] Reste : `legendary_relic` est aussi rattache a 100916 (Relic of the
       Thief, hors armurerie) dans `_meta` ; sans effet, laisse en l'etat.
+- [x] Coalescence (11/11, sources v466, JSX v289, Flask v51) : l'Alembic se
+      paie en Magnetite Shards (Antoine, en jeu). Composant gaeting_crystal
+      (100, besoin inexistant, double compte) supprime ; descripteur de
+      monnaie Gaeting -> Magnetite ; note de Coalescence II et texte de
+      deblocage corriges. Script integration/gw2_coalescence_magnetite_v1.
 - [x] Vision (11/11, sources v465, Flask v50) : « Compagnon de la forge »
       (4577, 16 paliers) retire, pas requis pour Vision ; le besoin reel est
       le bit 5 de Visions of Thunderhead Peaks (6 armes differentes + achat

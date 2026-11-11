@@ -581,7 +581,6 @@
         "coalescence": {
           "insights": 70,
           "magnetite": 28,
-          "gaeting": 39,
           "coins": 19976
         },
         "conflux": {
@@ -12274,32 +12273,6 @@
         "gift_of_the_mist_warrior",
         "strife_unending"
       ]
-    },
-    "gaeting_crystal": {
-      "name": "Gaeting Crystal",
-      "apiId": 39,
-      "kind": "currency",
-      "qty": {
-        "coalescence": 100
-      },
-      "farmable": true,
-      "sources": [
-        {
-          "type": "raid",
-          "tip": {
-            "fr": "Tombe en terminant les rencontres de raid. Hebdomadaire par rencontre.",
-            "en": "Drops from clearing raid encounters. Weekly per encounter."
-          },
-          "free_repeatable": true,
-          "cadence": "à volonté",
-          "verified": true,
-          "checked": "2026-08-13",
-          "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
-        }
-      ],
-      "verified": true,
-      "checked": "2026-08-13",
-      "ref": "valeurs reprises du descripteur de monnaie du JSX, source unique de verite pour le requis"
     },
     "tales_of_dungeon_delving": {
       "name": "Tales of Dungeon Delving",
@@ -95254,11 +95227,11 @@
         "legendary_insights": 150,
         "li_weekly_cap": 77,
         "li_note": "Cap 77/semaine (43 weekly + encounters + daily bounties + quickplay) → minimum 2 semaines",
-        "gaeting_alembic": 100,
-        "gaeting_note": "Alembic Apparatus (Coalescence II) : 100 Gaeting Crystals + 10 po chez Glenna (W6). Wallet ID 39 (PoF) — PAS 20 (Ley Line Crystal) ni 77 (Gaeting Janthir).",
         "mystic_clovers": 77,
         "mystic_coins": 250,
-        "raids_required": "Wings 5-6-7 (PoF) obligatoires pour les 3 collections"
+        "raids_required": "Wings 5-6-7 (PoF) obligatoires pour les 3 collections",
+        "magnetite_alembic": 100,
+        "magnetite_note": "Alembic Apparatus (Coalescence II) : 100 Magnetite Shards + 10 po chez Scholar Glenna (W6) ou un Magnetite Shard Exchange portable. Confirme en jeu par Antoine le 11/11/2026."
       },
       "recipe_verified": "2026-07-25 (wiki)",
       "cadence_ref": "legendary_insight",
@@ -95494,8 +95467,8 @@
           },
           "total": 18,
           "note": {
-            "fr": "Requiert Coalescence I. Alembic Apparatus : 100 Gaeting Crystals + 10 po chez Glenna (W6), puis remplir les fioles lors des kills de W6 et double-cliquer sur l'Alembic dans l'inventaire.",
-            "en": "Requires Coalescence I. Alembic Apparatus: 100 Gaeting Crystals + 10g from Glenna (W6), then fill the vials during W6 kills and double-click the Alembic in your inventory."
+            "fr": "Requiert Coalescence I. Alembic Apparatus : 100 Magnetite Shards + 10 po chez Scholar Glenna (W6, après un boss de l'aile) ou un Magnetite Shard Exchange portable. Les bouteilles vides se ramassent en Tyrie (une seule en raid : Surprise, après Qadim) ; chaque bouteille remplie demande sa vide. Double-cliquer l'Alembic à la fin.",
+            "en": "Requires Coalescence I. Alembic Apparatus: 100 Magnetite Shards + 10g from Scholar Glenna (W6, after one boss of the wing) or a portable Magnetite Shard Exchange. Empty bottles are picked up around Tyria (only one in a raid: Surprise, after Qadim); each filled bottle needs its empty one. Double-click the Alembic at the end."
           },
           "items": [
             {
@@ -95871,7 +95844,8 @@
             }
           },
           "unlock_ref": "wiki, encadré du succès — parsé par gw2_parse_achievement_box_v1.py",
-          "unlock_verified": true
+          "unlock_verified": true,
+          "note_ref": "ressources/wiki/coalescence_ii_the_gift.html (Notes) + alembic_apparatus.html ; monnaie confirmee en jeu par Antoine le 11/11/2026"
         },
         "coalescence_3": {
           "id": 4805,
@@ -100365,8 +100339,8 @@
       ],
       "key": "coalescence_2",
       "text": {
-        "fr": "🔓 Compléter Coalescence I, puis tuer un boss de Mythwright Gambit (W6) et acheter l'Alembic Apparatus chez Scholar Glenna, DANS l'instance W6 (100 Gaeting Crystals + 10 po). C'est l'achat qui active la collection.",
-        "en": "🔓 Complete Coalescence I, then kill a Mythwright Gambit (W6) boss and buy the Alembic Apparatus from Scholar Glenna, INSIDE the W6 instance (100 Gaeting Crystals + 10 g). The purchase is what activates the collection."
+        "fr": "🔓 Compléter Coalescence I, puis tuer un boss de Mythwright Gambit (W6) et acheter l'Alembic Apparatus chez Scholar Glenna, DANS l'instance W6 (100 Magnetite Shards + 10 po). C'est l'achat qui active la collection.",
+        "en": "🔓 Complete Coalescence I, then kill a Mythwright Gambit (W6) boss and buy the Alembic Apparatus from Scholar Glenna, INSIDE the W6 instance (100 Magnetite Shards + 10 g). The purchase is what activates the collection."
       }
     },
     "4805": {
