@@ -127,7 +127,6 @@ ACHIEVEMENT_IDS = {
     "vis_ep_allornothing":4544,   # « All or Nothing » Mastery (Thunderhead)
     "vis_ep_wareternal":  4689,   # « War Eternal » Mastery (Dragonfall)
     "vis_elegy":          4376,   # The Convergence of Sorrow I: Elegy (armure Elegy)
-    "vis_forge":          4577,   # Journeyman of the Forge (armes Dragonsblood)
     "stella_forge_guard": 9330,   # Forge Guard's Armor Collection (6 skins) — vérifié gw2treasures
     "stella_resin":       9344,   # Glimmering Resin Weapon Collector (17 skins) — vérifié gw2treasures
     "orrax_mistburned_mastery": 8582,  # Mistburned Barrens Mastery (→ Salmon of Knowledge) — vérifié refs

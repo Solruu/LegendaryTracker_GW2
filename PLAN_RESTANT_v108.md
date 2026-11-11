@@ -1261,6 +1261,12 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       integration/gw2_fractal_capacitor_v1.
 - [ ] Reste : `legendary_relic` est aussi rattache a 100916 (Relic of the
       Thief, hors armurerie) dans `_meta` ; sans effet, laisse en l'etat.
+- [x] Vision (11/11, sources v465, Flask v50) : « Compagnon de la forge »
+      (4577, 16 paliers) retire, pas requis pour Vision ; le besoin reel est
+      le bit 5 de Visions of Thunderhead Peaks (6 armes differentes + achat
+      chez Hilina), dont le conseil reprend les infos sourcees (livres 500
+      Magie volatile + 5 Lauriers, Impaler exclu). Script
+      integration/gw2_vision_retrait_forge_v1.
 - [x] Etape 3, relecture ecran par ecran (10/11, JSX v287). Corrige sans
       arbitrage : encart « ⚔ <nom> » vide en tete des collections (affiche
       seulement s'il porte une note) ; Obsidian Armor type et sous-titre en
