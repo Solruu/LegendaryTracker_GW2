@@ -2584,11 +2584,15 @@ function ChatCode({ code, copied, onCopy }) {
       if (navigator?.clipboard?.writeText) navigator.clipboard.writeText(code).catch(fallback);
       else fallback();
     } catch (_) { fallback(); }
+    // v290 : le libelle « ✓ copié » revient au code apres 1,5 s, comme les
+    // boutons des metas ; userSelect « all » retire, il selectionnait le
+    // libelle au clic et un second clic copiait « ✓ copié ».
     onCopy(code);
+    setTimeout(() => onCopy(c => (c === code ? null : c)), 1500);
   };
   return (
     <span onClick={copy} title={code}
-      style={{ cursor: "pointer", userSelect: "all", fontFamily: "monospace", fontSize: fs(10),
+      style={{ cursor: "pointer", userSelect: "none", fontFamily: "monospace", fontSize: fs(10),
                padding: "2px 6px", borderRadius: 3, whiteSpace: "nowrap",
                background: isMe ? "rgba(74,222,128,0.15)" : "rgba(94,234,212,0.07)",
                border: `1px solid ${isMe ? "rgba(74,222,128,0.5)" : "rgba(94,234,212,0.28)"}`,
