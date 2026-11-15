@@ -567,10 +567,14 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
         descripteur JSX 100 -> 125), la rarete du bit tranchant entre deux
         lignes. Laisses : 18 dons de donjon (Gift of Ascalon...) deja portes
         par l'arbre ; 15 achats en pieces seules (convention) ; 4 Orrax
-        (points de succes / jetons de renom) ; Dream of Peace (deux vendeurs,
-        1 848 ou 4 998 karma : a trancher) ; Obsidian, 12 skins Astral Ward /
-        Oneiros-Spun (don + Purified Rift Essence + Stardust ou Lightning ou
-        Clot + 500 notes de recherche piece) : decision d'Antoine attendue.
+        (points de succes / jetons de renom).
+      - ✅ 15/11 accord d'Antoine (`gw2_obsidian_skins_dream_v1`, sources
+        v469) : Obsidian, 12 skins d'Arcanum (seul moyen : achat Tour du
+        sorcier) chiffres en cout d'etape ; la Purified Rift Essence a plat
+        (obsidian__onetime 12) passe dans ces couts, cle retiree, total
+        inchange (12). Obsidian : notes de recherche 15 000 -> 21 000, dons
+        3 -> 4 ou 5 chacun. Dream of Peace : 1 848 karma (Crunchbone, coeur
+        « Assist the charr delegation »), alternative 4 998 dite au conseil.
       - Chuka III : bits 12 (3) et 13 (1) poses le 09/10
         (`gw2_couts_chuka_v1`) ; ✅ bit 11 (05/11, sources v450,
         `gw2_chuka_bit11_v1`) : deux chats d'Elena (elenas_kitty.html),

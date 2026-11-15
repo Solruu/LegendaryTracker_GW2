@@ -2123,6 +2123,10 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `watered_with_the_cluster_of_waves.html` | Watered with the Cluster of Waves | article complet | 2026-11-15 |
 | `wolf_s_loyalty.html` | Wolf's Loyalty | article complet | 2026-11-15 |
 | `wupwup_god_icon.html` | Wupwup God Icon | article complet | 2026-11-15 |
+| `assist_the_charr_delegation.html` | Assist the charr delegation | article complet | 2026-11-15 |
+| `legionnaire_crunchbone.html` | Legionnaire Crunchbone | article complet | 2026-11-15 |
+| `support_the_human_delegation.html` | Support the human delegation | article complet | 2026-11-15 |
+| `vanguard_lieutenant_viles.html` | Vanguard Lieutenant Viles | article complet | 2026-11-15 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
