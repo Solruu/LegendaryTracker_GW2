@@ -558,9 +558,19 @@ Accord d'Antoine sur le plan : une seule structure, `cost` sur l'etape.
 - [x] Controles : conformite v3 (3e situation : etapes a cout validees,
       sous-collections comprises), audit v60 (`check_couts_etapes` : interdit
       `qty_extras` / `karma_budget`, exige `cost_ref`).
-- [ ] Generaliser au fil des captures. Candidats lus dans les `how`, a
+- [~] Generaliser au fil des captures. Candidats lus dans les `how`, a
       trancher un par un — la plupart des « Bring » portent un objet de
       quete, pas une consommation :
+      - ✅ 15/11 achats (`gw2_achats_etapes_v1`, sources v468, JSX v291) :
+        105 etapes « purchased / buy from » sans cout ; 68 pages capturees ;
+        35 couts poses (karma, eclats d'esprit, 25 Difluorite pour Vision —
+        descripteur JSX 100 -> 125), la rarete du bit tranchant entre deux
+        lignes. Laisses : 18 dons de donjon (Gift of Ascalon...) deja portes
+        par l'arbre ; 15 achats en pieces seules (convention) ; 4 Orrax
+        (points de succes / jetons de renom) ; Dream of Peace (deux vendeurs,
+        1 848 ou 4 998 karma : a trancher) ; Obsidian, 12 skins Astral Ward /
+        Oneiros-Spun (don + Purified Rift Essence + Stardust ou Lightning ou
+        Clot + 500 notes de recherche piece) : decision d'Antoine attendue.
       - Chuka III : bits 12 (3) et 13 (1) poses le 09/10
         (`gw2_couts_chuka_v1`) ; ✅ bit 11 (05/11, sources v450,
         `gw2_chuka_bit11_v1`) : deux chats d'Elena (elenas_kitty.html),
@@ -1261,6 +1271,11 @@ Wiki remis en ligne apres sa mise a jour de securite (PHP), encore instable
       integration/gw2_fractal_capacitor_v1.
 - [ ] Reste : `legendary_relic` est aussi rattache a 100916 (Relic of the
       Thief, hors armurerie) dans `_meta` ; sans effet, laisse en l'etat.
+- [x] Coalescence III (15/11, sources v467) : points de passage poses
+      d'apres les captures d'objets (Bonestrand pour Hasara ; Spearmarshal's
+      Lament, point d'interet, pour l'Energie etrange) ; conseil du bit 5
+      corrige (chaque essence purifiee demande SA tordue). Script
+      integration/gw2_coalescence3_lieux_v1.
 - [x] Coalescence (11/11, sources v466, JSX v289, Flask v51) : l'Alembic se
       paie en Magnetite Shards (Antoine, en jeu). Composant gaeting_crystal
       (100, besoin inexistant, double compte) supprime ; descripteur de

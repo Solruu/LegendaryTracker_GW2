@@ -1110,7 +1110,7 @@ const LEGENDARIES = {
       { id: "inscribed_shard", name: "Inscribed Shard", required: 300, icon: "IS", apiId: 87645, mapNote: "Domain of Kourna",
         aside: { fr: "100 pour le Gift of Crystalline Magic, 100 pour le mât de bannière, 100 pour la feuille de recette de la bannière chez Lady Camilla — celle-ci une seule fois pour le compte.",
                  en: "100 for the Gift of Crystalline Magic, 100 for the banner pole, 100 for the banner recipe sheet from Lady Camilla — the latter once per account." } },
-      { id: "difluorite", name: "Difluorite Crystal", required: 100, icon: "DC", apiId: 86977, mapNote: "Sandswept Isles" },
+      { id: "difluorite", name: "Difluorite Crystal", required: 125, icon: "DC", apiId: 86977, mapNote: "Sandswept Isles" },  // v291 : +25 du Inquest Manual on Choleric Elemental Energy (achat, inquest_manual_on_choleric_elemental_energy.html)
       { id: "mistonium", name: "Lump of Mistonium", required: 100, icon: "LM", apiId: 88955, mapNote: "Jahai Bluffs" },
       { id: "incense", name: "Funerary Incense", required: 100, icon: "FI", apiId: 86093, mapNote: "Path of Fire maps" },
       { id: "elegy", name: "Elegy Mosaic", required: 300, icon: "EM", apiId: 35,

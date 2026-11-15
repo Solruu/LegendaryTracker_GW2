@@ -2044,6 +2044,85 @@ les quatre suites sont sous le plafond et ne portent pas de lien « further resu
 | `vision_of_dragons_aurene_jahai.html` | Vision of Dragons: Aurene (Jahai) | article complet | 2026-11-09 |
 | `vision_of_landscapes_dragonfall.html` | Vision of Landscapes: Dragonfall | article complet | 2026-11-09 |
 | `wyverns_liquid_fire.html` | Wyvern's Liquid Fire | article complet | 2026-11-09 |
+| `hasara.html` | Hasara | article complet | 2026-11-15 |
+| `infused_meditation_log_book.html` | Infused Meditation Log Book | article complet | 2026-11-15 |
+| `purified_essence_of_generosity.html` | Purified Essence of Generosity | article complet | 2026-11-15 |
+| `purified_essence_of_resolve.html` | Purified Essence of Resolve | article complet | 2026-11-15 |
+| `purified_essence_of_trust.html` | Purified Essence of Trust | article complet | 2026-11-15 |
+| `strange_energy.html` | Strange Energy | article complet | 2026-11-15 |
+| `sunspear_sanctuary.html` | Sunspear Sanctuary | article complet | 2026-11-15 |
+| `twisted_essence_of_generosity.html` | Twisted Essence of Generosity | article complet | 2026-11-15 |
+| `twisted_essence_of_resolve.html` | Twisted Essence of Resolve | article complet | 2026-11-15 |
+| `twisted_essence_of_trust.html` | Twisted Essence of Trust | article complet | 2026-11-15 |
+| `worn_meditation_logbook.html` | Worn Meditation Logbook | article complet | 2026-11-15 |
+| `alkaline_solution.html` | Alkaline Solution | article complet | 2026-11-15 |
+| `ash_legion_spy_kit.html` | Ash Legion Spy Kit | article complet | 2026-11-15 |
+| `astral_ward_heavy_boots.html` | Astral Ward Heavy Boots | article complet | 2026-11-15 |
+| `astral_ward_heavy_coat.html` | Astral Ward Heavy Coat | article complet | 2026-11-15 |
+| `astral_ward_heavy_gloves.html` | Astral Ward Heavy Gloves | article complet | 2026-11-15 |
+| `astral_ward_heavy_helm.html` | Astral Ward Heavy Helm | article complet | 2026-11-15 |
+| `astral_ward_heavy_leggings.html` | Astral Ward Heavy Leggings | article complet | 2026-11-15 |
+| `astral_ward_heavy_shoulders.html` | Astral Ward Heavy Shoulders | article complet | 2026-11-15 |
+| `bottle_of_shelp_s_moonshine.html` | Bottle of Shelp's Moonshine | article complet | 2026-11-15 |
+| `chuka_and_champawat_vol_4.html` | Chuka and Champawat Vol. 4 | article complet | 2026-11-15 |
+| `dream_of_peace.html` | Dream of Peace | article complet | 2026-11-15 |
+| `experimental_rifle.html` | Experimental Rifle | article complet | 2026-11-15 |
+| `feed_herring_to_your_raven_chick.html` | Feed Herring to Your Raven Chick | article complet | 2026-11-15 |
+| `fiendish_grawl_artwork.html` | Fiendish Grawl Artwork | article complet | 2026-11-15 |
+| `flame_legion_carving.html` | Flame Legion Carving | article complet | 2026-11-15 |
+| `flask_of_meatoberfest_ale.html` | Flask of Meatoberfest Ale | article complet | 2026-11-15 |
+| `friend_of_rabbits.html` | Friend of Rabbits | article complet | 2026-11-15 |
+| `friend_of_the_lake.html` | Friend of the Lake | article complet | 2026-11-15 |
+| `friend_of_the_moa_ranch.html` | Friend of the Moa Ranch | article complet | 2026-11-15 |
+| `friend_of_the_pups.html` | Friend of the Pups | article complet | 2026-11-15 |
+| `guide_to_raising_a_raven.html` | Guide to Raising a Raven | article complet | 2026-11-15 |
+| `harpy_s_love.html` | Harpy's Love | article complet | 2026-11-15 |
+| `hope_vol_4.html` | HOPE Vol. 4 | article complet | 2026-11-15 |
+| `hylek_alchemy_apprentice_tome.html` | Hylek Alchemy Apprentice Tome | article complet | 2026-11-15 |
+| `incinerator_vol_3.html` | Incinerator Vol. 3 | article complet | 2026-11-15 |
+| `inquest_manual_on_choleric_elemental_energy.html` | Inquest Manual on Choleric Elemental Energy | article complet | 2026-11-15 |
+| `intercepted_inquest_calculations.html` | Intercepted Inquest Calculations | article complet | 2026-11-15 |
+| `iron_legion_schematics.html` | Iron Legion Schematics | article complet | 2026-11-15 |
+| `jar_of_harpy_pheromones.html` | Jar of Harpy Pheromones | article complet | 2026-11-15 |
+| `little_norn_figurine.html` | Little Norn Figurine | article complet | 2026-11-15 |
+| `lump_of_aluminum.html` | Lump of Aluminum | article complet | 2026-11-15 |
+| `mini_mighty_oouo.html` | Mini Mighty Oouo | article complet | 2026-11-15 |
+| `mini_moa_egg.html` | Mini-moa Egg | article complet | 2026-11-15 |
+| `moa_egg_omelet.html` | Moa Egg Omelet | article complet | 2026-11-15 |
+| `moogooloo_friendship_bracelet.html` | Moogooloo Friendship Bracelet | article complet | 2026-11-15 |
+| `nevermore_vol_4.html` | Nevermore Vol. 4 | article complet | 2026-11-15 |
+| `nrocroc_pressed_prickleberry_friendship_flower.html` | Nrocroc Pressed Prickleberry Friendship Flower | article complet | 2026-11-15 |
+| `oneiros_spun_heavy_boots.html` | Oneiros-Spun Heavy Boots | article complet | 2026-11-15 |
+| `oneiros_spun_heavy_coat.html` | Oneiros-Spun Heavy Coat | article complet | 2026-11-15 |
+| `oneiros_spun_heavy_gloves.html` | Oneiros-Spun Heavy Gloves | article complet | 2026-11-15 |
+| `oneiros_spun_heavy_helm.html` | Oneiros-Spun Heavy Helm | article complet | 2026-11-15 |
+| `oneiros_spun_heavy_leggings.html` | Oneiros-Spun Heavy Leggings | article complet | 2026-11-15 |
+| `oneiros_spun_heavy_shoulders.html` | Oneiros-Spun Heavy Shoulders | article complet | 2026-11-15 |
+| `orsippus_friendship_bracelet.html` | Orsippus Friendship Bracelet | article complet | 2026-11-15 |
+| `painted_mokooki_hunter_s_pottery.html` | Painted Mokooki Hunter's Pottery | article complet | 2026-11-15 |
+| `perpetual_energy_coil.html` | Perpetual Energy Coil | article complet | 2026-11-15 |
+| `pouch_of_jotun_runestones.html` | Pouch of Jotun Runestones | article complet | 2026-11-15 |
+| `pure_crystalline_phial.html` | Pure Crystalline Phial | article complet | 2026-11-15 |
+| `sabotaged_weapon_parts.html` | Sabotaged Weapon Parts | article complet | 2026-11-15 |
+| `seraph_medal_of_stealth.html` | Seraph Medal of Stealth | article complet | 2026-11-15 |
+| `soggorsort_friendship_bracelet.html` | Soggorsort Friendship Bracelet | article complet | 2026-11-15 |
+| `spy_kit.html` | Spy Kit | article complet | 2026-11-15 |
+| `stein_of_ancient_deldrimor_ale.html` | Stein of Ancient Deldrimor Ale | article complet | 2026-11-15 |
+| `stein_of_kyesjard_special_reserve.html` | Stein of Kyesjard Special Reserve | article complet | 2026-11-15 |
+| `sun_god_s_breath_flask.html` | Sun God's Breath Flask | article complet | 2026-11-15 |
+| `sun_god_s_vial.html` | Sun God's Vial | article complet | 2026-11-15 |
+| `sweptweave_schematic.html` | Sweptweave Schematic | article complet | 2026-11-15 |
+| `terebinth_s_calm.html` | Terebinth's Calm | article complet | 2026-11-15 |
+| `thaumanova_flames_siphon.html` | Thaumanova Flames Siphon | article complet | 2026-11-15 |
+| `true_love_of_the_dwarves.html` | True Love of the Dwarves | article complet | 2026-11-15 |
+| `urgulp_friendship_bracelet.html` | Urgulp Friendship Bracelet | article complet | 2026-11-15 |
+| `vision_of_equipment_dragon_champion_armor.html` | Vision of Equipment: Dragon Champion Armor | article complet | 2026-11-15 |
+| `watered_with_ancient_waters_of_hope.html` | Watered with Ancient Waters of Hope | article complet | 2026-11-15 |
+| `watered_with_oasis_water.html` | Watered with Oasis Water | article complet | 2026-11-15 |
+| `watered_with_pure_grove_water.html` | Watered with Pure Grove Water | article complet | 2026-11-15 |
+| `watered_with_the_cluster_of_waves.html` | Watered with the Cluster of Waves | article complet | 2026-11-15 |
+| `wolf_s_loyalty.html` | Wolf's Loyalty | article complet | 2026-11-15 |
+| `wupwup_god_icon.html` | Wupwup God Icon | article complet | 2026-11-15 |
 ## gw2efficiency/ — arbres de craft (gw2efficiency.com)
 
 Les arbres donnent les **quantités absolues par nœud**, pas des cascades
